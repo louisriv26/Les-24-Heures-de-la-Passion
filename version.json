@@ -1,5 +1,5 @@
 {
-  "version": "prototype-30",
+  "version": "prototype-31",
   "date": "2026-06-04",
-  "notes": "Séparation touch iPhone/iPad — défilement et espace inférieur iPad corrigés"
+  "notes": "Grille 2 colonnes iPhone, espace inférieur réduit, accélération GPU défilement iPad"
 }

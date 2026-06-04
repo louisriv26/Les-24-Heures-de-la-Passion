@@ -87,7 +87,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--ink); 
 .hour-time { font-size: 0.75rem; color: var(--ink4); display: block; font-style: italic; }
 
 /* ── Content ── */
-.content { flex: 1 1 auto; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior-y: auto; display: flex; flex-direction: column; align-items: center; padding: 2.5rem 1.5rem calc(4rem + env(safe-area-inset-bottom, 0px)); }
+.content { flex: 1 1 auto; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior-y: auto; display: flex; flex-direction: column; align-items: center; padding: 2.5rem 1.5rem calc(2rem + env(safe-area-inset-bottom, 0px)); will-change: transform; transform: translateZ(0); }
 
 
 /* ── Home ── */
@@ -601,8 +601,9 @@ mark.hl-pink   { background: #fce7f3; color: inherit; }
   #helpBtn { display: none; }
   .header-logo { font-size: 0.72rem; letter-spacing: 0.08em; }
   .header-logo span { display: none; }
+  .extras-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .content { max-width: 100vw; -webkit-overflow-scrolling: touch;
-    padding-bottom: calc(6rem + env(safe-area-inset-bottom, 0px)) !important; }
+    padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px)) !important; }
   .sidebar { padding-bottom: env(safe-area-inset-bottom, 0px); }
 }
 /* ─── Prier mode (default): clean devotional reading ─── */
@@ -1237,7 +1238,7 @@ const state = {
   searchFilter: 'all',
   meditationLog: []
 };
-const APP_VERSION='prototype-30';
+const APP_VERSION='prototype-31';
 const STORAGE_SCHEMA_VERSION=2;
 
 // Fast hash for highlight integrity — detects corpus text changes
