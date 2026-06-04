@@ -48,8 +48,8 @@
   --holy-bg: #1a1520; --holy-border: #6a4a8a;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { height: 100%; box-sizing: border-box; overflow-x: hidden; }
-body { height: 100%; margin: 0; overflow: hidden; overflow-x: hidden; }
+html { height: 100%; box-sizing: border-box; overflow-x: hidden; overscroll-behavior-x: none; }
+body { height: 100%; margin: 0; overflow: hidden; overflow-x: hidden; overscroll-behavior-x: none; }
 body { font-family: var(--font-body); background: var(--bg); color: var(--ink); transition: background 0.3s, color 0.3s; -webkit-font-smoothing: antialiased; }
 #app { position: fixed; top: 0; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; overflow: hidden; }
 
@@ -581,9 +581,12 @@ mark.hl-pink   { background: #fce7f3; color: inherit; }
 
 /* iOS/touch safe-area and scroll improvements */
 @media (pointer: coarse) {
-  html, body { overflow-x: hidden !important; }
+  html, body { overflow-x: hidden !important; overscroll-behavior-x: none !important; }
+  body { touch-action: pan-y; } /* prevent horizontal rubber-banding on iOS */
   .header-actions { gap: 0.2rem; }
   .icon-btn { padding: 4px; }
+  /* Help button accessible via sidebar on mobile — hide from header to free space */
+  #helpBtn { display: none; }
   /* Content: extra bottom padding clears bottom nav + Safari toolbar on all iOS devices */
   .content { padding-bottom: calc(9rem + env(safe-area-inset-bottom, 0px)) !important; overscroll-behavior-y: contain; }
   /* Sidebar drawer: clear home indicator */
@@ -601,7 +604,7 @@ mark.hl-pink   { background: #fce7f3; color: inherit; }
   padding: 0.22rem 0.55rem !important; border-radius: 999px !important;
   border: 1.5px solid var(--bg3) !important; color: var(--ink3); background: var(--bg2); }
 .mode-pill.prier { border-color: var(--accent-light) !important; color: var(--accent) !important; background: var(--accent-pale) !important; }
-.search-filters { display: flex; gap: 0.4rem; padding: 0.5rem 0 0.9rem; overflow-x: auto;
+.search-filters { display: flex; gap: 0.4rem; padding: 0.5rem 0 0.9rem; overflow-x: auto; touch-action: pan-x pan-y;
   -webkit-overflow-scrolling: touch; scrollbar-width: none; }
 .search-filters::-webkit-scrollbar { display: none; }
 .sf-btn { flex-shrink: 0; padding: 0.3rem 0.75rem; border: 1px solid var(--bg3);
@@ -1556,7 +1559,7 @@ function renderHome() {
       <div class="cross-ornament">✦ ✝ ✦</div>
       <h1 class="home-title">Les 24 Heures de la Passion<br>de Notre-Seigneur Jésus-Christ</h1>
       <p class="home-subtitle">Luisa Piccarreta — Petite fille de la Divine Volonté</p>
-      <p class="home-meta">${escHtml(CORPUS.source_edition)} &nbsp;·&nbsp; <span style="color:var(--ink4);font-size:0.78rem">${APP_VERSION}</span> &nbsp;·&nbsp; <a onclick="showHelp()" style="cursor:pointer">Aide &amp; À propos →</a></p>
+      <p class="home-meta"><span style="color:var(--ink4);font-size:0.78rem">${APP_VERSION}</span> &nbsp;·&nbsp; <a onclick="showHelp()" style="cursor:pointer;color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px">Aide &amp; À propos →</a></p>
     </div>
     <div style="margin-top:1.5rem">
       ${isFirstTime ? `<div class="onboarding-card">
