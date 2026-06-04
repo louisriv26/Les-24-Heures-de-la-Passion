@@ -48,18 +48,18 @@
   --holy-bg: #1a1520; --holy-border: #6a4a8a;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { height: 100%; box-sizing: border-box; }
-body { height: 100%; margin: 0; overflow: hidden; }
+html { height: 100%; box-sizing: border-box; overflow-x: hidden; }
+body { height: 100%; margin: 0; overflow: hidden; overflow-x: hidden; }
 body { font-family: var(--font-body); background: var(--bg); color: var(--ink); transition: background 0.3s, color 0.3s; -webkit-font-smoothing: antialiased; }
 #app { position: fixed; top: 0; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; overflow: hidden; }
 
 /* ── Header ── */
 .header { position: sticky; top: 0; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--bg3); padding: 0 1.5rem; padding-top: env(safe-area-inset-top, 0px); height: calc(58px + env(safe-area-inset-top, 0px)); display: flex; align-items: center; justify-content: space-between; }
-.header-left { display: flex; align-items: center; gap: 1rem; }
-.header-logo { font-family: var(--font-display); font-size: 0.82rem; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; line-height: 1.2; cursor: pointer; }
-.header-logo span { display: block; font-size: 0.62rem; letter-spacing: 0.18em; color: var(--ink4); font-family: var(--font-ui); font-style: italic; }
-.back-btn { display: none; background: none; border: none; cursor: pointer; color: var(--ink3); padding: 6px; border-radius: 6px; }
-.back-btn:hover { color: var(--accent); background: var(--accent-pale); }
+.header-left { display: flex; align-items: center; gap: 0.6rem; flex: 1; min-width: 0; overflow: hidden; }
+.header-logo { font-family: var(--font-display); font-size: 0.82rem; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; line-height: 1.2; cursor: pointer; overflow: hidden; min-width: 0; white-space: nowrap; text-overflow: ellipsis; }
+.header-logo span { display: block; font-size: 0.62rem; letter-spacing: 0.18em; color: var(--ink4); font-family: var(--font-ui); font-style: italic; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.back-btn { display: none; align-items: center; gap: 0.2rem; background: none; border: none; cursor: pointer; color: var(--accent); padding: 5px 8px 5px 2px; border-radius: 6px; flex-shrink: 0; font-family: var(--font-ui); font-size: 0.88rem; font-weight: 500; white-space: nowrap; }
+.back-btn:hover, .back-btn:active { background: var(--accent-pale); }
 .header-actions { display: flex; gap: 0.5rem; align-items: center; }
 .icon-btn { background: none; border: none; cursor: pointer; -webkit-user-select: none; user-select: none; touch-action: manipulation; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border-radius: 8px; color: var(--ink3); transition: color 0.2s, background 0.2s; }
 .icon-btn:hover { color: var(--accent); background: var(--accent-pale); }
@@ -581,6 +581,9 @@ mark.hl-pink   { background: #fce7f3; color: inherit; }
 
 /* iOS/touch safe-area and scroll improvements */
 @media (pointer: coarse) {
+  html, body { overflow-x: hidden !important; }
+  .header-actions { gap: 0.2rem; }
+  .icon-btn { padding: 4px; }
   /* Content: extra bottom padding clears bottom nav + Safari toolbar on all iOS devices */
   .content { padding-bottom: calc(9rem + env(safe-area-inset-bottom, 0px)) !important; overscroll-behavior-y: contain; }
   /* Sidebar drawer: clear home indicator */
@@ -681,7 +684,8 @@ mark.hl-pink   { background: #fce7f3; color: inherit; }
   <header class="header">
     <div class="header-left">
       <button class="back-btn" id="backBtn" onclick="goBack()" aria-label="Retour">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        <span>Retour</span>
       </button>
       <div class="header-logo" onclick="showHome()">
         Les 24 Heures de la Passion
