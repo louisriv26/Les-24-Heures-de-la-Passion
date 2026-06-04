@@ -1,5 +1,5 @@
 {
-  "version": "prototype-28",
+  "version": "prototype-29",
   "date": "2026-06-04",
-  "notes": "Logo caché lors du retour, grille sans overflow, cache désactivé, rechargement auto"
+  "notes": "Entête simplifié sur mobile, espace inférieur réduit"
 }
