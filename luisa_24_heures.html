@@ -677,6 +677,25 @@ mark.hl-pink   { background: #fce7f3; color: inherit; }
 .mark-btn:active { opacity: 0.8; }
 .mark-hint { font-size: 0.78rem; color: var(--ink3); font-family: var(--font-ui);
   line-height: 1.35; }
+
+/* ─── Update available banner ─── */
+.update-banner {
+  position: fixed; bottom: calc(env(safe-area-inset-bottom, 0px) + 62px); left: 12px; right: 12px;
+  z-index: 500; background: var(--accent); color: #fff;
+  border-radius: 12px; padding: 0.7rem 0.9rem;
+  display: flex; align-items: center; gap: 0.6rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25); font-family: var(--font-ui);
+  animation: cpIn 0.25s ease;
+}
+.update-banner-text { flex: 1; font-size: 0.88rem; line-height: 1.35; }
+.update-banner-text strong { display: block; font-size: 0.78rem; opacity: 0.85; margin-bottom: 0.1rem; }
+.update-refresh-btn { flex-shrink: 0; padding: 0.4rem 0.8rem;
+  background: rgba(255,255,255,0.25); border: 1px solid rgba(255,255,255,0.4);
+  color: #fff; border-radius: 8px; font-family: var(--font-ui); font-size: 0.82rem;
+  cursor: pointer; white-space: nowrap; }
+.update-refresh-btn:active { background: rgba(255,255,255,0.4); }
+.update-dismiss-btn { flex-shrink: 0; background: none; border: none; color: rgba(255,255,255,0.7);
+  font-size: 1.1rem; cursor: pointer; padding: 2px 4px; line-height: 1; }
 </style>
 </head>
 <body>
@@ -1537,7 +1556,7 @@ function renderHome() {
       <div class="cross-ornament">✦ ✝ ✦</div>
       <h1 class="home-title">Les 24 Heures de la Passion<br>de Notre-Seigneur Jésus-Christ</h1>
       <p class="home-subtitle">Luisa Piccarreta — Petite fille de la Divine Volonté</p>
-      <p class="home-meta">${escHtml(CORPUS.source_edition)} &nbsp;·&nbsp; <a onclick="showHelp()" style="cursor:pointer">Aide &amp; À propos →</a></p>
+      <p class="home-meta">${escHtml(CORPUS.source_edition)} &nbsp;·&nbsp; <span style="color:var(--ink4);font-size:0.78rem">${APP_VERSION}</span> &nbsp;·&nbsp; <a onclick="showHelp()" style="cursor:pointer">Aide &amp; À propos →</a></p>
     </div>
     <div style="margin-top:1.5rem">
       ${isFirstTime ? `<div class="onboarding-card">
@@ -2569,7 +2588,34 @@ function showFatalError(err) {
 }
 try {
   loadState(); buildSidebar(); showHome(); applyStudyMode();
+  checkForUpdate(); // runs async, silent on failure
 } catch(err) { showFatalError(err); }
+// ─── Update check (fetches version.json from same domain) ───────
+async function checkForUpdate() {
+  try {
+    const r = await fetch('version.json?t=' + Date.now(), { cache: 'no-store' });
+    if (!r.ok) return;
+    const data = await r.json();
+    if (data.version && data.version !== APP_VERSION) {
+      showUpdateBanner(data.version, data.date || '');
+    }
+  } catch(e) { /* offline or file missing — silent */ }
+}
+function showUpdateBanner(newVer, newDate) {
+  // Don't stack multiple banners
+  if (document.querySelector('.update-banner')) return;
+  const el = document.createElement('div');
+  el.className = 'update-banner';
+  el.innerHTML =
+    '<div class="update-banner-text">' +
+      '<strong>Mise à jour disponible — ' + escHtml(newVer) + (newDate ? ' (' + escHtml(newDate) + ')' : '') + '</strong>' +
+      'Une nouvelle version est disponible. Actualisez pour l’obtenir.' +
+    '</div>' +
+    '<button class="update-refresh-btn" onclick="window.location.reload(true)">↻ Actualiser</button>' +
+    '<button class="update-dismiss-btn" onclick="this.parentElement.remove()" aria-label="Fermer">×</button>';
+  document.body.appendChild(el);
+}
+
 
 // ─── Prier / Étudier mode ──────────────────────────────────
 function toggleStudyMode() {
