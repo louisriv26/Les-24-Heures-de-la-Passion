@@ -1,5 +1,5 @@
 {
-  "version": "prototype-27",
+  "version": "prototype-28",
   "date": "2026-06-04",
-  "notes": "Suivi quotidien des méditations, paroles de Jésus dans Promesses et bienfaits (334 passages), corrections iOS barre d'état, bouton Retour, défilement horizontal"
+  "notes": "Logo caché lors du retour, grille sans overflow, cache désactivé, rechargement auto"
 }

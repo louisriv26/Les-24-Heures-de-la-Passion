@@ -2,7 +2,10 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="24 Heures">
@@ -60,6 +63,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--ink); 
 .header-logo span { display: block; font-size: 0.62rem; letter-spacing: 0.18em; color: var(--ink4); font-family: var(--font-ui); font-style: italic; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .back-btn { display: none; align-items: center; gap: 0.2rem; background: none; border: none; cursor: pointer; color: var(--accent); padding: 5px 8px 5px 2px; border-radius: 6px; flex-shrink: 0; font-family: var(--font-ui); font-size: 0.88rem; font-weight: 500; white-space: nowrap; }
 .back-btn:hover, .back-btn:active { background: var(--accent-pale); }
+.header.has-back .header-logo { visibility: hidden; width: 0; overflow: hidden; padding: 0; margin: 0; }
 .header-actions { display: flex; gap: 0.5rem; align-items: center; }
 .icon-btn { background: none; border: none; cursor: pointer; -webkit-user-select: none; user-select: none; touch-action: manipulation; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border-radius: 8px; color: var(--ink3); transition: color 0.2s, background 0.2s; }
 .icon-btn:hover { color: var(--accent); background: var(--accent-pale); }
@@ -119,7 +123,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--ink); 
 .hour-card.gethsemani .hc-num { color: #6a3a9a; }
 [data-theme="dark"] .hour-card.gethsemani .hc-num { color: #b090d4; }
 .hour-card.read::after { content: '✓'; position: absolute; top: 3px; right: 5px; font-size: 0.58rem; color: var(--accent-light); }
-.extras-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-bottom: 1.5rem; }
+.extras-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem; margin-bottom: 1.5rem; max-width: 100%; }
 .extra-card { background: var(--bg2); border: 1px solid var(--bg3); border-radius: 8px; padding: 0.9rem 1rem; cursor: pointer; transition: background 0.15s, box-shadow 0.15s, transform 0.12s; }
 .extra-card:hover { background: var(--bg3); box-shadow: var(--shadow); transform: translateY(-1px); }
 .ec-icon { font-size: 1rem; margin-bottom: 0.3rem; }
@@ -587,6 +591,8 @@ mark.hl-pink   { background: #fce7f3; color: inherit; }
   .icon-btn { padding: 4px; }
   /* Help button accessible via sidebar on mobile — hide from header to free space */
   #helpBtn { display: none; }
+  .extras-grid, .hour-grid, .home-screen { max-width: 100%; overflow-x: hidden; }
+  .content { box-sizing: border-box; max-width: 100vw; }
   /* Content: extra bottom padding clears bottom nav + Safari toolbar on all iOS devices */
   .content { padding-bottom: calc(9rem + env(safe-area-inset-bottom, 0px)) !important; overscroll-behavior-y: contain; }
   /* Sidebar drawer: clear home indicator */
@@ -1227,7 +1233,7 @@ const state = {
   searchFilter: 'all',
   meditationLog: []
 };
-const APP_VERSION='prototype-27';
+const APP_VERSION='prototype-28';
 const STORAGE_SCHEMA_VERSION=2;
 
 // Fast hash for highlight integrity — detects corpus text changes
@@ -1449,14 +1455,21 @@ function buildClosingButtons(hour) {
 }
 
 // ── History ──
+function setBackBtn(visible) {
+  const btn = document.getElementById('backBtn');
+  const hdr = document.querySelector('.header');
+  if (!btn || !hdr) return;
+  btn.style.display = visible ? 'flex' : 'none';
+  hdr.classList.toggle('has-back', visible);
+}
 function pushHistory(v, d) {
   state.history.push({view: v, data: d});
-  document.getElementById('backBtn').style.display = 'flex';
+  setBackBtn(true);
 }
 function goBack() {
   if (!state.history.length) return;
   const prev = state.history.pop();
-  document.getElementById('backBtn').style.display = state.history.length ? 'flex' : 'none';
+  setBackBtn(state.history.length > 0);
   if (prev.view === 'home') { state.view = 'home'; renderHome(); }
   else if (prev.view === 'reader') { state.currentHour = prev.data; renderReader(CORPUS.hours.find(h => h.hour_number === prev.data), false); }
   else if (prev.view === 'section') { state.currentSection = prev.data; openSection(prev.data, false); }
@@ -1468,7 +1481,7 @@ function goBack() {
 
 // ── Home ──
 function showHome() {
-  state.history = []; document.getElementById('backBtn').style.display = 'none';
+  state.history = []; setBackBtn(false);
   state.view = 'home'; state.currentHour = null; state.currentSection = null; state.currentPrayer = null;
   renderHome(); buildSidebar();
   document.getElementById('progressWrap').style.display = 'none';
@@ -2600,10 +2613,29 @@ async function checkForUpdate() {
     if (!r.ok) return;
     const data = await r.json();
     if (data.version && data.version !== APP_VERSION) {
-      showUpdateBanner(data.version, data.date || '');
+      autoReloadUpdate(data.version, data.date || '');
     }
   } catch(e) { /* offline or file missing — silent */ }
 }
+
+function dismissUpdate(btn) { clearInterval(btn._t); btn.parentElement.remove(); }
+function autoReloadUpdate(newVer, newDate) {
+  // Show a brief message then auto-reload — no user action needed
+  if (document.querySelector('.update-banner')) return;
+  const el = document.createElement('div');
+  el.className = 'update-banner';
+  let secs = 4;
+  el.innerHTML = '<div class="update-banner-text"><strong>Mise à jour ' + escHtml(newVer) + ' disponible</strong>Rechargement automatique dans <span id="updCountdown">' + secs + '</span>s\u2026</div><button class="update-refresh-btn" onclick="window.location.reload(true)">\u21bb Maintenant</button><button class="update-dismiss-btn" onclick="dismissUpdate(this)" aria-label="Fermer">\u00d7</button>';
+  document.body.appendChild(el);
+  const dismissBtn = el.querySelector('.update-dismiss-btn');
+  dismissBtn._t = setInterval(function() {
+    secs--;
+    const cd = document.getElementById('updCountdown');
+    if (cd) cd.textContent = secs;
+    if (secs <= 0) { clearInterval(dismissBtn._t); window.location.reload(true); }
+  }, 1000);
+}
+
 function showUpdateBanner(newVer, newDate) {
   // Don't stack multiple banners
   if (document.querySelector('.update-banner')) return;
