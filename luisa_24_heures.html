@@ -54,7 +54,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--ink); 
 #app { position: fixed; top: 0; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; overflow: hidden; }
 
 /* ── Header ── */
-.header { position: sticky; top: 0; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--bg3); padding: 0 1.5rem; height: 58px; display: flex; align-items: center; justify-content: space-between; }
+.header { position: sticky; top: 0; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--bg3); padding: 0 1.5rem; padding-top: env(safe-area-inset-top, 0px); height: calc(58px + env(safe-area-inset-top, 0px)); display: flex; align-items: center; justify-content: space-between; }
 .header-left { display: flex; align-items: center; gap: 1rem; }
 .header-logo { font-family: var(--font-display); font-size: 0.82rem; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; line-height: 1.2; cursor: pointer; }
 .header-logo span { display: block; font-size: 0.62rem; letter-spacing: 0.18em; color: var(--ink4); font-family: var(--font-ui); font-style: italic; }
@@ -65,7 +65,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--ink); 
 .icon-btn:hover { color: var(--accent); background: var(--accent-pale); }
 
 /* ── Progress bar ── */
-.progress-bar-wrap { position: sticky; top: 58px; z-index: 90; height: 3px; background: var(--bg3); display: none; }
+.progress-bar-wrap { position: sticky; top: calc(58px + env(safe-area-inset-top, 0px)); z-index: 90; height: 3px; background: var(--bg3); display: none; }
 .progress-bar { height: 100%; background: var(--accent); transition: width 0.3s; width: 0%; }
 
 /* ── Layout ── */
@@ -1201,7 +1201,7 @@ const state = {
   searchFilter: 'all',
   meditationLog: []
 };
-const APP_VERSION='prototype-26';
+const APP_VERSION='prototype-27';
 const STORAGE_SCHEMA_VERSION=2;
 
 // Fast hash for highlight integrity — detects corpus text changes
@@ -1220,7 +1220,7 @@ const SafeStorage = {
   remove(key)     { try { localStorage.removeItem(key); } catch(e){} }
 };
 const CORPUS_VERSION='2021-GE-LumenLuminis';
-const BUILD_DATE='2026-06-03';
+const BUILD_DATE='2026-06-04';
 const FONT_PRESETS = [
   { reading: 16, ui: 15, nav: 15, eyebrow: 12, title: 19, modal: 15 },
   { reading: 19, ui: 17, nav: 17, eyebrow: 13, title: 22, modal: 17 },

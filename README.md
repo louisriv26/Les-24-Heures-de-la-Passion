@@ -56,13 +56,18 @@ Tous les utilisateurs reçoivent la mise à jour automatiquement à la prochaine
 - Mode Prier (lecture épurée) / Mode Étude (outils d'analyse)
 - Surlignage de texte en 5 couleurs
 - Favoris et progression de lecture
-- Paroles directes de Jésus et de Marie annotées
+- Paroles directes de Jésus (334 passages) et de Marie (25 passages) annotées
+- Section Promesses et bienfaits avec paroles de Jésus annotées
+- Suivi quotidien des méditations — suggestion de l'heure du jour
 - Recherche avec filtres par type de contenu
-- Export / Import des données personnelles
-- Mode sombre, taille de texte ajustable (5 niveaux)
+- Export / Import des données personnelles (cross-appareil)
 - Guide d'utilisation intégré (bouton ?)
+- Mode sombre, taille de texte ajustable (5 niveaux)
+- Icône dédiée pour l'écran d'accueil
 - Fonctionne hors ligne après le premier chargement
 
 ## Version
 
-prototype-26 — Corpus GE/Lumen Luminis 2021, validé structurellement.
+prototype-27 — Build 2026-06-04
+Corpus GE/Lumen Luminis 2021, validé structurellement.
+Annotation des paroles directes : 334 Jésus · 25 Marie · confiance validée ≥ 0,93.
