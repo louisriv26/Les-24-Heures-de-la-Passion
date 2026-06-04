@@ -13,7 +13,7 @@
   <link rel="manifest" href="manifest.json">
 <title>Les 24 Heures de la Passion — Luisa Piccarreta</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg: #faf8f4; --bg2: #f3f0ea; --bg3: #ede9e0;
@@ -29,7 +29,7 @@
   --shadow-lg: 0 8px 40px rgba(26,23,20,0.14);
   --font-body: 'EB Garamond', 'Palatino Linotype', Georgia, serif;
   --font-display: 'Cinzel', 'Trajan Pro', serif;
-  --font-ui: 'Cormorant Garamond', Georgia, serif;
+  --font-ui: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   --reading-size: 19px; --ui-size: 16px; --nav-size: 16px;
   --eyebrow-size: 13px; --title-size: 22px; --modal-size: 17px;
   --reading-line: 1.75; --col-max: 700px;
@@ -76,7 +76,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--ink); 
 .sidebar-section { padding: 1rem 0; border-bottom: 1px solid var(--bg3); }
 .sidebar-section:last-child { border-bottom: none; }
 .sidebar-label { font-family: var(--font-display); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink3); padding: 0 1.2rem 0.5rem; }
-.sidebar-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 1.2rem; cursor: pointer; border: none; background: none; width: 100%; text-align: left; color: var(--ink2); font-family: var(--font-ui); font-size: var(--nav-size, 16px); border-left: 3px solid transparent; transition: background 0.15s, color 0.15s, border-color 0.15s; }
+.sidebar-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 1.2rem; cursor: pointer; border: none; background: none; width: 100%; text-align: left; color: var(--ink2); font-family: var(--font-ui); font-size: var(--nav-size, 16px); letter-spacing: 0.01em; border-left: 3px solid transparent; transition: background 0.15s, color 0.15s, border-color 0.15s; }
 .sidebar-item:hover { background: var(--bg3); color: var(--ink); }
 .sidebar-item.active { background: var(--accent-pale); color: var(--accent); border-left-color: var(--accent); font-weight: 500; }
 .hour-num { font-family: var(--font-display); font-size: 0.82rem; font-weight: 600; color: var(--accent-light); min-width: 28px; }
@@ -620,7 +620,7 @@ mark.hl-pink   { background: #fce7f3; color: inherit; }
 .help-section { margin-bottom: 1.5rem; border-radius: var(--radius); overflow: hidden;
   border: 1px solid var(--bg3); }
 .help-section-hd { background: var(--bg2); padding: 0.75rem 1.1rem;
-  font-family: var(--font-display); font-size: 0.75rem; letter-spacing: 0.12em;
+  font-family: var(--font-display); font-size: calc(var(--ui-size, 16px) * 0.82); letter-spacing: 0.12em;
   text-transform: uppercase; color: var(--ink3); }
 .help-section-body { padding: 1rem 1.1rem; background: var(--bg); }
 .help-step { display: flex; gap: 0.7rem; margin-bottom: 0.65rem; align-items: baseline; }
@@ -628,14 +628,14 @@ mark.hl-pink   { background: #fce7f3; color: inherit; }
   background: var(--accent-pale); color: var(--accent); font-size: 0.7rem;
   font-family: var(--font-display); display: flex; align-items: center; justify-content: center;
   font-weight: 600; margin-top: 0.05rem; }
-.help-step-text { font-size: 0.93rem; color: var(--ink2); line-height: 1.55; }
-.help-note { font-size: 0.82rem; color: var(--ink3); font-style: italic;
+.help-step-text { font-size: var(--ui-size, 16px); color: var(--ink2); line-height: 1.55; }
+.help-note { font-size: calc(var(--ui-size, 16px) * 0.88); color: var(--ink3); font-style: italic;
   border-left: 2px solid var(--bg3); padding-left: 0.7rem; margin-top: 0.5rem; line-height: 1.5; }
 .help-row { display: flex; gap: 0.5rem; align-items: flex-start; margin-bottom: 0.5rem; }
 .help-icon { flex-shrink: 0; width: 1.6rem; text-align: center; font-size: 1rem; }
-.help-row-text { font-size: 0.9rem; color: var(--ink2); line-height: 1.5; }
+.help-row-text { font-size: var(--ui-size, 16px); color: var(--ink2); line-height: 1.5; }
 .help-badge { display: inline-block; padding: 0.05rem 0.45rem; border-radius: 999px;
-  font-size: 0.78rem; font-family: var(--font-ui); border: 1px solid var(--bg3); }
+  font-size: calc(var(--ui-size, 16px) * 0.85); font-family: var(--font-ui); border: 1px solid var(--bg3); }
 .help-badge.prier { background: var(--accent-pale); color: var(--accent);
   border-color: var(--accent-light); }
 .help-badge.etude { background: var(--bg2); color: var(--ink3); }
@@ -1069,10 +1069,10 @@ const SafeStorage = {
 const CORPUS_VERSION='2021-GE-LumenLuminis';
 const BUILD_DATE='2026-06-03';
 const FONT_PRESETS = [
-  { reading: 16, ui: 14, nav: 14, eyebrow: 11, title: 18, modal: 15 },
-  { reading: 19, ui: 16, nav: 16, eyebrow: 13, title: 22, modal: 17 },
-  { reading: 22, ui: 18, nav: 18, eyebrow: 14, title: 26, modal: 19 },
-  { reading: 26, ui: 21, nav: 20, eyebrow: 16, title: 30, modal: 21 },
+  { reading: 16, ui: 15, nav: 15, eyebrow: 12, title: 19, modal: 15 },
+  { reading: 19, ui: 17, nav: 17, eyebrow: 13, title: 22, modal: 17 },
+  { reading: 22, ui: 19, nav: 19, eyebrow: 14, title: 26, modal: 19 },
+  { reading: 26, ui: 22, nav: 21, eyebrow: 16, title: 30, modal: 21 },
 ];
 const FONT_SIZES=[16,19,22,26];
 
