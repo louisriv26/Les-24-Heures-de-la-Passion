@@ -1,5 +1,5 @@
 {
-  "version": "prototype-33",
+  "version": "prototype-37",
   "date": "2026-06-05",
-  "notes": "P0: import validation (hasOwnProperty), search filter-before-cap, search screen filters. P1: scrollLeft on all nav, reload(), fatal error escaping"
+  "notes": "Colour picker no longer overlaps action bar: bar hidden when picker opens. Swatches 30→36px, better touch targets and layout."
 }

@@ -54,7 +54,7 @@
 html { height: 100%; box-sizing: border-box; overflow-x: hidden; overscroll-behavior-x: none; }
 body { height: 100%; margin: 0; overflow: hidden; overflow-x: hidden; overscroll-behavior-x: none; }
 body { font-family: var(--font-body); background: var(--bg); color: var(--ink); transition: background 0.3s, color 0.3s; -webkit-font-smoothing: antialiased; }
-#app { position: fixed; top: 0; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; overflow: hidden; }
+#app { position: fixed; top: 0; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; overflow: hidden; background: var(--bg); }
 
 /* ── Header ── */
 .header { position: sticky; top: 0; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--bg3); padding: 0 1.5rem; padding-top: env(safe-area-inset-top, 0px); height: calc(58px + env(safe-area-inset-top, 0px)); display: flex; align-items: center; justify-content: space-between; }
@@ -73,8 +73,8 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--ink); 
 .progress-bar { height: 100%; background: var(--accent); transition: width 0.3s; width: 0%; }
 
 /* ── Layout ── */
-.main { flex: 1; min-height: 0; overflow: hidden; display: flex; }
-.sidebar { width: 280px; min-width: 280px; background: var(--bg2); border-right: 1px solid var(--bg3); height: calc(100vh - 58px); height: calc(100dvh - 58px); height: calc(100svh - 58px); position: sticky; top: 58px; overflow-y: auto; -webkit-overflow-scrolling: touch; padding-bottom: env(safe-area-inset-bottom, 0px); scrollbar-width: thin; scrollbar-color: var(--bg3) transparent; }
+.main { flex: 1; min-height: 0; overflow: hidden; display: flex; background: var(--bg); }
+.sidebar { width: 280px; min-width: 280px; background: var(--bg2); border-right: 1px solid var(--bg3); height: calc(100svh - 58px - env(safe-area-inset-top, 0px)); position: sticky; top: calc(58px + env(safe-area-inset-top, 0px)); overflow-y: auto; -webkit-overflow-scrolling: touch; padding-bottom: env(safe-area-inset-bottom, 0px); scrollbar-width: thin; scrollbar-color: var(--bg3) transparent; }
 .sidebar::-webkit-scrollbar { width: 4px; }
 .sidebar::-webkit-scrollbar-thumb { background: var(--bg3); border-radius: 4px; }
 .sidebar-section { padding: 1rem 0; border-bottom: 1px solid var(--bg3); }
@@ -87,7 +87,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--ink); 
 .hour-time { font-size: 0.75rem; color: var(--ink4); display: block; font-style: italic; }
 
 /* ── Content ── */
-.content { flex: 1 1 auto; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior-y: auto; display: flex; flex-direction: column; align-items: center; padding: 2.5rem 1.5rem calc(2rem + env(safe-area-inset-bottom, 0px)); will-change: transform; transform: translateZ(0); }
+.content { flex: 1 1 auto; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior-y: auto; display: flex; flex-direction: column; align-items: center; padding: 2.5rem 1.5rem calc(2rem + env(safe-area-inset-bottom, 0px)); background: var(--bg); will-change: transform; transform: translateZ(0); }
 
 
 /* ── Home ── */
@@ -489,15 +489,16 @@ mark.hl-pink   { background: #fce7f3; color: inherit; }
 }
 /* Bottom-anchored version for touch/mobile (avoids iOS native menu overlap) */
 .colour-picker.cp-bottom {
-  left: 12px !important; right: 12px !important;
-  bottom: calc(env(safe-area-inset-bottom, 0px) + 72px) !important;
+  left: 10px !important; right: 10px !important;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 76px) !important;
   top: auto !important; width: auto; min-width: 0; border-radius: 18px;
+  padding: 0.8rem 1.1rem 0.9rem;
 }
 @keyframes cpIn { from { opacity:0; transform:scale(0.9) translateY(4px); } to { opacity:1; transform:scale(1) translateY(0); } }
 .colour-picker.open { display: flex; }
-.cp-label { font-family:var(--font-display); font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink4); }
-.cp-swatches { display:flex; gap:0.45rem; align-items:center; }
-.cp-swatch { width:30px; height:30px; border-radius:50%; border:2px solid rgba(0,0,0,0.12); cursor:pointer; transition:transform 0.12s,box-shadow 0.12s; flex-shrink:0; }
+.cp-label { font-family:var(--font-display); font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink3); margin-bottom:0.4rem; display:block; }
+.cp-swatches { display:flex; gap:0.6rem; align-items:center; padding: 0.25rem 0; }
+.cp-swatch { width:36px; height:36px; border-radius:50%; border:2px solid rgba(0,0,0,0.12); cursor:pointer; transition:transform 0.12s,box-shadow 0.12s; flex-shrink:0; }
 .cp-swatch:hover { transform:scale(1.2); box-shadow:0 2px 8px rgba(0,0,0,0.2); }
 .cp-swatch.cp-yellow { background:#fef9c3; }
 .cp-swatch.cp-blue   { background:#dbeafe; }
@@ -1257,7 +1258,7 @@ const state = {
   searchFilter: 'all',
   meditationLog: []
 };
-const APP_VERSION='prototype-33';
+const APP_VERSION='prototype-37';
 const STORAGE_SCHEMA_VERSION=2;
 
 // Fast hash for highlight integrity — detects corpus text changes
@@ -1703,7 +1704,7 @@ function renderReader(hour, scroll = true) {
   document.getElementById('content').innerHTML = `
   <div class="reader-screen">
     <div class="reader-header">
-      <div class="reader-eyebrow">${hour.hour_number}e Heure · Les 24 Heures de la Passion</div>
+      <div class="reader-eyebrow">${hour.hour_number}e Heure · Les 24 Heures de la Passion${hour.source_pages&&hour.source_pages.length?' · pp. '+hour.source_pages[0]+(hour.source_pages.length>1?'–'+hour.source_pages[hour.source_pages.length-1]:''):''}</div>
       <h2 class="reader-title">${escHtml(hour.title)}</h2>
       <div class="reader-time">${hour.display_time}</div>
           </div>
@@ -2260,8 +2261,8 @@ function showHelp() {
       <div class="help-section-hd">✝ Paroles directes</div>
       <div class="help-section-body">
         <div class="help-row"><span class="help-icon" style="color:var(--jesus-color)">✝</span><span class="help-row-text"><strong style="color:var(--jesus-color)">Paroles de Jésus</strong> — Les paroles directes de Jésus apparaissent en <em style="color:var(--jesus-color);font-weight:500">italique brun foncé</em>. ${(()=>{const j=Object.values(SPEECH_DATA).reduce((n,s)=>n+s.filter(x=>x.speaker==='JESUS').length,0);return j;})()}\u00a0passages de J\u00e9sus et ${(()=>{return Object.values(SPEECH_DATA).reduce((n,s)=>n+s.filter(x=>x.speaker==='MARY').length,0);})()}\u00a0de Marie identifi\u00e9s automatiquement. Annotation techniquement valid\u00e9e — revue \u00e9ditoriale en cours.</span></div>
-        <div class="help-row"><span class="help-icon" style="color:var(--mary-color)">✦</span><span class="help-row-text"><strong style="color:var(--mary-color)">Paroles de Marie</strong> — Les paroles directes de la Vierge Marie apparaissent en <em style="color:var(--mary-color)">italique bleu</em>. 25 passages identifiés.</span></div>
-        <div class="help-note">Les badges de locuteur (✝ JÉSUS / ✦ MARIE) ne s'affichent qu'en mode <span class="help-badge etude">✏ Étude</span>. Le style italique coloré reste visible dans les deux modes. Cette annotation est expérimentale — revue éditoriale en cours.</div>
+        <div class="help-row"><span class="help-icon" style="color:var(--mary-color)">✦</span><span class="help-row-text"><strong style="color:var(--mary-color)">Paroles de Marie</strong> — Les paroles directes de la Vierge Marie apparaissent en <em style="color:var(--mary-color)">italique bleu</em>. ${Object.values(SPEECH_DATA).reduce((n,s)=>n+s.filter(x=>x.speaker==='MARY').length,0)} passages identifiés.</span></div>
+        <div class="help-note">Les badges de locuteur (✝ JÉSUS / ✦ MARIE) ne s'affichent qu'en mode <span class="help-badge etude">✏ Étude</span>. Le style italique coloré reste visible dans les deux modes. Identification automatique avec validation contextuelle et audit interne en plusieurs passes (v18). Revue éditoriale en cours ; ne constitue pas une déclaration théologique définitive.</div>
       </div>
     </div>
 
@@ -2275,8 +2276,12 @@ function showHelp() {
           <div class="prov-label">Édition source</div><div class="prov-value">${escHtml(CORPUS.source_edition)}</div>
         </div>
         <div class="prov-block" style="margin-bottom:0.6rem">
+          <div class="prov-label">Statut source</div>
+          <div class="prov-value">Édition à usage privé, non officielle. <span style="color:var(--ink3);font-size:0.85rem">Une édition officielle peut différer. Les corrections d’affichage sont documentées ; le texte source reste préservé comme référence d’audit.</span></div>
+        </div>
+        <div class="prov-block" style="margin-bottom:0.6rem">
           <div class="prov-label">Contenu validé</div>
-          <div class="prov-value">24 Heures · 5 Prières · 4 sections complémentaires<br>1 038 paragraphes de méditation · 183 de réflexions<br><span style="font-size:0.85rem;color:var(--ink3);font-style:italic">5 éléments textuels en revue humaine · n'affectent pas la lecture</span></div>
+          <div class="prov-value">24 Heures · 5 Prières · 4 sections complémentaires<br>1 038 méditations · 183 réflexions · 65 Désolation (H.24) · 178 Promesses<br><span style="font-size:0.85rem;color:var(--ink3)">Correction H.6 : 22h–23h (erreur source documentée). 5 éléments textuels en revue éditoriale.</span></div>
         </div>
         <div class="prov-block" style="margin-bottom:0.6rem">
           <div class="prov-label">Empreinte corpus</div><div class="prov-value"><code style="font-size:0.78rem">${fp.slice(0,32)}…</code></div>
@@ -2431,7 +2436,11 @@ function renderPanelTab(tab){
 
 // ── Text-selection highlighting ──
 function renderParaText(text, paraId) {
-  const hls = (state.textHighlights[paraId] || []).slice().sort((a,b)=>a.start-b.start);
+  // Validate fingerprints: skip highlights where stored paragraph has changed
+  const currentFP = paraHash(text);
+  const hls = (state.textHighlights[paraId] || [])
+    .filter(h => !h.paragraph_fingerprint || h.paragraph_fingerprint === currentFP)
+    .slice().sort((a,b)=>a.start-b.start);
   const speechSegs = (SPEECH_DATA[paraId] || []).slice().sort((a,b)=>a.start-b.start);
   if (!hls.length && !speechSegs.length) return escHtml(text);
 
@@ -2477,32 +2486,34 @@ function getCharOffset(container, node, offset) {
 }
 
 function handleSelectionEnd() {
+  // Save selection SYNCHRONOUSLY before iOS can clear it on touchend
+  const sel = window.getSelection();
+  if (!sel || sel.isCollapsed || !sel.rangeCount) return;
+  const savedRange = sel.getRangeAt(0).cloneRange(); // cloneRange preserves after selection cleared
+  const savedRect  = savedRange.getBoundingClientRect();
   setTimeout(() => {
-    const sel = window.getSelection();
-    if (!sel || sel.isCollapsed || !sel.rangeCount) return;
-    const range = sel.getRangeAt(0);
-    const selText = range.toString().trim();
+    const selText = savedRange.toString().trim();
     if (selText.length < 2) return;
-    const anc = range.commonAncestorContainer;
+    const anc = savedRange.commonAncestorContainer;
     const paraText = (function(){var _a=(anc.nodeType===3?anc.parentElement:anc);return(_a&&_a.closest)?_a.closest('.para-text'):null;})();
     if (!paraText) return;
     const block = paraText.closest('.para-block') || paraText.closest('.ref-para-block');
     if (!block) return;
     var _qel=block.querySelector('[data-para-id]');const paraId=block.id||(_qel&&_qel.dataset?_qel.dataset.paraId:undefined);
     if (!paraId) return;
-    const start = getCharOffset(paraText, range.startContainer, range.startOffset);
-    const end   = getCharOffset(paraText, range.endContainer,   range.endOffset);
+    const start = getCharOffset(paraText, savedRange.startContainer, savedRange.startOffset);
+    const end   = getCharOffset(paraText, savedRange.endContainer,   savedRange.endOffset);
     if (end <= start) return;
     state._pending = { paraId, start, end, text: selText };
     if (window.matchMedia('(pointer: coarse)').matches) {
-      // Touch: show colour picker anchored to screen bottom.
-      // iOS native menu appears near the selection (top); our picker is at bottom — no conflict.
+      // Touch device: hide action bar, show colour picker at bottom
+      const _bar = document.getElementById('mobileActionBar');
+      if (_bar) _bar.classList.remove('visible');
       showColourPickerBottom();
       return;
     }
-    const rect = range.getBoundingClientRect();
-    showColourPicker(rect.left + rect.width/2, rect.top, false, null);
-  }, 20);
+    showColourPicker(savedRect.left + savedRect.width/2, savedRect.top, false, null);
+  }, 50); // 50ms: enough for iPad selection to stabilise, fast enough to feel instant
 }
 
 function showColourPicker(x, y, isExisting, hlId) {
@@ -2538,21 +2549,66 @@ function applyHighlight(color) {
   const existing = state.textHighlights[sel.paraId] || [];
   state.textHighlights[sel.paraId] = existing.filter(h=>!(h.start<sel.end && h.end>sel.start));
   const hlId = 'hl_' + Date.now();
-  state.textHighlights[sel.paraId].push({id:hlId, start:sel.start, end:sel.end, color, text:sel.text, para_hash:paraHash(sel.text)});
+  const fullParaT = getFullParaText(sel.paraId);
+  state.textHighlights[sel.paraId].push({
+    id: hlId,
+    start: sel.start, end: sel.end,
+    color, text: sel.text,
+    para_hash: paraHash(sel.text),
+    paragraph_fingerprint: paraHash(fullParaT),
+    corpus_version: CORPUS_VERSION || APP_VERSION,
+    created_at: new Date().toISOString()
+  });
   saveState(); rerenderPara(sel.paraId);
   closeColourPicker(); (function(){var _ws=window.getSelection();if(_ws)_ws.removeAllRanges();})();
   showToast('Passage surligné ◐');
 }
 
+function getFullParaText(paraId) {
+  // Find full paragraph text across hours and sections (for fingerprinting)
+  for (const h of CORPUS.hours) {
+    const all = [...h.paragraphs, ...(h.reflections||[]),
+                 ...(h.subsections||[]).flatMap(s => s.paragraphs)];
+    const p = all.find(x => x.id === paraId);
+    if (p) return p.t;
+  }
+  for (const sec of CORPUS.sections) {
+    const p = (sec.paragraphs||[]).find(x => x.id === paraId);
+    if (p) return p.t;
+  }
+  return '';
+}
 function rerenderPara(paraId) {
   const block = document.getElementById(paraId);
   if (!block) return;
   const el = block.querySelector('.para-text');
-  if (!el || !state.currentHour) return;
-  const h = CORPUS.hours.find(x=>x.hour_number===state.currentHour);
-  if (!h) return;
-  const all = [...h.paragraphs,...(h.reflections||[]),...(h.subsections||[]).flatMap(s=>s.paragraphs)];
-  const p = all.find(x=>x.id===paraId);
+  if (!el) return;
+  let p = null;
+  // 1. Try current hour (fast path)
+  if (state.currentHour) {
+    const h = CORPUS.hours.find(x => x.hour_number === state.currentHour);
+    if (h) {
+      const all = [...h.paragraphs, ...(h.reflections||[]),
+                   ...(h.subsections||[]).flatMap(s => s.paragraphs)];
+      p = all.find(x => x.id === paraId);
+    }
+  }
+  // 2. Try sections (Benefits, Gethsemani, etc.) — used when currentHour is null
+  if (!p) {
+    for (const sec of CORPUS.sections) {
+      p = (sec.paragraphs || []).find(x => x.id === paraId);
+      if (p) break;
+    }
+  }
+  // 3. Full corpus search as fallback
+  if (!p) {
+    for (const h of CORPUS.hours) {
+      const all = [...h.paragraphs, ...(h.reflections||[]),
+                   ...(h.subsections||[]).flatMap(s => s.paragraphs)];
+      p = all.find(x => x.id === paraId);
+      if (p) break;
+    }
+  }
   if (p) el.innerHTML = renderParaText(p.t, paraId);
 }
 
@@ -2595,12 +2651,14 @@ function openMobileHighlight(paraId) {
 }
 
 function showColourPickerBottom(isExisting, hlId) {
+  // Hide the paragraph action bar — it conflicts with the colour picker
+  const bar = document.getElementById('mobileActionBar');
+  if (bar) bar.classList.remove('visible');
   const picker = document.getElementById('colourPicker');
   const removeBtn = document.getElementById('cpRemoveBtn');
   removeBtn.style.display = isExisting ? 'block' : 'none';
   removeBtn.dataset.hlId = hlId || '';
   picker.classList.add('open', 'cp-bottom');
-  // Clear any previous inline position
   picker.style.left = ''; picker.style.top = ''; picker.style.right = ''; picker.style.bottom = '';
 }
 
