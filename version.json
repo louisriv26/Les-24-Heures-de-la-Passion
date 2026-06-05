@@ -1,5 +1,5 @@
 {
-  "version": "prototype-31",
-  "date": "2026-06-04",
-  "notes": "Grille 2 colonnes iPhone, espace inférieur réduit, accélération GPU défilement iPad"
+  "version": "prototype-33",
+  "date": "2026-06-05",
+  "notes": "P0: import validation (hasOwnProperty), search filter-before-cap, search screen filters. P1: scrollLeft on all nav, reload(), fatal error escaping"
 }

@@ -646,8 +646,10 @@ mark.hl-pink   { background: #fce7f3; color: inherit; }
   font-family: var(--font-display); display: flex; align-items: center; justify-content: center;
   font-weight: 600; margin-top: 0.05rem; }
 .help-step-text { font-size: var(--ui-size, 16px); color: var(--ink2); line-height: 1.55; }
-.help-note { font-size: calc(var(--ui-size, 16px) * 0.88); color: var(--ink3); font-style: italic;
-  border-left: 2px solid var(--bg3); padding-left: 0.7rem; margin-top: 0.5rem; line-height: 1.5; }
+.help-note { font-size: var(--ui-size, 16px); font-style: normal; color: var(--ink2);
+  background: var(--bg2); border-left: 3px solid var(--accent-light);
+  border-radius: 0 8px 8px 0; padding: 0.65rem 0.9rem;
+  margin-top: 0.65rem; line-height: 1.55; }
 .help-row { display: flex; gap: 0.5rem; align-items: flex-start; margin-bottom: 0.5rem; }
 .help-icon { flex-shrink: 0; width: 1.6rem; text-align: center; font-size: 1rem; }
 .help-row-text { font-size: var(--ui-size, 16px); color: var(--ink2); line-height: 1.5; }
@@ -710,6 +712,23 @@ mark.hl-pink   { background: #fce7f3; color: inherit; }
 .update-refresh-btn:active { background: rgba(255,255,255,0.4); }
 .update-dismiss-btn { flex-shrink: 0; background: none; border: none; color: rgba(255,255,255,0.7);
   font-size: 1.1rem; cursor: pointer; padding: 2px 4px; line-height: 1; }
+
+/* ─── Global horizontal overflow lock ─── */
+html, body, #app, .main, .content,
+.reader-screen, .section-screen, .home-screen, .provenance-screen {
+  max-width: 100%; overflow-x: hidden !important; overscroll-behavior-x: none;
+}
+.para-block, .ref-para-block, .para-text, .ref-para, .block-paragraph,
+.section-content, .reader-title, .reader-subtitle, .reader-meta,
+.prayer-trigger-btn, .hour-nav, .nav-btn {
+  min-width: 0; max-width: 100%; overflow-wrap: break-word;
+}
+/* prayer buttons must not break layout on touch */
+@media (pointer: coarse) {
+  .prayer-trigger-btn {
+    white-space: normal; max-width: 100%; flex-wrap: wrap; text-align: center;
+  }
+}
 </style>
 </head>
 <body>
@@ -1238,7 +1257,7 @@ const state = {
   searchFilter: 'all',
   meditationLog: []
 };
-const APP_VERSION='prototype-31';
+const APP_VERSION='prototype-33';
 const STORAGE_SCHEMA_VERSION=2;
 
 // Fast hash for highlight integrity — detects corpus text changes
@@ -1460,6 +1479,12 @@ function buildClosingButtons(hour) {
 }
 
 // ── History ──
+function resetContentScroll() {
+  const el = document.getElementById('content');
+  if (el) { el.scrollTop = 0; el.scrollLeft = 0; }
+  document.documentElement.scrollLeft = 0;
+  document.body.scrollLeft = 0;
+}
 function setBackBtn(visible) {
   const btn = document.getElementById('backBtn');
   const hdr = document.querySelector('.header');
@@ -1487,7 +1512,7 @@ function goBack() {
 // ── Home ──
 function showHome() {
   state.history = []; setBackBtn(false);
-  state.view = 'home'; state.currentHour = null; state.currentSection = null; state.currentPrayer = null;
+  state.view = 'home'; state.currentHour = null; resetContentScroll(); state.currentSection = null; state.currentPrayer = null;
   renderHome(); buildSidebar();
   document.getElementById('progressWrap').style.display = 'none';
   setBottomNav('home');
@@ -1617,7 +1642,7 @@ function openHour(n, push = true) {
   const h = CORPUS.hours.find(x => x.hour_number === n);
   if (!h) return;
   if (push) pushHistory(state.view, state.currentHour);
-  state.view = 'reader'; state.currentHour = n;
+  state.view = 'reader'; state.currentHour = n; resetContentScroll();
   state.activeTab = state.hourTabs[n] || 'meditation';
   SafeStorage.set('lp24_lastHour', n);
   renderReader(h); buildSidebar();
@@ -1710,7 +1735,7 @@ function renderReader(hour, scroll = true) {
     </div>
   </div>`;
 
-  if (scroll) document.getElementById('content').scrollTop = 0;
+  if (scroll) (function(){var _c=document.getElementById('content');if(_c){_c.scrollTop=0;_c.scrollLeft=0;}document.documentElement.scrollLeft=0;document.body.scrollLeft=0;})();
   buildSidebar();
 }
 
@@ -1783,7 +1808,7 @@ function switchTab(tab, preserveScroll = false) {
   document.querySelectorAll('.tab-btn').forEach((btn, i) => {
     btn.classList.toggle('active', (i===0&&tab==='meditation')||(i===1&&tab==='reflections'));
   });
-  if (!preserveScroll) document.getElementById('content').scrollTop = 0;
+  if (!preserveScroll) (function(){var _c=document.getElementById('content');if(_c){_c.scrollTop=0;_c.scrollLeft=0;}document.documentElement.scrollLeft=0;document.body.scrollLeft=0;})();
 }
 
 // ── Prayer full-page view (from sidebar) ──
@@ -1799,7 +1824,7 @@ function openPrayer(id, push = true) {
       </div>
     <div class="section-content">${pr.paragraphs.map(p=>renderPrayerParagraph(pr, p, false)).join('')}</div>
   </div>`;
-  document.getElementById('content').scrollTop = 0;
+  (function(){var _c=document.getElementById('content');if(_c){_c.scrollTop=0;_c.scrollLeft=0;}document.documentElement.scrollLeft=0;document.body.scrollLeft=0;})();
   document.getElementById('progressWrap').style.display = 'none';
   buildSidebar();
 }
@@ -1809,22 +1834,36 @@ function openPrayer(id, push = true) {
 // ── Benefits section paragraph renderer (speech-aware) ──────────
 function renderBenefitsParagraphs(section) {
   const paras = section.paragraphs || [];
-  // LDC reference paragraphs — text starts with "LDC \d"
   const ldcRe = /^LDC\s+\d+/;
-  const ldcParas = paras.filter(p => ldcRe.test(p.t));
+  const embLdcRe = /\n(LDC\s+\d+[\s\S]*)/;  // embedded LDC after body text
+  // Include both standalone and embedded LDC headers in TOC
+  const ldcParas = paras.filter(p => ldcRe.test(p.t) || embLdcRe.test(p.t));
   let tocHtml = '';
   if (ldcParas.length > 2) {
     tocHtml = `<div class="section-toc">
       <div class="section-toc-title">Références — ${ldcParas.length} passages du Livre du Ciel</div>
       ${ldcParas.map(p => {
-        const label = p.t.replace(/^(LDC\s+\d+\s+-\s+[^-]+-\s+)/, '').slice(0,70);
-        return `<a class="section-toc-item" onclick="(function(){var el=document.getElementById('${p.id}');if(el)smoothScrollTo(el,{behavior:'smooth',block:'start'});})();return false">${escHtml(label)}…</a>`;
+        const ldcText = ldcRe.test(p.t) ? p.t : (embLdcRe.exec(p.t)||['',''])[1];
+        const label = ldcText.replace(/^(LDC\s+\d+\s+-\s+[^-]+-\s+)/, '').slice(0,70);
+        const anchorId = ldcRe.test(p.t) ? p.id : p.id + '-ldc';
+        return `<a class="section-toc-item" onclick="(function(){var el=document.getElementById('${anchorId}');if(el)smoothScrollTo(el,{behavior:'smooth',block:'start'});})();return false">${escHtml(label)}…</a>`;
       }).join('')}
     </div>`;
   }
   const paraHtml = paras.map(p => {
     const isLdc = ldcRe.test(p.t);
     const rendered = renderParaText(p.t, p.id);
+    // Handle paragraphs with embedded LDC header after body text
+    const embMatch = !isLdc && embLdcRe.exec(p.t);
+    if (embMatch) {
+      const bodyText = p.t.slice(0, embMatch.index).trim();
+      const ldcText  = embMatch[1].trim();
+      const bodyHtml = bodyText ? `<div class="para-block sec-para-block" id="${p.id}"><div class="para-text">${renderParaText(bodyText, p.id)}</div></div>` : '';
+      return bodyHtml + `<div class="block-ldc-ref" id="${p.id}-ldc">
+        <div class="block-ldc-label">Livre du Ciel</div>
+        <div class="block-paragraph" style="margin:0">${escHtml(ldcText)}</div>
+      </div>`;
+    }
     if (isLdc) {
       // LDC reference header — styled as reference block, still speech-annotated
       return `<div class="block-ldc-ref" id="${p.id}">
@@ -1946,7 +1985,7 @@ function renderSectionBlocks(blocks, sectionId) {
 function openSection(id, push = true, scrollToAnchor = null) {
   const s = CORPUS.sections.find(x => x.section_id === id); if (!s) return;
   if (push) pushHistory(state.view, state.currentSection);
-  state.view = 'section'; state.currentSection = id;
+  state.view = 'section'; state.currentSection = id; resetContentScroll();
   // Use structured paragraph renderer when available (e.g. BENEFITS)
   let bodyContent;
   if (s.paragraphs && s.paragraphs.length > 0) {
@@ -1969,10 +2008,10 @@ function openSection(id, push = true, scrollToAnchor = null) {
     setTimeout(() => {
       const el = document.getElementById(scrollToAnchor);
       if (el) { smoothScrollTo(el, { behavior: 'smooth', block: 'start' }); el.style.outline = '3px solid var(--accent-light)'; setTimeout(()=>{ el.style.outline=''; },2000); }
-      else document.getElementById('content').scrollTop = 0;
+      else (function(){var _c=document.getElementById('content');if(_c){_c.scrollTop=0;_c.scrollLeft=0;}document.documentElement.scrollLeft=0;document.body.scrollLeft=0;})();
     }, 100);
   } else {
-    document.getElementById('content').scrollTop = 0;
+    (function(){var _c=document.getElementById('content');if(_c){_c.scrollTop=0;_c.scrollLeft=0;}document.documentElement.scrollLeft=0;document.body.scrollLeft=0;})();
   }
   document.getElementById('progressWrap').style.display = 'none';
   buildSidebar();
@@ -1981,7 +2020,7 @@ function openSection(id, push = true, scrollToAnchor = null) {
 // ── Search ──
 function showSearchView() {
   pushHistory(state.view, state.currentSection || state.currentHour || state.currentPrayer || null);
-  state.view = 'search';
+  state.view = 'search'; resetContentScroll();
   document.getElementById('content').innerHTML = `
   <div class="home-screen">
     <div class="home-hero" style="padding-bottom:1.25rem;margin-bottom:1.25rem">
@@ -1991,6 +2030,13 @@ function showSearchView() {
     <div class="search-wrap">
       <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       <input type="search" class="search-input" placeholder="Mot, expression, thème..." id="homeSearchInput" oninput="onSearchInput(this.value)" autocomplete="off" autofocus>
+    </div>
+    <div class="search-filters" role="group" style="margin-top:0.6rem">
+      <button class="sf-btn active" data-filter="all"        onclick="setSearchFilter(\'all\')">Tout</button>
+      <button class="sf-btn" data-filter="meditation" onclick="setSearchFilter(\'meditation\')">M\u00e9ditations</button>
+      <button class="sf-btn" data-filter="reflection" onclick="setSearchFilter(\'reflection\')">R\u00e9flexions</button>
+      <button class="sf-btn" data-filter="prayer"    onclick="setSearchFilter(\'prayer\')">Pri\u00e8res</button>
+      <button class="sf-btn" data-filter="section"   onclick="setSearchFilter(\'section\')">Compl\u00e9ments</button>
     </div>
     <div class="search-results" id="homeSearchResults"></div>
   </div>`;
@@ -2010,57 +2056,52 @@ function performSearch(query) {
   if (homeMain) homeMain.style.display = 'none';
   const q = norm(query.trim());
   const results = [];
-  // Search hours: meditations + reflections
+  // Collect ALL matches first — filter applied AFTER collection to avoid false empty results
   for (const hour of CORPUS.hours) {
-    for (const p of hour.paragraphs) { if (norm(p.t).includes(q)) { results.push({label:`${hour.hour_number}e Heure — ${hour.title}`, para:p, type:'meditation', target:{kind:'hour',n:hour.hour_number}}); if(results.length>=80) break; } }
-    for (const p of (hour.reflections||[])) { if (norm(p.t).includes(q)) { results.push({label:`${hour.hour_number}e Heure — ${hour.title}`, para:p, type:'reflection', target:{kind:'hour',n:hour.hour_number}}); if(results.length>=80) break; } }
-    if (results.length>=80) break;
+    for (const p of hour.paragraphs) { if (norm(p.t).includes(q)) results.push({label:`${hour.hour_number}e Heure — ${hour.title}`, para:p, type:'meditation', target:{kind:'hour',n:hour.hour_number}}); }
+    for (const p of (hour.reflections||[])) { if (norm(p.t).includes(q)) results.push({label:`${hour.hour_number}e Heure — ${hour.title}`, para:p, type:'reflection', target:{kind:'hour',n:hour.hour_number}}); }
+    for (const sub of (hour.subsections||[])) { for (const p of (sub.paragraphs||[])) { if (norm(p.t).includes(q)) results.push({label:`${hour.hour_number}e Heure — ${escHtml(sub.title||hour.title)}`, para:p, type:'meditation', target:{kind:'hour',n:hour.hour_number,paraId:p.id}}); } }
   }
-  // Search prayers
-  if (results.length < 80) {
-    for (const pr of CORPUS.prayers) {
-      for (const p of (pr.paragraphs||[])) {
-        if (norm(p.t).includes(q)) { results.push({label:pr.title, para:p, type:'prayer', target:{kind:'prayer',id:pr.prayer_id}}); if(results.length>=80) break; }
-      }
-      if (results.length>=80) break;
+  // Prayers — always searched regardless of how many hour results were found
+  for (const pr of CORPUS.prayers) {
+    for (const p of (pr.paragraphs||[])) {
+      if (norm(p.t).includes(q)) results.push({label:pr.title, para:p, type:'prayer', target:{kind:'prayer',id:pr.prayer_id}});
     }
   }
-  // Search sections (display_text as plain text)
-  if (results.length < 80) {
-    for (const s of CORPUS.sections) {
-      const dt = s.display_text || '';
-      const normDt = norm(dt);
-      const sBlocks = parseSectionBlocks(s.section_id, dt);
-      let sMatched = false;
-      for (const blk of sBlocks) {
-        const nb = norm(blk.text);
-        if (nb.includes(q) && results.length < 80) {
-          const bi = nb.indexOf(q);
-          const snip = blk.text.slice(Math.max(0,bi-55), Math.min(blk.text.length,bi+q.length+90)).replace(/\n/g,' ');
-          results.push({label:s.title, para:{id:blk.anchor||(s.section_id+'_blk'), t:snip},
-            type:'section', target:{kind:'section', id:s.section_id, anchor:blk.anchor||null}});
-          sMatched = true;
-        }
+  // Sections — always searched
+  for (const s of CORPUS.sections) {
+    const dt = s.display_text || '';
+    const normDt = norm(dt);
+    const sBlocks = parseSectionBlocks(s.section_id, dt);
+    let sMatched = false;
+    for (const blk of sBlocks) {
+      const nb = norm(blk.text);
+      if (nb.includes(q)) {
+        const bi = nb.indexOf(q);
+        const snip = blk.text.slice(Math.max(0,bi-55), Math.min(blk.text.length,bi+q.length+90)).replace(/\n/g,' ');
+        results.push({label:s.title, para:{id:blk.anchor||(s.section_id+'_blk'), t:snip},
+          type:'section', target:{kind:'section', id:s.section_id, anchor:blk.anchor||null}});
+        sMatched = true;
       }
-      if (!sMatched) {
-        let idx = normDt.indexOf(q);
-        while (idx !== -1 && results.length < 80) {
-          const snip = dt.slice(Math.max(0,idx-55),Math.min(dt.length,idx+q.length+90));
-          results.push({label:s.title, para:{id:s.section_id+'_'+idx, t:snip},
-            type:'section', target:{kind:'section', id:s.section_id, anchor:null}});
-          idx = normDt.indexOf(q, idx + q.length + 1);
-          if (results.length >= 80) break;
-        }
+    }
+    if (!sMatched) {
+      let idx = normDt.indexOf(q);
+      while (idx !== -1) {
+        const snip = dt.slice(Math.max(0,idx-55),Math.min(dt.length,idx+q.length+90));
+        results.push({label:s.title, para:{id:s.section_id+'_'+idx, t:snip},
+          type:'section', target:{kind:'section', id:s.section_id, anchor:null}});
+        idx = normDt.indexOf(q, idx + q.length + 1);
       }
     }
   }
   if (!resultsEl) return;
-  // Apply search filter + restore filter button state
-  const filtered = (state.searchFilter && state.searchFilter !== 'all')
+  // Apply filter FIRST, then cap at 80 for display
+  const allFiltered = (state.searchFilter && state.searchFilter !== 'all')
     ? results.filter(r => r.type === state.searchFilter) : results;
+  const filtered = allFiltered.slice(0, 80); // cap display at 80
   document.querySelectorAll('.sf-btn').forEach(b =>
     b.classList.toggle('active', b.dataset.filter === (state.searchFilter||'all')));
-  if (!filtered.length) { resultsEl.innerHTML=`<div class="no-results">Aucun résultat pour « ${escHtml(query)} »</div>`; resultsEl.classList.add('visible'); return; }
+  if (!allFiltered.length) { resultsEl.innerHTML=`<div class="no-results">Aucun résultat pour « ${escHtml(query)} »</div>`; resultsEl.classList.add('visible'); return; }
   const reRx = new RegExp(escRe(query.trim()), 'gi');
   const badgeMap = {
     meditation: '<span class="sr-badge meditation">Méditation</span>',
@@ -2069,7 +2110,7 @@ function performSearch(query) {
     section:    '<span class="sr-badge section">Complément</span>'
   };
   resultsEl.innerHTML = `
-    <div class="search-count">${filtered.length}${results.length>=80?'+':''} résultat${results.length>1?'s':''} pour « ${escHtml(query)} »</div>
+    <div class="search-count">${allFiltered.length}${allFiltered.length>80?'+':''} résultat${allFiltered.length>1?'s':''} pour « ${escHtml(query)} »</div>
     ${filtered.map(r => {
       const raw = r.para.t;
       const normRaw = norm(raw);
@@ -2218,7 +2259,7 @@ function showHelp() {
     <div class="help-section">
       <div class="help-section-hd">✝ Paroles directes</div>
       <div class="help-section-body">
-        <div class="help-row"><span class="help-icon" style="color:var(--jesus-color)">✝</span><span class="help-row-text"><strong style="color:var(--jesus-color)">Paroles de Jésus</strong> — Les paroles directes de Jésus apparaissent en <em style="color:var(--jesus-color);font-weight:500">italique brun foncé</em>. 215 passages identifiés dans 235 paragraphes, tous validés avec une confiance minimale de 0,93.</span></div>
+        <div class="help-row"><span class="help-icon" style="color:var(--jesus-color)">✝</span><span class="help-row-text"><strong style="color:var(--jesus-color)">Paroles de Jésus</strong> — Les paroles directes de Jésus apparaissent en <em style="color:var(--jesus-color);font-weight:500">italique brun foncé</em>. ${(()=>{const j=Object.values(SPEECH_DATA).reduce((n,s)=>n+s.filter(x=>x.speaker==='JESUS').length,0);return j;})()}\u00a0passages de J\u00e9sus et ${(()=>{return Object.values(SPEECH_DATA).reduce((n,s)=>n+s.filter(x=>x.speaker==='MARY').length,0);})()}\u00a0de Marie identifi\u00e9s automatiquement. Annotation techniquement valid\u00e9e — revue \u00e9ditoriale en cours.</span></div>
         <div class="help-row"><span class="help-icon" style="color:var(--mary-color)">✦</span><span class="help-row-text"><strong style="color:var(--mary-color)">Paroles de Marie</strong> — Les paroles directes de la Vierge Marie apparaissent en <em style="color:var(--mary-color)">italique bleu</em>. 25 passages identifiés.</span></div>
         <div class="help-note">Les badges de locuteur (✝ JÉSUS / ✦ MARIE) ne s'affichent qu'en mode <span class="help-badge etude">✏ Étude</span>. Le style italique coloré reste visible dans les deux modes. Cette annotation est expérimentale — revue éditoriale en cours.</div>
       </div>
@@ -2246,7 +2287,7 @@ function showHelp() {
     </div>
 
   </div>`;
-  document.getElementById('content').scrollTop = 0;
+  (function(){var _c=document.getElementById('content');if(_c){_c.scrollTop=0;_c.scrollLeft=0;}document.documentElement.scrollLeft=0;document.body.scrollLeft=0;})();
   document.getElementById('progressWrap').style.display = 'none';
 }
 
@@ -2264,7 +2305,7 @@ function runIntegrityCheck() {
     const totalRef = CORPUS.hours.reduce((a,h)=>a+(h.reflections||[]).length,0);
     document.getElementById('integrityResult').style.display = 'block';
     const fp = CORPUS.fingerprint_sha256 || '';
-    document.getElementById('integrityResult').innerHTML = `✓ ${CORPUS.module_id} — structure chargée<br>✓ 24 Heures · ${totalMed} paragraphes de méditation<br>✓ Réflexions présentes dans 24/24 heures · ${totalRef} paragraphes<br>✓ ${CORPUS.prayers.length} prières · ${CORPUS.sections.length} sections<br>✓ Empreinte déclarée : <code style="font-size:0.78rem">${fp.slice(0,32)}…</code><br><br><span style="color:var(--ink3);font-style:italic;font-size:0.88rem">Structure et dénombrements vérifiés. Vérification cryptographique non exécutée dans cette version.</span><br><span style="font-size:0.82rem;color:var(--ink3);font-style:italic">Annotation des paroles directes : expérimentale — 235 paragraphes annotés — 215 paroles de Jésus, 25 de Marie. Confiance validée (min. 0.93). Revue éditoriale en cours. Ne pas traiter comme couche théologique définitive.</span>`;
+    document.getElementById('integrityResult').innerHTML = `✓ ${CORPUS.module_id} — structure chargée<br>✓ 24 Heures · ${totalMed} paragraphes de méditation<br>✓ Réflexions présentes dans 24/24 heures · ${totalRef} paragraphes<br>✓ ${CORPUS.prayers.length} prières · ${CORPUS.sections.length} sections<br>✓ Empreinte déclarée : <code style="font-size:0.78rem">${fp.slice(0,32)}…</code><br><br><span style="color:var(--ink3);font-style:italic;font-size:0.88rem">Structure et dénombrements vérifiés. Vérification cryptographique non exécutée dans cette version.</span><br><span style="font-size:0.82rem;color:var(--ink3);font-style:italic">Annotation des paroles directes : 334 segments de Jésus et 25 de Marie identifiés. Annotation techniquement vérifiée — revue éditoriale en cours</span>`;
     btn.textContent = '✓ Structure vérifiée';
   }, 900);
 }
@@ -2566,7 +2607,7 @@ function showColourPickerBottom(isExisting, hlId) {
 
 // ── Utils ──
 function escHtml(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-function norm(s){return(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/['']/g,"'").replace(/[«»""]/g,'"');}
+function norm(s){return(s||'').toLowerCase().replace(/[\u0152\u0153]/g,'oe').replace(/[\u00c6\u00e6]/g,'ae').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/['']/g,"'").replace(/[«»""]/g,'"');}
 function escRe(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
 function setBottomNav(a){['bnHome','bnSearch'].forEach(function(id){var _e=document.getElementById(id);if(_e)_e.classList.remove('active');});if(a==='home'){var _bh=document.getElementById('bnHome');if(_bh)_bh.classList.add('active');}if(a==='search'){var _bs=document.getElementById('bnSearch');if(_bs)_bs.classList.add('active');}}
@@ -2601,10 +2642,11 @@ window.addEventListener('scroll',function(){
 
 // ── Init ──
 function showFatalError(err) {
+  const safeMsg = (err&&err.message)?String(err.message).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'):'';
   document.getElementById('app').innerHTML =
     '<div style="padding:2rem;font-family:sans-serif;color:#c00;text-align:center">' +
     '<p style="font-size:1.2rem;font-weight:bold">Une erreur est survenue</p>' +
-    '<p style="font-size:0.9rem;color:#555;margin-top:1rem">' + (err&&err.message||String(err)) + '</p>' +
+    '<p style="font-size:0.9rem;color:#555;margin-top:1rem">' + safeMsg + '</p>' +
     '<p style="font-size:0.85rem;color:#888;margin-top:0.5rem">Veuillez recharger la page.</p></div>';
 }
 try {
@@ -2623,22 +2665,29 @@ async function checkForUpdate() {
   } catch(e) { /* offline or file missing — silent */ }
 }
 
-function dismissUpdate(btn) { clearInterval(btn._t); btn.parentElement.remove(); }
+function dismissUpdate(btn) { btn.parentElement.remove(); }
 function autoReloadUpdate(newVer, newDate) {
-  // Show a brief message then auto-reload — no user action needed
+  // Manual update — never interrupt reading; user must tap
   if (document.querySelector('.update-banner')) return;
   const el = document.createElement('div');
   el.className = 'update-banner';
-  let secs = 4;
-  el.innerHTML = '<div class="update-banner-text"><strong>Mise à jour ' + escHtml(newVer) + ' disponible</strong>Rechargement automatique dans <span id="updCountdown">' + secs + '</span>s\u2026</div><button class="update-refresh-btn" onclick="window.location.reload(true)">\u21bb Maintenant</button><button class="update-dismiss-btn" onclick="dismissUpdate(this)" aria-label="Fermer">\u00d7</button>';
+  el.innerHTML =
+    '<div class="update-banner-text"><strong>Mise à jour disponible — ' + escHtml(newVer) + '</strong>' +
+    'Appuyez pour obtenir la nouvelle version.</div>' +
+    '<button class="update-refresh-btn" onclick="window.location.reload()">↻ Actualiser</button>' +
+    '<button class="update-dismiss-btn" onclick="dismissUpdate(this)" aria-label="Fermer">×</button>';
   document.body.appendChild(el);
-  const dismissBtn = el.querySelector('.update-dismiss-btn');
-  dismissBtn._t = setInterval(function() {
-    secs--;
-    const cd = document.getElementById('updCountdown');
-    if (cd) cd.textContent = secs;
-    if (secs <= 0) { clearInterval(dismissBtn._t); window.location.reload(true); }
-  }, 1000);
+}
+
+
+function dismissUpdate(btn) { btn.parentElement.remove(); }
+function autoReloadUpdate(newVer, newDate) {
+  // Manual update — user must tap; never interrupt reading
+  if (document.querySelector('.update-banner')) return;
+  const el = document.createElement('div');
+  el.className = 'update-banner';
+  el.innerHTML = '<div class="update-banner-text"><strong>Mise à jour disponible — ' + escHtml(newVer) + '</strong>Appuyez pour obtenir la nouvelle version.</div><button class="update-refresh-btn" onclick="window.location.reload()">↻ Actualiser</button><button class="update-dismiss-btn" onclick="dismissUpdate(this)" aria-label="Fermer">×</button>';
+  document.body.appendChild(el);
 }
 
 function showUpdateBanner(newVer, newDate) {
@@ -2651,7 +2700,7 @@ function showUpdateBanner(newVer, newDate) {
       '<strong>Mise à jour disponible — ' + escHtml(newVer) + (newDate ? ' (' + escHtml(newDate) + ')' : '') + '</strong>' +
       'Une nouvelle version est disponible. Actualisez pour l’obtenir.' +
     '</div>' +
-    '<button class="update-refresh-btn" onclick="window.location.reload(true)">↻ Actualiser</button>' +
+    '<button class="update-refresh-btn" onclick="window.location.reload()">↻ Actualiser</button>' +
     '<button class="update-dismiss-btn" onclick="this.parentElement.remove()" aria-label="Fermer">×</button>';
   document.body.appendChild(el);
 }
@@ -2706,10 +2755,35 @@ function handleImportFile(input) {
     try {
       const data = JSON.parse(e.target.result);
       if (!data.favorites && !data.schema_version) throw new Error('Format invalide');
+      // Security: reject prototype pollution
+      const danger = ['__proto__','constructor','prototype'];
+      if (danger.some(k => Object.prototype.hasOwnProperty.call(data, k))) throw new Error('Format invalide');
+      // Schema validation
+      const VALID_COLORS = new Set(['yellow','blue','green','purple','pink']);
+      const VALID_ID_RE  = /^PASSION24\.[A-Z0-9._]+$/;
+      const safeObj = (obj, validator) => {
+        if (!obj || typeof obj !== 'object') return {};
+        const out = {};
+        for (const [k,v] of Object.entries(obj)) {
+          if (danger.includes(k)) continue;
+          if (validator && !validator(k,v)) continue;
+          out[k] = v;
+        }
+        return out;
+      };
+      const safeFavs = safeObj(data.favorites, (k) => VALID_ID_RE.test(k));
+      const safeTHL  = safeObj(data.textHighlights, (k, v) => {
+        if (!VALID_ID_RE.test(k)) return false;
+        if (!Array.isArray(v)) return false;
+        return v.every(h => typeof h.start === 'number' && typeof h.end === 'number'
+          && h.start >= 0 && h.end > h.start && h.end <= 50000
+          && (!h.color || VALID_COLORS.has(h.color)));
+      });
+      const safeHL = (data.highlights || []).filter(id => VALID_ID_RE.test(id)).slice(0,5000);
       if (!confirm('Importer cette sauvegarde ?\n\nVos données actuelles seront remplacées.')) { input.value=''; return; }
-      state.favorites      = data.favorites      || {};
-      state.textHighlights = data.textHighlights || {};
-      state.highlights     = new Set(data.highlights  || []);
+      state.favorites      = safeFavs;
+      state.textHighlights = safeTHL;
+      state.highlights     = new Set(safeHL);
       state.readHours      = new Set(data.readHours   || []);
       state.lastParas      = data.lastParas      || {};
       if (data.fontSize  !== undefined) state.fontSize  = data.fontSize;
