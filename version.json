@@ -1,5 +1,6 @@
 {
-  "version": "prototype-37",
-  "date": "2026-06-05",
-  "notes": "Colour picker no longer overlaps action bar: bar hidden when picker opens. Swatches 30→36px, better touch targets and layout."
+  "app_version": "prototype-74",
+  "build_date": "2026-06-07",
+  "stage": "Stage 5F — navigation shell/help/hour-end/H16 speech repair",
+  "package": "luisa_24_heures_app_v74_stage5f_navigation_help_h16_repaired_locked.zip"
 }

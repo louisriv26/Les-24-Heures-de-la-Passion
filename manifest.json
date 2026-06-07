@@ -27,5 +27,16 @@
       "type": "image/png",
       "purpose": "any"
     }
+  ],
+  "id": "./",
+  "scope": "./",
+  "categories": [
+    "books",
+    "education",
+    "lifestyle"
+  ],
+  "display_override": [
+    "standalone",
+    "browser"
   ]
 }
