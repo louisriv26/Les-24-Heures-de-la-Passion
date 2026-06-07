@@ -1,4 +1,4 @@
-# Bug report template — prototype-76
+# Bug report template — prototype-77
 
 - Device:
 - Browser / PWA:

@@ -1,8 +1,8 @@
-# Deployment handoff — prototype-76
+# Deployment handoff — prototype-77
 
-Package: `luisa_24_heures_app_v76_stage5h_android_samsung_scroll_repair_locked.zip`
+Package: `luisa_24_heures_app_v77_stage5i_mobile_visual_polish_locked.zip`
 
-Stage: Stage 5H — Android/Samsung main content scroll repair
+Stage: Stage 5I — iPhone bottom-nav responsive repair + Help modal containment
 
 Deploy the contents of this folder or the nested `luisa_24h_github_deploy.zip` to GitHub Pages.
 

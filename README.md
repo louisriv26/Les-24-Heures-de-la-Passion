@@ -1,6 +1,6 @@
-# Les 24 Heures de la Passion — prototype-76
+# Les 24 Heures de la Passion — prototype-77
 
-Stage: Stage 5H — Android/Samsung main content scroll repair
+Stage: Stage 5I — iPhone bottom-nav responsive repair + Help modal containment
 
 This deploy folder contains the app files for GitHub Pages deployment.
 

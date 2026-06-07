@@ -1,12 +1,14 @@
 {
-  "app_version": "prototype-76",
+  "app_version": "prototype-77",
   "build_date": "2026-06-07",
-  "stage": "Stage 5H — Android/Samsung main content scroll repair",
-  "package": "luisa_24_heures_app_v76_stage5h_android_samsung_scroll_repair_locked.zip",
+  "stage": "Stage 5I — iPhone bottom-nav responsive repair + Help modal containment",
+  "package": "luisa_24_heures_app_v77_stage5i_mobile_visual_polish_locked.zip",
   "final_status": "LIMITED_PASS_STATIC",
   "real_device_validation_required": [
-    "Samsung/Android Chrome or Samsung Internet main-page scrolling",
-    "iPhone Safari regression",
+    "iPhone Safari portrait bottom-nav perceived height",
+    "iPhone Safari landscape bottom-nav labels visible",
+    "iPhone Safari/PWA Help/About modal scroll containment",
+    "Samsung/Android regression: main pages still scroll",
     "iPad Safari regression"
   ]
 }
