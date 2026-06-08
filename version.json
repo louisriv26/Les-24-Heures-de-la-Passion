@@ -1,8 +1,8 @@
 {
-  "app_version": "prototype-83",
+  "app_version": "prototype-84",
   "build_date": "2026-06-08",
-  "stage": "Stage 5O",
-  "package": "luisa_24_heures_app_v83_stage5o_orientation_scroll_preservation_locked.zip",
+  "stage": "Stage 5P — iOS/iPadOS orientation scroll and font stability hardening",
+  "package": "luisa_24_heures_app_v84_stage5p_ios_orientation_font_stability_locked.zip",
   "source_review_docx": "luisa_24_heures_texte_lisible_v46_sans_ids.docx",
   "tracked_change_paragraphs": 16,
   "correction_operations": 14,
@@ -16,5 +16,7 @@
     "Support main meditation/reflections/linked text/prayer modal paragraphs through existing highlight persistence layer"
   ],
   "description": "iPhone/iPad end-of-Hour tab-jump regression repair",
-  "summary": "orientation/viewport scroll preservation repair after real-device rotation regression"
+  "summary": "orientation/viewport scroll preservation repair after real-device rotation regression",
+  "version": "prototype-84",
+  "date": "2026-06-08"
 }

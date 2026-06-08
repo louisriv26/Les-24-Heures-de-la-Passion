@@ -1,4 +1,4 @@
-# Real-device QA matrix — prototype-83
+# Real-device QA matrix — prototype-84
 
 | Device/browser | Accueil scroll | Hour scroll | Textes scroll | Mon Espace scroll | Aide scroll | Result |
 |---|---|---|---|---|---|---|
@@ -10,4 +10,4 @@
 | iPad Safari landscape | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | REQUIRED |
 
 
-Stage 5O note: verify rotation preserves reading position and end-of-Hour tab jumps remain aligned on prototype-83; verify Samsung app-controlled highlighting remains available.
+Stage 5P note: verify rotation preserves reading position and end-of-Hour tab jumps remain aligned on prototype-84; verify Samsung app-controlled highlighting remains available.

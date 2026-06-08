@@ -1371,6 +1371,88 @@ html.android-scroll-fix.android-highlight-mode .ref-para:active {
 
 
 
+
+
+/* Stage 5P — iOS/iPadOS orientation scroll and font stability hardening
+   Scope: iOS/iPadOS layout and reading-font stability only.
+   Purpose: real-device testing showed orientation changes could jump to the beginning and iPhone landscape could visually reduce text size.
+   Protected: corpus, text, IDs, speech data, Samsung Android scroll/highlighting mode, end-of-Hour tab actions.
+*/
+html,
+body,
+#app,
+.content,
+.reader-screen,
+.section-screen,
+.library-screen,
+.prayer-modal-body {
+  -webkit-text-size-adjust: 100% !important;
+  text-size-adjust: 100% !important;
+}
+html.ios-device,
+html.ios-device body {
+  position: static !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 100% !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  touch-action: pan-y !important;
+}
+html.ios-device #app {
+  position: static !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  height: auto !important;
+  min-height: 100svh !important;
+  max-height: none !important;
+  overflow: visible !important;
+  display: block !important;
+}
+html.ios-device .main {
+  display: block !important;
+  min-height: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+html.ios-device .content {
+  display: block !important;
+  min-height: auto !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  -webkit-overflow-scrolling: touch !important;
+  padding-bottom: calc(6.5rem + env(safe-area-inset-bottom, 0px)) !important;
+}
+html.ios-device .para-text,
+html.ios-device .ref-para,
+html.ios-device .block-paragraph,
+html.ios-device .section-content,
+html.ios-device .library-reader-body,
+html.ios-device .prayer-modal-para,
+html.ios-device .psalm-line {
+  font-size: var(--reading-size) !important;
+  line-height: var(--reading-line) !important;
+  -webkit-text-size-adjust: 100% !important;
+  text-size-adjust: 100% !important;
+}
+@media (orientation: landscape) and (max-height: 520px) {
+  html.ios-device .para-text,
+  html.ios-device .ref-para,
+  html.ios-device .block-paragraph,
+  html.ios-device .section-content,
+  html.ios-device .library-reader-body,
+  html.ios-device .prayer-modal-para,
+  html.ios-device .psalm-line {
+    font-size: var(--reading-size) !important;
+    line-height: var(--reading-line) !important;
+  }
+}
+/* End Stage 5P — iOS/iPadOS orientation scroll and font stability hardening */
+
 </style>
 </head>
 <body>
@@ -1542,7 +1624,15 @@ html.android-scroll-fix.android-highlight-mode .ref-para:active {
 (function applyIphoneVisualFixClass(){
   try {
     var ua = String((navigator && navigator.userAgent) || '').toLowerCase();
+    var platform = String((navigator && navigator.platform) || '').toLowerCase();
+    var maxTouch = Number((navigator && navigator.maxTouchPoints) || 0);
     var isIphone = ua.indexOf('iphone') !== -1 || ua.indexOf('ipod') !== -1;
+    var isIpad = ua.indexOf('ipad') !== -1 || (platform === 'macintel' && maxTouch > 1);
+    var isIos = isIphone || isIpad;
+    if (isIos && document && document.documentElement) {
+      document.documentElement.classList.add('ios-device');
+      document.documentElement.setAttribute('data-stage5p-ios-device', 'true');
+    }
     if (isIphone && document && document.documentElement) {
       document.documentElement.classList.add('ios-iphone-visual-fix');
       document.documentElement.setAttribute('data-stage5i-iphone-visual-fix', 'true');
@@ -3894,7 +3984,7 @@ const state = {
   monEspacePanelOpen: false,
   meditationLog: []
 };
-const APP_VERSION = 'prototype-83';
+const APP_VERSION = 'prototype-84';
 const STORAGE_SCHEMA_VERSION=3;
 const SEARCH_RESULT_LIMIT = 60;
 
@@ -10578,17 +10668,34 @@ function goToHourTab(tab, targetId) {
 }
 
 
-// Stage 5O — viewport/orientation scroll preservation.
-// Real iPhone/iPad testing showed that changing orientation could reset the reader to the beginning.
-// This layer keeps a stable visible paragraph/reflection anchor and restores it after resize/orientation changes.
-let _stage5oLastStableViewportSnapshot = null;
-let _stage5oViewportRestoreTimer = null;
-let _stage5oSnapshotUpdatesBlockedUntil = 0;
+// Stage 5P — iOS/iPadOS orientation scroll and font stability hardening.
+// Stage 5O failed real-device orientation testing. This replacement avoids capturing a new top-of-page
+// anchor after rotation and instead restores the last stable visible block captured during normal reading.
+let _stage5pLastStableViewportSnapshot = null;
+let _stage5pViewportRestoreTimer = null;
+let _stage5pSnapshotUpdatesBlockedUntil = 0;
+let _stage5pRememberTimer = null;
+const STAGE5P_SNAPSHOT_STORAGE_KEY = 'lp24_stage5p_orientation_anchor';
 
-function stage5oReaderEligibleForViewportPreserve() {
-  return !!(state && state.view === 'reader' && state.currentHour && document.getElementById('content'));
+function stage5pCurrentContext() {
+  return {
+    view: state && state.view ? state.view : '',
+    hour: state && state.currentHour ? state.currentHour : null,
+    section: state && state.currentSection ? state.currentSection : null,
+    prayer: state && state.currentPrayer ? state.currentPrayer : null,
+    tab: state && state.activeTab ? state.activeTab : null
+  };
 }
-function stage5oVisibleTopClearance() {
+function stage5pSameContext(a, b) {
+  return !!(a && b && a.view === b.view && String(a.hour || '') === String(b.hour || '') &&
+    String(a.section || '') === String(b.section || '') && String(a.prayer || '') === String(b.prayer || '') &&
+    String(a.tab || '') === String(b.tab || ''));
+}
+function stage5pEligibleForViewportPreserve() {
+  return !!(state && document.getElementById('content') &&
+    ['reader','section','libraryText','prayer'].indexOf(state.view) !== -1);
+}
+function stage5pVisibleTopClearance() {
   const content = document.getElementById('content');
   if (content && isContentScrollRoot(content)) return content.getBoundingClientRect().top + 12;
   let top = 12;
@@ -10600,91 +10707,134 @@ function stage5oVisibleTopClearance() {
   }
   return top + 10;
 }
-function stage5oVisibleReaderBlocks() {
+function stage5pVisibleBlocks() {
   const content = document.getElementById('content');
-  if (!content) return [];
-  return Array.from(content.querySelectorAll('.tab-content:not([style*="display: none"]) .para-block, .tab-content:not([style*="display: none"]) .ref-para-block, .para-block, .ref-para-block'))
-    .filter(function(el) {
-      if (!el || !el.id) return false;
-      const st = window.getComputedStyle ? window.getComputedStyle(el) : null;
-      return !st || (st.display !== 'none' && st.visibility !== 'hidden');
-    });
+  const prayerModal = document.querySelector('.prayer-modal.open, .prayer-modal[aria-hidden="false"]');
+  const root = prayerModal || content || document;
+  const selector = [
+    '.tab-content:not([style*="display: none"]) .para-block[id]',
+    '.tab-content:not([style*="display: none"]) .ref-para-block[id]',
+    '.section-blocks [id]',
+    '.library-reader-body [id]',
+    '.prayer-modal-para[id]',
+    '.para-block[id]',
+    '.ref-para-block[id]'
+  ].join(', ');
+  return Array.from(root.querySelectorAll(selector)).filter(function(el) {
+    if (!el || !el.id) return false;
+    const st = window.getComputedStyle ? window.getComputedStyle(el) : null;
+    return !st || (st.display !== 'none' && st.visibility !== 'hidden');
+  });
 }
-function stage5oCaptureViewportSnapshot(reason) {
-  if (!stage5oReaderEligibleForViewportPreserve()) return null;
-  const top = stage5oVisibleTopClearance();
+function stage5pCaptureViewportSnapshot(reason) {
+  if (!stage5pEligibleForViewportPreserve()) return null;
+  const top = stage5pVisibleTopClearance();
   const bottom = window.innerHeight || document.documentElement.clientHeight || 0;
-  const blocks = stage5oVisibleReaderBlocks();
+  const blocks = stage5pVisibleBlocks();
   let best = null;
   for (const el of blocks) {
     const r = el.getBoundingClientRect();
-    if (r.bottom > top + 8 && r.top < bottom - 20) { best = { el, rect: r }; break; }
-  }
-  if (!best && blocks.length) {
-    const el = blocks[0];
-    best = { el, rect: el.getBoundingClientRect() };
+    if (r.bottom > top + 8 && r.top < bottom - 20) { best = { el: el, rect: r }; break; }
   }
   if (!best) return null;
+  const ctx = stage5pCurrentContext();
   return {
-    view: state.view,
-    hour: state.currentHour,
-    tab: state.activeTab,
+    ctx: ctx,
     id: best.el.id,
-    delta: Math.max(0, Math.round(best.rect.top - top)),
+    delta: Math.round(best.rect.top - top),
     reason: reason || 'unknown',
+    y: Math.round(window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0),
+    contentY: Math.round((document.getElementById('content') || {}).scrollTop || 0),
     ts: Date.now()
   };
 }
-function stage5oRememberViewportSnapshot(reason) {
-  if (Date.now() < _stage5oSnapshotUpdatesBlockedUntil) return;
-  if (Date.now() < suppressScrollSaveUntil) return;
-  const snap = stage5oCaptureViewportSnapshot(reason || 'scroll');
-  if (snap) _stage5oLastStableViewportSnapshot = snap;
+function stage5pStoreSnapshot(snap) {
+  if (!snap || !snap.id) return;
+  _stage5pLastStableViewportSnapshot = snap;
+  try { sessionStorage.setItem(STAGE5P_SNAPSHOT_STORAGE_KEY, JSON.stringify(snap)); } catch(e) {}
 }
-function stage5oRestoreViewportSnapshot(snap, reason) {
-  if (!snap || !stage5oReaderEligibleForViewportPreserve()) return false;
-  if (state.currentHour !== snap.hour || state.activeTab !== snap.tab) return false;
-  const el = document.getElementById(snap.id);
-  if (!el) return false;
-  const desiredTop = stage5oVisibleTopClearance() + (snap.delta || 0);
-  const rect = el.getBoundingClientRect();
-  const deltaY = rect.top - desiredTop;
+function stage5pGetStoredSnapshot() {
+  const ctx = stage5pCurrentContext();
+  if (_stage5pLastStableViewportSnapshot && stage5pSameContext(_stage5pLastStableViewportSnapshot.ctx, ctx)) return _stage5pLastStableViewportSnapshot;
+  try {
+    const raw = sessionStorage.getItem(STAGE5P_SNAPSHOT_STORAGE_KEY);
+    if (raw) {
+      const snap = JSON.parse(raw);
+      if (snap && snap.id && stage5pSameContext(snap.ctx, ctx)) return snap;
+    }
+  } catch(e) {}
+  return null;
+}
+function stage5pRememberViewportSnapshot(reason, force) {
+  if (!force && Date.now() < _stage5pSnapshotUpdatesBlockedUntil) return;
+  if (!force && Date.now() < suppressScrollSaveUntil) return;
+  const snap = stage5pCaptureViewportSnapshot(reason || 'scroll');
+  if (snap) stage5pStoreSnapshot(snap);
+}
+function stage5pSetScrollTop(surface, y) {
+  if (!surface || !Number.isFinite(y)) return;
+  try { surface.scrollTop = Math.max(0, Math.floor(y)); } catch(e) {}
+}
+function stage5pApplyScrollDelta(deltaY) {
+  if (!Number.isFinite(deltaY) || Math.abs(deltaY) < 1) return;
   const content = document.getElementById('content');
-  if (content) setSurfaceScrollTop(content, (content.scrollTop || 0) + deltaY, 'auto');
+  if (content) stage5pSetScrollTop(content, (content.scrollTop || 0) + deltaY);
   const currentY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
   try { window.scrollTo({ top: Math.max(0, Math.floor(currentY + deltaY)), left: 0, behavior: 'auto' }); } catch(e) { try { window.scrollTo(0, Math.max(0, Math.floor(currentY + deltaY))); } catch(_) {} }
   [document.scrollingElement, document.documentElement, document.body].forEach(function(surface) {
-    if (surface) setSurfaceScrollTop(surface, (surface.scrollTop || 0) + deltaY, 'auto');
+    if (surface) stage5pSetScrollTop(surface, (surface.scrollTop || 0) + deltaY);
   });
+}
+function stage5pRestoreViewportSnapshot(snap, reason) {
+  if (!snap || !snap.id || !stage5pEligibleForViewportPreserve()) return false;
+  if (!stage5pSameContext(snap.ctx, stage5pCurrentContext())) return false;
+  const el = document.getElementById(snap.id);
+  if (!el) return false;
+  const desiredTop = stage5pVisibleTopClearance() + (Number(snap.delta) || 0);
+  const rect = el.getBoundingClientRect();
+  stage5pApplyScrollDelta(rect.top - desiredTop);
   return true;
 }
-function stage5oScheduleViewportRestore(reason) {
-  if (!stage5oReaderEligibleForViewportPreserve()) return;
-  const current = stage5oCaptureViewportSnapshot(reason || 'viewport-change');
-  const stable = _stage5oLastStableViewportSnapshot;
-  const snap = (stable && stable.view === state.view && stable.hour === state.currentHour && stable.tab === state.activeTab) ? stable : current;
+function stage5pScheduleViewportRestore(reason) {
+  if (!stage5pEligibleForViewportPreserve()) return;
+  const snap = stage5pGetStoredSnapshot();
   if (!snap) return;
-  _stage5oSnapshotUpdatesBlockedUntil = Date.now() + 1800;
-  suppressScrollSaveUntil = Date.now() + 1800;
-  clearTimeout(_stage5oViewportRestoreTimer);
-  const restore = function() { stage5oRestoreViewportSnapshot(snap, reason || 'viewport-change'); };
-  _stage5oViewportRestoreTimer = setTimeout(restore, 40);
-  setTimeout(restore, 120);
-  setTimeout(restore, 280);
-  setTimeout(restore, 620);
-  setTimeout(function(){ _stage5oSnapshotUpdatesBlockedUntil = 0; stage5oRememberViewportSnapshot('post-viewport-restore'); }, 1150);
+  _stage5pSnapshotUpdatesBlockedUntil = Date.now() + 2400;
+  suppressScrollSaveUntil = Date.now() + 2400;
+  clearTimeout(_stage5pViewportRestoreTimer);
+  const restore = function(){ stage5pRestoreViewportSnapshot(snap, reason || 'viewport-change'); };
+  _stage5pViewportRestoreTimer = setTimeout(restore, 30);
+  setTimeout(restore, 90);
+  setTimeout(restore, 180);
+  setTimeout(restore, 360);
+  setTimeout(restore, 760);
+  setTimeout(restore, 1250);
+  setTimeout(function(){
+    _stage5pSnapshotUpdatesBlockedUntil = 0;
+    stage5pRememberViewportSnapshot('post-viewport-restore', true);
+  }, 1500);
 }
-(function stage5oInstallViewportPreservation(){
+(function stage5pInstallViewportPreservation(){
+  const remember = function(reason){
+    clearTimeout(_stage5pRememberTimer);
+    _stage5pRememberTimer = setTimeout(function(){ stage5pRememberViewportSnapshot(reason); }, 80);
+  };
   const content = document.getElementById('content');
-  if (content) content.addEventListener('scroll', function(){ setTimeout(function(){ stage5oRememberViewportSnapshot('content-scroll'); }, 80); }, { passive: true });
-  window.addEventListener('scroll', function(){ setTimeout(function(){ stage5oRememberViewportSnapshot('window-scroll'); }, 80); }, { passive: true });
-  window.addEventListener('orientationchange', function(){ stage5oScheduleViewportRestore('orientationchange'); }, { passive: true });
-  window.addEventListener('resize', function(){ stage5oScheduleViewportRestore('resize'); }, { passive: true });
+  if (content) content.addEventListener('scroll', function(){ remember('content-scroll'); }, { passive: true, capture: true });
+  window.addEventListener('scroll', function(){ remember('window-scroll'); }, { passive: true, capture: true });
+  document.addEventListener('touchend', function(){ remember('touchend'); }, { passive: true, capture: true });
+  document.addEventListener('pointerup', function(){ remember('pointerup'); }, { passive: true, capture: true });
+  document.addEventListener('visibilitychange', function(){ if (!document.hidden) stage5pScheduleViewportRestore('visibilitychange'); else stage5pRememberViewportSnapshot('visibility-hidden', true); }, { passive: true });
+  window.addEventListener('pagehide', function(){ stage5pRememberViewportSnapshot('pagehide', true); }, { passive: true });
+  window.addEventListener('orientationchange', function(){ stage5pScheduleViewportRestore('orientationchange'); }, { passive: true, capture: true });
+  window.addEventListener('resize', function(){ stage5pScheduleViewportRestore('resize'); }, { passive: true, capture: true });
   if (window.visualViewport && window.visualViewport.addEventListener) {
-    window.visualViewport.addEventListener('resize', function(){ stage5oScheduleViewportRestore('visualViewport.resize'); }, { passive: true });
+    window.visualViewport.addEventListener('resize', function(){ stage5pScheduleViewportRestore('visualViewport.resize'); }, { passive: true });
+    window.visualViewport.addEventListener('scroll', function(){ remember('visualViewport.scroll'); }, { passive: true });
   }
+  setInterval(function(){ stage5pRememberViewportSnapshot('interval'); }, 1000);
 })();
-// End Stage 5O — viewport/orientation scroll preservation.
+// End Stage 5P — iOS/iPadOS orientation scroll and font stability hardening.
 
 function buildHourEndActions(hour, next) {
   return `<div class="hour-end-actions" id="hourEndActions"><div class="hour-end-title">Continuer cette Heure</div><div class="hour-end-note">Vous pouvez continuer sans remonter aux onglets.</div><div class="hour-end-buttons"><button type="button" class="hour-end-btn primary" onclick="goToHourTab('reflections', 'reflectionsContent')">Réflexions et pratiques</button><button type="button" class="hour-end-btn" onclick="goToHourTab('linked', 'linkedTextsContent')">Textes liés</button><button type="button" class="hour-end-btn" onclick="scrollReaderToTop()">↟ Revenir au début</button></div></div>`;
