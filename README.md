@@ -1,5 +1,5 @@
-# Luisa 24 Heures — prototype-80
+# Luisa 24 Heures — prototype-83
 
-Stage 5L — Samsung highlighting fallback + end-of-Hour jump alignment.
+Stage 5O — orientation/viewport scroll preservation repair.
 
 Déployer le contenu de ce dossier sur GitHub Pages.

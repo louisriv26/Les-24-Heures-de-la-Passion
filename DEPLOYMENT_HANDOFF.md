@@ -1,7 +1,7 @@
-# Deployment handoff — prototype-80
+# Deployment handoff — prototype-83
 
-Package: `luisa_24_heures_app_v80_stage5l_samsung_highlighting_jump_alignment_locked.zip`
+Package: `luisa_24_heures_app_v83_stage5o_orientation_scroll_preservation_locked.zip`
 
-Stage: Stage 5L — Samsung highlighting fallback + end-of-Hour jump alignment
+Stage: Stage 5O — orientation/viewport scroll preservation repair
 
 Status: LIMITED_PASS_STATIC until Samsung/iPhone/iPad real-device checks confirm behaviour.

@@ -1,4 +1,4 @@
-# Bug report template — prototype-79
+# Bug report template — prototype-83
 
 - Device:
 - Browser / PWA:
@@ -10,4 +10,4 @@
 - Screenshot/video:
 
 
-Stage 5J note: verify Samsung text selection/highlighting and end-of-Hour action flow on prototype-79.
+Stage 5O note: verify rotation preserves reading position and end-of-Hour tab jumps remain aligned on prototype-83; verify Samsung app-controlled highlighting remains available.

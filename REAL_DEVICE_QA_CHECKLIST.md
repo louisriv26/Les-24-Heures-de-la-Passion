@@ -1,4 +1,4 @@
-# Real-device QA checklist — prototype-79
+# Real-device QA checklist — prototype-83
 
 ## Samsung / Android P0 check
 
@@ -27,4 +27,4 @@ Static package status before real-device validation: LIMITED_PASS_STATIC.
 - iPad: portrait and landscape regressions not detected.
 
 
-Stage 5J note: verify Samsung text selection/highlighting and end-of-Hour action flow on prototype-79.
+Stage 5O note: verify rotation preserves reading position and end-of-Hour tab jumps remain aligned on prototype-83; verify Samsung app-controlled highlighting remains available.
