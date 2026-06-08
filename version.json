@@ -1,22 +1,13 @@
 {
-  "app_version": "prototype-84",
+  "app_version": "prototype-88",
   "build_date": "2026-06-08",
-  "stage": "Stage 5P — iOS/iPadOS orientation scroll and font stability hardening",
-  "package": "luisa_24_heures_app_v84_stage5p_ios_orientation_font_stability_locked.zip",
-  "source_review_docx": "luisa_24_heures_texte_lisible_v46_sans_ids.docx",
-  "tracked_change_paragraphs": 16,
-  "correction_operations": 14,
-  "old_corpus_fingerprint_sha256": "5fcac1cf9e735169afd21a7002de884a5ab47b79c60829a1d6e710d4e82437bf",
-  "new_corpus_fingerprint_sha256": "67f9ec5829ec8963c3f106f7ae9272f272d0723dab3cc292962ca5136d6ee324",
-  "real_device_status": "LIMITED_PASS_STATIC; Samsung app-controlled highlighting mode requires physical-device confirmation",
+  "stage": "Stage 6C — deep recheck flex-child scroll-surface repair",
+  "package": "luisa_24_heures_app_v88_stage6c_deep_recheck_scroll_surface_repair_locked.zip",
+  "real_device_status": "LIMITED_PASS_STATIC; iPhone/iPad/Samsung real-device validation required",
   "protected_data_changed": false,
-  "fixes": [
-    "Android-only app-controlled tap-based highlighting mode",
-    "Avoid Samsung/Google long-press search by disabling native selection only while explicit mode is active",
-    "Support main meditation/reflections/linked text/prayer modal paragraphs through existing highlight persistence layer"
-  ],
-  "description": "iPhone/iPad end-of-Hour tab-jump regression repair",
-  "summary": "orientation/viewport scroll preservation repair after real-device rotation regression",
-  "version": "prototype-84",
-  "date": "2026-06-08"
+  "stage6c_repairs": [
+    "fixed flex child shrink/inner-scroll defect after orientation change",
+    "kept #content as single authoritative scroll surface in tablet/landscape layouts",
+    "regenerated manifests and deploy/nested package from final files"
+  ]
 }

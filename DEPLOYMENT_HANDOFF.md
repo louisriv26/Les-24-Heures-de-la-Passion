@@ -1,7 +1,9 @@
-# Deployment handoff — prototype-84
+# Deployment handoff — prototype-88
 
-Package: `luisa_24_heures_app_v84_stage5p_ios_orientation_font_stability_locked.zip`
+Package: `luisa_24_heures_app_v88_stage6c_deep_recheck_scroll_surface_repair_locked.zip`
 
-Stage: Stage 5P — orientation/viewport scroll preservation repair
+Stage: Stage 6C — deep recheck flex-child scroll-surface repair
 
-Status: LIMITED_PASS_STATIC until Samsung/iPhone/iPad real-device checks confirm behaviour.
+Deploy the contents of this `deploy/` folder to GitHub Pages.
+
+Critical real-device checks remain required: iPhone/iPad rotation, tab jumps, Samsung highlighting, Home Screen PWA update.

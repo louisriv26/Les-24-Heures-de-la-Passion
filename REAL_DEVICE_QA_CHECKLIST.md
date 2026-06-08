@@ -1,4 +1,4 @@
-# Real-device QA checklist — prototype-84
+# Real-device QA checklist — prototype-88
 
 ## Samsung / Android P0 check
 
@@ -18,7 +18,7 @@
 Static package status before real-device validation: LIMITED_PASS_STATIC.
 
 
-## Stage 5I required checks
+## Mobile visual required checks
 
 - iPhone portrait: bottom navigation remains visible, labels visible, and perceived band height reduced.
 - iPhone landscape: bottom navigation labels Accueil / Heures / Textes / Espace are visible.
@@ -27,4 +27,9 @@ Static package status before real-device validation: LIMITED_PASS_STATIC.
 - iPad: portrait and landscape regressions not detected.
 
 
-Stage 5P note: verify rotation preserves reading position and end-of-Hour tab jumps remain aligned on prototype-84; verify Samsung app-controlled highlighting remains available.
+Current mobile-runtime note: verify rotation preserves reading position and end-of-Hour tab jumps remain aligned on prototype-88; verify Samsung app-controlled highlighting remains available.
+
+
+## Current build
+
+prototype-88 — Stage 6C — deep recheck flex-child scroll-surface repair.
