@@ -1,15 +1,17 @@
 {
-  "app_version": "prototype-89",
+  "app_version": "prototype-90",
   "build_date": "2026-06-08",
-  "stage": "Stage 6E — runtime recovery: update simplification and highlight separation",
-  "package": "luisa_24_heures_app_v89_stage6e_runtime_recovery_update_highlight_locked.zip",
-  "real_device_status": "LIMITED_PASS_STATIC; runtime recovery requires iPhone/iPad/Samsung validation",
+  "stage": "Stage 6F — highlight overlay event-isolation repair",
+  "package": "luisa_24_heures_app_v90_stage6f_highlight_overlay_event_isolation_repair_locked.zip",
+  "real_device_status": "LIMITED_PASS_STATIC; highlight repair requires iPhone/iPad/Samsung validation",
   "protected_data_changed": false,
-  "stage6e_repairs": [
-    "disabled service-worker app-shell caching for runtime recovery builds",
-    "network-only version/update path; Actualiser performs no-SW cache-busting reload",
-    "restored iPhone/iPad native text selection path",
-    "separated Samsung/Android into explicit app-owned paragraph highlighting mode",
-    "blocked Samsung native select/search/translate path on reading text"
-  ]
+  "stage6f_repairs": [
+    "isolated selection action bar and colour picker from document outside-click handling",
+    "replaced inline selected-text Surligner handler with propagation-safe function",
+    "guarded pending selected text while the colour picker is open",
+    "guarded delayed selectionchange/touch/pointer capture while highlight UI is active",
+    "added one-gesture lock for Samsung/Android paragraph highlight mode",
+    "preserved iPhone/iPad native text selection and Samsung paragraph-mode separation"
+  ],
+  "version": "prototype-90"
 }
