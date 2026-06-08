@@ -1243,6 +1243,43 @@ html.ios-iphone-visual-fix .bn-item svg {
 }
 /* End Stage 5I — iPhone bottom-nav responsive repair + Help modal containment */
 
+/* Stage 5J — Android/Samsung text-selection repair + end-of-Hour action refinement
+   Scope: selection/touch CSS only. Preserves Stage 5H Android scroll shell and Stage 5I iPhone visual rules.
+   Purpose: allow native Android/Samsung text selection inside the confirmed scrollable .content container.
+*/
+html.android-scroll-fix .content {
+  touch-action: auto !important;
+}
+html.android-scroll-fix .para-block,
+html.android-scroll-fix .ref-para-block,
+html.android-scroll-fix .prayer-para-block {
+  -webkit-touch-callout: default !important;
+}
+html.android-scroll-fix .para-text,
+html.android-scroll-fix .ref-para,
+html.android-scroll-fix .block-paragraph,
+html.android-scroll-fix .prayer-modal-para {
+  -webkit-user-select: text !important;
+  user-select: text !important;
+  -webkit-touch-callout: default !important;
+  touch-action: auto !important;
+}
+html.android-scroll-fix .para-actions,
+html.android-scroll-fix .para-action-btn,
+html.android-scroll-fix .mobile-action-bar,
+html.android-scroll-fix .selection-action-bar,
+html.android-scroll-fix .colour-picker,
+html.android-scroll-fix .hour-end-btn,
+html.android-scroll-fix .tab-btn,
+html.android-scroll-fix .nav-btn {
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  -webkit-touch-callout: none !important;
+  touch-action: manipulation !important;
+}
+/* End Stage 5J — Android/Samsung text-selection repair + end-of-Hour action refinement */
+
+
 </style>
 </head>
 <body>
@@ -3765,7 +3802,7 @@ const state = {
   monEspacePanelOpen: false,
   meditationLog: []
 };
-const APP_VERSION = 'prototype-77';
+const APP_VERSION = 'prototype-78';
 const STORAGE_SCHEMA_VERSION=3;
 const SEARCH_RESULT_LIMIT = 60;
 
@@ -4040,7 +4077,7 @@ const SafeStorage = {
   remove(key)     { try { localStorage.removeItem(key); } catch(e){} }
 };
 const CORPUS_VERSION='2021-GE-LumenLuminis';
-const BUILD_DATE = '2026-06-07';
+const BUILD_DATE = '2026-06-08';
 
 const TEXT_LIBRARY = [
   {
@@ -10385,9 +10422,16 @@ function buildClosingButtons(hour) {
 function scrollReaderToTop() {
   resetContentScrollAfterRender();
 }
+function goToHourTab(tab, targetId) {
+  switchTab(tab, true);
+  setTimeout(function () {
+    const target = document.getElementById(targetId);
+    if (target) smoothScrollTo(target, { behavior: 'smooth', block: 'start', inline: 'nearest' });
+    else resetContentScrollAfterRender();
+  }, 80);
+}
 function buildHourEndActions(hour, next) {
-  const nextBtn = next ? `<button type="button" class="hour-end-btn" onclick="openHour(${next.hour_number})">Heure suivante</button>` : '';
-  return `<div class="hour-end-actions" id="hourEndActions"><div class="hour-end-title">Fin de cette Heure</div><div class="hour-end-note">Vous pouvez continuer sans remonter tout en haut.</div><div class="hour-end-buttons"><button type="button" class="hour-end-btn" onclick="scrollReaderToTop()">↟ Revenir au début</button><button type="button" class="hour-end-btn primary" onclick="openPrayerModal('PASSION24.PRAYER.AFTER_EACH_HOUR', false)">Prière après cette Heure</button><button type="button" class="hour-end-btn" onclick="switchTab('linked')">Textes liés</button>${nextBtn}</div></div>`;
+  return `<div class="hour-end-actions" id="hourEndActions"><div class="hour-end-title">Continuer cette Heure</div><div class="hour-end-note">Vous pouvez continuer sans remonter aux onglets.</div><div class="hour-end-buttons"><button type="button" class="hour-end-btn primary" onclick="goToHourTab('reflections', 'reflectionsContent')">Réflexions et pratiques</button><button type="button" class="hour-end-btn" onclick="goToHourTab('linked', 'linkedTextsContent')">Textes liés</button><button type="button" class="hour-end-btn" onclick="scrollReaderToTop()">↟ Revenir au début</button></div></div>`;
 }
 
 // ── History ──
@@ -10884,6 +10928,12 @@ function buildParaBlock(p, hourNum) {
 
 let _lpTimer = null;
 function startLongPress(paraId, hourNum, e) {
+  clearTimeout(_lpTimer);
+  if (document.documentElement.classList.contains('android-scroll-fix') && e && e.target && e.target.closest && e.target.closest('.para-text, .ref-para, .block-paragraph, .prayer-modal-para')) {
+    // Android/Samsung native text selection must win over the paragraph long-press action.
+    _lpTimer = null;
+    return;
+  }
   _lpTimer = setTimeout(() => {
     if (navigator.vibrate) navigator.vibrate(40);
     showMobileActionBar(paraId, hourNum);
@@ -11616,7 +11666,7 @@ function showHelp() {
         <div class="help-note">La palette de couleurs ne doit apparaître qu’après avoir appuyé sur Surligner.</div>
       </div></div>
       <div class="help-section"><div class="help-section-hd">Fin d’une Heure</div><div class="help-section-body">
-        <div class="help-row"><span class="help-icon">↟</span><span class="help-row-text">En bas de chaque Heure, utilisez <strong>Revenir au début</strong>, <strong>Prière après cette Heure</strong>, <strong>Textes liés</strong> ou <strong>Heure suivante</strong>.</span></div>
+        <div class="help-row"><span class="help-icon">↟</span><span class="help-row-text">En bas de chaque Heure, utilisez <strong>Réflexions et pratiques</strong>, <strong>Textes liés</strong> ou <strong>Revenir au début</strong> pour continuer sans remonter aux onglets.</span></div>
       </div></div>
       <div class="help-section"><div class="help-section-hd">Mise à jour</div><div class="help-section-body">
         <div class="help-row"><span class="help-icon">↻</span><span class="help-row-text">Si une nouvelle version est disponible, l’app doit afficher une bannière de mise à jour. Vous pouvez aussi lancer une vérification manuelle.</span></div>
@@ -12390,8 +12440,15 @@ function setSearchFilter(f) {
 
 function smoothScrollTo(el, opts) { if (!el) return; try { el.scrollIntoView(opts); } catch(e) { el.scrollIntoView(true); } }
 
-document.addEventListener('mouseup', handleSelectionEnd);
-document.addEventListener('touchend', handleSelectionEnd);
+let _selectionCaptureTimer = null;
+function scheduleSelectionCapture(delay = 220) {
+  clearTimeout(_selectionCaptureTimer);
+  _selectionCaptureTimer = setTimeout(function () { handleSelectionEnd(); }, delay);
+}
+document.addEventListener('selectionchange', function () { scheduleSelectionCapture(260); });
+document.addEventListener('mouseup', function () { scheduleSelectionCapture(80); });
+document.addEventListener('pointerup', function () { scheduleSelectionCapture(180); });
+document.addEventListener('touchend', function () { scheduleSelectionCapture(260); });
 document.addEventListener('touchcancel', () => { closeColourPicker(); (function(){var _ws=window.getSelection();if(_ws)_ws.removeAllRanges();})(); });
 document.addEventListener('click', e => {
   const picker = document.getElementById('colourPicker');

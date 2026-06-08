@@ -1,4 +1,4 @@
-# Real-device QA checklist — prototype-77
+# Real-device QA checklist — prototype-78
 
 ## Samsung / Android P0 check
 
@@ -25,3 +25,6 @@ Static package status before real-device validation: LIMITED_PASS_STATIC.
 - iPhone Aide / À propos: content no longer passes behind the modal title/close area while scrolling/bouncing.
 - Samsung/Android: Accueil, full Hour, Textes, Mon Espace still scroll.
 - iPad: portrait and landscape regressions not detected.
+
+
+Stage 5J note: verify Samsung text selection/highlighting and end-of-Hour action flow on prototype-78.

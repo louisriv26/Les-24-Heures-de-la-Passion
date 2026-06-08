@@ -1,4 +1,4 @@
-# Bug report template — prototype-77
+# Bug report template — prototype-78
 
 - Device:
 - Browser / PWA:
@@ -8,3 +8,6 @@
 - Can the page scroll:
 - Steps to reproduce:
 - Screenshot/video:
+
+
+Stage 5J note: verify Samsung text selection/highlighting and end-of-Hour action flow on prototype-78.

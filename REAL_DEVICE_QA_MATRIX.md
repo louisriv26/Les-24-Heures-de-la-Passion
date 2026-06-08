@@ -1,4 +1,4 @@
-# Real-device QA matrix — prototype-77
+# Real-device QA matrix — prototype-78
 
 | Device/browser | Accueil scroll | Hour scroll | Textes scroll | Mon Espace scroll | Aide scroll | Result |
 |---|---|---|---|---|---|---|
@@ -8,3 +8,6 @@
 | iPhone installed PWA | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | REQUIRED |
 | iPad Safari portrait | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | REQUIRED |
 | iPad Safari landscape | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | REQUIRED |
+
+
+Stage 5J note: verify Samsung text selection/highlighting and end-of-Hour action flow on prototype-78.
