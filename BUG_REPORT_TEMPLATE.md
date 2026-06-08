@@ -1,4 +1,4 @@
-# Bug report template — prototype-88
+# Bug report template — prototype-89
 
 - Device:
 - Browser / PWA:
@@ -10,9 +10,9 @@
 - Screenshot/video:
 
 
-Current mobile-runtime note: verify rotation preserves reading position and end-of-Hour tab jumps remain aligned on prototype-88; verify Samsung app-controlled highlighting remains available.
+Current mobile-runtime note: verify rotation preserves reading position and end-of-Hour tab jumps remain aligned on prototype-89; verify Samsung app-controlled highlighting remains available.
 
 
 ## Current build
 
-prototype-88 — Stage 6C — deep recheck flex-child scroll-surface repair.
+prototype-89 — Stage 6C — deep recheck flex-child scroll-surface repair.

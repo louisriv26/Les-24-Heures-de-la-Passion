@@ -1,13 +1,15 @@
 {
-  "app_version": "prototype-88",
+  "app_version": "prototype-89",
   "build_date": "2026-06-08",
-  "stage": "Stage 6C — deep recheck flex-child scroll-surface repair",
-  "package": "luisa_24_heures_app_v88_stage6c_deep_recheck_scroll_surface_repair_locked.zip",
-  "real_device_status": "LIMITED_PASS_STATIC; iPhone/iPad/Samsung real-device validation required",
+  "stage": "Stage 6E — runtime recovery: update simplification and highlight separation",
+  "package": "luisa_24_heures_app_v89_stage6e_runtime_recovery_update_highlight_locked.zip",
+  "real_device_status": "LIMITED_PASS_STATIC; runtime recovery requires iPhone/iPad/Samsung validation",
   "protected_data_changed": false,
-  "stage6c_repairs": [
-    "fixed flex child shrink/inner-scroll defect after orientation change",
-    "kept #content as single authoritative scroll surface in tablet/landscape layouts",
-    "regenerated manifests and deploy/nested package from final files"
+  "stage6e_repairs": [
+    "disabled service-worker app-shell caching for runtime recovery builds",
+    "network-only version/update path; Actualiser performs no-SW cache-busting reload",
+    "restored iPhone/iPad native text selection path",
+    "separated Samsung/Android into explicit app-owned paragraph highlighting mode",
+    "blocked Samsung native select/search/translate path on reading text"
   ]
 }

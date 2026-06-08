@@ -1,6 +1,6 @@
-# Deployment handoff — prototype-88
+# Deployment handoff — prototype-89
 
-Package: `luisa_24_heures_app_v88_stage6c_deep_recheck_scroll_surface_repair_locked.zip`
+Package: `luisa_24_heures_app_v89_stage6e_runtime_recovery_update_highlight
 
 Stage: Stage 6C — deep recheck flex-child scroll-surface repair
 

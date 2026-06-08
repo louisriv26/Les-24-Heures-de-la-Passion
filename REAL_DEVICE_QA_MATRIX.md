@@ -1,4 +1,4 @@
-# Real-device QA matrix — prototype-88
+# Real-device QA matrix — prototype-89
 
 | Device/browser | Accueil scroll | Hour scroll | Textes scroll | Mon Espace scroll | Aide scroll | Result |
 |---|---|---|---|---|---|---|
@@ -10,9 +10,9 @@
 | iPad Safari landscape | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | REQUIRED |
 
 
-Current mobile-runtime note: verify rotation preserves reading position and end-of-Hour tab jumps remain aligned on prototype-88; verify Samsung app-controlled highlighting remains available.
+Current mobile-runtime note: verify rotation preserves reading position and end-of-Hour tab jumps remain aligned on prototype-89; verify Samsung app-controlled highlighting remains available.
 
 
 ## Current build
 
-prototype-88 — Stage 6C — deep recheck flex-child scroll-surface repair.
+prototype-89 — Stage 6C — deep recheck flex-child scroll-surface repair.
