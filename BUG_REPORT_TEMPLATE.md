@@ -1,4 +1,4 @@
-# Bug report template — prototype-78
+# Bug report template — prototype-79
 
 - Device:
 - Browser / PWA:
@@ -10,4 +10,4 @@
 - Screenshot/video:
 
 
-Stage 5J note: verify Samsung text selection/highlighting and end-of-Hour action flow on prototype-78.
+Stage 5J note: verify Samsung text selection/highlighting and end-of-Hour action flow on prototype-79.

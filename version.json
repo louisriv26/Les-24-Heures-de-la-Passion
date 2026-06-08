@@ -1,6 +1,18 @@
 {
-  "app_version": "prototype-78",
+  "app_version": "prototype-80",
   "build_date": "2026-06-08",
-  "stage": "Stage 5J — Android/Samsung text-selection repair + end-of-Hour action refinement",
-  "package": "luisa_24_heures_app_v78_stage5j_android_selection_hour_end_actions_locked.zip"
+  "stage": "Stage 5L — Samsung highlighting fallback + end-of-Hour jump alignment",
+  "package": "luisa_24_heures_app_v80_stage5l_samsung_highlighting_jump_alignment_locked.zip",
+  "source_review_docx": "luisa_24_heures_texte_lisible_v46_sans_ids.docx",
+  "tracked_change_paragraphs": 16,
+  "correction_operations": 14,
+  "old_corpus_fingerprint_sha256": "5fcac1cf9e735169afd21a7002de884a5ab47b79c60829a1d6e710d4e82437bf",
+  "new_corpus_fingerprint_sha256": "67f9ec5829ec8963c3f106f7ae9272f272d0723dab3cc292962ca5136d6ee324",
+  "real_device_status": "LIMITED_PASS_STATIC; Samsung highlighting and iPhone/iPad jump alignment require physical-device confirmation",
+  "protected_data_changed": false,
+  "fixes": [
+    "Android/Samsung highlighting fallback when native selection is not captured",
+    "Android touchcancel no longer clears native text selection inside selectable text",
+    "Measured end-of-Hour Réflexions/Textes liés tab-jump scroll alignment"
+  ]
 }

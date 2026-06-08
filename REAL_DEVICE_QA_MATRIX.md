@@ -1,4 +1,4 @@
-# Real-device QA matrix — prototype-78
+# Real-device QA matrix — prototype-79
 
 | Device/browser | Accueil scroll | Hour scroll | Textes scroll | Mon Espace scroll | Aide scroll | Result |
 |---|---|---|---|---|---|---|
@@ -10,4 +10,4 @@
 | iPad Safari landscape | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | REQUIRED |
 
 
-Stage 5J note: verify Samsung text selection/highlighting and end-of-Hour action flow on prototype-78.
+Stage 5J note: verify Samsung text selection/highlighting and end-of-Hour action flow on prototype-79.

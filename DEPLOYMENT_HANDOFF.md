@@ -1,7 +1,7 @@
-# Deployment handoff — prototype-78
+# Deployment handoff — prototype-80
 
-Package: luisa_24_heures_app_v78_stage5j_android_selection_hour_end_actions_locked.zip
+Package: `luisa_24_heures_app_v80_stage5l_samsung_highlighting_jump_alignment_locked.zip`
 
-Deploy the contents of this folder or the nested `luisa_24h_github_deploy.zip` to GitHub Pages.
+Stage: Stage 5L — Samsung highlighting fallback + end-of-Hour jump alignment
 
-Real-device validation remains required for Samsung text selection/highlighting, Samsung scrolling, iPhone Safari, iPad Safari, installed PWA, update banner, and offline behaviour.
+Status: LIMITED_PASS_STATIC until Samsung/iPhone/iPad real-device checks confirm behaviour.
