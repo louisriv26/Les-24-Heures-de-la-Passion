@@ -1,18 +1,7 @@
-# Real-device QA matrix — prototype-90
+# QA matrix — Stage 6H.2 — report integrity and dynamic speech-count correction
 
-| Device/browser | Accueil scroll | Hour scroll | Textes scroll | Mon Espace scroll | Aide scroll | Result |
-|---|---|---|---|---|---|---|
-| Samsung Android / Samsung Internet | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | REQUIRED |
-| Samsung Android / Chrome | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | REQUIRED |
-| iPhone Safari | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | REQUIRED |
-| iPhone installed PWA | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | REQUIRED |
-| iPad Safari portrait | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | REQUIRED |
-| iPad Safari landscape | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | REQUIRED |
-
-
-Current mobile-runtime note: verify rotation preserves reading position and end-of-Hour tab jumps remain aligned on prototype-90; verify Samsung app-controlled highlighting remains available.
-
-
-## Current build
-
-prototype-90 — Stage 6C — deep recheck flex-child scroll-surface repair.
+| Device | Browser/install mode | Samsung paragraph | iOS exact selection | Reload persistence | Mon Espace | Update | Orientation | Result |
+|---|---|---:|---:|---:|---:|---:|---:|---|
+| Samsung Android | Chrome/PWA | NOT_TESTED | n/a | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | REQUIRED |
+| iPhone | Safari/PWA | n/a | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | REQUIRED |
+| iPad | Safari/PWA | n/a | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | NOT_TESTED | REQUIRED |

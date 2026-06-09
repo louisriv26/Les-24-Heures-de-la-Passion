@@ -1,17 +1,14 @@
 {
-  "app_version": "prototype-90",
-  "build_date": "2026-06-08",
-  "stage": "Stage 6F — highlight overlay event-isolation repair",
-  "package": "luisa_24_heures_app_v90_stage6f_highlight_overlay_event_isolation_repair_locked.zip",
-  "real_device_status": "LIMITED_PASS_STATIC; highlight repair requires iPhone/iPad/Samsung validation",
+  "app_version": "prototype-92",
+  "version": "prototype-92",
+  "build_date": "2026-06-09",
+  "stage": "Stage 6H.2 — report integrity and dynamic speech-count correction",
+  "package": "luisa_24_heures_app_v92_stage6h2_report_integrity_and_dynamic_count_locked.zip",
+  "status": "LIMITED_PASS_STATIC",
+  "final_status": "LIMITED_PASS_STATIC",
+  "real_device_status": "LIMITED_PASS_STATIC; Samsung paragraph highlight + iPhone/iPad exact highlight + update/orientation require real-device validation",
   "protected_data_changed": false,
-  "stage6f_repairs": [
-    "isolated selection action bar and colour picker from document outside-click handling",
-    "replaced inline selected-text Surligner handler with propagation-safe function",
-    "guarded pending selected text while the colour picker is open",
-    "guarded delayed selectionchange/touch/pointer capture while highlight UI is active",
-    "added one-gesture lock for Samsung/Android paragraph highlight mode",
-    "preserved iPhone/iPad native text selection and Samsung paragraph-mode separation"
-  ],
-  "version": "prototype-90"
+  "runtime_patch": "Stage 6H.2 corrected a stale user-facing speech count and report decision contradiction; protected data unchanged.",
+  "updated_at_utc": "2026-06-09T10:46:51.547443+00:00",
+  "real_device_gate": "REQUIRED: Samsung paragraph highlight + iPhone/iPad exact highlight + update/orientation confirmation"
 }

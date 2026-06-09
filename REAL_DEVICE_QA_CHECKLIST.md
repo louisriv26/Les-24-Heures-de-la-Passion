@@ -1,35 +1,26 @@
-# Real-device QA checklist — prototype-90
+# Real-device QA checklist — Stage 6H.2 — report integrity and dynamic speech-count correction
 
-## Samsung / Android P0 check
+Status before device testing: `LIMITED_PASS_STATIC`.
 
-- Confirm the Aide modal still scrolls and closes.
-- Confirm Accueil scrolls vertically.
-- Open a long Hour and confirm it scrolls to the bottom.
-- Confirm Textes scrolls vertically.
-- Confirm Mon Espace scrolls vertically.
-- Confirm bottom navigation buttons remain tappable.
+## Samsung/Android
+1. Open `prototype-92`.
+2. Tap `Paragraphe`.
+3. Confirm hint: whole-paragraph mode; word-by-word selection unavailable.
+4. Confirm old bottom bar does not appear.
+5. Tap a meditation paragraph.
+6. Confirm colour picker says `Surligner ce paragraphe en`.
+7. Choose colour.
+8. Confirm whole paragraph highlight renders immediately.
+9. Repeat on reflection/practice paragraph.
+10. Reload and confirm persistence.
+11. Confirm highlight appears in Mon Espace.
+12. Confirm no Google Translate/Search overlay appears.
 
-## iPhone / iPad regression check
+## iPhone/iPad
+1. Select exact text.
+2. Tap `Surligner`.
+3. Choose colour.
+4. Confirm exact selected text highlight renders and persists.
 
-- iPhone Safari: Accueil, Heure, Textes, Mon Espace, Aide.
-- Installed iPhone PWA: same checks.
-- iPad Safari portrait and landscape: same checks.
-
-Static package status before real-device validation: LIMITED_PASS_STATIC.
-
-
-## Mobile visual required checks
-
-- iPhone portrait: bottom navigation remains visible, labels visible, and perceived band height reduced.
-- iPhone landscape: bottom navigation labels Accueil / Heures / Textes / Espace are visible.
-- iPhone Aide / À propos: content no longer passes behind the modal title/close area while scrolling/bouncing.
-- Samsung/Android: Accueil, full Hour, Textes, Mon Espace still scroll.
-- iPad: portrait and landscape regressions not detected.
-
-
-Current mobile-runtime note: verify rotation preserves reading position and end-of-Hour tab jumps remain aligned on prototype-90; verify Samsung app-controlled highlighting remains available.
-
-
-## Current build
-
-prototype-90 — Stage 6C — deep recheck flex-child scroll-surface repair.
+## Update/orientation
+Confirm `Actualiser`, reload, portrait/landscape, and installed PWA behaviour.

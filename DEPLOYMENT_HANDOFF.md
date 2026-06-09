@@ -1,9 +1,12 @@
-# Deployment handoff — prototype-90
+# Luisa — 24 Heures de la Passion
 
-Package: `luisa_24_heures_app_v89_stage6f_runtime_recovery_update_highlight
+Package: `luisa_24_heures_app_v92_stage6h2_report_integrity_and_dynamic_count_locked.zip`
+App version: `prototype-92`
+Stage: `Stage 6H.2 — report integrity and dynamic speech-count correction`
+Status: `LIMITED_PASS_STATIC`
 
-Stage: Stage 6C — deep recheck flex-child scroll-surface repair
+Static/reopened-ZIP gates passed in this package. Real Samsung/iPhone/iPad and live GitHub Pages update behaviour remain required before any public-release PASS.
 
-Deploy the contents of this `deploy/` folder to GitHub Pages.
+Samsung/Android test rule: use **Paragraphe** mode and tap one paragraph to highlight it entirely. iPhone/iPad test rule: select exact text, tap **Surligner**, then choose a colour.
 
-Critical real-device checks remain required: iPhone/iPad rotation, tab jumps, Samsung highlighting, Home Screen PWA update.
+Deploy the files inside this `deploy/` folder to GitHub Pages. Do not deploy older v91/v90/v89 package names.
