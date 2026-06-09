@@ -1572,7 +1572,7 @@ html.stage6a-runtime.android-scroll-fix .android-highlight-toggle { display: inl
 /* End Stage 6A clean mobile runtime rewrite */
 
 
-/* Legacy flex-child scroll containment repair retained from earlier stage.
+/* Flex-child scroll containment repair.
    Purpose: keep #content as the only reader scroll surface in tablet/landscape layouts.
    Finding: v87 let flex children (.reader-screen etc.) shrink into their own scroll surfaces
    after orientation changes; #content.scrollHeight collapsed to clientHeight and restore jumped to top.
@@ -4231,7 +4231,7 @@ const state = {
   monEspacePanelOpen: false,
   meditationLog: []
 };
-const APP_VERSION = 'prototype-92';
+const APP_VERSION = 'prototype-94';
 const STORAGE_SCHEMA_VERSION=3;
 const SEARCH_RESULT_LIMIT = 60;
 
@@ -12709,9 +12709,32 @@ function ensureAndroidHighlightHint() {
   hint.className = 'android-highlight-hint';
   hint.setAttribute('role', 'status');
   hint.setAttribute('aria-live', 'polite');
-  hint.innerHTML = '<span>Samsung : touchez un paragraphe pour le surligner en entier. La sélection mot à mot n’est pas disponible sur ce téléphone.</span><button type="button" onclick="toggleAndroidHighlightMode(false)">Terminer</button>';
+  hint.innerHTML = '<span>Samsung : touchez un paragraphe, puis choisissez une couleur. La sélection mot à mot n’est pas disponible sur ce téléphone.</span><button type="button" onclick="return cancelAndroidParagraphModeFromHint(event)">Annuler</button>';
   document.body.appendChild(hint);
   return hint;
+}
+function stage6hIsColourPickerOpen() {
+  const picker = document.getElementById('colourPicker');
+  return !!(picker && picker.classList.contains('open'));
+}
+function stage6hHideAndroidHighlightHint() {
+  const hint = document.getElementById('androidHighlightHint');
+  if (hint) hint.style.display = 'none';
+}
+function cancelAndroidParagraphModeFromHint(event) {
+  if (event) {
+    if (event.cancelable) event.preventDefault();
+    event.stopPropagation();
+    if (typeof event.stopImmediatePropagation === 'function') event.stopImmediatePropagation();
+  }
+  closeColourPicker();
+  _androidAppHighlightMode = false;
+  stage6hClearAndroidParagraphTarget();
+  closeSelectionActionBar(true);
+  closeMobileActionBar();
+  updateAndroidHighlightModeUi();
+  showToast('Mode paragraphe annulé');
+  return false;
 }
 function updateAndroidHighlightModeUi() {
   const supported = isAndroidAppHighlightModeSupported();
@@ -12725,7 +12748,12 @@ function updateAndroidHighlightModeUi() {
     btn.textContent = supported && _androidAppHighlightMode ? 'Paragraphe ✓' : 'Paragraphe';
   }
   const hint = ensureAndroidHighlightHint();
-  hint.style.display = supported && _androidAppHighlightMode ? 'flex' : '';
+  const pendingParagraph = typeof stage6hIsAndroidParagraphPending === 'function' && stage6hIsAndroidParagraphPending();
+  const pickerOpen = typeof stage6hIsColourPickerOpen === 'function' && stage6hIsColourPickerOpen();
+  // Samsung hint-flow repair: the instruction sheet must not remain visible after a paragraph is selected.
+  // The former continuation-style hint button invited users to click it before choosing a colour, which cleared
+  // the visual target and broke the real Samsung workflow. Once a target/picker exists, hide the hint.
+  hint.style.display = supported && _androidAppHighlightMode && !pendingParagraph && !pickerOpen ? 'flex' : 'none';
 }
 function toggleAndroidHighlightMode(force) {
   if (!isAndroidAppHighlightModeSupported()) {
@@ -12734,6 +12762,7 @@ function toggleAndroidHighlightMode(force) {
   }
   _androidAppHighlightMode = (typeof force === 'boolean') ? force : !_androidAppHighlightMode;
   if (!_androidAppHighlightMode) {
+    closeColourPicker();
     stage6hClearAndroidParagraphTarget();
     closeSelectionActionBar(true);
     closeMobileActionBar();
@@ -12743,7 +12772,7 @@ function toggleAndroidHighlightMode(force) {
     closeSelectionActionBar(true);
     const ws = window.getSelection ? window.getSelection() : null;
     if (ws) ws.removeAllRanges();
-    showToast('Mode paragraphe : touchez un paragraphe');
+    showToast('Mode paragraphe : touchez un paragraphe puis choisissez une couleur');
   }
   updateAndroidHighlightModeUi();
 }
@@ -12771,6 +12800,8 @@ function handleAndroidHighlightModePointer(e) {
   closeSelectionActionBar(false);
   if (selectAndroidParagraphByTap(textEl)) {
     if (typeof stage6fMarkHighlightUiOpening === 'function') stage6fMarkHighlightUiOpening(900);
+    if (typeof stage6hHideAndroidHighlightHint === 'function') stage6hHideAndroidHighlightHint();
+    if (typeof updateAndroidHighlightModeUi === 'function') updateAndroidHighlightModeUi();
     showColourPickerBottom(false, null);
     if (navigator.vibrate) navigator.vibrate(18);
   } else {
@@ -13002,6 +13033,7 @@ function closeColourPicker() {
   closeSelectionActionBar(false);
   state._pending = null;
   if (typeof stage6hSetColourPickerLabel === 'function') stage6hSetColourPickerLabel();
+  if (typeof updateAndroidHighlightModeUi === 'function') updateAndroidHighlightModeUi();
 }
 
 function applyHighlight(color) {
@@ -13053,7 +13085,7 @@ function applyHighlight(color) {
 function rerenderPara(paraId) {
   const block = document.getElementById(paraId);
   if (!block) return;
-  // Stage 6H.1: rerender every selectable text surface, not only meditation .para-text.
+  // Rerender every selectable text surface, not only meditation .para-text.
   // v91 could persist a highlight created on reflections/section/prayer/library text but fail
   // to display it immediately because this function only queried .para-text.
   const el = block.querySelector('.para-text, .ref-para, .block-paragraph, .prayer-modal-para, .library-practice-item');
@@ -13116,6 +13148,7 @@ function showColourPickerBottom(isExisting, hlId) {
   removeBtn.dataset.hlId = hlId || '';
   picker.classList.add('open', 'cp-bottom');
   picker.style.left = ''; picker.style.top = ''; picker.style.right = ''; picker.style.bottom = '';
+  if (typeof updateAndroidHighlightModeUi === 'function') updateAndroidHighlightModeUi();
 }
 
 

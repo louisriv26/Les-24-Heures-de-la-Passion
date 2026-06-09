@@ -1,7 +1,7 @@
 {
   "name": "Luisa — 24 Heures de la Passion",
   "short_name": "24 Heures",
-  "description": "Stage 6H.2 — report integrity and dynamic speech-count correction (prototype-92)",
+  "description": "Stage 6H.4 — evidence integrity and stale-reference cleanup (prototype-94)",
   "start_url": "./luisa_24_heures.html",
   "display": "standalone",
   "orientation": "any",

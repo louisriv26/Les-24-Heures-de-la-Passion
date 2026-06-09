@@ -1,1 +1,1 @@
-device,browser_or_pwa,test_area,expected,actual,result,evidence_link,notes
+device,os,browser,app_version,test_area,result,notes,screenshot

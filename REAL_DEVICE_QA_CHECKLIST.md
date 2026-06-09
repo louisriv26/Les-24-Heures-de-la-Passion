@@ -1,26 +1,34 @@
-# Real-device QA checklist — Stage 6H.2 — report integrity and dynamic speech-count correction
+# Real-device QA checklist — prototype-94
 
-Status before device testing: `LIMITED_PASS_STATIC`.
+Status before QA: `LIMITED_PASS_STATIC`
 
-## Samsung/Android
-1. Open `prototype-92`.
-2. Tap `Paragraphe`.
-3. Confirm hint: whole-paragraph mode; word-by-word selection unavailable.
-4. Confirm old bottom bar does not appear.
-5. Tap a meditation paragraph.
-6. Confirm colour picker says `Surligner ce paragraphe en`.
-7. Choose colour.
-8. Confirm whole paragraph highlight renders immediately.
-9. Repeat on reflection/practice paragraph.
-10. Reload and confirm persistence.
-11. Confirm highlight appears in Mon Espace.
-12. Confirm no Google Translate/Search overlay appears.
+## Samsung paragraph highlight
 
-## iPhone/iPad
-1. Select exact text.
-2. Tap `Surligner`.
-3. Choose colour.
-4. Confirm exact selected text highlight renders and persists.
+- [ ] Open the latest deployed link.
+- [ ] Confirm **Paragraphe** appears in the top bar.
+- [ ] Tap **Paragraphe**.
+- [ ] Do not tap **Annuler** unless cancelling.
+- [ ] Tap one meditation paragraph.
+- [ ] Confirm the hint disappears.
+- [ ] Confirm colour picker label: **Surligner ce paragraphe en**.
+- [ ] Choose a colour directly.
+- [ ] Confirm the whole paragraph is highlighted.
+- [ ] Repeat on a reflection/practice paragraph.
+- [ ] Reload or reopen.
+- [ ] Confirm persistence.
+- [ ] Confirm the highlighted paragraph appears in **Mon Espace**.
+- [ ] Confirm no Samsung/Google Translate/Search/Copy overlay appears.
+
+## iPhone/iPad exact highlight
+
+- [ ] Select exact text.
+- [ ] Tap **Surligner**.
+- [ ] Choose a colour.
+- [ ] Confirm only the selected text is highlighted.
+- [ ] Reload and confirm persistence.
 
 ## Update/orientation
-Confirm `Actualiser`, reload, portrait/landscape, and installed PWA behaviour.
+
+- [ ] Confirm version shown as `prototype-94`.
+- [ ] Test portrait and landscape.
+- [ ] Test installed PWA separately from browser.
