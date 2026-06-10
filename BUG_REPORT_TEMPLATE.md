@@ -1,4 +1,4 @@
-# Real-device QA checklist — prototype-94
+# Real-device QA checklist — prototype-95
 
 Status before QA: `LIMITED_PASS_STATIC`
 
@@ -29,6 +29,6 @@ Status before QA: `LIMITED_PASS_STATIC`
 
 ## Update/orientation
 
-- [ ] Confirm version shown as `prototype-94`.
+- [ ] Confirm version shown as `prototype-95`.
 - [ ] Test portrait and landscape.
 - [ ] Test installed PWA separately from browser.

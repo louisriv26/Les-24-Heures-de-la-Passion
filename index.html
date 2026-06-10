@@ -323,6 +323,38 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--ink); 
 /* ── Subsection ── */
 .subsection-heading { font-family: var(--font-display); font-size: 1rem; letter-spacing: 0.04em; color: var(--ink); margin: 2rem 0 1.25rem; padding-top: 1.5rem; border-top: 1px solid var(--bg3); }
 
+
+/* Stage 6K — source-backed internal subheaders */
+.internal-subheading {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, calc(var(--reading-size) * 0.76), 1.15rem);
+  line-height: 1.35;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  background: linear-gradient(135deg, rgba(155,109,77,0.08), rgba(155,109,77,0.025));
+  border: 1px solid rgba(155,109,77,0.22);
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+  padding: 0.72rem 0.9rem;
+  margin: 1.15rem 0 0.65rem;
+  white-space: pre-wrap;
+  -webkit-user-select: text;
+  user-select: text;
+}
+.internal-subheading-body { display: block; }
+.internal-heading-separator { display: none; }
+.para-block.internal-subheading-block {
+  margin: 1.45rem 0 0.95rem;
+  gap: 0;
+}
+.para-block.internal-subheading-block .para-num { display: none; }
+.para-block.internal-subheading-block .para-text { flex: 1; }
+.para-block.internal-subheading-block .internal-subheading { margin-top: 0; margin-bottom: 0; }
+@media (max-width: 900px), (pointer: coarse) {
+  .internal-subheading { padding: 0.68rem 0.78rem; margin: 1rem 0 0.6rem; }
+}
+
 /* ── Hour nav ── */
 .hour-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; padding-top: 1.4rem; border-top: 1px solid var(--bg3); gap: 0.5rem; }
 .nav-btn { display: flex; align-items: center; gap: 0.4rem; background: var(--bg2); border: 1px solid var(--bg3); border-radius: var(--radius); padding: 0.6rem 0.9rem; cursor: pointer; color: var(--ink2); font-family: var(--font-ui); font-size: var(--ui-size, 16px); transition: background 0.15s, border-color 0.15s, color 0.15s; flex-shrink: 0; }
@@ -4231,7 +4263,7 @@ const state = {
   monEspacePanelOpen: false,
   meditationLog: []
 };
-const APP_VERSION = 'prototype-94';
+const APP_VERSION = 'prototype-95';
 const STORAGE_SCHEMA_VERSION=3;
 const SEARCH_RESULT_LIMIT = 60;
 
@@ -10605,6 +10637,7 @@ const HOUR_LINKED_TEXTS = {
     "PASSION24.TEXT.RELATED_HOUR_23"
   ]
 };
+const INTERNAL_SUBHEADINGS = {"PASSION24.HOUR.15.P010":{"hour":15,"heading":"Jésus est devant Hérode","status":"standalone_paragraph","heading_end":23,"body_start":23,"speech_sensitive":false,"source_pages":"131-135","source_evidence":"Body wording confirmed in source-note discussion; TOC/body conflict resolved in favour of body wording."},"PASSION24.HOUR.16.P015":{"hour":16,"heading":"La Flagellation de Jésus","status":"standalone_paragraph","heading_end":24,"body_start":24,"speech_sensitive":false,"source_pages":"136-142","source_evidence":"Source-note inventory confirms Hour 16 internal heading; heading exists as body paragraph."},"PASSION24.HOUR.17.P001":{"hour":17,"heading":"Jésus est condamné à mort","status":"prefix_merged","heading_end":25,"body_start":26,"speech_sensitive":false,"source_pages":"143-154","source_evidence":"Source body pages around 143-144 confirm internal heading."},"PASSION24.HOUR.17.P006":{"hour":17,"heading":"Jésus est couronné d’épines","status":"prefix_merged","heading_end":27,"body_start":28,"speech_sensitive":false,"source_pages":"143-154","source_evidence":"Source body pages around 143-144 confirm internal heading."},"PASSION24.HOUR.17.P027":{"hour":17,"heading":"Jésus est de nouveau envoyé à Pilate","status":"standalone_paragraph","heading_end":36,"body_start":36,"speech_sensitive":false,"source_pages":"143-154","source_evidence":"Source body page around 146 confirms internal heading."},"PASSION24.HOUR.17.P046":{"hour":17,"heading":"Jésus est présenté comme « Ecce Homo »","status":"prefix_merged","heading_end":38,"body_start":39,"speech_sensitive":false,"source_pages":"143-154","source_evidence":"Source body page around 148 confirms internal heading."},"PASSION24.HOUR.17.P066":{"hour":17,"heading":"Jésus est condamné à mort","status":"standalone_paragraph","heading_end":25,"body_start":25,"speech_sensitive":false,"source_pages":"143-154","source_evidence":"Source body page around 151 confirms second condemnation internal heading."},"PASSION24.HOUR.18.P006":{"hour":18,"heading":"Jésus est couronné d’épines pour la deuxième fois","status":"prefix_merged","heading_end":49,"body_start":50,"speech_sensitive":false,"source_pages":"155-168","source_evidence":"Source-note inventory confirms Hour 18 internal heading; heading exists as body prefix."},"PASSION24.HOUR.18.P019":{"hour":18,"heading":"Jésus reçoit la Croix sur ses saintes Epaules","status":"prefix_merged","heading_end":45,"body_start":46,"speech_sensitive":false,"source_pages":"155-168","source_evidence":"Source-note inventory confirms Hour 18 internal heading; heading exists as body prefix."},"PASSION24.HOUR.18.P039":{"hour":18,"heading":"Le Chemin au Calvaire","status":"prefix_merged","heading_end":21,"body_start":22,"speech_sensitive":false,"source_pages":"155-168","source_evidence":"Source-note inventory confirms Hour 18 internal heading; heading exists as body prefix."},"PASSION24.HOUR.18.P041":{"hour":18,"heading":"Jésus tombe pour la première fois","status":"standalone_paragraph","heading_end":33,"body_start":33,"speech_sensitive":false,"source_pages":"155-168","source_evidence":"Source-note inventory confirms Hour 18 internal heading; heading exists as body paragraph."},"PASSION24.HOUR.18.P044":{"hour":18,"heading":"Jésus rencontre sa très Sainte Mère","status":"prefix_merged","heading_end":35,"body_start":36,"speech_sensitive":false,"source_pages":"155-168","source_evidence":"Source-note inventory confirms Hour 18 internal heading; heading exists as body prefix."},"PASSION24.HOUR.18.P049":{"hour":18,"heading":"Jésus tombe pour la deuxième fois","status":"prefix_merged","heading_end":33,"body_start":34,"speech_sensitive":false,"source_pages":"155-168","source_evidence":"Source-note inventory confirms Hour 18 internal heading; heading exists as body prefix."},"PASSION24.HOUR.18.P055":{"hour":18,"heading":"La Plaie profonde de l’Epaule de Jésus","status":"prefix_merged","heading_end":38,"body_start":39,"speech_sensitive":false,"source_pages":"155-168","source_evidence":"Source-note inventory confirms Hour 18 internal heading class; heading exists as body prefix."},"PASSION24.HOUR.18.P059":{"hour":18,"heading":"Le Cyrénéen est obligé de porter la Croix de Jésus","status":"standalone_paragraph","heading_end":50,"body_start":50,"speech_sensitive":false,"source_pages":"155-168","source_evidence":"Source-note inventory confirms Hour 18 internal heading; heading exists as body paragraph."},"PASSION24.HOUR.18.P062":{"hour":18,"heading":"Véronique essuie le Visage de Jésus","status":"standalone_paragraph","heading_end":35,"body_start":35,"speech_sensitive":false,"source_pages":"155-168","source_evidence":"Source-note inventory confirms Hour 18 internal heading; heading exists as body paragraph."},"PASSION24.HOUR.18.P081":{"hour":18,"heading":"Jésus console les saintes Femmes","status":"standalone_paragraph","heading_end":32,"body_start":32,"speech_sensitive":false,"source_pages":"155-168","source_evidence":"Source-note inventory confirms Hour 18 internal heading class; heading exists as body paragraph."},"PASSION24.HOUR.18.P085":{"hour":18,"heading":"Jésus tombe pour la troisième fois","status":"prefix_merged","heading_end":34,"body_start":35,"speech_sensitive":false,"source_pages":"155-168","source_evidence":"Source-note inventory confirms Hour 18 internal heading class; heading exists as body prefix."},"PASSION24.HOUR.19.P004":{"hour":19,"heading":"Jésus est couronné d’épines pour la troisième fois","status":"prefix_merged","heading_end":50,"body_start":51,"speech_sensitive":false,"source_pages":"169-194","source_evidence":"Source-note inventory confirms Hour 19 internal heading; heading exists as body prefix."},"PASSION24.HOUR.19.P026":{"hour":19,"heading":"La Crucifixion","status":"standalone_paragraph","heading_end":14,"body_start":14,"speech_sensitive":false,"source_pages":"169-194","source_evidence":"Source-note inventory confirms Hour 19 internal heading; heading exists as body paragraph."},"PASSION24.HOUR.19.P062":{"hour":19,"heading":"Jésus est cloué à la Croix","status":"standalone_paragraph","heading_end":26,"body_start":26,"speech_sensitive":false,"source_pages":"169-194","source_evidence":"Source-note inventory confirms Hour 19 internal heading; heading exists as body paragraph."},"PASSION24.HOUR.19.P067":{"hour":19,"heading":"Prière pour désarmer la Justice Divine","status":"prefix_merged","heading_end":38,"body_start":39,"speech_sensitive":false,"source_pages":"169-194","source_evidence":"Source-note inventory confirms Hour 19 internal heading; heading exists as body prefix."},"PASSION24.HOUR.20.P001":{"hour":20,"heading":"La première Parole :\n« Père, pardonne-leur car ils ne savent pas ce qu’ils font ! »","status":"prefix_merged","heading_end":83,"body_start":84,"speech_sensitive":true,"source_pages":"195-204","source_evidence":"Source body pages around 195-220 confirm Seven Words headings."},"PASSION24.HOUR.21.P001":{"hour":21,"heading":"Deuxième Parole : « Aujourd'hui, tu seras avec Moi au Paradis. »","status":"standalone_paragraph","heading_end":64,"body_start":64,"speech_sensitive":true,"source_pages":"205-216","source_evidence":"Source body pages around 195-220 confirm Seven Words headings."},"PASSION24.HOUR.21.P017":{"hour":21,"heading":"Troisième Parole : Jésus dit à sa Maman : « Femme, voici ton fils ! » et à Jean : « Voici ta Mère ! »","status":"prefix_merged","heading_end":101,"body_start":102,"speech_sensitive":true,"source_pages":"205-216","source_evidence":"Source body pages around 195-220 confirm Seven Words headings."},"PASSION24.HOUR.21.P040":{"hour":21,"heading":"Quatrième Parole : « Mon Dieu, mon Dieu, pourquoi M'as-Tu abandonné ? »","status":"standalone_paragraph","heading_end":71,"body_start":71,"speech_sensitive":true,"source_pages":"205-216","source_evidence":"Source body pages around 195-220 confirm Seven Words headings."},"PASSION24.HOUR.22.P001":{"hour":22,"heading":"Cinquième Parole : « J'ai soif ! »","status":"standalone_paragraph","heading_end":34,"body_start":34,"speech_sensitive":true,"source_pages":"217-225","source_evidence":"Source body pages around 195-220 confirm Seven Words headings."},"PASSION24.HOUR.22.P014":{"hour":22,"heading":"Sixième Parole : « Tout est consommé ! »","status":"prefix_merged","heading_end":40,"body_start":41,"speech_sensitive":true,"source_pages":"217-225","source_evidence":"Source body pages around 195-220 confirm Seven Words headings."},"PASSION24.HOUR.22.P020":{"hour":22,"heading":"Septième Parole : « Entre tes Mains, ô Père, Je remets mon Esprit ! »","status":"prefix_merged","heading_end":69,"body_start":70,"speech_sensitive":true,"source_pages":"217-225","source_evidence":"Source body pages around 195-220 confirm Seven Words headings."}};
 
 const FONT_PRESETS = [
   { reading: 16, ui: 15, nav: 15, eyebrow: 12, title: 19, modal: 15 },
@@ -11489,12 +11522,15 @@ function renderReader(hour, scroll = true) {
 function buildParaBlock(p, hourNum) {
   const isFav = !!state.favorites[p.id];
   const isHl = state.highlights.has(p.id);
+  const internalHeadingMeta = getInternalSubheadingMeta(p.id);
+  const internalHeadingClass = internalHeadingMeta && internalHeadingMeta.status === 'standalone_paragraph' ? ' internal-subheading-block' : '';
+  const numberHtml = internalHeadingMeta && internalHeadingMeta.status === 'standalone_paragraph' ? '' : `<span class="para-num">${p.n}${(()=>{const sp=SPEECH_DATA[p.id];if(!sp)return '';const j=sp.some(s=>s.speaker==='JESUS');const m=sp.some(s=>s.speaker==='MARY');return(j?'<span class="speaker-badge badge-jesus" title="Paroles de Jésus">✝ Jésus</span>':'')+( m?'<span class="speaker-badge badge-mary" title="Paroles de Marie">✦ Marie</span>':'');})()
+    }</span>`;
   return `
-  <div class="para-block ${isHl?'highlighted':''} ${isFav?'favorited':''}" id="${p.id}"
+  <div class="para-block${internalHeadingClass} ${isHl?'highlighted':''} ${isFav?'favorited':''}" id="${p.id}"
     ontouchstart="startLongPress('${p.id}',${hourNum},event)" ontouchend="cancelLongPress()" ontouchmove="cancelLongPress()">
-    <span class="para-num">${p.n}${(()=>{const sp=SPEECH_DATA[p.id];if(!sp)return '';const j=sp.some(s=>s.speaker==='JESUS');const m=sp.some(s=>s.speaker==='MARY');return(j?'<span class="speaker-badge badge-jesus" title="Paroles de Jésus">✝ Jésus</span>':'')+( m?'<span class="speaker-badge badge-mary" title="Paroles de Marie">✦ Marie</span>':'');})()
-    }</span>
-    <div class="para-text">${renderParaText(p.t, p.id)}</div>
+    ${numberHtml}
+    <div class="para-text" data-para-id="${p.id}">${renderStructuredParaText(p.t, p.id)}</div>
     <div class="para-actions">
       <button class="para-action-btn ${isFav?'favorited':''}" onclick="toggleFavorite('${p.id}',${hourNum})" title="Favori" aria-label="Ajouter aux favoris">★</button>
       <button class="para-action-btn" onclick="toggleHighlight('${p.id}')" title="Marquer le paragraphe" aria-label="Marquer ce paragraphe">◈</button>
@@ -12440,27 +12476,37 @@ function renderPanelTab(tab){
 
 
 // ── Text-selection highlighting ──
-function renderParaText(text, paraId) {
-  // Stage 4K: render only fresh, hash-validated highlights; stale ones remain visible in Mon Espace.
-  const hls = getRenderableHighlightsForText(text, paraId);
-  const speechSegs = (SPEECH_DATA[paraId] || []).slice().sort((a,b)=>a.start-b.start);
-  if (!hls.length && !speechSegs.length) return escHtml(text);
+function renderParaTextRange(text, paraId, rangeStart, rangeEnd) {
+  text = String(text || '');
+  const start = Math.max(0, Math.min(Number(rangeStart) || 0, text.length));
+  const end = Math.max(start, Math.min(Number(rangeEnd), text.length));
+  const hls = getRenderableHighlightsForText(text, paraId).filter(hl => {
+    const s = Number(hl.start_offset ?? hl.start);
+    const e = Number(hl.end_offset ?? hl.end);
+    return Number.isFinite(s) && Number.isFinite(e) && e > start && s < end;
+  });
+  const speechSegs = (SPEECH_DATA[paraId] || []).slice().sort((a,b)=>a.start-b.start).filter(seg => seg.end > start && seg.start < end);
+  if (!hls.length && !speechSegs.length) return escHtml(text.slice(start, end));
 
-  // Build sorted event list from both speech and highlight ranges
   const events = [];
+  let speechCls = null, hlCls = null, hlId = null;
   for (const seg of speechSegs) {
     const cls = seg.speaker === 'JESUS' ? 'sp-jesus' : 'sp-mary';
-    events.push({ pos: seg.start, open: true,  kind: 'speech', cls });
-    events.push({ pos: seg.end,   open: false, kind: 'speech', cls });
+    if (seg.start <= start && seg.end > start) speechCls = cls;
+    else events.push({ pos: Math.max(seg.start, start), open: true, kind: 'speech', cls });
+    if (seg.end < end) events.push({ pos: Math.min(seg.end, end), open: false, kind: 'speech', cls });
   }
   for (const hl of hls) {
-    events.push({ pos: hl.start, open: true,  kind: 'hl', id: hl.id, cls: `hl hl-${hl.color}` });
-    events.push({ pos: hl.end,   open: false, kind: 'hl', id: hl.id, cls: null });
+    const s = Number(hl.start_offset ?? hl.start);
+    const e = Number(hl.end_offset ?? hl.end);
+    const cls = `hl hl-${hl.color}`;
+    if (s <= start && e > start) { hlCls = cls; hlId = hl.id; }
+    else events.push({ pos: Math.max(s, start), open: true, kind: 'hl', id: hl.id, cls });
+    if (e < end) events.push({ pos: Math.min(e, end), open: false, kind: 'hl', id: hl.id, cls: null });
   }
   events.sort((a, b) => a.pos - b.pos || (a.open ? 1 : -1));
 
-  let out = '', pos = 0, speechCls = null, hlCls = null, hlId = null;
-
+  let out = '', pos = start;
   const flush = (to) => {
     if (to <= pos) return;
     let chunk = escHtml(text.slice(pos, to));
@@ -12469,15 +12515,39 @@ function renderParaText(text, paraId) {
     out += chunk;
     pos = to;
   };
-
   for (const ev of events) {
-    const evPos = Math.min(ev.pos, text.length);
+    const evPos = Math.max(start, Math.min(ev.pos, end));
     flush(evPos);
     if (ev.kind === 'speech') speechCls = ev.open ? ev.cls : null;
     else { if (ev.open) { hlCls = ev.cls; hlId = ev.id; } else { hlCls = null; hlId = null; } }
   }
-  flush(text.length);
+  flush(end);
   return out;
+}
+
+function renderParaText(text, paraId) {
+  text = String(text || '');
+  return renderParaTextRange(text, paraId, 0, text.length);
+}
+
+function getInternalSubheadingMeta(paraId) {
+  if (!paraId || typeof INTERNAL_SUBHEADINGS === 'undefined') return null;
+  return INTERNAL_SUBHEADINGS[paraId] || null;
+}
+
+function renderStructuredParaText(text, paraId) {
+  text = String(text || '');
+  const meta = getInternalSubheadingMeta(paraId);
+  if (!meta) return renderParaText(text, paraId);
+  const headingEnd = Math.max(0, Math.min(Number(meta.heading_end || 0), text.length));
+  const bodyStart = Math.max(headingEnd, Math.min(Number(meta.body_start || headingEnd), text.length));
+  if (meta.status === 'standalone_paragraph') {
+    return `<span class="internal-subheading" data-internal-heading="true">${renderParaTextRange(text, paraId, 0, text.length)}</span>`;
+  }
+  const headingHtml = renderParaTextRange(text, paraId, 0, headingEnd);
+  const separatorHtml = escHtml(text.slice(headingEnd, bodyStart));
+  const bodyHtml = renderParaTextRange(text, paraId, bodyStart, text.length);
+  return `<span class="internal-subheading" data-internal-heading="true">${headingHtml}</span><span class="internal-heading-separator">${separatorHtml}</span><span class="internal-subheading-body">${bodyHtml}</span>`;
 }
 
 function getCharOffset(container, node, offset) {
@@ -13092,7 +13162,7 @@ function rerenderPara(paraId) {
   if (!el) return;
   const fullText = getFullParaText(paraId) || el.textContent || '';
   if (!String(fullText).length) return;
-  el.innerHTML = renderParaText(String(fullText), paraId);
+  el.innerHTML = renderStructuredParaText(String(fullText), paraId);
 }
 
 function onMarkClick(event, paraId, hlId) {

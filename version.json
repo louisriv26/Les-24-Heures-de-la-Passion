@@ -1,14 +1,6 @@
 {
-  "app_version": "prototype-94",
-  "version": "prototype-94",
+  "version": "prototype-95",
   "build_date": "2026-06-09",
-  "stage": "Stage 6H.4 — evidence integrity and stale-reference cleanup",
-  "package": "luisa_24_heures_app_v94_stage6h4_evidence_integrity_cleanup_locked.zip",
-  "status": "LIMITED_PASS_STATIC",
-  "final_status": "LIMITED_PASS_STATIC",
-  "real_device_status": "LIMITED_PASS_STATIC; Samsung/iPhone/iPad confirmation still required",
-  "protected_data_changed": false,
-  "runtime_patch": "Keeps the Samsung direct flow: Paragraphe → tap paragraph → choose colour. Cleans deploy-facing stale evidence and keeps protected data unchanged.",
-  "updated_at_utc": "2026-06-09T18:48:45.638445+00:00",
-  "real_device_gate": "REQUIRED: Samsung paragraph highlight retest + iPhone/iPad exact highlight + update/orientation confirmation"
+  "stage": "Stage 6K — source-backed internal subheader restoration",
+  "status": "LIMITED_PASS_STATIC"
 }
