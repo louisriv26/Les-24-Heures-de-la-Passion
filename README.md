@@ -1,5 +1,5 @@
-# Les 24 Heures de la Passion — prototype-95
+# Luisa 24 Heures — Stage 6R
 
-Stage 6K — source-backed internal subheader restoration.
-
-Status: LIMITED_PASS_STATIC. Real-device Samsung/iPhone/iPad validation remains required.
+Package: luisa_24_heures_app_v98_stage6r_validated_corpus_patch_locked.zip
+Status: LIMITED_PASS_STATIC
+Real device status: NOT_TESTED.
