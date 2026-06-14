@@ -1,7 +1,7 @@
 {
   "name": "Les 24 Heures de la Passion — Stage 7D",
   "short_name": "24 Heures 7D",
-  "description": "24 Heures de la Passion — Stage 7D/R15 evidence-integrity repair.",
+  "description": "24 Heures de la Passion — Stage 7D/R25 full Mon Espace group display.",
   "start_url": "./luisa_24_heures.html",
   "display": "standalone",
   "orientation": "any",
@@ -39,5 +39,5 @@
     "standalone",
     "browser"
   ],
-  "version": "prototype-101r22-stage7d-r15-evidence-integrity-repaired"
+  "version": "prototype-101r32-stage7d-r25-full-espace-group-display"
 }

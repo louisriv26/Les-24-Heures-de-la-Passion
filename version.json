@@ -1,44 +1,24 @@
 {
-  "version": "v101R22-stage7d-r15",
-  "app_version": "prototype-101r22-stage7d-r15-evidence-integrity-repaired",
+  "version": "v101R32-stage7d-r25",
+  "app_version": "prototype-101r32-stage7d-r25-full-espace-group-display",
   "build_date": "2026-06-14",
-  "stage": "Stage 7D/R15 evidence-integrity repair after four-pass deep recheck",
-  "package_name": "luisa_24_heures_app_v101r22_stage7d_r15_evidence_integrity_repaired_locked.zip",
-  "generated_at_utc": "2026-06-14T13:00:53+00:00",
-  "editorial_join_override": true,
-  "split_review_items": 15,
-  "join_pairs_applied": 14,
-  "punctuation_repairs_applied": 1,
-  "subheader_count": 28,
-  "speech_segment_count": 345,
-  "speech_key_count": 340,
-  "speaker_counts": {
-    "MARY": 30,
-    "FATHER": 3,
-    "JESUS": 312
-  },
-  "runtime_targets": 1858,
-  "corpus_fingerprint_sha256": "c05886ca764a8f791affa0beba904c1826db73786c4ed0be1e089dcc433479dd",
-  "text_library_fingerprint_sha256": "65dbf9f53cc3a8d9d02e82f9acab769db8eb9457912ac630ec8e5453600e2f9f",
-  "speech_data_fingerprint_sha256": "10550c7c2d17988a073bf85d00ec19226f00e2ec2c92e37a0630c2f7c5ded8cf",
-  "subheading_fingerprint_sha256": "b0673aacdfbd71c6d3cfd2032f16b1495ff383c51a835f0d5f81e4852a380dce",
-  "removed_paragraph_ids_preserved_in_ledger": [
-    "PASSION24.HOUR.04.P091",
-    "PASSION24.HOUR.07.P060",
-    "PASSION24.HOUR.21.P079",
-    "PASSION24.HOUR.24.DESOL.P053",
-    "PASSION24.HOUR.11.P029",
-    "PASSION24.HOUR.11.P037",
-    "PASSION24.HOUR.07.P120",
-    "PASSION24.HOUR.07.P090",
-    "PASSION24.HOUR.19.P122",
-    "PASSION24.SECTION.BENEFITS.P005",
-    "PASSION24.SECTION.BENEFITS.P011",
-    "PASSION24.SECTION.BENEFITS.P072",
-    "PASSION24.SECTION.BENEFITS.P083",
-    "PASSION24.SECTION.BENEFITS.P100"
+  "stage": "Stage 7D/R25 full Mon Espace group display",
+  "package_name": "luisa_24_heures_app_v101r32_stage7d_r25_full_espace_group_display_locked.zip",
+  "generated_at_utc": "2026-06-14T18:05:45+00:00",
+  "changes": [
+    "Grouped full Mon Espace screen highlight display for multi-paragraph highlight groups.",
+    "Preserved R24 side-panel grouping, R22 overlap-group integrity, and existing group-aware delete/recolour behaviour.",
+    "Preserved single-paragraph highlight display.",
+    "Preserved corpus/devotional/source text, speech data, internal subheadings, paragraph IDs, Samsung paragraph mode, theme settings, and Prier/Etudier logic.",
+    "Regenerated deploy ZIP, manifests, reports, final reopened audit, and independent reopened audit."
   ],
-  "source_text_policy": "R14 editorial override preserved: 14 source-faithful paragraph pairs joined; H06.P032 comma repaired to period.",
+  "protected_layers_unchanged": [
+    "CORPUS",
+    "TEXT_LIBRARY",
+    "HOUR_LINKED_TEXTS",
+    "SPEECH_DATA",
+    "INTERNAL_SUBHEADINGS"
+  ],
   "real_device_status": "NOT_TESTED",
   "not_public_release_pass": true
 }

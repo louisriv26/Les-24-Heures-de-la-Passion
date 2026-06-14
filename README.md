@@ -1,3 +1,5 @@
-# Les 24 Heures de la Passion — v101R22-stage7d-r15
+# Les 24 Heures de la Passion
 
-Static/source/package baseline after Stage 7D/R15 evidence-integrity repair after four-pass deep recheck. Real-device QA remains required.
+Version: v101R32-stage7d-r25
+App version: prototype-101r32-stage7d-r25-full-espace-group-display
+Status: static/package PASS; real-device QA remains required.
