@@ -1,5 +1,5 @@
-/* Stage 7B-R3 — deep rechecked text-boundary repaired — prototype-101r3-stage7b-clean-rebuild-from-v98-text-boundary-repaired */
-const CACHE_NAME = 'luisa-24h-prototype-101r3-stage7b-clean-rebuild-from-v98-text-boundary-repaired';
+/* Stage 7D-R15 — prototype-101r22-stage7d-r15-evidence-integrity-repaired */
+const CACHE_NAME = 'luisa-24h-v101r22-stage7d-r15';
 const CACHE_PREFIX = 'luisa-24h-';
 const APP_SHELL = [
   './',

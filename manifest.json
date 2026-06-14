@@ -1,7 +1,7 @@
 {
-  "name": "Les 24 Heures de la Passion — prototype-101",
-  "short_name": "24 Heures v101R3",
-  "description": "24 Heures de la Passion — Stage 7B-R3 deep rechecked text-boundary repaired package.",
+  "name": "Les 24 Heures de la Passion — Stage 7D",
+  "short_name": "24 Heures 7D",
+  "description": "24 Heures de la Passion — Stage 7D/R15 evidence-integrity repair.",
   "start_url": "./luisa_24_heures.html",
   "display": "standalone",
   "orientation": "any",
@@ -39,5 +39,5 @@
     "standalone",
     "browser"
   ],
-  "version": "prototype-101r3-stage7b-clean-rebuild-from-v98-text-boundary-repaired"
+  "version": "prototype-101r22-stage7d-r15-evidence-integrity-repaired"
 }
