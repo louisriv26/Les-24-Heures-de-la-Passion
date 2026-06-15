@@ -302,11 +302,28 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--ink); 
 
 /* ── Paragraphs ── */
 .para-block { display: flex; gap: 1rem; margin-bottom: 1.15em; position: relative; animation: fadeIn 0.25s ease both; -webkit-touch-callout: none; }
-/* Stage 7D-R31 — dash-list reading rhythm repair */
-.para-block.dash-list-cluster { margin-bottom: 0.38em; }
-.para-block.dash-list-last { margin-bottom: 1.15em; }
-.ref-para-block.dash-list-cluster { margin-bottom: 0.38em; }
-.ref-para-block.dash-list-last { margin-bottom: 1em; }
+/* Stage 7D-R33B — dash-list visual rhythm strong repair.
+   Render-only: stronger reader-scoped dash-list spacing, hanging indent, and continuation alignment. */
+.reader-screen .para-block.dash-list-item,
+.reader-screen .reflections-wrap .ref-para-block.dash-list-item { margin-bottom: 0.16em; }
+.reader-screen .para-block.dash-list-first,
+.reader-screen .reflections-wrap .ref-para-block.dash-list-first { margin-top: 0.25em; }
+.reader-screen .para-block.dash-list-last,
+.reader-screen .reflections-wrap .ref-para-block.dash-list-last { margin-bottom: 1.15em; }
+.reader-screen .para-block.dash-list-item .para-text,
+.reader-screen .reflections-wrap .ref-para-block.dash-list-item .para-text {
+  padding-left: 1.08em;
+  text-indent: -1.08em;
+  line-height: 1.58;
+}
+.reader-screen .para-block.dash-list-continuation .para-text,
+.reader-screen .reflections-wrap .ref-para-block.dash-list-continuation .para-text {
+  padding-left: 1.08em;
+  text-indent: 0;
+  line-height: 1.58;
+}
+.reader-screen .para-block.dash-list-continuation,
+.reader-screen .reflections-wrap .ref-para-block.dash-list-continuation { margin-top: -0.04em; }
 
 @keyframes fadeIn { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: none; } }
 .para-num { font-family: var(--font-display); font-size: 0.6rem; color: var(--ink4); min-width: 2rem; text-align: right; padding-top: 0.35rem; user-select: none; flex-shrink: 0; }
@@ -4374,8 +4391,8 @@ const state = {
   monEspacePanelOpen: false,
   meditationLog: []
 };
-const APP_VERSION = 'prototype-101r39-stage7d-r32-detailed-recheck-evidence-repaired';
-const APP_EVIDENCE_STAGE = 'Stage 7D-R32 evidence integrity repair; R31 dash-list rhythm retained';
+const APP_VERSION = 'prototype-101r41-stage7d-r33b-dash-list-visual-rhythm-strong-repair';
+const APP_EVIDENCE_STAGE = 'Stage 7D-R33B dash-list visual rhythm strong repair';
 const STORAGE_SCHEMA_VERSION=3;
 const SEARCH_RESULT_LIMIT = 60;
 
@@ -5772,14 +5789,38 @@ function renderReader(hour, scroll = true) {
 function isDashListItemText(text) {
   return /^\s*[-–—]\s+/.test(String(text || ''));
 }
-function getDashListRhythmClass(paragraphs, index) {
-  if (!Array.isArray(paragraphs) || !paragraphs[index] || !isDashListItemText(paragraphs[index].t)) return '';
-  const prevIsDash = index > 0 && isDashListItemText(paragraphs[index - 1] && paragraphs[index - 1].t);
+function hasTerminalSentencePunctuation(text) {
+  return /[.!?…;:»”"')\]]\s*$/.test(String(text || '').trim());
+}
+function beginsWithLowercaseLetter(text) {
+  return /^[a-zàâäçéèêëîïôöùûüÿæœ]/.test(String(text || '').trim());
+}
+function isDashListContinuationText(paragraphs, index) {
+  if (!Array.isArray(paragraphs) || index <= 0 || !paragraphs[index]) return false;
+  const currentText = paragraphs[index] && paragraphs[index].t;
+  const previousText = paragraphs[index - 1] && paragraphs[index - 1].t;
+  if (isDashListItemText(currentText) || !isDashListItemText(previousText)) return false;
+  const prevPrevIsDash = index > 1 && isDashListItemText(paragraphs[index - 2] && paragraphs[index - 2].t);
   const nextIsDash = index + 1 < paragraphs.length && isDashListItemText(paragraphs[index + 1] && paragraphs[index + 1].t);
-  if (!prevIsDash && !nextIsDash) return '';
-  if (!prevIsDash && nextIsDash) return ' dash-list-cluster dash-list-first';
-  if (prevIsDash && nextIsDash) return ' dash-list-cluster dash-list-middle';
-  return ' dash-list-cluster dash-list-last';
+  const previousHasListContext = prevPrevIsDash || nextIsDash;
+  return previousHasListContext && !hasTerminalSentencePunctuation(previousText) && beginsWithLowercaseLetter(currentText);
+}
+function isDashListVisualItem(paragraphs, index) {
+  return Array.isArray(paragraphs) && !!paragraphs[index] && (isDashListItemText(paragraphs[index].t) || isDashListContinuationText(paragraphs, index));
+}
+function getDashListRhythmClass(paragraphs, index) {
+  if (!Array.isArray(paragraphs) || !paragraphs[index]) return '';
+  const isDash = isDashListItemText(paragraphs[index].t);
+  const isContinuation = isDashListContinuationText(paragraphs, index);
+  if (!isDash && !isContinuation) return '';
+  const prevInList = index > 0 && isDashListVisualItem(paragraphs, index - 1);
+  const nextInList = index + 1 < paragraphs.length && isDashListVisualItem(paragraphs, index + 1);
+  if (!prevInList && !nextInList) return '';
+  const classes = [isContinuation ? 'dash-list-continuation' : 'dash-list-item'];
+  if (!prevInList) classes.push('dash-list-first');
+  else if (nextInList) classes.push('dash-list-middle');
+  else classes.push('dash-list-last');
+  return ' ' + classes.join(' ');
 }
 
 function buildParaBlock(p, hourNum, rhythmClass = '') {

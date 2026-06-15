@@ -1,16 +1,15 @@
 {
-  "version": "v101R39-stage7d-r32",
-  "app_version": "prototype-101r39-stage7d-r32-detailed-recheck-evidence-repaired",
+  "version": "v101R41-stage7d-r33b",
+  "app_version": "prototype-101r41-stage7d-r33b-dash-list-visual-rhythm-strong-repair",
   "build_date": "2026-06-15",
-  "stage": "Stage 7D/R32 detailed recheck evidence integrity repair",
-  "package_name": "luisa_24_heures_app_v101r39_stage7d_r32_detailed_recheck_evidence_repaired_locked.zip",
-  "generated_at_utc": "2026-06-15T14:06:41+00:00",
+  "stage": "Stage 7D/R33B dash-list visual rhythm strong repair",
+  "package_name": "luisa_24_heures_app_v101r41_stage7d_r33b_dash_list_visual_rhythm_strong_repair_locked.zip",
+  "generated_at_utc": "2026-06-15T16:50:25+00:00",
   "changes": [
-    "Repaired detailed recheck/evidence integrity after an obsolete external manual report used an incomplete speech-target map.",
-    "Confirmed speech targets include CORPUS.sections as well as Hours, reflections, subsections, prayers and library-generated targets.",
-    "Preserved Stage 7D/R31 dash-list reading rhythm behaviour unchanged.",
-    "Preserved dark-mode visual repair, Hour 24 display repair, multi-paragraph highlight grouping and Favorite routing unchanged.",
-    "Updated package, version, cache, active reports, final locks, manifests and evidence to R32."
+    "Strengthened dash-list visual rhythm after iPad screenshots showed R31/R32 spacing was not visually effective.",
+    "Added reader-scoped hanging indent, stronger margin reduction and line-height tuning for dash-list clusters.",
+    "Added conservative continuation detection for split dash-list items such as Hour 24 P058/P059.",
+    "Preserved corpus/source text, paragraph IDs, speech data, highlights, Mon Espace and Favorite routing unchanged."
   ],
   "display_suppressed_paragraph_ids": [
     "PASSION24.HOUR.24.P001",
@@ -39,5 +38,13 @@
     "Hour 24 display repair"
   ],
   "real_device_status": "NOT_TESTED",
-  "not_public_release_pass": true
+  "not_public_release_pass": true,
+  "option_b_authorized": true,
+  "source_on_disk_sha256": "8c66d16020c1416f9ab6d7ef93f4e2bc3f06225d85a835110a5a8e115098e519",
+  "dash_list_visual_rhythm": {
+    "margin_bottom_between_items": "0.16em",
+    "hanging_indent": "1.08em",
+    "list_line_height": "1.58",
+    "continuation_detection": "unfinished dash item + lower-case next paragraph"
+  }
 }

@@ -1,6 +1,6 @@
 # Real-device QA checklist
 
-Version: v101R39-stage7d-r32
+Version: v101R38-stage7d-r31
 
 Required before public release:
 - Samsung Chrome/PWA paragraph highlighting
