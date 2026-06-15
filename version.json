@@ -1,23 +1,31 @@
 {
-  "version": "v101R32-stage7d-r25",
-  "app_version": "prototype-101r32-stage7d-r25-full-espace-group-display",
-  "build_date": "2026-06-14",
-  "stage": "Stage 7D/R25 full Mon Espace group display",
-  "package_name": "luisa_24_heures_app_v101r32_stage7d_r25_full_espace_group_display_locked.zip",
-  "generated_at_utc": "2026-06-14T18:05:45+00:00",
+  "version": "v101R37-stage7d-r30",
+  "app_version": "prototype-101r37-stage7d-r30-deep-recheck-evidence-repaired",
+  "build_date": "2026-06-15",
+  "stage": "Stage 7D/R30 deep-recheck evidence repair",
+  "package_name": "luisa_24_heures_app_v101r37_stage7d_r30_deep_recheck_evidence_repaired_locked.zip",
+  "generated_at_utc": "2026-06-15T05:54:12+00:00",
   "changes": [
-    "Grouped full Mon Espace screen highlight display for multi-paragraph highlight groups.",
-    "Preserved R24 side-panel grouping, R22 overlap-group integrity, and existing group-aware delete/recolour behaviour.",
-    "Preserved single-paragraph highlight display.",
-    "Preserved corpus/devotional/source text, speech data, internal subheadings, paragraph IDs, Samsung paragraph mode, theme settings, and Prier/Etudier logic.",
-    "Regenerated deploy ZIP, manifests, reports, final reopened audit, and independent reopened audit."
+    "Repaired the external deep-recheck evidence SHA mismatch discovered during the post-R29 detailed audit.",
+    "Refreshed the package-internal _preflight_deploy_zip folder so it matches the current deploy ZIP instead of stale R27 content.",
+    "Preserved the R28 dark-mode visual repair and Hour 24 display repair unchanged.",
+    "Preserved multi-paragraph highlight, grouped Mon Espace display, Favorite routing, and overlap-group integrity logic unchanged.",
+    "Updated package, version, cache, active reports, final locks, manifests, and evidence to R30."
+  ],
+  "display_suppressed_paragraph_ids": [
+    "PASSION24.HOUR.24.P001",
+    "PASSION24.HOUR.24.P002"
   ],
   "protected_layers_unchanged": [
     "CORPUS",
     "TEXT_LIBRARY",
     "HOUR_LINKED_TEXTS",
     "SPEECH_DATA",
-    "INTERNAL_SUBHEADINGS"
+    "paragraph IDs",
+    "source text",
+    "speech offsets",
+    "Samsung paragraph mode",
+    "Prier/Etudier logic"
   ],
   "real_device_status": "NOT_TESTED",
   "not_public_release_pass": true

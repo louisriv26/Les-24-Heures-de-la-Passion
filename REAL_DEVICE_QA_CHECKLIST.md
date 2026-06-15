@@ -1,7 +1,11 @@
 # Real-device QA checklist
 
-Version: v101R32-stage7d-r25
+Version: v101R37-stage7d-r30
 
-Status: NOT_TESTED on physical devices.
-
-Required checks: Samsung paragraph highlighting; iPhone/iPad exact and multi-paragraph selection; installed PWA launch; offline/cache reopen; live GitHub Pages update flow.
+Required before public release:
+- Samsung Chrome/PWA paragraph highlighting
+- iPhone Safari/PWA exact and multi-paragraph selection
+- iPad Safari/PWA exact and multi-paragraph selection
+- Installed PWA launch
+- Offline/cache reopen
+- Live GitHub Pages deployment/update flow

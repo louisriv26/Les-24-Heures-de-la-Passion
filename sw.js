@@ -1,5 +1,5 @@
-/* Stage 7D-R25 — prototype-101r32-stage7d-r25-full-espace-group-display */
-const CACHE_NAME = 'luisa-24h-v101r32-stage7d-r25';
+/* Stage 7D-R30 — prototype-101r37-stage7d-r30-deep-recheck-evidence-repaired */
+const CACHE_NAME = 'luisa-24h-v101r37-stage7d-r30';
 const CACHE_PREFIX = 'luisa-24h-';
 const APP_SHELL = [
   './',
