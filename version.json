@@ -1,31 +1,42 @@
 {
-  "version": "v101R37-stage7d-r30",
-  "app_version": "prototype-101r37-stage7d-r30-deep-recheck-evidence-repaired",
+  "version": "v101R39-stage7d-r32",
+  "app_version": "prototype-101r39-stage7d-r32-detailed-recheck-evidence-repaired",
   "build_date": "2026-06-15",
-  "stage": "Stage 7D/R30 deep-recheck evidence repair",
-  "package_name": "luisa_24_heures_app_v101r37_stage7d_r30_deep_recheck_evidence_repaired_locked.zip",
-  "generated_at_utc": "2026-06-15T05:54:12+00:00",
+  "stage": "Stage 7D/R32 detailed recheck evidence integrity repair",
+  "package_name": "luisa_24_heures_app_v101r39_stage7d_r32_detailed_recheck_evidence_repaired_locked.zip",
+  "generated_at_utc": "2026-06-15T14:06:41+00:00",
   "changes": [
-    "Repaired the external deep-recheck evidence SHA mismatch discovered during the post-R29 detailed audit.",
-    "Refreshed the package-internal _preflight_deploy_zip folder so it matches the current deploy ZIP instead of stale R27 content.",
-    "Preserved the R28 dark-mode visual repair and Hour 24 display repair unchanged.",
-    "Preserved multi-paragraph highlight, grouped Mon Espace display, Favorite routing, and overlap-group integrity logic unchanged.",
-    "Updated package, version, cache, active reports, final locks, manifests, and evidence to R30."
+    "Repaired detailed recheck/evidence integrity after an obsolete external manual report used an incomplete speech-target map.",
+    "Confirmed speech targets include CORPUS.sections as well as Hours, reflections, subsections, prayers and library-generated targets.",
+    "Preserved Stage 7D/R31 dash-list reading rhythm behaviour unchanged.",
+    "Preserved dark-mode visual repair, Hour 24 display repair, multi-paragraph highlight grouping and Favorite routing unchanged.",
+    "Updated package, version, cache, active reports, final locks, manifests and evidence to R32."
   ],
   "display_suppressed_paragraph_ids": [
     "PASSION24.HOUR.24.P001",
     "PASSION24.HOUR.24.P002"
+  ],
+  "dash_list_rhythm_scope": [
+    "Hour meditation paragraphs",
+    "Hour subsection paragraphs",
+    "Reflections and practices paragraphs"
   ],
   "protected_layers_unchanged": [
     "CORPUS",
     "TEXT_LIBRARY",
     "HOUR_LINKED_TEXTS",
     "SPEECH_DATA",
+    "INTERNAL_SUBHEADINGS",
     "paragraph IDs",
     "source text",
     "speech offsets",
     "Samsung paragraph mode",
-    "Prier/Etudier logic"
+    "multi-paragraph highlight logic",
+    "Mon Espace grouping",
+    "Favorite routing",
+    "Prier/Etudier logic",
+    "dark-mode visual repair",
+    "Hour 24 display repair"
   ],
   "real_device_status": "NOT_TESTED",
   "not_public_release_pass": true

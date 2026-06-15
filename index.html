@@ -302,6 +302,12 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--ink); 
 
 /* ── Paragraphs ── */
 .para-block { display: flex; gap: 1rem; margin-bottom: 1.15em; position: relative; animation: fadeIn 0.25s ease both; -webkit-touch-callout: none; }
+/* Stage 7D-R31 — dash-list reading rhythm repair */
+.para-block.dash-list-cluster { margin-bottom: 0.38em; }
+.para-block.dash-list-last { margin-bottom: 1.15em; }
+.ref-para-block.dash-list-cluster { margin-bottom: 0.38em; }
+.ref-para-block.dash-list-last { margin-bottom: 1em; }
+
 @keyframes fadeIn { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: none; } }
 .para-num { font-family: var(--font-display); font-size: 0.6rem; color: var(--ink4); min-width: 2rem; text-align: right; padding-top: 0.35rem; user-select: none; flex-shrink: 0; }
 .para-text { font-family: var(--font-body); font-size: var(--reading-size); line-height: var(--reading-line); color: var(--ink2); flex: 1; white-space: pre-wrap;  -webkit-user-select: text; user-select: text; }
@@ -4368,7 +4374,8 @@ const state = {
   monEspacePanelOpen: false,
   meditationLog: []
 };
-const APP_VERSION = 'prototype-101r37-stage7d-r30-deep-recheck-evidence-repaired';
+const APP_VERSION = 'prototype-101r39-stage7d-r32-detailed-recheck-evidence-repaired';
+const APP_EVIDENCE_STAGE = 'Stage 7D-R32 evidence integrity repair; R31 dash-list rhythm retained';
 const STORAGE_SCHEMA_VERSION=3;
 const SEARCH_RESULT_LIMIT = 60;
 
@@ -5688,14 +5695,14 @@ function renderReader(hour, scroll = true) {
     </div>`;
 
   const medHtml = displayParagraphs.length > 0
-    ? displayParagraphs.map(p => buildParaBlock(p, hour.hour_number)).join('')
+    ? displayParagraphs.map((p, i) => buildParaBlock(p, hour.hour_number, getDashListRhythmClass(displayParagraphs, i))).join('')
     : `<p style="font-style:italic;color:var(--ink4);font-family:var(--font-ui);padding:1.5rem 0">Texte en préparation.</p>`;
 
   const refHtml = hasRefl ? `
     <div class="reflections-wrap">
       <div class="reflections-label">Réflexions et pratiques</div>
-      ${hour.reflections.map((p, i) => `
-      <div class="ref-para-block" id="${p.id}">
+      ${hour.reflections.map((p, i) => { const rhythmClass = getDashListRhythmClass(hour.reflections, i); return `
+      <div class="ref-para-block${rhythmClass}" id="${p.id}">
         <div class="ref-para-num">${i + 1}</div>
         <div class="ref-para para-text" data-para-id="${p.id}">${renderParaText(p.t, p.id)}</div>
         <div class="para-actions ref-actions">
@@ -5703,7 +5710,7 @@ function renderReader(hour, scroll = true) {
           <button class="para-action-btn" onclick="toggleHighlight('${p.id}')" title="Marquer le paragraphe" aria-label="Marquer ce paragraphe">◈</button>
           <button class="para-action-btn" onclick="copyReflection('${p.id}',${hour.hour_number})" title="Copier" aria-label="Copier la citation">⎘</button>
         </div>
-      </div>`).join('')}
+      </div>`; }).join('')}
     </div>` : '';
 
   let subHtml = '';
@@ -5711,7 +5718,7 @@ function renderReader(hour, scroll = true) {
     let subOffset = displayParagraphs.length;
     hour.subsections.forEach(sub => {
       subHtml += `<h3 class="subsection-heading">${escHtml(sub.title)}</h3>`;
-      subHtml += sub.paragraphs.map((p, i) => buildParaBlock({...p, n: subOffset + i + 1}, hour.hour_number)).join('');
+      subHtml += sub.paragraphs.map((p, i) => buildParaBlock({...p, n: subOffset + i + 1}, hour.hour_number, getDashListRhythmClass(sub.paragraphs, i))).join('');
     });
   }
 
@@ -5761,7 +5768,21 @@ function renderReader(hour, scroll = true) {
   updateRightContextPanel(hour);
 }
 
-function buildParaBlock(p, hourNum) {
+
+function isDashListItemText(text) {
+  return /^\s*[-–—]\s+/.test(String(text || ''));
+}
+function getDashListRhythmClass(paragraphs, index) {
+  if (!Array.isArray(paragraphs) || !paragraphs[index] || !isDashListItemText(paragraphs[index].t)) return '';
+  const prevIsDash = index > 0 && isDashListItemText(paragraphs[index - 1] && paragraphs[index - 1].t);
+  const nextIsDash = index + 1 < paragraphs.length && isDashListItemText(paragraphs[index + 1] && paragraphs[index + 1].t);
+  if (!prevIsDash && !nextIsDash) return '';
+  if (!prevIsDash && nextIsDash) return ' dash-list-cluster dash-list-first';
+  if (prevIsDash && nextIsDash) return ' dash-list-cluster dash-list-middle';
+  return ' dash-list-cluster dash-list-last';
+}
+
+function buildParaBlock(p, hourNum, rhythmClass = '') {
   const isFav = !!state.favorites[p.id];
   const isHl = state.highlights.has(p.id);
   const internalHeadingMeta = getInternalSubheadingMeta(p.id);
@@ -5775,7 +5796,7 @@ function buildParaBlock(p, hourNum) {
   const numberHtml = internalHeadingMeta && internalHeadingMeta.status === 'standalone_paragraph' ? '' : `<span class="para-num">${p.n}${(()=>{const sp=SPEECH_DATA[p.id];if(!sp)return '';const j=sp.some(s=>s.speaker==='JESUS');const f=sp.some(s=>s.speaker==='FATHER');const m=sp.some(s=>s.speaker==='MARY');return(j?'<span class="speaker-badge badge-jesus" title="Paroles de Jésus">✝ Jésus</span>':'')+(f?'<span class="speaker-badge badge-father" title="Paroles du Père">◆ Père</span>':'')+( m?'<span class="speaker-badge badge-mary" title="Paroles de Marie">✦ Marie</span>':'');})()
     }</span>`;
   return `
-  <div class="para-block${internalHeadingClass} ${isHl?'highlighted':''} ${isFav?'favorited':''}" id="${p.id}"
+  <div class="para-block${internalHeadingClass}${rhythmClass} ${isHl?'highlighted':''} ${isFav?'favorited':''}" id="${p.id}"
     ontouchstart="startLongPress('${p.id}',${hourNum},event)" ontouchend="cancelLongPress()" ontouchmove="cancelLongPress()">
     ${numberHtml}
     <div class="para-text" data-para-id="${p.id}">${renderStructuredParaText(p.t, p.id)}</div>
