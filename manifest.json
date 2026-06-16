@@ -39,5 +39,5 @@
     "standalone",
     "browser"
   ],
-  "version": "prototype-101r45-stage7d-r35b-report-integrity-cleanup"
+  "version": "prototype-101r50-stage7d-r37c-evidence-sha-drift-cleanup"
 }

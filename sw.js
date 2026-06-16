@@ -1,7 +1,7 @@
-/* Stage 7D-R35B — prototype-101r45-stage7d-r35b-report-integrity-cleanup */
-const CACHE_NAME = 'luisa-24h-v101r45-stage7d-r35b';
+/* Stage 7D-R37C — prototype-101r50-stage7d-r37c-evidence-sha-drift-cleanup */
+const CACHE_NAME = 'luisa-24h-v101r50-stage7d-r37c';
 const CACHE_PREFIX = 'luisa-24h-';
-const APP_SHELL = [
+const ASSETS = [
   './',
   './index.html',
   './luisa_24_heures.html',
@@ -12,82 +12,39 @@ const APP_SHELL = [
   './icon-512.png'
 ];
 
-async function cacheAppShell() {
-  const cache = await caches.open(CACHE_NAME);
-  await cache.addAll(APP_SHELL.map(url => new Request(url, { cache: 'reload' })));
-}
-
 self.addEventListener('install', event => {
-  event.waitUntil(cacheAppShell().then(() => self.skipWaiting()));
+  event.waitUntil((async () => {
+    const cache = await caches.open(CACHE_NAME);
+    await cache.addAll(ASSETS);
+    await self.skipWaiting();
+  })());
 });
 
 self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys()
-      .then(keys => Promise.all(keys
-        .filter(key => key.startsWith(CACHE_PREFIX) && key !== CACHE_NAME)
-        .map(key => caches.delete(key))))
-      .then(() => self.clients.claim())
-  );
+  event.waitUntil((async () => {
+    const keys = await caches.keys();
+    await Promise.all(keys
+      .filter(key => key.startsWith(CACHE_PREFIX) && key !== CACHE_NAME)
+      .map(key => caches.delete(key)));
+    await self.clients.claim();
+  })());
 });
-
-self.addEventListener('message', event => {
-  if (event.data && event.data.type === 'SKIP_WAITING') self.skipWaiting();
-});
-
-async function putOkResponse(request, response) {
-  if (response && response.ok) {
-    const cache = await caches.open(CACHE_NAME);
-    await cache.put(request, response.clone());
-  }
-  return response;
-}
-
-async function networkFirst(request, fallbackUrls) {
-  try {
-    const response = await fetch(request, { cache: 'no-store' });
-    return await putOkResponse(request, response);
-  } catch (error) {
-    const cached = await caches.match(request);
-    if (cached) return cached;
-    for (const url of fallbackUrls || []) {
-      const fallback = await caches.match(url);
-      if (fallback) return fallback;
-    }
-    throw error;
-  }
-}
-
-async function cacheFirst(request, fallbackUrls) {
-  const cached = await caches.match(request);
-  if (cached) return cached;
-  try {
-    const response = await fetch(request);
-    return await putOkResponse(request, response);
-  } catch (error) {
-    for (const url of fallbackUrls || []) {
-      const fallback = await caches.match(url);
-      if (fallback) return fallback;
-    }
-    throw error;
-  }
-}
 
 self.addEventListener('fetch', event => {
-  const req = event.request;
-  if (req.method !== 'GET') return;
-  const url = new URL(req.url);
-  if (url.origin !== self.location.origin) return;
-
-  if (url.pathname.endsWith('/version.json')) {
-    event.respondWith(networkFirst(req, ['./version.json']));
-    return;
-  }
-
-  if (req.mode === 'navigate' || url.pathname.endsWith('/index.html') || url.pathname.endsWith('/luisa_24_heures.html')) {
-    event.respondWith(networkFirst(req, ['./index.html', './luisa_24_heures.html']));
-    return;
-  }
-
-  event.respondWith(cacheFirst(req, ['./index.html', './luisa_24_heures.html']));
+  if (event.request.method !== 'GET') return;
+  event.respondWith((async () => {
+    const cache = await caches.open(CACHE_NAME);
+    const cached = await cache.match(event.request);
+    if (cached) return cached;
+    try {
+      const response = await fetch(event.request);
+      if (response && response.status === 200 && response.type !== 'opaque') {
+        cache.put(event.request, response.clone());
+      }
+      return response;
+    } catch (error) {
+      if (event.request.mode === 'navigate') return cache.match('./index.html');
+      throw error;
+    }
+  })());
 });

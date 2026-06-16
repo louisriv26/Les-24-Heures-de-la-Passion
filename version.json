@@ -1,29 +1,15 @@
 {
-  "version": "v101R45-stage7d-r35b",
-  "app_version": "prototype-101r45-stage7d-r35b-report-integrity-cleanup",
+  "version": "v101R50-stage7d-r37c",
+  "app_version": "prototype-101r50-stage7d-r37c-evidence-sha-drift-cleanup",
   "build_date": "2026-06-16",
-  "stage": "Stage 7D/R35B Active-report integrity cleanup",
-  "package_name": "luisa_24_heures_app_v101r45_stage7d_r35b_report_integrity_cleanup_locked.zip",
-  "generated_at_utc": "2026-06-16T10:48:11+00:00",
+  "stage": "Stage 7D/R37C Evidence SHA-drift/report-integrity cleanup after speech quote suppression",
+  "package_name": "luisa_24_heures_app_v101r50_stage7d_r37c_evidence_sha_drift_cleanup_locked.zip",
+  "generated_at_utc": "2026-06-16T17:08:34+00:00",
   "changes": [
-    "No app feature change from v101R44/R35A.",
-    "Cleaned active report namespace: removed prior R35 final-status report from current active reports.",
-    "Replaced package-internal PENDING final-reopen gate wording with external-audit-authoritative wording.",
-    "Preserved R35 Réglages separation: Taille du texte and Affichage remain separate panels."
-  ],
-  "protected_layers_preserved": [
-    "CORPUS",
-    "TEXT_LIBRARY",
-    "HOUR_LINKED_TEXTS",
-    "SPEECH_DATA",
-    "INTERNAL_SUBHEADINGS",
-    "paragraph IDs",
-    "speech offsets",
-    "Samsung paragraph mode",
-    "multi-paragraph highlight logic",
-    "Mon Espace",
-    "favorites",
-    "Hour 24 R34 correction"
+    "Repaired deploy-facing service-worker cache namespace to match the current package version.",
+    "Preserved render-time suppression of inconsistent guillemets adjacent to direct-speech spans.",
+    "Kept source text, paragraph IDs, SPEECH_DATA and offsets unchanged.",
+    "Preserved speech-ending visual paragraph breaks and Réglages panel separation."
   ],
   "real_device_status": "NOT_TESTED"
 }

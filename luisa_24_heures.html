@@ -1850,6 +1850,29 @@ html.android-highlight-mode .android-paragraph-highlight-target {
 }
 /* End dark-mode Hour 24 display repair. */
 
+
+/* Stage 7D/R37C — speech quote display suppression. Source text remains in DOM for offset stability but is visually suppressed. */
+.speech-quote-hidden {
+  display: inline-block;
+  width: 0 !important;
+  max-width: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  white-space: nowrap !important;
+  pointer-events: none !important;
+}
+
+/* Stage 7D/R36 — visual paragraph break after clear Jesus/Mary speech endings */
+.speech-end-visual-break {
+  display: block;
+  height: 0;
+  margin-top: 0.92em;
+}
+.ref-para .speech-end-visual-break {
+  margin-top: 0.82em;
+}
 </style>
 </head>
 <body>
@@ -4393,8 +4416,9 @@ const state = {
   monEspacePanelOpen: false,
   meditationLog: []
 };
-const APP_VERSION = 'prototype-101r45-stage7d-r35b-report-integrity-cleanup';
-const APP_EVIDENCE_STAGE = 'Stage 7D-R33B dash-list visual rhythm strong repair';
+const SPEECH_END_VISUAL_BREAKS = {"PASSION24.HOUR.01.P014":[119],"PASSION24.HOUR.02.P014":[203],"PASSION24.HOUR.02.P015":[147],"PASSION24.HOUR.04.P034":[113],"PASSION24.HOUR.04.P065":[93],"PASSION24.HOUR.05.P028":[483],"PASSION24.HOUR.06.P012":[106],"PASSION24.HOUR.07.P007":[165],"PASSION24.HOUR.07.P015":[147],"PASSION24.HOUR.07.P030":[22],"PASSION24.HOUR.07.P117":[227],"PASSION24.HOUR.07.P125":[128],"PASSION24.HOUR.08.P007":[111],"PASSION24.HOUR.08.P008":[42],"PASSION24.HOUR.08.P014":[34],"PASSION24.HOUR.10.P002":[206],"PASSION24.HOUR.11.P010":[141],"PASSION24.HOUR.11.P030":[126],"PASSION24.HOUR.13.P005":[147],"PASSION24.HOUR.15.P005":[162],"PASSION24.HOUR.16.P015":[103],"PASSION24.HOUR.17.P027":[124],"PASSION24.HOUR.17.P044":[293],"PASSION24.HOUR.18.P002":[61],"PASSION24.HOUR.18.P031":[156],"PASSION24.HOUR.19.P018":[95],"PASSION24.HOUR.19.P126":[145],"PASSION24.HOUR.19.P137":[119],"PASSION24.HOUR.20.P010":[63],"PASSION24.HOUR.21.P023":[137],"PASSION24.HOUR.21.P027":[216],"PASSION24.HOUR.21.P068":[86],"PASSION24.SECTION.BENEFITS.P102":[196],"PASSION24.SECTION.BENEFITS.P116":[218],"PASSION24.SECTION.BENEFITS.P136":[159],"PASSION24.SECTION.BENEFITS.P149":[141],"PASSION24.HOUR.16.P028":[76],"PASSION24.HOUR.16.P045":[193],"PASSION24.HOUR.17.P014":[47],"PASSION24.HOUR.22.REF.P001":[237],"PASSION24.HOUR.09.P010":[147],"PASSION24.HOUR.11.P021":[251],"PASSION24.HOUR.18.P113":[148],"PASSION24.HOUR.05.REF.P005":[142],"PASSION24.HOUR.22.P006":[160],"PASSION24.HOUR.22.P022":[23],"PASSION24.HOUR.24.DESOL.P014":[119],"PASSION24.HOUR.24.DESOL.P027":[79],"PASSION24.HOUR.24.DESOL.P037":[62]};
+const APP_VERSION = 'prototype-101r50-stage7d-r37c-evidence-sha-drift-cleanup';
+const APP_EVIDENCE_STAGE = 'Stage 7D/R37C Evidence SHA-drift/report-integrity cleanup after speech quote suppression';
 const STORAGE_SCHEMA_VERSION=3;
 const SEARCH_RESULT_LIMIT = 60;
 
@@ -6989,6 +7013,80 @@ function renderPanelTab(tab){
 
 
 // ── Text-selection highlighting ──
+
+// Stage 7D/R37C — render-time quote suppression around direct-speech spans.
+// Important: characters are kept in the DOM inside zero-width spans so selection offsets, highlights,
+// favourites and SPEECH_DATA offsets remain anchored to the original source text.
+function getSpeechQuoteSuppressionRanges(text, paraId, start, end) {
+  text = String(text || '');
+  const ranges = [];
+  const speechSegs = ((typeof SPEECH_DATA !== 'undefined' && SPEECH_DATA && SPEECH_DATA[paraId]) || [])
+    .slice()
+    .filter(seg => seg && ['JESUS','MARY','FATHER'].includes(seg.speaker));
+  const addRange = (a, b, reason) => {
+    a = Math.max(start, Math.min(Number(a), end));
+    b = Math.max(start, Math.min(Number(b), end));
+    if (Number.isFinite(a) && Number.isFinite(b) && b > a) ranges.push({start:a, end:b, reason});
+  };
+  for (const seg of speechSegs) {
+    const s = Number(seg.start), e = Number(seg.end);
+    if (!Number.isFinite(s) || !Number.isFinite(e) || e <= s || e <= start || s >= end) continue;
+    // Narrative immediately before speech: hide optional whitespace/colon + opening guillemet + spaces.
+    const preStart = Math.max(start, s - 12);
+    const pre = text.slice(preStart, Math.max(start, Math.min(s, end)));
+    const preMatch = pre.match(/(\s*(?::\s*)?«\s*)$/);
+    if (preMatch) addRange(preStart + preMatch.index, s, 'pre_narrative_quote_intro');
+
+    // Opening guillemet inside the speech span, with any redundant leading spaces.
+    let k = s;
+    while (k < e && /\s/.test(text.charAt(k))) k++;
+    if (k < e && text.charAt(k) === '«') {
+      let k2 = k + 1;
+      while (k2 < e && /\s/.test(text.charAt(k2))) k2++;
+      addRange(s, k2, 'speech_leading_quote');
+    }
+
+    // Closing guillemet inside the speech span, with a preceding space before the guillemet if present.
+    let l = e - 1;
+    while (l >= s && /\s/.test(text.charAt(l))) l--;
+    if (l >= s && text.charAt(l) === '»') {
+      let a = l;
+      while (a > s && /\s/.test(text.charAt(a - 1))) a--;
+      addRange(a, e, 'speech_trailing_quote');
+    }
+
+    // Narrative immediately after speech: hide closing guillemet and surrounding spaces.
+    const postEnd = Math.min(end, e + 12);
+    const post = text.slice(Math.max(start, Math.min(e, end)), postEnd);
+    const postMatch = post.match(/^(\s*»\s*)/);
+    if (postMatch) addRange(e, e + postMatch[1].length, 'post_narrative_closing_quote');
+  }
+  ranges.sort((a, b) => a.start - b.start || a.end - b.end);
+  const merged = [];
+  for (const r of ranges) {
+    if (!merged.length || r.start > merged[merged.length - 1].end) merged.push({...r});
+    else {
+      const last = merged[merged.length - 1];
+      last.end = Math.max(last.end, r.end);
+      if (!last.reason.includes(r.reason)) last.reason += '|' + r.reason;
+    }
+  }
+  return merged;
+}
+
+function renderQuoteSuppressedChunk(text, from, to, suppressionRanges) {
+  let html = '', pos = from;
+  for (const r of suppressionRanges || []) {
+    if (r.end <= from || r.start >= to) continue;
+    const a = Math.max(from, r.start), b = Math.min(to, r.end);
+    if (a > pos) html += escHtml(text.slice(pos, a));
+    if (b > a) html += `<span class="speech-quote-hidden" aria-hidden="true" data-speech-quote-suppressed="${escHtml(r.reason)}">${escHtml(text.slice(a, b))}</span>`;
+    pos = Math.max(pos, b);
+  }
+  if (pos < to) html += escHtml(text.slice(pos, to));
+  return html;
+}
+
 function renderParaTextRange(text, paraId, rangeStart, rangeEnd) {
   text = String(text || '');
   const start = Math.max(0, Math.min(Number(rangeStart) || 0, text.length));
@@ -6999,7 +7097,11 @@ function renderParaTextRange(text, paraId, rangeStart, rangeEnd) {
     return Number.isFinite(s) && Number.isFinite(e) && e > start && s < end;
   });
   const speechSegs = (SPEECH_DATA[paraId] || []).slice().sort((a,b)=>a.start-b.start).filter(seg => seg.end > start && seg.start < end);
-  if (!hls.length && !speechSegs.length) return escHtml(text.slice(start, end));
+  const visualBreaks = ((typeof SPEECH_END_VISUAL_BREAKS !== 'undefined' && SPEECH_END_VISUAL_BREAKS && SPEECH_END_VISUAL_BREAKS[paraId]) || [])
+    .map(pos => Number(pos))
+    .filter(pos => Number.isFinite(pos) && pos > start && pos < end);
+  const quoteSuppressions = getSpeechQuoteSuppressionRanges(text, paraId, start, end);
+  if (!hls.length && !speechSegs.length && !visualBreaks.length && !quoteSuppressions.length) return escHtml(text.slice(start, end));
 
   const events = [];
   let speechCls = null, hlCls = null, hlId = null;
@@ -7009,6 +7111,9 @@ function renderParaTextRange(text, paraId, rangeStart, rangeEnd) {
     else events.push({ pos: Math.max(seg.start, start), open: true, kind: 'speech', cls });
     if (seg.end < end) events.push({ pos: Math.min(seg.end, end), open: false, kind: 'speech', cls });
   }
+  for (const breakPos of visualBreaks) {
+    events.push({ pos: breakPos, open: false, kind: 'speechVisualBreak' });
+  }
   for (const hl of hls) {
     const s = Number(hl.start_offset ?? hl.start);
     const e = Number(hl.end_offset ?? hl.end);
@@ -7017,12 +7122,21 @@ function renderParaTextRange(text, paraId, rangeStart, rangeEnd) {
     else events.push({ pos: Math.max(s, start), open: true, kind: 'hl', id: hl.id, cls });
     if (e < end) events.push({ pos: Math.min(e, end), open: false, kind: 'hl', id: hl.id, cls: null });
   }
-  events.sort((a, b) => a.pos - b.pos || (a.open ? 1 : -1));
+  const eventRank = (ev) => {
+    if (ev.kind === 'speech' && !ev.open) return 0;
+    if (ev.kind === 'hl' && !ev.open) return 1;
+    if (ev.kind === 'speechVisualBreak') return 2;
+    if (ev.kind === 'speech' && ev.open) return 3;
+    if (ev.kind === 'hl' && ev.open) return 4;
+    return 5;
+  };
+  events.sort((a, b) => a.pos - b.pos || eventRank(a) - eventRank(b));
 
   let out = '', pos = start;
   const flush = (to) => {
     if (to <= pos) return;
-    let chunk = escHtml(text.slice(pos, to));
+    let chunk = renderQuoteSuppressedChunk(text, pos, to, quoteSuppressions);
+    if (!chunk) { pos = to; return; }
     if (speechCls) chunk = `<span class="${speechCls}">${chunk}</span>`;
     if (hlCls) chunk = `<mark class="${hlCls}" data-hl-id="${hlId}" onclick="onMarkClick(event,'${paraId}','${hlId}')" title="Modifier">${chunk}</mark>`;
     out += chunk;
@@ -7031,8 +7145,13 @@ function renderParaTextRange(text, paraId, rangeStart, rangeEnd) {
   for (const ev of events) {
     const evPos = Math.max(start, Math.min(ev.pos, end));
     flush(evPos);
-    if (ev.kind === 'speech') speechCls = ev.open ? ev.cls : null;
-    else { if (ev.open) { hlCls = ev.cls; hlId = ev.id; } else { hlCls = null; hlId = null; } }
+    if (ev.kind === 'speechVisualBreak') {
+      out += '<span class="speech-end-visual-break" aria-hidden="true"></span>';
+    } else if (ev.kind === 'speech') {
+      speechCls = ev.open ? ev.cls : null;
+    } else {
+      if (ev.open) { hlCls = ev.cls; hlId = ev.id; } else { hlCls = null; hlId = null; }
+    }
   }
   flush(end);
   return out;
