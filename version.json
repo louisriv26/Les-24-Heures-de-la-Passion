@@ -1,50 +1,29 @@
 {
-  "version": "v101R41-stage7d-r33b",
-  "app_version": "prototype-101r41-stage7d-r33b-dash-list-visual-rhythm-strong-repair",
-  "build_date": "2026-06-15",
-  "stage": "Stage 7D/R33B dash-list visual rhythm strong repair",
-  "package_name": "luisa_24_heures_app_v101r41_stage7d_r33b_dash_list_visual_rhythm_strong_repair_locked.zip",
-  "generated_at_utc": "2026-06-15T16:50:25+00:00",
+  "version": "v101R45-stage7d-r35b",
+  "app_version": "prototype-101r45-stage7d-r35b-report-integrity-cleanup",
+  "build_date": "2026-06-16",
+  "stage": "Stage 7D/R35B Active-report integrity cleanup",
+  "package_name": "luisa_24_heures_app_v101r45_stage7d_r35b_report_integrity_cleanup_locked.zip",
+  "generated_at_utc": "2026-06-16T10:48:11+00:00",
   "changes": [
-    "Strengthened dash-list visual rhythm after iPad screenshots showed R31/R32 spacing was not visually effective.",
-    "Added reader-scoped hanging indent, stronger margin reduction and line-height tuning for dash-list clusters.",
-    "Added conservative continuation detection for split dash-list items such as Hour 24 P058/P059.",
-    "Preserved corpus/source text, paragraph IDs, speech data, highlights, Mon Espace and Favorite routing unchanged."
+    "No app feature change from v101R44/R35A.",
+    "Cleaned active report namespace: removed prior R35 final-status report from current active reports.",
+    "Replaced package-internal PENDING final-reopen gate wording with external-audit-authoritative wording.",
+    "Preserved R35 Réglages separation: Taille du texte and Affichage remain separate panels."
   ],
-  "display_suppressed_paragraph_ids": [
-    "PASSION24.HOUR.24.P001",
-    "PASSION24.HOUR.24.P002"
-  ],
-  "dash_list_rhythm_scope": [
-    "Hour meditation paragraphs",
-    "Hour subsection paragraphs",
-    "Reflections and practices paragraphs"
-  ],
-  "protected_layers_unchanged": [
+  "protected_layers_preserved": [
     "CORPUS",
     "TEXT_LIBRARY",
     "HOUR_LINKED_TEXTS",
     "SPEECH_DATA",
     "INTERNAL_SUBHEADINGS",
     "paragraph IDs",
-    "source text",
     "speech offsets",
     "Samsung paragraph mode",
     "multi-paragraph highlight logic",
-    "Mon Espace grouping",
-    "Favorite routing",
-    "Prier/Etudier logic",
-    "dark-mode visual repair",
-    "Hour 24 display repair"
+    "Mon Espace",
+    "favorites",
+    "Hour 24 R34 correction"
   ],
-  "real_device_status": "NOT_TESTED",
-  "not_public_release_pass": true,
-  "option_b_authorized": true,
-  "source_on_disk_sha256": "8c66d16020c1416f9ab6d7ef93f4e2bc3f06225d85a835110a5a8e115098e519",
-  "dash_list_visual_rhythm": {
-    "margin_bottom_between_items": "0.16em",
-    "hanging_indent": "1.08em",
-    "list_line_height": "1.58",
-    "continuation_detection": "unfinished dash item + lower-case next paragraph"
-  }
+  "real_device_status": "NOT_TESTED"
 }

@@ -1,12 +1,9 @@
-# Real-device QA checklist
+# Real-device QA checklist — v101R45-stage7d-r35b
 
-Version: v101R38-stage7d-r31
+App version: prototype-101r45-stage7d-r35b-report-integrity-cleanup
 
-Required before public release:
-- Samsung Chrome/PWA paragraph highlighting
-- iPhone Safari/PWA exact and multi-paragraph selection
-- iPad Safari/PWA exact and multi-paragraph selection
-- iPad visual verification of dash-list spacing rhythm
-- Installed PWA launch
-- Offline/cache reopen
-- Live GitHub Pages deployment/update flow
+- iPad Safari: Réglages > Taille du texte shows only font-size controls.
+- iPad Safari: Réglages > Affichage shows only Système / Clair / Sombre.
+- iPhone Safari: exact text selection/highlight still works.
+- Samsung Chrome/PWA: paragraph-highlight mode still works.
+- Installed PWA: offline open and update flow still require testing.

@@ -1,6 +1,6 @@
-# Les 24 Heures de la Passion
+# Luisa 24 Heures — GitHub Pages deploy
 
-Version: v101R38-stage7d-r31
-App version: prototype-101r38-stage7d-r31-dash-list-reading-rhythm
-Stage: Stage 7D/R31 dash-list reading rhythm repair
-Status: static/package PASS; real-device QA remains required.
+Version: v101R45-stage7d-r35b
+App version: prototype-101r45-stage7d-r35b-report-integrity-cleanup
+Stage: Stage 7D/R35B Active-report integrity cleanup
+Real-device status: NOT_TESTED
