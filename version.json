@@ -1,15 +1,6 @@
 {
-  "version": "v101R50-stage7d-r37c",
-  "app_version": "prototype-101r50-stage7d-r37c-evidence-sha-drift-cleanup",
-  "build_date": "2026-06-16",
-  "stage": "Stage 7D/R37C Evidence SHA-drift/report-integrity cleanup after speech quote suppression",
-  "package_name": "luisa_24_heures_app_v101r50_stage7d_r37c_evidence_sha_drift_cleanup_locked.zip",
-  "generated_at_utc": "2026-06-16T17:08:34+00:00",
-  "changes": [
-    "Repaired deploy-facing service-worker cache namespace to match the current package version.",
-    "Preserved render-time suppression of inconsistent guillemets adjacent to direct-speech spans.",
-    "Kept source text, paragraph IDs, SPEECH_DATA and offsets unchanged.",
-    "Preserved speech-ending visual paragraph breaks and Réglages panel separation."
-  ],
-  "real_device_status": "NOT_TESTED"
+  "app_version": "prototype-101r57-stage7d-r41-source-reconciliation-typography",
+  "evidence_stage": "Stage 7D/R41 — Source reconciliation and French typographic normalisation",
+  "build_date": "2026-06-21",
+  "status": "LIMITED_PASS_STATIC_PENDING_EXTERNAL_FINAL_REOPEN_AUDIT"
 }

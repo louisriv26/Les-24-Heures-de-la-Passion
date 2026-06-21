@@ -1,7 +1,7 @@
 {
-  "name": "Les 24 Heures de la Passion — Stage 7D",
-  "short_name": "24 Heures 7D",
-  "description": "24 Heures de la Passion — Stage 7D/R35A manifest integrity repair.",
+  "name": "Les 24 Heures de la Passion — Stage 7D/R41",
+  "short_name": "24 Heures R41",
+  "description": "Les 24 Heures de la Passion — parcours de prière.",
   "start_url": "./luisa_24_heures.html",
   "display": "standalone",
   "orientation": "any",
@@ -39,5 +39,5 @@
     "standalone",
     "browser"
   ],
-  "version": "prototype-101r50-stage7d-r37c-evidence-sha-drift-cleanup"
+  "version": "prototype-101r57-stage7d-r41-source-reconciliation-typography"
 }
