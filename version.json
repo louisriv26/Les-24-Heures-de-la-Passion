@@ -1,7 +1,7 @@
 {
-  "app_version": "prototype-101r58-stage7d-r41a-evidence-integrity-repair",
-  "evidence_stage": "Stage 7D/R41A — Evidence-integrity repair (no corpus change)",
-  "build_date": "2026-06-21",
-  "status": "LIMITED_PASS_STATIC_STAGE7D_R41A_EVIDENCE_INTEGRITY_REPAIR_READY_FOR_REAL_DEVICE_QA",
+  "app_version": "prototype-101r59-stage7d-r44-self-hosted-fonts-error-handlers",
+  "evidence_stage": "Stage 7D/R44 — Self-hosted fonts, global error handlers, scroll fix",
+  "build_date": "2026-06-22",
+  "status": "LIMITED_PASS_STATIC_STAGE7D_R44",
   "real_device_status": "NOT_TESTED"
 }
