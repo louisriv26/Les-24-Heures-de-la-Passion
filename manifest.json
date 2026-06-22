@@ -1,6 +1,6 @@
 {
-  "name": "Les 24 Heures de la Passion — Stage 7D/R41",
-  "short_name": "24 Heures R41",
+  "name": "Les 24 Heures de la Passion — Stage 7D/R41A",
+  "short_name": "24 Heures R41A",
   "description": "Les 24 Heures de la Passion — parcours de prière.",
   "start_url": "./luisa_24_heures.html",
   "display": "standalone",
@@ -39,5 +39,5 @@
     "standalone",
     "browser"
   ],
-  "version": "prototype-101r57-stage7d-r41-source-reconciliation-typography"
+  "version": "prototype-101r58-stage7d-r41a-evidence-integrity-repair"
 }

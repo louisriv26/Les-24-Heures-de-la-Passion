@@ -1,6 +1,7 @@
 {
-  "app_version": "prototype-101r57-stage7d-r41-source-reconciliation-typography",
-  "evidence_stage": "Stage 7D/R41 — Source reconciliation and French typographic normalisation",
+  "app_version": "prototype-101r58-stage7d-r41a-evidence-integrity-repair",
+  "evidence_stage": "Stage 7D/R41A — Evidence-integrity repair (no corpus change)",
   "build_date": "2026-06-21",
-  "status": "LIMITED_PASS_STATIC_PENDING_EXTERNAL_FINAL_REOPEN_AUDIT"
+  "status": "LIMITED_PASS_STATIC_STAGE7D_R41A_EVIDENCE_INTEGRITY_REPAIR_READY_FOR_REAL_DEVICE_QA",
+  "real_device_status": "NOT_TESTED"
 }

@@ -1,5 +1,5 @@
-/* Stage 7D/R41 — prototype-101r57-stage7d-r41-source-reconciliation-typography */
-const CACHE_NAME = 'luisa-24h-r41-20260621';
+/* Stage 7D/R41A — prototype-101r58-stage7d-r41a-evidence-integrity-repair */
+const CACHE_NAME = 'luisa-24h-r41a-20260621';
 const CACHE_PREFIX = 'luisa-24h-';
 const ASSETS = ['./','./index.html','./luisa_24_heures.html','./manifest.json','./version.json','./icon-180.png','./icon-192.png','./icon-512.png'];
 self.addEventListener('install', event => { event.waitUntil((async()=>{ const cache=await caches.open(CACHE_NAME); await cache.addAll(ASSETS); await self.skipWaiting(); })()); });
