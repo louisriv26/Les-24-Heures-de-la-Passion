@@ -1,6 +1,7 @@
 {
-  "app_version": "prototype-101r57-stage7d-r41-source-reconciliation-typography",
-  "evidence_stage": "Stage 7D/R41 — Source reconciliation and French typographic normalisation",
-  "build_date": "2026-06-21",
-  "status": "LIMITED_PASS_STATIC_PENDING_EXTERNAL_FINAL_REOPEN_AUDIT"
+  "app_version": "prototype-101r59-stage7d-r44-self-hosted-fonts-error-handlers",
+  "evidence_stage": "Stage 7D/R44A — PWA identity and evidence repair",
+  "build_date": "2026-06-23",
+  "status": "LIMITED_PASS_STATIC_STAGE7D_R44A",
+  "real_device_status": "NOT_TESTED"
 }

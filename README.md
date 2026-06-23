@@ -1,7 +1,7 @@
 # Luisa — 24 Heures de la Passion
 
-Package version: `prototype-101r57-stage7d-r41-source-reconciliation-typography`
+Package version: `prototype-101r59-stage7d-r44a-pwa-identity-evidence-repair`
 
-Evidence stage: `Stage 7D/R41 — Source reconciliation and French typographic normalisation`
+Evidence stage: `Stage 7D/R44A — PWA identity and evidence repair (no corpus change, no runtime logic change)`
 
-Static/package validation is recorded externally after final ZIP reopening. Real iPad, iPhone, Samsung, installed-PWA, offline and live-update testing are not included in this package decision.
+Static/package gates are recorded as PASS in the in-package decision lock and must be corroborated by the immutable postwrite external reopened-ZIP audits supplied alongside this package. Real-device validation remains NOT_TESTED.
