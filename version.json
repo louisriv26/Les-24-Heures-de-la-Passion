@@ -1,7 +1,7 @@
 {
-  "app_version": "prototype-101r59-stage7d-r44b-b10-inverse-resolver-fix",
-  "evidence_stage": "Stage 7D/R45 — APP_VERSION bump + SW CACHE_NAME advance for update banner",
+  "app_version": "prototype-101r59-stage7d-r46-scroll-fix",
+  "evidence_stage": "Stage 7D/R46 — openHourAtPara scroll fix (behavior:smooth -> auto)",
   "build_date": "2026-06-23",
-  "status": "LIMITED_PASS_STATIC_STAGE7D_R45",
+  "status": "LIMITED_PASS_STATIC_STAGE7D_R46",
   "real_device_status": "NOT_TESTED"
 }

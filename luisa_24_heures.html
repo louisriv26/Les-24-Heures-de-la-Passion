@@ -4475,8 +4475,8 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'prototype-101r59-stage7d-r44b-b10-inverse-resolver-fix';
-const APP_EVIDENCE_STAGE = 'Stage 7D/R44B — B10 inverse resolver fix';
+const APP_VERSION = 'prototype-101r59-stage7d-r46-scroll-fix';
+const APP_EVIDENCE_STAGE = 'Stage 7D/R46 — openHourAtPara scroll fix';
 const STORAGE_SCHEMA_VERSION=4; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const SEARCH_RESULT_LIMIT = 60;
 
@@ -6734,9 +6734,9 @@ function openHourAtPara(hourNum, paraId, type) {
   afterReaderRender(function(){
     if (type === 'reflection') {
       switchTab('reflections', true);
-      afterReaderRender(function(){ const el = document.getElementById(paraId); if (el) smoothScrollTo(el,{behavior:'smooth',block:'center'}); }, 260);
+      afterReaderRender(function(){ const el = document.getElementById(paraId); if (el) smoothScrollTo(el,{behavior:'auto',block:'start'}); }, 260);
     } else {
-      const el = document.getElementById(paraId); if (el) smoothScrollTo(el,{behavior:'smooth',block:'center'});
+      const el = document.getElementById(paraId); if (el) smoothScrollTo(el,{behavior:'auto',block:'start'});
     }
   }, 260);
 }
