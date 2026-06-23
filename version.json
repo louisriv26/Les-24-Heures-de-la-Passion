@@ -1,7 +1,7 @@
 {
-  "app_version": "prototype-101r59-stage7d-r44-self-hosted-fonts-error-handlers",
-  "evidence_stage": "Stage 7D/R44A — PWA identity and evidence repair",
+  "app_version": "prototype-101r59-stage7d-r44b-b10-inverse-resolver-fix",
+  "evidence_stage": "Stage 7D/R45 — APP_VERSION bump + SW CACHE_NAME advance for update banner",
   "build_date": "2026-06-23",
-  "status": "LIMITED_PASS_STATIC_STAGE7D_R44A",
+  "status": "LIMITED_PASS_STATIC_STAGE7D_R45",
   "real_device_status": "NOT_TESTED"
 }
