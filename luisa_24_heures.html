@@ -4475,8 +4475,8 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'prototype-101r59-stage7d-r46-scroll-fix';
-const APP_EVIDENCE_STAGE = 'Stage 7D/R46 — openHourAtPara scroll fix';
+const APP_VERSION = 'prototype-101r59-stage7d-r47-meditation-ux';
+const APP_EVIDENCE_STAGE = 'Stage 7D/R47 — unified Méditée button, tappable daily card, cycle restart';
 const STORAGE_SCHEMA_VERSION=4; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const SEARCH_RESULT_LIMIT = 60;
 
@@ -5595,12 +5595,7 @@ function markHourMeditated(hourNum) {
   const bar = document.getElementById('markMeditatedBar');
   if (bar) bar.outerHTML = buildMarkBar(hourNum);
 }
-function buildMarkBar(hourNum) {
-  const today = getLocalDateStr();
-  const done = state.meditationLog.some(e => e.date === today && e.hour === hourNum);
-  if (done) return '<div class="mark-bar done" id="markMeditatedBar"><span class="mark-hint">\u2713\u00a0M\u00e9dit\u00e9e aujourd\u2019hui</span></div>';
-  return '<div class="mark-bar" id="markMeditatedBar"><button class="mark-btn" onclick="markHourMeditated(' + hourNum + ')">\u2713\u00a0M\u00e9dit\u00e9e aujourd\u2019hui</button><span class="mark-hint">Appuyez apr\u00e8s votre m\u00e9ditation</span></div>';
-}
+function buildMarkBar(hourNum) { return ''; }
 function buildDailyCard() {
   if (!state.meditationLog || !state.meditationLog.length) return '';
   const last = state.meditationLog[state.meditationLog.length-1];
@@ -5611,7 +5606,11 @@ function buildDailyCard() {
   const nextH  = CORPUS.hours.find(h => h.hour_number === nextNum);
   if (!lastH || !nextH) return '';
   if (last.date === today) {
-    return '<div class="daily-card done"><div class="dc-check">\u2713</div><div class="dc-meta"><div class="dc-label">M\u00e9dit\u00e9e aujourd\u2019hui</div><div class="dc-title">' + escHtml(lastH.hour_number + 'e\u00a0Heure \u2014 ' + lastH.title) + '</div><div class="dc-next">Prochaine\u00a0: ' + nextNum + 'e\u00a0Heure \u2014 ' + escHtml(nextH.short_title||nextH.title) + '</div></div></div>';
+    const cycleComplete = last.hour === 24;
+    if (cycleComplete) {
+      return '<div class="daily-card done cycle-complete"><div class="dc-check">\u2713</div><div class="dc-meta"><div class="dc-label">Cycle accompli</div><div class="dc-title">Vous avez pri\u00e9 les 24\u00a0Heures</div><div class="dc-next-btn" onclick="restartTwentyFourHours()" style="cursor:pointer;margin-top:0.5rem;color:var(--accent);font-family:var(--font-ui);font-size:0.85rem;">\u21ba\u00a0Recommencer le cycle</div></div></div>';
+    }
+    return '<div class="daily-card done" onclick="openHour(' + nextNum + ')" style="cursor:pointer"><div class="dc-check">\u2713</div><div class="dc-meta"><div class="dc-label">M\u00e9dit\u00e9e aujourd\u2019hui</div><div class="dc-title">' + escHtml(lastH.hour_number + 'e\u00a0Heure \u2014 ' + lastH.title) + '</div><div class="dc-next">Suivante\u00a0\u2192\u00a0' + nextNum + 'e\u00a0Heure \u2014 ' + escHtml(nextH.short_title||nextH.title) + '</div></div><svg class="dc-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>';
   }
   const MOIS = ['jan','f\u00e9v','mar','avr','mai','jun','jul','ao\u00fb','sep','oct','nov','d\u00e9c'];
   let timeLabel = last.date === yesterday ? 'Hier' : (function(){ const [,m,d]=last.date.split('-'); return parseInt(d)+'\u00a0'+MOIS[parseInt(m)-1]; })();
@@ -5828,7 +5827,7 @@ function renderHome() {
         <svg class="cc-arrow" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
       </button>
       ${daily ? `<div class="stage6m-practice-note">${daily}</div>` : ''}
-      ${state.readHours.size > 0 ? `<div class="progress-strip"><div class="progress-strip-bar"><div class="progress-strip-label">Progression</div><div class="progress-track"><div class="progress-fill" style="width:${readPct}%"></div></div></div><div class="progress-count">${state.readHours.size}/24</div></div>` : ''}
+      ${state.readHours.size > 0 ? `<div class="progress-strip"><div class="progress-strip-bar"><div class="progress-strip-label">Progression du cycle</div><div class="progress-track"><div class="progress-fill" style="width:${readPct}%"></div></div></div><div class="progress-count">${state.readHours.size}/24</div><button type="button" onclick="restartTwentyFourHours()" title="Réinitialiser le cycle" aria-label="Réinitialiser le cycle" style="background:none;border:none;cursor:pointer;color:var(--ink4);font-size:1rem;padding:0.25rem 0.4rem;border-radius:6px;line-height:1;" onmouseover="this.style.color='var(--ink2)'" onmouseout="this.style.color='var(--ink4)'">↺</button></div>` : ''}
       <div class="stage6m-home-actions" aria-label="Actions principales">
         <button type="button" class="stage6m-home-action" onclick="showHoursView()"><div class="k">Prier</div><div class="t">Les 24 Heures</div><div class="d">Ouvrir la liste complète des Heures.</div></button>
         <button type="button" class="stage6m-home-action" onclick="showLibraryView(true,'PASSION24.LIBRARY.PART_III')"><div class="k">Approfondir</div><div class="t">Livre du Ciel</div><div class="d">Passion divine de Jésus et douleurs de Marie.</div></button>
@@ -5963,8 +5962,8 @@ function renderReader(hour, scroll = true) {
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
         <span><span class="nav-label">Précédente</span>${prev?escHtml(prev.short_title.slice(0,28)):''}</span>
       </button>
-      <button class="mark-read-btn ${isRead?'done':''}" onclick="toggleRead(${hour.hour_number})" id="markReadBtn">
-        ${isRead?'✓ Lue':'Marquer lue'}
+      <button class="mark-read-btn ${isRead?'done':''}" onclick="markMeditee(${hour.hour_number})" id="markReadBtn">
+        ${isRead?'✓ Méditée':'Méditée'}
       </button>
       <button class="nav-btn" onclick="openHour(${next?next.hour_number:-1})" ${!next?'disabled':''}>
         <span><span class="nav-label">Suivante</span>${next?escHtml(next.short_title.slice(0,28)):''}</span>
@@ -6953,13 +6952,23 @@ function copyReflection(paraId, hourNum) {
     document.body.removeChild(_ta);
   }
 }
-function toggleRead(n) {
-  if (state.readHours.has(n)) { state.readHours.delete(n); showToast('Marquée comme non lue'); }
-  else { state.readHours.add(n); showToast('Heure marquée comme lue ✓'); }
+function markMeditee(n) {
+  if (state.readHours.has(n)) {
+    state.readHours.delete(n);
+    showToast('Progression retirée');
+  } else {
+    state.readHours.add(n);
+    const today = getLocalDateStr();
+    state.meditationLog = state.meditationLog.filter(e => e.date !== today);
+    state.meditationLog.push({ date: today, hour: n });
+    if (state.meditationLog.length > 100) state.meditationLog = state.meditationLog.slice(-100);
+    showToast('✓ ' + n + 'e Heure méditée');
+  }
   saveState();
   const btn = document.getElementById('markReadBtn');
-  if (btn) { btn.classList.toggle('done', state.readHours.has(n)); btn.textContent = state.readHours.has(n)?'✓ Lue':'Marquer lue'; }
+  if (btn) { btn.classList.toggle('done', state.readHours.has(n)); btn.textContent = state.readHours.has(n) ? '✓ Méditée' : 'Méditée'; }
 }
+function toggleRead(n) { markMeditee(n); }
 function dismissOnboarding(){
   SafeStorage.set('lp24_onboarded','1');
   const card=document.querySelector('.onboarding-card');

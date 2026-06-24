@@ -1,7 +1,7 @@
 {
-  "app_version": "prototype-101r59-stage7d-r46-scroll-fix",
-  "evidence_stage": "Stage 7D/R46 — openHourAtPara scroll fix (behavior:smooth -> auto)",
+  "app_version": "prototype-101r59-stage7d-r47-meditation-ux",
+  "evidence_stage": "Stage 7D/R47 — unified Méditée button, tappable daily card, cycle restart shortcut",
   "build_date": "2026-06-23",
-  "status": "LIMITED_PASS_STATIC_STAGE7D_R46",
+  "status": "LIMITED_PASS_STATIC_STAGE7D_R47",
   "real_device_status": "NOT_TESTED"
 }
