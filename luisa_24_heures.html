@@ -4477,8 +4477,8 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'prototype-101r59-stage7d-r47-meditation-ux';
-const APP_EVIDENCE_STAGE = 'Stage 7D/R47 — unified Méditée button, tappable daily card, cycle restart';
+const APP_VERSION = 'prototype-101r59-stage7d-r47b-update-loop-fix';
+const APP_EVIDENCE_STAGE = 'Stage 7D/R47b — Actualiser loop fix: APP_VERSION sync + 60s post-reload guard';
 const STORAGE_SCHEMA_VERSION=4; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const SEARCH_RESULT_LIMIT = 60;
 
@@ -8256,6 +8256,16 @@ async function fetchJsonWithTimeout(url, timeoutMs) {
 async function checkForUpdate(manual = false, reason = 'manual') {
   if (!manual && _updateCheckInFlight) return _updateCheckInFlight;
   if (!manual) {
+    // Post-reload guard: suppress auto-checks for 60s after a forced refresh
+    // (prevents Actualiser banner looping while SW/CDN updates propagate).
+    try {
+      const lastAttempt = parseInt(sessionStorage.getItem('lp24_last_update_attempt') || '0', 10);
+      if (lastAttempt && Date.now() - lastAttempt < 60000) {
+        const banner = document.querySelector('.update-banner');
+        if (banner) banner.remove();
+        return false;
+      }
+    } catch(e) {}
     const now = Date.now();
     if (now - _lastAutoUpdateCheckAt < 30000) return false;
     _lastAutoUpdateCheckAt = now;
@@ -8275,6 +8285,7 @@ async function checkForUpdate(manual = false, reason = 'manual') {
       }
       const banner = document.querySelector('.update-banner');
       if (banner) banner.remove();
+      try { sessionStorage.removeItem('lp24_last_update_attempt'); } catch(e) {}
       if (manual) { setUpdateCheckStatus('Vous avez déjà la dernière version disponible.', 'current'); showToast('Vous avez déjà la dernière version disponible'); }
       return false;
     } catch(e) {
@@ -8306,7 +8317,6 @@ async function refreshAppForUpdate() {
   if (_lastAvailableRemoteVersion) u.searchParams.set('target', _lastAvailableRemoteVersion);
   u.hash = '';
   window.location.replace(u.href);
-  setTimeout(function(){ try { window.location.reload(); } catch(e) {} }, 1200);
 }
 function manualUpdateCheck() { checkForUpdate(true, 'manual'); }
 function dismissUpdate(btn) { if (btn && btn.parentElement) btn.parentElement.remove(); }

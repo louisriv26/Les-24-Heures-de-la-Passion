@@ -1,7 +1,7 @@
 {
-  "app_version": "prototype-101r59-stage7d-r47a-meditee-hint",
-  "evidence_stage": "Stage 7D/R47a — Meditee button hint: Appuyez apres avoir medite",
+  "app_version": "prototype-101r59-stage7d-r47b-update-loop-fix",
+  "evidence_stage": "Stage 7D/R47b — Actualiser loop fix: APP_VERSION sync + 60s post-reload guard",
   "build_date": "2026-06-25",
-  "status": "LIMITED_PASS_STATIC_STAGE7D_R47A",
+  "status": "LIMITED_PASS_STATIC_STAGE7D_R47B",
   "real_device_status": "NOT_TESTED"
 }
