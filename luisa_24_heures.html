@@ -409,9 +409,11 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--ink); 
 .nav-btn:hover { background: var(--accent-pale); border-color: var(--accent-light); color: var(--accent); }
 .nav-btn:disabled { opacity: 0.35; pointer-events: none; }
 .nav-label { font-style: italic; font-size: 0.78rem; color: var(--ink4); display: block; }
-.mark-read-btn { background: var(--accent-pale); border: 1px solid var(--accent-light); border-radius: var(--radius); padding: 0.6rem 1rem; cursor: pointer; color: var(--accent); font-family: var(--font-ui); font-size: var(--ui-size, 16px); transition: background 0.15s; white-space: nowrap; }
+.mark-read-btn { background: var(--accent-pale); border: 1px solid var(--accent-light); border-radius: var(--radius); padding: 0.6rem 1rem; cursor: pointer; color: var(--accent); font-family: var(--font-ui); font-size: var(--ui-size, 16px); transition: background 0.15s; display: flex; flex-direction: column; align-items: center; gap: 0.15rem; line-height: 1.2; }
 .mark-read-btn:hover { background: var(--accent); color: white; }
+.mark-read-btn:hover .mark-btn-hint { color: rgba(255,255,255,0.8); }
 .mark-read-btn.done { background: var(--accent); color: white; }
+.mark-btn-hint { font-size: 0.72rem; color: var(--ink4); font-style: italic; }
 
 /* ── Section screen ── */
 .section-screen { width: 100%; max-width: var(--col-max); }
@@ -5963,7 +5965,7 @@ function renderReader(hour, scroll = true) {
         <span><span class="nav-label">Précédente</span>${prev?escHtml(prev.short_title.slice(0,28)):''}</span>
       </button>
       <button class="mark-read-btn ${isRead?'done':''}" onclick="markMeditee(${hour.hour_number})" id="markReadBtn">
-        ${isRead?'✓ Méditée':'Méditée'}
+        <span>${isRead?'✓ Méditée':'Méditée'}</span>${isRead?'':'<span class="mark-btn-hint">Appuyez après avoir médité</span>'}
       </button>
       <button class="nav-btn" onclick="openHour(${next?next.hour_number:-1})" ${!next?'disabled':''}>
         <span><span class="nav-label">Suivante</span>${next?escHtml(next.short_title.slice(0,28)):''}</span>
@@ -6966,7 +6968,7 @@ function markMeditee(n) {
   }
   saveState();
   const btn = document.getElementById('markReadBtn');
-  if (btn) { btn.classList.toggle('done', state.readHours.has(n)); btn.textContent = state.readHours.has(n) ? '✓ Méditée' : 'Méditée'; }
+  if (btn) { const rd = state.readHours.has(n); btn.classList.toggle('done', rd); btn.innerHTML = rd ? '<span>✓ Méditée</span>' : '<span>Méditée</span><span class="mark-btn-hint">Appuyez après avoir médité</span>'; }
 }
 function toggleRead(n) { markMeditee(n); }
 function dismissOnboarding(){
