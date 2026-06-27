@@ -144,7 +144,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--ink); 
 .hours-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin-bottom: 1.75rem; }
 .home-hours-section { margin: 1.1rem 0 0.5rem; }
 .home-hours-header { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:0.65rem; }
-.home-hours-title { font-family:var(--font-display); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink3); font-weight:600; }
+.home-hours-title { font-family:var(--font-display); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink3); font-weight:600; background:none; border:none; padding:0; cursor:pointer; } .home-hours-title:hover { color:var(--accent); }
 .home-hours-count { font-family:var(--font-ui); font-size:0.75rem; color:var(--ink4); }
 .home-hours-restart { background:none; border:none; cursor:pointer; color:var(--ink4); font-family:var(--font-ui); font-size:0.75rem; padding:0; text-decoration:underline; text-underline-offset:2px; }
 .home-hours-restart:hover { color:var(--accent); }
@@ -4486,8 +4486,8 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'prototype-101r59-stage7d-r48-nav-redesign';
-const APP_EVIDENCE_STAGE = 'Stage 7D/R48 — Navigation redesign: 24H grid on home, Prières tile, Textes liés tab, HoursView progress';
+const APP_VERSION = 'prototype-101r59-stage7d-r48a-nav-fix';
+const APP_EVIDENCE_STAGE = 'Stage 7D/R48a — R48 nav fix: tappable grid title, settings sheet nav, help update';
 const STORAGE_SCHEMA_VERSION=4; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const SEARCH_RESULT_LIMIT = 60;
 
@@ -5850,7 +5850,7 @@ function renderHome() {
         <svg class="cc-arrow" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
       </button>
       ${daily ? `<div class="stage6m-practice-note">${daily}</div>` : ''}
-      <div class="home-hours-section"><div class="home-hours-header"><span class="home-hours-title">Les 24 Heures</span>${state.readHours.size > 0 ? `<span class="home-hours-count">${state.readHours.size} méditée${state.readHours.size > 1 ? "s" : ""} &middot; <button type="button" onclick="restartTwentyFourHours()" class="home-hours-restart" title="Réinitialiser le cycle">↺ Recommencer</button></span>` : ""}</div><div class="hours-grid">${hoursGrid}</div></div>
+      <div class="home-hours-section"><div class="home-hours-header"><button type="button" class="home-hours-title" onclick="showHoursView()">Les 24 Heures ›</button>${state.readHours.size > 0 ? `<span class="home-hours-count">${state.readHours.size} méditée${state.readHours.size > 1 ? "s" : ""} &middot; <button type="button" onclick="restartTwentyFourHours()" class="home-hours-restart" title="Réinitialiser le cycle">↺ Recommencer</button></span>` : ""}</div><div class="hours-grid">${hoursGrid}</div></div>
       <div class="stage6m-home-actions" aria-label="Actions principales">
         <button type="button" class="stage6m-home-action" onclick="showPrieres()"><div class="k">Prières</div><div class="t">Prières &amp; compléments</div><div class="d">Prières du parcours, introduction et textes complémentaires.</div></button>
         <button type="button" class="stage6m-home-action" onclick="showLibraryView(true,'PASSION24.LIBRARY.PART_III')"><div class="k">Approfondir</div><div class="t">Livre du Ciel</div><div class="d">Passion divine de Jésus et douleurs de Marie.</div></button>
@@ -6806,7 +6806,7 @@ function showSettingsSheet() {
       <div class="stage6m-settings-group">
         <div class="stage6m-settings-label">Parcours</div>
         <div class="stage6m-settings-grid">
-          <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); showEspaceView();"><strong>Mon Espace</strong>Progression, favoris, surlignages, export et import.</button>
+          <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); showHoursView();"><strong>Les 24 Heures</strong>Parcourir les 24 Heures par titre et horaire.</button>          <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); showPrieres();"><strong>Prières &amp; compléments</strong>Prières du parcours et textes complémentaires.</button>          <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); showEspaceView();"><strong>Mon Espace</strong>Progression, favoris, surlignages, export et import.</button>
           <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); showLibraryView(true,'PASSION24.LIBRARY.PART_III');"><strong>Approfondir</strong>Textes du Livre du Ciel autour de la Passion.</button>
           <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); openLibraryText('PASSION24.TEXT.HOW_TO_PRACTICE');"><strong>Comment pratiquer</strong>Comprendre les façons de prier les Heures.</button>
           <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); toggleFavPanel();"><strong>Favoris</strong>Ouvrir les éléments enregistrés.</button>
@@ -6857,7 +6857,7 @@ function showHelp() {
       </div>
       <div class="help-modal-scroll">
       <div class="help-section"><div class="help-section-hd">Accueil · Heures · Textes · Espace</div><div class="help-section-body">
-        <div class="help-row"><span class="help-icon">🏠</span><span class="help-row-text"><strong>Accueil</strong> — Reprendre la lecture, ouvrir les 24 Heures, ou accéder rapidement à Approfondir la Passion. La carte du haut affiche l’Heure méditée du jour et propose la suivante.</span></div>
+        <div class="help-row"><span class="help-icon">🏠</span><span class="help-row-text"><strong>Accueil</strong> — Reprendre la lecture, accéder aux prières, ou approfondir la Passion. La grille des 24 Heures est toujours visible en accueil — appuyez sur le titre ou une tuile pour naviguer. La carte du haut affiche l’Heure méditée du jour et propose la suivante.</span></div>
         <div class="help-row"><span class="help-icon">⏱</span><span class="help-row-text"><strong>Heures</strong> — Affiche les 24 Heures avec le titre et l’horaire. Appuyez sur une carte pour ouvrir la méditation.</span></div>
         <div class="help-row"><span class="help-icon">📖</span><span class="help-row-text"><strong>Textes</strong> — Préface, pratique des Heures, Approfondir la Passion, et textes liés aux 24 Heures.</span></div>
         <div class="help-row"><span class="help-icon">★</span><span class="help-row-text"><strong>Espace / Mon Espace</strong> — Vos favoris, surlignages, reprise de lecture, progression, export et import de données.</span></div>
@@ -6867,12 +6867,12 @@ function showHelp() {
         <div class="help-row"><span class="help-icon">✝</span><span class="help-row-text"><strong>Flux conseillé</strong> — Priez une Heure par jour, dans l’ordre, puis continuez l’Heure suivante.</span></div>
         <div class="help-row"><span class="help-icon">⏱</span><span class="help-row-text">Vous pouvez aussi choisir une Heure selon le moment de la journée ou approfondir librement une Heure particulière.</span></div>
         <div class="help-row"><span class="help-icon">📖</span><span class="help-row-text"><strong>Approfondir</strong> ouvre les textes du Livre du Ciel liés à la Passion et aux Heures.</span></div>
-        <div class="help-row"><span class="help-icon">✓</span><span class="help-row-text"><strong>Méditée</strong> — Après avoir prié une Heure, appuyez sur <strong>Méditée</strong> en bas de la page. Cela enregistre votre méditation du jour et met à jour la barre de progression sur l’Accueil.</span></div>
+        <div class="help-row"><span class="help-icon">✓</span><span class="help-row-text"><strong>Méditée</strong> — Après avoir prié une Heure, appuyez sur <strong>Méditée</strong> en bas de la page. Cela enregistre votre méditation du jour et met à jour la grille des 24 Heures sur l’Accueil.</span></div>
       </div></div>
       <div class="help-section"><div class="help-section-hd">Progression et cycle</div><div class="help-section-body">
         <div class="help-row"><span class="help-icon">✓</span><span class="help-row-text"><strong>Enregistrer une méditation</strong> — Le bouton <strong>Méditée</strong> en bas de chaque Heure enregistre la méditation du jour et met à jour la barre de progression. Un deuxième appui l’annule.</span></div>
         <div class="help-row"><span class="help-icon">📊</span><span class="help-row-text"><strong>Carte du jour</strong> — Sur l’Accueil, la carte du haut affiche l’Heure méditée du jour et propose la suivante. Appuyez dessus pour y accéder directement.</span></div>
-        <div class="help-row"><span class="help-icon">↺</span><span class="help-row-text"><strong>Nouveau cycle</strong> — Une fois les 24 Heures priées, la carte indique «&nbsp;Cycle accompli&nbsp;». Appuyez sur <strong>↺ Recommencer le cycle</strong>, ou sur le bouton ↺ dans la barre de progression, pour démarrer un nouveau cycle.</span></div>
+        <div class="help-row"><span class="help-icon">↺</span><span class="help-row-text"><strong>Nouveau cycle</strong> — Une fois les 24 Heures priées, la carte indique «&nbsp;Cycle accompli&nbsp;». Appuyez sur <strong>↺ Recommencer le cycle</strong>, ou sur le bouton ↺ dans l’en-téte de la grille des 24 Heures, pour démarrer un nouveau cycle.</span></div>
       </div></div>
       <div class="help-section"><div class="help-section-hd">Mon Espace</div><div class="help-section-body">
         <div class="help-row"><span class="help-icon">☰</span><span class="help-row-text">Sur iPad ou ordinateur, le bouton <strong>Mon Espace</strong> ouvre un panneau personnel. Utilisez <strong>× Fermer</strong> pour le refermer.</span></div>
