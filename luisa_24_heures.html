@@ -4486,8 +4486,8 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'prototype-101r59-stage7d-r48b-nav-fix';
-const APP_EVIDENCE_STAGE = 'Stage 7D/R48b — R48 nav fix: tappable grid title, settings sheet nav, help update';
+const APP_VERSION = 'prototype-101r59-stage7d-r48c-nav-fix';
+const APP_EVIDENCE_STAGE = 'Stage 7D/R48c — R48 nav fix: tappable grid title, settings sheet nav, help update';
 const STORAGE_SCHEMA_VERSION=4; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const SEARCH_RESULT_LIMIT = 60;
 
@@ -6856,11 +6856,12 @@ function showHelp() {
         <button type="button" class="help-modal-close" onclick="closeHelpModal()" aria-label="Fermer l’aide">× Fermer</button>
       </div>
       <div class="help-modal-scroll">
-      <div class="help-section"><div class="help-section-hd">Accueil · Heures · Textes · Espace</div><div class="help-section-body">
+      <div class="help-section"><div class="help-section-hd">Accueil · Heures · Approfondir · Espace</div><div class="help-section-body">
         <div class="help-row"><span class="help-icon">🏠</span><span class="help-row-text"><strong>Accueil</strong> — Reprendre la lecture, accéder aux prières, ou approfondir la Passion. La grille des 24 Heures est toujours visible en accueil — appuyez sur le titre ou une tuile pour naviguer. La carte du haut affiche l’Heure méditée du jour et propose la suivante.</span></div>
         <div class="help-row"><span class="help-icon">⏱</span><span class="help-row-text"><strong>Heures</strong> — Affiche les 24 Heures avec le titre et l’horaire. Appuyez sur une carte pour ouvrir la méditation.</span></div>
         <div class="help-row"><span class="help-icon">📖</span><span class="help-row-text"><strong>Textes</strong> — Préface, pratique des Heures, Approfondir la Passion, et textes liés aux 24 Heures.</span></div>
         <div class="help-row"><span class="help-icon">★</span><span class="help-row-text"><strong>Espace / Mon Espace</strong> — Vos favoris, surlignages, reprise de lecture, progression, export et import de données.</span></div>
+        <div class="help-row"><span class="help-icon">⚙</span><span class="help-row-text"><strong>Réglages</strong> &mdash; Sur iPad et ordinateur, le bouton <strong>⚙</strong> en haut à droite donne accès à la navigation complète&nbsp;: Les 24 Heures par titre, Prières, Approfondir, Mon Espace, aide et préférences.</span></div>
 
       </div></div>
       <div class="help-section"><div class="help-section-hd">Comment pratiquer</div><div class="help-section-body">
@@ -6870,12 +6871,12 @@ function showHelp() {
         <div class="help-row"><span class="help-icon">✓</span><span class="help-row-text"><strong>Méditée</strong> — Après avoir prié une Heure, appuyez sur <strong>Méditée</strong> en bas de la page. Cela enregistre votre méditation du jour et met à jour la grille des 24 Heures sur l’Accueil.</span></div>
       </div></div>
       <div class="help-section"><div class="help-section-hd">Progression et cycle</div><div class="help-section-body">
-        <div class="help-row"><span class="help-icon">✓</span><span class="help-row-text"><strong>Enregistrer une méditation</strong> — Le bouton <strong>Méditée</strong> en bas de chaque Heure enregistre la méditation du jour et met à jour la barre de progression. Un deuxième appui l’annule.</span></div>
+        <div class="help-row"><span class="help-icon">✓</span><span class="help-row-text"><strong>Enregistrer une méditation</strong> — Le bouton <strong>Méditée</strong> en bas de chaque Heure enregistre la méditation du jour et met à jour la grille des 24 Heures. Un deuxième appui l’annule.</span></div>
         <div class="help-row"><span class="help-icon">📊</span><span class="help-row-text"><strong>Carte du jour</strong> — Sur l’Accueil, la carte du haut affiche l’Heure méditée du jour et propose la suivante. Appuyez dessus pour y accéder directement.</span></div>
-        <div class="help-row"><span class="help-icon">↺</span><span class="help-row-text"><strong>Nouveau cycle</strong> — Une fois les 24 Heures priées, la carte indique «&nbsp;Cycle accompli&nbsp;». Appuyez sur <strong>↺ Recommencer le cycle</strong>, ou sur le bouton ↺ dans l’en-téte de la grille des 24 Heures, pour démarrer un nouveau cycle.</span></div>
+        <div class="help-row"><span class="help-icon">↺</span><span class="help-row-text"><strong>Nouveau cycle</strong> — Une fois les 24 Heures priées, la carte indique «&nbsp;Cycle accompli&nbsp;». Appuyez sur <strong>↺ Recommencer le cycle</strong>, ou sur le bouton ↺ dans l’en-tète de la grille des 24 Heures, pour démarrer un nouveau cycle.</span></div>
       </div></div>
       <div class="help-section"><div class="help-section-hd">Mon Espace</div><div class="help-section-body">
-        <div class="help-row"><span class="help-icon">☰</span><span class="help-row-text">Sur iPad ou ordinateur, le bouton <strong>Mon Espace</strong> ouvre un panneau personnel. Utilisez <strong>× Fermer</strong> pour le refermer.</span></div>
+        <div class="help-row"><span class="help-icon">☰</span><span class="help-row-text">Sur iPad ou ordinateur, appuyez sur <strong>⚙ Réglages</strong> en haut à droite, puis <strong>Mon Espace</strong> dans la section Parcours.</span></div>
         <div class="help-row"><span class="help-icon">▣</span><span class="help-row-text">Sur iPhone, ouvrez <strong>Espace</strong> dans la barre du bas.</span></div>
         <div class="help-note">Mon Espace ne remplace pas Approfondir dans une Heure : il regroupe seulement vos éléments personnels.</div>
       </div></div>
