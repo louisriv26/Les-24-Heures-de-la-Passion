@@ -142,6 +142,12 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--ink); 
 .progress-count { font-family: var(--font-display); font-size: 1.1rem; color: var(--accent); font-weight: 500; }
 .section-title { font-family: var(--font-display); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink3); margin-bottom: 0.85rem; }
 .hours-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin-bottom: 1.75rem; }
+.home-hours-section { margin: 1.1rem 0 0.5rem; }
+.home-hours-header { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:0.65rem; }
+.home-hours-title { font-family:var(--font-display); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink3); font-weight:600; }
+.home-hours-count { font-family:var(--font-ui); font-size:0.75rem; color:var(--ink4); }
+.home-hours-restart { background:none; border:none; cursor:pointer; color:var(--ink4); font-family:var(--font-ui); font-size:0.75rem; padding:0; text-decoration:underline; text-underline-offset:2px; }
+.home-hours-restart:hover { color:var(--accent); }
 .hour-card { background: var(--bg2); border: 1px solid var(--bg3); border-radius: 8px; padding: 0.65rem 0.4rem; cursor: pointer; text-align: center; transition: background 0.15s, box-shadow 0.15s, border-color 0.15s, transform 0.12s; position: relative; }
 .hour-card:hover { background: var(--bg3); box-shadow: var(--shadow); border-color: var(--accent-light); transform: translateY(-1px); }
 .hour-card.read { border-color: var(--accent-light); }
@@ -1085,6 +1091,9 @@ html, body, #app, .main, .content,
 .hour-list-title { font-family:var(--font-display); font-weight:800; font-size:1.05rem; line-height:1.22; color:var(--ink); }
 .hour-list-time { font-family:var(--font-ui); color:var(--ink3); font-style:italic; font-size:0.86rem; margin-top:0.18rem; }
 .hour-list-card.gethsemani .hour-list-title::after { content:' · Heure Sainte'; color:#6a3a9a; font-family:var(--font-ui); font-size:0.78rem; font-weight:800; }
+.hour-list-card { position:relative; }
+.hour-list-card.read { border-color:var(--accent-light); }
+.hour-list-card.read::after { content:'✓'; position:absolute; top:6px; right:8px; font-size:0.65rem; color:var(--accent-light); }
 .library-extract-heading { font-size:calc(var(--reading-size, 20px) * 0.92) !important; font-weight:900 !important; line-height:1.28 !important; color:var(--ink) !important; background:linear-gradient(90deg,var(--accent-pale),rgba(255,255,255,0)); border-top:none !important; border-left:4px solid var(--accent) !important; border-radius:0.75rem !important; padding:0.75rem 0.9rem !important; margin:1.75rem 0 0.85rem !important; letter-spacing:0.01em; scroll-margin-top:96px; }
 .library-live-index-btn { font-size:0.9rem; padding:0.58rem 0.72rem; }
 .right-context-panel .panel-topbar { display:flex; align-items:center; justify-content:space-between; gap:0.75rem; margin-bottom:0.8rem; }
@@ -4477,8 +4486,8 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'prototype-101r59-stage7d-r47c-help-update';
-const APP_EVIDENCE_STAGE = 'Stage 7D/R47c — Help section update: Progression cycle + Méditée guidance';
+const APP_VERSION = 'prototype-101r59-stage7d-r48-nav-redesign';
+const APP_EVIDENCE_STAGE = 'Stage 7D/R48 — Navigation redesign: 24H grid on home, Prières tile, Textes liés tab, HoursView progress';
 const STORAGE_SCHEMA_VERSION=4; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const SEARCH_RESULT_LIMIT = 60;
 
@@ -5651,8 +5660,7 @@ function showHoursView(push = true) {
   </div>`;
   document.getElementById('progressWrap').style.display = 'none';
   setBottomNav('hours'); buildSidebar(); updateRightContextPanel();
-}
-function getRecentLibraryTextIds() {
+}function getRecentLibraryTextIds() {
   try {
     const arr = JSON.parse(SafeStorage.get('lp24_recent_texts','[]'));
     if (!Array.isArray(arr)) { SafeStorage.remove('lp24_recent_texts'); return []; }
@@ -5664,6 +5672,19 @@ function getRecentLibraryTextIds() {
     if (clean.length !== arr.length || clean.some((id, i) => id !== arr[i])) SafeStorage.set('lp24_recent_texts', JSON.stringify(clean));
     return clean;
   } catch(e) { SafeStorage.remove('lp24_recent_texts'); return []; }
+}
+function showPrieres() {
+  forceCloseLegacySidebar();
+  pushHistory(state.view, getHistoryDataForView(state.view));
+  state.view = 'prayers'; state.currentHour = null; state.currentSection = null; state.currentPrayer = null;
+  resetContentScroll();
+  const prayerIcons = {'BEFORE_EACH_HOUR':'🕯','AFTER_EACH_HOUR':'🙏','HOLY_HOUR_PREPARATION':'✝','HOLY_HOUR_THANKSGIVING':'💛','DE_PROFUNDIS':'📿'};
+  const sectionIcons = {'INTRODUCTION':'📖','BENEFITS':'✨','PRACTICE_METHODS':'🗝','GETHSEMANI':'🌿'};
+  const pGrid = CORPUS.prayers.map(function(p) { const k=p.prayer_id.replace('PASSION24.PRAYER.',''); return '<button type="button" class="extra-card" onclick="openPrayer(\''+p.prayer_id+'\')"><div class="ec-icon">'+(prayerIcons[k]||'🕯')+'</div><div class="ec-title">'+escHtml(p.title)+'</div></button>'; }).join('');
+  const sGrid = CORPUS.sections.map(function(s) { const k=s.section_id.replace('PASSION24.SECTION.',''); return '<button type="button" class="extra-card" onclick="openSection(\''+s.section_id+'\')"><div class="ec-icon">'+(sectionIcons[k]||'📖')+'</div><div class="ec-title">'+escHtml(s.title)+'</div></button>'; }).join('');
+  document.getElementById('content').innerHTML = '<div class="hours-screen"><div class="library-hero"><div class="library-eyebrow">Pratique</div><h2 class="library-title">Prières &amp; compléments</h2><p class="library-subtitle">Prières propres aux 24 Heures, textes d’introduction et textes complémentaires.</p></div><div class="espace-section"><div class="espace-section-title">Prières du parcours</div><div class="extras-grid">'+pGrid+'</div></div><div class="espace-section"><div class="espace-section-title">Textes complémentaires</div><div class="extras-grid">'+sGrid+'</div></div></div>';
+  document.getElementById('progressWrap').style.display = 'none';
+  setBottomNav('none'); buildSidebar(); updateRightContextPanel();
 }
 function rememberLibraryText(id) {
   const item = getLibraryItem(id);
@@ -5829,15 +5850,15 @@ function renderHome() {
         <svg class="cc-arrow" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
       </button>
       ${daily ? `<div class="stage6m-practice-note">${daily}</div>` : ''}
-      ${state.readHours.size > 0 ? `<div class="progress-strip"><div class="progress-strip-bar"><div class="progress-strip-label">Progression du cycle</div><div class="progress-track"><div class="progress-fill" style="width:${readPct}%"></div></div></div><div class="progress-count">${state.readHours.size}/24</div><button type="button" onclick="restartTwentyFourHours()" title="Réinitialiser le cycle" aria-label="Réinitialiser le cycle" style="background:none;border:none;cursor:pointer;color:var(--ink4);font-size:1rem;padding:0.25rem 0.4rem;border-radius:6px;line-height:1;" onmouseover="this.style.color='var(--ink2)'" onmouseout="this.style.color='var(--ink4)'">↺</button></div>` : ''}
+      <div class="home-hours-section"><div class="home-hours-header"><span class="home-hours-title">Les 24 Heures</span>${state.readHours.size > 0 ? `<span class="home-hours-count">${state.readHours.size} méditée${state.readHours.size > 1 ? "s" : ""} &middot; <button type="button" onclick="restartTwentyFourHours()" class="home-hours-restart" title="Réinitialiser le cycle">↺ Recommencer</button></span>` : ""}</div><div class="hours-grid">${hoursGrid}</div></div>
       <div class="stage6m-home-actions" aria-label="Actions principales">
-        <button type="button" class="stage6m-home-action" onclick="showHoursView()"><div class="k">Prier</div><div class="t">Les 24 Heures</div><div class="d">Ouvrir la liste complète des Heures.</div></button>
+        <button type="button" class="stage6m-home-action" onclick="showPrieres()"><div class="k">Prières</div><div class="t">Prières &amp; compléments</div><div class="d">Prières du parcours, introduction et textes complémentaires.</div></button>
         <button type="button" class="stage6m-home-action" onclick="showLibraryView(true,'PASSION24.LIBRARY.PART_III')"><div class="k">Approfondir</div><div class="t">Livre du Ciel</div><div class="d">Passion divine de Jésus et douleurs de Marie.</div></button>
         <button type="button" class="stage6m-home-action" onclick="openLibraryText('PASSION24.TEXT.HOW_TO_PRACTICE')"><div class="k">Guide</div><div class="t">Comment pratiquer</div><div class="d">Une Heure par jour, heure réelle ou parcours libre.</div></button>
         <button type="button" class="stage6m-home-action" onclick="showEspaceView()"><div class="k">Personnel</div><div class="t">Mon Espace</div><div class="d">Progression, favoris, sauvegarde et reprise.</div></button>
       </div>
       ${renderRecentLibraryCards()}
-      <details class="stage6m-home-details"><summary>Parcourir les 24 Heures</summary><div class="stage6m-home-details-body"><div class="hours-grid">${hoursGrid}</div></div></details>
+      
       <details class="stage6m-home-details"><summary>Prières et compléments</summary><div class="stage6m-home-details-body"><div class="extras-grid">${extrasGrid}</div></div></details>
       <details class="stage6m-home-details"><summary>Rechercher dans l’app</summary><div class="stage6m-home-details-body">
         <div class="search-wrap">
@@ -5901,7 +5922,7 @@ function renderReader(hour, scroll = true) {
         Réflexions et pratiques<span class="tab-count">(${hour.reflections.length})</span>
       </button>` : ''}
       <button class="tab-btn ${state.activeTab==='linked'?'active':''}" data-tab="linked" onclick="switchTab('linked')">
-        Approfondir
+        Textes liés
       </button>
     </div>`;
 
