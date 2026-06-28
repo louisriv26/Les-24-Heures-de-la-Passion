@@ -4553,6 +4553,7 @@ const state = {
   _pending: null,
   studyMode: false,
   searchFilter: 'all',
+  speechSpeaker: 'all',
   monEspacePanelOpen: false,
   meditationLog: [],
   notes: {}
@@ -4567,7 +4568,7 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'prototype-101r59-stage8a-r49e-plan';
+const APP_VERSION = 'prototype-101r59-stage8a-r49f-paroles';
 const APP_EVIDENCE_STAGE = 'Stage 7D/R48d — R48 nav fix: tappable grid title, settings sheet nav, help update';
 const STORAGE_SCHEMA_VERSION=4; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const SEARCH_RESULT_LIMIT = 60;
@@ -5958,6 +5959,12 @@ function renderHome() {
           <button type="button" class="sf-btn" data-filter="section" aria-pressed="false" onclick="setSearchFilter('section')">Compléments</button>
           <button type="button" class="sf-btn" data-filter="speech" aria-pressed="false" onclick="setSearchFilter('speech')">Paroles directes</button>
         </div>
+        <div class="search-filters" id="speechSpeakerFilters" style="display:none;margin-top:0.3rem">
+          <button type="button" class="sf-btn active" data-speaker="all" onclick="setSpeechSpeaker('all')">Tous</button>
+          <button type="button" class="sf-btn" data-speaker="JESUS" onclick="setSpeechSpeaker('JESUS')">✝ Jésus</button>
+          <button type="button" class="sf-btn" data-speaker="FATHER" onclick="setSpeechSpeaker('FATHER')">◆ Père</button>
+          <button type="button" class="sf-btn" data-speaker="MARY" onclick="setSpeechSpeaker('MARY')">✦ Marie</button>
+        </div>
         <div class="search-results" id="homeSearchResults" role="status" aria-live="polite" aria-atomic="true"></div>
       </div></details>
     </div>
@@ -6783,6 +6790,12 @@ function showSearchView() {
       <button type="button" class="sf-btn" data-filter="section" aria-pressed="false" onclick="setSearchFilter('section')">Compléments</button>
       <button type="button" class="sf-btn" data-filter="speech" aria-pressed="false" onclick="setSearchFilter('speech')">Paroles directes</button>
     </div>
+    <div class="search-filters" id="speechSpeakerFilters" style="display:none;margin-top:0.3rem">
+      <button type="button" class="sf-btn active" data-speaker="all" onclick="setSpeechSpeaker('all')">Tous</button>
+      <button type="button" class="sf-btn" data-speaker="JESUS" onclick="setSpeechSpeaker('JESUS')">✝ Jésus</button>
+      <button type="button" class="sf-btn" data-speaker="FATHER" onclick="setSpeechSpeaker('FATHER')">◆ Père</button>
+      <button type="button" class="sf-btn" data-speaker="MARY" onclick="setSpeechSpeaker('MARY')">✦ Marie</button>
+    </div>
     <div class="search-results" id="homeSearchResults" role="status" aria-live="polite" aria-atomic="true"></div>
   </div>`;
   requestAnimationFrame(() => { (function(){var _si=document.getElementById('homeSearchInput');if(_si)_si.focus();})(); });
@@ -6794,12 +6807,13 @@ function onSearchInput(v) { state.searchQuery = v; performSearch(v); }
 function performSearch(query) {
   const resultsEl = document.getElementById('homeSearchResults');
   const homeMain = document.getElementById('homeMain');
-  if (!query || query.trim().length < 2) {
+  const hasQuery = !!(query && query.trim().length >= 2);
+  if (!hasQuery && state.searchFilter !== 'speech') {
     if (resultsEl) { resultsEl.classList.remove('visible'); resultsEl.innerHTML = ''; }
     if (homeMain) homeMain.style.display = ''; return;
   }
   if (homeMain) homeMain.style.display = 'none';
-  const q = norm(query.trim());
+  const q = hasQuery ? norm(query.trim()) : '';
   const results = [];
   const seenSpeech = new Set();
   const currentFilter = state.searchFilter || 'all';
@@ -6813,8 +6827,9 @@ function performSearch(query) {
     const segments = (typeof SPEECH_DATA !== 'undefined' && SPEECH_DATA && para && para.id) ? (SPEECH_DATA[para.id] || []) : [];
     for (const seg of segments) {
       if (typeof seg.start !== 'number' || typeof seg.end !== 'number') continue;
+      if (state.speechSpeaker && state.speechSpeaker !== 'all' && seg.speaker !== state.speechSpeaker) continue;
       const speechText = (para.t || '').slice(seg.start, seg.end);
-      if (!speechText || !norm(speechText).includes(q)) continue;
+      if (!speechText || (hasQuery && !norm(speechText).includes(q))) continue;
       const key = para.id + ':' + seg.start + ':' + seg.end;
       if (seenSpeech.has(key)) continue;
       seenSpeech.add(key);
@@ -6822,7 +6837,7 @@ function performSearch(query) {
         label,
         para: {id: para.id, t: speechText},
         type: 'speech',
-        kindLabel: 'Parole directe',
+        kindLabel: 'Parole directe · ' + (seg.speaker === 'JESUS' ? 'Jésus' : seg.speaker === 'FATHER' ? 'Père' : 'Marie'),
         target
       });
     }
@@ -6899,21 +6914,22 @@ function performSearch(query) {
     b.classList.toggle('active', active);
     b.setAttribute('aria-pressed', active ? 'true' : 'false');
   });
-  if (!allFiltered.length) { resultsEl.innerHTML=`<div class="no-results">Aucun résultat pour « ${escHtml(query)} »</div>`; resultsEl.classList.add('visible'); return; }
-  const reRx = new RegExp(escRe(query.trim()), 'gi');
+  if (!allFiltered.length) { resultsEl.innerHTML=`<div class="no-results">${hasQuery ? `Aucun résultat pour « ${escHtml(query)} »` : 'Aucune parole directe trouvée.'}</div>`; resultsEl.classList.add('visible'); return; }
+  const reRx = hasQuery ? new RegExp(escRe(query.trim()), 'gi') : null;
   const badgeClass = {hour:'hour', prayer:'prayer', section:'section', speech:'speech'};
+  const countLabel = hasQuery ? `${allFiltered.length}${allFiltered.length>SEARCH_RESULT_LIMIT?'+':''} résultat${allFiltered.length>1?'s':''} pour « ${escHtml(query)} »` : `${allFiltered.length}${allFiltered.length>SEARCH_RESULT_LIMIT?'+':''} parole${allFiltered.length>1?'s':''} directe${allFiltered.length>1?'s':''}`;
   resultsEl.innerHTML = `
-    <div class="search-count">${allFiltered.length}${allFiltered.length>SEARCH_RESULT_LIMIT?'+':''} résultat${allFiltered.length>1?'s':''} pour « ${escHtml(query)} »</div>
+    <div class="search-count">${countLabel}</div>
     ${allFiltered.length>SEARCH_RESULT_LIMIT?`<div class="search-limit-note">Affichage limité aux ${SEARCH_RESULT_LIMIT} premiers résultats. Affinez la recherche pour cibler un passage précis.</div>`:''}
     ${filtered.map(r => {
       const raw = r.para.t || '';
       const normRaw = norm(raw);
-      const idx = normRaw.indexOf(q);
+      const idx = hasQuery ? normRaw.indexOf(q) : -1;
       const start = idx >= 0 ? Math.max(0, idx-55) : 0;
       const end = idx >= 0 ? Math.min(raw.length, idx+q.length+90) : Math.min(raw.length, 145);
       let snip = raw.slice(start, end).replace(/\n/g,' ');
       if (start>0) snip='…'+snip; if (end<raw.length) snip+='…';
-      const marked = escHtml(snip).replace(reRx, m=>`<mark>${m}</mark>`);
+      const marked = reRx ? escHtml(snip).replace(reRx, m=>`<mark>${m}</mark>`) : escHtml(snip);
       const badge = `<span class="sr-badge ${badgeClass[r.type] || 'hour'}">${escHtml(r.kindLabel || 'Résultat')}</span>`;
       const onclick = r.target.kind==='hour'
         ? `openHourAtPara(${r.target.n},'${r.target.paraId || r.para.id}','${r.target.tab || 'meditation'}')`
@@ -8687,13 +8703,24 @@ function handleImportFile(input) {
 // ─── Search filter ──────────────────────────────────────────
 function setSearchFilter(f) {
   state.searchFilter = f;
-  document.querySelectorAll('.sf-btn').forEach(b => {
+  document.querySelectorAll('.sf-btn[data-filter]').forEach(b => {
     const active = b.dataset.filter === f;
     b.classList.toggle('active', active);
     b.setAttribute('aria-pressed', active ? 'true' : 'false');
   });
+  document.querySelectorAll('#speechSpeakerFilters').forEach(el => { el.style.display = f === 'speech' ? 'flex' : 'none'; });
   const q = document.getElementById('homeSearchInput');
-  if (q && q.value.trim().length >= 2) performSearch(q.value.trim());
+  performSearch(q ? q.value.trim() : '');
+}
+function setSpeechSpeaker(speaker) {
+  state.speechSpeaker = speaker;
+  document.querySelectorAll('.sf-btn[data-speaker]').forEach(b => {
+    const active = b.dataset.speaker === speaker;
+    b.classList.toggle('active', active);
+    b.setAttribute('aria-pressed', active ? 'true' : 'false');
+  });
+  const q = document.getElementById('homeSearchInput');
+  performSearch(q ? q.value.trim() : '');
 }
 
 
