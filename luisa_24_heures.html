@@ -951,6 +951,22 @@ html, body, #app, .main, .content,
 .note-save-btn { width:100%; background:var(--accent); color:#fff; border:none; border-radius:var(--radius); padding:0.65rem; font-size:0.95rem; font-weight:600; cursor:pointer; margin-top:0.6rem; }
 .note-save-btn:active { opacity:0.85; }
 .note-empty { color:var(--ink4); font-size:0.88rem; font-style:italic; margin-bottom:0.8rem; }
+/* R49e — Plan sheet */
+.plan-btn { display:inline-flex; align-items:center; gap:0.3rem; font-family:var(--font-ui); font-size:0.75rem; color:var(--accent); background:var(--accent-pale); border:1px solid var(--accent-soft); border-radius:999px; padding:0.2rem 0.65rem; cursor:pointer; margin-top:0.65rem; }
+.plan-btn:active { opacity:0.75; }
+.plan-sheet-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.35); z-index:3200; display:none; }
+.plan-sheet-overlay.open { display:block; }
+.plan-sheet { position:fixed; left:0; right:0; bottom:0; background:var(--bg); border-radius:18px 18px 0 0; box-shadow:0 -4px 32px rgba(0,0,0,0.18); z-index:3201; display:none; max-height:75vh; overflow-y:auto; padding:1.2rem 1.1rem 2.2rem; }
+.plan-sheet.open { display:block; }
+.plan-sheet-drag { width:36px; height:4px; background:var(--ink4); border-radius:2px; margin:0 auto 1rem; opacity:0.35; }
+.plan-sheet-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:0.8rem; }
+.plan-sheet-title { font-family:var(--font-display); font-size:1.05rem; font-weight:700; color:var(--ink); }
+.plan-sheet-close { background:none; border:none; padding:0.4rem; cursor:pointer; color:var(--ink3); }
+.plan-scene-item { display:flex; align-items:flex-start; gap:0.75rem; padding:0.75rem 0.5rem; border-radius:var(--radius); cursor:pointer; border:none; background:none; width:100%; text-align:left; }
+.plan-scene-item:active { background:var(--bg2); }
+.plan-scene-item + .plan-scene-item { border-top:1px solid var(--bg3); }
+.plan-scene-num { font-family:var(--font-ui); font-size:0.72rem; color:var(--ink4); min-width:2.2rem; padding-top:0.15rem; flex-shrink:0; }
+.plan-scene-text { font-family:var(--font-body); font-size:0.95rem; color:var(--ink); flex:1; }
 @media (max-width: 520px) {
   .continue-card-split { flex-direction:column; gap:0.75rem; }
   .cc-actions { flex-direction:row; margin-left:0; }
@@ -2158,6 +2174,19 @@ html.android-highlight-mode .android-paragraph-highlight-target {
   <textarea class="note-textarea" id="noteTextarea" placeholder="Ajouter une note…" maxlength="2000" oninput="updateNoteCharCount()"></textarea>
   <div class="note-char-count" id="noteCharCount">0 / 2000</div>
   <button class="note-save-btn" onclick="saveNoteFromModal()">Enregistrer</button>
+</div>
+
+<!-- Plan sheet -->
+<div class="plan-sheet-overlay" id="planSheetOverlay" onclick="closePlanSheet()"></div>
+<div class="plan-sheet" id="planSheet" role="dialog" aria-modal="true" aria-label="Plan de l'Heure" tabindex="-1">
+  <div class="plan-sheet-drag"></div>
+  <div class="plan-sheet-header">
+    <div class="plan-sheet-title" id="planSheetTitle">Plan de l'Heure</div>
+    <button class="plan-sheet-close" onclick="closePlanSheet()" aria-label="Fermer">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="plan-scene-list" id="planSceneList"></div>
 </div>
 </div>
 
@@ -4538,7 +4567,7 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'prototype-101r59-stage8a-r49d-reperes';
+const APP_VERSION = 'prototype-101r59-stage8a-r49e-plan';
 const APP_EVIDENCE_STAGE = 'Stage 7D/R48d — R48 nav fix: tappable grid title, settings sheet nav, help update';
 const STORAGE_SCHEMA_VERSION=4; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const SEARCH_RESULT_LIMIT = 60;
@@ -5967,6 +5996,8 @@ function renderReader(hour, scroll = true) {
 
   const openingBtns = buildOpeningButtons(hour);
   const closingBtns = buildClosingButtons(hour);
+  const hourScenes = Object.entries(INTERNAL_SUBHEADINGS).filter(([id, meta]) => meta.hour === hour.hour_number);
+  const planBtnHtml = hourScenes.length ? `<button class="plan-btn" onclick="openPlanSheet(${hour.hour_number})" aria-label="Plan de cette Heure">≡ Plan</button>` : '';
 
   const linkedHtml = renderLinkedTextsForHour(hour.hour_number);
   const displayParagraphs = getDisplayParagraphsForHour(hour);
@@ -6018,7 +6049,8 @@ function renderReader(hour, scroll = true) {
       <h2 class="reader-title">${escHtml(hour.title)}</h2>
       <div class="reader-time">${hour.display_time}</div>
       ${hour.source_pages&&hour.source_pages.length?`<div class="reader-pages">Source p. ${hour.source_pages[0]}${hour.source_pages.length>1?'–'+hour.source_pages[hour.source_pages.length-1]:''}</div>`:''}
-          </div>
+      ${planBtnHtml}
+    </div>
     ${buildMarkBar(hour.hour_number)}
     ${openingBtns}
     ${tabsHtml}
@@ -6202,6 +6234,32 @@ function deleteNote(paraId, noteId) {
 function openNoteTarget(paraId) {
   openFavoriteTarget(paraId);
   setTimeout(() => openNoteModal(paraId), 350);
+}
+
+// ── Plan sheet (R49e) ──
+function openPlanSheet(hourNum) {
+  const scenes = Object.entries(INTERNAL_SUBHEADINGS)
+    .filter(([id, meta]) => meta.hour === hourNum)
+    .sort((a, b) => parseInt(a[0].match(/P(\d+)$/)[1]) - parseInt(b[0].match(/P(\d+)$/)[1]));
+  const hour = CORPUS.hours.find(h => h.hour_number === hourNum);
+  document.getElementById('planSheetTitle').textContent = hour ? hour.hour_number + 'e Heure — Plan' : 'Plan';
+  document.getElementById('planSceneList').innerHTML = scenes.map(([id, meta]) => {
+    const pNum = parseInt(id.match(/P(\d+)$/)[1]);
+    return `<button class="plan-scene-item" onclick="jumpToScene('${id}')"><span class="plan-scene-num">§ ${pNum}</span><span class="plan-scene-text">${escHtml(meta.heading)}</span></button>`;
+  }).join('');
+  document.getElementById('planSheetOverlay').classList.add('open');
+  document.getElementById('planSheet').classList.add('open');
+  document.getElementById('planSheet').focus();
+}
+function closePlanSheet() {
+  document.getElementById('planSheetOverlay').classList.remove('open');
+  document.getElementById('planSheet').classList.remove('open');
+}
+function jumpToScene(paraId) {
+  closePlanSheet();
+  const el = document.getElementById(paraId);
+  if (!el) return;
+  setTimeout(() => stage6aScrollElementToTop(el, 16, 'smooth'), 80);
 }
 
 function showMobileActionBar(paraId, hourNum) {
