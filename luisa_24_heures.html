@@ -731,7 +731,7 @@ mark.hl-pink   { background: #fce7f3; color: inherit; }
 .mode-pill { font-family: var(--font-ui); font-size: 0.68rem; letter-spacing: 0.05em;
   padding: 0.22rem 0.55rem !important; border-radius: 999px !important;
   border: 1.5px solid var(--bg3) !important; color: var(--ink3); background: var(--bg2); }
-.mode-pill.prier { border-color: var(--accent-light) !important; color: var(--accent) !important; background: var(--accent-pale) !important; }
+.mode-pill.active { border-color: var(--accent-light) !important; color: var(--accent) !important; background: var(--accent-pale) !important; }
 .search-filters { display: flex; gap: 0.4rem; padding: 0.5rem 0 0.9rem; overflow-x: auto; touch-action: pan-x pan-y;
   -webkit-overflow-scrolling: touch; scrollbar-width: none; }
 .search-filters::-webkit-scrollbar { display: none; }
@@ -1988,7 +1988,7 @@ html.android-highlight-mode .android-paragraph-highlight-target {
       <button class="icon-btn" onclick="showSearchView()" title="Recherche" aria-label="Recherche">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       </button>
-      <button id="modeBtn" class="icon-btn mode-pill prier" onclick="toggleStudyMode()" title="Passer en mode Étude" aria-label="Mode Prier actif">✝</button>
+      <button id="modeBtn" class="icon-btn mode-pill" onclick="toggleStudyMode()" title="Afficher les repères d'étude" aria-label="Repères d'étude masqués">#</button>
       <button id="stage6mSettingsBtn" class="icon-btn stage6m-settings-toggle" onclick="showSettingsSheet()" title="Réglages" aria-label="Réglages">⚙</button>
       <button id="androidHighlightModeBtn" class="icon-btn android-highlight-toggle stage6m-secondary-header-control" onclick="toggleAndroidHighlightMode()" title="Mode surlignage Samsung" aria-label="Activer le mode surlignage Samsung" aria-pressed="false">◐</button>
       <button class="icon-btn stage6m-secondary-header-control" onclick="toggleFavPanel()" title="Favoris" aria-label="Mes favoris">
@@ -4538,7 +4538,7 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'prototype-101r59-stage8a-r49c-notes';
+const APP_VERSION = 'prototype-101r59-stage8a-r49d-reperes';
 const APP_EVIDENCE_STAGE = 'Stage 7D/R48d — R48 nav fix: tappable grid title, settings sheet nav, help update';
 const STORAGE_SCHEMA_VERSION=4; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const SEARCH_RESULT_LIMIT = 60;
@@ -6912,12 +6912,12 @@ function showSettingsSheet() {
   overlay.setAttribute('aria-modal','true');
   overlay.setAttribute('aria-label','Réglages');
   overlay.addEventListener('click', function(e){ if (e.target === overlay) closeSettingsSheet(); });
-  const modeTitle = state.studyMode ? 'Mode Étude actif' : 'Mode Prier actif';
-  const modeDesc = state.studyMode ? 'Afficher le mode Prier plus sobre.' : 'Afficher le mode Étude avec outils et repères.';
+  const modeTitle = state.studyMode ? 'Masquer les repères d\'étude' : 'Afficher les repères d\'étude';
+  const modeDesc = state.studyMode ? 'Masquer les numéros de paragraphe et les outils d\'annotation.' : 'Afficher les numéros de paragraphe et les outils d\'annotation.';
   overlay.innerHTML = `
     <div class="stage6m-settings-sheet" tabindex="-1">
       <div class="stage6m-settings-top">
-        <div><div class="stage6m-settings-kicker">Réglages</div><div class="stage6m-settings-title">Prier, étudier et personnaliser</div></div>
+        <div><div class="stage6m-settings-kicker">Réglages</div><div class="stage6m-settings-title">Lecture et personnalisation</div></div>
         <button type="button" class="stage6m-settings-close" onclick="closeSettingsSheet()" aria-label="Fermer les réglages">× Fermer</button>
       </div>
       <div class="stage6m-settings-group">
@@ -6928,7 +6928,7 @@ function showSettingsSheet() {
           <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); toggleDisplayPanel();"><strong>Affichage</strong>Choisir uniquement le thème : Système / Clair / Sombre.</button>
           <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); showHelp();"><strong>Aide</strong>Comment utiliser et pratiquer les Heures.</button>
         </div>
-        <div class="stage6m-settings-note">Le mode Prier garde une lecture plus sobre. Le mode Étude affiche davantage d’outils, de repères et de passages pour approfondir.</div>
+        <div class="stage6m-settings-note">Les repères d’étude affichent les numéros de paragraphe, les orateurs et les outils d’annotation dans le texte.</div>
       </div>
       <div class="stage6m-settings-group">
         <div class="stage6m-settings-label">Parcours</div>
@@ -8500,18 +8500,18 @@ function toggleStudyMode() {
   state.studyMode = !state.studyMode;
   applyStudyMode();
   SafeStorage.set('lp24_mode', state.studyMode ? '1' : '0');
-  showToast(state.studyMode ? '✏ Mode Étude activé' : '✝ Mode Prier activé');
+  showToast(state.studyMode ? 'Repères d\'étude affichés' : 'Repères d\'étude masqués');
 }
 function applyStudyMode() {
   document.getElementById('app').classList.toggle('mode-etude', state.studyMode);
   const btn = document.getElementById('modeBtn');
   if (!btn) return;
   if (state.studyMode) {
-    btn.textContent = '✏'; btn.className = 'icon-btn mode-pill';
-    btn.title = 'Passer en mode Prier'; btn.setAttribute('aria-label','Mode Étude actif');
+    btn.textContent = '#'; btn.className = 'icon-btn mode-pill active';
+    btn.title = 'Masquer les repères d\'étude'; btn.setAttribute('aria-label','Repères d\'étude affichés');
   } else {
-    btn.textContent = '✝'; btn.className = 'icon-btn mode-pill prier';
-    btn.title = 'Passer en mode Étude'; btn.setAttribute('aria-label','Mode Prier actif');
+    btn.textContent = '#'; btn.className = 'icon-btn mode-pill';
+    btn.title = 'Afficher les repères d\'étude'; btn.setAttribute('aria-label','Repères d\'étude masqués');
   }
 }
 
