@@ -4568,7 +4568,7 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'prototype-101r59-stage8a-r49g-benefits-search';
+const APP_VERSION = 'prototype-101r59-stage8a-r49h-help';
 const APP_EVIDENCE_STAGE = 'Stage 7D/R48d — R48 nav fix: tappable grid title, settings sheet nav, help update';
 const STORAGE_SCHEMA_VERSION=4; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const SEARCH_RESULT_LIMIT = 60;
@@ -7073,7 +7073,7 @@ function showHelp() {
         <div class="help-row"><span class="help-icon">🏠</span><span class="help-row-text"><strong>Accueil</strong> — Reprendre la lecture, accéder aux prières, ou approfondir la Passion. La grille des 24 Heures est toujours visible en accueil — appuyez sur le titre ou une tuile pour naviguer. La carte du haut affiche l’Heure méditée du jour et propose la suivante.</span></div>
         <div class="help-row"><span class="help-icon">⏱</span><span class="help-row-text"><strong>Heures</strong> — Affiche les 24 Heures avec le titre et l’horaire. Appuyez sur une carte pour ouvrir la méditation.</span></div>
         <div class="help-row"><span class="help-icon">📖</span><span class="help-row-text"><strong>Textes</strong> — Préface, pratique des Heures, Approfondir la Passion, et textes liés aux 24 Heures.</span></div>
-        <div class="help-row"><span class="help-icon">★</span><span class="help-row-text"><strong>Espace / Mon Espace</strong> — Vos favoris, surlignages, reprise de lecture, progression, export et import de données.</span></div>
+        <div class="help-row"><span class="help-icon">★</span><span class="help-row-text"><strong>Espace / Mon Espace</strong> — Reprendre là où vous en étiez, vos favoris, surlignages, notes personnelles, progression, export et import de données.</span></div>
         <div class="help-row"><span class="help-icon">⚙</span><span class="help-row-text"><strong>Réglages</strong> &mdash; Sur iPad et ordinateur, le bouton <strong>⚙</strong> en haut à droite donne accès à la navigation complète&nbsp;: Les 24 Heures par titre, Prières, Approfondir, Mon Espace, aide et préférences.</span></div>
 
       </div></div>
@@ -7097,11 +7097,21 @@ function showHelp() {
         <div class="help-step"><span class="help-step-n">1</span><span class="help-step-text">Sélectionnez un passage du texte.</span></div>
         <div class="help-step"><span class="help-step-n">2</span><span class="help-step-text">La barre d’action affiche <strong>Favori · Surligner · Copier · Fermer</strong>.</span></div>
         <div class="help-step"><span class="help-step-n">3</span><span class="help-step-text">Appuyez sur <strong>Favori</strong> pour garder la sélection dans Mon Espace, ou sur <strong>Surligner</strong> puis choisissez une couleur.</span></div>
-        <div class="help-step"><span class="help-step-n">4</span><span class="help-step-text">En mode Étude, certains paragraphes affichent aussi des actions de paragraphe complet.</span></div>
+        <div class="help-step"><span class="help-step-n">4</span><span class="help-step-text">Avec les repères d'étude activés (<strong>#</strong>), les boutons d'action de paragraphe (favori, surlignage, note, copie) sont également visibles sous chaque paragraphe.</span></div>
         <div class="help-note">La palette de couleurs ne doit apparaître qu’après avoir appuyé sur Surligner.</div><div class="help-note">Sur Samsung/Android, utilisez <strong>Paragraphe</strong> : touchez un paragraphe pour le surligner en entier. La sélection mot à mot n’est pas disponible sur ce téléphone.</div>
       </div></div>
       <div class="help-section"><div class="help-section-hd">Fin d’une Heure</div><div class="help-section-body">
         <div class="help-row"><span class="help-icon">↟</span><span class="help-row-text">Après avoir prié une Heure, appuyez sur <strong>Méditée</strong> en bas de la page pour l’enregistrer. La prière de fin est proposée dans le grand encadré de prière. Dans <strong>Continuer le chemin des Heures</strong>, utilisez <strong>Réflexion et pratique</strong>, <strong>Approfondir</strong>, <strong>Revenir au début</strong> ou <strong>Prier l’Heure suivante</strong> pour poursuivre sans remonter aux onglets. À la 24e Heure, vous pouvez revoir votre progression ou recommencer un nouveau cycle.</span></div>
+      </div></div>
+      <div class="help-section"><div class="help-section-hd">Repères d'étude et notes</div><div class="help-section-body">
+        <div class="help-row"><span class="help-icon">#</span><span class="help-row-text"><strong>Repères d'étude</strong> — Le bouton <strong>#</strong> en haut à droite affiche ou masque les numéros de paragraphe, les badges d'orateurs (Jésus, Père, Marie) et les boutons d'action sous chaque paragraphe. Désactivé par défaut pour une lecture plus sobre.</span></div>
+        <div class="help-row"><span class="help-icon">✎</span><span class="help-row-text"><strong>Notes personnelles</strong> — Avec les repères d'étude activés, chaque paragraphe dispose d'un bouton <strong>✎</strong>. Appuyez pour écrire une note sur ce passage (2 000 caractères max). Quand un paragraphe possède une note, un petit <strong>✎</strong> apparaît à côté du texte, même sans les repères. Vos notes sont consultables dans <strong>Mon Espace</strong>.</span></div>
+      </div></div>
+      <div class="help-section"><div class="help-section-hd">Plan de l'Heure</div><div class="help-section-body">
+        <div class="help-row"><span class="help-icon">≡</span><span class="help-row-text"><strong>≡ Plan</strong> — Pour les Heures 15 à 24, un bouton <strong>≡ Plan</strong> apparaît dans l'en-tête de l'Heure. Il ouvre la liste des scènes de cette Heure (ex. : La Flagellation, Le Chemin au Calvaire, Jésus rencontre sa Mère…). Appuyez sur une scène pour y aller directement.</span></div>
+      </div></div>
+      <div class="help-section"><div class="help-section-hd">Recherche — Paroles directes</div><div class="help-section-body">
+        <div class="help-row"><span class="help-icon">🔍</span><span class="help-row-text">Dans <strong>Recherche</strong>, l'onglet <strong>Paroles directes</strong> affiche immédiatement toutes les paroles prononcées par Jésus, le Père ou Marie dans les 24 Heures — sans avoir besoin de taper un mot. Filtrez par orateur avec les boutons <strong>✝ Jésus · ◆ Père · ✦ Marie</strong>. Vous pouvez aussi taper un mot pour chercher à l'intérieur de ces paroles.</span></div>
       </div></div>
       <div class="help-section"><div class="help-section-hd">Mise à jour</div><div class="help-section-body">
         <div class="help-row"><span class="help-icon">↻</span><span class="help-row-text">Si une mise à jour est disponible, une bannière apparaît en haut de l’Accueil. Appuyez sur <strong>Actualiser</strong> pour charger la nouvelle version. Si la bannière reste après l’actualisation, fermez complètement l’app et rouvrez-la.</span></div>
