@@ -726,6 +726,7 @@ mark.hl-pink   { background: #fce7f3; color: inherit; }
 #app:not(.mode-etude) .ref-para-num { display: none !important; }
 #app:not(.mode-etude) .reflections-wrap .ref-para-block { gap: 0 !important; }
 #app:not(.mode-etude) .reflections-wrap .ref-para { flex: 1 1 auto; min-width: 0; }
+#app:not(.mode-etude) .reader-pages { display: none !important; }
 #app.mode-etude .ref-para-num { display: block; }
 .mode-pill { font-family: var(--font-ui); font-size: 0.68rem; letter-spacing: 0.05em;
   padding: 0.22rem 0.55rem !important; border-radius: 999px !important;
@@ -844,6 +845,10 @@ html, body, #app, .main, .content,
   .prayer-trigger-btn {
     white-space: normal; max-width: 100%; flex-wrap: wrap; text-align: center;
   }
+}
+/* R49a — cap reader text column at --col-max on tablet/desktop for comfortable line length */
+@media (min-width: 768px) {
+  .reader-screen { max-width: var(--col-max) !important; }
 }
 
 /* Stage 3 speech trust label style */
@@ -4486,7 +4491,7 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'prototype-101r59-stage7d-r48d-corpus-fix';
+const APP_VERSION = 'prototype-101r59-stage8a-r49a-reader-ux';
 const APP_EVIDENCE_STAGE = 'Stage 7D/R48d — R48 nav fix: tappable grid title, settings sheet nav, help update';
 const STORAGE_SCHEMA_VERSION=4; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const SEARCH_RESULT_LIMIT = 60;
@@ -5961,7 +5966,6 @@ function renderReader(hour, scroll = true) {
       <h2 class="reader-title">${escHtml(hour.title)}</h2>
       <div class="reader-time">${hour.display_time}</div>
       ${hour.source_pages&&hour.source_pages.length?`<div class="reader-pages">Source p. ${hour.source_pages[0]}${hour.source_pages.length>1?'–'+hour.source_pages[hour.source_pages.length-1]:''}</div>`:''}
-      <div class="speech-trust-label">Paroles directes revalidées depuis les guillemets et la source.</div>
           </div>
     ${buildMarkBar(hour.hour_number)}
     ${openingBtns}
