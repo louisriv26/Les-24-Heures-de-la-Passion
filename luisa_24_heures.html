@@ -928,6 +928,29 @@ html, body, #app, .main, .content,
 .erh-label { font-family:var(--font-ui); font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:0.18rem; }
 .erh-title { font-family:var(--font-display); font-size:1.05rem; font-weight:700; color:var(--ink); margin-bottom:0.1rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .erh-meta { font-family:var(--font-ui); font-size:0.82rem; color:var(--ink3); }
+/* R49c — Notes */
+.para-note-dot { display:inline-flex; align-items:center; justify-content:center; width:1.35rem; height:1.35rem; border-radius:50%; background:var(--accent-pale); border:1px solid var(--accent-soft); color:var(--accent); font-size:0.65rem; cursor:pointer; flex-shrink:0; transition:opacity 0.15s; vertical-align:middle; margin-left:0.3rem; }
+.para-note-dot:active { opacity:0.7; }
+.note-modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.35); z-index:3200; display:none; }
+.note-modal-overlay.open { display:block; }
+.note-modal { position:fixed; left:0; right:0; bottom:0; background:var(--bg); border-radius:18px 18px 0 0; box-shadow:0 -4px 32px rgba(0,0,0,0.18); z-index:3201; display:none; max-height:80vh; overflow-y:auto; padding:1.2rem 1.1rem 2.2rem; }
+.note-modal.open { display:block; }
+.note-modal-drag { width:36px; height:4px; background:var(--ink4); border-radius:2px; margin:0 auto 1rem; opacity:0.35; }
+.note-modal-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem; }
+.note-modal-title { font-family:var(--font-display); font-size:1.05rem; font-weight:700; color:var(--ink); }
+.note-modal-close { background:none; border:none; padding:0.4rem; cursor:pointer; color:var(--ink3); }
+.note-list { margin-bottom:1rem; }
+.note-item { background:var(--bg2); border-radius:var(--radius); padding:0.7rem 0.8rem; margin-bottom:0.5rem; display:flex; align-items:flex-start; gap:0.6rem; }
+.note-item-text { flex:1; font-size:0.9rem; color:var(--ink); white-space:pre-wrap; word-break:break-word; }
+.note-item-ts { font-size:0.7rem; color:var(--ink4); margin-top:0.2rem; }
+.note-delete-btn { background:none; border:none; color:var(--ink4); cursor:pointer; padding:0.2rem 0.3rem; font-size:0.85rem; flex-shrink:0; }
+.note-delete-btn:active { color:#c44; }
+.note-textarea { width:100%; min-height:5rem; border:1px solid var(--accent-soft); border-radius:var(--radius); padding:0.6rem 0.7rem; font-size:0.9rem; color:var(--ink); background:var(--bg); resize:vertical; font-family:var(--font-body); box-sizing:border-box; }
+.note-textarea:focus { outline:none; border-color:var(--accent); }
+.note-char-count { font-size:0.72rem; color:var(--ink4); text-align:right; margin-top:0.2rem; }
+.note-save-btn { width:100%; background:var(--accent); color:#fff; border:none; border-radius:var(--radius); padding:0.65rem; font-size:0.95rem; font-weight:600; cursor:pointer; margin-top:0.6rem; }
+.note-save-btn:active { opacity:0.85; }
+.note-empty { color:var(--ink4); font-size:0.88rem; font-style:italic; margin-bottom:0.8rem; }
 @media (max-width: 520px) {
   .continue-card-split { flex-direction:column; gap:0.75rem; }
   .cc-actions { flex-direction:row; margin-left:0; }
@@ -2119,6 +2142,22 @@ html.android-highlight-mode .android-paragraph-highlight-target {
   </div>
   <div class="cp-divider"></div>
   <button type="button" class="cp-remove" id="cpRemoveBtn" onclick="removeHighlightAtSelection()" style="display:none">✕ Supprimer le surlignage</button>
+</div>
+
+<!-- Note modal -->
+<div class="note-modal-overlay" id="noteModalOverlay" onclick="closeNoteModal()"></div>
+<div class="note-modal" id="noteModal" role="dialog" aria-modal="true" aria-label="Notes personnelles" tabindex="-1">
+  <div class="note-modal-drag"></div>
+  <div class="note-modal-header">
+    <div class="note-modal-title" id="noteModalTitle">Notes</div>
+    <button class="note-modal-close" onclick="closeNoteModal()" aria-label="Fermer">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="note-list" id="noteModalList"></div>
+  <textarea class="note-textarea" id="noteTextarea" placeholder="Ajouter une note…" maxlength="2000" oninput="updateNoteCharCount()"></textarea>
+  <div class="note-char-count" id="noteCharCount">0 / 2000</div>
+  <button class="note-save-btn" onclick="saveNoteFromModal()">Enregistrer</button>
 </div>
 </div>
 
@@ -4486,7 +4525,8 @@ const state = {
   studyMode: false,
   searchFilter: 'all',
   monEspacePanelOpen: false,
-  meditationLog: []
+  meditationLog: [],
+  notes: {}
 };
 const SPEECH_END_VISUAL_BREAKS = {"PASSION24.HOUR.01.P014":[119],"PASSION24.HOUR.02.P014":[203],"PASSION24.HOUR.02.P015":[147],"PASSION24.HOUR.04.P034":[113],"PASSION24.HOUR.04.P065":[93],"PASSION24.HOUR.05.P028":[483],"PASSION24.HOUR.06.P012":[106],"PASSION24.HOUR.07.P007":[165],"PASSION24.HOUR.07.P015":[147],"PASSION24.HOUR.07.P030":[22],"PASSION24.HOUR.07.P117":[228],"PASSION24.HOUR.07.P125":[128],"PASSION24.HOUR.08.P007":[111],"PASSION24.HOUR.08.P008":[42],"PASSION24.HOUR.08.P014":[34],"PASSION24.HOUR.10.P002":[206],"PASSION24.HOUR.11.P010":[141],"PASSION24.HOUR.11.P030":[126],"PASSION24.HOUR.13.P005":[147],"PASSION24.HOUR.15.P005":[162],"PASSION24.HOUR.16.P015":[103],"PASSION24.HOUR.17.P027":[124],"PASSION24.HOUR.17.P044":[293],"PASSION24.HOUR.18.P002":[61],"PASSION24.HOUR.18.P031":[156],"PASSION24.HOUR.19.P018":[95],"PASSION24.HOUR.19.P126":[145],"PASSION24.HOUR.19.P137":[119],"PASSION24.HOUR.20.P010":[63],"PASSION24.HOUR.21.P023":[137],"PASSION24.HOUR.21.P027":[216],"PASSION24.HOUR.21.P068":[86],"PASSION24.SECTION.BENEFITS.P102":[196],"PASSION24.SECTION.BENEFITS.P116":[218],"PASSION24.SECTION.BENEFITS.P136":[159],"PASSION24.SECTION.BENEFITS.P149":[141],"PASSION24.HOUR.16.P028":[76],"PASSION24.HOUR.16.P045":[193],"PASSION24.HOUR.17.P014":[47],"PASSION24.HOUR.22.REF.P001":[237],"PASSION24.HOUR.09.P010":[147],"PASSION24.HOUR.11.P021":[251],"PASSION24.HOUR.18.P113":[148],"PASSION24.HOUR.05.REF.P005":[142],"PASSION24.HOUR.22.P006":[160],"PASSION24.HOUR.22.P022":[23],"PASSION24.HOUR.24.DESOL.P014":[119],"PASSION24.HOUR.24.DESOL.P027":[79],"PASSION24.HOUR.24.DESOL.P037":[62]};
 // R44 — global error handlers
@@ -4498,7 +4538,7 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'prototype-101r59-stage8a-r49b-espace-return';
+const APP_VERSION = 'prototype-101r59-stage8a-r49c-notes';
 const APP_EVIDENCE_STAGE = 'Stage 7D/R48d — R48 nav fix: tappable grid title, settings sheet nav, help update';
 const STORAGE_SCHEMA_VERSION=4; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const SEARCH_RESULT_LIMIT = 60;
@@ -4941,6 +4981,7 @@ function saveState() {
     localStorage.setItem('lp24_mon_espace_open', state.monEspacePanelOpen ? '1' : '0');
     if (state.currentHour) localStorage.setItem('lp24_lastHour', state.currentHour);
     localStorage.setItem('lp24_med', JSON.stringify(state.meditationLog));
+    localStorage.setItem('lp24_notes', JSON.stringify(state.notes));
   } catch(e) { console.warn('saveState failed', e); }
 }
 function loadState() {
@@ -4968,6 +5009,7 @@ function loadState() {
     }
     const tabs=localStorage.getItem('lp24_tabs'); if(tabs){try{state.hourTabs=sanitizeHourTabsStore(JSON.parse(tabs));}catch(e){state.hourTabs=Object.create(null);}}
     const pos=localStorage.getItem('lp24_pos');   if(pos){try{state.lastParas=sanitizeLastParasStore(JSON.parse(pos));}catch(e){state.lastParas=Object.create(null);}}
+    const nt=localStorage.getItem('lp24_notes'); if(nt){try{const raw=JSON.parse(nt);state.notes=typeof raw==='object'&&raw!==null?raw:{};}catch(e){state.notes={}}}
     const fs = localStorage.getItem('lp24_font'); if (fs !== null) state.fontSize = sanitizeFontSizeValue(fs, state.fontSize);
     const thp = localStorage.getItem('lp24_theme_preference');
     const th = localStorage.getItem('lp24_theme');
@@ -5810,12 +5852,15 @@ function showEspaceView(push = true) {
     return `<button type="button" class="fav-item" onclick="openFavoriteTarget('${escHtml(targetId)}')"><div class="fav-item-ref">${escHtml(label)}</div><div class="fav-item-text">${escHtml(f.selected_text_snapshot || f.text || '')}</div>${note}</button>`;
   }).join('') : '<div class="fav-empty">Aucun favori pour le moment.</div>';
   const hlHtml = hls.length ? hls.slice(0,8).map(group => { const first=group.items[0]; const txt=group.items.map(item => item.hl.selected_text_snapshot || item.hl.text || '').filter(Boolean).join(' … '); const groupNote=group.kind==='group'?`<div style="font-size:0.7rem;color:var(--ink4);margin-top:0.2rem;font-style:italic">Surlignage multi-paragraphes — ${group.items.length} passages</div>`:''; return `<button type="button" class="hl-item" onclick="openHighlightTarget('${first.paraId}')"><div class="hl-dot hl-${escHtml(first.hl.color||'yellow')}"></div><div class="hl-item-content"><div class="hl-item-ref">${escHtml(first.info.label||'Passage')}</div><div class="hl-item-text">${escHtml(txt)}</div>${groupNote}</div></button>`; }).join('') : '<div class="fav-empty">Aucun surlignage pour le moment.</div>';
+  const allNotes = Object.entries(state.notes).flatMap(([pid, arr]) => arr.map(n => Object.assign({paraId:pid}, n))).sort((a,b) => b.ts - a.ts).slice(0, 8);
+  const notesHtml = allNotes.length ? allNotes.map(n => { const info = getTargetInfo(n.paraId); const d = new Date(n.ts * 1000); const ds = d.toLocaleDateString('fr-FR', {day:'numeric', month:'long'}); return `<button type="button" class="fav-item" onclick="openNoteTarget('${escHtml(n.paraId)}')"><div class="fav-item-ref">${escHtml(info ? info.label : n.paraId)} · ${ds}</div><div class="fav-item-text">${escHtml(n.text)}</div></button>`; }).join('') : '<div class="fav-empty">Aucune note pour le moment.</div>';
   document.getElementById('content').innerHTML = `<div class="espace-screen">
     ${lastH ? `<button type="button" class="espace-resume-hero" onclick="openHour(${lastH.hour_number}, true, { resume: true })"><div class="erh-inner"><div class="erh-label">Reprendre</div><div class="erh-title">${lastH.hour_number}e Heure — ${escHtml(lastH.title)}</div><div class="erh-meta">${escHtml(describeSavedPara(getSavedParaForHour(lastH.hour_number)))} · ${escHtml(lastH.display_time)}</div></div><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;color:var(--accent)"><polyline points="9 18 15 12 9 6"/></svg></button>` : ''}
     <div class="library-hero" style="margin-top:${lastH ? '0.25rem' : '0'}"><div class="library-eyebrow">Espace personnel</div><h2 class="library-title">Mon Espace</h2></div>
     <div class="espace-section"><div class="espace-section-title">Progression</div>${buildProgressSummaryCard({withActions:false})}<div class="progress-actions"><button type="button" class="resume-panel-btn primary" onclick="showProgressView()">Voir ma progression</button><button type="button" class="resume-panel-btn" onclick="showCompletedHoursView()">Revoir les Heures terminées</button>${progress.hasCycleState ? `<button type="button" class="resume-panel-btn" onclick="restartTwentyFourHours()">${progress.complete ? 'Recommencer les 24 Heures' : 'Réinitialiser ma progression'}</button>` : ''}</div></div>
     <div class="espace-section"><div class="espace-section-title">Favoris</div>${favHtml}</div>
     <div class="espace-section"><div class="espace-section-title">Surlignages</div>${hlHtml}</div>
+    <div class="espace-section"><div class="espace-section-title">Notes</div>${notesHtml}</div>
     <div class="espace-section"><div class="espace-section-title">Exporter / importer mes données</div><div class="espace-actions"><button class="resume-panel-btn primary" onclick="exportUserData()">⬇ Exporter</button><button class="resume-panel-btn" onclick="triggerImport()">⬆ Importer</button></div></div>
   </div>`;
   document.getElementById('progressWrap').style.display = 'none';
@@ -6052,6 +6097,7 @@ function getDashListRhythmClass(paragraphs, index) {
 function buildParaBlock(p, hourNum, rhythmClass = '') {
   const isFav = !!state.favorites[p.id];
   const isHl = state.highlights.has(p.id);
+  const hasNote = !!(state.notes[p.id] && state.notes[p.id].length);
   const internalHeadingMeta = getInternalSubheadingMeta(p.id);
   if (internalHeadingMeta && internalHeadingMeta.status === 'subsection_heading') {
     return `
@@ -6063,14 +6109,16 @@ function buildParaBlock(p, hourNum, rhythmClass = '') {
   const numberHtml = internalHeadingMeta && internalHeadingMeta.status === 'standalone_paragraph' ? '' : `<span class="para-num">${p.n}${(()=>{const sp=SPEECH_DATA[p.id];if(!sp)return '';const j=sp.some(s=>s.speaker==='JESUS');const f=sp.some(s=>s.speaker==='FATHER');const m=sp.some(s=>s.speaker==='MARY');return(j?'<span class="speaker-badge badge-jesus" title="Paroles de Jésus">✝ Jésus</span>':'')+(f?'<span class="speaker-badge badge-father" title="Paroles du Père">◆ Père</span>':'')+( m?'<span class="speaker-badge badge-mary" title="Paroles de Marie">✦ Marie</span>':'');})()
     }</span>`;
   return `
-  <div class="para-block${internalHeadingClass}${rhythmClass} ${isHl?'highlighted':''} ${isFav?'favorited':''}" id="${p.id}"
+  <div class="para-block${internalHeadingClass}${rhythmClass} ${isHl?'highlighted':''} ${isFav?'favorited':''}${hasNote?' has-note':''}" id="${p.id}"
     ontouchstart="startLongPress('${p.id}',${hourNum},event)" ontouchend="cancelLongPress()" ontouchmove="cancelLongPress()">
     ${numberHtml}
     <div class="para-text" data-para-id="${p.id}">${renderStructuredParaText(p.t, p.id)}</div>
+    <button class="para-note-dot" onclick="openNoteModal('${p.id}')" title="Notes" aria-label="Notes sur ce paragraphe" style="${hasNote?'':'display:none'}">✎</button>
     <div class="para-actions">
       <button class="para-action-btn ${isFav?'favorited':''}" onclick="toggleFavorite('${p.id}',${hourNum})" title="Favori" aria-label="Ajouter aux favoris">★</button>
       <button class="para-action-btn" onclick="toggleHighlight('${p.id}')" title="Marquer le paragraphe" aria-label="Marquer ce paragraphe">◈</button>
       <button class="para-action-btn" onclick="copyPara('${p.id}',${hourNum})" title="Copier" aria-label="Copier la citation">⎘</button>
+      <button class="para-action-btn" onclick="openNoteModal('${p.id}')" title="Ajouter une note" aria-label="Ajouter une note">✎</button>
     </div>
   </div>`;
 }
@@ -6088,6 +6136,74 @@ function startLongPress(paraId, hourNum, e) {
   }, 480);
 }
 function cancelLongPress() { clearTimeout(_lpTimer); _lpTimer = null; }
+
+// ── Notes (R49c) ──
+let _noteModalParaId = null;
+function openNoteModal(paraId) {
+  _noteModalParaId = paraId;
+  const info = getTargetInfo(paraId);
+  document.getElementById('noteModalTitle').textContent = 'Note — ' + (info ? info.label : paraId);
+  document.getElementById('noteTextarea').value = '';
+  updateNoteCharCount();
+  renderNoteModalList(paraId);
+  document.getElementById('noteModalOverlay').classList.add('open');
+  document.getElementById('noteModal').classList.add('open');
+  document.getElementById('noteModal').focus();
+}
+function closeNoteModal() {
+  document.getElementById('noteModalOverlay').classList.remove('open');
+  document.getElementById('noteModal').classList.remove('open');
+  _noteModalParaId = null;
+}
+function renderNoteModalList(paraId) {
+  const notes = (state.notes[paraId] || []).slice().sort((a,b) => b.ts - a.ts);
+  const listEl = document.getElementById('noteModalList');
+  if (!notes.length) { listEl.innerHTML = '<div class="note-empty">Aucune note pour ce paragraphe.</div>'; return; }
+  listEl.innerHTML = notes.map(n => {
+    const d = new Date(n.ts * 1000);
+    const ds = d.toLocaleDateString('fr-FR', { day:'numeric', month:'long', year:'numeric' });
+    return `<div class="note-item"><div style="flex:1"><div class="note-item-text">${escHtml(n.text)}</div><div class="note-item-ts">${ds}</div></div><button class="note-delete-btn" onclick="deleteNote('${escHtml(paraId)}','${n.id}')" aria-label="Supprimer cette note">✕</button></div>`;
+  }).join('');
+}
+function updateNoteCharCount() {
+  const ta = document.getElementById('noteTextarea');
+  if (!ta) return;
+  document.getElementById('noteCharCount').textContent = ta.value.length + ' / 2000';
+}
+function saveNoteFromModal() {
+  if (!_noteModalParaId) return;
+  const ta = document.getElementById('noteTextarea');
+  const text = ta.value.trim();
+  if (!text) return;
+  if (!state.notes[_noteModalParaId]) state.notes[_noteModalParaId] = [];
+  const note = { id: 'n_' + Date.now() + '_' + Math.random().toString(36).slice(2,5), text: text, ts: Math.floor(Date.now()/1000) };
+  state.notes[_noteModalParaId].push(note);
+  try { localStorage.setItem('lp24_notes', JSON.stringify(state.notes)); } catch(e) {}
+  ta.value = '';
+  updateNoteCharCount();
+  renderNoteModalList(_noteModalParaId);
+  const dot = document.querySelector('#' + CSS.escape(_noteModalParaId) + ' .para-note-dot');
+  if (dot) dot.style.display = '';
+  const block = document.getElementById(_noteModalParaId);
+  if (block) block.classList.add('has-note');
+  showToast('Note enregistrée.');
+}
+function deleteNote(paraId, noteId) {
+  if (!state.notes[paraId]) return;
+  state.notes[paraId] = state.notes[paraId].filter(n => n.id !== noteId);
+  if (!state.notes[paraId].length) delete state.notes[paraId];
+  try { localStorage.setItem('lp24_notes', JSON.stringify(state.notes)); } catch(e) {}
+  renderNoteModalList(paraId);
+  const dot = document.querySelector('#' + CSS.escape(paraId) + ' .para-note-dot');
+  if (dot) dot.style.display = state.notes[paraId] ? '' : 'none';
+  const block = document.getElementById(paraId);
+  if (block) { if (state.notes[paraId]) block.classList.add('has-note'); else block.classList.remove('has-note'); }
+}
+function openNoteTarget(paraId) {
+  openFavoriteTarget(paraId);
+  setTimeout(() => openNoteModal(paraId), 350);
+}
+
 function showMobileActionBar(paraId, hourNum) {
   if (typeof isAndroidAppHighlightModeActive === 'function' && isAndroidAppHighlightModeActive()) return;
   (function(){var _m=document.getElementById('mobileActionBar');if(_m)_m.remove();})();
