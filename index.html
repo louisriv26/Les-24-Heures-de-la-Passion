@@ -921,6 +921,13 @@ html, body, #app, .main, .content,
 .resume-panel-btn { border-radius:999px; border:1px solid var(--accent-soft); background:var(--bg); color:var(--accent); padding:0.42rem 0.65rem; font-family:var(--font-ui); font-size:0.76rem; font-weight:700; cursor:pointer; }
 .resume-panel-btn.primary { background:var(--accent); color:#fff; border-color:var(--accent); }
 .resume-panel-btn.danger { color:#9d3b2f; border-color:#e6b8ae; background:#fff7f5; }
+/* R49b — Mon Espace resume hero (prominent return-to-reading card) */
+.espace-resume-hero { display:flex; align-items:center; gap:1rem; width:100%; text-align:left; background:linear-gradient(135deg,var(--accent-pale),var(--bg)); border:1px solid var(--accent-soft); border-radius:var(--radius); padding:1rem 1.1rem; margin-bottom:1.1rem; cursor:pointer; box-shadow:var(--shadow-soft); }
+.espace-resume-hero:active { opacity:0.85; }
+.erh-inner { flex:1; min-width:0; }
+.erh-label { font-family:var(--font-ui); font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:0.18rem; }
+.erh-title { font-family:var(--font-display); font-size:1.05rem; font-weight:700; color:var(--ink); margin-bottom:0.1rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.erh-meta { font-family:var(--font-ui); font-size:0.82rem; color:var(--ink3); }
 @media (max-width: 520px) {
   .continue-card-split { flex-direction:column; gap:0.75rem; }
   .cc-actions { flex-direction:row; margin-left:0; }
@@ -4491,7 +4498,7 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'prototype-101r59-stage8a-r49a-reader-ux';
+const APP_VERSION = 'prototype-101r59-stage8a-r49b-espace-return';
 const APP_EVIDENCE_STAGE = 'Stage 7D/R48d — R48 nav fix: tappable grid title, settings sheet nav, help update';
 const STORAGE_SCHEMA_VERSION=4; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const SEARCH_RESULT_LIMIT = 60;
@@ -5804,8 +5811,8 @@ function showEspaceView(push = true) {
   }).join('') : '<div class="fav-empty">Aucun favori pour le moment.</div>';
   const hlHtml = hls.length ? hls.slice(0,8).map(group => { const first=group.items[0]; const txt=group.items.map(item => item.hl.selected_text_snapshot || item.hl.text || '').filter(Boolean).join(' … '); const groupNote=group.kind==='group'?`<div style="font-size:0.7rem;color:var(--ink4);margin-top:0.2rem;font-style:italic">Surlignage multi-paragraphes — ${group.items.length} passages</div>`:''; return `<button type="button" class="hl-item" onclick="openHighlightTarget('${first.paraId}')"><div class="hl-dot hl-${escHtml(first.hl.color||'yellow')}"></div><div class="hl-item-content"><div class="hl-item-ref">${escHtml(first.info.label||'Passage')}</div><div class="hl-item-text">${escHtml(txt)}</div>${groupNote}</div></button>`; }).join('') : '<div class="fav-empty">Aucun surlignage pour le moment.</div>';
   document.getElementById('content').innerHTML = `<div class="espace-screen">
-    <div class="library-hero"><div class="library-eyebrow">Espace personnel</div><h2 class="library-title">Mon Espace</h2><p class="library-subtitle">Retrouvez votre progression, vos favoris, vos surlignages et vos données personnelles.</p></div>
-    <div class="espace-section"><div class="espace-section-title">Continuer</div>${lastH ? `<div class="resume-panel-card"><div class="resume-panel-eyebrow">Dernière lecture</div><div class="resume-panel-title">${lastH.hour_number}e Heure — ${escHtml(lastH.title)}</div><div class="resume-panel-meta">${escHtml(describeSavedPara(getSavedParaForHour(lastH.hour_number)))}</div><div class="resume-panel-actions"><button class="resume-panel-btn primary" onclick="openHour(${lastH.hour_number}, true, { resume: true })">Reprendre</button><button class="resume-panel-btn" onclick="openHour(${lastH.hour_number})">Ouvrir au début</button></div></div>` : '<div class="fav-empty">Aucune lecture enregistrée.</div>'}</div>
+    ${lastH ? `<button type="button" class="espace-resume-hero" onclick="openHour(${lastH.hour_number}, true, { resume: true })"><div class="erh-inner"><div class="erh-label">Reprendre</div><div class="erh-title">${lastH.hour_number}e Heure — ${escHtml(lastH.title)}</div><div class="erh-meta">${escHtml(describeSavedPara(getSavedParaForHour(lastH.hour_number)))} · ${escHtml(lastH.display_time)}</div></div><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;color:var(--accent)"><polyline points="9 18 15 12 9 6"/></svg></button>` : ''}
+    <div class="library-hero" style="margin-top:${lastH ? '0.25rem' : '0'}"><div class="library-eyebrow">Espace personnel</div><h2 class="library-title">Mon Espace</h2></div>
     <div class="espace-section"><div class="espace-section-title">Progression</div>${buildProgressSummaryCard({withActions:false})}<div class="progress-actions"><button type="button" class="resume-panel-btn primary" onclick="showProgressView()">Voir ma progression</button><button type="button" class="resume-panel-btn" onclick="showCompletedHoursView()">Revoir les Heures terminées</button>${progress.hasCycleState ? `<button type="button" class="resume-panel-btn" onclick="restartTwentyFourHours()">${progress.complete ? 'Recommencer les 24 Heures' : 'Réinitialiser ma progression'}</button>` : ''}</div></div>
     <div class="espace-section"><div class="espace-section-title">Favoris</div>${favHtml}</div>
     <div class="espace-section"><div class="espace-section-title">Surlignages</div>${hlHtml}</div>
