@@ -4568,7 +4568,7 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'prototype-101r59-stage8a-r49f-paroles';
+const APP_VERSION = 'prototype-101r59-stage8a-r49g-benefits-search';
 const APP_EVIDENCE_STAGE = 'Stage 7D/R48d — R48 nav fix: tappable grid title, settings sheet nav, help update';
 const STORAGE_SCHEMA_VERSION=4; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const SEARCH_RESULT_LIMIT = 60;
@@ -6870,6 +6870,18 @@ function performSearch(query) {
   }
 
   for (const s of CORPUS.sections) {
+    // Structured-paragraph sections (e.g. BENEFITS) — search paragraphs directly so anchors match rendered DOM
+    if (s.paragraphs && s.paragraphs.length > 0) {
+      for (const p of s.paragraphs) {
+        if (!p || !p.t) continue;
+        const np = norm(p.t);
+        if (!np.includes(q)) continue;
+        const bi = np.indexOf(q);
+        const snip = p.t.slice(Math.max(0,bi-55), Math.min(p.t.length,bi+q.length+90)).replace(/\n/g,' ');
+        results.push({label:s.title, para:{id:p.id, t:snip}, type:'section', kindLabel:'Complément', target:{kind:'section', id:s.section_id, anchor:p.id}});
+      }
+      continue;
+    }
     const dt = s.display_text || '';
     const normDt = norm(dt);
     const sBlocks = parseSectionBlocks(s.section_id, dt);

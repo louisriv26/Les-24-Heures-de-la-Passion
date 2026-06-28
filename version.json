@@ -1,1 +1,1 @@
-{"app_version":"prototype-101r59-stage8a-r49f-paroles","evidence_stage":"Stage 8A/R49f — Paroles directes: browse all speech by speaker, 249 segments, speaker sub-filter","build_date":"2026-06-28","status":"LIMITED_PASS_STATIC_STAGE8A_R49F","real_device_status":"NOT_TESTED"}
+{"app_version":"prototype-101r59-stage8a-r49g-benefits-search","evidence_stage":"Stage 8A/R49g — Benefits search fix: anchor uses paragraph ID not ldc-N, scroll lands correctly","build_date":"2026-06-28","status":"LIMITED_PASS_STATIC_STAGE8A_R49G","real_device_status":"NOT_TESTED"}
