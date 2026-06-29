@@ -172,8 +172,8 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--ink); 
 .icon-btn:focus-visible,.nav-btn:focus-visible,.mark-read-btn:focus-visible,
 .tab-btn:focus-visible,.prayer-trigger-btn:focus-visible,.font-btn:focus-visible,
 .sidebar-item:focus-visible,.bn-item:focus-visible,.hour-card:focus-visible,
-.extra-card:focus-visible,.continue-card:focus-visible,.fav-item:focus-visible,
-.panel-tab:focus-visible,.hl-item:focus-visible,.onboarding-primary:focus-visible,
+.extra-card:focus-visible,.continue-card:focus-visible,
+.hl-item:focus-visible,.onboarding-primary:focus-visible,
 .onboarding-dismiss:focus-visible{outline:3px solid var(--accent-light);outline-offset:2px;}
 .search-input:focus-visible{border-color:var(--accent-light);box-shadow:0 0 0 3px var(--accent-pale);outline:none;}
 
@@ -182,7 +182,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--ink); 
 .search-results { display: none; }
 .search-results.visible { display: block; }
 .search-result-item { display: block; width: 100%; text-align: left; -webkit-appearance: none; appearance: none; font-family: inherit; padding: 0.8rem 1rem; border: 1px solid var(--bg3); border-radius: 8px; margin-bottom: 0.45rem; cursor: pointer; background: var(--bg2); font-size: var(--ui-size, 16px); transition: background 0.15s, border-color 0.15s; }
-.fav-item, .hl-item { display: block; width: 100%; text-align: left; -webkit-appearance: none; appearance: none; font-family: inherit; background: none; border: none; padding: 0; cursor: pointer; color: inherit; }
+.hl-item { display: block; width: 100%; text-align: left; -webkit-appearance: none; appearance: none; font-family: inherit; background: none; border: none; padding: 0; cursor: pointer; color: inherit; }
 .search-result-item:hover { background: var(--bg3); border-color: var(--accent-light); }
 .sr-ref { font-family: var(--font-display); font-size: 0.63rem; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.25rem; }
 .sr-badge { display: inline-block; font-size: 0.6rem; padding: 1px 5px; border-radius: 3px; margin-left: 0.4rem; vertical-align: middle; }
@@ -363,9 +363,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--ink); 
 .para-actions { opacity: 0; position: absolute; right: -56px; top: 0; display: flex; flex-direction: column; gap: 4px; transition: opacity 0.2s; }
 .para-action-btn { width: 44px; min-width: 44px; height: 44px; min-height: 44px; background: var(--bg2); border: 1px solid var(--bg3); border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--ink3); font-size: 1rem; transition: background 0.15s, color 0.15s;  -webkit-user-select: none; user-select: none; touch-action: manipulation; }
 .para-action-btn:hover { background: var(--accent-pale); color: var(--accent); border-color: var(--accent-light); }
-.para-action-btn.favorited { color: var(--gold); }
 .para-block.highlighted .para-text { background: var(--gold-pale); border-radius: 4px; padding: 0 4px; }
-.para-block.favorited .para-num { color: var(--gold); }
 
 /* ── Reflections ── */
 .reflections-wrap { background: var(--ref-bg); border: 1px solid rgba(122,157,181,0.3); border-left: 3px solid var(--ref-border); border-radius: var(--radius); padding: 1.5rem 1.5rem 1.5rem 1.25rem; }
@@ -499,18 +497,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--ink); 
 .font-btn:hover { background: var(--accent-pale); color: var(--accent); border-color: var(--accent-light); }
 .font-label { font-family: var(--font-ui); font-size: 0.85rem; color: var(--ink4); }
 
-/* ── Favorites panel ── */
-.fav-panel { display: none; position: fixed; top: 0; right: 0; width: 360px; height: 100vh; height: 100dvh; background: var(--bg); border-left: 1px solid var(--bg3); box-shadow: var(--shadow-lg); z-index: 300; flex-direction: column; animation: slideIn 0.25s ease; }
-.fav-panel.open { display: flex; }
-@keyframes slideIn { from { transform: translateX(100%); } to { transform: none; } }
-.fav-panel-header { padding: 1.2rem 1.4rem; border-bottom: 1px solid var(--bg3); display: flex; justify-content: space-between; align-items: center; }
-.fav-panel-title { font-family: var(--font-display); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); }
-.fav-panel-body { flex: 1; overflow-y: auto; padding: 1rem 1.4rem; }
 .fav-empty { text-align: center; color: var(--ink4); font-style: italic; padding: 2rem; font-family: var(--font-ui); }
-.fav-item { padding: 0.8rem; border: 1px solid var(--bg3); border-radius: 8px; margin-bottom: 0.5rem; cursor: pointer; background: var(--bg2); transition: background 0.15s, border-color 0.15s; }
-.fav-item:hover { background: var(--bg3); border-color: var(--accent-light); }
-.fav-item-ref { font-family: var(--font-display); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.2rem; }
-.fav-item-text { font-family: var(--font-ui); font-size: 0.88rem; color: var(--ink2); line-height: 1.5; }
 
 /* ── Provenance ── */
 .provenance-screen { width: 100%; max-width: var(--col-max); }
@@ -603,9 +590,6 @@ mark.hl-pink   { background: #fce7f3; color: inherit; }
 .cp-remove { font-family:var(--font-ui); font-size:0.85rem; color:var(--cross); background:none; border:none; cursor:pointer; text-align:left; padding:0.1rem 0; transition:opacity 0.15s; }
 .cp-remove:hover { opacity:0.7; }
 
-.panel-tabs{display:flex;border-bottom:1px solid var(--bg3);background:var(--bg2);flex-shrink:0;}
-.panel-tab{flex:1;padding:0.7rem 0.5rem;border:none;background:none;font-family:var(--font-ui);font-size:0.92rem;color:var(--ink3);cursor:pointer;border-bottom:2px solid transparent;transition:color 0.15s,border-color 0.15s;}
-.panel-tab.active{color:var(--accent);border-bottom-color:var(--accent);font-weight:500;}
 .hl-item{padding:0.8rem;border:1px solid var(--bg3);border-radius:8px;margin-bottom:0.5rem;cursor:pointer;background:var(--bg2);display:flex;gap:0.6rem;align-items:flex-start;transition:background 0.15s,border-color 0.15s;}
 .hl-item:hover{background:var(--bg3);border-color:var(--accent-light);}
 .hl-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;margin-top:0.28rem;border:1px solid rgba(0,0,0,0.1);}
@@ -645,7 +629,6 @@ mark.hl-pink   { background: #fce7f3; color: inherit; }
   .para-actions { display: none; }
   .hours-grid { grid-template-columns: repeat(4, 1fr); gap: 0.35rem; }
   .content { padding: 1.5rem 1rem calc(5.5rem + env(safe-area-inset-bottom, 0px)); }
-  .fav-panel { width: 100%; }
   .hour-nav { flex-wrap: wrap; gap: 0.5rem; }
   .hour-nav .nav-btn { flex: 1; min-width: 0; font-size: 0.8rem; padding: 0.55rem 0.6rem; }
   .mark-read-btn { order: -1; width: 100%; text-align: center; }
@@ -665,7 +648,6 @@ mark.hl-pink   { background: #fce7f3; color: inherit; }
   *,*::before,*::after { animation-duration: 0.01ms !important; transition-duration: 0.1ms !important; }
   .mobile-action-bar { transition: none !important; }
   .prayer-modal { animation: none !important; }
-  .fav-panel { animation: none !important; }
 }
 .bottom-nav { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg); border-top: 1px solid var(--bg3); box-sizing: border-box; min-height: calc(48px + env(safe-area-inset-bottom, 0px)); padding: 3px 0 max(3px, env(safe-area-inset-bottom, 0px)); align-items: stretch; z-index: 100; }
 @media (max-width: 768px) { .bottom-nav { display: flex; } }
@@ -1714,7 +1696,6 @@ html.stage6a-runtime .content {
 }
 html.stage6a-runtime .prayer-modal-scroll,
 html.stage6a-runtime .help-modal-scroll,
-html.stage6a-runtime .fav-panel-body,
 html.stage6a-runtime .sidebar {
   -webkit-overflow-scrolling: touch;
 }
@@ -2007,9 +1988,6 @@ html.android-highlight-mode .android-paragraph-highlight-target {
       <button id="modeBtn" class="icon-btn mode-pill" onclick="toggleStudyMode()" title="Afficher les repères d'étude" aria-label="Repères d'étude masqués">#</button>
       <button id="stage6mSettingsBtn" class="icon-btn stage6m-settings-toggle" onclick="showSettingsSheet()" title="Réglages" aria-label="Réglages">⚙</button>
       <button id="androidHighlightModeBtn" class="icon-btn android-highlight-toggle stage6m-secondary-header-control" onclick="toggleAndroidHighlightMode()" title="Mode surlignage Samsung" aria-label="Activer le mode surlignage Samsung" aria-pressed="false">◐</button>
-      <button class="icon-btn stage6m-secondary-header-control" onclick="toggleFavPanel()" title="Favoris" aria-label="Mes favoris">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-      </button>
       <button class="icon-btn stage6m-secondary-header-control" onclick="toggleFontPanel()" title="Taille du texte" aria-label="Taille du texte">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
       </button>
@@ -2105,25 +2083,6 @@ html.android-highlight-mode .android-paragraph-highlight-target {
       <button class="font-btn theme-pref-btn" data-theme-pref="system" onclick="setThemePreference('system')" aria-label="Suivre le thème du système">Système</button>
       <button class="font-btn theme-pref-btn" data-theme-pref="light" onclick="setThemePreference('light')" aria-label="Mode clair">Clair</button>
       <button class="font-btn theme-pref-btn" data-theme-pref="dark" onclick="setThemePreference('dark')" aria-label="Mode sombre">Sombre</button>
-    </div>
-  </div>
-
-  <div class="fav-panel" id="favPanel">
-    <div class="fav-panel-header">
-      <span class="fav-panel-title">Mon Espace</span>
-      <button class="icon-btn" onclick="toggleFavPanel()" aria-label="Fermer">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
-    </div>
-    <div class="panel-tabs">
-      <button class="panel-tab active" id="panelTabFav" onclick="switchPanelTab('fav')">★ Favoris</button>
-      <button class="panel-tab" id="panelTabHl" onclick="switchPanelTab('hl')">◐ Surlignages</button>
-    </div>
-    <div class="fav-panel-body" id="favPanelBody"></div>
-    <div class="personal-data-note">Sauvegarde locale : exportez vos favoris et surlignages avant de changer d’appareil ou de navigateur.</div>
-    <div class="data-footer">
-      <button class="data-btn" onclick="exportUserData()" aria-label="Exporter mes données personnelles locales">⬇ Exporter</button>
-      <button class="data-btn" onclick="triggerImport()" aria-label="Importer mes données personnelles locales">⬆ Importer</button>
     </div>
   </div>
 
@@ -4545,7 +4504,7 @@ const SPEECH_DATA = {"PASSION24.HOUR.02.P009":[{"speaker":"MARY","start":0,"end"
 const state = {
   view: 'home', currentHour: null, currentSection: null, currentPrayer: null,
   activeTab: 'meditation',
-  readHours: new Set(), favorites: {}, highlights: new Set(),
+  readHours: new Set(), highlights: new Set(),
   textHighlights: {},
   hourTabs: {},
   lastParas: {},
@@ -4568,8 +4527,8 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'prototype-101r59-stage8a-r49h-help';
-const APP_EVIDENCE_STAGE = 'Stage 7D/R48d — R48 nav fix: tappable grid title, settings sheet nav, help update';
+const APP_VERSION = 'prototype-101r59-stage8a-r49i-no-favs';
+const APP_EVIDENCE_STAGE = 'Stage 8A/R49i — favorites removed; navigateToTarget; simplified state/export/import';
 const STORAGE_SCHEMA_VERSION=4; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const SEARCH_RESULT_LIMIT = 60;
 
@@ -4622,65 +4581,6 @@ function sanitizeReadHoursArray(arr) {
   for (const v of arr) {
     const n = Number(v);
     if (Number.isInteger(n) && n >= 1 && n <= 24 && !out.includes(n)) out.push(n);
-  }
-  return out;
-}
-function sanitizeFavoriteSegments(segments) {
-  if (!Array.isArray(segments)) return [];
-  const out = [];
-  for (const seg of segments) {
-    if (!seg || typeof seg !== 'object' || hasDangerousKeyDeep(seg)) continue;
-    const paraId = String(seg.paraId || seg.target_id || '');
-    if (!validPersonalId(paraId)) continue;
-    const start = Number(seg.start_offset ?? seg.start);
-    const end = Number(seg.end_offset ?? seg.end);
-    if (!Number.isFinite(start) || !Number.isFinite(end) || start < 0 || end <= start || end > 50000) continue;
-    out.push({
-      paraId,
-      target_id: paraId,
-      start_offset: start,
-      end_offset: end,
-      start,
-      end,
-      text: String(seg.text || seg.selected_text_snapshot || '').slice(0,1000),
-      selected_text_snapshot: String(seg.selected_text_snapshot || seg.text || '').slice(0,1000),
-      segment_index: Number.isFinite(Number(seg.segment_index)) ? Math.max(0, Math.floor(Number(seg.segment_index))) : out.length,
-      segment_count: Number.isFinite(Number(seg.segment_count)) ? Math.max(1, Math.floor(Number(seg.segment_count))) : segments.length
-    });
-    if (out.length >= 24) break;
-  }
-  out.sort((a,b)=>(a.segment_index-b.segment_index));
-  return out;
-}
-function sanitizeFavoritesStore(favs) {
-  const out = Object.create(null);
-  if (!favs || typeof favs !== 'object' || Array.isArray(favs) || hasDangerousKeyDeep(favs)) return out;
-  for (const [k, fav] of Object.entries(favs)) {
-    if (!validPersonalId(k) || !fav || typeof fav !== 'object' || hasDangerousKeyDeep(fav)) continue;
-    const recordId = validPersonalId(String(fav.id || k)) ? String(fav.id || k) : k;
-    const targetId = validPersonalId(String(fav.target_id || recordId)) ? String(fav.target_id || recordId) : recordId;
-    if (!validPersonalId(recordId) || !validPersonalId(targetId)) continue;
-    const hourNumRaw = Number(fav.hourNum);
-    const hasHour = Number.isInteger(hourNumRaw) && hourNumRaw >= 1 && hourNumRaw <= 24;
-    const type = ['meditation','reflection','subsection','library','library_text','prayer','section','unknown'].includes(String(fav.type || ''))
-      ? String(fav.type || '')
-      : (targetId.includes('.REF.') ? 'reflection' : (targetId.includes('.DESOL.') || targetId.includes('.SUBSECTION.') ? 'subsection' : 'unknown'));
-    const segments = sanitizeFavoriteSegments(fav.segments);
-    const multi = !!fav.multi_para_selection || segments.length > 1;
-    out[k] = {
-      id: recordId,
-      target_id: targetId,
-      hourNum: hasHour ? hourNumRaw : null,
-      hourTitle: String(fav.hourTitle || fav.label || '').slice(0,180),
-      type,
-      text: String(fav.text || fav.selected_text_snapshot || '').slice(0,1000),
-      selected_text_snapshot: String(fav.selected_text_snapshot || fav.text || '').slice(0,2000),
-      start_offset: Number.isFinite(Number(fav.start_offset)) ? Number(fav.start_offset) : null,
-      end_offset: Number.isFinite(Number(fav.end_offset)) ? Number(fav.end_offset) : null,
-      favorite_kind: String(fav.favorite_kind || (multi ? 'selection_multi_paragraph' : 'paragraph')).slice(0,60),
-      created_at: String(fav.created_at || '').slice(0,40)
-    };
-    if (multi) { out[k].multi_para_selection = true; out[k].segments = segments; out[k].segment_count = segments.length; }
   }
   return out;
 }
@@ -5000,7 +4900,6 @@ function saveState() {
     state.textHighlights = cleanHighlights;
     localStorage.setItem('lp24_schema', String(STORAGE_SCHEMA_VERSION));
     localStorage.setItem('lp24_read', JSON.stringify([...state.readHours]));
-    localStorage.setItem('lp24_favs', JSON.stringify(state.favorites));
     localStorage.setItem('lp24_hl', JSON.stringify([...state.highlights]));
     localStorage.setItem('lp24_thl', JSON.stringify(state.textHighlights));
     localStorage.setItem('lp24_tabs', JSON.stringify(state.hourTabs));
@@ -5020,15 +4919,12 @@ function loadState() {
     // Progress, resume state, theme, font and study/prayer preference are retained.
     const r41ResetNeeded = SafeStorage.get('lp24_r41_text_anchor_reset','0') !== R41_TEXT_ANCHOR_RESET_VERSION;
     if (r41ResetNeeded) {
-      SafeStorage.remove('lp24_favs');
       SafeStorage.remove('lp24_hl');
       SafeStorage.remove('lp24_thl');
       SafeStorage.set('lp24_r41_text_anchor_reset', R41_TEXT_ANCHOR_RESET_VERSION);
     }
     const storedSchema=parseInt(localStorage.getItem('lp24_schema')||'1', 10);
     const r = localStorage.getItem('lp24_read'); if (r) state.readHours = new Set(sanitizeReadHoursArray(JSON.parse(r)));
-    const f = localStorage.getItem('lp24_favs');
-    if (f) state.favorites = sanitizeFavoritesStore(JSON.parse(f));
     const h = localStorage.getItem('lp24_hl'); if (h) state.highlights = new Set(sanitizeIdArray(JSON.parse(h)));
     const thl = localStorage.getItem('lp24_thl');
     if (thl) {
@@ -5292,23 +5188,18 @@ document.addEventListener('keydown', e => {
     closePrayerModal();
     closeFontPanel();
     closeDisplayPanel();
-    document.getElementById('favPanel').classList.remove('open');
     closeMobileActionBar();
   }
 });
-// Click-outside-to-close for font panel and fav panel
+// Click-outside-to-close for font panel and display panel
 document.addEventListener('click', e => {
   const fp = document.getElementById('fontPanel');
   const dp = document.getElementById('displayPanel');
-  const fav = document.getElementById('favPanel');
   if (fp && fp.classList.contains('open') && !fp.contains(e.target) && !e.target.closest('[onclick*="toggleFontPanel"]')) {
     closeFontPanel();
   }
   if (dp && dp.classList.contains('open') && !dp.contains(e.target) && !e.target.closest('[onclick*="toggleDisplayPanel"]')) {
     closeDisplayPanel();
-  }
-  if (fav && fav.classList.contains('open') && !fav.contains(e.target) && !e.target.closest('[onclick*="toggleFavPanel"]')) {
-    fav.classList.remove('open');
   }
 });
 
@@ -5584,9 +5475,6 @@ function clearSavedParaForHour(n) {
   delete state.lastParas[String(n)];
   saveState();
   if (typeof showToast === 'function') showToast('Position effacée');
-  if (document.getElementById('favPanel') && document.getElementById('favPanel').classList.contains('open')) {
-    renderPanelTab(_panelTab);
-  }
 }
 function buildResumePanelCard() {
   const h = getLastHourForResume();
@@ -5595,7 +5483,7 @@ function buildResumePanelCard() {
       <div class="resume-panel-eyebrow">Reprendre</div>
       <div class="resume-panel-title">Aucune position enregistrée pour le moment.</div>
       <div class="resume-panel-meta">Commencez les Heures de la Passion à votre rythme.</div>
-      <div class="resume-panel-actions"><button type="button" class="resume-panel-btn primary" onclick="openHour(1);toggleFavPanel()">Commencer la 1re Heure</button></div>
+      <div class="resume-panel-actions"><button type="button" class="resume-panel-btn primary" onclick="openHour(1)">Commencer la 1re Heure</button></div>
     </div>`;
   }
   const saved = getSavedParaForHour(h.hour_number);
@@ -5605,8 +5493,8 @@ function buildResumePanelCard() {
     <div class="resume-panel-title">${h.hour_number}e Heure — ${escHtml(h.title)}</div>
     <div class="resume-panel-meta">${escHtml(savedLabel)} · ${escHtml(h.display_time)}</div>
     <div class="resume-panel-actions">
-      <button type="button" class="resume-panel-btn primary" onclick="openHour(${h.hour_number}, true, { resume: true });toggleFavPanel()">Reprendre</button>
-      <button type="button" class="resume-panel-btn" onclick="openHour(${h.hour_number});toggleFavPanel()">Ouvrir au début</button>
+      <button type="button" class="resume-panel-btn primary" onclick="openHour(${h.hour_number}, true, { resume: true })">Reprendre</button>
+      <button type="button" class="resume-panel-btn" onclick="openHour(${h.hour_number})">Ouvrir au début</button>
       ${saved ? `<button type="button" class="resume-panel-btn danger" onclick="clearSavedParaForHour(${h.hour_number})">Effacer cette position</button>` : ''}
     </div>
   </div>`;
@@ -5828,7 +5716,7 @@ function restartTwentyFourHours() {
   const p = getProgressSnapshot();
   if (!p.hasCycleState) { showToast('Votre progression est déjà à zéro'); return false; }
   const label = p.complete ? 'Recommencer les 24 Heures ?' : 'Réinitialiser ma progression ?';
-  const message = `${label}\n\nSeront effacés : les statuts « Méditée », la reprise de lecture, les onglets de lecture et l’historique quotidien de méditation.\n\nVos favoris, surlignages et préférences seront conservés.`;
+  const message = `${label}\n\nSeront effacés : les statuts « Méditée », la reprise de lecture, les onglets de lecture et l’historique quotidien de méditation.\n\nVos surlignages, notes et préférences seront conservés.`;
   if (!window.confirm(message)) return false;
   state.readHours = new Set();
   state.lastParas = Object.create(null);
@@ -5849,7 +5737,6 @@ function showEspaceView(push = true) {
   resetContentScroll();
   const lastH = getLastHourForResume();
   const progress = getProgressSnapshot();
-  const favs = Object.values(state.favorites || {}).slice(0,8);
   const hls = [];
   const hlGroupMap = new Map();
   for (const [paraId, arr] of Object.entries(state.textHighlights || {})) {
@@ -5874,21 +5761,13 @@ function showEspaceView(push = true) {
     const ai=a.items[0], bi=b.items[0];
     return (ai.info?.label||'').localeCompare(bi.info?.label||'') || (ai.hl.start_offset||0)-(bi.hl.start_offset||0);
   });
-  const favHtml = favs.length ? favs.map(f => {
-    const targetId = f.target_id || f.id;
-    const info = getTargetInfo(targetId);
-    const label = f.hourTitle || (info ? info.label : 'Favori');
-    const note = f.multi_para_selection ? '<div style="font-size:0.7rem;color:var(--ink4);margin-top:0.2rem;font-style:italic">Favori multi-paragraphes</div>' : '';
-    return `<button type="button" class="fav-item" onclick="openFavoriteTarget('${escHtml(targetId)}')"><div class="fav-item-ref">${escHtml(label)}</div><div class="fav-item-text">${escHtml(f.selected_text_snapshot || f.text || '')}</div>${note}</button>`;
-  }).join('') : '<div class="fav-empty">Aucun favori pour le moment.</div>';
   const hlHtml = hls.length ? hls.slice(0,8).map(group => { const first=group.items[0]; const txt=group.items.map(item => item.hl.selected_text_snapshot || item.hl.text || '').filter(Boolean).join(' … '); const groupNote=group.kind==='group'?`<div style="font-size:0.7rem;color:var(--ink4);margin-top:0.2rem;font-style:italic">Surlignage multi-paragraphes — ${group.items.length} passages</div>`:''; return `<button type="button" class="hl-item" onclick="openHighlightTarget('${first.paraId}')"><div class="hl-dot hl-${escHtml(first.hl.color||'yellow')}"></div><div class="hl-item-content"><div class="hl-item-ref">${escHtml(first.info.label||'Passage')}</div><div class="hl-item-text">${escHtml(txt)}</div>${groupNote}</div></button>`; }).join('') : '<div class="fav-empty">Aucun surlignage pour le moment.</div>';
   const allNotes = Object.entries(state.notes).flatMap(([pid, arr]) => arr.map(n => Object.assign({paraId:pid}, n))).sort((a,b) => b.ts - a.ts).slice(0, 8);
-  const notesHtml = allNotes.length ? allNotes.map(n => { const info = getTargetInfo(n.paraId); const d = new Date(n.ts * 1000); const ds = d.toLocaleDateString('fr-FR', {day:'numeric', month:'long'}); return `<button type="button" class="fav-item" onclick="openNoteTarget('${escHtml(n.paraId)}')"><div class="fav-item-ref">${escHtml(info ? info.label : n.paraId)} · ${ds}</div><div class="fav-item-text">${escHtml(n.text)}</div></button>`; }).join('') : '<div class="fav-empty">Aucune note pour le moment.</div>';
+  const notesHtml = allNotes.length ? allNotes.map(n => { const info = getTargetInfo(n.paraId); const d = new Date(n.ts * 1000); const ds = d.toLocaleDateString('fr-FR', {day:'numeric', month:'long'}); return `<button type="button" class="hl-item" onclick="openNoteTarget('${escHtml(n.paraId)}')"><div class="hl-item-ref">${escHtml(info ? info.label : n.paraId)} · ${ds}</div><div class="hl-item-text">${escHtml(n.text)}</div></button>`; }).join('') : '<div class="fav-empty">Aucune note pour le moment.</div>';
   document.getElementById('content').innerHTML = `<div class="espace-screen">
     ${lastH ? `<button type="button" class="espace-resume-hero" onclick="openHour(${lastH.hour_number}, true, { resume: true })"><div class="erh-inner"><div class="erh-label">Reprendre</div><div class="erh-title">${lastH.hour_number}e Heure — ${escHtml(lastH.title)}</div><div class="erh-meta">${escHtml(describeSavedPara(getSavedParaForHour(lastH.hour_number)))} · ${escHtml(lastH.display_time)}</div></div><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;color:var(--accent)"><polyline points="9 18 15 12 9 6"/></svg></button>` : ''}
     <div class="library-hero" style="margin-top:${lastH ? '0.25rem' : '0'}"><div class="library-eyebrow">Espace personnel</div><h2 class="library-title">Mon Espace</h2></div>
     <div class="espace-section"><div class="espace-section-title">Progression</div>${buildProgressSummaryCard({withActions:false})}<div class="progress-actions"><button type="button" class="resume-panel-btn primary" onclick="showProgressView()">Voir ma progression</button><button type="button" class="resume-panel-btn" onclick="showCompletedHoursView()">Revoir les Heures terminées</button>${progress.hasCycleState ? `<button type="button" class="resume-panel-btn" onclick="restartTwentyFourHours()">${progress.complete ? 'Recommencer les 24 Heures' : 'Réinitialiser ma progression'}</button>` : ''}</div></div>
-    <div class="espace-section"><div class="espace-section-title">Favoris</div>${favHtml}</div>
     <div class="espace-section"><div class="espace-section-title">Surlignages</div>${hlHtml}</div>
     <div class="espace-section"><div class="espace-section-title">Notes</div>${notesHtml}</div>
     <div class="espace-section"><div class="espace-section-title">Exporter / importer mes données</div><div class="espace-actions"><button class="resume-panel-btn primary" onclick="exportUserData()">⬇ Exporter</button><button class="resume-panel-btn" onclick="triggerImport()">⬆ Importer</button></div></div>
@@ -5942,7 +5821,7 @@ function renderHome() {
         <button type="button" class="stage6m-home-action" onclick="showPrieres()"><div class="k">Prières</div><div class="t">Prières &amp; compléments</div><div class="d">Prières du parcours, introduction et textes complémentaires.</div></button>
         <button type="button" class="stage6m-home-action" onclick="showLibraryView(true,'PASSION24.LIBRARY.PART_III')"><div class="k">Approfondir</div><div class="t">Livre du Ciel</div><div class="d">Passion divine de Jésus et douleurs de Marie.</div></button>
         <button type="button" class="stage6m-home-action" onclick="openLibraryText('PASSION24.TEXT.HOW_TO_PRACTICE')"><div class="k">Guide</div><div class="t">Comment pratiquer</div><div class="d">Une Heure par jour, heure réelle ou parcours libre.</div></button>
-        <button type="button" class="stage6m-home-action" onclick="showEspaceView()"><div class="k">Personnel</div><div class="t">Mon Espace</div><div class="d">Progression, favoris, sauvegarde et reprise.</div></button>
+        <button type="button" class="stage6m-home-action" onclick="showEspaceView()"><div class="k">Personnel</div><div class="t">Mon Espace</div><div class="d">Progression, surlignages, notes, sauvegarde et reprise.</div></button>
       </div>
       ${renderRecentLibraryCards()}
       
@@ -6033,7 +5912,6 @@ function renderReader(hour, scroll = true) {
         <div class="ref-para-num">${i + 1}</div>
         <div class="ref-para para-text" data-para-id="${p.id}">${renderParaText(p.t, p.id)}</div>
         <div class="para-actions ref-actions">
-          <button class="para-action-btn ${state.favorites[p.id]?'favorited':''}" onclick="toggleFavorite('${p.id}',${hour.hour_number})" title="Favori" aria-label="Ajouter aux favoris">★</button>
           <button class="para-action-btn" onclick="toggleHighlight('${p.id}')" title="Marquer le paragraphe" aria-label="Marquer ce paragraphe">◈</button>
           <button class="para-action-btn" onclick="copyReflection('${p.id}',${hour.hour_number})" title="Copier" aria-label="Copier la citation">⎘</button>
         </div>
@@ -6134,7 +6012,6 @@ function getDashListRhythmClass(paragraphs, index) {
 }
 
 function buildParaBlock(p, hourNum, rhythmClass = '') {
-  const isFav = !!state.favorites[p.id];
   const isHl = state.highlights.has(p.id);
   const hasNote = !!(state.notes[p.id] && state.notes[p.id].length);
   const internalHeadingMeta = getInternalSubheadingMeta(p.id);
@@ -6148,13 +6025,12 @@ function buildParaBlock(p, hourNum, rhythmClass = '') {
   const numberHtml = internalHeadingMeta && internalHeadingMeta.status === 'standalone_paragraph' ? '' : `<span class="para-num">${p.n}${(()=>{const sp=SPEECH_DATA[p.id];if(!sp)return '';const j=sp.some(s=>s.speaker==='JESUS');const f=sp.some(s=>s.speaker==='FATHER');const m=sp.some(s=>s.speaker==='MARY');return(j?'<span class="speaker-badge badge-jesus" title="Paroles de Jésus">✝ Jésus</span>':'')+(f?'<span class="speaker-badge badge-father" title="Paroles du Père">◆ Père</span>':'')+( m?'<span class="speaker-badge badge-mary" title="Paroles de Marie">✦ Marie</span>':'');})()
     }</span>`;
   return `
-  <div class="para-block${internalHeadingClass}${rhythmClass} ${isHl?'highlighted':''} ${isFav?'favorited':''}${hasNote?' has-note':''}" id="${p.id}"
+  <div class="para-block${internalHeadingClass}${rhythmClass} ${isHl?'highlighted':''}${hasNote?' has-note':''}" id="${p.id}"
     ontouchstart="startLongPress('${p.id}',${hourNum},event)" ontouchend="cancelLongPress()" ontouchmove="cancelLongPress()">
     ${numberHtml}
     <div class="para-text" data-para-id="${p.id}">${renderStructuredParaText(p.t, p.id)}</div>
     <button class="para-note-dot" onclick="openNoteModal('${p.id}')" title="Notes" aria-label="Notes sur ce paragraphe" style="${hasNote?'':'display:none'}">✎</button>
     <div class="para-actions">
-      <button class="para-action-btn ${isFav?'favorited':''}" onclick="toggleFavorite('${p.id}',${hourNum})" title="Favori" aria-label="Ajouter aux favoris">★</button>
       <button class="para-action-btn" onclick="toggleHighlight('${p.id}')" title="Marquer le paragraphe" aria-label="Marquer ce paragraphe">◈</button>
       <button class="para-action-btn" onclick="copyPara('${p.id}',${hourNum})" title="Copier" aria-label="Copier la citation">⎘</button>
       <button class="para-action-btn" onclick="openNoteModal('${p.id}')" title="Ajouter une note" aria-label="Ajouter une note">✎</button>
@@ -6239,7 +6115,7 @@ function deleteNote(paraId, noteId) {
   if (block) { if (state.notes[paraId]) block.classList.add('has-note'); else block.classList.remove('has-note'); }
 }
 function openNoteTarget(paraId) {
-  openFavoriteTarget(paraId);
+  navigateToTarget(paraId);
   setTimeout(() => openNoteModal(paraId), 350);
 }
 
@@ -6272,7 +6148,6 @@ function jumpToScene(paraId) {
 function showMobileActionBar(paraId, hourNum) {
   if (typeof isAndroidAppHighlightModeActive === 'function' && isAndroidAppHighlightModeActive()) return;
   (function(){var _m=document.getElementById('mobileActionBar');if(_m)_m.remove();})();
-  const isFav = !!state.favorites[paraId];
   const isHl = state.highlights.has(paraId);
   const num = paraId.split('.').pop();
   const bar = document.createElement('div');
@@ -6281,9 +6156,6 @@ function showMobileActionBar(paraId, hourNum) {
   bar.innerHTML = `
     <div class="mob-bar-label">Paragraphe ${num}</div>
     <div class="mob-bar-actions">
-      <button class="mob-bar-btn ${isFav?'active':''}" onclick="toggleFavorite('${paraId}',${hourNum});closeMobileActionBar()">
-        <span class="mob-btn-icon">★</span><span class="mob-btn-label">${isFav?'Favori retiré':'Favori'}</span>
-      </button>
       <button class="mob-bar-btn" onclick="openMobileHighlight('${paraId}');closeMobileActionBar()">
         <span class="mob-btn-icon">◐</span><span class="mob-btn-label">Surligner</span>
       </button>
@@ -6751,7 +6623,6 @@ function renderLinkedTextsForHour(hourNum) {
 function updateRightContextPanel(context) {
   const panel = document.getElementById('rightContextPanel'); if (!panel) return;
   const h = getLastHourForResume();
-  const favs = Object.values(state.favorites || {}).slice(0,3);
   const highlights = [];
   for (const [paraId, arr] of Object.entries(state.textHighlights || {})) {
     for (const raw of (arr || [])) {
@@ -6760,11 +6631,9 @@ function updateRightContextPanel(context) {
       if (info) highlights.push({paraId, hl, info});
     }
   }
-  const favMini = favs.length ? favs.map(f => `<button type="button" class="panel-mini-item" onclick="openHourAtPara(${f.hourNum},'${f.id}','${f.type||'meditation'}')"><strong>${f.hourNum}e Heure</strong><br>${escHtml(f.text || '')}</button>`).join('') : '<div class="right-context-meta">Aucun favori pour le moment.</div>';
   const hlMini = highlights.length ? highlights.slice(0,3).map(item => `<button type="button" class="panel-mini-item" onclick="openHighlightTarget('${item.paraId}')"><strong>${escHtml(item.info.label || 'Passage')}</strong><br>${escHtml(item.hl.selected_text_snapshot || item.hl.text || '')}</button>`).join('') : '<div class="right-context-meta">Aucun surlignage pour le moment.</div>';
   panel.innerHTML = `<div class="panel-topbar"><div class="responsive-pane-label">Mon Espace</div><button type="button" class="panel-close-btn" onclick="toggleMonEspacePanel()" aria-label="Fermer Mon Espace">× Fermer</button></div>
     <div class="right-context-card"><div class="right-context-title">Reprendre</div><div class="right-context-meta">${h ? `${h.hour_number}e Heure — ${escHtml(h.title)}<br>${escHtml(describeSavedPara(getSavedParaForHour(h.hour_number)))}` : 'Aucune position enregistrée.'}</div>${h ? `<button type="button" class="resume-panel-btn primary" onclick="openHour(${h.hour_number}, true, { resume: true })">Reprendre</button> <button type="button" class="resume-panel-btn" onclick="openHour(${h.hour_number})">Ouvrir au début</button>` : ''}</div>
-    <div class="right-context-card"><div class="right-context-title">Favoris</div><div class="panel-mini-list">${favMini}</div></div>
     <div class="right-context-card"><div class="right-context-title">Surlignages</div><div class="panel-mini-list">${hlMini}</div></div>
     <div class="right-context-card"><button type="button" class="resume-panel-btn primary" onclick="showEspaceView()">Ouvrir tout Mon Espace</button></div>`;
   applyMonEspacePanelState();
@@ -7022,7 +6891,6 @@ function showSettingsSheet() {
           <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); showHoursView();"><strong>Les 24 Heures</strong>Parcourir les 24 Heures par titre et horaire.</button>          <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); showPrieres();"><strong>Prières &amp; compléments</strong>Prières du parcours et textes complémentaires.</button>          <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); showEspaceView();"><strong>Mon Espace</strong>Progression, favoris, surlignages, export et import.</button>
           <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); showLibraryView(true,'PASSION24.LIBRARY.PART_III');"><strong>Approfondir</strong>Textes du Livre du Ciel autour de la Passion.</button>
           <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); openLibraryText('PASSION24.TEXT.HOW_TO_PRACTICE');"><strong>Comment pratiquer</strong>Comprendre les façons de prier les Heures.</button>
-          <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); toggleFavPanel();"><strong>Favoris</strong>Ouvrir les éléments enregistrés.</button>
         </div>
       </div>
       <div class="stage6m-settings-group">
@@ -7073,7 +6941,7 @@ function showHelp() {
         <div class="help-row"><span class="help-icon">🏠</span><span class="help-row-text"><strong>Accueil</strong> — Reprendre la lecture, accéder aux prières, ou approfondir la Passion. La grille des 24 Heures est toujours visible en accueil — appuyez sur le titre ou une tuile pour naviguer. La carte du haut affiche l’Heure méditée du jour et propose la suivante.</span></div>
         <div class="help-row"><span class="help-icon">⏱</span><span class="help-row-text"><strong>Heures</strong> — Affiche les 24 Heures avec le titre et l’horaire. Appuyez sur une carte pour ouvrir la méditation.</span></div>
         <div class="help-row"><span class="help-icon">📖</span><span class="help-row-text"><strong>Textes</strong> — Préface, pratique des Heures, Approfondir la Passion, et textes liés aux 24 Heures.</span></div>
-        <div class="help-row"><span class="help-icon">★</span><span class="help-row-text"><strong>Espace / Mon Espace</strong> — Reprendre là où vous en étiez, vos favoris, surlignages, notes personnelles, progression, export et import de données.</span></div>
+        <div class="help-row"><span class="help-icon">★</span><span class="help-row-text"><strong>Espace / Mon Espace</strong> — Reprendre là où vous en étiez, vos surlignages, notes personnelles, progression, export et import de données.</span></div>
         <div class="help-row"><span class="help-icon">⚙</span><span class="help-row-text"><strong>Réglages</strong> &mdash; Sur iPad et ordinateur, le bouton <strong>⚙</strong> en haut à droite donne accès à la navigation complète&nbsp;: Les 24 Heures par titre, Prières, Approfondir, Mon Espace, aide et préférences.</span></div>
 
       </div></div>
@@ -7093,11 +6961,11 @@ function showHelp() {
         <div class="help-row"><span class="help-icon">▣</span><span class="help-row-text">Sur iPhone, ouvrez <strong>Espace</strong> dans la barre du bas.</span></div>
         <div class="help-note">Mon Espace ne remplace pas Approfondir dans une Heure : il regroupe seulement vos éléments personnels.</div>
       </div></div>
-      <div class="help-section"><div class="help-section-hd">Favoris, surlignages et copie</div><div class="help-section-body">
+      <div class="help-section"><div class="help-section-hd">Surlignages et copie</div><div class="help-section-body">
         <div class="help-step"><span class="help-step-n">1</span><span class="help-step-text">Sélectionnez un passage du texte.</span></div>
-        <div class="help-step"><span class="help-step-n">2</span><span class="help-step-text">La barre d’action affiche <strong>Favori · Surligner · Copier · Fermer</strong>.</span></div>
-        <div class="help-step"><span class="help-step-n">3</span><span class="help-step-text">Appuyez sur <strong>Favori</strong> pour garder la sélection dans Mon Espace, ou sur <strong>Surligner</strong> puis choisissez une couleur.</span></div>
-        <div class="help-step"><span class="help-step-n">4</span><span class="help-step-text">Avec les repères d'étude activés (<strong>#</strong>), les boutons d'action de paragraphe (favori, surlignage, note, copie) sont également visibles sous chaque paragraphe.</span></div>
+        <div class="help-step"><span class="help-step-n">2</span><span class="help-step-text">La barre d’action affiche <strong>Surligner · Copier · Fermer</strong>.</span></div>
+        <div class="help-step"><span class="help-step-n">3</span><span class="help-step-text">Appuyez sur <strong>Surligner</strong> puis choisissez une couleur.</span></div>
+        <div class="help-step"><span class="help-step-n">4</span><span class="help-step-text">Avec les repères d’étude activés (<strong>#</strong>), les boutons d’action de paragraphe (surlignage, note, copie) sont également visibles sous chaque paragraphe.</span></div>
         <div class="help-note">La palette de couleurs ne doit apparaître qu’après avoir appuyé sur Surligner.</div><div class="help-note">Sur Samsung/Android, utilisez <strong>Paragraphe</strong> : touchez un paragraphe pour le surligner en entier. La sélection mot à mot n’est pas disponible sur ce téléphone.</div>
       </div></div>
       <div class="help-section"><div class="help-section-hd">Fin d’une Heure</div><div class="help-section-body">
@@ -7149,21 +7017,6 @@ function runIntegrityCheck() {
 }
 
 // ── Annotations ──
-function toggleFavorite(paraId, hourNum) {
-  if (state.favorites[paraId]) { delete state.favorites[paraId]; showToast('Retiré des favoris'); }
-  else {
-    const h = CORPUS.hours.find(x=>x.hour_number===hourNum);
-    if (!h) { showToast('Favori impossible : Heure introuvable'); return; }
-    const p = [...h.paragraphs,...(h.reflections||[]),...(h.subsections||[]).flatMap(s=>s.paragraphs)].find(x=>x.id===paraId);
-    if (!p) { showToast('Favori impossible : passage introuvable'); return; }
-    const paraType=(h.reflections||[]).find(x=>x.id===paraId)?'reflection':(h.subsections||[]).flatMap(s=>s.paragraphs).find(x=>x.id===paraId)?'subsection':'meditation';
-    state.favorites[paraId]={id:paraId,hourNum,hourTitle:h.title,type:paraType,text:p.t.slice(0,120)+(p.t.length>120?'…':'')};
-    showToast('Ajouté aux favoris ★');
-  }
-  saveState();
-  const block = document.getElementById(paraId);
-  if (block) { const isFav=!!state.favorites[paraId]; block.classList.toggle('favorited',isFav); (function(){var _b=block.querySelector('.para-action-btn');if(_b)_b.classList.toggle('favorited',isFav);})(); }
-}
 function toggleHighlight(paraId) {
   if (state.highlights.has(paraId)) { state.highlights.delete(paraId); showToast('Marquage retiré'); }
   else { state.highlights.add(paraId); showToast('Paragraphe marqué ◈'); }
@@ -7226,17 +7079,6 @@ function dismissOnboarding(){
   SafeStorage.set('lp24_onboarded','1');
   const card=document.querySelector('.onboarding-card');
   if(card){card.style.cssText+='opacity:0;transition:opacity 0.3s';setTimeout(()=>card.remove(),300);}
-}
-let _panelTab='fav';
-function toggleFavPanel(){
-  const p=document.getElementById('favPanel'); p.classList.toggle('open');
-  if(p.classList.contains('open')) renderPanelTab(_panelTab);
-}
-function switchPanelTab(tab){
-  _panelTab=tab;
-  (function(){var _f=document.getElementById('panelTabFav');if(_f)_f.classList.toggle('active',tab==='fav');})();
-  (function(){var _h=document.getElementById('panelTabHl');if(_h)_h.classList.toggle('active',tab==='hl');})();
-  renderPanelTab(tab);
 }
 function getParaTypeFromId(id){
   if(!id)return 'meditation';
@@ -7325,7 +7167,7 @@ function deleteHighlightFromPanel(paraId, hlId, event) {
   if (event) { event.preventDefault(); event.stopPropagation(); }
   const affected = removeStoredHighlightById(paraId, hlId);
   if (!affected.length) { showToast('Surlignage introuvable'); return; }
-  saveState(); renderPanelTab('hl'); affected.forEach(rerenderPara); showToast('Surlignage supprimé');
+  saveState(); affected.forEach(rerenderPara); showToast('Surlignage supprimé');
 }
 function openHighlightTarget(paraId) {
   const info = getTargetInfo(paraId);
@@ -7334,84 +7176,15 @@ function openHighlightTarget(paraId) {
   else if (info.prayerId) { openPrayer(info.prayerId); setTimeout(()=>{const el=document.getElementById(paraId); if(el)smoothScrollTo(el,{behavior:'smooth',block:'center'});},80); }
   else if (info.sectionId) { openSection(info.sectionId, true, paraId); }
   else if (info.libraryId) { openLibraryText(info.libraryId); setTimeout(()=>{const el=document.getElementById(paraId); if(el)smoothScrollTo(el,{behavior:'smooth',block:'center'});},80); }
-  const p=document.getElementById('favPanel'); if(p && p.classList.contains('open')) toggleFavPanel();
 }
-function openFavoriteTarget(targetId) {
+function navigateToTarget(targetId) {
   const info = getTargetInfo(targetId);
-  if (!info) { showToast('Favori introuvable'); return; }
+  if (!info) { showToast('Passage introuvable'); return; }
   if (info.hourNum) openHourAtPara(info.hourNum, targetId, info.openType || getParaTypeFromId(targetId));
   else if (info.prayerId) { openPrayer(info.prayerId); setTimeout(()=>{const el=document.getElementById(targetId); if(el)smoothScrollTo(el,{behavior:'smooth',block:'center'});},80); }
   else if (info.sectionId) { openSection(info.sectionId, true, targetId); }
   else if (info.libraryId) { openLibraryText(info.libraryId); setTimeout(()=>{const el=document.getElementById(targetId); if(el)smoothScrollTo(el,{behavior:'smooth',block:'center'});},80); }
-  const p=document.getElementById('favPanel'); if(p && p.classList.contains('open')) toggleFavPanel();
 }
-
-function renderPanelTab(tab){
-  const body=document.getElementById('favPanelBody');
-  const resumeCard = buildResumePanelCard();
-  if(tab==='fav'){
-    const favs=Object.values(state.favorites);
-    const favHtml=favs.length
-      ? favs.map(f=>{
-          const info = getTargetInfo(f.target_id || f.id);
-          const label = f.hourTitle || (info ? info.label : 'Favori');
-          return `<button type="button" class="fav-item" aria-label="Ouvrir le favori : ${escHtml(label)}" onclick="openFavoriteTarget('${escHtml(f.target_id || f.id)}')">
-          <div class="fav-item-ref">${escHtml(label)}</div>
-          <div class="fav-item-text">${escHtml(f.selected_text_snapshot || f.text || '')}</div>
-          <div style="font-size:0.7rem;color:var(--ink4);margin-top:0.2rem;font-style:italic">${f.favorite_kind === 'selection' ? 'Sélection favorite' : 'Passage favori'}</div>
-        </button>`;
-        }).join('')
-      : '<div class="fav-empty">Aucun favori.<br>Utilisez ★ ou sélectionnez un texte puis Favori.</div>';
-    body.innerHTML = resumeCard + favHtml;
-  } else {
-    const grouped = [];
-    const groupMap = new Map();
-    for(const [paraId,hls] of Object.entries(state.textHighlights)){
-      for(const rawHl of hls) {
-        const hl = migrateHighlightRecord(paraId, rawHl);
-        Object.assign(rawHl, hl);
-        const info = getTargetInfo(paraId);
-        const status = currentHighlightStatus(paraId, rawHl);
-        const item = {info, paraId, hl:rawHl, status};
-        if (rawHl.group_id) {
-          if (!groupMap.has(rawHl.group_id)) groupMap.set(rawHl.group_id, []);
-          groupMap.get(rawHl.group_id).push(item);
-        } else {
-          grouped.push({kind:'single', items:[item]});
-        }
-      }
-    }
-    for (const [groupId, items] of groupMap.entries()) {
-      items.sort((a,b)=>(Number(a.hl.segment_index ?? 0)-Number(b.hl.segment_index ?? 0)) || ((a.info?.label||'').localeCompare(b.info?.label||'')) || (a.hl.start_offset||0)-(b.hl.start_offset||0));
-      grouped.push({kind:'group', groupId, items});
-    }
-    grouped.sort((a,b)=>{
-      const ai=a.items[0], bi=b.items[0];
-      return (ai.info?.label||'').localeCompare(bi.info?.label||'') || (ai.hl.start_offset||0)-(bi.hl.start_offset||0);
-    });
-    const hlHtml=grouped.length
-      ? grouped.map(group=>{
-          const first = group.items.find(x=>x.info) || group.items[0];
-          const firstInfo = first.info;
-          const label = firstInfo ? firstInfo.label : 'Passage introuvable';
-          const txt = group.items.map(x => x.hl.selected_text_snapshot || x.hl.text || '').filter(Boolean).join(' … ');
-          const stale = group.items.find(x => !(x.status && x.status.fresh));
-          const warn = stale ? `<div class="hl-stale-warning">${escHtml(stale.status.message || 'Surlignage à vérifier.')}</div>` : '';
-          const disabled = firstInfo ? '' : ' disabled';
-          const groupNote = group.kind === 'group' ? `<div style="font-size:0.7rem;color:var(--ink4);margin-top:0.2rem;font-style:italic">Surlignage multi-paragraphes — ${group.items.length} passages</div>` : '';
-          return `<div class="hl-item-wrap"><button type="button" class="hl-item" aria-label="Ouvrir le passage surligné : ${escHtml(label)}" onclick="openHighlightTarget('${first.paraId}')"${disabled}>
-          <div class="hl-dot hl-${first.hl.color}"></div>
-          <div class="hl-item-content">
-            <div class="hl-item-ref">${escHtml(label)}</div>
-            <div class="hl-item-text">${escHtml(txt)}</div>${groupNote}${warn}
-          </div>
-        </button><button type="button" class="hl-delete-btn" aria-label="Supprimer ce surlignage" onclick="deleteHighlightFromPanel('${first.paraId}','${first.hl.id}',event)">×</button></div>`;}).join('')
-      : '<div class="fav-empty">Aucun surlignage.<br>Sélectionnez du texte lors de la lecture.</div>';
-    body.innerHTML = resumeCard + hlHtml;
-  }
-}
-
-
 
 // ── Text-selection highlighting ──
 
@@ -8113,7 +7886,6 @@ function showSelectionActionBarBottom() {
   bar.setAttribute('aria-label','Actions pour le texte sélectionné');
   bar.innerHTML = `<div class="selection-action-label">Texte sélectionné</div>
     <div class="selection-action-buttons">
-      <button type="button" class="selection-action-btn" onclick="addPendingSelectionFavorite();closeSelectionActionBar(true)"><span class="selection-action-icon">★</span><span>Favori</span></button>
       <button type="button" class="selection-action-btn" data-highlight-ui="true" onclick="return openColourPickerFromSelectionAction(event)"><span class="selection-action-icon">◐</span><span>Surligner</span></button>
       <button type="button" class="selection-action-btn" onclick="copyPendingSelection();closeSelectionActionBar(true)"><span class="selection-action-icon">⎘</span><span>Copier</span></button>
       <button type="button" class="selection-action-btn close" onclick="closeSelectionActionBar(true)"><span class="selection-action-icon">✕</span><span>Fermer</span></button>
@@ -8122,50 +7894,6 @@ function showSelectionActionBarBottom() {
   document.body.appendChild(bar);
   if (typeof stage6fBindHighlightUiEventIsolation === 'function') stage6fBindHighlightUiEventIsolation(bar);
   requestAnimationFrame(()=>bar.classList.add('visible'));
-}
-
-function addPendingSelectionFavorite() {
-  const sel = state._pending;
-  if (!sel || !sel.paraId || !sel.text) { showToast('Aucune sélection active'); return; }
-  const info = getTargetInfo(sel.paraId);
-  if (!info) { showToast('Passage introuvable'); return; }
-  const createdAt = new Date().toISOString();
-  const isMulti = Array.isArray(sel.segments) && sel.segments.length > 1;
-  const key = isMulti ? (sel.paraId + '.FAV.' + Date.now()) : sel.paraId;
-  const safeSegments = isMulti ? sel.segments.map(function(seg, idx){
-    return {
-      paraId: seg.paraId,
-      target_id: seg.paraId,
-      start_offset: seg.start,
-      end_offset: seg.end,
-      start: seg.start,
-      end: seg.end,
-      text: String(seg.text || '').slice(0,1000),
-      selected_text_snapshot: String(seg.text || '').slice(0,1000),
-      segment_index: idx,
-      segment_count: sel.segments.length
-    };
-  }) : [];
-  state.favorites[key] = {
-    id: key,
-    target_id: sel.paraId,
-    hourNum: info.hourNum || null,
-    hourTitle: info.label || 'Passage',
-    type: info.openType || info.type || getParaTypeFromId(sel.paraId),
-    text: sel.text.slice(0, 500) + (sel.text.length > 500 ? '…' : ''),
-    selected_text_snapshot: sel.text.slice(0, 2000),
-    start_offset: sel.start,
-    end_offset: sel.end,
-    favorite_kind: isMulti ? 'selection_multi_paragraph' : 'selection',
-    multi_para_selection: isMulti,
-    segments: safeSegments,
-    segment_count: safeSegments.length,
-    created_at: createdAt
-  };
-  saveState();
-  if (isMulti) safeSegments.forEach(function(seg){ const block = document.getElementById(seg.paraId); if (block) block.classList.add('favorited'); });
-  else { const block = document.getElementById(sel.paraId); if (block) block.classList.add('favorited'); }
-  showToast(isMulti ? 'Sélection multi-paragraphes ajoutée aux favoris ★' : 'Sélection ajoutée aux favoris ★');
 }
 
 function copyPendingSelection() {
@@ -8618,7 +8346,6 @@ function buildPersonalDataExport() {
     exported_at: new Date().toISOString(),
     app_version: APP_VERSION,
     corpus_version: CORPUS_VERSION,
-    favorites: state.favorites,
     textHighlights: migrateTextHighlightsStore(state.textHighlights),
     highlights: [...state.highlights],
     readHours: [...state.readHours],
@@ -8666,7 +8393,6 @@ function validatePersonalDataImport(data) {
     return out;
   };
   const clean = {};
-  clean.favorites = sanitizeFavoritesStore(data.favorites);
   clean.textHighlights = safeObj(data.textHighlights, (k, v) => {
     if (!VALID_ID_RE.test(k) || !Array.isArray(v)) return false;
     return v.every(h => h && typeof h === 'object'
@@ -8699,7 +8425,6 @@ function handleImportFile(input) {
     try {
       const clean = validatePersonalDataImport(JSON.parse(e.target.result));
       if (!confirm('Importer cette sauvegarde ?\n\nVos données actuelles seront remplacées.')) { input.value=''; return; }
-      state.favorites      = clean.favorites;
       state.textHighlights = clean.textHighlights;
       state.highlights     = new Set(clean.highlights);
       state.readHours      = new Set(clean.readHours);
@@ -8712,7 +8437,6 @@ function handleImportFile(input) {
       state.monEspacePanelOpen = clean.monEspacePanelOpen;
       state.meditationLog  = clean.meditationLog;
       saveState(); applyStudyMode(); applyFontSize(); applyTheme(); applyMonEspacePanelState();
-      renderPanelTab('fav');
       showToast('Données importées ✓');
     } catch(err) {
       showToast('Erreur : fichier invalide');
