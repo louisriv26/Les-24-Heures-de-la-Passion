@@ -1,1 +1,1 @@
-{"app_version":"prototype-101r59-stage8a-r49i-no-favs","evidence_stage":"Stage 8A/R49i — favorites removed; navigateToTarget; simplified state/export/import","build_date":"2026-06-29","status":"LIMITED_PASS_STATIC_STAGE8A_R49I","real_device_status":"NOT_TESTED"}
+{"app_version":"prototype-101r59-stage8a-r49j-prayer-hour","evidence_stage":"Stage 8A/R49j — dynamic hour in Prière avant chaque Heure; favorites removed","build_date":"2026-06-29","status":"LIMITED_PASS_STATIC_STAGE8A_R49J","real_device_status":"NOT_TESTED"}

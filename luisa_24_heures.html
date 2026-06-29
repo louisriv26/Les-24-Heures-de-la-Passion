@@ -4527,8 +4527,8 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'prototype-101r59-stage8a-r49i-no-favs';
-const APP_EVIDENCE_STAGE = 'Stage 8A/R49i — favorites removed; navigateToTarget; simplified state/export/import';
+const APP_VERSION = 'prototype-101r59-stage8a-r49j-prayer-hour';
+const APP_EVIDENCE_STAGE = 'Stage 8A/R49j — dynamic hour in Prière avant chaque Heure; favorites removed';
 const STORAGE_SCHEMA_VERSION=4; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const SEARCH_RESULT_LIMIT = 60;
 
@@ -5046,12 +5046,15 @@ function buildSidebar() {
       <span class="hour-num">${h.hour_number}</span>
       <span>${h.title}<span class="hour-time">${h.display_time}</span></span>
     </button>`).join('');
-  document.getElementById('sidePrayers').innerHTML = CORPUS.prayers.map(p => `
+  document.getElementById('sidePrayers').innerHTML = CORPUS.prayers.map(p => {
+    const hourArg = (p.prayer_id === 'PASSION24.PRAYER.BEFORE_EACH_HOUR' && state.currentHour) ? `, true, ${state.currentHour}` : '';
+    return `
     <button class="sidebar-item ${isActivePrayer(p.prayer_id)?'active':''}"
-      onclick="openPrayer('${p.prayer_id}'); closeSidebar()">
+      onclick="openPrayer('${p.prayer_id}'${hourArg}); closeSidebar()">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       ${p.title}
-    </button>`).join('');
+    </button>`;
+  }).join('');
   document.getElementById('sideSections').innerHTML = CORPUS.sections.map(s => `
     <button class="sidebar-item ${isActiveSection(s.section_id)?'active':''}"
       onclick="openSection('${s.section_id}'); closeSidebar()">
@@ -5079,8 +5082,12 @@ function closeSidebar() {
 function forceCloseLegacySidebar() { closeSidebar(); }
 
 // ── Prayer Modal ──
-function renderPrayerParagraph(pr, p, modal = false) {
-  const txt = p.t || '';
+function renderPrayerParagraph(pr, p, modal = false, hourNum = null) {
+  let txt = p.t || '';
+  if (hourNum && txt.includes('(préciser)')) {
+    const ord = hourNum === 1 ? '1re' : hourNum + 'e';
+    txt = txt.replace('la… (préciser) Heure', 'la ' + ord + ' Heure');
+  }
   const paraId = p.id || '';
   const paraClass = modal ? 'prayer-modal-para' : 'block-paragraph';
   const targetAttr = paraId ? ` id="${paraId}" data-target-type="prayer"` : '';
@@ -5155,14 +5162,14 @@ function closeDisplayPanel() {
   p.classList.remove('open');
 }
 
-function openPrayerModal(prayerId, isHoly = false) {
+function openPrayerModal(prayerId, isHoly = false, hourNum = null) {
   const pr = PRAYERS[prayerId];
   if (!pr) return;
   _prayerModalTrigger = document.activeElement;
   document.getElementById('prayerModalEyebrow').textContent = isHoly ? 'Heure Sainte — Gethsémani' : 'Prière';
   document.getElementById('prayerModalTitle').textContent = pr.title;
   document.getElementById('prayerModalBody').innerHTML =
-    pr.paragraphs.map(p => renderPrayerParagraph(pr, p, true)).join('');
+    pr.paragraphs.map(p => renderPrayerParagraph(pr, p, true, hourNum)).join('');
   document.getElementById('prayerOverlay').classList.add('open');
   const modal = document.getElementById('prayerModal');
   modal.style.display = 'flex';
@@ -5217,7 +5224,7 @@ function buildOpeningButtons(hour) {
     const icon = isHoly
       ? `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`
       : `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
-    return `<button class="${cls}" onclick="openPrayerModal('${id}', ${isHoly})">${icon} ${escHtml(pr.title)}</button>`;
+    return `<button class="${cls}" onclick="openPrayerModal('${id}', ${isHoly}, ${hour.hour_number})">${icon} ${escHtml(pr.title)}</button>`;
   }).join('');
 
   return `<div class="prayer-buttons-row">${buttons}</div>`;
@@ -6192,7 +6199,7 @@ function switchTab(tab, preserveScroll = false) {
 }
 
 // ── Prayer full-page view (from sidebar) ──
-function openPrayer(id, push = true) {
+function openPrayer(id, push = true, hourNum = null) {
   const pr = PRAYERS[id]; if (!pr) return;
   if (push) pushHistory(state.view, getHistoryDataForView(state.view));
   state.view = 'prayer'; state.currentPrayer = id;
@@ -6202,7 +6209,7 @@ function openPrayer(id, push = true) {
       <div class="reader-eyebrow">Prière — Les 24 Heures de la Passion</div>
       <h2 class="reader-title">${escHtml(pr.title)}</h2>
       </div>
-    <div class="section-content">${pr.paragraphs.map(p=>renderPrayerParagraph(pr, p, false)).join('')}</div>
+    <div class="section-content">${pr.paragraphs.map(p=>renderPrayerParagraph(pr, p, false, hourNum)).join('')}</div>
   </div>`;
 resetContentScrollAfterRender();
   document.getElementById('progressWrap').style.display = 'none';
