@@ -1106,7 +1106,7 @@ html, body, #app, .main, .content,
 .espace-section-title { font-family:var(--font-display); font-weight:800; color:var(--ink); margin-bottom:0.65rem; }
 .espace-actions { display:flex; flex-wrap:wrap; gap:0.5rem; }
 @media (max-width: 767px) {
-  .header-actions button[title="Recherche"], .header-actions button[title="Favoris"], #menuBtn, #monEspaceToggle { display:none !important; }
+  .header-actions button[title="Recherche"], #menuBtn, #monEspaceToggle { display:none !important; }
   .header-actions { gap:0.35rem; }
   .help-round { width:44px !important; height:44px !important; min-width:44px !important; }
   .home-action-grid, .library-dashboard-grid { grid-template-columns:1fr; }
@@ -5686,7 +5686,7 @@ function getProgressSnapshot() {
 }
 function buildProgressSummaryCard(options = {}) {
   const p = getProgressSnapshot();
-  const note = p.complete ? 'Parcours terminé. Vous pouvez commencer un nouveau cycle tout en conservant vos favoris et surlignages.' : (p.count ? 'Votre progression est enregistrée sur cet appareil. Vous pouvez poursuivre quand vous le souhaitez.' : 'Aucune Heure n’est encore marquée comme lue.');
+  const note = p.complete ? 'Parcours terminé. Vous pouvez commencer un nouveau cycle tout en conservant vos surlignages et notes.' : (p.count ? 'Votre progression est enregistrée sur cet appareil. Vous pouvez poursuivre quand vous le souhaitez.' : 'Aucune Heure n’est encore marquée comme lue.');
   const actionButtons = options.withActions === false ? '' : `<div class="progress-actions"><button type="button" class="resume-panel-btn primary" onclick="showCompletedHoursView()">Revoir les Heures terminées</button>${p.hasCycleState ? `<button type="button" class="resume-panel-btn" onclick="restartTwentyFourHours()">${p.complete ? 'Recommencer les 24 Heures' : 'Réinitialiser ma progression'}</button>` : ''}</div>`;
   return `<div class="progress-summary-card"><div class="progress-summary-top"><div class="progress-summary-count">${p.count}/24</div><div class="progress-summary-label">${p.pct}%<br>${p.complete ? 'Parcours terminé' : 'Heures marquées comme lues'}</div></div><div class="progress-summary-track" aria-label="Progression ${p.count} sur 24"><div class="progress-summary-fill" style="width:${p.pct}%"></div></div><div class="progress-summary-note">${note}</div>${actionButtons}</div>`;
 }
@@ -6941,7 +6941,7 @@ function showHelp() {
         <div class="help-row"><span class="help-icon">🏠</span><span class="help-row-text"><strong>Accueil</strong> — Reprendre la lecture, accéder aux prières, ou approfondir la Passion. La grille des 24 Heures est toujours visible en accueil — appuyez sur le titre ou une tuile pour naviguer. La carte du haut affiche l’Heure méditée du jour et propose la suivante.</span></div>
         <div class="help-row"><span class="help-icon">⏱</span><span class="help-row-text"><strong>Heures</strong> — Affiche les 24 Heures avec le titre et l’horaire. Appuyez sur une carte pour ouvrir la méditation.</span></div>
         <div class="help-row"><span class="help-icon">📖</span><span class="help-row-text"><strong>Textes</strong> — Préface, pratique des Heures, Approfondir la Passion, et textes liés aux 24 Heures.</span></div>
-        <div class="help-row"><span class="help-icon">★</span><span class="help-row-text"><strong>Espace / Mon Espace</strong> — Reprendre là où vous en étiez, vos surlignages, notes personnelles, progression, export et import de données.</span></div>
+        <div class="help-row"><span class="help-icon">◈</span><span class="help-row-text"><strong>Espace / Mon Espace</strong> — Reprendre là où vous en étiez, vos surlignages, notes personnelles, progression, export et import de données.</span></div>
         <div class="help-row"><span class="help-icon">⚙</span><span class="help-row-text"><strong>Réglages</strong> &mdash; Sur iPad et ordinateur, le bouton <strong>⚙</strong> en haut à droite donne accès à la navigation complète&nbsp;: Les 24 Heures par titre, Prières, Approfondir, Mon Espace, aide et préférences.</span></div>
 
       </div></div>
