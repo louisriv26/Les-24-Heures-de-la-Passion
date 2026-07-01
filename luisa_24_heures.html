@@ -4527,8 +4527,8 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'prototype-101r59-stage8a-r49j-prayer-hour';
-const APP_EVIDENCE_STAGE = 'Stage 8A/R49j — dynamic hour in Prière avant chaque Heure; favorites removed';
+const APP_VERSION = 'prototype-101r59-stage8a-r49l-notes-databack';
+const APP_EVIDENCE_STAGE = 'Stage 8A/R49L — notes and lastHour restored on export/import; note sanitation on load';
 const STORAGE_SCHEMA_VERSION=4; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const SEARCH_RESULT_LIMIT = 60;
 
@@ -4581,6 +4581,21 @@ function sanitizeReadHoursArray(arr) {
   for (const v of arr) {
     const n = Number(v);
     if (Number.isInteger(n) && n >= 1 && n <= 24 && !out.includes(n)) out.push(n);
+  }
+  return out;
+}
+function sanitizeNotesStore(obj) {
+  const out = Object.create(null);
+  if (!obj || typeof obj !== 'object' || Array.isArray(obj) || hasDangerousKeyDeep(obj)) return out;
+  for (const [k, v] of Object.entries(obj)) {
+    if (!validPersonalId(k) || !Array.isArray(v)) continue;
+    const notes = v.filter(n => n && typeof n === 'object'
+        && typeof n.id === 'string' && n.id.length > 0 && n.id.length <= 64
+        && typeof n.text === 'string' && n.text.length > 0 && n.text.length <= 2000
+        && typeof n.ts === 'string' && n.ts.length <= 64)
+      .map(n => ({ id: n.id, text: n.text, ts: n.ts }))
+      .slice(0, 200);
+    if (notes.length) out[k] = notes;
   }
   return out;
 }
@@ -4935,7 +4950,7 @@ function loadState() {
     }
     const tabs=localStorage.getItem('lp24_tabs'); if(tabs){try{state.hourTabs=sanitizeHourTabsStore(JSON.parse(tabs));}catch(e){state.hourTabs=Object.create(null);}}
     const pos=localStorage.getItem('lp24_pos');   if(pos){try{state.lastParas=sanitizeLastParasStore(JSON.parse(pos));}catch(e){state.lastParas=Object.create(null);}}
-    const nt=localStorage.getItem('lp24_notes'); if(nt){try{const raw=JSON.parse(nt);state.notes=typeof raw==='object'&&raw!==null?raw:{};}catch(e){state.notes={}}}
+    const nt=localStorage.getItem('lp24_notes'); if(nt){try{state.notes=sanitizeNotesStore(JSON.parse(nt));}catch(e){state.notes={}}}
     const fs = localStorage.getItem('lp24_font'); if (fs !== null) state.fontSize = sanitizeFontSizeValue(fs, state.fontSize);
     const thp = localStorage.getItem('lp24_theme_preference');
     const th = localStorage.getItem('lp24_theme');
@@ -8364,7 +8379,8 @@ function buildPersonalDataExport() {
     themePreference: state.themePreference,
     studyMode: state.studyMode,
     monEspacePanelOpen: !!state.monEspacePanelOpen,
-    meditationLog: state.meditationLog
+    meditationLog: state.meditationLog,
+    notes: state.notes
   };
 }
 function exportUserData() {
@@ -8423,6 +8439,11 @@ function validatePersonalDataImport(data) {
   clean.studyMode = !!data.studyMode;
   clean.monEspacePanelOpen = !!data.monEspacePanelOpen;
   clean.meditationLog = sanitizeMeditationLog(data.meditationLog);
+  clean.notes = sanitizeNotesStore(data.notes);
+  {
+    const lh = Number(data.lastHour);
+    clean.lastHour = (Number.isInteger(lh) && lh >= 1 && lh <= 24) ? String(lh) : null;
+  }
   return clean;
 }
 function handleImportFile(input) {
@@ -8443,6 +8464,9 @@ function handleImportFile(input) {
       state.studyMode      = clean.studyMode;
       state.monEspacePanelOpen = clean.monEspacePanelOpen;
       state.meditationLog  = clean.meditationLog;
+      state.notes          = clean.notes;
+      if (clean.lastHour) { SafeStorage.set('lp24_lastHour', clean.lastHour); }
+      else { SafeStorage.remove('lp24_lastHour'); }
       saveState(); applyStudyMode(); applyFontSize(); applyTheme(); applyMonEspacePanelState();
       showToast('Données importées ✓');
     } catch(err) {
