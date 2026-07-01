@@ -1,5 +1,5 @@
-/* Stage 8A/R49L — prototype-101r59-stage8a-r49l-notes-databack */
-const CACHE_NAME = 'luisa-24h-r49l-20260701';
+/* Stage 8A/R49M — prototype-101r59-stage8a-r49m-nav-search-prayer */
+const CACHE_NAME = 'luisa-24h-r49m-20260701';
 const CACHE_PREFIX = 'luisa-24h-';
 const ASSETS = ['./','./index.html','./luisa_24_heures.html','./manifest.json','./icon-180.png','./icon-192.png','./icon-512.png'];
 self.addEventListener('install', event => { event.waitUntil((async()=>{ const cache=await caches.open(CACHE_NAME); await cache.addAll(ASSETS); await self.skipWaiting(); })()); });

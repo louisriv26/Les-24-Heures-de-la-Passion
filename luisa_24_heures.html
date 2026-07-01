@@ -4527,8 +4527,8 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'prototype-101r59-stage8a-r49l-notes-databack';
-const APP_EVIDENCE_STAGE = 'Stage 8A/R49L — notes and lastHour restored on export/import; note sanitation on load';
+const APP_VERSION = 'prototype-101r59-stage8a-r49m-nav-search-prayer';
+const APP_EVIDENCE_STAGE = 'Stage 8A/R49M — exact tab targeting, prayer-ordinal fallback, favorites text cleanup, modal focus trap';
 const STORAGE_SCHEMA_VERSION=4; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const SEARCH_RESULT_LIMIT = 60;
 
@@ -4592,8 +4592,8 @@ function sanitizeNotesStore(obj) {
     const notes = v.filter(n => n && typeof n === 'object'
         && typeof n.id === 'string' && n.id.length > 0 && n.id.length <= 64
         && typeof n.text === 'string' && n.text.length > 0 && n.text.length <= 2000
-        && typeof n.ts === 'string' && n.ts.length <= 64)
-      .map(n => ({ id: n.id, text: n.text, ts: n.ts }))
+        && Number.isFinite(Number(n.ts)))
+      .map(n => ({ id: n.id, text: n.text, ts: Number(n.ts) }))
       .slice(0, 200);
     if (notes.length) out[k] = notes;
   }
@@ -5099,9 +5099,18 @@ function forceCloseLegacySidebar() { closeSidebar(); }
 // ── Prayer Modal ──
 function renderPrayerParagraph(pr, p, modal = false, hourNum = null) {
   let txt = p.t || '';
-  if (hourNum && txt.includes('(préciser)')) {
-    const ord = hourNum === 1 ? '1re' : hourNum + 'e';
-    txt = txt.replace('la… (préciser) Heure', 'la ' + ord + ' Heure');
+  if (txt.includes('(préciser)')) {
+    // R49M fix: fall back to state.currentHour when no explicit hourNum was passed
+    // (e.g. sidebar/history opens while a reader is active), and if there is still
+    // no hour context at all (home screen, search, opened outside any Hour), use a
+    // neutral formulation instead of leaking the "(préciser)" editorial placeholder.
+    const effectiveHour = hourNum || state.currentHour;
+    if (effectiveHour) {
+      const ord = effectiveHour === 1 ? '1re' : effectiveHour + 'e';
+      txt = txt.replace('la… (préciser) Heure', 'la ' + ord + ' Heure');
+    } else {
+      txt = txt.replace('la… (préciser) Heure', 'cette Heure');
+    }
   }
   const paraId = p.id || '';
   const paraClass = modal ? 'prayer-modal-para' : 'block-paragraph';
@@ -5119,6 +5128,8 @@ function renderPrayerParagraph(pr, p, modal = false, hourNum = null) {
   return `<div class="para-block prayer-para-block"${targetAttr}><p class="${paraClass} para-text">${renderParaText(txt, paraId)}</p></div>`;
 }
 let _prayerModalTrigger = null;
+let _noteModalTrigger = null;
+let _planSheetTrigger = null;
 
 // Stage 7D-R21 accessibility focus containment helpers
 let _displayPanelTrigger = null;
@@ -6078,19 +6089,27 @@ function cancelLongPress() { clearTimeout(_lpTimer); _lpTimer = null; }
 let _noteModalParaId = null;
 function openNoteModal(paraId) {
   _noteModalParaId = paraId;
+  _noteModalTrigger = document.activeElement;
   const info = getTargetInfo(paraId);
   document.getElementById('noteModalTitle').textContent = 'Note — ' + (info ? info.label : paraId);
   document.getElementById('noteTextarea').value = '';
   updateNoteCharCount();
   renderNoteModalList(paraId);
   document.getElementById('noteModalOverlay').classList.add('open');
-  document.getElementById('noteModal').classList.add('open');
-  document.getElementById('noteModal').focus();
+  const modal = document.getElementById('noteModal');
+  modal.classList.add('open');
+  installFocusTrap(modal, closeNoteModal, { returnFocusTo: _noteModalTrigger });
 }
 function closeNoteModal() {
+  const modal = document.getElementById('noteModal');
+  cleanupFocusTrap(modal, false);
   document.getElementById('noteModalOverlay').classList.remove('open');
-  document.getElementById('noteModal').classList.remove('open');
+  modal.classList.remove('open');
   _noteModalParaId = null;
+  if (_noteModalTrigger && typeof _noteModalTrigger.focus === 'function') {
+    try { _noteModalTrigger.focus({preventScroll:true}); } catch(_e) { _noteModalTrigger.focus(); }
+  }
+  _noteModalTrigger = null;
 }
 function renderNoteModalList(paraId) {
   const notes = (state.notes[paraId] || []).slice().sort((a,b) => b.ts - a.ts);
@@ -6143,6 +6162,7 @@ function openNoteTarget(paraId) {
 
 // ── Plan sheet (R49e) ──
 function openPlanSheet(hourNum) {
+  _planSheetTrigger = document.activeElement;
   const scenes = Object.entries(INTERNAL_SUBHEADINGS)
     .filter(([id, meta]) => meta.hour === hourNum)
     .sort((a, b) => parseInt(a[0].match(/P(\d+)$/)[1]) - parseInt(b[0].match(/P(\d+)$/)[1]));
@@ -6153,12 +6173,19 @@ function openPlanSheet(hourNum) {
     return `<button class="plan-scene-item" onclick="jumpToScene('${id}')"><span class="plan-scene-num">§ ${pNum}</span><span class="plan-scene-text">${escHtml(meta.heading)}</span></button>`;
   }).join('');
   document.getElementById('planSheetOverlay').classList.add('open');
-  document.getElementById('planSheet').classList.add('open');
-  document.getElementById('planSheet').focus();
+  const sheet = document.getElementById('planSheet');
+  sheet.classList.add('open');
+  installFocusTrap(sheet, closePlanSheet, { returnFocusTo: _planSheetTrigger });
 }
 function closePlanSheet() {
+  const sheet = document.getElementById('planSheet');
+  cleanupFocusTrap(sheet, false);
   document.getElementById('planSheetOverlay').classList.remove('open');
-  document.getElementById('planSheet').classList.remove('open');
+  sheet.classList.remove('open');
+  if (_planSheetTrigger && typeof _planSheetTrigger.focus === 'function') {
+    try { _planSheetTrigger.focus({preventScroll:true}); } catch(_e) { _planSheetTrigger.focus(); }
+  }
+  _planSheetTrigger = null;
 }
 function jumpToScene(paraId) {
   closePlanSheet();
@@ -6857,9 +6884,15 @@ function afterReaderRender(callback, fallbackDelay = 220) {
 function openHourAtPara(hourNum, paraId, type) {
   state.searchQuery = '';
   openHour(hourNum);
+  // R49M fix: force the tab that actually contains the target, not just 'reflection'.
+  // 'meditation' and 'subsection' targets render inside the meditation tab; only
+  // 'reflection' targets need the reflections tab. Previously only 'reflection' was
+  // forced, so a meditation/subsection target could land in a hidden container if
+  // the hour's saved tab (state.hourTabs[n]) was reflections or linked.
+  const targetTab = type === 'reflection' ? 'reflections' : 'meditation';
   afterReaderRender(function(){
-    if (type === 'reflection') {
-      switchTab('reflections', true);
+    if (state.activeTab !== targetTab) {
+      switchTab(targetTab, true);
       afterReaderRender(function(){ const el = document.getElementById(paraId); if (el) smoothScrollTo(el,{behavior:'auto',block:'start'}); }, 260);
     } else {
       const el = document.getElementById(paraId); if (el) smoothScrollTo(el,{behavior:'auto',block:'start'});
@@ -6910,7 +6943,7 @@ function showSettingsSheet() {
       <div class="stage6m-settings-group">
         <div class="stage6m-settings-label">Parcours</div>
         <div class="stage6m-settings-grid">
-          <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); showHoursView();"><strong>Les 24 Heures</strong>Parcourir les 24 Heures par titre et horaire.</button>          <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); showPrieres();"><strong>Prières &amp; compléments</strong>Prières du parcours et textes complémentaires.</button>          <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); showEspaceView();"><strong>Mon Espace</strong>Progression, favoris, surlignages, export et import.</button>
+          <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); showHoursView();"><strong>Les 24 Heures</strong>Parcourir les 24 Heures par titre et horaire.</button>          <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); showPrieres();"><strong>Prières &amp; compléments</strong>Prières du parcours et textes complémentaires.</button>          <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); showEspaceView();"><strong>Mon Espace</strong>Progression, notes, surlignages, export et import.</button>
           <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); showLibraryView(true,'PASSION24.LIBRARY.PART_III');"><strong>Approfondir</strong>Textes du Livre du Ciel autour de la Passion.</button>
           <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); openLibraryText('PASSION24.TEXT.HOW_TO_PRACTICE');"><strong>Comment pratiquer</strong>Comprendre les façons de prier les Heures.</button>
         </div>
