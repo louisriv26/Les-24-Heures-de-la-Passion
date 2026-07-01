@@ -1,18 +1,18 @@
-# Real-device QA — Les 24 Heures de la Passion · R47
+# Real-device QA — Les 24 Heures de la Passion · R49j
 
-App version: `prototype-101r59-stage7d-r47-meditation-ux`  
-Release level: L1 Static Certified — this test campaign targets L2 Device Certified.  
+App version: `prototype-101r59-stage8a-r49j-prayer-hour`
+Release level: L1 Static Certified — this test campaign targets L2 Device Certified.
 Live URL: https://louisriv26.github.io/Les-24-Heures-de-la-Passion/
 
 ---
 
 ## How to test
 
-**Option A — Live site (recommended for PWA/SW tests):**  
+**Option A — Live site (recommended for PWA/SW tests):**
 Open the URL above in Safari/Chrome on the device.
 
-**Option B — Local file:**  
-Open `app/luisa_24_heures.html` directly in the browser.  
+**Option B — Local file:**
+Open `app/luisa_24_heures.html` directly in the browser.
 Note: service worker, offline, and update tests require a served URL (Option A).
 
 ---
@@ -43,101 +43,99 @@ Note: service worker, offline, and update tests require a served URL (Option A).
 - [ ] Navigate to next/previous hour via end-of-hour buttons
 - [ ] Back button returns to home screen
 
-### 3. Prier / Étudier mode
-- [ ] Default mode is Prier (prayer — clean reading, no para numbers or action buttons)
-- [ ] Tapping the mode pill (✝/✏) switches to Étudier (study — para numbers visible, action buttons visible)
-- [ ] Mode persists after closing and reopening the app
+### 3. Repères d'étude (# toggle)
+- [ ] Default state: no paragraph numbers, no action buttons (prayer-clean reading)
+- [ ] Tapping the `#` pill switches to repères d'étude — para numbers, action buttons, speaker badges visible
+- [ ] Toast "Repères d'étude affichés" / "Repères d'étude masqués" appears on toggle
+- [ ] State persists after closing and reopening the app
 
-### 4. Favourites — scroll-to-para (R46 regression test)
-- [ ] In any hour, add a paragraph to favourites (✦ button in Étudier mode)
-- [ ] Navigate away (home screen)
-- [ ] Open Mon Espace → Favoris, tap the saved favourite
-- [ ] App opens the correct hour and **scrolls to the saved paragraph** (not top of page)
-- [ ] Repeat with a paragraph from Promesses et bienfaits (text library)
+### 4. Notes (R49C)
+- [ ] With repères d'étude ON, tap ✎ on any paragraph — note modal opens
+- [ ] Type a note (test near 2000-char limit) and save
+- [ ] Note dot appears on that paragraph
+- [ ] Reopen the note, edit, and delete it — dot disappears
+- [ ] Notes persist after closing and reopening the app
+- [ ] **Known gap:** notes are NOT included in Mon Espace export/import (see Open defects) — do not expect a note to survive an export→import round trip
 
-### 5. B10 regression test — Promesses et bienfaits (critical)
+### 5. Plan sheet (R49E, Hours 15–24 only)
+- [ ] Open Hour 15 or later — confirm `≡ Plan` button appears in reader header
+- [ ] Open an hour before 15 — confirm the button does NOT appear (no internal subheadings)
+- [ ] Tap `≡ Plan` — sheet lists scenes for that hour
+- [ ] Tap a scene — reader jumps to that scene
+
+### 6. Paroles directes — browse and speaker filter (R49F)
+- [ ] Open search, select the "Paroles directes" filter with an empty query — results populate without typing
+- [ ] Use the speaker sub-filter (Jésus / Père / Marie) — result set narrows correctly
+- [ ] Enter a query while the speech filter is active — results narrow and highlight the match
+
+### 7. B10 regression test — Promesses et bienfaits (critical)
 - [ ] Open Approfondir tab in any hour, or search for "Promesses"
 - [ ] Open "Promesses et bienfaits" entry P074 ("LDC 11 - 14 août 1915…")
 - [ ] Confirm text is the August 1915 continuation — NOT the November 1914 entry
 - [ ] Confirm P077 ("LDC 11 - 4 novembre 1914 (1ère fois)") shows correct date
 
-### 6. Search
+### 8. Search — general
 - [ ] Search for a French word (e.g. "cœur") — results appear
-- [ ] Tap a result — app opens the correct hour and scrolls to the paragraph
+- [ ] Tap a Benefits result — app scrolls to the exact matched paragraph
+- [ ] **Known gap:** prayer, library, and ordinary-section results open at the top of the target, not the exact matched paragraph (see Open defects) — do not fail this as a regression, it is a documented existing limitation
 - [ ] Clear search returns to normal state
 
-### 7. Highlights
+### 9. Prière avant chaque Heure — dynamic ordinal (R49J)
+- [ ] Open Hour 1 → open "Prière avant chaque Heure" from the reader's opening buttons → paragraph 1 reads "la 1re Heure"
+- [ ] Open Hour 10 (or any hour 2–24) the same way → reads "la Ne Heure" (e.g. "la 10e Heure")
+- [ ] **Known gap:** opening the same prayer from the sidebar/home/search outside an active hour can still show the "(préciser)" placeholder (see Open defects) — do not fail this as a regression, it is a documented existing limitation
+
+### 10. Highlights
 - [ ] iPhone/iPad: select text in a paragraph → highlight colour picker appears → choose a colour → text is highlighted
 - [ ] Samsung/Android: tap paragraph action button → full paragraph highlighted in chosen colour
 - [ ] Highlights persist after closing and reopening the app
 
-### 8. Help modal and toast (R45b regression test)
-- [ ] Open ⚙ Réglages → ? (help) modal opens
-- [ ] Tap "Rechercher une mise à jour" button
-- [ ] Toast "Vous avez déjà la dernière version" (or update prompt) appears **above** the modal, not hidden behind it
+### 11. Méditée button and cycle progress
+- [ ] Open any hour, tap "Méditée" — button shows "✓ Méditée", toast confirms
+- [ ] Home screen daily card and progress bar update accordingly
+- [ ] Tap again to un-mark — reverts, progress decrements
+- [ ] ↺ cycle-restart button resets progress with confirmation prompt
 
-### 9. Dark mode
+### 12. Mon Espace / export-import
+- [ ] Mon Espace shows Surlignages, Notes, Export/Import sections (no Favoris — removed R49I)
+- [ ] Export produces a JSON file
+- [ ] Import a previously exported file — confirms replacement, restores highlights/theme/settings
+- [ ] **Known gap:** notes and last-read hour are not restored by import even though the confirmation says data will be replaced (see Open defects)
+
+### 13. Dark mode
 - [ ] Toggle dark mode in Réglages — all screens render correctly
 - [ ] No invisible text (white on white or black on black)
 
-### 10. R47 — Unified Méditée button (NEW)
-- [ ] Open any hour
-- [ ] Confirm there is **no** "Méditée aujourd'hui / Appuyez après votre méditation" bar at the top of the reader
-- [ ] Confirm there is **no** "Marquer lue" button — only a single "Méditée" button in the bottom nav
-- [ ] Tap "Méditée" — button label changes to "✓ Méditée" and toast "✓ Xe Heure méditée" appears
-- [ ] Return to home screen — daily card at top shows the hour as today's méditée hour
-- [ ] Progress bar on home screen increments
-- [ ] Re-open the same hour — button shows "✓ Méditée"
-- [ ] Tap again to un-mark — button reverts to "Méditée", progress decrements
-
-### 11. R47 — Tappable done daily card (NEW)
-- [ ] Mark any hour as méditée (see scenario 10)
-- [ ] Return to home screen
-- [ ] Daily card shows "Méditée aujourd'hui" with the hour title and an arrow (→)
-- [ ] Tap the daily card — app navigates to the **next** hour (not stays on done)
-- [ ] If hour 24 has been méditée, daily card shows "Cycle accompli" with "↺ Recommencer le cycle"
-
-### 12. R47 — Cycle restart shortcut (NEW)
-- [ ] Mark at least one hour as méditée so the progress strip is visible
-- [ ] Progress strip shows "Progression du cycle", the bar, a count (X/24), and a ↺ button
-- [ ] Tap ↺ — a confirmation prompt resets the cycle (progress returns to 0/24)
-- [ ] (If hour 24 was méditée) Confirm "Recommencer le cycle" link in the cycle-complete daily card also triggers the reset
-
-### 13. PWA install (served URL only)
+### 14. PWA install (served URL only)
 - [ ] "Add to Home Screen" prompt appears or is available via browser menu
 - [ ] Installed PWA launches in standalone mode (no browser chrome)
-- [ ] App icon and name display correctly on home screen
+- [ ] App icon and name display correctly on home screen — should read "24 Heures R49j" / full name "Stage 8A/R49j"
 
-### 14. Offline (served URL only — test after first successful online load)
+### 15. Offline (served URL only — test after first successful online load)
 - [ ] Enable airplane mode
 - [ ] Close and reopen the installed PWA
 - [ ] App loads and is fully usable offline
 
-### 15. Update banner (served URL only)
+### 16. Update banner (served URL only)
 - [ ] If testing with a previously cached version, update banner should appear
 - [ ] Tapping the banner reloads to the new version
 
-### 16. 24-day cycle progress
-- [ ] Reading an hour marks it as read (progress counter increments)
-- [ ] Progress persists after close/reopen
-- [ ] "Reprendre la lecture" button on home screen navigates to the next unread hour
-
 ### 17. Data persistence
-- [ ] Favourites, highlights, read progress all survive app close and reopen
-- [ ] Mon Espace shows correct favourites and highlights
+- [ ] Highlights, notes, read progress, repères d'étude state all survive app close and reopen
+- [ ] Mon Espace shows correct highlights and notes
 
 ---
 
 ## Pass criteria for L2
 
-All scenarios in sections 1–12 must PASS on at least iPad Safari and iPhone Safari.  
-Sections 13–15 require the live URL.  
+All scenarios in sections 1–13 must PASS on at least iPad Safari and iPhone Safari (excluding the documented "Known gap" items, which are tracked as open defects, not test failures).
+Sections 14–16 require the live URL.
 Any P0 failure (app crash, data loss, broken navigation) blocks L2 certification.
 
 ---
 
 ## Result recording
 
-Fill in `REAL_DEVICE_QA_RESULTS_TEMPLATE.csv` — one row per scenario per device.  
-Result values: PASS / FAIL / PARTIAL / SKIP  
+Fill in `REAL_DEVICE_QA_RESULTS_TEMPLATE.csv` — one row per scenario per device.
+Result values: PASS / FAIL / PARTIAL / SKIP
 Include: device model, OS version, browser version, tester name, date.

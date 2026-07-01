@@ -1,7 +1,7 @@
 # Luisa — 24 Heures de la Passion
 
-Package version: `prototype-101r59-stage7d-r44a-pwa-identity-evidence-repair`
+Package version: `prototype-101r59-stage8a-r49j-prayer-hour`
 
-Evidence stage: `Stage 7D/R44A — PWA identity and evidence repair (no corpus change, no runtime logic change)`
+Evidence stage: `Stage 8A/R49j — dynamic hour in Prière avant chaque Heure; favorites removed`
 
-Static/package gates are recorded as PASS in the in-package decision lock and must be corroborated by the immutable postwrite external reopened-ZIP audits supplied alongside this package. Real-device validation remains NOT_TESTED.
+Status: `LIMITED_PASS_STATIC` — static/package checks (JS/CSS syntax, replica parity, corpus/speech structure) pass. This is a deploy payload, not a formal evidence-gated release package; no decision lock or independent audit is bundled in-ZIP. Real-device validation remains NOT_TESTED — see `REAL_DEVICE_QA_CHECKLIST.md`.

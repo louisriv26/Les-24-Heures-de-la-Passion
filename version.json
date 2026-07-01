@@ -1,1 +1,1 @@
-{"app_version":"prototype-101r59-stage8a-r49j-prayer-hour","evidence_stage":"Stage 8A/R49j — dynamic hour in Prière avant chaque Heure; favorites removed","build_date":"2026-06-29","status":"LIMITED_PASS_STATIC_STAGE8A_R49J","real_device_status":"NOT_TESTED"}
+{"app_version":"prototype-101r59-stage8a-r49j-prayer-hour","evidence_stage":"Stage 8A/R49K — evidence/packaging fix: manifest/README/QA version sync, corpus hash correction, no runtime change","build_date":"2026-07-01","status":"LIMITED_PASS_STATIC_STAGE8A_R49K","real_device_status":"NOT_TESTED"}
