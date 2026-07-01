@@ -829,8 +829,15 @@ html, body, #app, .main, .content,
   }
 }
 /* R49a — cap reader text column at --col-max on tablet/desktop for comfortable line length */
+/* R49P fix — R49a capped max-width but never centered the column; on iPad landscape
+   (and any wide viewport) the text hugged the left edge with a large dead zone on the
+   right. margin:0 auto centers reliably regardless of align-items/flex quirks elsewhere. */
 @media (min-width: 768px) {
-  .reader-screen { max-width: var(--col-max) !important; }
+  .reader-screen, .section-screen, .home-screen, .provenance-screen {
+    max-width: var(--col-max) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
 }
 
 /* Stage 3 speech trust label style */
@@ -4527,8 +4534,8 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'prototype-101r59-stage8a-r49o-plan-typography';
-const APP_EVIDENCE_STAGE = 'Stage 8A/R49O — Plan sheet label typography synced to rendered corpus text (accents, curly apostrophes, narrow spacing)';
+const APP_VERSION = 'prototype-101r59-stage8a-r49p-reader-column-center';
+const APP_EVIDENCE_STAGE = 'Stage 8A/R49P — real-device fix (iPad landscape): reader/section/home/provenance column now centered instead of hugging left edge';
 const STORAGE_SCHEMA_VERSION=4; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const SEARCH_RESULT_LIMIT = 60;
 
