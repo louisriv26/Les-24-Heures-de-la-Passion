@@ -4527,8 +4527,8 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'prototype-101r59-stage8a-r49m-nav-search-prayer';
-const APP_EVIDENCE_STAGE = 'Stage 8A/R49M — exact tab targeting, prayer-ordinal fallback, favorites text cleanup, modal focus trap';
+const APP_VERSION = 'prototype-101r59-stage8a-r49n-search-anchors';
+const APP_EVIDENCE_STAGE = 'Stage 8A/R49N — exact search anchors for prayers/library/unstructured sections; suppressed-library-ID resolver fix';
 const STORAGE_SCHEMA_VERSION=4; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const SEARCH_RESULT_LIMIT = 60;
 
@@ -4703,7 +4703,16 @@ function getTargetInfo(paraId) {
   if (libBodyMatch) {
     const item = getLibraryItem(libBodyMatch[1]); const pNum = parseInt(libBodyMatch[2], 10);
     const idx = (item && Array.isArray(item.body_stable_numbers)) ? item.body_stable_numbers.indexOf(pNum) : pNum - 1;
-    if (item && item.status !== 'placeholder' && item.body && idx >= 0 && item.body[idx] !== undefined) return {id:paraId, text:item.body[idx], type:'library_text', label:`Texte — ${item.title}`, libraryId:item.id};
+    if (item && item.status !== 'placeholder' && item.body && idx >= 0 && item.body[idx] !== undefined) {
+      const bodyText = item.body[idx];
+      // R49N fix (R-006): renderLibraryItemBody() intentionally renders old
+      // index/label lines with no id for isIndexedLibraryText items (see
+      // isLibraryOldIndexLine/isLibraryTextesLabelLine) — resolving them here as a
+      // valid target was a latent resolver/render mismatch: getTargetInfo said the ID
+      // was resolvable, but no matching DOM element ever existed to scroll/highlight to.
+      const suppressed = isIndexedLibraryText(item) && (isLibraryOldIndexLine(bodyText) || isLibraryTextesLabelLine(bodyText));
+      if (!suppressed) return {id:paraId, text:bodyText, type:'library_text', label:`Texte — ${item.title}`, libraryId:item.id};
+    }
   }
   const libOptMatch = paraId.match(/^(PASSION24\.TEXT\.[A-Z0-9_]+)\.PRACTICE_OPTION\.P(\d{3})$/);
   if (libOptMatch) {
@@ -6241,7 +6250,7 @@ function switchTab(tab, preserveScroll = false) {
 }
 
 // ── Prayer full-page view (from sidebar) ──
-function openPrayer(id, push = true, hourNum = null) {
+function openPrayer(id, push = true, hourNum = null, scrollToAnchor = null) {
   const pr = PRAYERS[id]; if (!pr) return;
   if (push) pushHistory(state.view, getHistoryDataForView(state.view));
   state.view = 'prayer'; state.currentPrayer = id;
@@ -6253,7 +6262,17 @@ function openPrayer(id, push = true, hourNum = null) {
       </div>
     <div class="section-content">${pr.paragraphs.map(p=>renderPrayerParagraph(pr, p, false, hourNum)).join('')}</div>
   </div>`;
-resetContentScrollAfterRender();
+  // R49N fix (R-002): scroll to the exact matched paragraph when opened from search,
+  // instead of always landing on the prayer's top.
+  if (scrollToAnchor) {
+    setTimeout(() => {
+      const el = document.getElementById(scrollToAnchor);
+      if (el) { smoothScrollTo(el, { behavior: 'smooth', block: 'start' }); el.style.outline = '3px solid var(--accent-light)'; setTimeout(()=>{ el.style.outline=''; },2000); }
+      else resetContentScrollAfterRender();
+    }, 100);
+  } else {
+    resetContentScrollAfterRender();
+  }
   document.getElementById('progressWrap').style.display = 'none';
   buildSidebar();
   updateRightContextPanel();
@@ -6373,20 +6392,28 @@ function parseSectionBlocks(sectionId, displayText) {
     }
     blocks.push({ type: 'paragraph', text: paraLines.join('\n') });
   }
+  // R49N fix (R-002): every block gets a stable anchor, not just ldc_ref — previously
+  // section_title/method_intro/hours_schedule/method_heading/paragraph blocks had no
+  // anchor at all, so search results for unstructured sections (Introduction, Méthodes,
+  // Gethsémani) could only ever open at the section top, never the matched paragraph.
+  const anchorBase = sectionId.replace(/[^A-Za-z0-9]/g, '_');
+  blocks.forEach((b, i) => { if (!b.anchor) b.anchor = anchorBase + '_blk' + i; });
   return blocks;
 }
 
-function renderMethodHeading(text) {
+function renderMethodHeading(text, anchor) {
+  const idAttr = anchor ? ` id="${anchor}"` : '';
   const match = text.match(/^((?:Première|Deuxième|Troisième|Quatrième)\s+manière)\s*:?\s*(.*)$/);
-  if (!match) return `<div class="block-method-heading">${escHtml(text)}</div>`;
-  return `<div class="block-method-heading"><span class="method-badge">${escHtml(match[1])}</span><span class="method-heading-text">${escHtml(match[2])}</span></div>`;
+  if (!match) return `<div class="block-method-heading"${idAttr}>${escHtml(text)}</div>`;
+  return `<div class="block-method-heading"${idAttr}><span class="method-badge">${escHtml(match[1])}</span><span class="method-heading-text">${escHtml(match[2])}</span></div>`;
 }
 
-function renderHoursSchedule(text) {
+function renderHoursSchedule(text, anchor) {
+  const idAttr = anchor ? ` id="${anchor}"` : '';
   const title = 'Les 24 Heures de la Passion de Notre-Seigneur Jésus-Christ';
   const body = text.replace(title, '').trim();
   const items = body.split(/(?=De\s+(?:\d+h|midi|24h|17h))/g).map(x => x.trim()).filter(Boolean);
-  return `<div class="section-schedule"><div class="section-schedule-title">${escHtml(title)}</div>${
+  return `<div class="section-schedule"${idAttr}><div class="section-schedule-title">${escHtml(title)}</div>${
     items.map(item => `<p class="block-paragraph" style="margin-bottom:0.55em">${escHtml(item)}</p>`).join('')
   }</div>`;
 }
@@ -6403,11 +6430,11 @@ function renderSectionBlocks(blocks, sectionId) {
   }
   const bodyHtml = blocks.map(b => {
     if (b.type === 'ldc_ref')       return `<div class="block-ldc-ref" id="${b.anchor}">${escHtml(b.text)}</div>`;
-    if (b.type === 'method_heading') return renderMethodHeading(b.text);
-    if (b.type === 'method_intro')   return `<div class="block-method-intro">${escHtml(b.text)}</div>`;
-    if (b.type === 'hours_schedule') return renderHoursSchedule(b.text);
-    if (b.type === 'section_title')  return `<div class="block-section-title">${escHtml(b.text)}</div>`;
-    return `<p class="block-paragraph">${escHtml(b.text)}</p>`;
+    if (b.type === 'method_heading') return renderMethodHeading(b.text, b.anchor);
+    if (b.type === 'method_intro')   return `<div class="block-method-intro" id="${b.anchor}">${escHtml(b.text)}</div>`;
+    if (b.type === 'hours_schedule') return renderHoursSchedule(b.text, b.anchor);
+    if (b.type === 'section_title')  return `<div class="block-section-title" id="${b.anchor}">${escHtml(b.text)}</div>`;
+    return `<p class="block-paragraph" id="${b.anchor}">${escHtml(b.text)}</p>`;
   }).join('');
   return tocHtml + '<div class="section-blocks">' + bodyHtml + '</div>';
 }
@@ -6586,13 +6613,12 @@ function showLibraryView(push = true, focusGroupId = null) {
   buildSidebar();
   updateRightContextPanel();
 }
-function openLibraryText(id, push = true) {
+function openLibraryText(id, push = true, scrollToAnchor = null) {
   const item = getLibraryItem(id); if (!item) return;
   rememberLibraryText(id);
   if (item.type === 'library_group') { showLibraryView(push, item.id); return; }
   if (push) pushHistory(state.view, getHistoryDataForView(state.view));
   state.view = 'libraryText'; state.currentSection = id;
-  resetContentScrollAfterRender();
   const body = renderLibraryItemBody(item);
   const sourceLine = getLibrarySourceLine(item);
   document.getElementById('content').innerHTML = `<div class="section-screen library-text-screen" data-library-text-id="${escHtml(id)}">
@@ -6605,6 +6631,17 @@ function openLibraryText(id, push = true) {
     </div>
     ${body}
   </div>`;
+  // R49N fix (R-002): scroll to the exact matched paragraph/practice-option when opened
+  // from search, instead of always landing on the item's top.
+  if (scrollToAnchor) {
+    setTimeout(() => {
+      const el = document.getElementById(scrollToAnchor);
+      if (el) { smoothScrollTo(el, { behavior: 'smooth', block: 'start' }); el.style.outline = '3px solid var(--accent-light)'; setTimeout(()=>{ el.style.outline=''; },2000); }
+      else resetContentScrollAfterRender();
+    }, 100);
+  } else {
+    resetContentScrollAfterRender();
+  }
   document.getElementById('progressWrap').style.display = 'none';
   setBottomNav('library');
   buildSidebar();
@@ -6783,7 +6820,7 @@ function performSearch(query) {
 
   for (const pr of CORPUS.prayers) {
     for (const p of (pr.paragraphs||[])) {
-      addResult(pr.title, p, 'prayer', 'Prière', {kind:'prayer', id:pr.prayer_id});
+      addResult(pr.title, p, 'prayer', 'Prière', {kind:'prayer', id:pr.prayer_id, anchor:p.id});
     }
   }
 
@@ -6825,14 +6862,37 @@ function performSearch(query) {
     }
   }
   // Stage 4D TEXT_LIBRARY searchable placeholders
+  // R49N fix (R-002): search per-field/per-paragraph instead of one joined string, so a
+  // match can be anchored to the exact body paragraph or practice option that contains
+  // it — previously every library match opened at the item's top regardless of where
+  // in a multi-paragraph item the match actually was.
   for (const item of getLibraryRenderableItems()) {
-    const searchable = [item.title, item.group || '', item.description || '', ...(item.body || []), ...((item.practice_options || []))].join(' ');
-    const nSearch = norm(searchable);
-    if (nSearch.includes(q)) {
-      const idx = nSearch.indexOf(q);
-      const snip = searchable.slice(Math.max(0, idx - 55), Math.min(searchable.length, idx + q.length + 90));
-      results.push({label:item.title, para:{id:item.id, t:snip}, type:'section', kindLabel:'Complément', target:{kind:'library', id:item.id}});
+    const topFields = [item.title, item.group || '', item.description || ''].join(' ');
+    const nTop = norm(topFields);
+    if (nTop.includes(q)) {
+      const idx = nTop.indexOf(q);
+      const snip = topFields.slice(Math.max(0, idx - 55), Math.min(topFields.length, idx + q.length + 90));
+      results.push({label:item.title, para:{id:item.id, t:snip}, type:'section', kindLabel:'Complément', target:{kind:'library', id:item.id, anchor:null}});
     }
+    (item.body || []).forEach((t, i) => {
+      if (!t) return;
+      const nt = norm(t);
+      if (!nt.includes(q)) return;
+      const skipLine = isLibraryOldIndexLine(t) || isLibraryTextesLabelLine(t);
+      const anchor = skipLine ? null : makeLibraryParaId(item.id, i);
+      const idx = nt.indexOf(q);
+      const snip = t.slice(Math.max(0, idx - 55), Math.min(t.length, idx + q.length + 90));
+      results.push({label:item.title, para:{id:anchor || item.id, t:snip}, type:'section', kindLabel:'Complément', target:{kind:'library', id:item.id, anchor}});
+    });
+    (item.practice_options || []).forEach((t, i) => {
+      if (!t) return;
+      const nt = norm(t);
+      if (!nt.includes(q)) return;
+      const anchor = makeLibraryPracticeOptionId(item.id, i);
+      const idx = nt.indexOf(q);
+      const snip = t.slice(Math.max(0, idx - 55), Math.min(t.length, idx + q.length + 90));
+      results.push({label:item.title, para:{id:anchor, t:snip}, type:'section', kindLabel:'Complément', target:{kind:'library', id:item.id, anchor}});
+    });
   }
 
   if (!resultsEl) return;
@@ -6864,9 +6924,9 @@ function performSearch(query) {
       const onclick = r.target.kind==='hour'
         ? `openHourAtPara(${r.target.n},'${r.target.paraId || r.para.id}','${r.target.tab || 'meditation'}')`
         : r.target.kind==='prayer'
-          ? `openPrayer('${r.target.id}')`
+          ? `openPrayer('${r.target.id}', true, null, ${r.target.anchor ? `'${r.target.anchor}'` : 'null'})`
           : r.target.kind==='library'
-            ? `openLibraryText('${r.target.id}')`
+            ? `openLibraryText('${r.target.id}', true, ${r.target.anchor ? `'${r.target.anchor}'` : 'null'})`
             : `openSection('${r.target.id}', true, ${r.target.anchor ? `'${r.target.anchor}'` : 'null'})`;
       const aria = `Ouvrir le résultat : ${r.kindLabel || 'Résultat'} — ${r.label}`;
       return `<button type="button" class="search-result-item" onclick="${onclick}" aria-label="${escHtml(aria)}">
