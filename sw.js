@@ -1,5 +1,5 @@
-/* Stage 8A/R49S — prototype-101r59-stage8a-r49s-predeploy-check */
-const CACHE_NAME = 'luisa-24h-r49s-20260703';
+/* Stage 8A/R49T — prototype-101r59-stage8a-r49t-plan-heading-derived */
+const CACHE_NAME = 'luisa-24h-r49t-20260703';
 const CACHE_PREFIX = 'luisa-24h-';
 const ASSETS = ['./','./index.html','./luisa_24_heures.html','./manifest.json','./icon-180.png','./icon-192.png','./icon-512.png'];
 self.addEventListener('install', event => { event.waitUntil((async()=>{ const cache=await caches.open(CACHE_NAME); await cache.addAll(ASSETS); await self.skipWaiting(); })()); });

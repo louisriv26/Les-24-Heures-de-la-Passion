@@ -4534,8 +4534,8 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'prototype-101r59-stage8a-r49s-predeploy-check';
-const APP_EVIDENCE_STAGE = 'Stage 8A/R49S — evidence/packaging fix: manifest.json resynced (stale since R49K), predeploy_check.py added; no runtime change';
+const APP_VERSION = 'prototype-101r59-stage8a-r49t-plan-heading-derived';
+const APP_EVIDENCE_STAGE = 'Stage 8A/R49T — Plan sheet headings now derived live from paragraph text instead of a separately-stored copy (kills the R49O drift bug class structurally)';
 const STORAGE_SCHEMA_VERSION=4; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const SEARCH_RESULT_LIMIT = 60;
 
@@ -6177,6 +6177,13 @@ function openNoteTarget(paraId) {
 }
 
 // ── Plan sheet (R49e) ──
+function getParaTextById(hourNum, paraId) {
+  const h = CORPUS.hours.find(hh => hh.hour_number === hourNum);
+  if (!h) return null;
+  for (const p of (h.paragraphs || [])) if (p.id === paraId) return p.t;
+  for (const sub of (h.subsections || [])) for (const p of (sub.paragraphs || [])) if (p.id === paraId) return p.t;
+  return null;
+}
 function openPlanSheet(hourNum) {
   _planSheetTrigger = document.activeElement;
   const scenes = Object.entries(INTERNAL_SUBHEADINGS)
@@ -6186,7 +6193,15 @@ function openPlanSheet(hourNum) {
   document.getElementById('planSheetTitle').textContent = hour ? hour.hour_number + 'e Heure — Plan' : 'Plan';
   document.getElementById('planSceneList').innerHTML = scenes.map(([id, meta]) => {
     const pNum = parseInt(id.match(/P(\d+)$/)[1]);
-    return `<button class="plan-scene-item" onclick="jumpToScene('${id}')"><span class="plan-scene-num">§ ${pNum}</span><span class="plan-scene-text">${escHtml(meta.heading)}</span></button>`;
+    // R49T fix: derive the heading live from the paragraph's own text (same source
+    // the reader itself renders via renderStructuredParaText/heading_end), instead of
+    // the separately-stored meta.heading copy — the R49O bug class (10 typography
+    // mismatches from a drifted duplicate) becomes structurally impossible this way.
+    // meta.heading is kept only as a defensive fallback if the live lookup ever fails.
+    const text = getParaTextById(hourNum, id);
+    const headingEnd = Math.max(0, Math.min(Number(meta.heading_end || 0), (text || '').length));
+    const heading = (text ? text.slice(0, headingEnd) : '') || meta.heading;
+    return `<button class="plan-scene-item" onclick="jumpToScene('${id}')"><span class="plan-scene-num">§ ${pNum}</span><span class="plan-scene-text">${escHtml(heading)}</span></button>`;
   }).join('');
   document.getElementById('planSheetOverlay').classList.add('open');
   const sheet = document.getElementById('planSheet');
