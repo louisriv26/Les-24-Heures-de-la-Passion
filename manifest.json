@@ -1,6 +1,6 @@
 ﻿{
-  "name": "Les 24 Heures de la Passion — Stage 8A/R49V",
-  "short_name": "24 Heures R49V",
+  "name": "Les 24 Heures de la Passion — Stage 8A/R49W",
+  "short_name": "24 Heures R49W",
   "description": "Les 24 Heures de la Passion — parcours de prière.",
   "start_url": "./luisa_24_heures.html",
   "display": "standalone",
@@ -39,5 +39,5 @@
     "standalone",
     "browser"
   ],
-  "version": "prototype-101r59-stage8a-r49v-h19-speech-attribution"
+  "version": "prototype-101r59-stage8a-r49w-h19-speech-attribution2"
 }
