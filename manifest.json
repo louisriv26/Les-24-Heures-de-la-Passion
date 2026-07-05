@@ -1,6 +1,6 @@
 ﻿{
-  "name": "Les 24 Heures de la Passion — Stage 8A/R49Y",
-  "short_name": "24 Heures R49Y",
+  "name": "Les 24 Heures de la Passion — Stage 8A/R49Z",
+  "short_name": "24 Heures R49Z",
   "description": "Les 24 Heures de la Passion — parcours de prière.",
   "start_url": "./luisa_24_heures.html",
   "display": "standalone",
@@ -39,5 +39,5 @@
     "standalone",
     "browser"
   ],
-  "version": "prototype-101r59-stage8a-r49y-benefits-jesus-speech"
+  "version": "prototype-101r59-stage8a-r49z-speech-defer-resolutions"
 }
