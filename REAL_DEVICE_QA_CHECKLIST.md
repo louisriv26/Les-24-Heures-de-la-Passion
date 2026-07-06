@@ -1,6 +1,6 @@
-# Real-device QA — Les 24 Heures de la Passion · R49j
+# Real-device QA — Les 24 Heures de la Passion · R49Z
 
-App version: `prototype-101r59-stage8a-r49j-prayer-hour`
+App version: `prototype-101r59-stage8a-r49z-speech-defer-resolutions`
 Release level: L1 Static Certified — this test campaign targets L2 Device Certified.
 Live URL: https://louisriv26.github.io/Les-24-Heures-de-la-Passion/
 
@@ -109,7 +109,7 @@ Note: service worker, offline, and update tests require a served URL (Option A).
 ### 14. PWA install (served URL only)
 - [ ] "Add to Home Screen" prompt appears or is available via browser menu
 - [ ] Installed PWA launches in standalone mode (no browser chrome)
-- [ ] App icon and name display correctly on home screen — should read "24 Heures R49j" / full name "Stage 8A/R49j"
+- [ ] App icon and name display correctly on home screen — should read "24 Heures R49Z" / full name "Stage 8A/R49Z"
 
 ### 15. Offline (served URL only — test after first successful online load)
 - [ ] Enable airplane mode
