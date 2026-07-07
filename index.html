@@ -4534,8 +4534,8 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'v101.1';
-const APP_EVIDENCE_STAGE = 'v101.1 — clean app name and version scheme; Android install guidance added';
+const APP_VERSION = 'v101.2';
+const APP_EVIDENCE_STAGE = 'v101.2 — security hotfix: escape note id + charset-restrict note-id sanitizer (stored-XSS via imported backup, found in full audit)';
 const STORAGE_SCHEMA_VERSION=4; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const SEARCH_RESULT_LIMIT = 60;
 
@@ -4597,7 +4597,7 @@ function sanitizeNotesStore(obj) {
   for (const [k, v] of Object.entries(obj)) {
     if (!validPersonalId(k) || !Array.isArray(v)) continue;
     const notes = v.filter(n => n && typeof n === 'object'
-        && typeof n.id === 'string' && n.id.length > 0 && n.id.length <= 64
+        && typeof n.id === 'string' && /^[A-Za-z0-9_.:-]{1,64}$/.test(n.id)
         && typeof n.text === 'string' && n.text.length > 0 && n.text.length <= 2000
         && Number.isFinite(Number(n.ts)))
       .map(n => ({ id: n.id, text: n.text, ts: Number(n.ts) }))
@@ -6134,7 +6134,7 @@ function renderNoteModalList(paraId) {
   listEl.innerHTML = notes.map(n => {
     const d = new Date(n.ts * 1000);
     const ds = d.toLocaleDateString('fr-FR', { day:'numeric', month:'long', year:'numeric' });
-    return `<div class="note-item"><div style="flex:1"><div class="note-item-text">${escHtml(n.text)}</div><div class="note-item-ts">${ds}</div></div><button class="note-delete-btn" onclick="deleteNote('${escHtml(paraId)}','${n.id}')" aria-label="Supprimer cette note">✕</button></div>`;
+    return `<div class="note-item"><div style="flex:1"><div class="note-item-text">${escHtml(n.text)}</div><div class="note-item-ts">${ds}</div></div><button class="note-delete-btn" onclick="deleteNote('${escHtml(paraId)}','${escHtml(n.id)}')" aria-label="Supprimer cette note">✕</button></div>`;
   }).join('');
 }
 function updateNoteCharCount() {
