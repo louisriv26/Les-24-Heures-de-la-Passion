@@ -1,6 +1,6 @@
-﻿{
-  "name": "Les 24 Heures de la Passion — Stage 8B/R50",
-  "short_name": "24 Heures R50",
+{
+  "name": "Les 24 Heures de la Passion",
+  "short_name": "24 Heures",
   "description": "Les 24 Heures de la Passion — parcours de prière.",
   "start_url": "./luisa_24_heures.html",
   "display": "standalone",
@@ -39,5 +39,5 @@
     "standalone",
     "browser"
   ],
-  "version": "prototype-101r59-stage8b-r50-package-doc-cleanup"
+  "version": "v101.1"
 }

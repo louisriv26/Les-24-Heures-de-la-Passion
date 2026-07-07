@@ -1,7 +1,7 @@
 # Luisa — 24 Heures de la Passion
 
-Package version: `prototype-101r59-stage8b-r50-package-doc-cleanup`
+Version: `v101.1`
 
-Evidence stage: `Stage 8B/R50 — Category E evidence/packaging cleanup only, per independent four-pass audit: portable ZIP paths, QA checklist/constraints/state count sync, ledger wording, predeploy_check.py fail-open fix, hash-method + deploy-artifact documentation. R49 exhausted its a-z suffixes; rolled to R50. No corpus/speech/runtime change.`
+Notes: clean app identity — installed/PWA name is now "24 Heures" / "Les 24 Heures de la Passion" (no build/stage strings in the user-facing name), and the version scheme is a plain `v101.x`. No corpus, speech-attribution, or reading-behaviour change from the prior build. Internal history is tracked in `luisa-24h-state_1.md`.
 
-Status: `LIMITED_PASS_STATIC` — static/package checks (JS/CSS syntax, replica parity, corpus/speech structure) pass. This is a deploy payload, not a formal evidence-gated release package; no decision lock or independent audit is bundled in-ZIP. Real-device validation remains NOT_TESTED — see `REAL_DEVICE_QA_CHECKLIST.md`.
+Status: `LIMITED_PASS_STATIC` — static/package checks (JS/CSS syntax, replica parity, corpus/speech structure) pass. Real-device validation is NOT_TESTED; the Android install path (a Play Protect "compatibility too low" warning on a browser-minted WebAPK) is under investigation — see `REAL_DEVICE_QA_CHECKLIST.md`.
