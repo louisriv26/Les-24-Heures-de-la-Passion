@@ -1972,6 +1972,21 @@ html.android-highlight-mode .android-paragraph-highlight-target {
 .ref-para .speech-end-visual-break {
   margin-top: 0.82em;
 }
+/* v101.3 CSS4 fix: restore persistent bottom navigation on tablet/desktop (>=769px).
+   Previously the bottom bar showed only <=768px and the sidebar/menu were hidden,
+   leaving tablets and desktop with no section switcher. Phones (<=768px) are
+   unchanged (edge-to-edge). On wider screens the bar is centered and width-capped
+   so it doesn't stretch, and content reserves space so nothing is covered. */
+@media (min-width: 769px) {
+  .bottom-nav {
+    display: flex !important;
+    left: 50%; right: auto; transform: translateX(-50%);
+    width: 100%; max-width: 600px;
+    border: 1px solid var(--bg3); border-bottom: none;
+    border-radius: 16px 16px 0 0;
+  }
+  #content { padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px)) !important; }
+}
 </style>
 </head>
 <body>
@@ -4534,8 +4549,8 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'v101.2';
-const APP_EVIDENCE_STAGE = 'v101.2 — security hotfix: escape note id + charset-restrict note-id sanitizer (stored-XSS via imported backup, found in full audit)';
+const APP_VERSION = 'v101.3';
+const APP_EVIDENCE_STAGE = 'v101.3 — restore persistent bottom navigation on tablet/desktop (>=769px); phones unchanged (audit finding CSS4)';
 const STORAGE_SCHEMA_VERSION=4; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const SEARCH_RESULT_LIMIT = 60;
 
