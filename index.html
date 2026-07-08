@@ -67,17 +67,33 @@
   --reading-line: 1.75; --col-max: 880px;
   --jesus-color: #5e3319; --jesus-pale: #fdf5ec; --jesus-border: #c9a06a;
   --mary-color: #1e3d5c; --mary-pale: #edf3fa; --mary-border: #7fa8cc;
+  --father-color: #5a3a6b; --father-pale: #f5f0f8; --father-border: #a888bd;
+  /* v101.5 CSS1/CSS2/CSS3 fix: these tokens were referenced (~40 uses) but never
+     defined anywhere, so every rule using them was silently dropped (border,
+     shadow, radius, card background, and Father speaker styling all lost their
+     intended look — see audit CSS1/CSS2/CSS3). accent-soft/card/border are
+     defined via var()/color-mix() so they inherit theme-awareness automatically
+     from the tokens they reference, with no separate dark-theme override needed. */
+  --accent-soft: color-mix(in srgb, var(--accent-light) 40%, var(--bg3));
+  --shadow-soft: 0 1px 8px rgba(26,23,20,0.06);
+  --radius-lg: 18px;
+  --card: var(--bg2);
+  --border: var(--bg3);
+  --cream: #f7f0dc;
+  --navy: #1a2f4a;
 }
 [data-theme="dark"] {
   --bg: #16140f; --bg2: #1e1c16; --bg3: #262318;
   --ink: #f0ede6; --ink2: #ccc7bc; --ink3: #948e84; --ink4: #858078;
   --jesus-color: #c9a66e; --jesus-pale: #231608; --jesus-border: #7a5830;
   --mary-color: #8ab8d8; --mary-pale: #091522; --mary-border: #2a5070;
+  --father-color: #b79ad0; --father-pale: #1a1222; --father-border: #6a5080;
   --accent: #d4a843; --accent-light: #e8c574; --accent-pale: #2a2516;
   --cross: #d4807a; --cross-pale: #2a1a1a; --gold-pale: #231f14;
   --ref-bg: #131e26; --ref-border: #2a5070; --ref-text: #a0c8e0;
   --prayer-bg: #1e1a14; --prayer-border: #8a6a30;
   --holy-bg: #1a1520; --holy-border: #6a4a8a;
+  --cream: #2a2410; --navy: #b8cbe0;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { height: 100%; box-sizing: border-box; overflow-x: hidden; overscroll-behavior-x: none; }
@@ -88,7 +104,9 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--ink); 
 /* ── Header ── */
 .header { position: sticky; top: 0; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--bg3); padding: 0 1.5rem; padding-top: env(safe-area-inset-top, 0px); height: calc(58px + env(safe-area-inset-top, 0px)); display: flex; align-items: center; justify-content: space-between; }
 .header-left { display: flex; align-items: center; gap: 0.6rem; flex: 1; min-width: 0; overflow: hidden; }
-.header-logo { font-family: var(--font-display); font-size: 0.82rem; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; line-height: 1.2; cursor: pointer; overflow: hidden; min-width: 0; white-space: nowrap; text-overflow: ellipsis; }
+.header-logo { font-family: var(--font-display); font-size: 0.82rem; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; line-height: 1.2; cursor: pointer; overflow: hidden; min-width: 0; white-space: nowrap; text-overflow: ellipsis;
+  /* v101.7 A11Y3 fix: now a real <button>, not a div — reset UA button defaults. */
+  background: none; border: none; padding: 0; text-align: left; }
 .header-logo span { display: block; font-size: 0.62rem; letter-spacing: 0.18em; color: var(--ink4); font-family: var(--font-ui); font-style: italic; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .back-btn { display: none; align-items: center; gap: 0.2rem; background: none; border: none; cursor: pointer; color: var(--accent); padding: 5px 8px 5px 2px; border-radius: 6px; flex-shrink: 0; font-family: var(--font-ui); font-size: 0.88rem; font-weight: 500; white-space: nowrap; }
 .back-btn:hover, .back-btn:active { background: var(--accent-pale); }
@@ -168,7 +186,18 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--ink); 
 .search-wrap { position: relative; margin-bottom: 1.5rem; }
 .search-input { width: 100%; padding: 0.7rem 1rem 0.7rem 2.6rem; background: var(--bg2); border: 1px solid var(--bg3); border-radius: var(--radius); font-family: var(--font-ui); font-size: 1rem; color: var(--ink); outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
 .search-input:focus{outline:none;}
-:focus-visible{outline:3px solid var(--accent-light);outline-offset:2px;border-radius:4px;}
+/* v101.7 A11Y4 fix: --accent-light gives ~1.9:1 contrast on the light-theme
+   background (below the WCAG 1.4.11 non-text 3:1 minimum) — audit finding.
+   --accent (~5.5:1 in light theme) is used for both themes since it also
+   reads clearly in dark theme. */
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px;}
+@media (prefers-contrast: more) {
+  /* v101.7 A11Y5 fix: strengthen borders/outlines for users who request more
+     contrast at the OS level. This app's base contrast is already good; this
+     is a small additional nicety, not a rewrite. */
+  :focus-visible{outline-width:4px;}
+  .daily-card,.hour-card,.hour-list-card,.progress-summary-card,.note-textarea{border-width:2px;}
+}
 .icon-btn:focus-visible,.nav-btn:focus-visible,.mark-read-btn:focus-visible,
 .tab-btn:focus-visible,.prayer-trigger-btn:focus-visible,.font-btn:focus-visible,
 .sidebar-item:focus-visible,.bn-item:focus-visible,.hour-card:focus-visible,
@@ -613,7 +642,7 @@ mark.hl-pink   { background: #fce7f3; color: inherit; }
 
 
 .onboarding-card{background:linear-gradient(135deg,var(--accent-pale) 0%,var(--bg2) 100%);border:1px solid var(--accent-light);border-radius:var(--radius);padding:1.5rem;margin-bottom:1.5rem;}
-.onboarding-card h3{font-family:var(--font-display);font-size:1rem;letter-spacing:0.04em;color:var(--ink);margin-bottom:0.5rem;}
+.onboarding-card h2,.onboarding-card h3{font-family:var(--font-display);font-size:1rem;letter-spacing:0.04em;color:var(--ink);margin-bottom:0.5rem;}
 .onboarding-card p{font-family:var(--font-ui);font-size:0.95rem;color:var(--ink2);line-height:1.65;margin-bottom:1rem;}
 .onboarding-actions{display:flex;gap:0.6rem;flex-wrap:wrap;}
 .onboarding-primary{background:var(--accent);color:white;border:none;border-radius:var(--radius);padding:0.65rem 1.2rem;font-family:var(--font-ui);font-size:0.95rem;cursor:pointer;transition:opacity 0.15s;}
@@ -762,9 +791,15 @@ mark.hl-pink   { background: #fce7f3; color: inherit; }
 .daily-card { display: flex; align-items: center; gap: 0.8rem;
   padding: 0.9rem 1rem; background: var(--bg2); border: 1px solid var(--bg3);
   border-radius: var(--radius); margin-bottom: 0.65rem; cursor: pointer;
-  transition: background 0.15s, border-color 0.15s; }
+  transition: background 0.15s, border-color 0.15s;
+  /* v101.6 A11Y1/A11Y2 fix: this is now a real <button>, not a div — reset the
+     UA button defaults (font, alignment, width) so it renders identically to
+     before. Child elements without their own font-family (.dc-label/.dc-time/
+     .dc-next/.dc-prev) rely on inheriting this. */
+  width: 100%; text-align: left; font: inherit; color: inherit; }
 .daily-card:active { background: var(--bg3); }
 .daily-card.done { cursor: default; border-color: var(--accent-light); background: var(--accent-pale); }
+.dc-next-btn { background: none; border: none; padding: 0; font: inherit; color: var(--accent); cursor: pointer; margin-top: 0.5rem; font-family: var(--font-ui); font-size: 0.85rem; }
 .dc-check { font-size: 1.2rem; color: var(--accent); flex-shrink: 0; }
 .dc-meta { flex: 1; min-width: 0; }
 .dc-prev { font-size: 0.78rem; color: var(--ink3); margin-bottom: 0.18rem;
@@ -1998,10 +2033,10 @@ html.android-highlight-mode .android-paragraph-highlight-target {
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
         <span>Retour</span>
       </button>
-      <div class="header-logo" onclick="showHome()">
+      <button type="button" class="header-logo" onclick="showHome()" aria-label="Accueil — Les 24 Heures de la Passion">
         Les 24 Heures de la Passion
         <span>Luisa Piccarreta</span>
-      </div>
+      </button>
     </div>
     <div class="header-actions">
       <button class="icon-btn" onclick="showSearchView()" title="Recherche" aria-label="Recherche">
@@ -4543,14 +4578,24 @@ const SPEECH_END_VISUAL_BREAKS = {"PASSION24.HOUR.01.P014":[119],"PASSION24.HOUR
 // R44 — global error handlers
 window.onerror = function(msg, src, line, col, err) {
   console.error('App error:', msg, src + ':' + line + ':' + col, err);
-  if (typeof showFatalError === 'function') showFatalError('Une erreur inattendue s’est produite. Rechargez la page.');
-  return false;
+  // v101.8 fix: this used to call showFatalError() with a hardcoded generic
+  // string, discarding the real error entirely — the on-screen crash message
+  // always rendered with its detail line blank, no matter what actually threw.
+  // Pass the real diagnostic through instead, so a crash is actually debuggable
+  // from a user's screenshot (see the July 2026 iPad "Add to Home Screen" report).
+  // v101.10 fix: do NOT blank the whole app for a post-init runtime error.
+  // Once init has succeeded (see try/catch at bottom of script) the app is
+  // usable; a stray async / event-handler error (e.g. one fired during the
+  // iOS Share / Add-to-Home-Screen visibility+focus churn) must be logged,
+  // never escalated to the fatal-error screen. Only genuine INIT failure
+  // justifies replacing the UI, and that path is handled separately below.
+    return false;
 };
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'v101.3';
-const APP_EVIDENCE_STAGE = 'v101.3 — restore persistent bottom navigation on tablet/desktop (>=769px); phones unchanged (audit finding CSS4)';
+const APP_VERSION = 'v101.10';
+const APP_EVIDENCE_STAGE = 'v101.10 - crash-containment fix: window.onerror no longer escalates a post-init runtime error to the full-screen fatal error; it only logs. The fatal screen is now reserved for genuine init failure (the try/catch around loadState/buildSidebar/showHome/etc). This targets the reported iPad Share / Add-to-Home-Screen crash, which was a stray error thrown during the visibility/focus churn of the share sheet blanking the whole app. Also adds an init-step breadcrumb shown on the fatal screen so any remaining init crash is pinpointed despite browser-sanitized error text. No corpus/speech change.';
 const STORAGE_SCHEMA_VERSION=4; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const SEARCH_RESULT_LIMIT = 60;
 
@@ -4940,24 +4985,46 @@ const FONT_PRESETS = [
 const FONT_SIZES=[16,19,22,26];
 
 // ── Persistence ──
+function isQuotaError(e){
+  return !!(e && (e.name === 'QuotaExceededError' || e.name === 'NS_ERROR_DOM_QUOTA_REACHED'
+    || e.code === 22 || e.code === 1014));
+}
+let _quotaWarned = false;
 function saveState() {
   try {
     const cleanHighlights = migrateTextHighlightsStore(state.textHighlights);
     state.textHighlights = cleanHighlights;
-    localStorage.setItem('lp24_schema', String(STORAGE_SCHEMA_VERSION));
-    localStorage.setItem('lp24_read', JSON.stringify([...state.readHours]));
-    localStorage.setItem('lp24_hl', JSON.stringify([...state.highlights]));
+    // Enforce the meditationLog cap at write time too (not only on load), so it
+    // can't grow without bound over months of daily use and feed quota pressure.
+    if (Array.isArray(state.meditationLog) && state.meditationLog.length > 1000) {
+      state.meditationLog = state.meditationLog.slice(-1000);
+    }
+    // Write the user's own content FIRST. If localStorage is full and a write
+    // throws part-way, the high-value keys (notes, highlights, progress) have
+    // already had first claim on the remaining space; only low-value prefs
+    // (theme/font) are dropped. Previously these were written LAST, so notes
+    // were the first thing silently lost under quota pressure.
+    localStorage.setItem('lp24_notes', JSON.stringify(state.notes));
     localStorage.setItem('lp24_thl', JSON.stringify(state.textHighlights));
-    localStorage.setItem('lp24_tabs', JSON.stringify(state.hourTabs));
+    localStorage.setItem('lp24_hl', JSON.stringify([...state.highlights]));
+    localStorage.setItem('lp24_med', JSON.stringify(state.meditationLog));
+    localStorage.setItem('lp24_read', JSON.stringify([...state.readHours]));
     localStorage.setItem('lp24_pos', JSON.stringify(state.lastParas));
+    localStorage.setItem('lp24_tabs', JSON.stringify(state.hourTabs));
+    if (state.currentHour) localStorage.setItem('lp24_lastHour', state.currentHour);
+    localStorage.setItem('lp24_schema', String(STORAGE_SCHEMA_VERSION));
     localStorage.setItem('lp24_font', String(state.fontSize));
     localStorage.setItem('lp24_theme', state.theme);
     localStorage.setItem('lp24_theme_preference', state.themePreference || 'system');
     localStorage.setItem('lp24_mon_espace_open', state.monEspacePanelOpen ? '1' : '0');
-    if (state.currentHour) localStorage.setItem('lp24_lastHour', state.currentHour);
-    localStorage.setItem('lp24_med', JSON.stringify(state.meditationLog));
-    localStorage.setItem('lp24_notes', JSON.stringify(state.notes));
-  } catch(e) { console.warn('saveState failed', e); }
+    _quotaWarned = false; // fully-successful save clears the warning latch
+  } catch(e) {
+    console.warn('saveState failed', e);
+    if (isQuotaError(e) && !_quotaWarned) {
+      _quotaWarned = true; // warn once per session, not on every subsequent save
+      try { showToast('Espace de stockage plein : exportez vos données depuis Mon Espace pour libérer de la place.'); } catch(_){}
+    }
+  }
 }
 function loadState() {
   try {
@@ -5343,7 +5410,7 @@ function buildHourEndActions(hour, next) {
     return `<div class="hour-end-actions cycle" id="hourEndActions"><div class="hour-end-title">Le cycle des 24 Heures</div><div class="hour-end-note">Vous avez atteint la 24e Heure. Vous pouvez revoir votre parcours ou recommencer un nouveau cycle de prière.</div><div class="hour-end-buttons"><button type="button" class="hour-end-btn primary" onclick="restartTwentyFourHours()">↻ Recommencer les 24 Heures</button><button type="button" class="hour-end-btn" onclick="showHome()">⌂ Revenir à l’Accueil</button><button type="button" class="hour-end-btn" onclick="showProgressView()">Voir ma progression</button><button type="button" class="hour-end-btn" onclick="showCompletedHoursView()">Revoir les Heures terminées</button></div></div>`;
   }
   const nextHour = next;
-  const nextLabel = nextHour ? ('Prier la ' + nextHour.hour_number + 'e Heure') : '';
+  const nextLabel = nextHour ? ('Prier la ' + ordinalHeure(nextHour.hour_number)) : '';
   const nextBtn = nextHour ? `<button type="button" class="hour-end-btn primary" onclick="openHour(${nextHour.hour_number})">${escHtml(nextLabel)}</button>` : '';
   return `<div class="hour-end-actions" id="hourEndActions"><div class="hour-end-title">Continuer le chemin des Heures</div><div class="hour-end-note">Après cette méditation, vous pouvez réfléchir, approfondir ou poursuivre vers l’Heure suivante.</div><div class="hour-end-buttons"><button type="button" class="hour-end-btn" onclick="goToHourTab('reflections', 'reflectionsContent')">Réflexion et pratique</button><button type="button" class="hour-end-btn" onclick="goToHourTab('linked', 'linkedTextsContent')">Approfondir</button><button type="button" class="hour-end-btn" onclick="scrollReaderToTop()">↟ Revenir au début</button>${nextBtn}</div></div>`;
 }
@@ -5469,17 +5536,29 @@ function stage6aJumpToTabStart(targetId) {
   resetContentScroll();
   return false;
 }
+// v101.9 fix: a user reported a crash screen ("Script error." — a browser-
+// sanitized message with no file/line, given with no further detail regardless
+// of any fix on our side) when tapping iPad Safari's Share/Add-to-Home-Screen
+// button. That action is exactly when these background convenience features
+// (remembering scroll position, checking for app updates) fire, via the
+// visibilitychange/pageshow events Safari dispatches around the share sheet.
+// None of them are critical to reading the app — a failure in any one of them
+// must never bring down the whole app with a fatal-error screen. safeRun()
+// catches and logs instead of letting an exception reach window.onerror.
+function safeRun(fn, label) {
+  try { fn(); } catch(e) { console.warn('[safeRun:' + label + ']', e); }
+}
 function stage6aInstallRuntime() {
   document.documentElement.classList.add('stage6a-runtime');
   const root = stage6aGetScrollRoot();
   if (root && !root.dataset.stage6aScrollListener) {
     root.dataset.stage6aScrollListener = 'true';
-    root.addEventListener('scroll', function(){ stage6aRememberSoon('content-scroll'); }, { passive: true });
+    root.addEventListener('scroll', function(){ safeRun(function(){ stage6aRememberSoon('content-scroll'); }, 'stage6a-scroll'); }, { passive: true });
   }
-  window.addEventListener('orientationchange', function(){ stage6aScheduleOrientationRestore('orientationchange'); }, { passive: true });
-  window.addEventListener('resize', function(){ stage6aScheduleOrientationRestore('resize'); }, { passive: true });
-  document.addEventListener('visibilitychange', function(){ if (document.hidden) stage6aCaptureAnchor('visibility-hidden'); }, { passive: true });
-  setTimeout(function(){ stage6aCaptureAnchor('initial'); }, 600);
+  window.addEventListener('orientationchange', function(){ safeRun(function(){ stage6aScheduleOrientationRestore('orientationchange'); }, 'stage6a-orientationchange'); }, { passive: true });
+  window.addEventListener('resize', function(){ safeRun(function(){ stage6aScheduleOrientationRestore('resize'); }, 'stage6a-resize'); }, { passive: true });
+  document.addEventListener('visibilitychange', function(){ safeRun(function(){ if (document.hidden) stage6aCaptureAnchor('visibility-hidden'); }, 'stage6a-visibilitychange'); }, { passive: true });
+  setTimeout(function(){ safeRun(function(){ stage6aCaptureAnchor('initial'); }, 'stage6a-initial'); }, 600);
 }
 function stage6aDebugSnapshot() {
   const root = stage6aGetScrollRoot();
@@ -5655,13 +5734,13 @@ function buildDailyCard() {
   if (last.date === today) {
     const cycleComplete = last.hour === 24;
     if (cycleComplete) {
-      return '<div class="daily-card done cycle-complete"><div class="dc-check">\u2713</div><div class="dc-meta"><div class="dc-label">Cycle accompli</div><div class="dc-title">Vous avez pri\u00e9 les 24\u00a0Heures</div><div class="dc-next-btn" onclick="restartTwentyFourHours()" style="cursor:pointer;margin-top:0.5rem;color:var(--accent);font-family:var(--font-ui);font-size:0.85rem;">\u21ba\u00a0Recommencer le cycle</div></div></div>';
+      return '<div class="daily-card done cycle-complete"><div class="dc-check">\u2713</div><div class="dc-meta"><div class="dc-label">Cycle accompli</div><div class="dc-title">Vous avez pri\u00e9 les 24\u00a0Heures</div><button type="button" class="dc-next-btn" onclick="restartTwentyFourHours()">\u21ba\u00a0Recommencer le cycle</button></div></div>';
     }
-    return '<div class="daily-card done" onclick="openHour(' + nextNum + ')" style="cursor:pointer"><div class="dc-check">\u2713</div><div class="dc-meta"><div class="dc-label">M\u00e9dit\u00e9e aujourd\u2019hui</div><div class="dc-title">' + escHtml(lastH.hour_number + 'e\u00a0Heure \u2014 ' + lastH.title) + '</div><div class="dc-next">Suivante\u00a0\u2192\u00a0' + nextNum + 'e\u00a0Heure \u2014 ' + escHtml(nextH.short_title||nextH.title) + '</div></div><svg class="dc-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>';
+    return '<button type="button" class="daily-card done" onclick="openHour(' + nextNum + ')" style="cursor:pointer" aria-label="' + escHtml('M\u00e9dit\u00e9e aujourd\u2019hui : ' + lastH.hour_number + 'e Heure \u2014 ' + lastH.title + '. Suivante : ' + nextNum + 'e Heure \u2014 ' + (nextH.short_title||nextH.title)) + '"><div class="dc-check">\u2713</div><div class="dc-meta"><div class="dc-label">M\u00e9dit\u00e9e aujourd\u2019hui</div><div class="dc-title">' + escHtml(ordinalHeure(lastH.hour_number) + ' \u2014 ' + lastH.title) + '</div><div class="dc-next">Suivante \u2192 ' + escHtml(ordinalHeure(nextNum) + ' \u2014 ' + (nextH.short_title||nextH.title)) + '</div></div><svg class="dc-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>';
   }
   const MOIS = ['jan','f\u00e9v','mar','avr','mai','jun','jul','ao\u00fb','sep','oct','nov','d\u00e9c'];
   let timeLabel = last.date === yesterday ? 'Hier' : (function(){ const [,m,d]=last.date.split('-'); return parseInt(d)+'\u00a0'+MOIS[parseInt(m)-1]; })();
-  return '<div class="daily-card" onclick="openHour(' + nextNum + ')"><div class="dc-meta"><div class="dc-prev">' + timeLabel + '\u00a0: ' + last.hour + 'e\u00a0Heure \u2014 ' + escHtml(lastH.short_title||lastH.title) + '</div><div class="dc-label">Aujourd\u2019hui</div><div class="dc-title">' + nextNum + 'e\u00a0Heure \u2014 ' + escHtml(nextH.title) + '</div><div class="dc-time">' + nextH.display_time + '</div></div><svg class="dc-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></div>';
+  return '<button type="button" class="daily-card" onclick="openHour(' + nextNum + ')" aria-label="' + escHtml('Aujourd\u2019hui : ' + nextNum + 'e Heure \u2014 ' + nextH.title) + '"><div class="dc-meta"><div class="dc-prev">' + timeLabel + ' : ' + escHtml(ordinalHeure(last.hour) + ' \u2014 ' + (lastH.short_title||lastH.title)) + '</div><div class="dc-label">Aujourd\u2019hui</div><div class="dc-title">' + escHtml(ordinalHeure(nextNum) + ' \u2014 ' + nextH.title) + '</div><div class="dc-time">' + nextH.display_time + '</div></div><svg class="dc-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>';
 }
 
 function makeHourGridHtml(compact = false) {
@@ -5867,10 +5946,10 @@ function renderHome() {
     </div>
     <div style="margin-top:1.1rem">
       ${isFirstTime ? `<div class="onboarding-card">
-        <h3>✝ Bienvenue dans les 24 Heures de la Passion</h3>
+        <h2>✝ Bienvenue dans les 24 Heures de la Passion</h2>
         <p>Accompagnez Jésus heure par heure, de 17h à 17h le lendemain. Le chemin proposé est simple : prier une Heure, puis continuer la suivante.</p>
         <div class="onboarding-actions">
-          <button class="onboarding-primary" onclick="openHour(1);dismissOnboarding()">Commencer la 1ère Heure →</button>
+          <button class="onboarding-primary" onclick="openHour(1);dismissOnboarding()">Commencer la 1re Heure →</button>
           <button class="onboarding-dismiss" onclick="dismissOnboarding()">Parcourir librement</button>
         </div>
       </div>` : ''}
@@ -5994,7 +6073,7 @@ function renderReader(hour, scroll = true) {
   document.getElementById('content').innerHTML = `
   <div class="reader-screen">
     <div class="reader-header">
-      <div class="reader-eyebrow">${hour.hour_number}e Heure · Les 24 Heures de la Passion</div>
+      <div class="reader-eyebrow">${ordinalHeure(hour.hour_number)} · Les 24 Heures de la Passion</div>
       <h2 class="reader-title">${escHtml(hour.title)}</h2>
       <div class="reader-time">${hour.display_time}</div>
       ${hour.source_pages&&hour.source_pages.length?`<div class="reader-pages">Source p. ${hour.source_pages[0]}${hour.source_pages.length>1?'–'+hour.source_pages[hour.source_pages.length-1]:''}</div>`:''}
@@ -6165,7 +6244,19 @@ function saveNoteFromModal() {
   if (!state.notes[_noteModalParaId]) state.notes[_noteModalParaId] = [];
   const note = { id: 'n_' + Date.now() + '_' + Math.random().toString(36).slice(2,5), text: text, ts: Math.floor(Date.now()/1000) };
   state.notes[_noteModalParaId].push(note);
-  try { localStorage.setItem('lp24_notes', JSON.stringify(state.notes)); } catch(e) {}
+  try {
+    localStorage.setItem('lp24_notes', JSON.stringify(state.notes));
+  } catch(e) {
+    // Write failed (usually quota). Roll the note back out of memory so the UI
+    // never shows a "saved" note the app can't actually keep across a reload.
+    state.notes[_noteModalParaId] = state.notes[_noteModalParaId].filter(n => n.id !== note.id);
+    if (!state.notes[_noteModalParaId].length) delete state.notes[_noteModalParaId];
+    renderNoteModalList(_noteModalParaId);
+    showToast(isQuotaError(e)
+      ? 'Espace plein : note non enregistrée. Exportez vos données pour libérer de la place.'
+      : 'Note non enregistrée (erreur de stockage).');
+    return;
+  }
   ta.value = '';
   updateNoteCharCount();
   renderNoteModalList(_noteModalParaId);
@@ -6205,7 +6296,7 @@ function openPlanSheet(hourNum) {
     .filter(([id, meta]) => meta.hour === hourNum)
     .sort((a, b) => parseInt(a[0].match(/P(\d+)$/)[1]) - parseInt(b[0].match(/P(\d+)$/)[1]));
   const hour = CORPUS.hours.find(h => h.hour_number === hourNum);
-  document.getElementById('planSheetTitle').textContent = hour ? hour.hour_number + 'e Heure — Plan' : 'Plan';
+  document.getElementById('planSheetTitle').textContent = hour ? ordinalHeure(hour.hour_number) + ' — Plan' : 'Plan';
   document.getElementById('planSceneList').innerHTML = scenes.map(([id, meta]) => {
     const pNum = parseInt(id.match(/P(\d+)$/)[1]);
     // R49T fix: derive the heading live from the paragraph's own text (same source
@@ -7213,6 +7304,11 @@ function copyReflection(paraId, hourNum) {
 function markMeditee(n) {
   if (state.readHours.has(n)) {
     state.readHours.delete(n);
+    // v101.6 RN1 fix: un-marking must also drop today's log entry for this hour,
+    // otherwise the home daily card keeps reporting it as meditated today (and
+    // can keep showing "Cycle accompli" after un-marking Hour 24).
+    const today = getLocalDateStr();
+    state.meditationLog = state.meditationLog.filter(e => !(e.date === today && e.hour === n));
     showToast('Progression retirée');
   } else {
     state.readHours.add(n);
@@ -7220,7 +7316,7 @@ function markMeditee(n) {
     state.meditationLog = state.meditationLog.filter(e => e.date !== today);
     state.meditationLog.push({ date: today, hour: n });
     if (state.meditationLog.length > 100) state.meditationLog = state.meditationLog.slice(-100);
-    showToast('✓ ' + n + 'e Heure méditée');
+    showToast('✓ ' + ordinalHeure(n) + ' méditée');
   }
   saveState();
   const btn = document.getElementById('markReadBtn');
@@ -8258,6 +8354,11 @@ function showColourPickerBottom(isExisting, hlId) {
 
 // ── Utils ──
 function escHtml(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+// v101.7 RN2 fix: centralized French ordinal for hour numbers ("1re Heure", "5e Heure").
+// Several call sites built "Ne Heure" without the n===1 special case (rendering the
+// grammatically wrong "1e Heure"), and one used the inconsistent spelling "1ère".
+// This is the single source of truth going forward — see the audit RN2 finding.
+function ordinalHeure(n){ return (n === 1 ? '1re' : n + 'e') + ' Heure'; }
 function norm(s){return(s||'').toLowerCase().replace(/[\u0152\u0153]/g,'oe').replace(/[\u00c6\u00e6]/g,'ae').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/['']/g,"'").replace(/[«»""]/g,'"');}
 function escRe(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
@@ -8321,10 +8422,11 @@ window.addEventListener('scroll', function(){
 // ── Init ──
 function showFatalError(err) {
   const safeMsg = (err&&err.message)?String(err.message).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'):'';
+  const step = window.__lp24Init ? (' [init:' + window.__lp24Init + ']') : '';
   document.getElementById('app').innerHTML =
     '<div style="padding:2rem;font-family:sans-serif;color:#c00;text-align:center">' +
     '<p style="font-size:1.2rem;font-weight:bold">Une erreur est survenue</p>' +
-    '<p style="font-size:0.9rem;color:#555;margin-top:1rem">' + safeMsg + '</p>' +
+    '<p style="font-size:0.9rem;color:#555;margin-top:1rem">' + safeMsg + step + '</p>' +
     '<p style="font-size:0.85rem;color:#888;margin-top:0.5rem">Veuillez recharger la page.</p></div>';
 }
 function registerGlobalErrorHandlers() {
@@ -8335,7 +8437,13 @@ function registerGlobalErrorHandlers() {
 }
 registerGlobalErrorHandlers();
 try {
-  loadState(); buildSidebar(); showHome(); applyStudyMode(); updateAndroidHighlightModeUi(); stage6aInstallRuntime();
+  window.__lp24Init='loadState'; loadState();
+  window.__lp24Init='buildSidebar'; buildSidebar();
+  window.__lp24Init='showHome'; showHome();
+  window.__lp24Init='applyStudyMode'; applyStudyMode();
+  window.__lp24Init='updateAndroidHighlightModeUi'; updateAndroidHighlightModeUi();
+  window.__lp24Init='stage6aInstallRuntime'; stage6aInstallRuntime();
+  window.__lp24Init='done';
   setTimeout(function(){ scheduleUpdateCheck('init', 500); }, 0);
 } catch(err) { showFatalError(err); }
 // ─── Stage 6N PWA/offline update recovery: controlled service-worker registration with version.json as source of truth ───────
@@ -8464,9 +8572,9 @@ function showUpdateBanner(newVer, newDate) {
     '<button class="update-dismiss-btn" onclick="this.parentElement.remove()" aria-label="Fermer">×</button>';
 }
 window.addEventListener('focus', function(){ scheduleUpdateCheck('focus', 200); }, { passive: true });
-window.addEventListener('pageshow', function(){ scheduleUpdateCheck('pageshow', 200); }, { passive: true });
+window.addEventListener('pageshow', function(){ safeRun(function(){ scheduleUpdateCheck('pageshow', 200); }, 'pageshow-updatecheck'); }, { passive: true });
 window.addEventListener('online', function(){ scheduleUpdateCheck('online', 200); }, { passive: true });
-document.addEventListener('visibilitychange', function(){ if (!document.hidden) scheduleUpdateCheck('visibilitychange', 200); }, { passive: true });
+document.addEventListener('visibilitychange', function(){ safeRun(function(){ if (!document.hidden) scheduleUpdateCheck('visibilitychange', 200); }, 'visibilitychange-updatecheck'); }, { passive: true });
 // Stage 6N: service workers are registered for offline use, while version.json remains the update source of truth.
 // ─── End Stage 6N PWA/offline update recovery ───────
 
