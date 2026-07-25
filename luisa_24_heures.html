@@ -4588,8 +4588,8 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'v101.22';
-const APP_EVIDENCE_STAGE = 'v101.22 - IF1 fix: search highlighting now correctly marks matches when the query and corpus text differ only by accents (e.g. typing eglise finds AND highlights Eglise). Root cause: search MATCHING already accent-folded via norm(), so results were always found - but HIGHLIGHTING built its mark regex from the raw, un-folded query and matched it against the raw text, so an accent-mismatched query found the paragraph with nothing visibly highlighted. Added normWithMap(), which runs the same per-character folding as norm() but also returns a map from each normalized character back to its source index, so a match found in normalized space can be translated back to the exact character range in the original text and wrapped precisely. Replaced the old raw-query regex highlighting entirely (escRe/reRx removed, confirmed unused elsewhere). Verified live: unaccented, accented, uppercase, and oe-ligature queries (Coeur finding Coeur with the ligature) all highlight the correct exact substring; no-match state unaffected; this was the only <mark> highlighting implementation in the app (a query like Coeur correctly highlights the Cœur ligature in the corpus text). No corpus/speech change.';
+const APP_VERSION = 'v101.24';
+const APP_EVIDENCE_STAGE = 'v101.24 - search: added a Reflexions filter, positioned between Heures and Prieres, so a reader can search within Reflexions et pratiques text specifically. Reflection paragraphs previously shared the same internal result type as regular meditation paragraphs (both hour), so they could not be filtered separately even though a dedicated sr-badge.reflection style already existed unused; reflections now get their own result type. Verified live: filter order is Tout, Heures, Reflexions, Prieres, Complements, Paroles directes; filtering to Reflexions shows only Reflexion-badged results and correctly narrows the set (checked against an uncapped query after an initial capped-both-ways false reading). Covered by a new behaviour-harness test. No corpus/speech change.';
 const STORAGE_SCHEMA_VERSION=4; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const SEARCH_RESULT_LIMIT = 60;
 
@@ -5691,6 +5691,7 @@ function showHome() {
   document.getElementById('progressWrap').style.display = 'none';
   setBottomNav('home');
   updateRightContextPanel();
+  focusContentRegion();
 }
 // ─── Daily meditation tracking ────────────────────────────────
 function getLocalDateStr() {
@@ -5765,6 +5766,7 @@ function showHoursView(push = true) {
   </div>`;
   document.getElementById('progressWrap').style.display = 'none';
   setBottomNav('hours'); buildSidebar(); updateRightContextPanel();
+  focusContentRegion();
 }function getRecentLibraryTextIds() {
   try {
     const arr = JSON.parse(SafeStorage.get('lp24_recent_texts','[]'));
@@ -5907,6 +5909,7 @@ function showEspaceView(push = true) {
   </div>`;
   document.getElementById('progressWrap').style.display = 'none';
   setBottomNav('espace'); buildSidebar(); updateRightContextPanel();
+  focusContentRegion();
 }
 
 function renderHome() {
@@ -5967,6 +5970,7 @@ function renderHome() {
         <div class="search-filters" id="searchFilters" role="group" aria-label="Filtrer les résultats" style="margin-top:0.6rem">
           <button type="button" class="sf-btn active" data-filter="all" aria-pressed="true" onclick="setSearchFilter('all')">Tout</button>
           <button type="button" class="sf-btn" data-filter="hour" aria-pressed="false" onclick="setSearchFilter('hour')">Heures</button>
+          <button type="button" class="sf-btn" data-filter="reflection" aria-pressed="false" onclick="setSearchFilter('reflection')">Réflexions</button>
           <button type="button" class="sf-btn" data-filter="prayer" aria-pressed="false" onclick="setSearchFilter('prayer')">Prières</button>
           <button type="button" class="sf-btn" data-filter="section" aria-pressed="false" onclick="setSearchFilter('section')">Compléments</button>
           <button type="button" class="sf-btn" data-filter="speech" aria-pressed="false" onclick="setSearchFilter('speech')">Paroles directes</button>
@@ -6004,6 +6008,7 @@ function openHour(n, push = true, options = {}) {
   } else {
     resetContentScrollAfterRender();
   }
+  focusContentRegion();
 }
 function renderReader(hour, scroll = true) {
   if (typeof hour === 'number') hour = CORPUS.hours.find(h => h.hour_number === hour);
@@ -6740,6 +6745,7 @@ function showLibraryView(push = true, focusGroupId = null) {
   setBottomNav('library');
   buildSidebar();
   updateRightContextPanel();
+  focusContentRegion();
 }
 function openLibraryText(id, push = true, scrollToAnchor = null) {
   const item = getLibraryItem(id); if (!item) return;
@@ -6869,6 +6875,7 @@ function showSearchView() {
     <div class="search-filters" id="searchFilters" role="group" aria-label="Filtrer les résultats" style="margin-top:0.6rem">
       <button type="button" class="sf-btn active" data-filter="all" aria-pressed="true" onclick="setSearchFilter('all')">Tout</button>
       <button type="button" class="sf-btn" data-filter="hour" aria-pressed="false" onclick="setSearchFilter('hour')">Heures</button>
+      <button type="button" class="sf-btn" data-filter="reflection" aria-pressed="false" onclick="setSearchFilter('reflection')">Réflexions</button>
       <button type="button" class="sf-btn" data-filter="prayer" aria-pressed="false" onclick="setSearchFilter('prayer')">Prières</button>
       <button type="button" class="sf-btn" data-filter="section" aria-pressed="false" onclick="setSearchFilter('section')">Compléments</button>
       <button type="button" class="sf-btn" data-filter="speech" aria-pressed="false" onclick="setSearchFilter('speech')">Paroles directes</button>
@@ -6886,7 +6893,17 @@ function showSearchView() {
   document.getElementById('progressWrap').style.display = 'none';
   setBottomNav('none');
 }
-function onSearchInput(v) { state.searchQuery = v; performSearch(v); }
+let _searchDebounceTimer = null;
+// P2 perf fix: performSearch() does a full-corpus scan (24 Hours' paragraphs/reflections/
+// subsections + all prayers/sections/library items, each run through norm()'s NFD-based
+// accent-folding) on every keystroke with no debounce - fine on modern hardware, but can
+// jank while typing on a slow/old Android. A short debounce is imperceptible while typing
+// but skips the scan entirely for keystrokes superseded within 140ms.
+function onSearchInput(v) {
+  state.searchQuery = v;
+  clearTimeout(_searchDebounceTimer);
+  _searchDebounceTimer = setTimeout(function(){ performSearch(v); }, 140);
+}
 function performSearch(query) {
   const resultsEl = document.getElementById('homeSearchResults');
   const homeMain = document.getElementById('homeMain');
@@ -6934,7 +6951,7 @@ function performSearch(query) {
     }
     for (const p of (hour.reflections||[])) {
       const target = {kind:'hour', n:hour.hour_number, paraId:p.id, tab:'reflection'};
-      addResult(`${hour.hour_number}e Heure — ${hour.title}`, p, 'hour', 'Réflexion', target);
+      addResult(`${hour.hour_number}e Heure — ${hour.title}`, p, 'reflection', 'Réflexion', target);
       addSpeechResults(`${hour.hour_number}e Heure — ${hour.title}`, p, target);
     }
     for (const sub of (hour.subsections||[])) {
@@ -7033,7 +7050,7 @@ function performSearch(query) {
     b.setAttribute('aria-pressed', active ? 'true' : 'false');
   });
   if (!allFiltered.length) { resultsEl.innerHTML=`<div class="no-results">${hasQuery ? `Aucun résultat pour « ${escHtml(query)} »` : 'Aucune parole directe trouvée.'}</div>`; resultsEl.classList.add('visible'); return; }
-  const badgeClass = {hour:'hour', prayer:'prayer', section:'section', speech:'speech'};
+  const badgeClass = {hour:'hour', reflection:'reflection', prayer:'prayer', section:'section', speech:'speech'};
   const countLabel = hasQuery ? `${allFiltered.length}${allFiltered.length>SEARCH_RESULT_LIMIT?'+':''} résultat${allFiltered.length>1?'s':''} pour « ${escHtml(query)} »` : `${allFiltered.length}${allFiltered.length>SEARCH_RESULT_LIMIT?'+':''} parole${allFiltered.length>1?'s':''} directe${allFiltered.length>1?'s':''}`;
   resultsEl.innerHTML = `
     <div class="search-count">${countLabel}</div>
@@ -8368,6 +8385,18 @@ function escHtml(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').rep
 // grammatically wrong "1e Heure"), and one used the inconsistent spelling "1ère".
 // This is the single source of truth going forward — see the audit RN2 finding.
 function ordinalHeure(n){ return (n === 1 ? '1re' : n + 'e') + ' Heure'; }
+// P2 accessibility fix: view-transition functions replaced #content's innerHTML but never
+// moved focus, so a keyboard/screen-reader user's focus silently fell back to <body> after
+// navigating (verified live: focus a nav element, call a view transition, activeElement ends
+// up on <body> with no announcement of where the user landed). #content already carries
+// tabindex="-1" for exactly this purpose - it just was never used. focusContentRegion() moves
+// focus there after a transition renders; showSearchView() already focuses its own input
+// directly (a better target for that view) and does not need this.
+function focusContentRegion() {
+  const el = document.getElementById('content');
+  if (!el) return;
+  try { el.focus({preventScroll:true}); } catch(e) { try { el.focus(); } catch(e2) {} }
+}
 function norm(s){return(s||'').toLowerCase().replace(/[\u0152\u0153]/g,'oe').replace(/[\u00c6\u00e6]/g,'ae').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/['']/g,"'").replace(/[«»""]/g,'"');}
 // IF1 fix: normWithMap runs the same per-character folding as norm() above, but also
 // returns a map from each normalized character back to its index in the original string.
