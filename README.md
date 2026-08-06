@@ -1,52 +1,55 @@
 # Luisa — 24 Heures de la Passion
 
-Version: `v101.51`
+Version: `v101.53`
 
-Prior production was v101.49 (1 August 2026). This release carries three fixes found by Louis on his
-own iPhone and iPad after that promotion.
+Prior production was v101.51 (3 August 2026). This release promotes v101.52 and v101.53 in one step.
 
-## Corpus — complete, unchanged in content since v101.44
+## Corpus — the approved targeted change set (v101.52)
 
-R3A (reverence capitalisation, grammar/punctuation, 9 substantive editorial items individually
-approved) and R3B (all 24 Hours, reconciled against both complete Italian witnesses and the English
-witness) are both complete. Full-text convergence and two independent blind adversarial revalidation
-passes ran at v101.40–v101.44. All six protected declarations (`CORPUS`, `TEXT_LIBRARY`,
-`HOUR_LINKED_TEXTS`, `SPEECH_DATA`, `INTERNAL_SUBHEADINGS`, `SPEECH_END_VISUAL_BREAKS`) verify
-byte-identical to the v101.44 hash contract at every release since, including this one.
+The first release since v101.44 in which the corpus itself changes, under an explicit approved
+change-set instruction.
 
-## What changed since v101.49
+- **21 mandatory wording corrections.** All 21 targets required correcting (`CHANGED = 21,
+  ALREADY_PRESENT = 0, UNMAPPED = 0`), applied as minimal clause-level edits rather than
+  whole-paragraph rewrites. Measured against the untouched v101.51 corpus: exactly 21 of 1,839
+  records changed, 0 unrelated, record-ID set identical.
+- **65 non-destructive display segmentations, 180 display units.** Canonical ids, order and text
+  are unchanged; every record's segment slices concatenate back to its canonical text exactly.
+  Segments render through the app's existing canonical-coordinate renderer, so notes, highlights,
+  favourites and saved positions keep resolving through the canonical parent id — no migration.
+- **4 cross-record continuity operations**, both stable ids preserved in every group; copying
+  either member of a group copies the whole grammatical unit.
+- **The 3 expressly excluded stylistic constructions are untouched.**
+- **Speech offsets recalculated by exact delta** for the 7 affected records; any boundary that
+  would have fallen inside a replaced span was refused rather than approximated — none did.
+- **Protected-declaration contract re-baselined**, not dropped: `CORPUS` and `SPEECH_DATA` moved by
+  design; `TEXT_LIBRARY`, `HOUR_LINKED_TEXTS`, `INTERNAL_SUBHEADINGS` and `SPEECH_END_VISUAL_BREAKS`
+  verified unchanged.
 
-- **The app no longer stays zoomed and scrollable sideways after you write a note.** iOS Safari zooms
-  the page in whenever a text field with a font smaller than 16px is focused, and it never zooms back
-  out — so the note panel appeared slightly wider than the screen and the whole app remained pannable
-  long after the panel was closed. The note box (14.4px) and the Approfondir section search (15.2px)
-  are now 16px. Pinch-zoom is deliberately still available; suppressing it would have hidden the
-  symptom at the cost of accessibility.
-- **Mon Espace now shows all your highlights.** They were sorted by passage label and only the first
-  eight were drawn, so any highlight whose label begins with a letter — every **Prière** and every
-  **Complément** — fell past the end of the list and could never be seen, however many you had. The
-  list is now ordered **newest first**, and the eight-entry limit became a preview with a
-  **"Voir mes N surlignages"** button that opens the full list. Notes had the identical silent limit
-  and now have the identical button. Highlights that need attention are still listed first.
+## App fix (v101.53) — iPad bottom bar no longer covers the end of a view
 
-## Carried forward from v101.26–v101.49
+Reported on the Approfondir screen: the bottom navigation partly hid the last card and it could not
+be scrolled any further. Cause: `html.ios-device .content` is a flex column with `overflow-y: auto`,
+and iOS Safari excludes such a container's `padding-bottom` from its scrollable overflow — the space
+reserved for the bar evaporated on device even though the app reserves it correctly (Chrome honours
+it, which is why this only showed on iPad). Fixed by reserving that space with a flex-item spacer
+instead of padding, which cannot be dropped by that Safari behaviour.
 
-- Notes reachable on phone and tablet from **both** routes — long-pressing a paragraph and selecting
-  text. Neither worked before this line of fixes.
-- Recovery for highlights broken by editorial corrections: re-anchored automatically where the
-  passage can be located unambiguously, and otherwise listed in Mon Espace with a plain explanation
-  and a working **✕ Retirer** button.
-- The service-worker update fix, so pressing **Actualiser** genuinely lands on the new version.
-- Speech punctuation restored across 99 paragraphs (22 Hours plus Approfondir); progress, study mode
-  and reset persistence fixes; meditated-hour border weight; a dark-mode contrast fix; "Automatique"
-  in place of "Système"; Gethsémani Compléments cleanup.
+## Carried forward from v101.26–v101.51
+
+Notes reachable from both mobile action bars; recovery for highlights broken by editorial
+corrections, with a working **✕ Retirer** in Mon Espace; Mon Espace ordered newest-first with a
+"Voir tout" expander so nothing is silently hidden; the note-panel iOS zoom/pan fix; the
+service-worker update fix; speech punctuation restored across 99 paragraphs; progress/study-mode/
+reset persistence fixes; meditated-hour border weight; dark-mode contrast fix; "Automatique" in
+place of "Système"; Gethsémani Compléments cleanup.
 
 ## Real-device status
 
-**Confirmed by Louis on iPhone**, 3 August 2026: the note-panel zoom behaviour and Mon Espace
-highlight visibility. Earlier confirmations covered the update flow and the selection-bar Note button
-on iPhone and iPad.
+**Confirmed by Louis** before this promotion: reviewed the corpus text corrections, and confirmed
+the iPad bottom-bar/scroll fix.
 
-Internal history, the full version-by-version record, the corpus decision record and the open items
-still tracked (a hardcoded corpus unit count pending an independent recount; one unreproduced Android
-WebAPK install report) are in `luisa-24h-state_1.md` in the project working directory.
+Internal history, the full version-by-version record, the corpus decision record (including the
+v101.52 protected-declaration contract) and open items still tracked (a hardcoded corpus unit count
+pending an independent recount; one unreproduced Android WebAPK install report) are in
+`luisa-24h-state_1.md` in the project working directory.
