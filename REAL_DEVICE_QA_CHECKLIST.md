@@ -1,6 +1,6 @@
-# 24H interaction closure / v101.82 — physical device, installed-PWA and live-origin checklist
+# 24H interaction closure / v101.83 — physical device, installed-PWA and live-origin checklist
 
-Use the exact v101.82 candidate bytes. Record PASS/FAIL/NOT_TESTED for every numbered scenario.
+Use the exact v101.83 candidate bytes. Record PASS/FAIL/NOT_TESTED for every numbered scenario.
 
 ## iPhone Safari / installed PWA
 1. Mid-Hour → Mon Espace → Retour restores the same reader tab, paragraph/reading position and visible/updating progress strip.
@@ -15,7 +15,7 @@ Use the exact v101.82 candidate bytes. Record PASS/FAIL/NOT_TESTED for every num
 10. Repères OFF/ON preserves passage and actions.
 11. Portrait ↔ landscape rotation preserves a usable reader.
 12. With a non-empty unsaved Note open, an available-update Actualiser action must NOT reload; the draft remains and receives focus.
-13. Existing installed build → v101.82 update preserves notes, coloured highlights, reading position and progress; obsolete legacy ◈ marks may be discarded.
+13. Existing installed build → v101.83 update preserves notes, coloured highlights, reading position and progress; obsolete legacy ◈ marks may be discarded.
 14. Offline reopen after one successful online load works.
 15. A copied deep link opens the expected Hour/paragraph.
 
@@ -43,10 +43,10 @@ Use the exact v101.82 candidate bytes. Record PASS/FAIL/NOT_TESTED for every num
 32. On-demand controls (theme, Plan, prayer close, note indicator, Approfondir back/index) remain keyboard reachable and visibly focused.
 
 ## Live GitHub Pages / installed PWA
-33. Visible version v101.82.
+33. Visible version v101.83.
 34. Service worker controls the page after activation.
-35. Cache generation is luisa-24h-v101-82.
-36. Existing install updates to v101.82 without loss of supported personal data; retired legacy ◈ marks are intentionally not preserved.
+35. Cache generation is luisa-24h-v101-83.
+36. Existing install updates to v101.83 without loss of supported personal data; retired legacy ◈ marks are intentionally not preserved.
 37. Offline reopen succeeds after successful online load.
 38. Old app cache generations are removed only within the luisa-24h- namespace.
 39. Root/deploy bytes correspond exactly to the audited GitHub payload.

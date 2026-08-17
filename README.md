@@ -1,6 +1,21 @@
 # Luisa — 24 Heures de la Passion
 
-Version: `v101.82`
+Version: `v101.83`
+
+## v101.83 — Final locked Collection Luisa icon family v1 (17 August 2026)
+
+- Replaces the old 24H icon set with the **final locked Collection Luisa family v1** identity for Les 24 Heures de la Passion.
+- Browser favicon coverage: 16 px, 32 px and `.ico`.
+- Apple touch coverage: 60 px, 120 px and 180 px.
+- PWA manifest coverage: 192 px and 512 px `any` icons plus a dedicated 512 px `maskable` icon.
+- PWA installed identity (`id`, `scope`, `start_url`, name, short name, orientation and display) is unchanged.
+- No corpus, TEXT_LIBRARY, HOUR_LINKED_TEXTS, SPEECH_DATA, internal-subheading, visual-break, stable-ID, storage-schema, highlighting, notes, search, navigation, Repères, theme or reader-history behavior changed.
+- v101.82 minute-detail corrections remain cumulative and protected.
+- Exact v101.83 physical iPhone/iPad/Samsung, installed-PWA/offline/live-origin and assistive-technology certification remains an external gate.
+
+## Historical release lineage — v101.82 and earlier (superseded by v101.83)
+
+The entries below are retained as historical provenance only. They do not describe the current v101.83 release identity.
 
 ## v101.82 — Minute-detail corrective (15 August 2026)
 
