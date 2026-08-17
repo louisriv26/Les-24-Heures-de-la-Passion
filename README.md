@@ -1,6 +1,35 @@
 # Luisa — 24 Heures de la Passion
 
-Version: `v101.80`
+Version: `v101.83`
+
+## v101.83 — Final locked Collection Luisa icon family v1 (17 August 2026)
+
+- Replaces the old 24H icon set with the **final locked Collection Luisa family v1** identity for Les 24 Heures de la Passion.
+- Browser favicon coverage: 16 px, 32 px and `.ico`.
+- Apple touch coverage: 60 px, 120 px and 180 px.
+- PWA manifest coverage: 192 px and 512 px `any` icons plus a dedicated 512 px `maskable` icon.
+- PWA installed identity (`id`, `scope`, `start_url`, name, short name, orientation and display) is unchanged.
+- No corpus, TEXT_LIBRARY, HOUR_LINKED_TEXTS, SPEECH_DATA, internal-subheading, visual-break, stable-ID, storage-schema, highlighting, notes, search, navigation, Repères, theme or reader-history behavior changed.
+- v101.82 minute-detail corrections remain cumulative and protected.
+- Exact v101.83 physical iPhone/iPad/Samsung, installed-PWA/offline/live-origin and assistive-technology certification remains an external gate.
+
+## Historical release lineage — v101.82 and earlier (superseded by v101.83)
+
+The entries below are retained as historical provenance only. They do not describe the current v101.83 release identity.
+
+## v101.82 — Minute-detail corrective (15 August 2026)
+
+- Corrects the reference-action defect found during the prior four-pass recheck: **Partager** / **Copier le lien** now resolve strictly from the passage actually visible in the reader, never from stale contextual-selection state.
+- Corrects reader text-size continuity: changing among **Petit 16 / Normal 19 / Grand 22 / Très grand 26 px** captures the active selected passage when present, otherwise the visible passage nearest the reading position, and restores its visual offset with the same reader-offset restoration mechanism used by Repères.
+- Replaces a stale migration-failure message that incorrectly referred only to a text-size preference with a generic, truthful personal-data migration message.
+- Replaces internal development wording in the Samsung/Android settings with user-facing explanation of the existing **Paragraphe** workflow.
+- Corrects focus restoration when **Note** or the colour picker is opened from the temporary contextual toolbar: if that trigger disappears, focus returns to the stable main reading region instead of falling to the document body.
+- No corpus text, speech data, stable IDs, storage schema, snapshot version, notes, coloured highlight model, search, navigation, Repères semantics, theme semantics or PWA identity changed.
+- Exact v101.82 physical iPhone/iPad/Samsung, installed-PWA, offline, assistive-technology and live-origin certification remain external gates.
+
+## Historical release lineage — v101.80 and earlier (superseded by v101.82)
+
+The entries below are retained as historical provenance only. They do not describe the current v101.82 interaction contract.
 
 ## v101.80 — Ecosystem interaction closure (15 August 2026)
 
@@ -11,10 +40,6 @@ Version: `v101.80`
 - Samsung/Android **Paragraphe** remains supported as an ordinary coloured whole-paragraph `textHighlights` workflow. iPhone/iPad/desktop exact-selection highlighting remains unchanged.
 - Storage schema advances **6 → 7** and personal snapshot **3 → 4** solely to remove the retired paragraph-mark state safely. Protected corpus declarations are unchanged.
 - Exact v101.80 physical iPhone/iPad/Samsung, installed-PWA, offline and live-origin certification remain external gates.
-
-## Historical release lineage — v101.79 and earlier (superseded by v101.80)
-
-The entries below are retained as historical provenance only. They do not describe the current v101.80 interaction contract.
 
 Stage-G programme baseline: **v101.60 / 24H-F**, explicitly approved by the product owner as the immutable input to 24H-G.
 
