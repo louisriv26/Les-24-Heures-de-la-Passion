@@ -1,4 +1,4 @@
-status=PASS
+current=v101.87
+hits=33
 unjustified=0
-active_contradictions=0
-scanned_occurrences=460
+

@@ -1,77 +1,22 @@
-test_id,status,evidence
-P1-runtime-twins,PASS,dd9476f9bb56a2bd344e29a881f9c21666a2844f08175b27a693168449b3d49c
-P1-version,PASS,{}
-P1-schema-snapshot,PASS,{}
-P1-protected,PASS,"{""CORPUS"": {""count"": 8, ""sha256"": ""54f4ff0508b055bbe9e5dad6286e97e49cb796203b0fbda7c2eb539e7e1169b0""}, ""HOUR_LINKED_TEXTS"": {""count"": 24, ""sha256"": ""37fe7b5c2d2ac15489ae84e72028283197419320a7566e6b9e6e62a0cc021918""}, ""INTERNAL_SUBHEADINGS"": {""count"": 30, ""sha256"": ""31c84fcafef360b7e61392ffa99679960b4fc43d5a398a216832b77e942de5a3""}, ""SPEECH_DATA"": {""count"": 375, ""sha256"": ""4b6565f5646ba6431381dd4c28505bbdb3cae3699066fc0a115fa6b88ed144a4""}, ""SPEECH_END_VISUAL_BREAKS"": {""count"": 49, ""sha256"": ""71a6a85871df5c3416cab201e9814c9a7a1811b50215bf1df3498cedb5b07d33""}, ""TEXT_LIBRARY"": {""count"": 40, ""sha256"": ""3c9042f09757def35f312e08b1008a0c439b8ff416210cf20a5f0a9480fd37cb""}}"
-P1-script-provenance,PASS,"{""build_script"": ""l24h_v10186_title_help_r2_build.py"", ""build_script_sha256"": ""d78da7765692280a689dd84a6dc9b2ce63f217c1f5eb587d45e067dd036bba90"", ""final_reopen_auditor"": ""l24h_v10186_r2_final_reopen_audit.py"", ""final_reopen_auditor_sha256"": ""339923efeb9c0cfda5ad544159625beb71a8cd8ff28b8152d8574616050670b3"", ""governing_script"": ""L24H_v10186_TH1_R2_FOUR_PASS_RECONCILIATION_SCRIPT_2026-08-19.md"", ""governing_script_sha256"": ""cebca0d5cc1c4f35b68a0ab2d5e4f9f874be9f8ec7100bc9eec95e9f3176f21c"", ""independent_four_pass_auditor"": ""l24h_v10186_r2_independent_four_pass_audit.py"", ""independent_four_pass_auditor_sha256"": ""f7f9037be3bd344a80691f41b2b402563ca282e7a3a988e5c792312989f069e1"", ""independent_reopen_auditor"": ""l24h_v10186_r2_independent_reopen_audit.py"", ""independent_reopen_auditor_sha256"": ""c2e7d00b890a9ba7b7824216498860b60e7fa791842a20cfe986ebe786bfc5d3"", ""runtime_stage_script"": ""L24H_v10186_STAGE_TITLE_HELP_HARDGATED_SCRIPT_2026-08-19.md"", ""runtime_stage_script_sha256"": ""09e028f448e009d3c51908f2beda87feb13e80425b9816e0b327a6850d59dee5""}"
-P1-active-qa-current,PASS,"{""first"": ""G-01"", ""last"": ""G-85"", ""md_ids"": 85, ""ok"": true, ""required"": {""cache"": true, ""candidate"": true, ""header"": true, ""help_truth"": true, ""parity"": true, ""snapshot_future"": true, ""source"": true, ""th1_rows"": true, ""version"": true}, ""rows"": 85, ""stale"": []}"
-P1-active-qa-parity,PASS,"{""first"": ""G-01"", ""last"": ""G-85"", ""md_ids"": 85, ""ok"": true, ""required"": {""cache"": true, ""candidate"": true, ""header"": true, ""help_truth"": true, ""parity"": true, ""snapshot_future"": true, ""source"": true, ""th1_rows"": true, ""version"": true}, ""rows"": 85, ""stale"": []}"
-P2-js-syntax,PASS,PASS
-P2-sw-syntax,PASS,PASS
-P2-speech-targets,PASS,"{""errors"": [], ""segments"": 381, ""targets"": 1839}"
-P2-browser-all,PASS,"{""fail"": [], ""rows"": 37}"
-P2-help-truth,PASS,"{""fail"": [], ""rows"": 16}"
-TITLE-01-unmarked,PASS,"{""item"": ""PASSION24.TEXT.SHARED_T09_1910_07_04_AGONY_CROSS_LAST_BREATH""}"
-TITLE-COLOR-yellow,PASS,"{""btn"": ""Modifier / retirer le surlignage"", ""h2Bg"": ""rgba(0, 0, 0, 0)"", ""h2Class"": ""reader-title"", ""mark"": true, ""markBg"": ""rgb(254, 249, 195)"", ""markClass"": ""library-title-inline-mark hl hl-yellow"", ""store"": ""yellow""}"
-TITLE-COLOR-blue,PASS,"{""btn"": ""Modifier / retirer le surlignage"", ""h2Bg"": ""rgba(0, 0, 0, 0)"", ""h2Class"": ""reader-title"", ""mark"": true, ""markBg"": ""rgb(219, 234, 254)"", ""markClass"": ""library-title-inline-mark hl hl-blue"", ""store"": ""blue""}"
-TITLE-COLOR-green,PASS,"{""btn"": ""Modifier / retirer le surlignage"", ""h2Bg"": ""rgba(0, 0, 0, 0)"", ""h2Class"": ""reader-title"", ""mark"": true, ""markBg"": ""rgb(220, 252, 231)"", ""markClass"": ""library-title-inline-mark hl hl-green"", ""store"": ""green""}"
-TITLE-COLOR-purple,PASS,"{""btn"": ""Modifier / retirer le surlignage"", ""h2Bg"": ""rgba(0, 0, 0, 0)"", ""h2Class"": ""reader-title"", ""mark"": true, ""markBg"": ""rgb(237, 233, 254)"", ""markClass"": ""library-title-inline-mark hl hl-purple"", ""store"": ""purple""}"
-TITLE-COLOR-pink,PASS,"{""btn"": ""Modifier / retirer le surlignage"", ""h2Bg"": ""rgba(0, 0, 0, 0)"", ""h2Class"": ""reader-title"", ""mark"": true, ""markBg"": ""rgb(252, 231, 243)"", ""markClass"": ""library-title-inline-mark hl hl-pink"", ""store"": ""pink""}"
-TITLE-07-wrapped-inline,PASS,"{""font"": ""30px"", ""h2Width"": 358, ""markWidth"": 348.9375, ""rects"": 4}"
-TITLE-08-largest-font,PASS,"{""font"": ""30px"", ""h2Width"": 358, ""markWidth"": 348.9375, ""rects"": 4}"
-TITLE-09-dark-light,PASS,"{""dark"": ""rgba(185, 84, 135, 0.28)"", ""light"": ""rgb(252, 231, 243)""}"
-TITLE-10-direct-click-picker,PASS,{}
-TITLE-11-current-colour,PASS,"[""pink""]"
-TITLE-12-enter,PASS,{}
-TITLE-13-space,PASS,{}
-TITLE-14-recolour,PASS,{}
-TITLE-15-remove,PASS,{}
-TITLE-16-undo-exact,PASS,{}
-TITLE-17-reload-persist,PASS,{}
-TITLE-18-espace-present,PASS,"{""title"": ""Tome 9 — 4 juillet 1910 — Agonie au Jardin et Agonie sur la Croix""}"
-TITLE-19-espace-open-start,PASS,"{""scrollTop"": 0}"
-TITLE-20-espace-remove,PASS,{}
-TITLE-21-espace-undo,PASS,{}
-TITLE-22-json-export,PASS,"{""schema"": 8, ""snapshot"": null}"
-TITLE-23-current-import-validation,PASS,"{""color"": ""blue"", ""schema"": null}"
-TITLE-24-schema7-import,PASS,"{""color"": ""blue"", ""n"": 1}"
-TITLE-25-journal,PASS,"{""chars"": 312}"
-TITLE-26-sanitizers,PASS,"{""badColor"": 0, ""badId"": 0, ""polluted"": false, ""proto"": 0}"
-HELP-01-anchors,PASS,"{""help-about"": true, ""help-actions"": true, ""help-backup"": true, ""help-espace"": true, ""help-reading"": true, ""help-samsung"": true, ""help-search"": true, ""help-support"": true, ""help-title-mark"": true, ""help-update"": true}"
-HELP-02-quick-nav,PASS,"{""buttons"": 9}"
-HELP-03-jump-focus,PASS,help-title-mark
-HELP-04-required-content,PASS,"{""Effacer cette position"": true, ""GE / Lumen Luminis / septembre 2021"": true, ""Lectures marquées"": true, ""Modifier / retirer le surlignage"": true, ""Ouvrir au début"": true, ""Prières & compléments"": true, ""Signaler un problème de texte"": true, ""fermez complètement l’app"": true}"
-HELP-05-no-closed-review,PASS,{}
-HELP-06-escape,PASS,{}
-REG-H15,PASS,"[""Il est irrité parce que ses curiosités ne sont pas satisfaites, et en se sentant humilié par ton silence,"", ""il proclame devant tous que Tu es un fou. Il ordonne que Tu sois traité comme un fou. Ainsi il Te fait revêtir d’un vêtement blanc et il Te met entre les mains des soldats, afin qu’ils Te bafouent le plus possible.""]"
-REG-H17,PASS,"{""b"": 1, ""t"": ""Va chez tous les cœurs et, en les piquant, fais-en sortir toutes les fumées d’orgueil et la pourriture qu’ils contiennent, et constitue-Moi Roi de tous. » \nMon Amour, je Te prie de me piquer les oreilles de tes épines, afin qu’elles puissent n’entendre que ta Voix, mes yeux pour qu’ils ne regardent que Toi, ma bouche pour que ma langue reste muette par rapport à tout ce qui pourrait T’offenser et libre pour Te louer et Te bénir en toutes choses.""}"
-REG-body-highlight-functions,PASS,"{""body"": true, ""samsung"": true, ""schema"": 8, ""snapshot"": 5, ""version"": ""v101.86""}"
-REG-samsung-model-preserved,PASS,"{""body"": true, ""samsung"": true, ""schema"": 8, ""snapshot"": 5, ""version"": ""v101.86""}"
-REG-schema-snapshot-version,PASS,"{""body"": true, ""samsung"": true, ""schema"": 8, ""snapshot"": 5, ""version"": ""v101.86""}"
-HELPCLAIM-50,PASS,five title-marker colours | applyLibraryMarkerColor + picker
-HELPCLAIM-51,PASS,title itself can open edit picker | renderLibraryReaderTitleInner
-HELPCLAIM-52,PASS,recolour/remove/Undo supported | runtime functions
-HELPCLAIM-53,PASS,Lectures marquées exists | showEspaceView
-HELPCLAIM-54,PASS,Reprendre/Ouvrir au début/Effacer position controls exist | resume panel markup
-HELPCLAIM-55,PASS,JSON includes libraryMarks | buildPersonalDataExport
-HELPCLAIM-56,PASS,Markdown includes Lectures marquées | buildHumanReadableJournal
-HELPCLAIM-57,PASS,Samsung paragraph mode documented and exists | runtime Android mode
-HELPCLAIM-58,PASS,iPhone/iPad exact selection help is consistent | selection runtime
-HELPCLAIM-59,PASS,Prières & compléments destination exists | settings route
-HELPCLAIM-60,PASS,manual update check exists | manualUpdateCheck
-HELPCLAIM-61,PASS,Actualiser path exists | update banner/runtime
-HELPCLAIM-62,PASS,speaker search/filter exists | search/SPEECH_DATA
-HELPCLAIM-63,PASS,speaker/source badges controlled by Repères | runtime Repères
-HELPCLAIM-64,PASS,source edition derives from CORPUS | CORPUS.source_edition
-HELPCLAIM-65,PASS,closed editorial-review claim removed | negative string scan
-PHYSICAL-IPHONE,NOT_TESTED,External physical-device/PWA/AT/live/rollback evidence not available in this execution.
-PHYSICAL-IPAD,NOT_TESTED,External physical-device/PWA/AT/live/rollback evidence not available in this execution.
-PHYSICAL-SAMSUNG,NOT_TESTED,External physical-device/PWA/AT/live/rollback evidence not available in this execution.
-PWA-MIGRATION-OFFLINE,NOT_TESTED,External physical-device/PWA/AT/live/rollback evidence not available in this execution.
-H6-IOS-OVERSCROLL,NOT_TESTED,External physical-device/PWA/AT/live/rollback evidence not available in this execution.
-VOICEOVER,NOT_TESTED,External physical-device/PWA/AT/live/rollback evidence not available in this execution.
-TALKBACK,NOT_TESTED,External physical-device/PWA/AT/live/rollback evidence not available in this execution.
-NVDA,NOT_TESTED,External physical-device/PWA/AT/live/rollback evidence not available in this execution.
-CONSTRAINED-PERFORMANCE,NOT_TESTED,External physical-device/PWA/AT/live/rollback evidence not available in this execution.
-LIVE-V10186-BYTE-BINDING,NOT_TESTED,External physical-device/PWA/AT/live/rollback evidence not available in this execution.
-VERIFIED-ROLLBACK,NOT_TESTED,External physical-device/PWA/AT/live/rollback evidence not available in this execution.
+gate,status,evidence
+baseline_identity,PASS,760196b75ee89bb54eaf7780909028e84748ca3bc5b77b62342067fa40602494
+runtime_twins,PASS,c8b599bf10d31099e33ba54cb64801d17d4ae8df1ed7c7ba7e6009eda275ff99
+protected_structures,PASS,6/6 hashes identical
+schema_snapshot,PASS,schema 8 / snapshot 5
+title_picker_classifier,PASS,#libraryMarkerPicker + data-library-marker-ui protected
+title_picker_static_isolation,PASS,stage6fBindStaticHighlightUi binds libraryMarkerPicker
+title_picker_selection_suppression,PASS,stage6fShouldSuppressSelectionCapture checks libraryMarkerPicker.open
+title_picker_dynamic_isolation,PASS,openLibraryMarkerPicker binds + protects + clears residual selection
+version_cache,PASS,v101.87 / luisa-24h-v101-87
+body_highlight_code_preserved,PASS,ordinary colourPicker path retained
+samsung_mode_code_preserved,PASS,toggleAndroidHighlightMode retained
+PHYSICAL-TITLE-RETEST,NOT_TESTED,exact v101.87 physical-device retest required
+PHYSICAL-IPHONE,NOT_TESTED,real device
+PHYSICAL-IPAD,NOT_TESTED,real device
+PHYSICAL-SAMSUNG,NOT_TESTED,real device
+PWA-MIGRATION-OFFLINE,NOT_TESTED,installed PWA/live origin
+VOICEOVER,NOT_TESTED,real AT
+TALKBACK,NOT_TESTED,real AT
+NVDA,NOT_TESTED,real AT
+LIVE-V10187-BYTE-BINDING,NOT_TESTED,live deployment
+VERIFIED-ROLLBACK,NOT_TESTED,rollback evidence

@@ -1,14 +1,8 @@
 {
-  "governing_script": "L24H_v10186_TH1_R2_FOUR_PASS_RECONCILIATION_SCRIPT_2026-08-19.md",
-  "governing_script_sha256": "cebca0d5cc1c4f35b68a0ab2d5e4f9f874be9f8ec7100bc9eec95e9f3176f21c",
-  "runtime_stage_script": "L24H_v10186_STAGE_TITLE_HELP_HARDGATED_SCRIPT_2026-08-19.md",
-  "runtime_stage_script_sha256": "09e028f448e009d3c51908f2beda87feb13e80425b9816e0b327a6850d59dee5",
-  "build_script": "l24h_v10186_title_help_r2_build.py",
-  "build_script_sha256": "d78da7765692280a689dd84a6dc9b2ce63f217c1f5eb587d45e067dd036bba90",
-  "independent_four_pass_auditor": "l24h_v10186_r2_independent_four_pass_audit.py",
-  "independent_four_pass_auditor_sha256": "f7f9037be3bd344a80691f41b2b402563ca282e7a3a988e5c792312989f069e1",
-  "final_reopen_auditor": "l24h_v10186_r2_final_reopen_audit.py",
-  "final_reopen_auditor_sha256": "339923efeb9c0cfda5ad544159625beb71a8cd8ff28b8152d8574616050670b3",
-  "independent_reopen_auditor": "l24h_v10186_r2_independent_reopen_audit.py",
-  "independent_reopen_auditor_sha256": "c2e7d00b890a9ba7b7824216498860b60e7fa791842a20cfe986ebe786bfc5d3"
+  "governing_script_sha256": "08be129e4016f54f1a46ec3338f429718e8701c70a041bdb036c65b5eb022624",
+  "build_script_sha256": "edeedc3897d7e61ead7e135899600e6bbd6a1a7d4c24ed6ba1d48bbfde7bb976",
+  "independent_four_pass_auditor_sha256": "67ee933273d0247eb0709d160fb7fcedf6ac27268bdb2e1e474d1890da653a2f",
+  "final_reopen_auditor_sha256": "eb545fc8450dc40f05f424fb553749990d429326317fa1c233f455196b50de57",
+  "independent_reopen_auditor_sha256": "de22f2058c50622e0f8e600c70c6023abd96d7f270ddaf595ba6fcb502209190",
+  "independence": "separate scripts and separate execution paths; physical-device result is not inferred"
 }

@@ -1,5 +1,2 @@
-item,status,changed_files,evidence,redo_count
-TH1-01,PASS_STATIC,index.html; luisa_24_heures.html,inline mark.hl-* renderer; H2 no colour class; protected fingerprints unchanged,0
-TH1-02,PASS_STATIC,index.html; luisa_24_heures.html,"direct click/keyboard handler, picker aria-pressed current colour, recolour/remove/Undo paths preserved",0
-TH1-03,PASS_STATIC,index.html; luisa_24_heures.html,task-oriented Help jump controls and target IDs added,0
-TH1-04,PASS_STATIC,index.html; luisa_24_heures.html,"Help factual reconciliation incl dynamic source edition, Lectures marquées backup/journal, platform/update/data safety; unsupported closed-review claim removed",0
+fix_id,status,scope,protected_data
+T87-01..05,PASS,mobile title event isolation + version/cache bump,6/6 protected hashes identical

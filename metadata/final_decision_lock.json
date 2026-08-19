@@ -1,22 +1,10 @@
 {
-  "app_version": "v101.86",
-  "stage": "TH1-R2",
+  "app_version": "v101.87",
+  "stage": "T87-R1",
   "prepackage_four_pass_gate": "PASS",
   "final_package_reopen_gate": "REQUIRED_POSTPACKAGE",
   "independent_reopen_gate": "REQUIRED_POSTPACKAGE",
   "final_status": "PENDING_POSTPACKAGE_AUDITS",
   "public_release_ready": false,
-  "external_gates_not_tested": [
-    "PHYSICAL-IPHONE",
-    "PHYSICAL-IPAD",
-    "PHYSICAL-SAMSUNG",
-    "PWA-MIGRATION-OFFLINE",
-    "H6-IOS-OVERSCROLL",
-    "VOICEOVER",
-    "TALKBACK",
-    "NVDA",
-    "CONSTRAINED-PERFORMANCE",
-    "LIVE-V10186-BYTE-BINDING",
-    "VERIFIED-ROLLBACK"
-  ]
+  "physical_title_retest": "NOT_TESTED"
 }

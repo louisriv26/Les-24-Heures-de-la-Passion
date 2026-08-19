@@ -1,0 +1,209 @@
+{
+  "status": "PASS",
+  "total": 40,
+  "pass": 40,
+  "fail": 0,
+  "runtime_sha256": "c8b599bf10d31099e33ba54cb64801d17d4ae8df1ed7c7ba7e6009eda275ff99",
+  "rows": [
+    {
+      "scenario": "P1-runtime-twins",
+      "status": "PASS",
+      "evidence": "c8b599bf10d31099e33ba54cb64801d17d4ae8df1ed7c7ba7e6009eda275ff99"
+    },
+    {
+      "scenario": "P1-version",
+      "status": "PASS",
+      "evidence": "APP_VERSION v101.87"
+    },
+    {
+      "scenario": "P1-cache",
+      "status": "PASS",
+      "evidence": "luisa-24h-v101-87"
+    },
+    {
+      "scenario": "P1-isolation-classifier",
+      "status": "PASS",
+      "evidence": "library picker in protected selector"
+    },
+    {
+      "scenario": "P1-suppress-library-picker",
+      "status": "PASS",
+      "evidence": "library picker open suppresses capture"
+    },
+    {
+      "scenario": "P1-bind-static",
+      "status": "PASS",
+      "evidence": "static isolation binding"
+    },
+    {
+      "scenario": "P1-bind-dynamic",
+      "status": "PASS",
+      "evidence": "defensive dynamic binding"
+    },
+    {
+      "scenario": "P1-protected-data",
+      "status": "PASS",
+      "evidence": "6/6 protected JSON constant hashes identical to v101.86 baseline"
+    },
+    {
+      "scenario": "P1-schema",
+      "status": "PASS",
+      "evidence": "schema8/snapshot5"
+    },
+    {
+      "scenario": "P1-js-syntax",
+      "status": "PASS",
+      "evidence": "node --check PASS"
+    },
+    {
+      "scenario": "P1-sw-syntax",
+      "status": "PASS",
+      "evidence": "node --check PASS"
+    },
+    {
+      "scenario": "P2-init-version",
+      "status": "PASS",
+      "evidence": "runtime APP_VERSION"
+    },
+    {
+      "scenario": "P2-library-item",
+      "status": "PASS",
+      "evidence": "PASSION24.TEXT.PREFACE_ANNIBALE"
+    },
+    {
+      "scenario": "P2-title-button",
+      "status": "PASS",
+      "evidence": "title marker button exists"
+    },
+    {
+      "scenario": "P2-picker-open",
+      "status": "PASS",
+      "evidence": "picker open"
+    },
+    {
+      "scenario": "P2-picker-classified",
+      "status": "PASS",
+      "evidence": "shared classifier returns true"
+    },
+    {
+      "scenario": "P2-suppression-active",
+      "status": "PASS",
+      "evidence": "selection capture suppressed"
+    },
+    {
+      "scenario": "P2-touch-selection-isolation",
+      "status": "PASS",
+      "evidence": "picker remained open and document selection timer not armed"
+    },
+    {
+      "scenario": "P2-no-context-bar",
+      "status": "PASS",
+      "evidence": "ordinary selection action bar did not replace title picker"
+    },
+    {
+      "scenario": "P2-create-yellow",
+      "status": "PASS",
+      "evidence": "inline yellow mark created"
+    },
+    {
+      "scenario": "P2-persist-state",
+      "status": "PASS",
+      "evidence": "libraryMarks yellow"
+    },
+    {
+      "scenario": "P2-direct-title-edit",
+      "status": "PASS",
+      "evidence": "direct highlighted title opens picker"
+    },
+    {
+      "scenario": "P2-current-color-indicated",
+      "status": "PASS",
+      "evidence": "yellow aria-pressed true"
+    },
+    {
+      "scenario": "P2-recolour-blue",
+      "status": "PASS",
+      "evidence": "blue inline mark"
+    },
+    {
+      "scenario": "P2-remove-visible",
+      "status": "PASS",
+      "evidence": "remove button visible"
+    },
+    {
+      "scenario": "P2-remove",
+      "status": "PASS",
+      "evidence": "mark removed"
+    },
+    {
+      "scenario": "P2-undo-exact-color",
+      "status": "PASS",
+      "evidence": "undo restores blue"
+    },
+    {
+      "scenario": "P2-keyboard-enter",
+      "status": "PASS",
+      "evidence": "Enter opens picker"
+    },
+    {
+      "scenario": "P2-keyboard-space",
+      "status": "PASS",
+      "evidence": "Space opens picker"
+    },
+    {
+      "scenario": "P2-color-yellow",
+      "status": "PASS",
+      "evidence": "yellow"
+    },
+    {
+      "scenario": "P2-color-blue",
+      "status": "PASS",
+      "evidence": "blue"
+    },
+    {
+      "scenario": "P2-color-green",
+      "status": "PASS",
+      "evidence": "green"
+    },
+    {
+      "scenario": "P2-color-purple",
+      "status": "PASS",
+      "evidence": "purple"
+    },
+    {
+      "scenario": "P2-color-pink",
+      "status": "PASS",
+      "evidence": "pink"
+    },
+    {
+      "scenario": "P2-help-title-guidance",
+      "status": "PASS",
+      "evidence": "Help/title strings present"
+    },
+    {
+      "scenario": "P2-no-page-errors",
+      "status": "PASS",
+      "evidence": "0 page errors"
+    },
+    {
+      "scenario": "P3-active-report-honesty",
+      "status": "PASS",
+      "evidence": "38 nonblank active report lines; unsupported physical PASS=0"
+    },
+    {
+      "scenario": "P4-qa-current-version",
+      "status": "PASS",
+      "evidence": "QA references v101.87"
+    },
+    {
+      "scenario": "P4-cache-current",
+      "status": "PASS",
+      "evidence": "current cache in active QA"
+    },
+    {
+      "scenario": "P4-title-physical-not-tested",
+      "status": "PASS",
+      "evidence": "new physical title gate present/not tested"
+    }
+  ]
+}

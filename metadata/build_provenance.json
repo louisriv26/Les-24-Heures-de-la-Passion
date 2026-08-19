@@ -1,12 +1,11 @@
 {
-  "target_version": "v101.86",
+  "target_version": "v101.87",
+  "stage": "T87-R1",
   "build_date": "2026-08-19",
-  "baseline_zip": "L24H_v10185_GITHUB_DEPLOY_USER_FEEDBACK_CORRECTED_HARDENED_R4_AUDIT_RECONCILED.zip",
-  "baseline_sha256": "09ef964e62dfe3005637c20b5a5fde0094bd9767a85ef6513582e81cb84d0ea5",
-  "baseline_runtime_sha256": "c43ff8934c12b24668c9c0cf55ebb12a9eb6ecd8ed265e68e4d78aaf0fd86050",
-  "governing_script_sha256": "cebca0d5cc1c4f35b68a0ab2d5e4f9f874be9f8ec7100bc9eec95e9f3176f21c",
-  "runtime_stage_script_sha256": "09e028f448e009d3c51908f2beda87feb13e80425b9816e0b327a6850d59dee5",
-  "build_script_sha256": "d78da7765692280a689dd84a6dc9b2ce63f217c1f5eb587d45e067dd036bba90",
+  "baseline_zip": "L24H_v10186_GITHUB_DEPLOY_TITLE_HELP_HARDENED_R2_AUDIT_RECONCILED.zip",
+  "baseline_sha256": "760196b75ee89bb54eaf7780909028e84748ca3bc5b77b62342067fa40602494",
+  "governing_script": "L24H_v10187_TITLE_REAL_DEVICE_EVENT_ISOLATION_HARDGATED_SCRIPT_2026-08-19.md",
+  "governing_script_sha256": "08be129e4016f54f1a46ec3338f429718e8701c70a041bdb036c65b5eb022624",
   "protected_before": {
     "CORPUS": {
       "sha256": "54f4ff0508b055bbe9e5dad6286e97e49cb796203b0fbda7c2eb539e7e1169b0",
@@ -59,55 +58,12 @@
       "count": 49
     }
   },
+  "runtime_sha256": "c8b599bf10d31099e33ba54cb64801d17d4ae8df1ed7c7ba7e6009eda275ff99",
   "storage_schema": 8,
   "personal_snapshot": 5,
-  "preflight_gates": {
-    "app_version": true,
-    "schema8": true,
-    "snapshot5": true,
-    "source_edition": true,
-    "library_sanitizer": true,
-    "library_snapshot": true,
-    "library_storage": true,
-    "library_espace": true,
-    "library_export": true,
-    "library_import": true,
-    "library_journal": true,
-    "library_undo": true,
-    "five_colors": true
-  },
-  "static_fix_gates": {
-    "TH1-01_inline_mark_css": true,
-    "TH1-01_reader_h2_uncolored": true,
-    "TH1-02_direct_title_control": true,
-    "TH1-02_current_color_semantics": true,
-    "TH1-02_remove_wording": true,
-    "TH1-03_quick_nav": true,
-    "TH1-04_source_dynamic": true,
-    "TH1-04_no_closed_claim": true,
-    "TH1-04_librarymarks_help": true,
-    "version_v10186": true
-  },
-  "active_qa_reconciliation": {
-    "scenarios": 85,
-    "first": "G-01",
-    "last": "G-85",
-    "md_sha256": "3b755bd86f84dec32d906511a6d8796dc82dd2d1da287162b9ffc4bcaf667290",
-    "csv_sha256": "56cace3dc14ed7b96fa01cbe835085cc10e78353f3b68bbb3155707e6a60f933"
-  },
-  "change_scope": [
-    "title marker presentation/interaction",
-    "Help/A propos",
-    "version/cache metadata"
+  "scope": [
+    "mobile event isolation for libraryMarkerPicker/title marker controls",
+    "version/cache bump only"
   ],
-  "explicitly_not_changed": [
-    "CORPUS",
-    "TEXT_LIBRARY",
-    "HOUR_LINKED_TEXTS",
-    "SPEECH_DATA",
-    "INTERNAL_SUBHEADINGS",
-    "SPEECH_END_VISUAL_BREAKS",
-    "storage schema",
-    "personal snapshot"
-  ]
+  "real_device_status": "v101.86 title gate FAILED by user report; exact v101.87 physical-device retest REQUIRED"
 }

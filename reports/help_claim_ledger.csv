@@ -1,17 +1,2 @@
-section,claim,status,evidence
-Approfondir,five title-marker colours,VERIFIED,applyLibraryMarkerColor + picker
-Approfondir,title itself can open edit picker,VERIFIED,renderLibraryReaderTitleInner
-Approfondir,recolour/remove/Undo supported,VERIFIED,runtime functions
-Mon Espace,Lectures marquées exists,VERIFIED,showEspaceView
-Mon Espace,Reprendre/Ouvrir au début/Effacer position controls exist,VERIFIED,resume panel markup
-Backup,JSON includes libraryMarks,VERIFIED,buildPersonalDataExport
-Journal,Markdown includes Lectures marquées,VERIFIED,buildHumanReadableJournal
-Platform,Samsung paragraph mode documented and exists,VERIFIED,runtime Android mode
-Platform,iPhone/iPad exact selection help is consistent,VERIFIED,selection runtime
-Prières,Prières & compléments destination exists,VERIFIED,settings route
-Update,manual update check exists,VERIFIED,manualUpdateCheck
-Update,Actualiser path exists,VERIFIED,update banner/runtime
-Direct words,speaker search/filter exists,VERIFIED,search/SPEECH_DATA
-Repères,speaker/source badges controlled by Repères,VERIFIED,runtime Repères
-About,source edition derives from CORPUS,VERIFIED,CORPUS.source_edition
-About,closed editorial-review claim removed,VERIFIED,negative string scan
+claim,status,evidence
+Title marker help remains current,PASS,Semantics unchanged; event isolation only

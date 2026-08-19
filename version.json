@@ -1,7 +1,7 @@
 {
-  "app_version": "v101.86",
-  "evidence_stage": "24H-TITLE-HELP-TH1-R2-AUDIT-RECONCILED",
+  "app_version": "v101.87",
+  "evidence_stage": "T87-R1",
   "build_date": "2026-08-19",
-  "status": "PREPUBLIC_TITLE_HELP_R2_AUDIT_RECONCILED_EXTERNAL_GATES_PENDING",
-  "real_device_status": "Static/browser/package validation only until final audits pass; exact v101.86 iPhone/iPad/Samsung, installed-PWA/offline/live-origin, assistive-technology and rollback certification remain NOT_TESTED."
+  "status": "PREPUBLIC_TITLE_REAL_DEVICE_EVENT_ISOLATION_EXTERNAL_RETEST_PENDING",
+  "real_device_status": "v101.86 title highlighting failed on user device; exact v101.87 physical-device title retest required."
 }
