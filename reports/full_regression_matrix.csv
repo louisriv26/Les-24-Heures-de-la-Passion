@@ -1,61 +1,77 @@
-test_id,category,test,status,evidence
-R001,pass1,R3 baseline ZIP hash,PASS,98852b3e347d0754fbf48c42c356e88bcb41301527f9a43308f73f00e7caf522
-R002,pass1,runtime HTML frozen from R3,PASS,c43ff8934c12b24668c9c0cf55ebb12a9eb6ecd8ed265e68e4d78aaf0fd86050
-R003,pass1,governing executed build + independent auditor scripts packaged,PASS,"[""L24H_v10185_USER_FEEDBACK_CORRECTIVE_HARDGATED_SCRIPT_2026-08-18.md"", ""l24h_v10185_r4_audit_reconciliation_build.py"", ""l24h_v10185_r4_final_reopen_audit.py"", ""l24h_v10185_r4_independent_four_pass_audit.py"", ""l24h_v10185_r4_independent_reopen_audit.py""]"
-R004,pass1,independent four-pass auditor hash binding,PASS,"{""declared"": ""ae19f22b1bb40180a8d0f5b91d67f65c8d85ff7d74f192ba68ea027184310b8a"", ""actual"": ""ae19f22b1bb40180a8d0f5b91d67f65c8d85ff7d74f192ba68ea027184310b8a""}"
-R005,pass1,R3 runtime structure unchanged CORPUS,PASS,54f4ff0508b055bbe9e5dad6286e97e49cb796203b0fbda7c2eb539e7e1169b0
-R006,pass1,R3 runtime structure unchanged TEXT_LIBRARY,PASS,3c9042f09757def35f312e08b1008a0c439b8ff416210cf20a5f0a9480fd37cb
-R007,pass1,R3 runtime structure unchanged HOUR_LINKED_TEXTS,PASS,37fe7b5c2d2ac15489ae84e72028283197419320a7566e6b9e6e62a0cc021918
-R008,pass1,R3 runtime structure unchanged SPEECH_DATA,PASS,4b6565f5646ba6431381dd4c28505bbdb3cae3699066fc0a115fa6b88ed144a4
-R009,pass1,R3 runtime structure unchanged INTERNAL_SUBHEADINGS,PASS,31c84fcafef360b7e61392ffa99679960b4fc43d5a398a216832b77e942de5a3
-R010,pass1,R3 runtime structure unchanged SPEECH_END_VISUAL_BREAKS,PASS,71a6a85871df5c3416cab201e9814c9a7a1811b50215bf1df3498cedb5b07d33
-R011,pass1,APP_VERSION/schema/snapshot unchanged,PASS,v101.85 / 8 / 5
-R012,pass2,JavaScript syntax,PASS,node --check PASS
-R013,pass2,service worker syntax,PASS,node --check PASS
-R014,pass2,actual render target/speech validation,PASS,"{""targets"": 4579, ""speech_targets"": 375, ""segments"": 381, ""errors"": []}"
-R015,pass2,visual break validity / no midword split,PASS,[]
-R016,pass2,24 Hours exact count,PASS,24
-R017,pass2,paragraph IDs unique and order preserved,PASS,"{""count"": 1302, ""unique"": 1302, ""order_equal"": true}"
-R018,pass2,embedded runtime JSON parse,PASS,"{""CORPUS"": true, ""TEXT_LIBRARY"": true, ""HOUR_LINKED_TEXTS"": true, ""SPEECH_DATA"": true, ""INTERNAL_SUBHEADINGS"": true, ""SPEECH_END_VISUAL_BREAKS"": true}"
-R019,pass2,adversarial Chromium runtime scenarios,PASS,"{""tests"": 30, ""failures"": []}"
-R020,runtime,identity tuple,PASS,v101.85|8|5
-R021,runtime,invalid library mark colour rejected,PASS,invalid orange -> empty
-R022,runtime,invalid library mark ID rejected,PASS,invalid id -> empty
-R023,runtime,prototype pollution rejected,PASS,"{""keys"": [], ""polluted"": false}"
-R024,runtime,nested dangerous keys rejected,PASS,"{""keys"": [], ""polluted"": false}"
-R025,runtime,title button semantics,PASS,"{""label"": ""Surligner le titre"", ""aria_pressed"": ""false""}"
-R026,runtime,picker semantics and initial focus,PASS,"{""role"": ""dialog"", ""label"": ""Surligner le titre d’une lecture"", ""focus"": ""Jaune""}"
-R027,runtime,picker Escape focus return,PASS,libraryTitleMarkBtn
-R028,runtime,title colour yellow,PASS,"{""stored"": ""yellow"", ""class"": ""reader-title library-title-mark-yellow""}"
-R029,runtime,title colour blue,PASS,"{""stored"": ""blue"", ""class"": ""reader-title library-title-mark-blue""}"
-R030,runtime,title colour green,PASS,"{""stored"": ""green"", ""class"": ""reader-title library-title-mark-green""}"
-R031,runtime,title colour purple,PASS,"{""stored"": ""purple"", ""class"": ""reader-title library-title-mark-purple""}"
-R032,runtime,title colour pink,PASS,"{""stored"": ""pink"", ""class"": ""reader-title library-title-mark-pink""}"
-R033,runtime,body highlights remain independent,PASS,{}
-R034,runtime,canonical snapshot stores libraryMarks,PASS,"{""snapshot_version"":5,""schema_version"":8,""notes"":{},""textHighlights"":{},""libraryMarks"":{""PASSION24.TEXT.HOW_TO_PRACTICE"":{""color"":""pink"",""created_at"":""<RUNTIME_TIMESTAMP>"",""up"
-R035,runtime,reload restores title mark,PASS,pink
-R036,runtime,current export includes mark,PASS,"{""PASSION24.TEXT.HOW_TO_PRACTICE"": {""color"": ""pink"", ""created_at"": ""<RUNTIME_TIMESTAMP>"", ""updated_at"": ""<RUNTIME_TIMESTAMP>""}}"
-R037,runtime,current backup roundtrip,PASS,"{""PASSION24.TEXT.HOW_TO_PRACTICE"": {""color"": ""pink"", ""created_at"": ""<RUNTIME_TIMESTAMP>"", ""updated_at"": ""<RUNTIME_TIMESTAMP>""}}"
-R038,runtime,schema7 migration preserves prior fields,PASS,"{""marks"": {}, ""read"": [2, 9], ""notes"": [""PASSION24.HOUR.15.P014""]}"
-R039,runtime,dangerous backup rejected,PASS,true
-R040,runtime,remove and Undo exact restoration,PASS,restored pink
-R041,runtime,Mon Espace marked reading accessibility,PASS,Retirer le surlignage du titre : Comment pratiquer les Heures
-R042,runtime,marked reading opens at top,PASS,0
-R043,runtime,H15 runtime search resolves P014,PASS,"{""text"": ""1 résultat pour « humilié par ton silence »\n15E HEURE — JÉSUS EST DEVANT PILATE, PUIS DEVANT HÉRODEHEURE\n…s curiosités ne sont pas satisfaites, et en se sentant humilié par ton silence,"", ""id"": true}"
-R044,runtime,H15 stable IDs accepted,PASS,true
-R045,runtime,H15 approved runtime continuation,PASS,"Il est irrité parce que ses curiosités ne sont pas satisfaites, et en se sentant humilié par ton silence, / il proclame devant tous que Tu es un fou. Il ordonne que Tu sois trait"
-R046,runtime,H17 contiguous et + narration break,PASS,"{""breaks"": 1, ""text"": ""Va chez tous les cœurs et, en les piquant, fais-en sortir toutes les fumées d’orgueil et la pourriture qu’ils contiennent, et constitue-Moi Roi de tous. » \nMon Amour, je Te prie de me piquer les oreilles de tes épines, a""}"
-R047,runtime,existing note sanitizer valid record,PASS,ok
-R048,runtime,existing note sanitizer dangerous-key rejection,PASS,0
-R049,runtime,existing text-highlight sanitizer path present,PASS,true
-R050,external,PHYSICAL-IPHONE,NOT_TESTED,Requires exact R4 physical/installed/live/AT/rollback evidence; not inferred from Chromium/static checks
-R051,external,PHYSICAL-IPAD,NOT_TESTED,Requires exact R4 physical/installed/live/AT/rollback evidence; not inferred from Chromium/static checks
-R052,external,PHYSICAL-SAMSUNG,NOT_TESTED,Requires exact R4 physical/installed/live/AT/rollback evidence; not inferred from Chromium/static checks
-R053,external,PWA-MIGRATION-OFFLINE,NOT_TESTED,Requires exact R4 physical/installed/live/AT/rollback evidence; not inferred from Chromium/static checks
-R054,external,H6-IOS-OVERSCROLL,NOT_TESTED,Requires exact R4 physical/installed/live/AT/rollback evidence; not inferred from Chromium/static checks
-R055,external,VOICEOVER,NOT_TESTED,Requires exact R4 physical/installed/live/AT/rollback evidence; not inferred from Chromium/static checks
-R056,external,TALKBACK,NOT_TESTED,Requires exact R4 physical/installed/live/AT/rollback evidence; not inferred from Chromium/static checks
-R057,external,NVDA,NOT_TESTED,Requires exact R4 physical/installed/live/AT/rollback evidence; not inferred from Chromium/static checks
-R058,external,CONSTRAINED-PERFORMANCE,NOT_TESTED,Requires exact R4 physical/installed/live/AT/rollback evidence; not inferred from Chromium/static checks
-R059,external,LIVE-V10185-BYTE-BINDING,NOT_TESTED,Requires exact R4 physical/installed/live/AT/rollback evidence; not inferred from Chromium/static checks
-R060,external,VERIFIED-ROLLBACK,NOT_TESTED,Requires exact R4 physical/installed/live/AT/rollback evidence; not inferred from Chromium/static checks
+test_id,status,evidence
+P1-runtime-twins,PASS,dd9476f9bb56a2bd344e29a881f9c21666a2844f08175b27a693168449b3d49c
+P1-version,PASS,{}
+P1-schema-snapshot,PASS,{}
+P1-protected,PASS,"{""CORPUS"": {""count"": 8, ""sha256"": ""54f4ff0508b055bbe9e5dad6286e97e49cb796203b0fbda7c2eb539e7e1169b0""}, ""HOUR_LINKED_TEXTS"": {""count"": 24, ""sha256"": ""37fe7b5c2d2ac15489ae84e72028283197419320a7566e6b9e6e62a0cc021918""}, ""INTERNAL_SUBHEADINGS"": {""count"": 30, ""sha256"": ""31c84fcafef360b7e61392ffa99679960b4fc43d5a398a216832b77e942de5a3""}, ""SPEECH_DATA"": {""count"": 375, ""sha256"": ""4b6565f5646ba6431381dd4c28505bbdb3cae3699066fc0a115fa6b88ed144a4""}, ""SPEECH_END_VISUAL_BREAKS"": {""count"": 49, ""sha256"": ""71a6a85871df5c3416cab201e9814c9a7a1811b50215bf1df3498cedb5b07d33""}, ""TEXT_LIBRARY"": {""count"": 40, ""sha256"": ""3c9042f09757def35f312e08b1008a0c439b8ff416210cf20a5f0a9480fd37cb""}}"
+P1-script-provenance,PASS,"{""build_script"": ""l24h_v10186_title_help_r2_build.py"", ""build_script_sha256"": ""d78da7765692280a689dd84a6dc9b2ce63f217c1f5eb587d45e067dd036bba90"", ""final_reopen_auditor"": ""l24h_v10186_r2_final_reopen_audit.py"", ""final_reopen_auditor_sha256"": ""339923efeb9c0cfda5ad544159625beb71a8cd8ff28b8152d8574616050670b3"", ""governing_script"": ""L24H_v10186_TH1_R2_FOUR_PASS_RECONCILIATION_SCRIPT_2026-08-19.md"", ""governing_script_sha256"": ""cebca0d5cc1c4f35b68a0ab2d5e4f9f874be9f8ec7100bc9eec95e9f3176f21c"", ""independent_four_pass_auditor"": ""l24h_v10186_r2_independent_four_pass_audit.py"", ""independent_four_pass_auditor_sha256"": ""f7f9037be3bd344a80691f41b2b402563ca282e7a3a988e5c792312989f069e1"", ""independent_reopen_auditor"": ""l24h_v10186_r2_independent_reopen_audit.py"", ""independent_reopen_auditor_sha256"": ""c2e7d00b890a9ba7b7824216498860b60e7fa791842a20cfe986ebe786bfc5d3"", ""runtime_stage_script"": ""L24H_v10186_STAGE_TITLE_HELP_HARDGATED_SCRIPT_2026-08-19.md"", ""runtime_stage_script_sha256"": ""09e028f448e009d3c51908f2beda87feb13e80425b9816e0b327a6850d59dee5""}"
+P1-active-qa-current,PASS,"{""first"": ""G-01"", ""last"": ""G-85"", ""md_ids"": 85, ""ok"": true, ""required"": {""cache"": true, ""candidate"": true, ""header"": true, ""help_truth"": true, ""parity"": true, ""snapshot_future"": true, ""source"": true, ""th1_rows"": true, ""version"": true}, ""rows"": 85, ""stale"": []}"
+P1-active-qa-parity,PASS,"{""first"": ""G-01"", ""last"": ""G-85"", ""md_ids"": 85, ""ok"": true, ""required"": {""cache"": true, ""candidate"": true, ""header"": true, ""help_truth"": true, ""parity"": true, ""snapshot_future"": true, ""source"": true, ""th1_rows"": true, ""version"": true}, ""rows"": 85, ""stale"": []}"
+P2-js-syntax,PASS,PASS
+P2-sw-syntax,PASS,PASS
+P2-speech-targets,PASS,"{""errors"": [], ""segments"": 381, ""targets"": 1839}"
+P2-browser-all,PASS,"{""fail"": [], ""rows"": 37}"
+P2-help-truth,PASS,"{""fail"": [], ""rows"": 16}"
+TITLE-01-unmarked,PASS,"{""item"": ""PASSION24.TEXT.SHARED_T09_1910_07_04_AGONY_CROSS_LAST_BREATH""}"
+TITLE-COLOR-yellow,PASS,"{""btn"": ""Modifier / retirer le surlignage"", ""h2Bg"": ""rgba(0, 0, 0, 0)"", ""h2Class"": ""reader-title"", ""mark"": true, ""markBg"": ""rgb(254, 249, 195)"", ""markClass"": ""library-title-inline-mark hl hl-yellow"", ""store"": ""yellow""}"
+TITLE-COLOR-blue,PASS,"{""btn"": ""Modifier / retirer le surlignage"", ""h2Bg"": ""rgba(0, 0, 0, 0)"", ""h2Class"": ""reader-title"", ""mark"": true, ""markBg"": ""rgb(219, 234, 254)"", ""markClass"": ""library-title-inline-mark hl hl-blue"", ""store"": ""blue""}"
+TITLE-COLOR-green,PASS,"{""btn"": ""Modifier / retirer le surlignage"", ""h2Bg"": ""rgba(0, 0, 0, 0)"", ""h2Class"": ""reader-title"", ""mark"": true, ""markBg"": ""rgb(220, 252, 231)"", ""markClass"": ""library-title-inline-mark hl hl-green"", ""store"": ""green""}"
+TITLE-COLOR-purple,PASS,"{""btn"": ""Modifier / retirer le surlignage"", ""h2Bg"": ""rgba(0, 0, 0, 0)"", ""h2Class"": ""reader-title"", ""mark"": true, ""markBg"": ""rgb(237, 233, 254)"", ""markClass"": ""library-title-inline-mark hl hl-purple"", ""store"": ""purple""}"
+TITLE-COLOR-pink,PASS,"{""btn"": ""Modifier / retirer le surlignage"", ""h2Bg"": ""rgba(0, 0, 0, 0)"", ""h2Class"": ""reader-title"", ""mark"": true, ""markBg"": ""rgb(252, 231, 243)"", ""markClass"": ""library-title-inline-mark hl hl-pink"", ""store"": ""pink""}"
+TITLE-07-wrapped-inline,PASS,"{""font"": ""30px"", ""h2Width"": 358, ""markWidth"": 348.9375, ""rects"": 4}"
+TITLE-08-largest-font,PASS,"{""font"": ""30px"", ""h2Width"": 358, ""markWidth"": 348.9375, ""rects"": 4}"
+TITLE-09-dark-light,PASS,"{""dark"": ""rgba(185, 84, 135, 0.28)"", ""light"": ""rgb(252, 231, 243)""}"
+TITLE-10-direct-click-picker,PASS,{}
+TITLE-11-current-colour,PASS,"[""pink""]"
+TITLE-12-enter,PASS,{}
+TITLE-13-space,PASS,{}
+TITLE-14-recolour,PASS,{}
+TITLE-15-remove,PASS,{}
+TITLE-16-undo-exact,PASS,{}
+TITLE-17-reload-persist,PASS,{}
+TITLE-18-espace-present,PASS,"{""title"": ""Tome 9 — 4 juillet 1910 — Agonie au Jardin et Agonie sur la Croix""}"
+TITLE-19-espace-open-start,PASS,"{""scrollTop"": 0}"
+TITLE-20-espace-remove,PASS,{}
+TITLE-21-espace-undo,PASS,{}
+TITLE-22-json-export,PASS,"{""schema"": 8, ""snapshot"": null}"
+TITLE-23-current-import-validation,PASS,"{""color"": ""blue"", ""schema"": null}"
+TITLE-24-schema7-import,PASS,"{""color"": ""blue"", ""n"": 1}"
+TITLE-25-journal,PASS,"{""chars"": 312}"
+TITLE-26-sanitizers,PASS,"{""badColor"": 0, ""badId"": 0, ""polluted"": false, ""proto"": 0}"
+HELP-01-anchors,PASS,"{""help-about"": true, ""help-actions"": true, ""help-backup"": true, ""help-espace"": true, ""help-reading"": true, ""help-samsung"": true, ""help-search"": true, ""help-support"": true, ""help-title-mark"": true, ""help-update"": true}"
+HELP-02-quick-nav,PASS,"{""buttons"": 9}"
+HELP-03-jump-focus,PASS,help-title-mark
+HELP-04-required-content,PASS,"{""Effacer cette position"": true, ""GE / Lumen Luminis / septembre 2021"": true, ""Lectures marquées"": true, ""Modifier / retirer le surlignage"": true, ""Ouvrir au début"": true, ""Prières & compléments"": true, ""Signaler un problème de texte"": true, ""fermez complètement l’app"": true}"
+HELP-05-no-closed-review,PASS,{}
+HELP-06-escape,PASS,{}
+REG-H15,PASS,"[""Il est irrité parce que ses curiosités ne sont pas satisfaites, et en se sentant humilié par ton silence,"", ""il proclame devant tous que Tu es un fou. Il ordonne que Tu sois traité comme un fou. Ainsi il Te fait revêtir d’un vêtement blanc et il Te met entre les mains des soldats, afin qu’ils Te bafouent le plus possible.""]"
+REG-H17,PASS,"{""b"": 1, ""t"": ""Va chez tous les cœurs et, en les piquant, fais-en sortir toutes les fumées d’orgueil et la pourriture qu’ils contiennent, et constitue-Moi Roi de tous. » \nMon Amour, je Te prie de me piquer les oreilles de tes épines, afin qu’elles puissent n’entendre que ta Voix, mes yeux pour qu’ils ne regardent que Toi, ma bouche pour que ma langue reste muette par rapport à tout ce qui pourrait T’offenser et libre pour Te louer et Te bénir en toutes choses.""}"
+REG-body-highlight-functions,PASS,"{""body"": true, ""samsung"": true, ""schema"": 8, ""snapshot"": 5, ""version"": ""v101.86""}"
+REG-samsung-model-preserved,PASS,"{""body"": true, ""samsung"": true, ""schema"": 8, ""snapshot"": 5, ""version"": ""v101.86""}"
+REG-schema-snapshot-version,PASS,"{""body"": true, ""samsung"": true, ""schema"": 8, ""snapshot"": 5, ""version"": ""v101.86""}"
+HELPCLAIM-50,PASS,five title-marker colours | applyLibraryMarkerColor + picker
+HELPCLAIM-51,PASS,title itself can open edit picker | renderLibraryReaderTitleInner
+HELPCLAIM-52,PASS,recolour/remove/Undo supported | runtime functions
+HELPCLAIM-53,PASS,Lectures marquées exists | showEspaceView
+HELPCLAIM-54,PASS,Reprendre/Ouvrir au début/Effacer position controls exist | resume panel markup
+HELPCLAIM-55,PASS,JSON includes libraryMarks | buildPersonalDataExport
+HELPCLAIM-56,PASS,Markdown includes Lectures marquées | buildHumanReadableJournal
+HELPCLAIM-57,PASS,Samsung paragraph mode documented and exists | runtime Android mode
+HELPCLAIM-58,PASS,iPhone/iPad exact selection help is consistent | selection runtime
+HELPCLAIM-59,PASS,Prières & compléments destination exists | settings route
+HELPCLAIM-60,PASS,manual update check exists | manualUpdateCheck
+HELPCLAIM-61,PASS,Actualiser path exists | update banner/runtime
+HELPCLAIM-62,PASS,speaker search/filter exists | search/SPEECH_DATA
+HELPCLAIM-63,PASS,speaker/source badges controlled by Repères | runtime Repères
+HELPCLAIM-64,PASS,source edition derives from CORPUS | CORPUS.source_edition
+HELPCLAIM-65,PASS,closed editorial-review claim removed | negative string scan
+PHYSICAL-IPHONE,NOT_TESTED,External physical-device/PWA/AT/live/rollback evidence not available in this execution.
+PHYSICAL-IPAD,NOT_TESTED,External physical-device/PWA/AT/live/rollback evidence not available in this execution.
+PHYSICAL-SAMSUNG,NOT_TESTED,External physical-device/PWA/AT/live/rollback evidence not available in this execution.
+PWA-MIGRATION-OFFLINE,NOT_TESTED,External physical-device/PWA/AT/live/rollback evidence not available in this execution.
+H6-IOS-OVERSCROLL,NOT_TESTED,External physical-device/PWA/AT/live/rollback evidence not available in this execution.
+VOICEOVER,NOT_TESTED,External physical-device/PWA/AT/live/rollback evidence not available in this execution.
+TALKBACK,NOT_TESTED,External physical-device/PWA/AT/live/rollback evidence not available in this execution.
+NVDA,NOT_TESTED,External physical-device/PWA/AT/live/rollback evidence not available in this execution.
+CONSTRAINED-PERFORMANCE,NOT_TESTED,External physical-device/PWA/AT/live/rollback evidence not available in this execution.
+LIVE-V10186-BYTE-BINDING,NOT_TESTED,External physical-device/PWA/AT/live/rollback evidence not available in this execution.
+VERIFIED-ROLLBACK,NOT_TESTED,External physical-device/PWA/AT/live/rollback evidence not available in this execution.

@@ -1,10 +1,10 @@
 {
-  "app_version": "v101.85",
-  "audit_revision": "R4",
-  "runtime_html_sha256": "c43ff8934c12b24668c9c0cf55ebb12a9eb6ecd8ed265e68e4d78aaf0fd86050",
-  "final_package_reopen_gate": "PASS",
-  "independent_reopen_gate": "PASS",
-  "final_status": "LIMITED_PASS",
+  "app_version": "v101.86",
+  "stage": "TH1-R2",
+  "prepackage_four_pass_gate": "PASS",
+  "final_package_reopen_gate": "REQUIRED_POSTPACKAGE",
+  "independent_reopen_gate": "REQUIRED_POSTPACKAGE",
+  "final_status": "PENDING_POSTPACKAGE_AUDITS",
   "public_release_ready": false,
   "external_gates_not_tested": [
     "PHYSICAL-IPHONE",
@@ -16,9 +16,7 @@
     "TALKBACK",
     "NVDA",
     "CONSTRAINED-PERFORMANCE",
-    "LIVE-V10185-BYTE-BINDING",
+    "LIVE-V10186-BYTE-BINDING",
     "VERIFIED-ROLLBACK"
-  ],
-  "decision_rule": "This lock becomes valid only if the separately executed primary and independent reopened-ZIP auditors both reproduce PASS on the immutable R4 ZIP. Any failure requires replacement with exact failure status before completion.",
-  "postpackage_evidence_location": "external audit outputs bound to immutable ZIP SHA-256"
+  ]
 }

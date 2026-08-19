@@ -1,3 +1,3 @@
-# Nested ZIP consistency — R4
+# Nested ZIP consistency
 
-No nested ZIP is present in the R4 staging/package tree; the nested-deploy consistency gate is not applicable.
+No nested ZIP is present in the staging tree; nested package comparison is not applicable.

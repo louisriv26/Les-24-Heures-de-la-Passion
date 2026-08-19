@@ -1,7 +1,7 @@
 {
-  "app_version": "v101.85",
-  "evidence_stage": "24H-USER-FEEDBACK-CORRECTIVE-R4-AUDIT-RECONCILED",
-  "build_date": "2026-08-18",
-  "status": "PREPUBLIC_USER_FEEDBACK_CORRECTED_AUDIT_RECONCILED_EXTERNAL_GATES_PENDING",
-  "real_device_status": "Static/browser/package validation passed for this candidate only if final audits say so; exact v101.85 iPhone/iPad/Samsung, installed-PWA/offline/live-origin, assistive-technology and rollback certification remain NOT_TESTED until separately recorded."
+  "app_version": "v101.86",
+  "evidence_stage": "24H-TITLE-HELP-TH1-R2-AUDIT-RECONCILED",
+  "build_date": "2026-08-19",
+  "status": "PREPUBLIC_TITLE_HELP_R2_AUDIT_RECONCILED_EXTERNAL_GATES_PENDING",
+  "real_device_status": "Static/browser/package validation only until final audits pass; exact v101.86 iPhone/iPad/Samsung, installed-PWA/offline/live-origin, assistive-technology and rollback certification remain NOT_TESTED."
 }

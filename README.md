@@ -1,6 +1,24 @@
 # Luisa — 24 Heures de la Passion
 
-Version: `v101.85`
+Version: `v101.86`
+
+## v101.86 — TH1-R2 audit reconciliation (19 August 2026)
+
+- Runtime HTML remains byte-identical to TH1-R1.
+- Active physical-device/live QA checklist and results template are reconciled to v101.86/schema 8/snapshot 5/current cache/title-highlight Help truth.
+- Pass 4 now treats stale current-facing claims inside active QA artifacts as blocking rather than historical provenance.
+- Five explicit TH1 title/help physical QA scenarios are added.
+
+
+## v101.86 — Stage TH1 title-highlight UX + Aide/À propos reconciliation (19 August 2026)
+
+- Approfondir title markers keep the stable `libraryMarks` whole-reading model but now render with the same inline `mark.hl-*` visual treatment as body highlights.
+- Marked titles are directly keyboard/touch editable; current colour is exposed in the picker; recolour/remove/Undo remain durable.
+- Aide/À propos is reconciled to current runtime truth, adds task-oriented jumps, Lectures marquées/backup/journal/source-edition/platform/update guidance, and removes the unsupported “editorial review closed” statement.
+- Storage schema remains 8; personal snapshot remains 5; all protected devotional/corpus/speech structures are unchanged.
+- Physical-device/PWA/AT/live/rollback gates remain external NOT_TESTED.
+
+## v101.85 — superseded baseline lineage
 
 ## v101.85 — R4 audit-evidence reconciliation (18 August 2026)
 

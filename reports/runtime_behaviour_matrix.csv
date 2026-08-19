@@ -1,31 +1,38 @@
-test_id,status,test,evidence
-B001,PASS,identity tuple,v101.85|8|5
-B002,PASS,invalid library mark colour rejected,invalid orange -> empty
-B003,PASS,invalid library mark ID rejected,invalid id -> empty
-B004,PASS,prototype pollution rejected,"{""keys"": [], ""polluted"": false}"
-B005,PASS,nested dangerous keys rejected,"{""keys"": [], ""polluted"": false}"
-B006,PASS,title button semantics,"{""label"": ""Surligner le titre"", ""aria_pressed"": ""false""}"
-B007,PASS,picker semantics and initial focus,"{""role"": ""dialog"", ""label"": ""Surligner le titre d’une lecture"", ""focus"": ""Jaune""}"
-B008,PASS,picker Escape focus return,libraryTitleMarkBtn
-B009,PASS,title colour yellow,"{""stored"": ""yellow"", ""class"": ""reader-title library-title-mark-yellow""}"
-B010,PASS,title colour blue,"{""stored"": ""blue"", ""class"": ""reader-title library-title-mark-blue""}"
-B011,PASS,title colour green,"{""stored"": ""green"", ""class"": ""reader-title library-title-mark-green""}"
-B012,PASS,title colour purple,"{""stored"": ""purple"", ""class"": ""reader-title library-title-mark-purple""}"
-B013,PASS,title colour pink,"{""stored"": ""pink"", ""class"": ""reader-title library-title-mark-pink""}"
-B014,PASS,body highlights remain independent,{}
-B015,PASS,canonical snapshot stores libraryMarks,"{""snapshot_version"":5,""schema_version"":8,""notes"":{},""textHighlights"":{},""libraryMarks"":{""PASSION24.TEXT.HOW_TO_PRACTICE"":{""color"":""pink"",""created_at"":""<RUNTIME_TIMESTAMP>"",""up"
-B016,PASS,reload restores title mark,pink
-B017,PASS,current export includes mark,"{""PASSION24.TEXT.HOW_TO_PRACTICE"": {""color"": ""pink"", ""created_at"": ""<RUNTIME_TIMESTAMP>"", ""updated_at"": ""<RUNTIME_TIMESTAMP>""}}"
-B018,PASS,current backup roundtrip,"{""PASSION24.TEXT.HOW_TO_PRACTICE"": {""color"": ""pink"", ""created_at"": ""<RUNTIME_TIMESTAMP>"", ""updated_at"": ""<RUNTIME_TIMESTAMP>""}}"
-B019,PASS,schema7 migration preserves prior fields,"{""marks"": {}, ""read"": [2, 9], ""notes"": [""PASSION24.HOUR.15.P014""]}"
-B020,PASS,dangerous backup rejected,true
-B021,PASS,remove and Undo exact restoration,restored pink
-B022,PASS,Mon Espace marked reading accessibility,Retirer le surlignage du titre : Comment pratiquer les Heures
-B023,PASS,marked reading opens at top,0
-B024,PASS,H15 runtime search resolves P014,"{""text"": ""1 résultat pour « humilié par ton silence »\n15E HEURE — JÉSUS EST DEVANT PILATE, PUIS DEVANT HÉRODEHEURE\n…s curiosités ne sont pas satisfaites, et en se sentant humilié par ton silence,"", ""id"": true}"
-B025,PASS,H15 stable IDs accepted,true
-B026,PASS,H15 approved runtime continuation,"Il est irrité parce que ses curiosités ne sont pas satisfaites, et en se sentant humilié par ton silence, / il proclame devant tous que Tu es un fou. Il ordonne que Tu sois trait"
-B027,PASS,H17 contiguous et + narration break,"{""breaks"": 1, ""text"": ""Va chez tous les cœurs et, en les piquant, fais-en sortir toutes les fumées d’orgueil et la pourriture qu’ils contiennent, et constitue-Moi Roi de tous. » \nMon Amour, je Te prie de me piquer les oreilles de tes épines, a""}"
-B028,PASS,existing note sanitizer valid record,ok
-B029,PASS,existing note sanitizer dangerous-key rejection,0
-B030,PASS,existing text-highlight sanitizer path present,true
+test_id,status,evidence_type,evidence
+TITLE-01-unmarked,PASS,CHROMIUM,"{""item"": ""PASSION24.TEXT.SHARED_T09_1910_07_04_AGONY_CROSS_LAST_BREATH""}"
+TITLE-COLOR-yellow,PASS,CHROMIUM,"{""btn"": ""Modifier / retirer le surlignage"", ""h2Bg"": ""rgba(0, 0, 0, 0)"", ""h2Class"": ""reader-title"", ""mark"": true, ""markBg"": ""rgb(254, 249, 195)"", ""markClass"": ""library-title-inline-mark hl hl-yellow"", ""store"": ""yellow""}"
+TITLE-COLOR-blue,PASS,CHROMIUM,"{""btn"": ""Modifier / retirer le surlignage"", ""h2Bg"": ""rgba(0, 0, 0, 0)"", ""h2Class"": ""reader-title"", ""mark"": true, ""markBg"": ""rgb(219, 234, 254)"", ""markClass"": ""library-title-inline-mark hl hl-blue"", ""store"": ""blue""}"
+TITLE-COLOR-green,PASS,CHROMIUM,"{""btn"": ""Modifier / retirer le surlignage"", ""h2Bg"": ""rgba(0, 0, 0, 0)"", ""h2Class"": ""reader-title"", ""mark"": true, ""markBg"": ""rgb(220, 252, 231)"", ""markClass"": ""library-title-inline-mark hl hl-green"", ""store"": ""green""}"
+TITLE-COLOR-purple,PASS,CHROMIUM,"{""btn"": ""Modifier / retirer le surlignage"", ""h2Bg"": ""rgba(0, 0, 0, 0)"", ""h2Class"": ""reader-title"", ""mark"": true, ""markBg"": ""rgb(237, 233, 254)"", ""markClass"": ""library-title-inline-mark hl hl-purple"", ""store"": ""purple""}"
+TITLE-COLOR-pink,PASS,CHROMIUM,"{""btn"": ""Modifier / retirer le surlignage"", ""h2Bg"": ""rgba(0, 0, 0, 0)"", ""h2Class"": ""reader-title"", ""mark"": true, ""markBg"": ""rgb(252, 231, 243)"", ""markClass"": ""library-title-inline-mark hl hl-pink"", ""store"": ""pink""}"
+TITLE-07-wrapped-inline,PASS,CHROMIUM,"{""font"": ""30px"", ""h2Width"": 358, ""markWidth"": 348.9375, ""rects"": 4}"
+TITLE-08-largest-font,PASS,CHROMIUM,"{""font"": ""30px"", ""h2Width"": 358, ""markWidth"": 348.9375, ""rects"": 4}"
+TITLE-09-dark-light,PASS,CHROMIUM,"{""dark"": ""rgba(185, 84, 135, 0.28)"", ""light"": ""rgb(252, 231, 243)""}"
+TITLE-10-direct-click-picker,PASS,CHROMIUM,{}
+TITLE-11-current-colour,PASS,CHROMIUM,"[""pink""]"
+TITLE-12-enter,PASS,CHROMIUM,{}
+TITLE-13-space,PASS,CHROMIUM,{}
+TITLE-14-recolour,PASS,CHROMIUM,{}
+TITLE-15-remove,PASS,CHROMIUM,{}
+TITLE-16-undo-exact,PASS,CHROMIUM,{}
+TITLE-17-reload-persist,PASS,CHROMIUM,{}
+TITLE-18-espace-present,PASS,CHROMIUM,"{""title"": ""Tome 9 — 4 juillet 1910 — Agonie au Jardin et Agonie sur la Croix""}"
+TITLE-19-espace-open-start,PASS,CHROMIUM,"{""scrollTop"": 0}"
+TITLE-20-espace-remove,PASS,CHROMIUM,{}
+TITLE-21-espace-undo,PASS,CHROMIUM,{}
+TITLE-22-json-export,PASS,CHROMIUM,"{""schema"": 8, ""snapshot"": null}"
+TITLE-23-current-import-validation,PASS,CHROMIUM,"{""color"": ""blue"", ""schema"": null}"
+TITLE-24-schema7-import,PASS,CHROMIUM,"{""color"": ""blue"", ""n"": 1}"
+TITLE-25-journal,PASS,CHROMIUM,"{""chars"": 312}"
+TITLE-26-sanitizers,PASS,CHROMIUM,"{""badColor"": 0, ""badId"": 0, ""polluted"": false, ""proto"": 0}"
+HELP-01-anchors,PASS,CHROMIUM,"{""help-about"": true, ""help-actions"": true, ""help-backup"": true, ""help-espace"": true, ""help-reading"": true, ""help-samsung"": true, ""help-search"": true, ""help-support"": true, ""help-title-mark"": true, ""help-update"": true}"
+HELP-02-quick-nav,PASS,CHROMIUM,"{""buttons"": 9}"
+HELP-03-jump-focus,PASS,CHROMIUM,help-title-mark
+HELP-04-required-content,PASS,CHROMIUM,"{""Effacer cette position"": true, ""GE / Lumen Luminis / septembre 2021"": true, ""Lectures marquées"": true, ""Modifier / retirer le surlignage"": true, ""Ouvrir au début"": true, ""Prières & compléments"": true, ""Signaler un problème de texte"": true, ""fermez complètement l’app"": true}"
+HELP-05-no-closed-review,PASS,CHROMIUM,{}
+HELP-06-escape,PASS,CHROMIUM,{}
+REG-H15,PASS,CHROMIUM,"[""Il est irrité parce que ses curiosités ne sont pas satisfaites, et en se sentant humilié par ton silence,"", ""il proclame devant tous que Tu es un fou. Il ordonne que Tu sois traité comme un fou. Ainsi il Te fait revêtir d’un vêtement blanc et il Te met entre les mains des soldats, afin qu’ils Te bafouent le plus possible.""]"
+REG-H17,PASS,CHROMIUM,"{""b"": 1, ""t"": ""Va chez tous les cœurs et, en les piquant, fais-en sortir toutes les fumées d’orgueil et la pourriture qu’ils contiennent, et constitue-Moi Roi de tous. » \nMon Amour, je Te prie de me piquer les oreilles de tes épines, afin qu’elles puissent n’entendre que ta Voix, mes yeux pour qu’ils ne regardent que Toi, ma bouche pour que ma langue reste muette par rapport à tout ce qui pourrait T’offenser et libre pour Te louer et Te bénir en toutes choses.""}"
+REG-body-highlight-functions,PASS,CHROMIUM,"{""body"": true, ""samsung"": true, ""schema"": 8, ""snapshot"": 5, ""version"": ""v101.86""}"
+REG-samsung-model-preserved,PASS,CHROMIUM,"{""body"": true, ""samsung"": true, ""schema"": 8, ""snapshot"": 5, ""version"": ""v101.86""}"
+REG-schema-snapshot-version,PASS,CHROMIUM,"{""body"": true, ""samsung"": true, ""schema"": 8, ""snapshot"": 5, ""version"": ""v101.86""}"

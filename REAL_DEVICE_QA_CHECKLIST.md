@@ -1,6 +1,6 @@
-# 24H interaction closure / v101.85 — physical device, installed-PWA and live-origin checklist
+# 24H interaction closure / v101.86 TH1 — physical device, installed-PWA and live-origin checklist
 
-Use the exact v101.85 candidate bytes. Record PASS/FAIL/NOT_TESTED for every numbered scenario.
+Use the exact v101.86 TH1 candidate bytes. Record PASS/FAIL/NOT_TESTED for every numbered scenario.
 
 ## iPhone Safari / installed PWA
 1. Mid-Hour → Mon Espace → Retour restores the same reader tab, paragraph/reading position and visible/updating progress strip.
@@ -15,7 +15,7 @@ Use the exact v101.85 candidate bytes. Record PASS/FAIL/NOT_TESTED for every num
 10. Repères OFF/ON preserves passage and actions.
 11. Portrait ↔ landscape rotation preserves a usable reader.
 12. With a non-empty unsaved Note open, an available-update Actualiser action must NOT reload; the draft remains and receives focus.
-13. Existing installed build → v101.85 update preserves notes, coloured highlights, reading position and progress; obsolete legacy ◈ marks may be discarded.
+13. Existing installed build → v101.86 update preserves notes, coloured highlights, Lectures marquées, reading position and progress; obsolete legacy ◈ marks may be discarded.
 14. Offline reopen after one successful online load works.
 15. A copied deep link opens the expected Hour/paragraph.
 
@@ -43,17 +43,17 @@ Use the exact v101.85 candidate bytes. Record PASS/FAIL/NOT_TESTED for every num
 32. On-demand controls (theme, Plan, prayer close, note indicator, Approfondir back/index) remain keyboard reachable and visibly focused.
 
 ## Live GitHub Pages / installed PWA
-33. Visible version v101.85.
+33. Visible version v101.86.
 34. Service worker controls the page after activation.
-35. Cache generation is luisa-24h-v101-84.
-36. Existing install updates to v101.85 without loss of supported personal data; retired legacy ◈ marks are intentionally not preserved.
+35. Cache generation is luisa-24h-v101-86.
+36. Existing install updates to v101.86 without loss of supported personal data, including Lectures marquées; retired legacy ◈ marks are intentionally not preserved.
 37. Offline reopen succeeds after successful online load.
 38. Old app cache generations are removed only within the luisa-24h- namespace.
 39. Root/deploy bytes correspond exactly to the audited GitHub payload.
 40. Root and copied deep-link URLs reach the expected screen/target on the live origin.
 
 ## Downgrade / future-snapshot safety (machine fixture; device spot-check optional)
-41. A canonical snapshot with `snapshot_version` greater than 4 remains byte-for-byte unchanged after boot, even when legacy mirrors and the R41 marker are absent.
+41. A canonical snapshot with `snapshot_version` greater than 5 remains byte-for-byte unchanged after boot, even when legacy mirrors and the R41 marker are absent.
 42. While that future snapshot is present, Note or other durable writes must not replace it; user feedback must say the change was not saved / the newer snapshot is preserved.
 
 43. A canonical snapshot at current `snapshot_version` but future `schema_version` remains byte-for-byte unchanged after boot and attempted writes.
@@ -98,7 +98,7 @@ Use the exact v101.85 candidate bytes. Record PASS/FAIL/NOT_TESTED for every num
 
 66. Help completeness: open Aide and confirm the contextual-actions section explains Surligner, Note, Copier and Fermer; confirm a separate reference section explains Partager and Copier le lien plus privacy/cancellation semantics; confirm Note, backup JSON vs journal Markdown and unsaved-note update protection remain explained.
 
-67. Help attribution-status honesty: open Aide → Recherche and À propos du corpus; confirm it does NOT say the direct-speech review is still pending, and states that the editorial review of the current attribution layer is already closed.
+67. Help attribution-status honesty: open Aide and confirm it does not claim that direct-speech editorial review is pending or already closed; it describes identified words of Jésus, du Père et de Marie factually and retains the text-problem reporting path.
 
 68. iPad paragraph-side controls: in Méditation and Réflexions, confirm no legacy paragraph-side rail appears. Select exact text and confirm Surligner · Note · Copier · Fermer; verify Réglages → Partager / Copier le lien.
 69. Desktop regression: on a fine-pointer desktop, hover meditation/reflection paragraphs and confirm no legacy paragraph-side rail appears; exact text selection still opens Surligner · Note · Copier · Fermer.
@@ -107,14 +107,19 @@ Use the exact v101.85 candidate bytes. Record PASS/FAIL/NOT_TESTED for every num
 71. Mon Espace with at least one ordinary highlight and one note opens fully; highlights, notes, progression and backup controls are visible and no reader screen remains stuck underneath.
 72. Delete one note, one normal highlight, one grouped highlight and one stale highlight individually; each successful deletion offers **Annuler**, and Undo restores only that annotation without overwriting a later edit.
 73. Open **Note** from the temporary selection toolbar, then close immediately with Escape and with the close button; focus returns to the stable reading region after the toolbar disappears, never to `<body>`.
-74. Export a backup containing a highlight, import it into the same v101.85 build, and confirm the highlight still carries valid `text_hash`, `para_hash` and `paragraph_fingerprint` integrity metadata and renders at the same passage.
+74. Export a backup containing a highlight, import it into the same v101.86 build, and confirm the highlight still carries valid `text_hash`, `para_hash` and `paragraph_fingerprint` integrity metadata and renders at the same passage.
 
 
-## v101.85 user-feedback additions
+## v101.86 user-feedback and TH1 additions
 
 75. 17e Heure: `... contiennent, et constitue-Moi ...` displays without a break inside `et`; direct-speech/narration visual separation remains after the closing guillemet.
 76. 15e Heure: the visible continuation reads `... ton silence, il proclame devant tous que Tu es un fou.` while P014/P015 anchors remain usable.
 77. Approfondir: mark a reading title in each of five colours; reload; confirm persistence and independent body highlights.
 78. Mon Espace → Lectures marquées: open the mark and confirm the whole reading opens at its beginning.
 79. Remove a title mark, use Annuler, and confirm exact restoration.
-80. Export/import a v101.85 backup and confirm title marks survive; import an older schema-7/snapshot-4 backup and confirm existing data survives with no title marks invented.
+80. Export/import a v101.86 backup and confirm title marks survive; import an older schema-7/snapshot-4 backup and confirm existing data survives with no title marks invented.
+81. Approfondir title visual: on a narrow phone viewport and with a long wrapped title, marking the reading colours only the title text fragments (inline highlighter effect), not the full heading rectangle.
+82. Direct title interaction: tap/click the highlighted title itself; the colour picker opens and the current colour is visibly selected.
+83. Recolour/remove/Undo: change the title colour, remove it directly from the title picker, then use Annuler and confirm the exact previous colour returns in the reader and Mon Espace.
+84. Keyboard/accessibility: on desktop, Enter and Space on a highlighted Approfondir title open the picker; Escape closes it and focus remains usable.
+85. Aide TH1 truth: confirm the 9-action “Que voulez-vous faire ?” navigation works, the source is GE / Lumen Luminis / septembre 2021, Lectures marquées/JSON/journal/local-data/update guidance is present, and no unsupported “review pending/closed” certification claim appears.
