@@ -1,3 +1,3 @@
-# User-feedback authority — v101.88
+# User feedback authority
 
-Physical iPhone evidence proved that v101.87 did not support partial native selection of Approfondir title text. v101.88 implements exact title text as a first-class annotation target while keeping whole-reading `libraryMarks` separate as **Marquer cette lecture**. Exact v101.88 physical-iPhone confirmation remains required.
+Physical iPhone evidence remains governing. v101.88 failed exact partial title selection. v101.89 R1 added the WebKit boundary repair but has not yet been physically validated. R2 changes only manifest/evidence integrity; it does not claim the device gate passed.

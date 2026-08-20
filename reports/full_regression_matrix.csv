@@ -1,16 +1,17 @@
-gate,status,evidence
-protected_structures,PASS,6/6 hashes identical
-schema_snapshot,PASS,8/5
-exact_title_target,PASS,33 deterministic title targets
-title_native_selection,PASS,prepackage Chromium Range pipeline
-body_highlight_regression,PASS,same generic renderer/store
-libraryMarks_preserved,PASS,separate Marquer cette lecture
-PHYSICAL-IPHONE-EXACT-TITLE,NOT_TESTED,exact v101.88 physical iPhone required
-PHYSICAL-IPAD,NOT_TESTED,real device
-PHYSICAL-SAMSUNG,NOT_TESTED,real device
-PWA-MIGRATION-OFFLINE,NOT_TESTED,installed PWA/live origin
-VOICEOVER,NOT_TESTED,real AT
-TALKBACK,NOT_TESTED,real AT
-NVDA,NOT_TESTED,real AT
-LIVE-V10188-BYTE-BINDING,NOT_TESTED,live deployment
-VERIFIED-ROLLBACK,NOT_TESTED,rollback evidence
+scenario,status,evidence
+PASSION24.TEXT.PREFACE_ANNIBALE boundary matrix,PASS,"{""tt"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.PREFACE_ANNIBALE.TITLE"", ""start"": 1, ""end"": 8, ""text"": ""réface""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}, ""ht"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.PREFACE_ANNIBALE.TITLE"", ""start"": 0, ""end"": 8, ""text"": ""Préface""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}, ""th"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.PREFACE_ANNIBALE.TITLE"", ""start"": 1, ""end"": 25, ""text"": ""réface de Saint Annibale""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}, ""hh"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.PREFACE_ANNIBALE.TITLE"", ""start"": 0, ""end"": 25, ""text"": ""Préface de Saint Annibale""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}, ""ss"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.PREFACE_ANNIBALE.TITLE"", ""start"": 0, ""end"": 25, ""text"": ""Préface de Saint Annibale""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}}"
+PASSION24.TEXT.HOW_TO_PRACTICE boundary matrix,PASS,"{""tt"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.HOW_TO_PRACTICE.TITLE"", ""start"": 1, ""end"": 8, ""text"": ""omment""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}, ""ht"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.HOW_TO_PRACTICE.TITLE"", ""start"": 0, ""end"": 8, ""text"": ""Comment""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}, ""th"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.HOW_TO_PRACTICE.TITLE"", ""start"": 1, ""end"": 28, ""text"": ""omment pratiquer les Heures""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}, ""hh"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.HOW_TO_PRACTICE.TITLE"", ""start"": 0, ""end"": 28, ""text"": ""Comment pratiquer les Heures""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}, ""ss"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.HOW_TO_PRACTICE.TITLE"", ""start"": 0, ""end"": 28, ""text"": ""Comment pratiquer les Heures""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}}"
+PASSION24.TEXT.RELATED_HOUR_17 boundary matrix,PASS,"{""tt"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.RELATED_HOUR_17.TITLE"", ""start"": 1, ""end"": 8, ""text"": ""extes l""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}, ""ht"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.RELATED_HOUR_17.TITLE"", ""start"": 0, ""end"": 8, ""text"": ""Textes l""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}, ""th"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.RELATED_HOUR_17.TITLE"", ""start"": 1, ""end"": 26, ""text"": ""extes liés à la 17e Heure""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}, ""hh"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.RELATED_HOUR_17.TITLE"", ""start"": 0, ""end"": 26, ""text"": ""Textes liés à la 17e Heure""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}, ""ss"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.RELATED_HOUR_17.TITLE"", ""start"": 0, ""end"": 26, ""text"": ""Textes liés à la 17e Heure""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}}"
+library body boundary regression,PASS,"{""ok"": true, ""id"": ""PASSION24.TEXT.PREFACE_ANNIBALE.BODY.P001"", ""block"": ""PASSION24.TEXT.PREFACE_ANNIBALE.BODY.P001""}"
+hour body boundary regression,PASS,"{""ok"": true, ""id"": ""PASSION24.HOUR.01.P001"", ""block"": ""PASSION24.HOUR.01.P001""}"
+marker button rejected,PASS,"{""ok"": false, ""p"": null}"
+REAL_DEVICE_G-01,NOT_TESTED,Requires exact v101.89 real-device execution
+REAL_DEVICE_G-02,NOT_TESTED,Requires exact v101.89 real-device execution
+REAL_DEVICE_G-03,NOT_TESTED,Requires exact v101.89 real-device execution
+REAL_DEVICE_G-04,NOT_TESTED,Requires exact v101.89 real-device execution
+REAL_DEVICE_G-05,NOT_TESTED,Requires exact v101.89 real-device execution
+REAL_DEVICE_G-06,NOT_TESTED,Requires exact v101.89 real-device execution
+REAL_DEVICE_G-07,NOT_TESTED,Requires exact v101.89 real-device execution
+REAL_DEVICE_G-08,NOT_TESTED,Requires exact v101.89 real-device execution
+REAL_DEVICE_G-09,NOT_TESTED,Requires exact v101.89 real-device execution
+REAL_DEVICE_G-10,NOT_TESTED,Requires exact v101.89 real-device execution

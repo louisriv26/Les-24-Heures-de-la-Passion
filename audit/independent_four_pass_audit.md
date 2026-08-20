@@ -1,55 +1,13 @@
-# v101.88 independent four-pass audit
+# Independent four-pass audit — v101.89 R2
 
-**PASS**
-- checks: 47/47 PASS
-- runtime SHA-256: `6a0ae99e36483848dfdd4dd12c9526f40b0c4b00caac9b7d145ab2819f82b772`
-- physical iPhone exact-title-selection remains NOT_TESTED for v101.88.
-
-## Evidence
-- P1-runtime-twins: **PASS** — 6a0ae99e36483848dfdd4dd12c9526f40b0c4b00caac9b7d145ab2819f82b772
-- P1-version: **PASS** — v101.88
-- P1-cache: **PASS** — cache v101-88
-- P1-schema: **PASS** — schema8/snapshot5
-- P1-protected: **PASS** — 6/6 protected hashes identical to v101.87
-- P1-title-helper: **PASS** — stable .TITLE helper
-- P1-title-target: **PASS** — getTargetInfo library_title
-- P1-shared-selector: **PASS** — shared selectable selector
-- P1-marker-separation: **PASS** — title renderer no libraryMarks wrapper
-- P1-marker-wording: **PASS** — reading marker distinct
-- P1-js-syntax: **PASS** — node --check PASS
-- P1-sw-syntax: **PASS** — node --check PASS
-- P2-version-runtime: **PASS** — runtime v101.88
-- P2-visible-title-count: **PASS** — 33 titles
-- P2-all-title-targets: **PASS** — 33/33 target registry
-- P2-title-dom: **PASS** — selectable title DOM + stable id
-- P2-title-not-ui: **PASS** — title is content, not marker UI
-- P2-marker-button: **PASS** — separate reading marker
-- P2-title-range-capture: **PASS** — native-range pipeline
-- P2-title-actions: **PASS** — TEXTE SÉLECTIONNÉ / ◐ / Surligner / ✎ / Note / ⎘ / Copier / ✕ / Fermer
-- P2-title-highlight-created: **PASS** — title textHighlight yellow
-- P2-title-highlight-inline: **PASS** — only selected words rendered with normal mark
-- P2-integrity-fields: **PASS** — hash metadata present
-- P2-title-recolour: **PASS** — blue
-- P2-remove-visible: **PASS** — remove button
-- P2-title-remove: **PASS** — removed
-- P2-title-undo: **PASS** — undo restores blue
-- P2-multiple-title-highlights: **PASS** — two title marks coexist
-- P2-reading-mark-coexist: **PASS** — libraryMark independent of title textHighlights
-- P2-marker-ui-renamed: **PASS** — reading-marker wording
-- P2-title-note-modal: **PASS** — note modal
-- P2-title-note-store: **PASS** — note stored on title target
-- P2-title-copy: **PASS** — copy wrote selected title text/context
-- P2-espace-title-highlight: **PASS** — Mon Espace title target label
-- P2-open-highlight-target: **PASS** — reopens reading
-- P2-body-present: **PASS** — body surface
-- P2-body-highlight-regression: **PASS** — ordinary body highlight still works
-- P2-samsung-title-not-added: **PASS** — title excluded from Samsung paragraph mode
-- P2-samsung-body-preserved: **PASS** — body paragraph mode unchanged
-- P2-help-separation: **PASS** — Help distinguishes title text and reading marker
-- P2-no-page-errors: **PASS** — 0 page errors
-- P3-active-report-honesty: **PASS** — 226 nonblank lines; unsupported physical claims=0
-- P3-prepackage-lock-honest: **PASS** — prepackage lock honest
-- P4-current-version: **PASS** — active QA/README v101.88
-- P4-current-cache: **PASS** — cache current
-- P4-old-title-wording-current: **PASS** — old whole-reading wording removed from current instructions
-- P4-physical-gate: **PASS** — physical exact-title gate present
+- PASS — runtime twins
+- PASS — runtime version
+- PASS — cache
+- PASS — manifest version — 'v101.89'
+- PASS — version json
+- PASS — QA current
+- PASS — QA NOT_TESTED
+- PASS — runtime boundary matrix
+- PASS — active stale current strings
+- PASS — schema snapshot
+- PASS — physical gate honest

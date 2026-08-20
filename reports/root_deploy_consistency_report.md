@@ -1,3 +1,3 @@
-# Root/runtime consistency
+# Root/twin consistency
 
-PASS — twin runtime SHA-256 `6a0ae99e36483848dfdd4dd12c9526f40b0c4b00caac9b7d145ab2819f82b772`.
+PASS — runtime twins SHA-256 `0e9ac372b836efbdbaacb2b2125c80cbdab069017ec753995c62432a94ee47f2`.

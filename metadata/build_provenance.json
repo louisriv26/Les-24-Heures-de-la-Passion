@@ -1,11 +1,9 @@
 {
-  "baseline_package": "L24H_v10187_GITHUB_DEPLOY_TITLE_REAL_DEVICE_ISOLATION_R1.zip",
-  "baseline_sha256": "710416524b57501f5154fd9b333c19ac622b3352c2d36a6d7af8f07172538d28",
-  "governing_script": "L24H_v10188_EXACT_TITLE_SELECTION_HARDGATED_SCRIPT_2026-08-19.md",
-  "governing_script_sha256": "cf8e41ec0c4f6e3b669ada55974953b44efd0e62a306a0c6d4db436084467f95",
-  "build_script": "l24h_v10188_exact_title_selection_build.py",
-  "build_script_sha256": "b4e3373d8d775e7efd3a810bb0301bb337fb102898f261bc269e11dab37da199",
-  "app_version": "v101.88",
-  "stage": "T88-R1",
-  "runtime_change": "exact library-title annotation target + separate reading marker; no protected corpus/speech changes"
+  "app_version": "v101.89",
+  "baseline_zip_sha256": "350143c948097d70e6a54e649a61f2508a82f7f25b93eb0662d9aab5c81ce20b",
+  "governing_script_sha256": "3d8de208565218f900f0e72258ded7fd30e88eb7d145ff1af8f8856adf813222",
+  "manifest_version": "v101.89",
+  "package_revision": "R2_AUDIT_RECONCILED",
+  "runtime_sha256": "0e9ac372b836efbdbaacb2b2125c80cbdab069017ec753995c62432a94ee47f2",
+  "sw_sha256": "5b69780c4807c7929e1e97bc1090fff1cfda2e7b4c7db125f4988d91b7ac20a1"
 }

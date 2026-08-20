@@ -1,5 +1,6 @@
 {
-  "independent_four_pass_auditor": "l24h_v10188_independent_four_pass_audit.py",
-  "sha256": "a9c6ed1aa83f6d4cd7e827c787631dbb769e4189a4755ddcf877e37728f3c9fb",
-  "independence": "separately implemented runtime/report audit; physical iPhone not inferred"
+  "independent_four_pass_auditor": "scripts/l24h_v10189_r2_independent_four_pass_audit.py",
+  "runtime_boundary_auditor": "scripts/l24h_v10189_runtime_boundary_audit.py",
+  "runtime_boundary_auditor_sha256": "0f23db5edee69ea87aa3be4a5e197527c24fb8429cbd46ec601480a773337033",
+  "sha256": "b6ef1eb1817bb92e5d6ef02af47667c6011c5b77d6b3027d53a79ce269ec5606"
 }

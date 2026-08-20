@@ -1,7 +1,8 @@
 {
-  "app_version": "v101.88",
-  "evidence_stage": "T88-R1",
-  "build_date": "2026-08-19",
-  "status": "PREPUBLIC_EXACT_TITLE_SELECTION_PHYSICAL_RETEST_PENDING",
-  "real_device_status": "v101.87 did not implement partial native title selection; exact v101.88 physical-iPhone retest required."
+  "app_version": "v101.89",
+  "build_date": "2026-08-20",
+  "cache_name": "luisa-24h-v101-89",
+  "personal_snapshot": 5,
+  "real_device_status": "v101.88 physical iPhone exact-title selection failed: app toolbar absent. v101.89 repairs WebKit parent/element Range-boundary resolution; exact physical-iPhone retest required.",
+  "storage_schema": 8
 }
