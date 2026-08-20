@@ -1,2 +1,5 @@
-fix_id,status,scope,protected_data
-T87-01..05,PASS,mobile title event isolation + version/cache bump,6/6 protected hashes identical
+fix_id,status,scope,protected
+T88-01,PASS,title target registry,6/6 protected
+T88-02,PASS,title DOM/native selection,6/6 protected
+T88-03,PASS,reading-marker separation,libraryMarks preserved
+T88-04,PASS,Help/QA/version cache reconciliation,no corpus change

@@ -1,6 +1,0 @@
-scenario,status,evidence
-T87-classifier,PASS,#libraryMarkerPicker + data-library-marker-ui + title controls included
-T87-bind,PASS,libraryMarkerPicker bound by stage6fBindStaticHighlightUi and openLibraryMarkerPicker
-T87-suppress,PASS,selection capture suppressed while title picker open
-T87-version,PASS,v101.87/luisa-24h-v101-87
-T87-physical-device,NOT_TESTED,must retest on reporting device

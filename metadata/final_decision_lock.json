@@ -1,10 +1,10 @@
 {
-  "app_version": "v101.87",
-  "stage": "T87-R1",
+  "app_version": "v101.88",
+  "stage": "T88-R1",
   "prepackage_four_pass_gate": "PASS",
   "final_package_reopen_gate": "REQUIRED_POSTPACKAGE",
   "independent_reopen_gate": "REQUIRED_POSTPACKAGE",
+  "physical_exact_title_selection": "NOT_TESTED",
   "final_status": "PENDING_POSTPACKAGE_AUDITS",
-  "public_release_ready": false,
-  "physical_title_retest": "NOT_TESTED"
+  "public_release_ready": false
 }

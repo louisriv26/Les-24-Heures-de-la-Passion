@@ -1,8 +1,5 @@
 {
-  "governing_script_sha256": "08be129e4016f54f1a46ec3338f429718e8701c70a041bdb036c65b5eb022624",
-  "build_script_sha256": "edeedc3897d7e61ead7e135899600e6bbd6a1a7d4c24ed6ba1d48bbfde7bb976",
-  "independent_four_pass_auditor_sha256": "67ee933273d0247eb0709d160fb7fcedf6ac27268bdb2e1e474d1890da653a2f",
-  "final_reopen_auditor_sha256": "eb545fc8450dc40f05f424fb553749990d429326317fa1c233f455196b50de57",
-  "independent_reopen_auditor_sha256": "de22f2058c50622e0f8e600c70c6023abd96d7f270ddaf595ba6fcb502209190",
-  "independence": "separate scripts and separate execution paths; physical-device result is not inferred"
+  "independent_four_pass_auditor": "l24h_v10188_independent_four_pass_audit.py",
+  "sha256": "a9c6ed1aa83f6d4cd7e827c787631dbb769e4189a4755ddcf877e37728f3c9fb",
+  "independence": "separately implemented runtime/report audit; physical iPhone not inferred"
 }

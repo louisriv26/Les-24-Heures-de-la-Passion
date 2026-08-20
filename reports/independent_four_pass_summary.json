@@ -1,54 +1,59 @@
 {
   "status": "PASS",
-  "total": 40,
-  "pass": 40,
+  "total": 47,
+  "pass": 47,
   "fail": 0,
-  "runtime_sha256": "c8b599bf10d31099e33ba54cb64801d17d4ae8df1ed7c7ba7e6009eda275ff99",
+  "runtime_sha256": "6a0ae99e36483848dfdd4dd12c9526f40b0c4b00caac9b7d145ab2819f82b772",
   "rows": [
     {
       "scenario": "P1-runtime-twins",
       "status": "PASS",
-      "evidence": "c8b599bf10d31099e33ba54cb64801d17d4ae8df1ed7c7ba7e6009eda275ff99"
+      "evidence": "6a0ae99e36483848dfdd4dd12c9526f40b0c4b00caac9b7d145ab2819f82b772"
     },
     {
       "scenario": "P1-version",
       "status": "PASS",
-      "evidence": "APP_VERSION v101.87"
+      "evidence": "v101.88"
     },
     {
       "scenario": "P1-cache",
       "status": "PASS",
-      "evidence": "luisa-24h-v101-87"
-    },
-    {
-      "scenario": "P1-isolation-classifier",
-      "status": "PASS",
-      "evidence": "library picker in protected selector"
-    },
-    {
-      "scenario": "P1-suppress-library-picker",
-      "status": "PASS",
-      "evidence": "library picker open suppresses capture"
-    },
-    {
-      "scenario": "P1-bind-static",
-      "status": "PASS",
-      "evidence": "static isolation binding"
-    },
-    {
-      "scenario": "P1-bind-dynamic",
-      "status": "PASS",
-      "evidence": "defensive dynamic binding"
-    },
-    {
-      "scenario": "P1-protected-data",
-      "status": "PASS",
-      "evidence": "6/6 protected JSON constant hashes identical to v101.86 baseline"
+      "evidence": "cache v101-88"
     },
     {
       "scenario": "P1-schema",
       "status": "PASS",
       "evidence": "schema8/snapshot5"
+    },
+    {
+      "scenario": "P1-protected",
+      "status": "PASS",
+      "evidence": "6/6 protected hashes identical to v101.87"
+    },
+    {
+      "scenario": "P1-title-helper",
+      "status": "PASS",
+      "evidence": "stable .TITLE helper"
+    },
+    {
+      "scenario": "P1-title-target",
+      "status": "PASS",
+      "evidence": "getTargetInfo library_title"
+    },
+    {
+      "scenario": "P1-shared-selector",
+      "status": "PASS",
+      "evidence": "shared selectable selector"
+    },
+    {
+      "scenario": "P1-marker-separation",
+      "status": "PASS",
+      "evidence": "title renderer no libraryMarks wrapper"
+    },
+    {
+      "scenario": "P1-marker-wording",
+      "status": "PASS",
+      "evidence": "reading marker distinct"
     },
     {
       "scenario": "P1-js-syntax",
@@ -61,124 +66,144 @@
       "evidence": "node --check PASS"
     },
     {
-      "scenario": "P2-init-version",
+      "scenario": "P2-version-runtime",
       "status": "PASS",
-      "evidence": "runtime APP_VERSION"
+      "evidence": "runtime v101.88"
     },
     {
-      "scenario": "P2-library-item",
+      "scenario": "P2-visible-title-count",
       "status": "PASS",
-      "evidence": "PASSION24.TEXT.PREFACE_ANNIBALE"
+      "evidence": "33 titles"
     },
     {
-      "scenario": "P2-title-button",
+      "scenario": "P2-all-title-targets",
       "status": "PASS",
-      "evidence": "title marker button exists"
+      "evidence": "33/33 target registry"
     },
     {
-      "scenario": "P2-picker-open",
+      "scenario": "P2-title-dom",
       "status": "PASS",
-      "evidence": "picker open"
+      "evidence": "selectable title DOM + stable id"
     },
     {
-      "scenario": "P2-picker-classified",
+      "scenario": "P2-title-not-ui",
       "status": "PASS",
-      "evidence": "shared classifier returns true"
+      "evidence": "title is content, not marker UI"
     },
     {
-      "scenario": "P2-suppression-active",
+      "scenario": "P2-marker-button",
       "status": "PASS",
-      "evidence": "selection capture suppressed"
+      "evidence": "separate reading marker"
     },
     {
-      "scenario": "P2-touch-selection-isolation",
+      "scenario": "P2-title-range-capture",
       "status": "PASS",
-      "evidence": "picker remained open and document selection timer not armed"
+      "evidence": "native-range pipeline"
     },
     {
-      "scenario": "P2-no-context-bar",
+      "scenario": "P2-title-actions",
       "status": "PASS",
-      "evidence": "ordinary selection action bar did not replace title picker"
+      "evidence": "TEXTE SÉLECTIONNÉ / ◐ / Surligner / ✎ / Note / ⎘ / Copier / ✕ / Fermer"
     },
     {
-      "scenario": "P2-create-yellow",
+      "scenario": "P2-title-highlight-created",
       "status": "PASS",
-      "evidence": "inline yellow mark created"
+      "evidence": "title textHighlight yellow"
     },
     {
-      "scenario": "P2-persist-state",
+      "scenario": "P2-title-highlight-inline",
       "status": "PASS",
-      "evidence": "libraryMarks yellow"
+      "evidence": "only selected words rendered with normal mark"
     },
     {
-      "scenario": "P2-direct-title-edit",
+      "scenario": "P2-integrity-fields",
       "status": "PASS",
-      "evidence": "direct highlighted title opens picker"
+      "evidence": "hash metadata present"
     },
     {
-      "scenario": "P2-current-color-indicated",
-      "status": "PASS",
-      "evidence": "yellow aria-pressed true"
-    },
-    {
-      "scenario": "P2-recolour-blue",
-      "status": "PASS",
-      "evidence": "blue inline mark"
-    },
-    {
-      "scenario": "P2-remove-visible",
-      "status": "PASS",
-      "evidence": "remove button visible"
-    },
-    {
-      "scenario": "P2-remove",
-      "status": "PASS",
-      "evidence": "mark removed"
-    },
-    {
-      "scenario": "P2-undo-exact-color",
-      "status": "PASS",
-      "evidence": "undo restores blue"
-    },
-    {
-      "scenario": "P2-keyboard-enter",
-      "status": "PASS",
-      "evidence": "Enter opens picker"
-    },
-    {
-      "scenario": "P2-keyboard-space",
-      "status": "PASS",
-      "evidence": "Space opens picker"
-    },
-    {
-      "scenario": "P2-color-yellow",
-      "status": "PASS",
-      "evidence": "yellow"
-    },
-    {
-      "scenario": "P2-color-blue",
+      "scenario": "P2-title-recolour",
       "status": "PASS",
       "evidence": "blue"
     },
     {
-      "scenario": "P2-color-green",
+      "scenario": "P2-remove-visible",
       "status": "PASS",
-      "evidence": "green"
+      "evidence": "remove button"
     },
     {
-      "scenario": "P2-color-purple",
+      "scenario": "P2-title-remove",
       "status": "PASS",
-      "evidence": "purple"
+      "evidence": "removed"
     },
     {
-      "scenario": "P2-color-pink",
+      "scenario": "P2-title-undo",
       "status": "PASS",
-      "evidence": "pink"
+      "evidence": "undo restores blue"
     },
     {
-      "scenario": "P2-help-title-guidance",
+      "scenario": "P2-multiple-title-highlights",
       "status": "PASS",
-      "evidence": "Help/title strings present"
+      "evidence": "two title marks coexist"
+    },
+    {
+      "scenario": "P2-reading-mark-coexist",
+      "status": "PASS",
+      "evidence": "libraryMark independent of title textHighlights"
+    },
+    {
+      "scenario": "P2-marker-ui-renamed",
+      "status": "PASS",
+      "evidence": "reading-marker wording"
+    },
+    {
+      "scenario": "P2-title-note-modal",
+      "status": "PASS",
+      "evidence": "note modal"
+    },
+    {
+      "scenario": "P2-title-note-store",
+      "status": "PASS",
+      "evidence": "note stored on title target"
+    },
+    {
+      "scenario": "P2-title-copy",
+      "status": "PASS",
+      "evidence": "copy wrote selected title text/context"
+    },
+    {
+      "scenario": "P2-espace-title-highlight",
+      "status": "PASS",
+      "evidence": "Mon Espace title target label"
+    },
+    {
+      "scenario": "P2-open-highlight-target",
+      "status": "PASS",
+      "evidence": "reopens reading"
+    },
+    {
+      "scenario": "P2-body-present",
+      "status": "PASS",
+      "evidence": "body surface"
+    },
+    {
+      "scenario": "P2-body-highlight-regression",
+      "status": "PASS",
+      "evidence": "ordinary body highlight still works"
+    },
+    {
+      "scenario": "P2-samsung-title-not-added",
+      "status": "PASS",
+      "evidence": "title excluded from Samsung paragraph mode"
+    },
+    {
+      "scenario": "P2-samsung-body-preserved",
+      "status": "PASS",
+      "evidence": "body paragraph mode unchanged"
+    },
+    {
+      "scenario": "P2-help-separation",
+      "status": "PASS",
+      "evidence": "Help distinguishes title text and reading marker"
     },
     {
       "scenario": "P2-no-page-errors",
@@ -188,22 +213,32 @@
     {
       "scenario": "P3-active-report-honesty",
       "status": "PASS",
-      "evidence": "38 nonblank active report lines; unsupported physical PASS=0"
+      "evidence": "226 nonblank lines; unsupported physical claims=0"
     },
     {
-      "scenario": "P4-qa-current-version",
+      "scenario": "P3-prepackage-lock-honest",
       "status": "PASS",
-      "evidence": "QA references v101.87"
+      "evidence": "prepackage lock honest"
     },
     {
-      "scenario": "P4-cache-current",
+      "scenario": "P4-current-version",
       "status": "PASS",
-      "evidence": "current cache in active QA"
+      "evidence": "active QA/README v101.88"
     },
     {
-      "scenario": "P4-title-physical-not-tested",
+      "scenario": "P4-current-cache",
       "status": "PASS",
-      "evidence": "new physical title gate present/not tested"
+      "evidence": "cache current"
+    },
+    {
+      "scenario": "P4-old-title-wording-current",
+      "status": "PASS",
+      "evidence": "old whole-reading wording removed from current instructions"
+    },
+    {
+      "scenario": "P4-physical-gate",
+      "status": "PASS",
+      "evidence": "physical exact-title gate present"
     }
   ]
 }

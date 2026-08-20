@@ -1,7 +1,7 @@
 {
-  "app_version": "v101.87",
-  "evidence_stage": "T87-R1",
+  "app_version": "v101.88",
+  "evidence_stage": "T88-R1",
   "build_date": "2026-08-19",
-  "status": "PREPUBLIC_TITLE_REAL_DEVICE_EVENT_ISOLATION_EXTERNAL_RETEST_PENDING",
-  "real_device_status": "v101.86 title highlighting failed on user device; exact v101.87 physical-device title retest required."
+  "status": "PREPUBLIC_EXACT_TITLE_SELECTION_PHYSICAL_RETEST_PENDING",
+  "real_device_status": "v101.87 did not implement partial native title selection; exact v101.88 physical-iPhone retest required."
 }

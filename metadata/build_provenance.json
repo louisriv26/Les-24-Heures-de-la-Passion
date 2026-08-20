@@ -1,69 +1,11 @@
 {
-  "target_version": "v101.87",
-  "stage": "T87-R1",
-  "build_date": "2026-08-19",
-  "baseline_zip": "L24H_v10186_GITHUB_DEPLOY_TITLE_HELP_HARDENED_R2_AUDIT_RECONCILED.zip",
-  "baseline_sha256": "760196b75ee89bb54eaf7780909028e84748ca3bc5b77b62342067fa40602494",
-  "governing_script": "L24H_v10187_TITLE_REAL_DEVICE_EVENT_ISOLATION_HARDGATED_SCRIPT_2026-08-19.md",
-  "governing_script_sha256": "08be129e4016f54f1a46ec3338f429718e8701c70a041bdb036c65b5eb022624",
-  "protected_before": {
-    "CORPUS": {
-      "sha256": "54f4ff0508b055bbe9e5dad6286e97e49cb796203b0fbda7c2eb539e7e1169b0",
-      "count": 8
-    },
-    "TEXT_LIBRARY": {
-      "sha256": "3c9042f09757def35f312e08b1008a0c439b8ff416210cf20a5f0a9480fd37cb",
-      "count": 40
-    },
-    "HOUR_LINKED_TEXTS": {
-      "sha256": "37fe7b5c2d2ac15489ae84e72028283197419320a7566e6b9e6e62a0cc021918",
-      "count": 24
-    },
-    "SPEECH_DATA": {
-      "sha256": "4b6565f5646ba6431381dd4c28505bbdb3cae3699066fc0a115fa6b88ed144a4",
-      "count": 375
-    },
-    "INTERNAL_SUBHEADINGS": {
-      "sha256": "31c84fcafef360b7e61392ffa99679960b4fc43d5a398a216832b77e942de5a3",
-      "count": 30
-    },
-    "SPEECH_END_VISUAL_BREAKS": {
-      "sha256": "71a6a85871df5c3416cab201e9814c9a7a1811b50215bf1df3498cedb5b07d33",
-      "count": 49
-    }
-  },
-  "protected_after": {
-    "CORPUS": {
-      "sha256": "54f4ff0508b055bbe9e5dad6286e97e49cb796203b0fbda7c2eb539e7e1169b0",
-      "count": 8
-    },
-    "TEXT_LIBRARY": {
-      "sha256": "3c9042f09757def35f312e08b1008a0c439b8ff416210cf20a5f0a9480fd37cb",
-      "count": 40
-    },
-    "HOUR_LINKED_TEXTS": {
-      "sha256": "37fe7b5c2d2ac15489ae84e72028283197419320a7566e6b9e6e62a0cc021918",
-      "count": 24
-    },
-    "SPEECH_DATA": {
-      "sha256": "4b6565f5646ba6431381dd4c28505bbdb3cae3699066fc0a115fa6b88ed144a4",
-      "count": 375
-    },
-    "INTERNAL_SUBHEADINGS": {
-      "sha256": "31c84fcafef360b7e61392ffa99679960b4fc43d5a398a216832b77e942de5a3",
-      "count": 30
-    },
-    "SPEECH_END_VISUAL_BREAKS": {
-      "sha256": "71a6a85871df5c3416cab201e9814c9a7a1811b50215bf1df3498cedb5b07d33",
-      "count": 49
-    }
-  },
-  "runtime_sha256": "c8b599bf10d31099e33ba54cb64801d17d4ae8df1ed7c7ba7e6009eda275ff99",
-  "storage_schema": 8,
-  "personal_snapshot": 5,
-  "scope": [
-    "mobile event isolation for libraryMarkerPicker/title marker controls",
-    "version/cache bump only"
-  ],
-  "real_device_status": "v101.86 title gate FAILED by user report; exact v101.87 physical-device retest REQUIRED"
+  "baseline_package": "L24H_v10187_GITHUB_DEPLOY_TITLE_REAL_DEVICE_ISOLATION_R1.zip",
+  "baseline_sha256": "710416524b57501f5154fd9b333c19ac622b3352c2d36a6d7af8f07172538d28",
+  "governing_script": "L24H_v10188_EXACT_TITLE_SELECTION_HARDGATED_SCRIPT_2026-08-19.md",
+  "governing_script_sha256": "cf8e41ec0c4f6e3b669ada55974953b44efd0e62a306a0c6d4db436084467f95",
+  "build_script": "l24h_v10188_exact_title_selection_build.py",
+  "build_script_sha256": "b4e3373d8d775e7efd3a810bb0301bb337fb102898f261bc269e11dab37da199",
+  "app_version": "v101.88",
+  "stage": "T88-R1",
+  "runtime_change": "exact library-title annotation target + separate reading marker; no protected corpus/speech changes"
 }

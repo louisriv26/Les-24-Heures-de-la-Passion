@@ -1,17 +1,16 @@
-# Luisa — 24 Heures de la Passion
+# 24 Heures de la Passion — v101.88
 
-Version: `v101.87`
-Stage: `T87-R1`
-Build date: `2026-08-19`
+Version: `v101.88`  
+Evidence stage: `T88-R1`
 
-## v101.87 — real-device title-marker interaction repair
+## v101.88 — exact Approfondir title-text selection
 
-Real-device feedback proved that the v101.86 Approfondir title marker was not reliable on the user's physical device despite Chromium tests. v101.87 preserves the stable `libraryMarks` whole-reading model and the inline body-style title highlight, and repairs the mobile event-isolation omission: `libraryMarkerPicker` and the title-marker controls are now protected by the same selection/touch isolation used by ordinary highlight UI.
+Real iPhone feedback proved that v101.87 still did not implement the required feature: selecting part of an Approfondir title did not enter the normal annotation pipeline. v101.88 makes each visible Approfondir title a stable `PASSION24.TEXT.<ID>.TITLE` text target and routes native title selection through the same Surligner / Note / Copier pipeline as body text.
 
-The service-worker cache generation is bumped to `luisa-24h-v101-87` so the repaired runtime is not served from the v101.86 cache generation.
+The existing `libraryMarks` whole-reading store is preserved but is now presented separately as **Marquer cette lecture**. It no longer rewrites or colours the title text.
 
-No devotional/corpus/speech structure changed. Storage remains schema 8 / snapshot 5.
+Storage remains schema 8 / snapshot 5. Corpus, source text, speech data and paragraph IDs are unchanged.
 
-Physical-device confirmation of the exact v101.87 build remains mandatory before the title feature is considered closed.
+Service-worker cache generation: `luisa-24h-v101-88`.
 
-Runtime SHA-256: `c8b599bf10d31099e33ba54cb64801d17d4ae8df1ed7c7ba7e6009eda275ff99`
+The exact physical-iPhone title-selection gate remains NOT_TESTED until this exact package is tested on the reporting iPhone.

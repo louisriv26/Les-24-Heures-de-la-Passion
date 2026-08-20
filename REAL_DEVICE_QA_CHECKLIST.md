@@ -1,6 +1,6 @@
-# 24H interaction closure / v101.87 TH1 — physical device, installed-PWA and live-origin checklist
+# 24H interaction closure / v101.88 TH1 — physical device, installed-PWA and live-origin checklist
 
-Use the exact v101.87 TH1 candidate bytes. Record PASS/FAIL/NOT_TESTED for every numbered scenario.
+Use the exact v101.88 TH1 candidate bytes. Record PASS/FAIL/NOT_TESTED for every numbered scenario.
 
 ## iPhone Safari / installed PWA
 1. Mid-Hour → Mon Espace → Retour restores the same reader tab, paragraph/reading position and visible/updating progress strip.
@@ -15,7 +15,7 @@ Use the exact v101.87 TH1 candidate bytes. Record PASS/FAIL/NOT_TESTED for every
 10. Repères OFF/ON preserves passage and actions.
 11. Portrait ↔ landscape rotation preserves a usable reader.
 12. With a non-empty unsaved Note open, an available-update Actualiser action must NOT reload; the draft remains and receives focus.
-13. Existing installed build → v101.87 update preserves notes, coloured highlights, Lectures marquées, reading position and progress; obsolete legacy ◈ marks may be discarded.
+13. Existing installed build → v101.88 update preserves notes, coloured highlights, Lectures marquées, reading position and progress; obsolete legacy ◈ marks may be discarded.
 14. Offline reopen after one successful online load works.
 15. A copied deep link opens the expected Hour/paragraph.
 
@@ -43,10 +43,10 @@ Use the exact v101.87 TH1 candidate bytes. Record PASS/FAIL/NOT_TESTED for every
 32. On-demand controls (theme, Plan, prayer close, note indicator, Approfondir back/index) remain keyboard reachable and visibly focused.
 
 ## Live GitHub Pages / installed PWA
-33. Visible version v101.87.
+33. Visible version v101.88.
 34. Service worker controls the page after activation.
-35. Cache generation is luisa-24h-v101-87.
-36. Existing install updates to v101.87 without loss of supported personal data, including Lectures marquées; retired legacy ◈ marks are intentionally not preserved.
+35. Cache generation is luisa-24h-v101-88.
+36. Existing install updates to v101.88 without loss of supported personal data, including Lectures marquées; retired legacy ◈ marks are intentionally not preserved.
 37. Offline reopen succeeds after successful online load.
 38. Old app cache generations are removed only within the luisa-24h- namespace.
 39. Root/deploy bytes correspond exactly to the audited GitHub payload.
@@ -107,24 +107,23 @@ Use the exact v101.87 TH1 candidate bytes. Record PASS/FAIL/NOT_TESTED for every
 71. Mon Espace with at least one ordinary highlight and one note opens fully; highlights, notes, progression and backup controls are visible and no reader screen remains stuck underneath.
 72. Delete one note, one normal highlight, one grouped highlight and one stale highlight individually; each successful deletion offers **Annuler**, and Undo restores only that annotation without overwriting a later edit.
 73. Open **Note** from the temporary selection toolbar, then close immediately with Escape and with the close button; focus returns to the stable reading region after the toolbar disappears, never to `<body>`.
-74. Export a backup containing a highlight, import it into the same v101.87 build, and confirm the highlight still carries valid `text_hash`, `para_hash` and `paragraph_fingerprint` integrity metadata and renders at the same passage.
+74. Export a backup containing a highlight, import it into the same v101.88 build, and confirm the highlight still carries valid `text_hash`, `para_hash` and `paragraph_fingerprint` integrity metadata and renders at the same passage.
 
+## v101.88 exact-title-selection additions
 
-## v101.87 user-feedback and TH1 additions
+75. 17e Heure remains correct: `... contiennent, et constitue-Moi ...` without a break inside `et`.
+76. 15e Heure remains correct: `... ton silence, il proclame devant tous que Tu es un fou.` with P014/P015 anchors usable.
+77. Approfondir: on iPhone/iPad, select part of the actual title and confirm the app action bar offers **Surligner / Note / Copier / Fermer**.
+78. Surligner only the selected title words; confirm the rest of the title remains unhighlighted.
+79. Tap a title-text highlight, recolour it, remove it, then use Annuler and confirm exact restoration.
+80. Create two non-overlapping highlights in one title and a normal body highlight in the same reading; confirm all remain independent.
+81. Use **Marquer cette lecture** while title text is already highlighted; confirm the reading marker does not alter or remove title highlights.
+82. Mon Espace: exact title highlights appear under Surlignages with a `Titre — ...` label; whole-reading marks remain under Lectures marquées.
+83. Title Note: create a note from selected title text and confirm it persists and appears in Mon Espace.
+84. Export/import a v101.88 backup containing title highlights, a title note and a Lectures marquées entry; confirm all three survive distinctly.
+85. Samsung regression: paragraph mode still highlights body paragraphs only and does not silently enable native word-selection on titles.
+86. Aide truth: exact title-text selection and **Marquer cette lecture** are explained as separate functions; no obsolete whole-title-marker instruction remains.
 
-75. 17e Heure: `... contiennent, et constitue-Moi ...` displays without a break inside `et`; direct-speech/narration visual separation remains after the closing guillemet.
-76. 15e Heure: the visible continuation reads `... ton silence, il proclame devant tous que Tu es un fou.` while P014/P015 anchors remain usable.
-77. Approfondir: mark a reading title in each of five colours; reload; confirm persistence and independent body highlights.
-78. Mon Espace → Lectures marquées: open the mark and confirm the whole reading opens at its beginning.
-79. Remove a title mark, use Annuler, and confirm exact restoration.
-80. Export/import a v101.87 backup and confirm title marks survive; import an older schema-7/snapshot-4 backup and confirm existing data survives with no title marks invented.
-81. Approfondir title visual: on a narrow phone viewport and with a long wrapped title, marking the reading colours only the title text fragments (inline highlighter effect), not the full heading rectangle.
-82. Direct title interaction: tap/click the highlighted title itself; the colour picker opens and the current colour is visibly selected.
-83. Recolour/remove/Undo: change the title colour, remove it directly from the title picker, then use Annuler and confirm the exact previous colour returns in the reader and Mon Espace.
-84. Keyboard/accessibility: on desktop, Enter and Space on a highlighted Approfondir title open the picker; Escape closes it and focus remains usable.
-85. Aide TH1 truth: confirm the 9-action “Que voulez-vous faire ?” navigation works, the source is GE / Lumen Luminis / septembre 2021, Lectures marquées/JSON/journal/local-data/update guidance is present, and no unsupported “review pending/closed” certification claim appears.
+### G-87 — Physical iPhone exact title-text selection — REQUIRED
 
-
-### G-86 — Approfondir title real-device touch isolation — REQUIRED
-
-On the exact v101.87 build, open an Approfondir text, tap **Surligner le titre**, choose a colour, then tap the highlighted title. Confirm the title itself is highlighted inline, the colour picker remains usable under real touch/selection behaviour, recolour works, **Supprimer le surlignage** works, and Undo restores the prior colour. Record device/browser/PWA mode and visible app version. This gate remains NOT_TESTED until performed on the physical device that reproduced the v101.86 failure.
+On the exact v101.88 build, open at least three Approfondir texts on the reporting iPhone. Long-press/select one word in the actual title, extend the native selection to several words, and confirm the app's **Surligner / Note / Copier / Fermer** bar appears. Highlight the selection, recolour it, remove it, Undo, reload, and reopen it from Mon Espace. This gate remains **NOT_TESTED** until executed on the physical iPhone.

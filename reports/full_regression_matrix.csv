@@ -1,22 +1,16 @@
 gate,status,evidence
-baseline_identity,PASS,760196b75ee89bb54eaf7780909028e84748ca3bc5b77b62342067fa40602494
-runtime_twins,PASS,c8b599bf10d31099e33ba54cb64801d17d4ae8df1ed7c7ba7e6009eda275ff99
 protected_structures,PASS,6/6 hashes identical
-schema_snapshot,PASS,schema 8 / snapshot 5
-title_picker_classifier,PASS,#libraryMarkerPicker + data-library-marker-ui protected
-title_picker_static_isolation,PASS,stage6fBindStaticHighlightUi binds libraryMarkerPicker
-title_picker_selection_suppression,PASS,stage6fShouldSuppressSelectionCapture checks libraryMarkerPicker.open
-title_picker_dynamic_isolation,PASS,openLibraryMarkerPicker binds + protects + clears residual selection
-version_cache,PASS,v101.87 / luisa-24h-v101-87
-body_highlight_code_preserved,PASS,ordinary colourPicker path retained
-samsung_mode_code_preserved,PASS,toggleAndroidHighlightMode retained
-PHYSICAL-TITLE-RETEST,NOT_TESTED,exact v101.87 physical-device retest required
-PHYSICAL-IPHONE,NOT_TESTED,real device
+schema_snapshot,PASS,8/5
+exact_title_target,PASS,33 deterministic title targets
+title_native_selection,PASS,prepackage Chromium Range pipeline
+body_highlight_regression,PASS,same generic renderer/store
+libraryMarks_preserved,PASS,separate Marquer cette lecture
+PHYSICAL-IPHONE-EXACT-TITLE,NOT_TESTED,exact v101.88 physical iPhone required
 PHYSICAL-IPAD,NOT_TESTED,real device
 PHYSICAL-SAMSUNG,NOT_TESTED,real device
 PWA-MIGRATION-OFFLINE,NOT_TESTED,installed PWA/live origin
 VOICEOVER,NOT_TESTED,real AT
 TALKBACK,NOT_TESTED,real AT
 NVDA,NOT_TESTED,real AT
-LIVE-V10187-BYTE-BINDING,NOT_TESTED,live deployment
+LIVE-V10188-BYTE-BINDING,NOT_TESTED,live deployment
 VERIFIED-ROLLBACK,NOT_TESTED,rollback evidence

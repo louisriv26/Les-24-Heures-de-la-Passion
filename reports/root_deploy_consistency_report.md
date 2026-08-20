@@ -1,3 +1,3 @@
 # Root/runtime consistency
 
-PASS — index.html and luisa_24_heures.html are byte-identical. SHA-256 `c8b599bf10d31099e33ba54cb64801d17d4ae8df1ed7c7ba7e6009eda275ff99`.
+PASS — twin runtime SHA-256 `6a0ae99e36483848dfdd4dd12c9526f40b0c4b00caac9b7d145ab2819f82b772`.
