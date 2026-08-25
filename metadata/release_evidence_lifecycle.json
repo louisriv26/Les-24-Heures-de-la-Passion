@@ -1,7 +1,6 @@
 {
-  "package_internal_evidence": "PREPACKAGE_ONLY",
-  "final_zip_source_of_truth": true,
-  "final_reopen_audit": "EXTERNAL_REQUIRED",
-  "independent_final_reopen_audit": "EXTERNAL_REQUIRED",
-  "final_decision_lock": "EXTERNAL_REQUIRED_AFTER_REOPEN_PASS"
+  "version": "v101.121",
+  "prefreeze_evidence": "PACKAGED",
+  "final_reopen_evidence": "EXTERNAL_AFTER_ZIP_FREEZE",
+  "physical_device_evidence": "DEFERRED_UNTIL_STATIC_CLOSURE_PASS"
 }

@@ -1,11 +1,11 @@
 {
   "schema": "L24H_PACKAGE_MANIFEST_V1",
-  "version": "v101.118",
+  "version": "v101.121",
   "self_exclusion": [
-    "metadata/hash_manifest.json",
-    "metadata/package_manifest.json"
+    "metadata/package_manifest.json",
+    "metadata/hash_manifest.json"
   ],
-  "file_count": 93,
+  "file_count": 167,
   "files": [
     {
       "path": ".gitattributes",
@@ -17,15 +17,15 @@
     },
     {
       "path": "README.md",
-      "size": 1027
+      "size": 774
     },
     {
       "path": "REAL_DEVICE_QA_CHECKLIST.md",
-      "size": 2362
+      "size": 1236
     },
     {
       "path": "REAL_DEVICE_QA_RESULTS_TEMPLATE.csv",
-      "size": 1518
+      "size": 51
     },
     {
       "path": "apple-touch-icon.png",
@@ -33,11 +33,11 @@
     },
     {
       "path": "audit/independent_four_pass_audit.json",
-      "size": 4227
+      "size": 6448
     },
     {
       "path": "audit/independent_four_pass_audit.md",
-      "size": 3049
+      "size": 933
     },
     {
       "path": "evidence/m1_1/M1_1_INDEPENDENT_FINAL_AUDIT.md",
@@ -192,6 +192,246 @@
       "size": 1473
     },
     {
+      "path": "evidence/v101119/BROAD_CHROMIUM_RUNTIME_MATRIX.json",
+      "size": 9838
+    },
+    {
+      "path": "evidence/v101119/EXHAUSTIVE_PRESENTATION_RUNTIME_MATRIX.json",
+      "size": 5388081
+    },
+    {
+      "path": "evidence/v101119/M2_MUTATION_INTEGRITY_REPORT.md",
+      "size": 669
+    },
+    {
+      "path": "evidence/v101119/MUTATION_TEST_MATRIX.json",
+      "size": 1597
+    },
+    {
+      "path": "evidence/v101119/SERVICE_WORKER_LOGIC_MATRIX.json",
+      "size": 1473
+    },
+    {
+      "path": "evidence/v101119/m1/M1_EXACT_MUTATION_LEDGER_FROZEN.csv",
+      "size": 19269
+    },
+    {
+      "path": "evidence/v101119/m1/M1_FIXED_POINT_REPORT.md",
+      "size": 7579
+    },
+    {
+      "path": "evidence/v101119/m1/M1_FIXED_POINT_SUMMARY.json",
+      "size": 1274
+    },
+    {
+      "path": "evidence/v101119/m1/M1_HIDDEN_RANGE_LEXICAL_SAFETY.json",
+      "size": 47
+    },
+    {
+      "path": "evidence/v101119/m1/M1_MUTATION_PAYLOAD.json",
+      "size": 10987
+    },
+    {
+      "path": "evidence/v101119/m1/M1_QUOTED_SPAN_PRESENTATION_LEDGER.csv",
+      "size": 226251
+    },
+    {
+      "path": "evidence/v101119/m1/M1_SCANNER_A_DEFECTS.csv",
+      "size": 21391
+    },
+    {
+      "path": "evidence/v101119/m1/M1_SCANNER_B_DEFECTS.csv",
+      "size": 9524
+    },
+    {
+      "path": "evidence/v101119/post_mutation_fixed_point/M1_EXACT_MUTATION_LEDGER_FROZEN.csv",
+      "size": 5
+    },
+    {
+      "path": "evidence/v101119/post_mutation_fixed_point/M1_FIXED_POINT_REPORT.md",
+      "size": 1137
+    },
+    {
+      "path": "evidence/v101119/post_mutation_fixed_point/M1_FIXED_POINT_SUMMARY.json",
+      "size": 1128
+    },
+    {
+      "path": "evidence/v101119/post_mutation_fixed_point/M1_HIDDEN_RANGE_LEXICAL_SAFETY.json",
+      "size": 47
+    },
+    {
+      "path": "evidence/v101119/post_mutation_fixed_point/M1_MUTATION_PAYLOAD.json",
+      "size": 46
+    },
+    {
+      "path": "evidence/v101119/post_mutation_fixed_point/M1_QUOTED_SPAN_PRESENTATION_LEDGER.csv",
+      "size": 223093
+    },
+    {
+      "path": "evidence/v101119/post_mutation_fixed_point/M1_SCANNER_A_DEFECTS.csv",
+      "size": 5
+    },
+    {
+      "path": "evidence/v101119/post_mutation_fixed_point/M1_SCANNER_B_DEFECTS.csv",
+      "size": 5
+    },
+    {
+      "path": "evidence/v101120/BROAD_CHROMIUM_RUNTIME_MATRIX.json",
+      "size": 9922
+    },
+    {
+      "path": "evidence/v101120/EXHAUSTIVE_PRESENTATION_RUNTIME_MATRIX.json",
+      "size": 5388081
+    },
+    {
+      "path": "evidence/v101120/HELP_BROWSER_MATRIX.json",
+      "size": 64125
+    },
+    {
+      "path": "evidence/v101120/HELP_CONTENT_AUDIT.json",
+      "size": 508
+    },
+    {
+      "path": "evidence/v101120/HELP_CONTENT_AUDIT.md",
+      "size": 361
+    },
+    {
+      "path": "evidence/v101120/HELP_MUTATION_LEDGER.csv",
+      "size": 830
+    },
+    {
+      "path": "evidence/v101120/JAVASCRIPT_SYNTAX_CHECK.json",
+      "size": 90
+    },
+    {
+      "path": "evidence/v101120/SERVICE_WORKER_LOGIC_MATRIX.json",
+      "size": 1473
+    },
+    {
+      "path": "evidence/v101120/SERVICE_WORKER_SYNTAX_CHECK.json",
+      "size": 70
+    },
+    {
+      "path": "evidence/v101120/post_help_fixed_point/M1_EXACT_MUTATION_LEDGER_FROZEN.csv",
+      "size": 5
+    },
+    {
+      "path": "evidence/v101120/post_help_fixed_point/M1_FIXED_POINT_REPORT.md",
+      "size": 1137
+    },
+    {
+      "path": "evidence/v101120/post_help_fixed_point/M1_FIXED_POINT_SUMMARY.json",
+      "size": 1128
+    },
+    {
+      "path": "evidence/v101120/post_help_fixed_point/M1_HIDDEN_RANGE_LEXICAL_SAFETY.json",
+      "size": 47
+    },
+    {
+      "path": "evidence/v101120/post_help_fixed_point/M1_MUTATION_PAYLOAD.json",
+      "size": 46
+    },
+    {
+      "path": "evidence/v101120/post_help_fixed_point/M1_QUOTED_SPAN_PRESENTATION_LEDGER.csv",
+      "size": 223093
+    },
+    {
+      "path": "evidence/v101120/post_help_fixed_point/M1_SCANNER_A_DEFECTS.csv",
+      "size": 5
+    },
+    {
+      "path": "evidence/v101120/post_help_fixed_point/M1_SCANNER_B_DEFECTS.csv",
+      "size": 5
+    },
+    {
+      "path": "evidence/v101121/BROAD_CHROMIUM_RUNTIME_MATRIX.json",
+      "size": 9866
+    },
+    {
+      "path": "evidence/v101121/BUILD_SCOPE_AUDIT.json",
+      "size": 574
+    },
+    {
+      "path": "evidence/v101121/CURRENT_METADATA_AUDIT.json",
+      "size": 310
+    },
+    {
+      "path": "evidence/v101121/EXHAUSTIVE_PRESENTATION_RUNTIME_MATRIX.json",
+      "size": 5388081
+    },
+    {
+      "path": "evidence/v101121/FULL_REGRESSION_ASSERTIONS.json",
+      "size": 1934
+    },
+    {
+      "path": "evidence/v101121/HELP_BROWSER_MATRIX.json",
+      "size": 64055
+    },
+    {
+      "path": "evidence/v101121/HELP_CONTENT_AUDIT.json",
+      "size": 377
+    },
+    {
+      "path": "evidence/v101121/HELP_CONTENT_AUDIT.md",
+      "size": 276
+    },
+    {
+      "path": "evidence/v101121/JAVASCRIPT_SYNTAX_CHECK.json",
+      "size": 39
+    },
+    {
+      "path": "evidence/v101121/REPORT_CLAIMS_AUDIT.json",
+      "size": 1311
+    },
+    {
+      "path": "evidence/v101121/SEMANTIC_STALE_SCAN.json",
+      "size": 310
+    },
+    {
+      "path": "evidence/v101121/SERVICE_WORKER_LOGIC_MATRIX.json",
+      "size": 1473
+    },
+    {
+      "path": "evidence/v101121/SERVICE_WORKER_SYNTAX_CHECK.json",
+      "size": 39
+    },
+    {
+      "path": "evidence/v101121/VERSION_STALE_SCAN.json",
+      "size": 28326
+    },
+    {
+      "path": "evidence/v101121/post_tooling_fixed_point/M1_EXACT_MUTATION_LEDGER_FROZEN.csv",
+      "size": 5
+    },
+    {
+      "path": "evidence/v101121/post_tooling_fixed_point/M1_FIXED_POINT_REPORT.md",
+      "size": 1137
+    },
+    {
+      "path": "evidence/v101121/post_tooling_fixed_point/M1_FIXED_POINT_SUMMARY.json",
+      "size": 1128
+    },
+    {
+      "path": "evidence/v101121/post_tooling_fixed_point/M1_HIDDEN_RANGE_LEXICAL_SAFETY.json",
+      "size": 47
+    },
+    {
+      "path": "evidence/v101121/post_tooling_fixed_point/M1_MUTATION_PAYLOAD.json",
+      "size": 46
+    },
+    {
+      "path": "evidence/v101121/post_tooling_fixed_point/M1_QUOTED_SPAN_PRESENTATION_LEDGER.csv",
+      "size": 223093
+    },
+    {
+      "path": "evidence/v101121/post_tooling_fixed_point/M1_SCANNER_A_DEFECTS.csv",
+      "size": 5
+    },
+    {
+      "path": "evidence/v101121/post_tooling_fixed_point/M1_SCANNER_B_DEFECTS.csv",
+      "size": 5
+    },
+    {
       "path": "favicon-16.png",
       "size": 629
     },
@@ -225,11 +465,11 @@
     },
     {
       "path": "index.html",
-      "size": 2559419
+      "size": 2556563
     },
     {
       "path": "luisa_24_heures.html",
-      "size": 2559419
+      "size": 2556563
     },
     {
       "path": "manifest.json",
@@ -237,71 +477,71 @@
     },
     {
       "path": "metadata/active_report_inventory.json",
-      "size": 896
+      "size": 785
     },
     {
       "path": "metadata/build_provenance.json",
-      "size": 979
+      "size": 905
+    },
+    {
+      "path": "metadata/current_tooling_inventory.json",
+      "size": 2052
     },
     {
       "path": "metadata/release_evidence_lifecycle.json",
-      "size": 256
+      "size": 188
     },
     {
       "path": "metadata/scope_escalation_authority.md",
-      "size": 809
+      "size": 654
     },
     {
       "path": "reports/active_report_line_audit.csv",
-      "size": 53906
+      "size": 34643
+    },
+    {
+      "path": "reports/build_script_vs_files_audit.md",
+      "size": 635
     },
     {
       "path": "reports/current_metadata_semantic_consistency.md",
-      "size": 701
+      "size": 288
     },
     {
       "path": "reports/four_pass_deep_audit.md",
-      "size": 1150
+      "size": 1568
     },
     {
       "path": "reports/full_regression_matrix.csv",
-      "size": 1433
-    },
-    {
-      "path": "reports/javascript_syntax_check.json",
-      "size": 44
-    },
-    {
-      "path": "reports/nested_zip_consistency_report.md",
-      "size": 107
+      "size": 914
     },
     {
       "path": "reports/no_regression_fix_ledger.csv",
-      "size": 974
+      "size": 955
+    },
+    {
+      "path": "reports/protected_declaration_parity.csv",
+      "size": 2287
     },
     {
       "path": "reports/report_claims_vs_evidence_audit.md",
-      "size": 769
+      "size": 800
     },
     {
-      "path": "reports/root_deploy_consistency_report.md",
-      "size": 254
-    },
-    {
-      "path": "reports/service_worker_syntax_check.json",
-      "size": 44
+      "path": "reports/semantic_stale_scan.txt",
+      "size": 153
     },
     {
       "path": "reports/stale_reference_scan.csv",
-      "size": 12520
+      "size": 22165
     },
     {
       "path": "reports/stale_reference_scan.txt",
-      "size": 176
+      "size": 157
     },
     {
       "path": "scripts/EXECUTION_SPEC.md",
-      "size": 919
+      "size": 666
     },
     {
       "path": "scripts/build_v101111_m2_authorised_mutation.py",
@@ -336,16 +576,32 @@
       "size": 29654
     },
     {
+      "path": "scripts/build_v101119_quoted_span_presentation_closure.py",
+      "size": 31390
+    },
+    {
+      "path": "scripts/build_v101120_help_information_architecture.py",
+      "size": 14180
+    },
+    {
+      "path": "scripts/build_v101121_four_pass_report_tooling_reconciliation.py",
+      "size": 37717
+    },
+    {
       "path": "scripts/historical/EXECUTION_SPEC_v101111.md",
       "size": 543
+    },
+    {
+      "path": "scripts/historical/run_independent_prefreeze_audit_v101120_OBSOLETE.py",
+      "size": 3785
     },
     {
       "path": "scripts/run_broad_runtime_matrix.py",
       "size": 10248
     },
     {
-      "path": "scripts/run_independent_prefreeze_audit.py",
-      "size": 3785
+      "path": "scripts/run_independent_prefreeze_audit_v101121.py",
+      "size": 7125
     },
     {
       "path": "scripts/run_m3_chromium_runtime_matrix.py",
@@ -372,12 +628,52 @@
       "size": 3884
     },
     {
+      "path": "scripts/run_v101119_exhaustive_presentation_matrix.py",
+      "size": 6230
+    },
+    {
+      "path": "scripts/run_v101119_mutation_tests.py",
+      "size": 5198
+    },
+    {
+      "path": "scripts/run_v101119_quoted_span_fixed_point.py",
+      "size": 26071
+    },
+    {
+      "path": "scripts/run_v101120_help_browser_matrix.py",
+      "size": 6391
+    },
+    {
+      "path": "scripts/run_v101121_help_browser_matrix.py",
+      "size": 6377
+    },
+    {
+      "path": "scripts/run_v101121_independent_help_probe.py",
+      "size": 5080
+    },
+    {
+      "path": "scripts/run_v101121_independent_presentation_matrix.py",
+      "size": 6254
+    },
+    {
+      "path": "scripts/run_v101121_independent_reopen_audit.py",
+      "size": 8637
+    },
+    {
+      "path": "scripts/run_v101121_independent_runtime_smoke.py",
+      "size": 5245
+    },
+    {
+      "path": "scripts/run_v101121_primary_reopen_audit.py",
+      "size": 6377
+    },
+    {
       "path": "sw.js",
       "size": 3903
     },
     {
       "path": "version.json",
-      "size": 1298
+      "size": 1510
     }
   ]
 }

@@ -1,10 +1,6 @@
-action_id,target_id,class,authorization,result
-AUD-118-001,scripts/EXECUTION_SPEC.md,GENERIC_CURRENT_EXECUTION_SPEC_REPAIR,DEEP_AUDIT,PASS
-AUD-118-002,stale/semantic scanner,GENERIC_CURRENT_DOC_ROLE_ENFORCEMENT,DEEP_AUDIT,PASS
-AUD-117-INHERITED,current semantic metadata/release-scope/no-regression-ledger repair,PROTECTED_INHERITED_BASELINE,NO_CHANGE,PASS
-AUD-116-INHERITED,current build self-contained sibling runners + dependency gate,PROTECTED_INHERITED_BASELINE,NO_CHANGE,PASS
-AUD-115-INHERITED,active-report exact line coverage,PROTECTED_INHERITED_BASELINE,NO_CHANGE,PASS
-V101114-INHERITED,prefreeze runtime/SW evidence integration,PROTECTED_INHERITED_BASELINE,NO_CHANGE,PASS
-V101113-INHERITED,root QA metadata correction,PROTECTED_INHERITED_BASELINE,NO_CHANGE,PASS
-V101112-INHERITED,H3 + H22 user-confirmed corrections,PROTECTED_INHERITED_BASELINE,NO_CHANGE,PASS
-RA19E2-INHERITED,10 authorised speaker/presentation actions,PROTECTED_INHERITED_BASELINE,NO_CHANGE,PASS
+id,item,before,after,status
+RPT-121-001,Obsolete packaged independent prefreeze checker,current path contained v101.117-era QA/release-scope assumptions,moved to scripts/historical; replaced by v101.121 independently implemented checker,PASS
+RPT-121-002,Independent prefreeze report provenance,same finalizer generated both first-party and “independent” prefreeze report,separate packaged auditor implementation produces independent report,PASS
+RPT-121-003,Active report line audit,generic presence text for every line,direct line classification with explicit evidence type/path/detail,PASS
+RPT-121-004,Stale scan coverage,version-string scan missed stale semantic assumptions,version stale scan + semantic current-tool assumption scan,PASS
+RPT-121-005,Build reproducibility,v101.120 finalizer/audit production not represented by one current packaged builder,v101.121 current builder and final-reopen auditor scripts packaged before freeze,PASS

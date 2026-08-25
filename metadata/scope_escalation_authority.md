@@ -1,7 +1,5 @@
-# Scope authority — v101.118
+# Scope authority — v101.121
 
-Current stage: `FOUR_PASS_GENERIC_EXECUTION_SPEC_INTEGRITY_REPAIR_R1`.
+Current stage: `FOUR_PASS_REPORT_TOOLING_RECONCILIATION_R1`.
 
-This successor is restricted to current execution-spec/evidence integrity, release identity propagation and evidence/manifests. It archives the historical v101.111 RA19E.2 execution specification under an explicitly historical path and makes the generic `scripts/EXECUTION_SPEC.md` describe the current v101.118 stage.
-
-No governed runtime declaration, canonical devotional text, RA19B source-flow decision, RA19E.2 semantic/presentation decision, feature behaviour or UX behaviour is authorised to change. The v101.117 semantic-current-metadata repairs and all inherited content/runtime corrections remain protected. Any future corpus/flow/speaker/UX mutation requires a new explicitly authorised scope.
+The immutable v101.120 ZIP `66b5fbff29865faa9a2cf55aad28c090de86fefe1ea8911feaf124f3eff97d5d` is the executable baseline. Authorized app mutation is restricted to release identity (`APP_VERSION`, `APP_EVIDENCE_STAGE`, build comment, service-worker cache identity, manifest/version metadata) plus audit/report/tooling files. `showHelp()`, corpus, speech data, presentation projection/adjudication, display segmentation, paragraph topology, storage schema, navigation, highlighting and reader logic are protected. Any other app difference is a blocking failure.

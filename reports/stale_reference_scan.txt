@@ -1,6 +1,4 @@
-stale/reference + semantic scan
-current version: v101.118
-classified hits: 132
-failures: 0
-current-script obsolete-dependency failures: 0
-semantic current-metadata failures: 0
+v101.121 version/reference stale scan
+Classified historical/baseline/tool-lineage references: 71
+Unexplained current-facing stale references: 0
+STATUS: PASS

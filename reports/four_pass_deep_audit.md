@@ -1,15 +1,31 @@
-# Four-pass deep audit — v101.118
+# v101.121 four-pass deep audit
+
+**PASS_PREFREEZE**
 
 ## Pass 1 — files vs build script
-PASS. Exact v101.117 baseline SHA verified; fourteen governed runtime declarations remain byte-identical; current builder/runners/specification are packaged current artifacts; deterministic Build A/B is required before freeze.
+- Baseline ZIP hash: PASS — `66b5fbff29865faa9a2cf55aad28c090de86fefe1ea8911feaf124f3eff97d5d`.
+- Authorized HTML reverse-diff: PASS.
+- Protected declarations: 14/14 byte-identical.
+- `showHelp()` function: byte-identical to v101.120.
+- Current packaged build/audit tooling inventory: PASS.
 
 ## Pass 2 — runtime/package behaviour
-PASS. Broad Chromium DOM/runtime matrix: 52/52. Isolated service-worker logic matrix: 15/15. JavaScript and service-worker syntax PASS. H3/H22 user-confirmed repairs remain intact.
+- Help browser: 70/70 PASS.
+- Broad Chromium: 52/52 PASS.
+- Quoted-span fixed point: A=0, B=0; 398 relevant spans.
+- Exhaustive presentation: 1990/1990 PASS.
+- Service-worker logic: 15/15 PASS.
 
-## Pass 3 — active reports line by line
-PASS. Every nonblank line in the active-report inventory is required exactly once in `reports/active_report_line_audit.csv`; the audit CSV itself is the sole self-exclusion.
+## Pass 3 — every active report line vs current evidence
+- The successor uses direct per-line evidence bindings, not generic presence text.
+- `reports/active_report_line_audit.csv` is generated after this report is frozen and must cover every nonblank line in the active inventory.
+- The final reopened-ZIP audits independently revalidate that exact coverage and every evidence field.
 
-## Pass 4 — contradictions/stale evidence
-PASS_PREPACKAGE. The generic current `scripts/EXECUTION_SPEC.md` identifies v101.118; the old v101.111 specification is stored only under an explicit historical path. Token stale scan + semantic current-metadata scan report failures: 0. Physical/live/offline/screen-reader gates remain NOT_TESTED.
+## Pass 4 — contradictions, stale PASS/FAIL claims, stale numbers and obsolete evidence
+- Unexplained current-facing stale version/reference claims: 0.
+- Obsolete current-tool semantic assumptions: 0.
+- The v101.120 failing independent-prefreeze checker is historical-only and not current tooling.
+- First-party report claims: 9/9 directly supported.
+- Separately implemented prefreeze audit: 18/18 PASS.
 
-Final reopened-ZIP audits remain mandatory after immutable freeze.
+Final immutable ZIP reopen audits are deliberately external and are not claimed inside this package. Physical-device/live-origin gates remain NOT_TESTED.
