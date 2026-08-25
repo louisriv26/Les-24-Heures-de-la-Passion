@@ -1,3 +1,3 @@
 # Nested ZIP consistency
 
-PASS — no nested ZIP is present.
+No nested ZIP is part of this deployment architecture. Status: `NOT_APPLICABLE`.

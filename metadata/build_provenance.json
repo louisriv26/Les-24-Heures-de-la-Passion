@@ -1,9 +1,22 @@
 {
-  "app_version": "v101.89",
-  "baseline_zip_sha256": "350143c948097d70e6a54e649a61f2508a82f7f25b93eb0662d9aab5c81ce20b",
-  "governing_script_sha256": "3d8de208565218f900f0e72258ded7fd30e88eb7d145ff1af8f8856adf813222",
-  "manifest_version": "v101.89",
-  "package_revision": "R2_AUDIT_RECONCILED",
-  "runtime_sha256": "0e9ac372b836efbdbaacb2b2125c80cbdab069017ec753995c62432a94ee47f2",
-  "sw_sha256": "5b69780c4807c7929e1e97bc1090fff1cfda2e7b4c7db125f4988d91b7ac20a1"
+  "version": "v101.118",
+  "build_date": "2026-08-25",
+  "stage": "FOUR_PASS_GENERIC_EXECUTION_SPEC_INTEGRITY_REPAIR_R1",
+  "baseline_version": "v101.117",
+  "baseline_zip_sha256": "a778b1b821c76b4450796d1b76354fa1aa26fde0c48eb492ea59eaeff3375a9e",
+  "baseline_html_sha256": "a596411423113475a6661d42dc8dcd4701671d10c228245f5e9067df02de58f0",
+  "candidate_html_sha256": "6ae204041b7f51a74bf856f5000a5aba8b6b5ac84a57c33032b2752b04c32c69",
+  "scope": {
+    "governed_runtime_declarations_changed": 0,
+    "semantic_current_metadata_repairs_inherited": 3,
+    "generic_execution_spec_repaired": true,
+    "independent_prefreeze_runner_parameterized": true,
+    "active_source_reports_written_before_line_audit": true,
+    "active_report_line_audit_self_exclusion": [
+      "reports/active_report_line_audit.csv"
+    ],
+    "qa_template_scenarios": 21,
+    "build_runner_dependencies": "SELF_CONTAINED_SIBLING_SCRIPTS"
+  },
+  "final_reopen_evidence": "EXTERNAL_AFTER_ZIP_FREEZE"
 }

@@ -1,17 +1,17 @@
-scenario,status,evidence
-PASSION24.TEXT.PREFACE_ANNIBALE boundary matrix,PASS,"{""tt"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.PREFACE_ANNIBALE.TITLE"", ""start"": 1, ""end"": 8, ""text"": ""réface""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}, ""ht"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.PREFACE_ANNIBALE.TITLE"", ""start"": 0, ""end"": 8, ""text"": ""Préface""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}, ""th"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.PREFACE_ANNIBALE.TITLE"", ""start"": 1, ""end"": 25, ""text"": ""réface de Saint Annibale""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}, ""hh"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.PREFACE_ANNIBALE.TITLE"", ""start"": 0, ""end"": 25, ""text"": ""Préface de Saint Annibale""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}, ""ss"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.PREFACE_ANNIBALE.TITLE"", ""start"": 0, ""end"": 25, ""text"": ""Préface de Saint Annibale""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}}"
-PASSION24.TEXT.HOW_TO_PRACTICE boundary matrix,PASS,"{""tt"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.HOW_TO_PRACTICE.TITLE"", ""start"": 1, ""end"": 8, ""text"": ""omment""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}, ""ht"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.HOW_TO_PRACTICE.TITLE"", ""start"": 0, ""end"": 8, ""text"": ""Comment""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}, ""th"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.HOW_TO_PRACTICE.TITLE"", ""start"": 1, ""end"": 28, ""text"": ""omment pratiquer les Heures""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}, ""hh"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.HOW_TO_PRACTICE.TITLE"", ""start"": 0, ""end"": 28, ""text"": ""Comment pratiquer les Heures""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}, ""ss"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.HOW_TO_PRACTICE.TITLE"", ""start"": 0, ""end"": 28, ""text"": ""Comment pratiquer les Heures""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}}"
-PASSION24.TEXT.RELATED_HOUR_17 boundary matrix,PASS,"{""tt"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.RELATED_HOUR_17.TITLE"", ""start"": 1, ""end"": 8, ""text"": ""extes l""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}, ""ht"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.RELATED_HOUR_17.TITLE"", ""start"": 0, ""end"": 8, ""text"": ""Textes l""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}, ""th"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.RELATED_HOUR_17.TITLE"", ""start"": 1, ""end"": 26, ""text"": ""extes liés à la 17e Heure""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}, ""hh"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.RELATED_HOUR_17.TITLE"", ""start"": 0, ""end"": 26, ""text"": ""Textes liés à la 17e Heure""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}, ""ss"": {""ok"": true, ""p"": {""paraId"": ""PASSION24.TEXT.RELATED_HOUR_17.TITLE"", ""start"": 0, ""end"": 26, ""text"": ""Textes liés à la 17e Heure""}, ""bar"": ""Texte sélectionné\n    \n      ◐Surligner\n      ✎Note\n      ⎘Copier\n      ✕Fermer\n    ""}}"
-library body boundary regression,PASS,"{""ok"": true, ""id"": ""PASSION24.TEXT.PREFACE_ANNIBALE.BODY.P001"", ""block"": ""PASSION24.TEXT.PREFACE_ANNIBALE.BODY.P001""}"
-hour body boundary regression,PASS,"{""ok"": true, ""id"": ""PASSION24.HOUR.01.P001"", ""block"": ""PASSION24.HOUR.01.P001""}"
-marker button rejected,PASS,"{""ok"": false, ""p"": null}"
-REAL_DEVICE_G-01,NOT_TESTED,Requires exact v101.89 real-device execution
-REAL_DEVICE_G-02,NOT_TESTED,Requires exact v101.89 real-device execution
-REAL_DEVICE_G-03,NOT_TESTED,Requires exact v101.89 real-device execution
-REAL_DEVICE_G-04,NOT_TESTED,Requires exact v101.89 real-device execution
-REAL_DEVICE_G-05,NOT_TESTED,Requires exact v101.89 real-device execution
-REAL_DEVICE_G-06,NOT_TESTED,Requires exact v101.89 real-device execution
-REAL_DEVICE_G-07,NOT_TESTED,Requires exact v101.89 real-device execution
-REAL_DEVICE_G-08,NOT_TESTED,Requires exact v101.89 real-device execution
-REAL_DEVICE_G-09,NOT_TESTED,Requires exact v101.89 real-device execution
-REAL_DEVICE_G-10,NOT_TESTED,Requires exact v101.89 real-device execution
+gate,test,status,evidence
+BASELINE,v101.117 exact SHA/member freeze,PASS,a778b1b821c76b4450796d1b76354fa1aa26fde0c48eb492ea59eaeff3375a9e
+BUILD,deterministic A/B full-tree build,PASS,asserted before ZIP freeze
+BUILD-DEPS,current build runner dependencies,PASS,self-contained packaged sibling scripts; no obsolete external runner paths
+DATA,14 governed runtime declarations,PASS,exact RHS byte parity with v101.117
+SEMANTIC-META,current scope/release/ledger/runner semantics,PASS,reports/current_metadata_semantic_consistency.md
+H3-H22,user-confirmed text/paragraph repairs preserved,PASS,broad runtime 4/4 profiles
+QA-META,root physical/live QA metadata,PASS,21/21 template rows target v101.118
+JS,inline JavaScript syntax,PASS,reports/javascript_syntax_check.json
+SW-SYNTAX,service-worker syntax,PASS,reports/service_worker_syntax_check.json
+RUNTIME,broad Chromium DOM/runtime matrix,PASS,evidence/v101118/BROAD_CHROMIUM_RUNTIME_MATRIX.json 52/52
+SW-LOGIC,isolated service-worker logic,PASS,evidence/v101118/SERVICE_WORKER_LOGIC_MATRIX.json 15/15
+ACTIVE-REPORTS,all inventoried active source-report lines,PASS,reports/active_report_line_audit.csv exact coverage
+STALE,current-facing token + semantic stale scan,PASS,reports/stale_reference_scan.* failures 0
+physical devices,iPhone/iPad/Samsung,NOT_TESTED,external
+live PWA/offline,real origin/service worker,NOT_TESTED,external
+screen reader,VoiceOver/TalkBack,NOT_TESTED,external

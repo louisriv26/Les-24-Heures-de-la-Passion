@@ -1,5 +1,10 @@
-item,baseline,change,evidence,status
-MANIFEST-VERSION,R1 manifest.json version=v101.88,manifest.json version=v101.89,direct parsed JSON check,PASS
-RUNTIME,v101.89 R1 runtime,no runtime change,0e9ac372b836efbdbaacb2b2125c80cbdab069017ec753995c62432a94ee47f2,PASS
-SW,v101.89 R1 service worker,no SW change,5b69780c4807c7929e1e97bc1090fff1cfda2e7b4c7db125f4988d91b7ac20a1,PASS
-PHYSICAL-IPHONE,v101.89 untested,unchanged,real device required,NOT_TESTED
+action_id,target_id,class,authorization,result
+AUD-118-001,scripts/EXECUTION_SPEC.md,GENERIC_CURRENT_EXECUTION_SPEC_REPAIR,DEEP_AUDIT,PASS
+AUD-118-002,stale/semantic scanner,GENERIC_CURRENT_DOC_ROLE_ENFORCEMENT,DEEP_AUDIT,PASS
+AUD-117-INHERITED,current semantic metadata/release-scope/no-regression-ledger repair,PROTECTED_INHERITED_BASELINE,NO_CHANGE,PASS
+AUD-116-INHERITED,current build self-contained sibling runners + dependency gate,PROTECTED_INHERITED_BASELINE,NO_CHANGE,PASS
+AUD-115-INHERITED,active-report exact line coverage,PROTECTED_INHERITED_BASELINE,NO_CHANGE,PASS
+V101114-INHERITED,prefreeze runtime/SW evidence integration,PROTECTED_INHERITED_BASELINE,NO_CHANGE,PASS
+V101113-INHERITED,root QA metadata correction,PROTECTED_INHERITED_BASELINE,NO_CHANGE,PASS
+V101112-INHERITED,H3 + H22 user-confirmed corrections,PROTECTED_INHERITED_BASELINE,NO_CHANGE,PASS
+RA19E2-INHERITED,10 authorised speaker/presentation actions,PROTECTED_INHERITED_BASELINE,NO_CHANGE,PASS

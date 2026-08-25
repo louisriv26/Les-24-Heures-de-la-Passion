@@ -1,9 +1,0 @@
-{
-  "PREPACKAGE_FOUR_PASS_GATE": "PASS",
-  "app_version": "v101.89",
-  "final_status": "LIMITED_PASS",
-  "manifest_version_gate": "PASS",
-  "package_revision": "R2_AUDIT_RECONCILED",
-  "physical_iphone_exact_title_selection": "NOT_TESTED",
-  "public_release_ready": false
-}

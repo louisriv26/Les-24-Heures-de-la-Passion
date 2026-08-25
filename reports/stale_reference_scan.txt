@@ -1,29 +1,6 @@
-# Stale/current reference scan
-
-README.md | v101.88 | 3
-README.md | v101.89 | 8
-README.md | luisa-24h-v101-89 | 1
-REAL_DEVICE_QA_CHECKLIST.md | v101.89 | 2
-REAL_DEVICE_QA_CHECKLIST.md | luisa-24h-v101-89 | 1
-REAL_DEVICE_QA_RESULTS_TEMPLATE.csv | v101.89 | 10
-audit/independent_four_pass_audit.md | v101.89 | 2
-index.html | v101.89 | 6
-luisa_24_heures.html | v101.89 | 6
-manifest.json | v101.89 | 1
-reports/full_regression_matrix.csv | v101.89 | 10
-reports/no_regression_fix_ledger.csv | v101.88 | 1
-reports/no_regression_fix_ledger.csv | v101.89 | 4
-scripts/L24H_v10189_R2_MANIFEST_AUDIT_RECONCILIATION_SCRIPT_2026-08-20.md | v101.88 | 2
-scripts/L24H_v10189_R2_MANIFEST_AUDIT_RECONCILIATION_SCRIPT_2026-08-20.md | v101.89 | 10
-scripts/L24H_v10189_R2_MANIFEST_AUDIT_RECONCILIATION_SCRIPT_2026-08-20.md | luisa-24h-v101-89 | 1
-scripts/l24h_v10189_r2_independent_four_pass_audit.py | v101.88 | 3
-scripts/l24h_v10189_r2_independent_four_pass_audit.py | luisa-24h-v101-88 | 1
-scripts/l24h_v10189_r2_independent_four_pass_audit.py | v101.89 | 6
-scripts/l24h_v10189_r2_independent_four_pass_audit.py | luisa-24h-v101-89 | 1
-sw.js | v101.89 | 1
-sw.js | luisa-24h-v101-89 | 1
-version.json | v101.88 | 1
-version.json | v101.89 | 2
-version.json | luisa-24h-v101-89 | 1
-
-Classification: v101.88 is allowed only in explicit baseline/failure-history/provenance/build-script text. Active runtime, manifest, SW and QA instructions are v101.89.
+stale/reference + semantic scan
+current version: v101.118
+classified hits: 132
+failures: 0
+current-script obsolete-dependency failures: 0
+semantic current-metadata failures: 0

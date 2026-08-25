@@ -1,3 +1,7 @@
-# Root/twin consistency
+# Root/deploy consistency — v101.118
 
-PASS — runtime twins SHA-256 `0e9ac372b836efbdbaacb2b2125c80cbdab069017ec753995c62432a94ee47f2`.
+- Package root is the deploy artifact.
+- `index.html` and `luisa_24_heures.html` are byte-identical.
+- Separate deploy directory: NOT_APPLICABLE.
+- Nested deploy ZIP: NOT_APPLICABLE.
+- Current version: `v101.118`.
