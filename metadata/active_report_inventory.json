@@ -1,23 +1,20 @@
 {
-  "version": "v101.121",
+  "version": "v101.123",
+  "stage": "FOUR_PASS_BUILD_REPRODUCIBILITY_AND_SELF_AUDIT_RECONCILIATION_R1",
   "source_reports": [
-    "README.md",
-    "REAL_DEVICE_QA_CHECKLIST.md",
-    "scripts/EXECUTION_SPEC.md",
-    "metadata/scope_escalation_authority.md",
+    "reports/HOUR24_PRODUCT_CONTRACT.md",
+    "reports/HOUR24_STATE_MATRIX.csv",
     "reports/build_script_vs_files_audit.md",
     "reports/current_metadata_semantic_consistency.md",
-    "evidence/v101121/HELP_CONTENT_AUDIT.md",
+    "reports/four_pass_deep_audit.md",
     "reports/full_regression_matrix.csv",
+    "reports/hour24_end_cycle_state_matrix.csv",
+    "reports/no_regression_fix_ledger.csv",
     "reports/protected_declaration_parity.csv",
     "reports/report_claims_vs_evidence_audit.md",
-    "reports/four_pass_deep_audit.md",
-    "audit/independent_four_pass_audit.md"
+    "reports/semantic_stale_scan.txt",
+    "reports/stale_reference_scan.txt"
   ],
-  "self_excluded": "reports/active_report_line_audit.csv",
-  "evidence_scans_excluded_from_line_audit": [
-    "reports/stale_reference_scan.csv",
-    "reports/stale_reference_scan.txt",
-    "reports/semantic_stale_scan.txt"
-  ]
+  "self_excluded_output": "reports/active_report_line_audit.csv",
+  "historical_reports_root": "reports/historical/"
 }

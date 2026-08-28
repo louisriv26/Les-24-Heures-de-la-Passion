@@ -1,6 +1,7 @@
 {
-  "version": "v101.121",
-  "prefreeze_evidence": "PACKAGED",
-  "final_reopen_evidence": "EXTERNAL_AFTER_ZIP_FREEZE",
-  "physical_device_evidence": "DEFERRED_UNTIL_STATIC_CLOSURE_PASS"
+  "version": "v101.123",
+  "prefreeze_package_reports": "current reports and evidence may claim only prefreeze/package/browser gates",
+  "postfreeze_final_reopen_reports": "external only",
+  "physical_device_claims": "NOT_TESTED until direct evidence",
+  "immutable_package_rule": "do not insert postfreeze PASS reports into frozen ZIP"
 }

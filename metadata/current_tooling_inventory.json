@@ -1,40 +1,54 @@
 {
-  "version": "v101.121",
-  "stage": "FOUR_PASS_REPORT_TOOLING_RECONCILIATION_R1",
+  "version": "v101.123",
+  "stage": "FOUR_PASS_BUILD_REPRODUCIBILITY_AND_SELF_AUDIT_RECONCILIATION_R1",
   "current_tools": [
-    "scripts/build_v101121_four_pass_report_tooling_reconciliation.py",
-    "scripts/run_independent_prefreeze_audit_v101121.py",
-    "scripts/run_v101121_help_browser_matrix.py",
-    "scripts/run_v101121_independent_help_probe.py",
-    "scripts/run_v101121_independent_runtime_smoke.py",
-    "scripts/run_v101121_independent_presentation_matrix.py",
-    "scripts/run_v101121_primary_reopen_audit.py",
-    "scripts/run_v101121_independent_reopen_audit.py",
+    "scripts/build_v101123_full_package_reconciliation.py",
+    "scripts/run_v101123_independent_prefreeze_audit.py",
+    "scripts/run_v101123_stale_scans.py",
+    "scripts/run_v101123_primary_reopen_audit.py",
+    "scripts/run_v101123_independent_reopen_audit.py",
+    "scripts/run_v101123_hour24_state_matrix.py",
+    "scripts/run_v101123_five_profile_ux_matrix.py",
+    "scripts/run_v101123_help_browser_matrix.py",
+    "scripts/run_v101123_mutation_tests.py",
+    "scripts/run_v101123_independent_hour24_probe.py",
+    "scripts/run_v101123_independent_runtime_smoke.py",
+    "scripts/run_v101123_independent_presentation_matrix.py",
     "scripts/run_broad_runtime_matrix.py",
-    "scripts/run_v101119_exhaustive_presentation_matrix.py",
+    "scripts/run_sw_logic_matrix.js",
     "scripts/run_v101119_quoted_span_fixed_point.py",
-    "scripts/run_sw_logic_matrix.js"
+    "scripts/run_v101119_exhaustive_presentation_matrix.py"
+  ],
+  "prefreeze_executable_tools": [
+    "scripts/build_v101123_full_package_reconciliation.py",
+    "scripts/run_v101123_independent_prefreeze_audit.py",
+    "scripts/run_v101123_stale_scans.py",
+    "scripts/run_v101123_hour24_state_matrix.py",
+    "scripts/run_v101123_five_profile_ux_matrix.py",
+    "scripts/run_v101123_help_browser_matrix.py",
+    "scripts/run_v101123_mutation_tests.py",
+    "scripts/run_v101123_independent_hour24_probe.py",
+    "scripts/run_v101123_independent_runtime_smoke.py",
+    "scripts/run_v101123_independent_presentation_matrix.py",
+    "scripts/run_broad_runtime_matrix.py",
+    "scripts/run_sw_logic_matrix.js",
+    "scripts/run_v101119_quoted_span_fixed_point.py",
+    "scripts/run_v101119_exhaustive_presentation_matrix.py"
+  ],
+  "postfreeze_reopen_tools": [
+    "scripts/run_v101123_primary_reopen_audit.py",
+    "scripts/run_v101123_independent_reopen_audit.py"
+  ],
+  "reused_validated_lineage": [
+    "scripts/run_broad_runtime_matrix.py",
+    "scripts/run_sw_logic_matrix.js",
+    "scripts/run_v101119_quoted_span_fixed_point.py",
+    "scripts/run_v101119_exhaustive_presentation_matrix.py"
   ],
   "historical_or_superseded_tools": [
-    "scripts/build_v101111_m2_authorised_mutation.py",
-    "scripts/build_v101112_user_confirmed_text_structure_repair.py",
-    "scripts/build_v101113_audit_report_qa_integrity_repair.py",
-    "scripts/build_v101114_four_pass_audit_evidence_integrity_repair.py",
-    "scripts/build_v101115_active_report_line_closure.py",
-    "scripts/build_v101116_self_contained_build_integrity_repair.py",
-    "scripts/build_v101117_semantic_metadata_integrity_repair.py",
-    "scripts/build_v101118_generic_execution_spec_integrity_repair.py",
-    "scripts/build_v101119_quoted_span_presentation_closure.py",
-    "scripts/build_v101120_help_information_architecture.py",
-    "scripts/historical/EXECUTION_SPEC_v101111.md",
-    "scripts/historical/run_independent_prefreeze_audit_v101120_OBSOLETE.py",
-    "scripts/run_m3_chromium_runtime_matrix.py",
-    "scripts/run_m3_independent_renderer_recheck.py",
-    "scripts/run_v101114_broad_runtime_matrix.py",
-    "scripts/run_v101114_independent_prefreeze_audit.py",
-    "scripts/run_v101114_sw_logic_matrix.js",
-    "scripts/run_v101119_mutation_tests.py",
-    "scripts/run_v101120_help_browser_matrix.py"
-  ],
-  "obsolete_tool_reclassified": "scripts/historical/run_independent_prefreeze_audit_v101120_OBSOLETE.py"
+    "scripts/run_v101122_independent_prefreeze_audit.py",
+    "scripts/build_v101122_hour24_end_of_cycle.py",
+    "scripts/run_v101122_primary_reopen_audit.py",
+    "scripts/run_v101122_independent_reopen_audit.py"
+  ]
 }

@@ -1,4 +1,5 @@
-v101.121 version/reference stale scan
-Classified historical/baseline/tool-lineage references: 71
-Unexplained current-facing stale references: 0
-STATUS: PASS
+v101.123 version/reference stale scan: PASS
+classified references: 146
+unexplained current references: 0
+current runtime identity checks: 5/5 PASS
+evidence: evidence/v101123/VERSION_STALE_SCAN.json

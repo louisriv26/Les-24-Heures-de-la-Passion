@@ -1,31 +1,36 @@
-# v101.121 four-pass deep audit
+# v101.123 four-pass deep audit
 
 **PASS_PREFREEZE**
 
 ## Pass 1 — files vs build script
-- Baseline ZIP hash: PASS — `66b5fbff29865faa9a2cf55aad28c090de86fefe1ea8911feaf124f3eff97d5d`.
-- Authorized HTML reverse-diff: PASS.
-- Protected declarations: 14/14 byte-identical.
-- `showHelp()` function: byte-identical to v101.120.
-- Current packaged build/audit tooling inventory: PASS.
+- v101.122 four-pass re-audit reproduced a build/report/tooling integrity failure; v101.122 is superseded for current continuation by this narrow successor.
+- v101.123 full-package build contract: PASS.
+- Functional app parity versus v101.122 after release-identity normalisation: PASS.
+- Protected declarations: 14/14 PASS.
+- Help parity: PASS.
+- Current tooling is package-contained and has no transient prior-run dependency.
 
 ## Pass 2 — runtime/package behaviour
+- Hour-24 state matrix: 16/16 PASS.
+- Five-profile Hour-24 UX: 70/70 PASS.
 - Help browser: 70/70 PASS.
 - Broad Chromium: 52/52 PASS.
-- Quoted-span fixed point: A=0, B=0; 398 relevant spans.
-- Exhaustive presentation: 1990/1990 PASS.
+- Quoted-span fixed point: Scanner A 0 / Scanner B 0 across 398 relevant spans.
+- Exhaustive presentation: 1,990/1,990 PASS.
 - Service-worker logic: 15/15 PASS.
+- Mutation tests: 12/12 synthetic defects detected.
+- Independent Hour-24: 55/55 PASS.
+- Independent runtime: 50/50 PASS.
+- Independent presentation: 1,990/1,990 PASS; 257 cross-record spans.
 
 ## Pass 3 — every active report line vs current evidence
-- The successor uses direct per-line evidence bindings, not generic presence text.
-- `reports/active_report_line_audit.csv` is generated after this report is frozen and must cover every nonblank line in the active inventory.
-- The final reopened-ZIP audits independently revalidate that exact coverage and every evidence field.
+- Current root report inventory is explicit and complete; historical v101.122 reports/audits are under explicit historical paths.
+- Every nonblank line of every current source report is represented in `reports/active_report_line_audit.csv`.
+- Generic presence-only evidence is prohibited.
 
-## Pass 4 — contradictions, stale PASS/FAIL claims, stale numbers and obsolete evidence
-- Unexplained current-facing stale version/reference claims: 0.
-- Obsolete current-tool semantic assumptions: 0.
-- The v101.120 failing independent-prefreeze checker is historical-only and not current tooling.
-- First-party report claims: 9/9 directly supported.
-- Separately implemented prefreeze audit: 18/18 PASS.
+## Pass 4 — contradictions/stale claims/obsolete assumptions
+- Unexplained current-facing stale version references: 0.
+- Transient working-directory dependencies in current tooling/provenance: 0.
+- Obsolete Hour-24 semantic assumptions: 0.
 
-Final immutable ZIP reopen audits are deliberately external and are not claimed inside this package. Physical-device/live-origin gates remain NOT_TESTED.
+Final immutable ZIP reopen audits remain external and must be written only after package freeze. Physical-device/live-origin gates remain NOT_TESTED.

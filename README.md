@@ -1,11 +1,11 @@
-# Les 24 Heures de la Passion — v101.121
+# Les 24 Heures de la Passion — v101.123
 
-Stage: `FOUR_PASS_REPORT_TOOLING_RECONCILIATION_R1`
+Stage: `FOUR_PASS_BUILD_REPRODUCIBILITY_AND_SELF_AUDIT_RECONCILIATION_R1`
 
-Immutable baseline: v101.120 / `66b5fbff29865faa9a2cf55aad28c090de86fefe1ea8911feaf124f3eff97d5d`.
+Immutable functional baseline: v101.122 / `039f7ad95bced983b5deb1613bacb92ababf75e2a162462b4389a3a028bf8565`.
 
-This successor changes **release identity, audit/report tooling and current evidence reports only**. The v101.120 Help content and all reader/corpus behaviour are preserved.
+This is a narrow build/report/tooling-integrity successor. It does not redesign the Hour-24 UX and does not reopen corpus, speaker, presentation, topology, highlighting, storage or Help authorities.
 
-Protected and byte-identical to v101.120 inside the app HTML: the fourteen governed declarations, the complete `showHelp()` function, paragraph IDs/order, corpus text, speech semantics, presentation projections/adjudications, display segmentation, Samsung paragraph topology, storage schema, navigation, highlighting and reader logic.
+It corrects four-pass audit defects discovered by a fresh package-source-of-truth review: the v101.122 build script reproduced only runtime/release files rather than the full package; the v101.122 independent prefreeze checker depended on a transient `/mnt/data` working path; the active-report line universe omitted the current independent audit; and the semantic stale scan did not challenge those transient current-tool assumptions.
 
 Physical-device/live-origin gates remain external and NOT_TESTED.

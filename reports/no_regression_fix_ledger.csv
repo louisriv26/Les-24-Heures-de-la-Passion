@@ -1,6 +1,5 @@
-id,item,before,after,status
-RPT-121-001,Obsolete packaged independent prefreeze checker,current path contained v101.117-era QA/release-scope assumptions,moved to scripts/historical; replaced by v101.121 independently implemented checker,PASS
-RPT-121-002,Independent prefreeze report provenance,same finalizer generated both first-party and “independent” prefreeze report,separate packaged auditor implementation produces independent report,PASS
-RPT-121-003,Active report line audit,generic presence text for every line,direct line classification with explicit evidence type/path/detail,PASS
-RPT-121-004,Stale scan coverage,version-string scan missed stale semantic assumptions,version stale scan + semantic current-tool assumption scan,PASS
-RPT-121-005,Build reproducibility,v101.120 finalizer/audit production not represented by one current packaged builder,v101.121 current builder and final-reopen auditor scripts packaged before freeze,PASS
+item_id,defect,correction,app_runtime_changed,evidence,status
+R123-01,v101.122 builder reproduced only 185/257 files,full-package overlay builder with exact tree/hash-manifest verification,NO,evidence/v101123/V101122_DEEP_FOUR_PASS_FINDINGS.json,PASS
+R123-02,v101.122 independent prefreeze depended on transient /mnt/data working path,current checker executes packaged independent Hour-24 probe fresh in isolated temp,NO,scripts/run_v101123_independent_prefreeze_audit.py,PASS
+R123-03,v101.122 active report universe omitted current independent audit,v101.122 audit moved to explicit historical path; current report universe is exact root reports and self-excluded line audit,NO,metadata/active_report_inventory.json,PASS
+R123-04,v101.122 provenance/stale scan allowed transient current paths,package-relative provenance and semantic stale transient-path gate,NO,scripts/run_v101123_stale_scans.py,PASS
