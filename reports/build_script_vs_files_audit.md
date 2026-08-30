@@ -1,11 +1,8 @@
-# Build script vs files audit — v101.123
+# Build script vs files — v101.125
 
-**PASS**
-
-- Immutable v101.122 baseline SHA-256 `039f7ad95bced983b5deb1613bacb92ababf75e2a162462b4389a3a028bf8565` is the verified functional baseline.
-- The current builder reconstructs the **entire current package tree**, not only runtime files, from the immutable baseline plus the package-contained overlay manifest.
-- Exact tree equality and current hash-manifest reconciliation are mandatory build-script gates.
-- v101.123 functional HTML differs from v101.122 only by release identity/build comment after normalisation.
-- Protected declarations: 14/14 byte-identical to v101.122.
-- `showHelp()` block: byte-identical to v101.122.
-- Current audit tooling contains no transient `/mnt/data/v101122_run/` or `/mnt/data/v101123_run/` dependency.
+- Status: **PASS** only if `evidence/v101125/FULL_PACKAGE_BUILD_REPRODUCTION.json` is current and PASS.
+- Baseline: immutable v101.124 ZIP SHA-256 `15b9fdb66fb07617ac8078fddb3e4076347390252a510c6eeb4b613f4a06d3ac`.
+- Builder: `scripts/build_v101125_full_package_reconciliation.py`.
+- Contract: baseline extraction + exact `metadata/full_build_overlay_manifest.json` must reproduce the complete current package-source tree and reconcile the current hash manifest.
+- Deterministic ZIP freeze is permitted only after current reports, tooling, evidence and manifests are final.
+Evidence: `evidence/v101125/FULL_PACKAGE_BUILD_REPRODUCTION.json`, `metadata/release_evidence_lifecycle.json`.

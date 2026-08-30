@@ -1,6 +1,13 @@
 {
+  "schema": "L24H_V101125_ACTIVE_REPORT_LINE_AUDIT_SUMMARY_V1",
   "version": "v101.125",
-  "stage": "FOUR_PASS_EVIDENCE_SCHEMA_AND_DIRECT_REPORT_BINDING_RECONCILIATION_R1",
+  "status": "PASS",
+  "source_report_count": 10,
+  "nonblank_lines": 98,
+  "pass_lines": 98,
+  "fail_lines": 0,
+  "exact_coverage": true,
+  "claim_specific_assertions": true,
   "source_reports": [
     "reports/CONTINUITY_PRODUCT_CONTRACT.md",
     "reports/EVIDENCE_SCHEMA_AND_BINDING_RECONCILIATION.md",
@@ -12,7 +19,5 @@
     "reports/report_claims_vs_evidence_audit.md",
     "reports/semantic_stale_scan.txt",
     "reports/stale_reference_scan.txt"
-  ],
-  "self_excluded_output": "reports/active_report_line_audit.csv",
-  "historical_reports_root": "reports/historical/"
+  ]
 }

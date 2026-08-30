@@ -1,43 +1,30 @@
 {
-  "version": "v101.123",
-  "stage": "FOUR_PASS_BUILD_REPRODUCIBILITY_AND_SELF_AUDIT_RECONCILIATION_R1",
+  "version": "v101.125",
+  "stage": "FOUR_PASS_EVIDENCE_SCHEMA_AND_DIRECT_REPORT_BINDING_RECONCILIATION_R1",
   "current_tools": [
-    "scripts/build_v101123_full_package_reconciliation.py",
-    "scripts/run_v101123_independent_prefreeze_audit.py",
-    "scripts/run_v101123_stale_scans.py",
-    "scripts/run_v101123_primary_reopen_audit.py",
-    "scripts/run_v101123_independent_reopen_audit.py",
-    "scripts/run_v101123_hour24_state_matrix.py",
-    "scripts/run_v101123_five_profile_ux_matrix.py",
-    "scripts/run_v101123_help_browser_matrix.py",
-    "scripts/run_v101123_mutation_tests.py",
-    "scripts/run_v101123_independent_hour24_probe.py",
-    "scripts/run_v101123_independent_runtime_smoke.py",
-    "scripts/run_v101123_independent_presentation_matrix.py",
+    "scripts/build_v101125_full_package_reconciliation.py",
+    "scripts/run_v101125_independent_prefreeze_audit.py",
+    "scripts/run_v101125_stale_scans.py",
+    "scripts/run_v101125_primary_reopen_audit.py",
+    "scripts/run_v101125_independent_reopen_audit.py",
+    "scripts/run_v101125_continuity_candidate_audit.py",
+    "scripts/run_v101125_continuity_matrix.py",
+    "scripts/run_v101125_continuity_mutation_tests.py",
+    "scripts/run_v101125_hour24_state_matrix.py",
+    "scripts/run_v101125_five_profile_ux_matrix.py",
+    "scripts/run_v101125_help_browser_matrix.py",
+    "scripts/run_v101125_mutation_tests.py",
+    "scripts/run_v101125_independent_hour24_probe.py",
+    "scripts/run_v101125_independent_runtime_smoke.py",
+    "scripts/run_v101125_independent_presentation_matrix.py",
+    "scripts/run_v101125_independent_continuity_probe.py",
     "scripts/run_broad_runtime_matrix.py",
     "scripts/run_sw_logic_matrix.js",
     "scripts/run_v101119_quoted_span_fixed_point.py",
-    "scripts/run_v101119_exhaustive_presentation_matrix.py"
-  ],
-  "prefreeze_executable_tools": [
-    "scripts/build_v101123_full_package_reconciliation.py",
-    "scripts/run_v101123_independent_prefreeze_audit.py",
-    "scripts/run_v101123_stale_scans.py",
-    "scripts/run_v101123_hour24_state_matrix.py",
-    "scripts/run_v101123_five_profile_ux_matrix.py",
-    "scripts/run_v101123_help_browser_matrix.py",
-    "scripts/run_v101123_mutation_tests.py",
-    "scripts/run_v101123_independent_hour24_probe.py",
-    "scripts/run_v101123_independent_runtime_smoke.py",
-    "scripts/run_v101123_independent_presentation_matrix.py",
-    "scripts/run_broad_runtime_matrix.py",
-    "scripts/run_sw_logic_matrix.js",
-    "scripts/run_v101119_quoted_span_fixed_point.py",
-    "scripts/run_v101119_exhaustive_presentation_matrix.py"
-  ],
-  "postfreeze_reopen_tools": [
-    "scripts/run_v101123_primary_reopen_audit.py",
-    "scripts/run_v101123_independent_reopen_audit.py"
+    "scripts/run_v101119_exhaustive_presentation_matrix.py",
+    "scripts/run_v101125_report_claim_audit.py",
+    "scripts/run_v101125_current_evidence_schema_audit.py",
+    "scripts/run_v101125_continuity_speaker_header_audit.py"
   ],
   "reused_validated_lineage": [
     "scripts/run_broad_runtime_matrix.py",
@@ -46,9 +33,9 @@
     "scripts/run_v101119_exhaustive_presentation_matrix.py"
   ],
   "historical_or_superseded_tools": [
-    "scripts/run_v101122_independent_prefreeze_audit.py",
-    "scripts/build_v101122_hour24_end_of_cycle.py",
-    "scripts/run_v101122_primary_reopen_audit.py",
-    "scripts/run_v101122_independent_reopen_audit.py"
+    "scripts/build_v101124_full_package_reconciliation.py",
+    "scripts/run_v101124_independent_prefreeze_audit.py",
+    "scripts/run_v101124_primary_reopen_audit.py",
+    "scripts/run_v101124_independent_reopen_audit.py"
   ]
 }

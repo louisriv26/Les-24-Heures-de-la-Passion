@@ -1,9 +1,16 @@
 {
-  "version": "v101.125",
-  "stage": "FOUR_PASS_EVIDENCE_SCHEMA_AND_DIRECT_REPORT_BINDING_RECONCILIATION_R1",
+  "schema": "L24H_V101124_ACTIVE_REPORT_LINE_AUDIT_SUMMARY_V1",
+  "version": "v101.124",
+  "source_report_count": 11,
+  "nonblank_lines": 101,
+  "pass_lines": 101,
+  "fail_lines": 0,
+  "generic_line_present_evidence": 0,
+  "exact_coverage": true,
   "source_reports": [
     "reports/CONTINUITY_PRODUCT_CONTRACT.md",
-    "reports/EVIDENCE_SCHEMA_AND_BINDING_RECONCILIATION.md",
+    "reports/CONTINUITY_REPAIR_LEDGER.csv",
+    "reports/CONTINUITY_UNIVERSE.md",
     "reports/build_script_vs_files_audit.md",
     "reports/current_metadata_semantic_consistency.md",
     "reports/four_pass_deep_audit.md",
@@ -12,7 +19,5 @@
     "reports/report_claims_vs_evidence_audit.md",
     "reports/semantic_stale_scan.txt",
     "reports/stale_reference_scan.txt"
-  ],
-  "self_excluded_output": "reports/active_report_line_audit.csv",
-  "historical_reports_root": "reports/historical/"
+  ]
 }

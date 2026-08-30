@@ -1,12 +1,12 @@
 {
   "schema": "L24H_PACKAGE_MANIFEST_V1",
-  "version": "v101.123",
-  "stage": "FOUR_PASS_BUILD_REPRODUCIBILITY_AND_SELF_AUDIT_RECONCILIATION_R1",
+  "version": "v101.125",
+  "stage": "FOUR_PASS_EVIDENCE_SCHEMA_AND_DIRECT_REPORT_BINDING_RECONCILIATION_R1",
   "self_exclusion": [
     "metadata/hash_manifest.json",
     "metadata/package_manifest.json"
   ],
-  "file_count": 308,
+  "file_count": 426,
   "files": [
     {
       "path": ".gitattributes",
@@ -18,7 +18,7 @@
     },
     {
       "path": "README.md",
-      "size": 933
+      "size": 1078
     },
     {
       "path": "REAL_DEVICE_QA_CHECKLIST.md",
@@ -833,6 +833,242 @@
       "size": 5
     },
     {
+      "path": "evidence/v101124/ACTIVE_REPORT_LINE_AUDIT_SUMMARY.json",
+      "size": 764
+    },
+    {
+      "path": "evidence/v101124/BROAD_CHROMIUM_RUNTIME_MATRIX.json",
+      "size": 9882
+    },
+    {
+      "path": "evidence/v101124/CONTINUITY_CANDIDATE_AUDIT.json",
+      "size": 2476
+    },
+    {
+      "path": "evidence/v101124/CONTINUITY_MUTATION_TESTS.json",
+      "size": 1958
+    },
+    {
+      "path": "evidence/v101124/CONTINUITY_RUNTIME_MATRIX.json",
+      "size": 150207
+    },
+    {
+      "path": "evidence/v101124/EXHAUSTIVE_PRESENTATION_RUNTIME_MATRIX.json",
+      "size": 5388081
+    },
+    {
+      "path": "evidence/v101124/FULL_PACKAGE_BUILD_REPRODUCTION.json",
+      "size": 546
+    },
+    {
+      "path": "evidence/v101124/HELP_BROWSER_MATRIX.json",
+      "size": 64075
+    },
+    {
+      "path": "evidence/v101124/HOUR24_FIVE_PROFILE_UX_MATRIX.json",
+      "size": 27805
+    },
+    {
+      "path": "evidence/v101124/HOUR24_MUTATION_TEST_MATRIX.json",
+      "size": 3398
+    },
+    {
+      "path": "evidence/v101124/HOUR24_STATE_TRANSITION_MATRIX.json",
+      "size": 4169
+    },
+    {
+      "path": "evidence/v101124/INDEPENDENT_CONTINUITY_PROBE.json",
+      "size": 170449
+    },
+    {
+      "path": "evidence/v101124/INDEPENDENT_HOUR24_PROBE.json",
+      "size": 9441
+    },
+    {
+      "path": "evidence/v101124/INDEPENDENT_PRESENTATION_MATRIX.json",
+      "size": 2601752
+    },
+    {
+      "path": "evidence/v101124/INDEPENDENT_RUNTIME_SMOKE.json",
+      "size": 12839
+    },
+    {
+      "path": "evidence/v101124/PROTECTED_DECLARATION_PARITY.json",
+      "size": 4632
+    },
+    {
+      "path": "evidence/v101124/SEMANTIC_STALE_SCAN.json",
+      "size": 570
+    },
+    {
+      "path": "evidence/v101124/SERVICE_WORKER_LOGIC_MATRIX.json",
+      "size": 1473
+    },
+    {
+      "path": "evidence/v101124/VERSION_STALE_SCAN.json",
+      "size": 216
+    },
+    {
+      "path": "evidence/v101124/fixed/M1_EXACT_MUTATION_LEDGER_FROZEN.csv",
+      "size": 5
+    },
+    {
+      "path": "evidence/v101124/fixed/M1_FIXED_POINT_REPORT.md",
+      "size": 1137
+    },
+    {
+      "path": "evidence/v101124/fixed/M1_FIXED_POINT_SUMMARY.json",
+      "size": 1128
+    },
+    {
+      "path": "evidence/v101124/fixed/M1_HIDDEN_RANGE_LEXICAL_SAFETY.json",
+      "size": 47
+    },
+    {
+      "path": "evidence/v101124/fixed/M1_MUTATION_PAYLOAD.json",
+      "size": 46
+    },
+    {
+      "path": "evidence/v101124/fixed/M1_QUOTED_SPAN_PRESENTATION_LEDGER.csv",
+      "size": 223093
+    },
+    {
+      "path": "evidence/v101124/fixed/M1_SCANNER_A_DEFECTS.csv",
+      "size": 5
+    },
+    {
+      "path": "evidence/v101124/fixed/M1_SCANNER_B_DEFECTS.csv",
+      "size": 5
+    },
+    {
+      "path": "evidence/v101125/ACTIVE_REPORT_LINE_AUDIT_SUMMARY.json",
+      "size": 760
+    },
+    {
+      "path": "evidence/v101125/BROAD_CHROMIUM_RUNTIME_MATRIX.json",
+      "size": 9974
+    },
+    {
+      "path": "evidence/v101125/CONTINUITY_CANDIDATE_AUDIT.json",
+      "size": 2476
+    },
+    {
+      "path": "evidence/v101125/CONTINUITY_MUTATION_TESTS.json",
+      "size": 1958
+    },
+    {
+      "path": "evidence/v101125/CONTINUITY_RUNTIME_MATRIX.json",
+      "size": 150207
+    },
+    {
+      "path": "evidence/v101125/CONTINUITY_SPEAKER_HEADER_AUDIT.json",
+      "size": 1710
+    },
+    {
+      "path": "evidence/v101125/CURRENT_EVIDENCE_SCHEMA_AUDIT.json",
+      "size": 7002
+    },
+    {
+      "path": "evidence/v101125/EXHAUSTIVE_PRESENTATION_RUNTIME_MATRIX.json",
+      "size": 5388081
+    },
+    {
+      "path": "evidence/v101125/FULL_PACKAGE_BUILD_REPRODUCTION.json",
+      "size": 796
+    },
+    {
+      "path": "evidence/v101125/FUNCTIONAL_HTML_PARITY.json",
+      "size": 685
+    },
+    {
+      "path": "evidence/v101125/HELP_BROWSER_MATRIX.json",
+      "size": 64190
+    },
+    {
+      "path": "evidence/v101125/HOUR24_FIVE_PROFILE_UX_MATRIX.json",
+      "size": 27805
+    },
+    {
+      "path": "evidence/v101125/HOUR24_MUTATION_TEST_MATRIX.json",
+      "size": 3398
+    },
+    {
+      "path": "evidence/v101125/HOUR24_STATE_TRANSITION_MATRIX.json",
+      "size": 4169
+    },
+    {
+      "path": "evidence/v101125/INDEPENDENT_CONTINUITY_PROBE.json",
+      "size": 170449
+    },
+    {
+      "path": "evidence/v101125/INDEPENDENT_HOUR24_PROBE.json",
+      "size": 9441
+    },
+    {
+      "path": "evidence/v101125/INDEPENDENT_PRESENTATION_MATRIX.json",
+      "size": 2601752
+    },
+    {
+      "path": "evidence/v101125/INDEPENDENT_RUNTIME_SMOKE.json",
+      "size": 12954
+    },
+    {
+      "path": "evidence/v101125/PROTECTED_DECLARATION_PARITY.json",
+      "size": 4543
+    },
+    {
+      "path": "evidence/v101125/REPORT_CLAIM_ASSERTIONS.json",
+      "size": 45182
+    },
+    {
+      "path": "evidence/v101125/SEMANTIC_STALE_SCAN.json",
+      "size": 663
+    },
+    {
+      "path": "evidence/v101125/SERVICE_WORKER_LOGIC_MATRIX.json",
+      "size": 1473
+    },
+    {
+      "path": "evidence/v101125/V101124_DEEP_FOUR_PASS_FINDINGS.json",
+      "size": 1451
+    },
+    {
+      "path": "evidence/v101125/VERSION_STALE_SCAN.json",
+      "size": 299
+    },
+    {
+      "path": "evidence/v101125/fixed/M1_EXACT_MUTATION_LEDGER_FROZEN.csv",
+      "size": 5
+    },
+    {
+      "path": "evidence/v101125/fixed/M1_FIXED_POINT_REPORT.md",
+      "size": 1137
+    },
+    {
+      "path": "evidence/v101125/fixed/M1_FIXED_POINT_SUMMARY.json",
+      "size": 1128
+    },
+    {
+      "path": "evidence/v101125/fixed/M1_HIDDEN_RANGE_LEXICAL_SAFETY.json",
+      "size": 47
+    },
+    {
+      "path": "evidence/v101125/fixed/M1_MUTATION_PAYLOAD.json",
+      "size": 46
+    },
+    {
+      "path": "evidence/v101125/fixed/M1_QUOTED_SPAN_PRESENTATION_LEDGER.csv",
+      "size": 223093
+    },
+    {
+      "path": "evidence/v101125/fixed/M1_SCANNER_A_DEFECTS.csv",
+      "size": 5
+    },
+    {
+      "path": "evidence/v101125/fixed/M1_SCANNER_B_DEFECTS.csv",
+      "size": 5
+    },
+    {
       "path": "favicon-16.png",
       "size": 629
     },
@@ -866,11 +1102,11 @@
     },
     {
       "path": "index.html",
-      "size": 2557966
+      "size": 2561474
     },
     {
       "path": "luisa_24_heures.html",
-      "size": 2557966
+      "size": 2561474
     },
     {
       "path": "manifest.json",
@@ -878,55 +1114,59 @@
     },
     {
       "path": "metadata/active_report_inventory.json",
-      "size": 785
+      "size": 723
     },
     {
       "path": "metadata/build_provenance.json",
-      "size": 1106
+      "size": 805
+    },
+    {
+      "path": "metadata/current_evidence_lineage.json",
+      "size": 611
     },
     {
       "path": "metadata/current_tooling_inventory.json",
-      "size": 2361
+      "size": 1859
     },
     {
       "path": "metadata/full_build_overlay_manifest.json",
-      "size": 4554
+      "size": 5072
     },
     {
       "path": "metadata/release_evidence_lifecycle.json",
-      "size": 341
+      "size": 790
     },
     {
       "path": "metadata/scope_escalation_authority.md",
-      "size": 342
+      "size": 642
     },
     {
-      "path": "reports/HOUR24_PRODUCT_CONTRACT.md",
-      "size": 1016
+      "path": "reports/CONTINUITY_PRODUCT_CONTRACT.md",
+      "size": 1327
     },
     {
-      "path": "reports/HOUR24_STATE_MATRIX.csv",
-      "size": 200
+      "path": "reports/EVIDENCE_SCHEMA_AND_BINDING_RECONCILIATION.md",
+      "size": 1083
     },
     {
       "path": "reports/active_report_line_audit.csv",
-      "size": 40266
+      "size": 29125
     },
     {
       "path": "reports/build_script_vs_files_audit.md",
-      "size": 792
+      "size": 723
     },
     {
       "path": "reports/current_metadata_semantic_consistency.md",
-      "size": 437
+      "size": 827
     },
     {
       "path": "reports/four_pass_deep_audit.md",
-      "size": 1787
+      "size": 1285
     },
     {
       "path": "reports/full_regression_matrix.csv",
-      "size": 929
+      "size": 1823
     },
     {
       "path": "reports/historical/v101122/HOUR24_PRODUCT_CONTRACT.md",
@@ -985,28 +1225,120 @@
       "size": 170
     },
     {
-      "path": "reports/hour24_end_cycle_state_matrix.csv",
+      "path": "reports/historical/v101123/HOUR24_PRODUCT_CONTRACT.md",
+      "size": 1016
+    },
+    {
+      "path": "reports/historical/v101123/HOUR24_STATE_MATRIX.csv",
+      "size": 200
+    },
+    {
+      "path": "reports/historical/v101123/active_report_line_audit.csv",
+      "size": 40266
+    },
+    {
+      "path": "reports/historical/v101123/build_script_vs_files_audit.md",
+      "size": 792
+    },
+    {
+      "path": "reports/historical/v101123/current_metadata_semantic_consistency.md",
+      "size": 437
+    },
+    {
+      "path": "reports/historical/v101123/four_pass_deep_audit.md",
+      "size": 1787
+    },
+    {
+      "path": "reports/historical/v101123/full_regression_matrix.csv",
+      "size": 929
+    },
+    {
+      "path": "reports/historical/v101123/hour24_end_cycle_state_matrix.csv",
       "size": 2137
     },
     {
-      "path": "reports/no_regression_fix_ledger.csv",
+      "path": "reports/historical/v101123/no_regression_fix_ledger.csv",
       "size": 908
     },
     {
-      "path": "reports/protected_declaration_parity.csv",
+      "path": "reports/historical/v101123/protected_declaration_parity.csv",
       "size": 2278
     },
     {
-      "path": "reports/report_claims_vs_evidence_audit.md",
+      "path": "reports/historical/v101123/report_claims_vs_evidence_audit.md",
       "size": 1876
     },
     {
-      "path": "reports/semantic_stale_scan.txt",
+      "path": "reports/historical/v101123/semantic_stale_scan.txt",
       "size": 168
     },
     {
-      "path": "reports/stale_reference_scan.txt",
+      "path": "reports/historical/v101123/stale_reference_scan.txt",
       "size": 198
+    },
+    {
+      "path": "reports/historical/v101124/CONTINUITY_PRODUCT_CONTRACT.md",
+      "size": 1069
+    },
+    {
+      "path": "reports/historical/v101124/CONTINUITY_REPAIR_LEDGER.csv",
+      "size": 397
+    },
+    {
+      "path": "reports/historical/v101124/CONTINUITY_UNIVERSE.md",
+      "size": 699
+    },
+    {
+      "path": "reports/historical/v101124/active_report_line_audit.csv",
+      "size": 30645
+    },
+    {
+      "path": "reports/historical/v101124/build_script_vs_files_audit.md",
+      "size": 577
+    },
+    {
+      "path": "reports/historical/v101124/current_metadata_semantic_consistency.md",
+      "size": 607
+    },
+    {
+      "path": "reports/historical/v101124/four_pass_deep_audit.md",
+      "size": 916
+    },
+    {
+      "path": "reports/historical/v101124/full_regression_matrix.csv",
+      "size": 1461
+    },
+    {
+      "path": "reports/historical/v101124/protected_declaration_parity.csv",
+      "size": 2733
+    },
+    {
+      "path": "reports/historical/v101124/report_claims_vs_evidence_audit.md",
+      "size": 543
+    },
+    {
+      "path": "reports/historical/v101124/semantic_stale_scan.txt",
+      "size": 143
+    },
+    {
+      "path": "reports/historical/v101124/stale_reference_scan.txt",
+      "size": 144
+    },
+    {
+      "path": "reports/protected_declaration_parity.csv",
+      "size": 2656
+    },
+    {
+      "path": "reports/report_claims_vs_evidence_audit.md",
+      "size": 826
+    },
+    {
+      "path": "reports/semantic_stale_scan.txt",
+      "size": 156
+    },
+    {
+      "path": "reports/stale_reference_scan.txt",
+      "size": 150
     },
     {
       "path": "scripts/EXECUTION_SPEC.md",
@@ -1063,6 +1395,14 @@
     {
       "path": "scripts/build_v101123_full_package_reconciliation.py",
       "size": 2795
+    },
+    {
+      "path": "scripts/build_v101124_full_package_reconciliation.py",
+      "size": 2443
+    },
+    {
+      "path": "scripts/build_v101125_full_package_reconciliation.py",
+      "size": 2443
     },
     {
       "path": "scripts/historical/EXECUTION_SPEC_v101111.md",
@@ -1233,12 +1573,144 @@
       "size": 6185
     },
     {
+      "path": "scripts/run_v101124_continuity_candidate_audit.py",
+      "size": 2506
+    },
+    {
+      "path": "scripts/run_v101124_continuity_matrix.py",
+      "size": 6225
+    },
+    {
+      "path": "scripts/run_v101124_continuity_mutation_tests.py",
+      "size": 3888
+    },
+    {
+      "path": "scripts/run_v101124_five_profile_ux_matrix.py",
+      "size": 5283
+    },
+    {
+      "path": "scripts/run_v101124_help_browser_matrix.py",
+      "size": 6463
+    },
+    {
+      "path": "scripts/run_v101124_hour24_state_matrix.py",
+      "size": 11520
+    },
+    {
+      "path": "scripts/run_v101124_independent_continuity_probe.py",
+      "size": 3619
+    },
+    {
+      "path": "scripts/run_v101124_independent_hour24_probe.py",
+      "size": 4275
+    },
+    {
+      "path": "scripts/run_v101124_independent_prefreeze_audit.py",
+      "size": 11456
+    },
+    {
+      "path": "scripts/run_v101124_independent_presentation_matrix.py",
+      "size": 6254
+    },
+    {
+      "path": "scripts/run_v101124_independent_reopen_audit.py",
+      "size": 5308
+    },
+    {
+      "path": "scripts/run_v101124_independent_runtime_smoke.py",
+      "size": 5249
+    },
+    {
+      "path": "scripts/run_v101124_mutation_tests.py",
+      "size": 6442
+    },
+    {
+      "path": "scripts/run_v101124_primary_reopen_audit.py",
+      "size": 3954
+    },
+    {
+      "path": "scripts/run_v101124_stale_scans.py",
+      "size": 4944
+    },
+    {
+      "path": "scripts/run_v101125_continuity_candidate_audit.py",
+      "size": 2506
+    },
+    {
+      "path": "scripts/run_v101125_continuity_matrix.py",
+      "size": 6225
+    },
+    {
+      "path": "scripts/run_v101125_continuity_mutation_tests.py",
+      "size": 3888
+    },
+    {
+      "path": "scripts/run_v101125_continuity_speaker_header_audit.py",
+      "size": 2175
+    },
+    {
+      "path": "scripts/run_v101125_current_evidence_schema_audit.py",
+      "size": 1599
+    },
+    {
+      "path": "scripts/run_v101125_five_profile_ux_matrix.py",
+      "size": 5283
+    },
+    {
+      "path": "scripts/run_v101125_help_browser_matrix.py",
+      "size": 6486
+    },
+    {
+      "path": "scripts/run_v101125_hour24_state_matrix.py",
+      "size": 11520
+    },
+    {
+      "path": "scripts/run_v101125_independent_continuity_probe.py",
+      "size": 3619
+    },
+    {
+      "path": "scripts/run_v101125_independent_hour24_probe.py",
+      "size": 4275
+    },
+    {
+      "path": "scripts/run_v101125_independent_prefreeze_audit.py",
+      "size": 12754
+    },
+    {
+      "path": "scripts/run_v101125_independent_presentation_matrix.py",
+      "size": 6254
+    },
+    {
+      "path": "scripts/run_v101125_independent_reopen_audit.py",
+      "size": 7915
+    },
+    {
+      "path": "scripts/run_v101125_independent_runtime_smoke.py",
+      "size": 5272
+    },
+    {
+      "path": "scripts/run_v101125_mutation_tests.py",
+      "size": 6442
+    },
+    {
+      "path": "scripts/run_v101125_primary_reopen_audit.py",
+      "size": 4497
+    },
+    {
+      "path": "scripts/run_v101125_report_claim_audit.py",
+      "size": 18728
+    },
+    {
+      "path": "scripts/run_v101125_stale_scans.py",
+      "size": 7237
+    },
+    {
       "path": "sw.js",
       "size": 3903
     },
     {
       "path": "version.json",
-      "size": 1573
+      "size": 1615
     }
   ]
 }

@@ -1,0 +1,11 @@
+{
+  "version": "v101.125",
+  "stage": "FOUR_PASS_EVIDENCE_SCHEMA_AND_DIRECT_REPORT_BINDING_RECONCILIATION_R1",
+  "current_evidence_root": "evidence/v101125",
+  "allowed_reused_schema_lineage": {
+    "evidence/v101125/fixed/M1_FIXED_POINT_SUMMARY.json": "L24H_V101119_QUOTED_SPAN_FIXED_POINT_R1",
+    "evidence/v101125/fixed/M1_FIXED_POINT_REPORT.md": "v101.119 quoted-span fixed-point lineage",
+    "evidence/v101125/EXHAUSTIVE_PRESENTATION_RUNTIME_MATRIX.json": "L24H_V101119_EXHAUSTIVE_PRESENTATION_MATRIX_V1"
+  },
+  "rule": "No other current evidence artifact may carry an old v101.xxx schema identifier."
+}

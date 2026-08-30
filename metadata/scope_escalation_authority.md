@@ -1,5 +1,3 @@
-# v101.123 scope escalation authority
+# v101.125 scope escalation authority
 
-Current stage is strictly release-engineering/report/tooling reconciliation.
-
-No Hour-24 behaviour, corpus, speaker, presentation, flow, highlighting, Help or storage-schema mutation is authorised. Any direct evidence requiring such a change must stop this stage and open a separately scoped successor.
+Current authorised mutation: release identity plus current-evidence schema reconciliation, stale-scan scope correction, claim-specific active-report evidence binding, and the build/audit tooling needed to reproduce and verify those changes. Functional application behaviour, canonical devotional text, all 14 governed declarations (including `CONTINUITY_GROUPS`), Hour-24 logic, Help, highlighting semantics, speaker/presentation authority and storage schemas are protected and unchanged versus immutable v101.124. Any new functional defect requires separate evidence and a separately scoped successor.

@@ -1,7 +1,10 @@
 {
-  "version": "v101.123",
-  "prefreeze_package_reports": "current reports and evidence may claim only prefreeze/package/browser gates",
+  "version": "v101.125",
+  "stage": "FOUR_PASS_EVIDENCE_SCHEMA_AND_DIRECT_REPORT_BINDING_RECONCILIATION_R1",
+  "prefreeze_package_reports": "current package reports may claim only directly executed prefreeze/package/browser gates",
   "postfreeze_final_reopen_reports": "external only",
   "physical_device_claims": "NOT_TESTED until direct evidence",
-  "immutable_package_rule": "do not insert postfreeze PASS reports into frozen ZIP"
+  "immutable_package_rule": "do not insert postfreeze PASS reports into frozen ZIP",
+  "current_evidence_rule": "every current evidence artifact must either use the current v101.125 schema/version identity or be explicitly classified as reused validated lineage",
+  "active_report_rule": "every nonblank active source-report line must bind to claim-specific evidence; a generic or unrelated evidence pointer is a FAIL_REPORT_INTEGRITY"
 }
