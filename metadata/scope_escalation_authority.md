@@ -1,3 +1,3 @@
-# v101.125 scope escalation authority
+# v101.126 Scope Authority
 
-Current authorised mutation: release identity plus current-evidence schema reconciliation, stale-scan scope correction, claim-specific active-report evidence binding, and the build/audit tooling needed to reproduce and verify those changes. Functional application behaviour, canonical devotional text, all 14 governed declarations (including `CONTINUITY_GROUPS`), Hour-24 logic, Help, highlighting semantics, speaker/presentation authority and storage schemas are protected and unchanged versus immutable v101.124. Any new functional defect requires separate evidence and a separately scoped successor.
+Current authorised mutation scope is exactly 34 operations: 15 governed LDC synchronizations from v2.19.62-R1B/R5 plus 19 native 24H/prayer repairs. No other canonical text mutation is authorised. `OP-L17-109-01` is a mandatory no-edit control. Any further content change requires a new governed authority decision.

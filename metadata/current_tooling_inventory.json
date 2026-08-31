@@ -1,41 +1,13 @@
 {
-  "version": "v101.125",
-  "stage": "FOUR_PASS_EVIDENCE_SCHEMA_AND_DIRECT_REPORT_BINDING_RECONCILIATION_R1",
+  "version": "v101.126",
+  "stage": "DUAL_SUCCESSOR_R5_15_LDC_SYNC_PLUS_19_NATIVE_R1",
   "current_tools": [
-    "scripts/build_v101125_full_package_reconciliation.py",
-    "scripts/run_v101125_independent_prefreeze_audit.py",
-    "scripts/run_v101125_stale_scans.py",
-    "scripts/run_v101125_primary_reopen_audit.py",
-    "scripts/run_v101125_independent_reopen_audit.py",
-    "scripts/run_v101125_continuity_candidate_audit.py",
-    "scripts/run_v101125_continuity_matrix.py",
-    "scripts/run_v101125_continuity_mutation_tests.py",
-    "scripts/run_v101125_hour24_state_matrix.py",
-    "scripts/run_v101125_five_profile_ux_matrix.py",
-    "scripts/run_v101125_help_browser_matrix.py",
-    "scripts/run_v101125_mutation_tests.py",
-    "scripts/run_v101125_independent_hour24_probe.py",
-    "scripts/run_v101125_independent_runtime_smoke.py",
-    "scripts/run_v101125_independent_presentation_matrix.py",
-    "scripts/run_v101125_independent_continuity_probe.py",
-    "scripts/run_broad_runtime_matrix.py",
-    "scripts/run_sw_logic_matrix.js",
-    "scripts/run_v101119_quoted_span_fixed_point.py",
-    "scripts/run_v101119_exhaustive_presentation_matrix.py",
-    "scripts/run_v101125_report_claim_audit.py",
-    "scripts/run_v101125_current_evidence_schema_audit.py",
-    "scripts/run_v101125_continuity_speaker_header_audit.py"
+    "scripts/build_v101126_dual_successor_mutations.py"
   ],
-  "reused_validated_lineage": [
-    "scripts/run_broad_runtime_matrix.py",
-    "scripts/run_sw_logic_matrix.js",
-    "scripts/run_v101119_quoted_span_fixed_point.py",
-    "scripts/run_v101119_exhaustive_presentation_matrix.py"
+  "reused_validated_runtime_lineage": [
+    "existing v101.125 runtime/search/highlight/PWA infrastructure except governed data/identity rebuild"
   ],
   "historical_or_superseded_tools": [
-    "scripts/build_v101124_full_package_reconciliation.py",
-    "scripts/run_v101124_independent_prefreeze_audit.py",
-    "scripts/run_v101124_primary_reopen_audit.py",
-    "scripts/run_v101124_independent_reopen_audit.py"
+    "scripts/build_v101125_full_package_reconciliation.py"
   ]
 }

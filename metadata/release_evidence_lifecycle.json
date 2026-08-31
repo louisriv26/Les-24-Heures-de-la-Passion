@@ -1,10 +1,10 @@
 {
-  "version": "v101.125",
-  "stage": "FOUR_PASS_EVIDENCE_SCHEMA_AND_DIRECT_REPORT_BINDING_RECONCILIATION_R1",
-  "prefreeze_package_reports": "current package reports may claim only directly executed prefreeze/package/browser gates",
+  "version": "v101.126",
+  "stage": "DUAL_SUCCESSOR_R5_15_LDC_SYNC_PLUS_19_NATIVE_R1",
+  "prefreeze_package_reports": "current package report may claim only directly executed static/build facts",
   "postfreeze_final_reopen_reports": "external only",
   "physical_device_claims": "NOT_TESTED until direct evidence",
   "immutable_package_rule": "do not insert postfreeze PASS reports into frozen ZIP",
-  "current_evidence_rule": "every current evidence artifact must either use the current v101.125 schema/version identity or be explicitly classified as reused validated lineage",
-  "active_report_rule": "every nonblank active source-report line must bind to claim-specific evidence; a generic or unrelated evidence pointer is a FAIL_REPORT_INTEGRITY"
+  "current_evidence_rule": "evidence/v101126 is current; older evidence is predecessor/historical lineage",
+  "active_report_rule": "current active report claims must bind directly to evidence/v101126 or current package bytes"
 }

@@ -1,23 +1,24 @@
 {
-  "app_version": "v101.125",
-  "build_date": "2026-08-30",
-  "cache_name": "luisa-24h-v101-125",
+  "app_version": "v101.126",
+  "build_date": "2026-08-31",
+  "cache_name": "luisa-24h-v101-126",
   "storage_schema": 8,
   "personal_snapshot": 5,
-  "ldc_source_public_version": "Version 31 implementation / Version 29 RA19B corpus-flow authority",
-  "ldc_source_app_version": "v2.19.31-R1B implementation; v2.19.29-R1B corpus-flow",
-  "ldc_source_package_sha256": "b91aabf84803685cb5a86379c2a76c6239c2882bc1fa8b4277479f978c025441",
-  "ldc_ra19b_corpus_flow_sha256": "eb2fa6abce1525399547f469ad1c2d64e818ff8685fe11cc20a57571c59f92fc",
-  "release_scope": "Narrow release-engineering successor of immutable v101.124. Corrects current evidence schema/version consistency, expands stale scanning to current evidence, and replaces weak/generic active-report line bindings with claim-specific direct evidence. Application behaviour is unchanged except mechanical release identity; canonical text, continuity rendering, Hour-24 state logic, Help, highlighting semantics, speech/presentation authority and storage schemas are unchanged.",
-  "real_device_status": "Physical Samsung/iPhone/iPad, installed-PWA, true offline cold reopen, VoiceOver/TalkBack and live GitHub Pages exact-byte binding NOT_TESTED for v101.125.",
-  "overall_release_status": "LIMITED_PASS_STATIC_IF_FINAL_REOPEN_AUDITS_PASS",
+  "ldc_source_public_version": "62",
+  "ldc_source_app_version": "v2.19.62-R1B",
+  "ldc_source_package_sha256": "3e1d234c2de11ea8032cb7d56c3e5eb0d5faac1c8858e227fd730db61481eb50",
+  "release_scope": "Governed dual-successor content successor of immutable v101.125. Applies exactly 15 LDC-governed synchronizations from the frozen R5/v62 successor and 19 authority-completed native 24H/prayer repairs. Rebuilds affected speech/presentation/topology offsets, corpus fingerprint, PWA/version bindings, manifests and evidence. Storage schema, personal snapshot schema, navigation/product behaviour and unrelated corpus text remain unchanged.",
+  "real_device_status": "Physical Samsung/iPhone/iPad, installed-PWA, true offline cold reopen, VoiceOver/TalkBack and live GitHub Pages exact-byte binding NOT_TESTED for v101.126.",
+  "overall_release_status": "LIMITED_PASS_STATIC_PENDING_FINAL_REOPEN_AUDIT",
   "known_blockers": [],
   "external_open_gates": [
     "physical iPad/iPhone/Samsung",
-    "Hour-24 end-of-cycle real-device layout and live Méditée transition",
     "live GitHub Pages exact-byte binding",
     "installed PWA update",
     "true offline cold reopen",
     "VoiceOver/TalkBack representative testing"
-  ]
+  ],
+  "ldc_source_alignment_generation": "G036-AFLP-R5-UWR2",
+  "ldc_source_enriched_generation": "G036-AFLP-R5-SUP-T4",
+  "ldc_source_corpus_manifest_sha256": "76895194f21e21c058d8c7f1547977abad220caa501406b97ac4b4e05f1772e7"
 }

@@ -1,12 +1,12 @@
 {
   "schema": "L24H_PACKAGE_MANIFEST_V1",
-  "version": "v101.125",
-  "stage": "FOUR_PASS_EVIDENCE_SCHEMA_AND_DIRECT_REPORT_BINDING_RECONCILIATION_R1",
+  "version": "v101.126",
+  "stage": "DUAL_SUCCESSOR_R5_15_LDC_SYNC_PLUS_19_NATIVE_R1",
   "self_exclusion": [
     "metadata/hash_manifest.json",
     "metadata/package_manifest.json"
   ],
-  "file_count": 426,
+  "file_count": 432,
   "files": [
     {
       "path": ".gitattributes",
@@ -18,7 +18,7 @@
     },
     {
       "path": "README.md",
-      "size": 1078
+      "size": 660
     },
     {
       "path": "REAL_DEVICE_QA_CHECKLIST.md",
@@ -1069,6 +1069,22 @@
       "size": 5
     },
     {
+      "path": "evidence/v101126/APPLY_LEDGER_34.csv",
+      "size": 10832
+    },
+    {
+      "path": "evidence/v101126/DERIVED_LAYER_REBUILD.json",
+      "size": 26137
+    },
+    {
+      "path": "evidence/v101126/GOVERNED_MIRROR_REBUILD_LEDGER.csv",
+      "size": 1377
+    },
+    {
+      "path": "evidence/v101126/PREAPPLY_BINDING.json",
+      "size": 912
+    },
+    {
       "path": "favicon-16.png",
       "size": 629
     },
@@ -1102,11 +1118,11 @@
     },
     {
       "path": "index.html",
-      "size": 2561474
+      "size": 2564723
     },
     {
       "path": "luisa_24_heures.html",
-      "size": 2561474
+      "size": 2564723
     },
     {
       "path": "manifest.json",
@@ -1114,35 +1130,39 @@
     },
     {
       "path": "metadata/active_report_inventory.json",
-      "size": 723
+      "size": 334
     },
     {
       "path": "metadata/build_provenance.json",
-      "size": 805
+      "size": 811
     },
     {
       "path": "metadata/current_evidence_lineage.json",
-      "size": 611
+      "size": 575
     },
     {
       "path": "metadata/current_tooling_inventory.json",
-      "size": 1859
+      "size": 425
     },
     {
       "path": "metadata/full_build_overlay_manifest.json",
-      "size": 5072
+      "size": 1127
     },
     {
       "path": "metadata/release_evidence_lifecycle.json",
-      "size": 790
+      "size": 630
     },
     {
       "path": "metadata/scope_escalation_authority.md",
-      "size": 642
+      "size": 344
     },
     {
       "path": "reports/CONTINUITY_PRODUCT_CONTRACT.md",
       "size": 1327
+    },
+    {
+      "path": "reports/DUAL_SUCCESSOR_MUTATION_REPORT.md",
+      "size": 1227
     },
     {
       "path": "reports/EVIDENCE_SCHEMA_AND_BINDING_RECONCILIATION.md",
@@ -1403,6 +1423,10 @@
     {
       "path": "scripts/build_v101125_full_package_reconciliation.py",
       "size": 2443
+    },
+    {
+      "path": "scripts/build_v101126_dual_successor_mutations.py",
+      "size": 30763
     },
     {
       "path": "scripts/historical/EXECUTION_SPEC_v101111.md",
@@ -1710,7 +1734,7 @@
     },
     {
       "path": "version.json",
-      "size": 1615
+      "size": 1518
     }
   ]
 }

@@ -1,11 +1,14 @@
 {
-  "version": "v101.125",
-  "stage": "FOUR_PASS_EVIDENCE_SCHEMA_AND_DIRECT_REPORT_BINDING_RECONCILIATION_R1",
-  "current_evidence_root": "evidence/v101125",
-  "allowed_reused_schema_lineage": {
-    "evidence/v101125/fixed/M1_FIXED_POINT_SUMMARY.json": "L24H_V101119_QUOTED_SPAN_FIXED_POINT_R1",
-    "evidence/v101125/fixed/M1_FIXED_POINT_REPORT.md": "v101.119 quoted-span fixed-point lineage",
-    "evidence/v101125/EXHAUSTIVE_PRESENTATION_RUNTIME_MATRIX.json": "L24H_V101119_EXHAUSTIVE_PRESENTATION_MATRIX_V1"
+  "version": "v101.126",
+  "stage": "DUAL_SUCCESSOR_R5_15_LDC_SYNC_PLUS_19_NATIVE_R1",
+  "current_evidence_root": "evidence/v101126",
+  "governed_ldc_source": {
+    "version": "v2.19.62-R1B",
+    "sha256": "3e1d234c2de11ea8032cb7d56c3e5eb0d5faac1c8858e227fd730db61481eb50"
   },
-  "rule": "No other current evidence artifact may carry an old v101.xxx schema identifier."
+  "predecessor_24h": {
+    "version": "v101.125",
+    "sha256": "e227ae618fef06de784f9ba6b5b5a6a55ae8618e54f7a7841b7ba7b571e48a90"
+  },
+  "rule": "v101.125 and earlier evidence is retained as predecessor/historical evidence and must not be interpreted as current v101.126 execution evidence."
 }
