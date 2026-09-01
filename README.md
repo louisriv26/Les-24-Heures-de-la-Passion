@@ -1,14 +1,18 @@
-# Les 24 Heures de la Passion — v101.126
+# Les 24 Heures de la Passion — v101.127
 
-Governed content successor of immutable v101.125.
+Presentation-only continuity regression successor of immutable v101.126.
 
-## Current bounded mutation
+## Repair
 
-- 15 synchronizations from governed LDC v2.19.62-R1B / G036-AFLP-R5-UWR2 / G036-AFLP-R5-SUP-T4.
-- 19 authority-completed native 24H/prayer repairs.
-- Total authorised operation universe: 34.
-- Stable paragraph IDs and personal-data schemas are preserved.
+- Fixes the forced cross-record line break at Hour 3 `peines,` → `afin que…`.
+- Applies the same mechanism correction to the Hour 13 approved continuity boundary.
+- Preserves all five approved continuity pairs, stable record IDs and internal display-segment rhythm.
+- Adds **zero** canonical/devotional text changes.
+
+## Inherited textual authority
+
+The v101.126 textual fixed point remains unchanged: 34 authorised operations = 15 governed LDC synchronizations + 19 native 24H/prayer repairs.
 
 ## Validation boundary
 
-This package is eligible only for static/package/reopen validation in this workflow. Physical iPhone/iPad/Samsung, installed-PWA update, true offline cold reopen, accessibility screen readers and live GitHub Pages exact-byte binding remain external gates.
+Package-local evidence is pre-final-reopen. Physical devices, installed-PWA update, true offline cold reopen, accessibility screen readers and live GitHub Pages exact-byte binding remain external gates.

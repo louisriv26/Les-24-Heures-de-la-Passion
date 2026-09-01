@@ -1,9 +1,10 @@
 {
-  "version": "v101.126",
-  "stage": "DUAL_SUCCESSOR_R5_15_LDC_SYNC_PLUS_19_NATIVE_R1",
+  "version": "v101.127",
+  "stage": "CROSS_RECORD_CONTINUITY_GLYPH_FLOW_REGRESSION_REPAIR_R1",
   "source_reports": [
-    "reports/DUAL_SUCCESSOR_MUTATION_REPORT.md"
+    "reports/CONTINUITY_GLYPH_FLOW_REGRESSION_REPAIR.md"
   ],
   "historical_reports_root": "reports/historical/",
-  "rule": "Only the listed report is current for v101.126; predecessor reports/evidence remain historical lineage."
+  "inherited_nonactive_report": "reports/DUAL_SUCCESSOR_MUTATION_REPORT.md",
+  "rule": "Only CONTINUITY_GLYPH_FLOW_REGRESSION_REPAIR.md is current for v101.127; v101.126 and earlier reports/evidence are predecessor/historical lineage."
 }

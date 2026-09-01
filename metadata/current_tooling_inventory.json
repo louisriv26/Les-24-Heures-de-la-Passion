@@ -1,13 +1,14 @@
 {
-  "version": "v101.126",
-  "stage": "DUAL_SUCCESSOR_R5_15_LDC_SYNC_PLUS_19_NATIVE_R1",
+  "version": "v101.127",
+  "stage": "CROSS_RECORD_CONTINUITY_GLYPH_FLOW_REGRESSION_REPAIR_R1",
   "current_tools": [
-    "scripts/build_v101126_dual_successor_mutations.py"
+    "scripts/build_v101127_continuity_glyph_flow_regression_repair.py",
+    "scripts/run_v101127_strict_continuity_glyph_flow_matrix.py"
   ],
   "reused_validated_runtime_lineage": [
-    "existing v101.125 runtime/search/highlight/PWA infrastructure except governed data/identity rebuild"
+    "v101.126 runtime/search/highlight/PWA/textual data except bounded continuity CSS and release identity"
   ],
   "historical_or_superseded_tools": [
-    "scripts/build_v101125_full_package_reconciliation.py"
+    "scripts/build_v101126_dual_successor_mutations.py"
   ]
 }

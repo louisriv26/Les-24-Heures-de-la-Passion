@@ -1,12 +1,12 @@
 {
   "schema": "L24H_PACKAGE_MANIFEST_V1",
-  "version": "v101.126",
-  "stage": "DUAL_SUCCESSOR_R5_15_LDC_SYNC_PLUS_19_NATIVE_R1",
+  "version": "v101.127",
+  "stage": "CROSS_RECORD_CONTINUITY_GLYPH_FLOW_REGRESSION_REPAIR_R1",
   "self_exclusion": [
     "metadata/hash_manifest.json",
     "metadata/package_manifest.json"
   ],
-  "file_count": 432,
+  "file_count": 438,
   "files": [
     {
       "path": ".gitattributes",
@@ -18,7 +18,7 @@
     },
     {
       "path": "README.md",
-      "size": 660
+      "size": 855
     },
     {
       "path": "REAL_DEVICE_QA_CHECKLIST.md",
@@ -1085,6 +1085,18 @@
       "size": 912
     },
     {
+      "path": "evidence/v101127/PRESENTATION_ONLY_SCOPE.json",
+      "size": 872
+    },
+    {
+      "path": "evidence/v101127/REGRESSION_ROOT_CAUSE.json",
+      "size": 1158
+    },
+    {
+      "path": "evidence/v101127/STRICT_GLYPH_FLOW_TEST_CONTRACT.json",
+      "size": 674
+    },
+    {
       "path": "favicon-16.png",
       "size": 629
     },
@@ -1118,11 +1130,11 @@
     },
     {
       "path": "index.html",
-      "size": 2564723
+      "size": 2565575
     },
     {
       "path": "luisa_24_heures.html",
-      "size": 2564723
+      "size": 2565575
     },
     {
       "path": "manifest.json",
@@ -1130,31 +1142,35 @@
     },
     {
       "path": "metadata/active_report_inventory.json",
-      "size": 334
+      "size": 471
     },
     {
       "path": "metadata/build_provenance.json",
-      "size": 811
+      "size": 830
     },
     {
       "path": "metadata/current_evidence_lineage.json",
-      "size": 575
+      "size": 560
     },
     {
       "path": "metadata/current_tooling_inventory.json",
-      "size": 425
+      "size": 513
     },
     {
       "path": "metadata/full_build_overlay_manifest.json",
-      "size": 1127
+      "size": 1190
     },
     {
       "path": "metadata/release_evidence_lifecycle.json",
-      "size": 630
+      "size": 638
     },
     {
       "path": "metadata/scope_escalation_authority.md",
-      "size": 344
+      "size": 446
+    },
+    {
+      "path": "reports/CONTINUITY_GLYPH_FLOW_REGRESSION_REPAIR.md",
+      "size": 1428
     },
     {
       "path": "reports/CONTINUITY_PRODUCT_CONTRACT.md",
@@ -1427,6 +1443,10 @@
     {
       "path": "scripts/build_v101126_dual_successor_mutations.py",
       "size": 30763
+    },
+    {
+      "path": "scripts/build_v101127_continuity_glyph_flow_regression_repair.py",
+      "size": 15972
     },
     {
       "path": "scripts/historical/EXECUTION_SPEC_v101111.md",
@@ -1729,12 +1749,16 @@
       "size": 7237
     },
     {
+      "path": "scripts/run_v101127_strict_continuity_glyph_flow_matrix.py",
+      "size": 5414
+    },
+    {
       "path": "sw.js",
       "size": 3903
     },
     {
       "path": "version.json",
-      "size": 1518
+      "size": 1484
     }
   ]
 }

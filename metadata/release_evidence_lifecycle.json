@@ -1,10 +1,10 @@
 {
-  "version": "v101.126",
-  "stage": "DUAL_SUCCESSOR_R5_15_LDC_SYNC_PLUS_19_NATIVE_R1",
+  "version": "v101.127",
+  "stage": "CROSS_RECORD_CONTINUITY_GLYPH_FLOW_REGRESSION_REPAIR_R1",
   "prefreeze_package_reports": "current package report may claim only directly executed static/build facts",
   "postfreeze_final_reopen_reports": "external only",
   "physical_device_claims": "NOT_TESTED until direct evidence",
   "immutable_package_rule": "do not insert postfreeze PASS reports into frozen ZIP",
-  "current_evidence_rule": "evidence/v101126 is current; older evidence is predecessor/historical lineage",
-  "active_report_rule": "current active report claims must bind directly to evidence/v101126 or current package bytes"
+  "current_evidence_rule": "evidence/v101127 is current; older evidence is predecessor/historical lineage",
+  "active_report_rule": "current active report claims must bind directly to evidence/v101127 or current package bytes"
 }

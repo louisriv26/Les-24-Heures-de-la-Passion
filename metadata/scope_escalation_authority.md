@@ -1,3 +1,3 @@
-# v101.126 Scope Authority
+# v101.127 Scope Authority
 
-Current authorised mutation scope is exactly 34 operations: 15 governed LDC synchronizations from v2.19.62-R1B/R5 plus 19 native 24H/prayer repairs. No other canonical text mutation is authorised. `OP-L17-109-01` is a mandatory no-edit control. Any further content change requires a new governed authority decision.
+Current mutation authority is presentation-only: repair the proven continuity glyph-flow defect at approved `CONTINUITY_GROUPS` boundaries without changing canonical text, stable IDs, group membership, display-segment offsets, speaker/presentation semantics, topology or user-data schemas. The inherited 34 textual operations from v101.126 remain frozen. Any further text/content mutation requires separate authority.

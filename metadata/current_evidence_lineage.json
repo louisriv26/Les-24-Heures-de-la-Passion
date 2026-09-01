@@ -1,14 +1,14 @@
 {
-  "version": "v101.126",
-  "stage": "DUAL_SUCCESSOR_R5_15_LDC_SYNC_PLUS_19_NATIVE_R1",
-  "current_evidence_root": "evidence/v101126",
+  "version": "v101.127",
+  "stage": "CROSS_RECORD_CONTINUITY_GLYPH_FLOW_REGRESSION_REPAIR_R1",
+  "current_evidence_root": "evidence/v101127",
+  "predecessor_24h": {
+    "version": "v101.126",
+    "sha256": "87d812e39b14148a640dfc8095a8d07b25ce37e056e815d66c286c94638a0d85"
+  },
   "governed_ldc_source": {
     "version": "v2.19.62-R1B",
     "sha256": "3e1d234c2de11ea8032cb7d56c3e5eb0d5faac1c8858e227fd730db61481eb50"
   },
-  "predecessor_24h": {
-    "version": "v101.125",
-    "sha256": "e227ae618fef06de784f9ba6b5b5a6a55ae8618e54f7a7841b7ba7b571e48a90"
-  },
-  "rule": "v101.125 and earlier evidence is retained as predecessor/historical evidence and must not be interpreted as current v101.126 execution evidence."
+  "rule": "v101.126 evidence remains predecessor lineage; v101.127 current evidence is presentation-regression repair evidence only."
 }
