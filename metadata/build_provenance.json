@@ -1,15 +1,14 @@
 {
-  "version": "v101.127",
-  "stage": "CROSS_RECORD_CONTINUITY_GLYPH_FLOW_REGRESSION_REPAIR_R1",
-  "build_date": "2026-08-31",
-  "baseline_version": "v101.126",
-  "baseline_zip_sha256": "87d812e39b14148a640dfc8095a8d07b25ce37e056e815d66c286c94638a0d85",
-  "baseline_html_sha256": "f1df8574bc7d155239cfb44d2d0d4925e6563606b7e9bdac0fff1a619440f935",
-  "candidate_html_sha256": "496e4e50c29397b3a435b3973e3185c53f85ee5b0985c6a14e3f9266c6d5e530",
-  "mutation_scope": "presentation-only continuity glyph-flow CSS repair; zero canonical text operations",
+  "version": "v101.128",
+  "stage": "MEDITEE_RECOVERY_ACCESS_AND_SINGLE_STATE_SYNC_R1",
+  "build_date": "2026-09-02",
+  "baseline_version": "v101.127",
+  "baseline_zip_sha256": "d2614307d3335d4e76a3b9559cb4d8267549b9a5a4adf4ec616344f2b98664d6",
+  "baseline_html_sha256": "496e4e50c29397b3a435b3973e3185c53f85ee5b0985c6a14e3f9266c6d5e530",
+  "candidate_html_sha256": "194712efeb6d695ce26d362bbcf54ed3b0605a0214cd5aba0a6c80fd88b8ddd0",
+  "mutation_scope": "UX-only Méditée recovery/status control + dual-control single-state synchronization + release identity",
   "canonical_text_changed": false,
   "storage_schema_unchanged": true,
   "personal_snapshot_schema_unchanged": true,
-  "governed_ldc_zip_sha256": "3e1d234c2de11ea8032cb7d56c3e5eb0d5faac1c8858e227fd730db61481eb50",
   "final_reopen_evidence": "EXTERNAL_AFTER_IMMUTABLE_ZIP_FREEZE"
 }

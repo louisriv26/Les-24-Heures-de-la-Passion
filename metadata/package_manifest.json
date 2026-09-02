@@ -1,12 +1,12 @@
 {
   "schema": "L24H_PACKAGE_MANIFEST_V1",
-  "version": "v101.127",
-  "stage": "CROSS_RECORD_CONTINUITY_GLYPH_FLOW_REGRESSION_REPAIR_R1",
+  "version": "v101.128",
+  "stage": "MEDITEE_RECOVERY_ACCESS_AND_SINGLE_STATE_SYNC_R1",
   "self_exclusion": [
     "metadata/hash_manifest.json",
     "metadata/package_manifest.json"
   ],
-  "file_count": 438,
+  "file_count": 484,
   "files": [
     {
       "path": ".gitattributes",
@@ -18,7 +18,7 @@
     },
     {
       "path": "README.md",
-      "size": 855
+      "size": 693
     },
     {
       "path": "REAL_DEVICE_QA_CHECKLIST.md",
@@ -1097,6 +1097,142 @@
       "size": 674
     },
     {
+      "path": "evidence/v101128/V101128_ACTIVE_REPORT_LINE_RECONCILIATION.csv",
+      "size": 1988
+    },
+    {
+      "path": "evidence/v101128/V101128_BASELINE_BINDING.json",
+      "size": 250
+    },
+    {
+      "path": "evidence/v101128/V101128_BROAD_RUNTIME_MATRIX.json",
+      "size": 9890
+    },
+    {
+      "path": "evidence/v101128/V101128_CURRENT_STAGE_LOCK.json",
+      "size": 417
+    },
+    {
+      "path": "evidence/v101128/V101128_EXHAUSTIVE_PRESENTATION_MATRIX.json",
+      "size": 5388121
+    },
+    {
+      "path": "evidence/v101128/V101128_EXISTING_MEDITEE_ARCHITECTURE_REPORT.md",
+      "size": 434
+    },
+    {
+      "path": "evidence/v101128/V101128_FOUR_PASS_AUDIT.json",
+      "size": 1672
+    },
+    {
+      "path": "evidence/v101128/V101128_FOUR_PASS_AUDIT.md",
+      "size": 1057
+    },
+    {
+      "path": "evidence/v101128/V101128_HELP_BROWSER_MATRIX.json",
+      "size": 64085
+    },
+    {
+      "path": "evidence/v101128/V101128_HOUR24_MEDITEE_RECOVERY_MATRIX.json",
+      "size": 3383
+    },
+    {
+      "path": "evidence/v101128/V101128_HOUR24_REGRESSION_MATRIX.json",
+      "size": 4410
+    },
+    {
+      "path": "evidence/v101128/V101128_IMPLEMENTATION_DELTA.json",
+      "size": 1310
+    },
+    {
+      "path": "evidence/v101128/V101128_INDEPENDENT_PRESENTATION_MATRIX.json",
+      "size": 2601792
+    },
+    {
+      "path": "evidence/v101128/V101128_INDEPENDENT_RUNTIME_SMOKE.json",
+      "size": 12849
+    },
+    {
+      "path": "evidence/v101128/V101128_INHERITED_REGRESSION_MATRIX.json",
+      "size": 2010
+    },
+    {
+      "path": "evidence/v101128/V101128_LEGACY_CONTINUITY_MATRIX.json",
+      "size": 150263
+    },
+    {
+      "path": "evidence/v101128/V101128_MEDITEE_ACCESSIBILITY_MATRIX.json",
+      "size": 103238
+    },
+    {
+      "path": "evidence/v101128/V101128_MEDITEE_CORE_MATRIX.json",
+      "size": 91024
+    },
+    {
+      "path": "evidence/v101128/V101128_MEDITEE_DUAL_CONTROL_MATRIX.json",
+      "size": 84361
+    },
+    {
+      "path": "evidence/v101128/V101128_MEDITEE_PERSISTENCE_MATRIX.json",
+      "size": 968
+    },
+    {
+      "path": "evidence/v101128/V101128_MEDITEE_RESPONSIVE_MATRIX.json",
+      "size": 134684
+    },
+    {
+      "path": "evidence/v101128/V101128_MEDITEE_SCROLL_FOCUS_MATRIX.json",
+      "size": 1776
+    },
+    {
+      "path": "evidence/v101128/V101128_MEDITEE_UX_MATRIX.json",
+      "size": 227442
+    },
+    {
+      "path": "evidence/v101128/V101128_MUTATION_AUTHORITY.json",
+      "size": 385
+    },
+    {
+      "path": "evidence/v101128/V101128_MUTATION_DETECTION_MATRIX.json",
+      "size": 1773
+    },
+    {
+      "path": "evidence/v101128/V101128_PRESENTATION_LEDGER_REBIND_AUDIT.json",
+      "size": 2492
+    },
+    {
+      "path": "evidence/v101128/V101128_PROTECTED_DECLARATION_HASHES.json",
+      "size": 1295
+    },
+    {
+      "path": "evidence/v101128/V101128_REBOUND_PRESENTATION_LEDGER.csv",
+      "size": 223267
+    },
+    {
+      "path": "evidence/v101128/V101128_RESUME_AND_MEDITEE_MATRIX.json",
+      "size": 1298
+    },
+    {
+      "path": "evidence/v101128/V101128_SERVICE_WORKER_MATRIX.json",
+      "size": 1473
+    },
+    {
+      "path": "evidence/v101128/V101128_STALE_CONTRADICTION_SCAN.json",
+      "size": 10041
+    },
+    {
+      "path": "evidence/v101128/V101128_STATIC_SCOPE_AUDIT.json",
+      "size": 6396
+    },
+    {
+      "path": "evidence/v101128/V101128_STRICT_GLYPH_FLOW_MATRIX.json",
+      "size": 144373
+    },
+    {
+      "path": "evidence/v101128/V101128_UNAUTHORISED_DELTA_AUDIT.json",
+      "size": 4169
+    },
+    {
       "path": "favicon-16.png",
       "size": 629
     },
@@ -1130,11 +1266,11 @@
     },
     {
       "path": "index.html",
-      "size": 2565575
+      "size": 2568378
     },
     {
       "path": "luisa_24_heures.html",
-      "size": 2565575
+      "size": 2568378
     },
     {
       "path": "manifest.json",
@@ -1142,27 +1278,27 @@
     },
     {
       "path": "metadata/active_report_inventory.json",
-      "size": 471
+      "size": 477
     },
     {
       "path": "metadata/build_provenance.json",
-      "size": 830
+      "size": 748
     },
     {
       "path": "metadata/current_evidence_lineage.json",
-      "size": 560
+      "size": 418
     },
     {
       "path": "metadata/current_tooling_inventory.json",
-      "size": 513
+      "size": 601
     },
     {
       "path": "metadata/full_build_overlay_manifest.json",
-      "size": 1190
+      "size": 3414
     },
     {
       "path": "metadata/release_evidence_lifecycle.json",
-      "size": 638
+      "size": 639
     },
     {
       "path": "metadata/scope_escalation_authority.md",
@@ -1183,6 +1319,10 @@
     {
       "path": "reports/EVIDENCE_SCHEMA_AND_BINDING_RECONCILIATION.md",
       "size": 1083
+    },
+    {
+      "path": "reports/MEDITEE_RECOVERY_ACCESS.md",
+      "size": 1166
     },
     {
       "path": "reports/active_report_line_audit.csv",
@@ -1447,6 +1587,14 @@
     {
       "path": "scripts/build_v101127_continuity_glyph_flow_regression_repair.py",
       "size": 15972
+    },
+    {
+      "path": "scripts/build_v101128_full_package.py",
+      "size": 2382
+    },
+    {
+      "path": "scripts/build_v101128_meditee_recovery_access.py",
+      "size": 18061
     },
     {
       "path": "scripts/historical/EXECUTION_SPEC_v101111.md",
@@ -1753,12 +1901,48 @@
       "size": 5414
     },
     {
+      "path": "scripts/run_v101128_help_browser_matrix.py",
+      "size": 6427
+    },
+    {
+      "path": "scripts/run_v101128_hour24_regression_matrix.py",
+      "size": 9546
+    },
+    {
+      "path": "scripts/run_v101128_independent_runtime_smoke.py",
+      "size": 5212
+    },
+    {
+      "path": "scripts/run_v101128_legacy_continuity_matrix.py",
+      "size": 6313
+    },
+    {
+      "path": "scripts/run_v101128_meditee_core_matrix.py",
+      "size": 11634
+    },
+    {
+      "path": "scripts/run_v101128_meditee_responsive_matrix.py",
+      "size": 4685
+    },
+    {
+      "path": "scripts/run_v101128_meditee_ux_matrix.py",
+      "size": 14232
+    },
+    {
+      "path": "scripts/run_v101128_mutation_tests.py",
+      "size": 6743
+    },
+    {
+      "path": "scripts/run_v101128_static_scope_audit.py",
+      "size": 6259
+    },
+    {
       "path": "sw.js",
       "size": 3903
     },
     {
       "path": "version.json",
-      "size": 1484
+      "size": 1472
     }
   ]
 }

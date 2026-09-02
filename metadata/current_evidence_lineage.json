@@ -1,14 +1,10 @@
 {
-  "version": "v101.127",
-  "stage": "CROSS_RECORD_CONTINUITY_GLYPH_FLOW_REGRESSION_REPAIR_R1",
-  "current_evidence_root": "evidence/v101127",
+  "version": "v101.128",
+  "stage": "MEDITEE_RECOVERY_ACCESS_AND_SINGLE_STATE_SYNC_R1",
+  "current_evidence_root": "evidence/v101128",
   "predecessor_24h": {
-    "version": "v101.126",
-    "sha256": "87d812e39b14148a640dfc8095a8d07b25ce37e056e815d66c286c94638a0d85"
+    "version": "v101.127",
+    "sha256": "d2614307d3335d4e76a3b9559cb4d8267549b9a5a4adf4ec616344f2b98664d6"
   },
-  "governed_ldc_source": {
-    "version": "v2.19.62-R1B",
-    "sha256": "3e1d234c2de11ea8032cb7d56c3e5eb0d5faac1c8858e227fd730db61481eb50"
-  },
-  "rule": "v101.126 evidence remains predecessor lineage; v101.127 current evidence is presentation-regression repair evidence only."
+  "rule": "v101.127 evidence remains predecessor lineage; v101.128 current evidence concerns only the Méditée recovery-access UX successor."
 }

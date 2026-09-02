@@ -1,18 +1,14 @@
-# Les 24 Heures de la Passion — v101.127
+# Les 24 Heures de la Passion — v101.128
 
-Presentation-only continuity regression successor of immutable v101.126.
+UX-only successor of immutable v101.127.
 
-## Repair
+## Méditée recovery access
 
-- Fixes the forced cross-record line break at Hour 3 `peines,` → `afin que…`.
-- Applies the same mechanism correction to the Hour 13 approved continuity boundary.
-- Preserves all five approved continuity pairs, stable record IDs and internal display-segment rhythm.
-- Adds **zero** canonical/devotional text changes.
-
-## Inherited textual authority
-
-The v101.126 textual fixed point remains unchanged: 34 authorised operations = 15 governed LDC synchronizations + 19 native 24H/prayer repairs.
+- Keeps the normal bottom `Méditée` action.
+- Activates a discreet recovery/status control under the Hour header for users who forgot to mark the Hour at the end.
+- Uses one state authority (`state.readHours`) and one mutation path (`markMeditee`).
+- Adds no corpus/devotional-text, speaker, continuity-authority, storage-schema or snapshot-schema changes.
 
 ## Validation boundary
 
-Package-local evidence is pre-final-reopen. Physical devices, installed-PWA update, true offline cold reopen, accessibility screen readers and live GitHub Pages exact-byte binding remain external gates.
+Package-local evidence is pre-final-reopen. Physical devices, installed-PWA update, true offline cold reopen, VoiceOver/TalkBack and live GitHub Pages exact-byte binding remain external gates.

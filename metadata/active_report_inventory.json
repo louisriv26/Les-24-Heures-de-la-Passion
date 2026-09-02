@@ -1,10 +1,13 @@
 {
-  "version": "v101.127",
-  "stage": "CROSS_RECORD_CONTINUITY_GLYPH_FLOW_REGRESSION_REPAIR_R1",
+  "version": "v101.128",
+  "stage": "MEDITEE_RECOVERY_ACCESS_AND_SINGLE_STATE_SYNC_R1",
   "source_reports": [
-    "reports/CONTINUITY_GLYPH_FLOW_REGRESSION_REPAIR.md"
+    "reports/MEDITEE_RECOVERY_ACCESS.md"
   ],
   "historical_reports_root": "reports/historical/",
-  "inherited_nonactive_report": "reports/DUAL_SUCCESSOR_MUTATION_REPORT.md",
-  "rule": "Only CONTINUITY_GLYPH_FLOW_REGRESSION_REPAIR.md is current for v101.127; v101.126 and earlier reports/evidence are predecessor/historical lineage."
+  "inherited_nonactive_reports": [
+    "reports/CONTINUITY_GLYPH_FLOW_REGRESSION_REPAIR.md",
+    "reports/DUAL_SUCCESSOR_MUTATION_REPORT.md"
+  ],
+  "rule": "Only MEDITEE_RECOVERY_ACCESS.md is current for v101.128; prior reports are predecessor/historical lineage."
 }
