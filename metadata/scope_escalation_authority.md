@@ -1,3 +1,7 @@
-# v101.127 Scope Authority
+# v101.132 Scope / Mutation Authority
 
-Current mutation authority is presentation-only: repair the proven continuity glyph-flow defect at approved `CONTINUITY_GROUPS` boundaries without changing canonical text, stable IDs, group membership, display-segment offsets, speaker/presentation semantics, topology or user-data schemas. The inherited 34 textual operations from v101.126 remain frozen. Any further text/content mutation requires separate authority.
+User instruction authorises correction of failures found by the deep four-pass audit. This successor is constrained to release-engineering reconciliation only. Functional/display/canonical text mutation authority is **NONE**.
+
+All v101.131 corpus, speech, presentation, topology, continuity, storage and user-state functional authorities are protected byte-for-byte.
+
+After immutable freeze, mutation authority for this exact package is **NONE**.

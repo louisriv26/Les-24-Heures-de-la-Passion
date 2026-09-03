@@ -1,17 +1,26 @@
 {
-  "version": "v101.128",
-  "stage": "MEDITEE_RECOVERY_ACCESS_AND_SINGLE_STATE_SYNC_R1",
+  "version": "v101.132",
+  "stage": "DEEP_FOUR_PASS_RELEASE_ENGINEERING_RECONCILIATION_R1",
   "current_tools": [
-    "scripts/build_v101128_meditee_recovery_access.py",
-    "scripts/run_v101128_meditee_ux_matrix.py",
-    "scripts/run_v101128_static_scope_audit.py",
-    "scripts/run_v101127_strict_continuity_glyph_flow_matrix.py",
-    "scripts/build_v101128_full_package.py"
+    "scripts/build_v101132_release_reconciliation.py",
+    "scripts/freeze_v101132_deterministic.py",
+    "scripts/run_v101132_four_pass.py",
+    "scripts/run_v101132_release_integrity.py",
+    "scripts/run_v101132_global_raw_quote_gate.py",
+    "scripts/run_v101132_runtime_presentation.py",
+    "scripts/run_v101132_mutation_tests.py",
+    "scripts/run_v101132_meditee_regression.py",
+    "scripts/run_v101132_meditee_responsive_regression.py",
+    "scripts/run_v101132_hour24_regression.py",
+    "scripts/run_v101132_help_browser_matrix.py"
   ],
   "reused_validated_runtime_lineage": [
-    "v101.127 strict continuity and current runtime lineages"
+    "scripts/run_v101127_strict_continuity_glyph_flow_matrix.py",
+    "scripts/run_v101128_legacy_continuity_matrix.py",
+    "scripts/run_v101119_exhaustive_presentation_matrix.py",
+    "scripts/run_v101121_independent_presentation_matrix.py",
+    "scripts/run_broad_runtime_matrix.py",
+    "scripts/run_sw_logic_matrix.js"
   ],
-  "historical_or_superseded_tools": [
-    "scripts/build_v101127_continuity_glyph_flow_regression_repair.py"
-  ]
+  "rule": "Every harness used by the current 14-family release gate suite is listed here; package-local gate inputs are mapped by current_gate_map.json."
 }

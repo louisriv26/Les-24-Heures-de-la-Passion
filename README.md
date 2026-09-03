@@ -1,14 +1,12 @@
-# Les 24 Heures de la Passion — v101.128
+# Les 24 Heures de la Passion — v101.132
 
-UX-only successor of immutable v101.127.
+Release-engineering-only successor of immutable v101.131.
 
-## Méditée recovery access
+## Deep four-pass reconciliation
 
-- Keeps the normal bottom `Méditée` action.
-- Activates a discreet recovery/status control under the Hour header for users who forgot to mark the Hour at the end.
-- Uses one state authority (`state.readHours`) and one mutation path (`markMeditee`).
-- Adds no corpus/devotional-text, speaker, continuity-authority, storage-schema or snapshot-schema changes.
-
-## Validation boundary
-
-Package-local evidence is pre-final-reopen. Physical devices, installed-PWA update, true offline cold reopen, VoiceOver/TalkBack and live GitHub Pages exact-byte binding remain external gates.
+- Functional/canonical application state is unchanged from v101.131.
+- Corrects the stale v101.122 `scripts/EXECUTION_SPEC.md` and `REAL_DEVICE_QA_CHECKLIST.md`.
+- Embeds the frozen `02_ALL_TEXT_RECORD_UNIVERSE.csv` required to rerun the permanent raw-text and mutation-detection gates.
+- Reconciles `current_tooling_inventory.json` to the actual 14 gate harnesses, including the 52-check broad runtime and primary 2,000-check presentation matrices.
+- Repairs `full_build_overlay_manifest.json` so package/hash manifests are included in the full changed-file universe.
+- Physical-device/PWA/offline/screen-reader/live-origin validation remains external.

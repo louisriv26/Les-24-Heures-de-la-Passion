@@ -1,14 +1,14 @@
 {
-  "version": "v101.128",
-  "stage": "MEDITEE_RECOVERY_ACCESS_AND_SINGLE_STATE_SYNC_R1",
-  "build_date": "2026-09-02",
-  "baseline_version": "v101.127",
-  "baseline_zip_sha256": "d2614307d3335d4e76a3b9559cb4d8267549b9a5a4adf4ec616344f2b98664d6",
-  "baseline_html_sha256": "496e4e50c29397b3a435b3973e3185c53f85ee5b0985c6a14e3f9266c6d5e530",
-  "candidate_html_sha256": "194712efeb6d695ce26d362bbcf54ed3b0605a0214cd5aba0a6c80fd88b8ddd0",
-  "mutation_scope": "UX-only Méditée recovery/status control + dual-control single-state synchronization + release identity",
+  "version": "v101.132",
+  "stage": "DEEP_FOUR_PASS_RELEASE_ENGINEERING_RECONCILIATION_R1",
+  "build_date": "2026-09-03",
+  "baseline_version": "v101.131",
+  "baseline_zip_sha256": "2932131da56ed1c02efb1507b5529f4cbb51bfa370691944cf0bd6c34fb01fa2",
+  "mutation_scope": "release-engineering reconciliation only",
   "canonical_text_changed": false,
+  "speech_presentation_topology_changed": false,
+  "continuity_changed": false,
   "storage_schema_unchanged": true,
   "personal_snapshot_schema_unchanged": true,
-  "final_reopen_evidence": "EXTERNAL_AFTER_IMMUTABLE_ZIP_FREEZE"
+  "candidate_html_sha256": "256862863e66d5274ce0835fa725bf853dfda08f03206e210cb266543f32232e"
 }

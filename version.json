@@ -1,24 +1,25 @@
 {
-  "app_version": "v101.128",
-  "build_date": "2026-09-02",
-  "cache_name": "luisa-24h-v101-128",
+  "app_version": "v101.132",
+  "build_date": "2026-09-03",
+  "cache_name": "luisa-24h-v101-132",
   "storage_schema": 8,
   "personal_snapshot": 5,
   "ldc_source_public_version": "62",
   "ldc_source_app_version": "v2.19.62-R1B",
   "ldc_source_package_sha256": "3e1d234c2de11ea8032cb7d56c3e5eb0d5faac1c8858e227fd730db61481eb50",
-  "release_scope": "UX-only successor of immutable v101.127. Adds a discreet recovery/status Méditée control below the Hour header, synchronized with the existing bottom action through the single state.readHours / markMeditee authority. No canonical/devotional text, speaker/presentation data, continuity authority, paragraph IDs/order, storage schema or personal snapshot schema changes.",
-  "real_device_status": "Physical Samsung/iPhone/iPad, installed-PWA update, true offline cold reopen, VoiceOver/TalkBack and live GitHub Pages exact-byte binding NOT_TESTED for v101.128.",
-  "overall_release_status": "LIMITED_PASS_STATIC_PENDING_FINAL_REOPEN_AUDIT",
+  "release_scope": "Release-engineering-only successor of immutable v101.131 after an independent deep four-pass audit. No corpus, speech, presentation, topology, continuity, storage-schema or user-state functional changes. Corrects stale operational QA/specification files, embeds the frozen raw-text gate authority, reconciles tooling inventory to the actual gate harnesses, and repairs full-overlay accounting.",
+  "real_device_status": "Physical Samsung/iPhone/iPad, installed-PWA update, true offline cold reopen, VoiceOver/TalkBack and live-origin exact-byte binding NOT_TESTED for v101.132.",
+  "overall_release_status": "LIMITED_PASS_STATIC__EXTERNAL_VALIDATION_OPEN",
   "known_blockers": [],
   "external_open_gates": [
     "physical iPad/iPhone/Samsung",
-    "live GitHub Pages exact-byte binding",
-    "installed PWA update from v101.127",
+    "live-origin exact-byte binding",
+    "installed PWA update from v101.131",
     "true offline cold reopen",
     "VoiceOver/TalkBack representative testing"
   ],
   "ldc_source_alignment_generation": "G036-AFLP-R5-UWR2",
   "ldc_source_enriched_generation": "G036-AFLP-R5-SUP-T4",
-  "ldc_source_corpus_manifest_sha256": "76895194f21e21c058d8c7f1547977abad220caa501406b97ac4b4e05f1772e7"
+  "ldc_source_corpus_manifest_sha256": "76895194f21e21c058d8c7f1547977abad220caa501406b97ac4b4e05f1772e7",
+  "postfreeze_reopen_evidence": "External SHA-bound decision/evidence; not embedded after immutable freeze."
 }

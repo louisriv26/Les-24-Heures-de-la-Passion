@@ -1,0 +1,110 @@
+{
+  "version": "v101.132",
+  "stage": "DEEP_FOUR_PASS_RELEASE_ENGINEERING_RECONCILIATION_R1",
+  "gate_families": [
+    {
+      "gate": 1,
+      "script": "scripts/run_v101132_release_integrity.py",
+      "inputs": [
+        "predecessor v101.131 index.html",
+        "index.html"
+      ]
+    },
+    {
+      "gate": 2,
+      "script": "scripts/run_v101132_global_raw_quote_gate.py",
+      "inputs": [
+        "index.html",
+        "evidence/v101132/authority/02_ALL_TEXT_RECORD_UNIVERSE.csv"
+      ]
+    },
+    {
+      "gate": 3,
+      "script": "scripts/run_v101132_runtime_presentation.py",
+      "inputs": [
+        "index.html"
+      ]
+    },
+    {
+      "gate": 4,
+      "script": "scripts/run_v101132_mutation_tests.py",
+      "inputs": [
+        "index.html",
+        "evidence/v101132/authority/02_ALL_TEXT_RECORD_UNIVERSE.csv"
+      ]
+    },
+    {
+      "gate": 5,
+      "script": "scripts/run_v101127_strict_continuity_glyph_flow_matrix.py",
+      "inputs": [
+        "index.html"
+      ]
+    },
+    {
+      "gate": 6,
+      "script": "scripts/run_v101128_legacy_continuity_matrix.py",
+      "inputs": [
+        "index.html"
+      ]
+    },
+    {
+      "gate": 7,
+      "script": "scripts/run_v101132_meditee_regression.py",
+      "inputs": [
+        "index.html"
+      ]
+    },
+    {
+      "gate": 8,
+      "script": "scripts/run_v101132_meditee_responsive_regression.py",
+      "inputs": [
+        "index.html"
+      ]
+    },
+    {
+      "gate": 9,
+      "script": "scripts/run_v101132_hour24_regression.py",
+      "inputs": [
+        "index.html"
+      ]
+    },
+    {
+      "gate": 10,
+      "script": "scripts/run_v101132_help_browser_matrix.py",
+      "inputs": [
+        "index.html"
+      ]
+    },
+    {
+      "gate": 11,
+      "script": "scripts/run_v101119_exhaustive_presentation_matrix.py",
+      "inputs": [
+        "index.html",
+        "evidence/v101131/prefreeze/V101131_PRESENTATION_LEDGER.csv"
+      ]
+    },
+    {
+      "gate": 12,
+      "script": "scripts/run_v101121_independent_presentation_matrix.py",
+      "inputs": [
+        "index.html",
+        "evidence/v101131/prefreeze/V101131_PRESENTATION_LEDGER.csv"
+      ]
+    },
+    {
+      "gate": 13,
+      "script": "scripts/run_broad_runtime_matrix.py",
+      "inputs": [
+        "index.html"
+      ]
+    },
+    {
+      "gate": 14,
+      "script": "scripts/run_sw_logic_matrix.js",
+      "inputs": [
+        "sw.js"
+      ]
+    }
+  ],
+  "package_local_dependency_rule": "All non-predecessor gate inputs resolve inside this package."
+}

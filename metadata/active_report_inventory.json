@@ -1,13 +1,9 @@
 {
-  "version": "v101.128",
-  "stage": "MEDITEE_RECOVERY_ACCESS_AND_SINGLE_STATE_SYNC_R1",
+  "version": "v101.132",
+  "stage": "DEEP_FOUR_PASS_RELEASE_ENGINEERING_RECONCILIATION_R1",
   "source_reports": [
-    "reports/MEDITEE_RECOVERY_ACCESS.md"
+    "reports/DEEP_FOUR_PASS_RELEASE_ENGINEERING_RECONCILIATION.md"
   ],
   "historical_reports_root": "reports/historical/",
-  "inherited_nonactive_reports": [
-    "reports/CONTINUITY_GLYPH_FLOW_REGRESSION_REPAIR.md",
-    "reports/DUAL_SUCCESSOR_MUTATION_REPORT.md"
-  ],
-  "rule": "Only MEDITEE_RECOVERY_ACCESS.md is current for v101.128; prior reports are predecessor/historical lineage."
+  "rule": "Only the listed report is current for v101.132; v101.131 and earlier reports/evidence are predecessor/historical lineage."
 }
