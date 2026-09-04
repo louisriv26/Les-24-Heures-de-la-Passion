@@ -1,12 +1,7 @@
 {
-  "version": "v101.132",
-  "stage": "DEEP_FOUR_PASS_RELEASE_ENGINEERING_RECONCILIATION_R1",
-  "current_evidence_root": "evidence/v101132",
-  "predecessor_24h": {
-    "version": "v101.131",
-    "sha256": "2932131da56ed1c02efb1507b5529f4cbb51bfa370691944cf0bd6c34fb01fa2"
-  },
-  "source_audit": "evidence/v101132/source_audit_v101131",
-  "frozen_raw_authority": "evidence/v101132/authority/02_ALL_TEXT_RECORD_UNIVERSE.csv",
-  "rule": "v101.131 and earlier evidence is predecessor/historical lineage; v101.132 current evidence closes only release-engineering reconciliation and revalidation."
+  "version": "v101.135",
+  "stage": "MASTER_SCRIPT_VALIDATION_COMPLETION_R1",
+  "functional_authority": "v101.134 inherits v101.133 renderer alignment repair",
+  "validation_completion": "v101.135 adds no functional change; closes master-script validation coverage gaps",
+  "external_validation": "OPEN"
 }

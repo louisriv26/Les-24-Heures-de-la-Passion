@@ -1,18 +1,29 @@
 {
-  "version": "v101.132",
-  "stage": "DEEP_FOUR_PASS_RELEASE_ENGINEERING_RECONCILIATION_R1",
+  "version": "v101.135",
+  "stage": "MASTER_SCRIPT_VALIDATION_COMPLETION_R1",
   "current_tools": [
-    "scripts/build_v101132_release_reconciliation.py",
-    "scripts/freeze_v101132_deterministic.py",
-    "scripts/run_v101132_four_pass.py",
-    "scripts/run_v101132_release_integrity.py",
-    "scripts/run_v101132_global_raw_quote_gate.py",
-    "scripts/run_v101132_runtime_presentation.py",
-    "scripts/run_v101132_mutation_tests.py",
-    "scripts/run_v101132_meditee_regression.py",
-    "scripts/run_v101132_meditee_responsive_regression.py",
-    "scripts/run_v101132_hour24_regression.py",
-    "scripts/run_v101132_help_browser_matrix.py"
+    "scripts/build_v101135_validation_completion.py",
+    "scripts/freeze_v101135_deterministic.py",
+    "scripts/run_v101135_accessibility_structure.py",
+    "scripts/run_v101135_accessibility_tree.py",
+    "scripts/run_v101135_alignment_geometry.py",
+    "scripts/run_v101135_annotation_lifecycle.py",
+    "scripts/run_v101135_builder_input_manifest.py",
+    "scripts/run_v101135_complete_tree_scan.py",
+    "scripts/run_v101135_exhaustive_selection_offsets.py",
+    "scripts/run_v101135_four_pass.py",
+    "scripts/run_v101135_full_boundary_geometry.py",
+    "scripts/run_v101135_global_raw_quote_gate.py",
+    "scripts/run_v101135_help_browser_matrix.py",
+    "scripts/run_v101135_hour24_regression.py",
+    "scripts/run_v101135_meditee_regression.py",
+    "scripts/run_v101135_meditee_responsive_regression.py",
+    "scripts/run_v101135_mutant_sensitivity.py",
+    "scripts/run_v101135_mutation_tests.py",
+    "scripts/run_v101135_release_integrity.py",
+    "scripts/run_v101135_reperes_theme_geometry.py",
+    "scripts/run_v101135_runtime_presentation.py",
+    "scripts/run_v101135_static_controls.py"
   ],
   "reused_validated_runtime_lineage": [
     "scripts/run_v101127_strict_continuity_glyph_flow_matrix.py",
@@ -20,7 +31,8 @@
     "scripts/run_v101119_exhaustive_presentation_matrix.py",
     "scripts/run_v101121_independent_presentation_matrix.py",
     "scripts/run_broad_runtime_matrix.py",
-    "scripts/run_sw_logic_matrix.js"
+    "scripts/run_sw_logic_matrix.js",
+    "scripts/reconstruct_runtime_boundary_universe.py"
   ],
-  "rule": "Every harness used by the current 14-family release gate suite is listed here; package-local gate inputs are mapped by current_gate_map.json."
+  "rule": "Every current v101.135 validation/build/freeze harness is listed."
 }

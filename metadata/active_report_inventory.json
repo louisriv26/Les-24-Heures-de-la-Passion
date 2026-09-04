@@ -1,9 +1,18 @@
 {
-  "version": "v101.132",
-  "stage": "DEEP_FOUR_PASS_RELEASE_ENGINEERING_RECONCILIATION_R1",
-  "source_reports": [
-    "reports/DEEP_FOUR_PASS_RELEASE_ENGINEERING_RECONCILIATION.md"
+  "version": "v101.135",
+  "stage": "MASTER_SCRIPT_VALIDATION_COMPLETION_R1",
+  "active_documents": [
+    "README.md",
+    "REAL_DEVICE_QA_CHECKLIST.md",
+    "scripts/EXECUTION_SPEC.md",
+    "reports/V101135_MASTER_SCRIPT_VALIDATION_COMPLETION.md",
+    "version.json",
+    "metadata/current_tooling_inventory.json",
+    "metadata/current_gate_map.json",
+    "metadata/build_provenance.json",
+    "metadata/current_evidence_lineage.json",
+    "metadata/builder_input_manifest.json"
   ],
   "historical_reports_root": "reports/historical/",
-  "rule": "Only the listed report is current for v101.132; v101.131 and earlier reports/evidence are predecessor/historical lineage."
+  "rule": "Only listed documents are current v101.135 operational/claim surfaces; predecessor reports are under reports/historical."
 }

@@ -1,7 +1,7 @@
-# v101.132 Scope / Mutation Authority
+# v101.134 Scope / Mutation Authority
 
-User instruction authorises correction of failures found by the deep four-pass audit. This successor is constrained to release-engineering reconciliation only. Functional/display/canonical text mutation authority is **NONE**.
+Authority is limited to release-engineering evidence/tooling reproducibility reconciliation under the already authorised M4 failure-handling rule. Functional v101.133 renderer behavior is protected.
 
-All v101.131 corpus, speech, presentation, topology, continuity, storage and user-state functional authorities are protected byte-for-byte.
+No canonical text, speaker adjudication, presentation/topology offset, continuity, schema or content-specific exception is authorised.
 
-After immutable freeze, mutation authority for this exact package is **NONE**.
+After immutable freeze, mutation authority for the exact package is **NONE**.

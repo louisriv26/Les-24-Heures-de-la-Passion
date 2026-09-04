@@ -1,0 +1,123 @@
+{
+  "schema": "L24H_V101135_BUILDER_INPUT_MANIFEST_V1",
+  "version": "v101.135",
+  "stage": "MASTER_SCRIPT_VALIDATION_COMPLETION_R1",
+  "baseline_zip": {
+    "path": "L24H_v101134_GITHUB_DEPLOY_BOUNDARY_UNIVERSE_EVIDENCE_REPRODUCIBILITY_RECONCILIATION_R1_LOCKED.zip",
+    "sha256": "241ef8b3953e840cc321d07fe3186e41cd4a772e449268381416575a5f60471a",
+    "members": 809
+  },
+  "source_files": [
+    {
+      "path": "scripts/build_v101135_validation_completion.py",
+      "sha256": "b256434f7e35eee6998a196b06780968e5f5e8e91a65ae592dc965d629797fef",
+      "size": 14311
+    },
+    {
+      "path": "scripts/freeze_v101135_deterministic.py",
+      "sha256": "7d6f5ea976a5dfc9e1f70d78cbcf978af5ec09d6f389cbeba0881f0580da86d4",
+      "size": 1046
+    },
+    {
+      "path": "scripts/run_v101135_accessibility_structure.py",
+      "sha256": "1bfeb9001f6ac9d9781d9f5710592167f95e8f4cdca565baed765851efa273f6",
+      "size": 3465
+    },
+    {
+      "path": "scripts/run_v101135_accessibility_tree.py",
+      "sha256": "388a7231cd7de1e78748fe984598cdd90118ba62cea63d4ecab39da5bd8cf9fc",
+      "size": 2920
+    },
+    {
+      "path": "scripts/run_v101135_alignment_geometry.py",
+      "sha256": "6e4361959921ccaf700dd12bcab30fd966900e374e17bd23df0acd2d95882fce",
+      "size": 3266
+    },
+    {
+      "path": "scripts/run_v101135_annotation_lifecycle.py",
+      "sha256": "35d0deee18cfeddf176333cb58effa8f96bf02e18e315d9c1b3c0555e0dd5a7b",
+      "size": 6457
+    },
+    {
+      "path": "scripts/run_v101135_builder_input_manifest.py",
+      "sha256": "91eaee786c3a26138925941065ef62c2030a5ee6798dcf11af39c4fca4776090",
+      "size": 1377
+    },
+    {
+      "path": "scripts/run_v101135_complete_tree_scan.py",
+      "sha256": "1e721fbe2089b1e659e10d22670a2382e12428f8f61b3ba82b27d8acdd185ba8",
+      "size": 5585
+    },
+    {
+      "path": "scripts/run_v101135_exhaustive_selection_offsets.py",
+      "sha256": "58fef8b560c0ac62b1385dbf8a738576ea8971eb95cb9b362a3f57c4af08996e",
+      "size": 3062
+    },
+    {
+      "path": "scripts/run_v101135_four_pass.py",
+      "sha256": "d7dcd878868c7c3ebb92cf0bb32c1657d85d768df87bce29e131cb0c3fc0b619",
+      "size": 11031
+    },
+    {
+      "path": "scripts/run_v101135_full_boundary_geometry.py",
+      "sha256": "32b90b4d67f427905acc04bd06cf38e239831f2b5c99efddf54a4e4c3cd152cb",
+      "size": 5466
+    },
+    {
+      "path": "scripts/run_v101135_global_raw_quote_gate.py",
+      "sha256": "d9dfc895444786b59c660735307683f4ecca2637abaaad9f7b0c040055781e72",
+      "size": 5232
+    },
+    {
+      "path": "scripts/run_v101135_help_browser_matrix.py",
+      "sha256": "2aba0c9f9a993f5bc24bba8e4df21e32b0187124e7f34ad30b215ac471a3263e",
+      "size": 6926
+    },
+    {
+      "path": "scripts/run_v101135_hour24_regression.py",
+      "sha256": "dee459b516c8903c71aee03ff6c0d1ed91162579f68fee382b6b2f8dee150059",
+      "size": 9546
+    },
+    {
+      "path": "scripts/run_v101135_meditee_regression.py",
+      "sha256": "e66bfd18ab71e95eecac4c4e6decdc3c90c2cc429be01cd5af50cf1419f9f37b",
+      "size": 11634
+    },
+    {
+      "path": "scripts/run_v101135_meditee_responsive_regression.py",
+      "sha256": "3c34d1a0bfe2724c4eef7c6645ab827fbb2c24fbf23064e2008dc475248f5df9",
+      "size": 4685
+    },
+    {
+      "path": "scripts/run_v101135_mutant_sensitivity.py",
+      "sha256": "9e6c1ca565adb877896ed336d79a36338752e6aa40ad30740e02a6e2771cdb6d",
+      "size": 3630
+    },
+    {
+      "path": "scripts/run_v101135_mutation_tests.py",
+      "sha256": "d566fc67c83810547a6dabca495ef1350dcfb6fd6598ac9f5e9955b22b409304",
+      "size": 4992
+    },
+    {
+      "path": "scripts/run_v101135_release_integrity.py",
+      "sha256": "c056b3a97a3fe248e389bc2abf8d6076b7f8e767525bac9aa9befdcb021b3189",
+      "size": 3865
+    },
+    {
+      "path": "scripts/run_v101135_reperes_theme_geometry.py",
+      "sha256": "4db31e807ee2550e3b9061df61a67dbcb25dd5a42bf876ec9cbbaa392f769321",
+      "size": 2387
+    },
+    {
+      "path": "scripts/run_v101135_runtime_presentation.py",
+      "sha256": "4817d2863de908edf51fc921ffc762e6001d6acd36782ee8c2de6efd28c74228",
+      "size": 7052
+    },
+    {
+      "path": "scripts/run_v101135_static_controls.py",
+      "sha256": "53342a708979921da2d5d492a0a615aa7aaf8e6fc9fcd244a3a2c6eee5989ee6",
+      "size": 3134
+    }
+  ],
+  "rule": "Builder must verify every listed source file and the immutable baseline ZIP before construction."
+}

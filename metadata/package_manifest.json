@@ -1,12 +1,12 @@
 {
   "schema": "L24H_PACKAGE_MANIFEST_V1",
-  "version": "v101.132",
-  "stage": "DEEP_FOUR_PASS_RELEASE_ENGINEERING_RECONCILIATION_R1",
+  "version": "v101.135",
+  "stage": "MASTER_SCRIPT_VALIDATION_COMPLETION_R1",
   "self_exclusion": [
     "metadata/hash_manifest.json",
     "metadata/package_manifest.json"
   ],
-  "file_count": 699,
+  "file_count": 857,
   "files": [
     {
       "path": ".gitattributes",
@@ -18,11 +18,11 @@
     },
     {
       "path": "README.md",
-      "size": 791
+      "size": 402
     },
     {
       "path": "REAL_DEVICE_QA_CHECKLIST.md",
-      "size": 900
+      "size": 903
     },
     {
       "path": "REAL_DEVICE_QA_RESULTS_TEMPLATE.csv",
@@ -1881,6 +1881,402 @@
       "size": 3652
     },
     {
+      "path": "evidence/v101133/m1/M1_01_BASELINE_IDENTITY.json",
+      "size": 319
+    },
+    {
+      "path": "evidence/v101133/m1/M1_02_RAW_TEXT_UNIVERSE.csv",
+      "size": 1439568
+    },
+    {
+      "path": "evidence/v101133/m1/M1_03_RAW_LEADING_WHITESPACE_AUDIT.json",
+      "size": 89
+    },
+    {
+      "path": "evidence/v101133/m1/M1_05_ALIGNMENT_POSITIVE_82_LEDGER.csv",
+      "size": 35421
+    },
+    {
+      "path": "evidence/v101133/m1/M1_06_ALIGNMENT_UNIQUE_76_LEDGER.csv",
+      "size": 32710
+    },
+    {
+      "path": "evidence/v101133/m1/M1_07_ALIGNMENT_NEGATIVE_CONTROLS.csv",
+      "size": 288
+    },
+    {
+      "path": "evidence/v101133/m1/M1_08_V101132_NEGATIVE_CONTROL_RESULT.json",
+      "size": 1039203
+    },
+    {
+      "path": "evidence/v101133/m1/M1_09_PRE_EDIT_FIXED_POINT_MANIFEST.json",
+      "size": 4979
+    },
+    {
+      "path": "evidence/v101133/m1/M1_10_PRE_EDIT_FIXED_POINT_REPORT.md",
+      "size": 4265
+    },
+    {
+      "path": "evidence/v101133/prefreeze/GATE_SUMMARY.json",
+      "size": 2013
+    },
+    {
+      "path": "evidence/v101133/prefreeze/I01_GLOBAL_RAW_QUOTE.json",
+      "size": 3583
+    },
+    {
+      "path": "evidence/v101133/prefreeze/I02_RUNTIME_PRESENTATION.json",
+      "size": 11198
+    },
+    {
+      "path": "evidence/v101133/prefreeze/I03_MUTATION_TESTS.json",
+      "size": 1700
+    },
+    {
+      "path": "evidence/v101133/prefreeze/I04_STRICT_GLYPH_FLOW.json",
+      "size": 144373
+    },
+    {
+      "path": "evidence/v101133/prefreeze/I05_LEGACY_CONTINUITY.json",
+      "size": 150263
+    },
+    {
+      "path": "evidence/v101133/prefreeze/I06_MEDITEE.json",
+      "size": 91024
+    },
+    {
+      "path": "evidence/v101133/prefreeze/I07_RESPONSIVE.json",
+      "size": 134684
+    },
+    {
+      "path": "evidence/v101133/prefreeze/I08_HOUR24.json",
+      "size": 4410
+    },
+    {
+      "path": "evidence/v101133/prefreeze/I09_HELP.json",
+      "size": 64918
+    },
+    {
+      "path": "evidence/v101133/prefreeze/I10_PRESENTATION_PRIMARY.json",
+      "size": 5417913
+    },
+    {
+      "path": "evidence/v101133/prefreeze/I11_PRESENTATION_INDEPENDENT.json",
+      "size": 2615389
+    },
+    {
+      "path": "evidence/v101133/prefreeze/I12_BROAD_RUNTIME.json",
+      "size": 9914
+    },
+    {
+      "path": "evidence/v101133/prefreeze/I13_SW_LOGIC.json",
+      "size": 1473
+    },
+    {
+      "path": "evidence/v101133/prefreeze/M2_01_V101133_MUTATION_INTEGRITY.json",
+      "size": 3095
+    },
+    {
+      "path": "evidence/v101133/prefreeze/M3_01_ALIGNMENT_GEOMETRY_FULL.json",
+      "size": 1012564
+    },
+    {
+      "path": "evidence/v101133/prefreeze/M3_03_ALIGNMENT_NEGATIVE_CONTROL_RESULTS.json",
+      "size": 2613
+    },
+    {
+      "path": "evidence/v101133/prefreeze/M3_04_MUTANT_SENSITIVITY.json",
+      "size": 806
+    },
+    {
+      "path": "evidence/v101133/prefreeze/M3_05_TEXT_SELECTION_OFFSET_PRESERVATION.json",
+      "size": 6226
+    },
+    {
+      "path": "evidence/v101133/prefreeze_four_pass/FOUR_PASS_SUMMARY.json",
+      "size": 474
+    },
+    {
+      "path": "evidence/v101133/prefreeze_four_pass/PASS1_FILES_VS_BUILD.json",
+      "size": 2577
+    },
+    {
+      "path": "evidence/v101133/prefreeze_four_pass/PASS2_RUNTIME_PACKAGE_BEHAVIOUR.json",
+      "size": 5303
+    },
+    {
+      "path": "evidence/v101133/prefreeze_four_pass/PASS3_ACTIVE_REPORT_RECONCILIATION.json",
+      "size": 2602
+    },
+    {
+      "path": "evidence/v101133/prefreeze_four_pass/PASS4_STALE_CONTRADICTION_SCAN.json",
+      "size": 1221
+    },
+    {
+      "path": "evidence/v101134/authority/L24H_V101133_VISUAL_BOUNDARY_LEADING_WHITESPACE_ALIGNMENT_REPAIR_MASTER_EXECUTION_SCRIPT_R1_2026-09-03.md",
+      "size": 36004
+    },
+    {
+      "path": "evidence/v101134/authority/USER_AUTHORITY.md",
+      "size": 299
+    },
+    {
+      "path": "evidence/v101134/prefreeze/A01_ALIGNMENT_GEOMETRY.json",
+      "size": 1012564
+    },
+    {
+      "path": "evidence/v101134/prefreeze/A02_STATIC_CONTROLS.json",
+      "size": 2613
+    },
+    {
+      "path": "evidence/v101134/prefreeze/A03_MUTANTS.json",
+      "size": 806
+    },
+    {
+      "path": "evidence/v101134/prefreeze/A04_SOURCE_SELECTION_STATE.json",
+      "size": 6226
+    },
+    {
+      "path": "evidence/v101134/prefreeze/GATE_SUMMARY.json",
+      "size": 3061
+    },
+    {
+      "path": "evidence/v101134/prefreeze/I01_GLOBAL_RAW_QUOTE.json",
+      "size": 3583
+    },
+    {
+      "path": "evidence/v101134/prefreeze/I02_RUNTIME_PRESENTATION.json",
+      "size": 11204
+    },
+    {
+      "path": "evidence/v101134/prefreeze/I03_MUTATION_TESTS.json",
+      "size": 1700
+    },
+    {
+      "path": "evidence/v101134/prefreeze/I04_STRICT_GLYPH_FLOW.json",
+      "size": 144373
+    },
+    {
+      "path": "evidence/v101134/prefreeze/I05_LEGACY_CONTINUITY.json",
+      "size": 150263
+    },
+    {
+      "path": "evidence/v101134/prefreeze/I06_MEDITEE.json",
+      "size": 91024
+    },
+    {
+      "path": "evidence/v101134/prefreeze/I07_RESPONSIVE.json",
+      "size": 134684
+    },
+    {
+      "path": "evidence/v101134/prefreeze/I08_HOUR24.json",
+      "size": 4410
+    },
+    {
+      "path": "evidence/v101134/prefreeze/I09_HELP.json",
+      "size": 64948
+    },
+    {
+      "path": "evidence/v101134/prefreeze/I10_PRESENTATION_PRIMARY.json",
+      "size": 5417913
+    },
+    {
+      "path": "evidence/v101134/prefreeze/I11_PRESENTATION_INDEPENDENT.json",
+      "size": 2615389
+    },
+    {
+      "path": "evidence/v101134/prefreeze/I12_BROAD_RUNTIME.json",
+      "size": 9938
+    },
+    {
+      "path": "evidence/v101134/prefreeze/I13_SW_LOGIC.json",
+      "size": 1473
+    },
+    {
+      "path": "evidence/v101134/prefreeze/R01_RELEASE_INTEGRITY.json",
+      "size": 3263
+    },
+    {
+      "path": "evidence/v101134/prefreeze/R02_BOUNDARY_REPRODUCIBILITY.json",
+      "size": 6614
+    },
+    {
+      "path": "evidence/v101134/prefreeze/R03_ACCESSIBILITY_STRUCTURE.json",
+      "size": 12177
+    },
+    {
+      "path": "evidence/v101134/prefreeze_four_pass/FOUR_PASS_SUMMARY.json",
+      "size": 482
+    },
+    {
+      "path": "evidence/v101134/prefreeze_four_pass/PASS1_FILES_VS_BUILD.json",
+      "size": 3802
+    },
+    {
+      "path": "evidence/v101134/prefreeze_four_pass/PASS2_RUNTIME_PACKAGE_BEHAVIOUR.json",
+      "size": 9254
+    },
+    {
+      "path": "evidence/v101134/prefreeze_four_pass/PASS3_ACTIVE_REPORT_RECONCILIATION.json",
+      "size": 17016
+    },
+    {
+      "path": "evidence/v101134/prefreeze_four_pass/PASS4_STALE_CONTRADICTION_SCAN.json",
+      "size": 1587
+    },
+    {
+      "path": "evidence/v101134/reconciliation/L24H_V101133_VISUAL_BOUNDARY_LEADING_WHITESPACE_ALIGNMENT_REPAIR_MASTER_EXECUTION_SCRIPT_R1_2026-09-03.md",
+      "size": 36004
+    },
+    {
+      "path": "evidence/v101134/reconciliation/M1_04_RUNTIME_BOUNDARY_UNIVERSE.csv",
+      "size": 296055
+    },
+    {
+      "path": "evidence/v101134/reconciliation/M1_04_RUNTIME_BOUNDARY_UNIVERSE_EXCLUSIONS.csv",
+      "size": 26180
+    },
+    {
+      "path": "evidence/v101134/reconciliation/M1_04_RUNTIME_BOUNDARY_UNIVERSE_RAW_MARKERS.csv",
+      "size": 320026
+    },
+    {
+      "path": "evidence/v101134/reconciliation/M1_04_RUNTIME_BOUNDARY_UNIVERSE_SUMMARY.json",
+      "size": 617
+    },
+    {
+      "path": "evidence/v101134/reconciliation/M3_02_ALIGNMENT_POSITIVE_82_RESULTS.csv",
+      "size": 5154
+    },
+    {
+      "path": "evidence/v101134/reconciliation/M3_06_HIGHLIGHT_NOTE_REGRESSION.json",
+      "size": 1882
+    },
+    {
+      "path": "evidence/v101134/reconciliation/M3_07_ACCESSIBILITY_STRUCTURE.json",
+      "size": 12177
+    },
+    {
+      "path": "evidence/v101134/reconciliation/M3_08_INHERITED_GATE_SUMMARY.json",
+      "size": 1462
+    },
+    {
+      "path": "evidence/v101134/reconciliation/M3_09_RUNTIME_FIXED_POINT_REPORT.md",
+      "size": 978
+    },
+    {
+      "path": "evidence/v101134/reconciliation/V101133_BOUNDARY_UNIVERSE_EVIDENCE_RECONCILIATION.md",
+      "size": 2801
+    },
+    {
+      "path": "evidence/v101134/reconciliation/V101133_MISSING_DELIVERABLE_RECONCILIATION.json",
+      "size": 828
+    },
+    {
+      "path": "evidence/v101135/prefreeze/A01_ALIGNMENT_GEOMETRY_82.json",
+      "size": 1012564
+    },
+    {
+      "path": "evidence/v101135/prefreeze/A02_STATIC_CONTROLS.json",
+      "size": 2613
+    },
+    {
+      "path": "evidence/v101135/prefreeze/A03_MUTANTS.json",
+      "size": 806
+    },
+    {
+      "path": "evidence/v101135/prefreeze/A04_ACCESSIBILITY_STRUCTURE.json",
+      "size": 12177
+    },
+    {
+      "path": "evidence/v101135/prefreeze/B01_BUILDER_INPUT_MANIFEST.json",
+      "size": 704
+    },
+    {
+      "path": "evidence/v101135/prefreeze/GATE_SUMMARY.json",
+      "size": 2996
+    },
+    {
+      "path": "evidence/v101135/prefreeze/I01_GLOBAL_RAW_QUOTE.json",
+      "size": 3583
+    },
+    {
+      "path": "evidence/v101135/prefreeze/I02_RUNTIME_PRESENTATION.json",
+      "size": 11182
+    },
+    {
+      "path": "evidence/v101135/prefreeze/I03_MUTATION_TESTS.json",
+      "size": 1700
+    },
+    {
+      "path": "evidence/v101135/prefreeze/I04_STRICT_GLYPH_FLOW.json",
+      "size": 144373
+    },
+    {
+      "path": "evidence/v101135/prefreeze/I05_LEGACY_CONTINUITY.json",
+      "size": 150263
+    },
+    {
+      "path": "evidence/v101135/prefreeze/I06_MEDITEE.json",
+      "size": 91024
+    },
+    {
+      "path": "evidence/v101135/prefreeze/I07_RESPONSIVE.json",
+      "size": 134684
+    },
+    {
+      "path": "evidence/v101135/prefreeze/I08_HOUR24.json",
+      "size": 4410
+    },
+    {
+      "path": "evidence/v101135/prefreeze/I09_HELP.json",
+      "size": 64838
+    },
+    {
+      "path": "evidence/v101135/prefreeze/I10_PRESENTATION_PRIMARY.json",
+      "size": 5417913
+    },
+    {
+      "path": "evidence/v101135/prefreeze/I11_PRESENTATION_INDEPENDENT.json",
+      "size": 2615389
+    },
+    {
+      "path": "evidence/v101135/prefreeze/I12_BROAD_RUNTIME.json",
+      "size": 9850
+    },
+    {
+      "path": "evidence/v101135/prefreeze/I13_SW_LOGIC.json",
+      "size": 1473
+    },
+    {
+      "path": "evidence/v101135/prefreeze/R01_RELEASE_INTEGRITY.json",
+      "size": 3591
+    },
+    {
+      "path": "evidence/v101135/prefreeze/T01_COMPLETE_TREE_SCAN.json",
+      "size": 25812791
+    },
+    {
+      "path": "evidence/v101135/prefreeze/V01_FULL_1748_GEOMETRY.json",
+      "size": 1483572
+    },
+    {
+      "path": "evidence/v101135/prefreeze/V02_REPERES_THEME_GEOMETRY.json",
+      "size": 62906
+    },
+    {
+      "path": "evidence/v101135/prefreeze/V03_EXHAUSTIVE_SELECTION_OFFSETS.json",
+      "size": 26155
+    },
+    {
+      "path": "evidence/v101135/prefreeze/V04_ANNOTATION_LIFECYCLE.json",
+      "size": 40718
+    },
+    {
+      "path": "evidence/v101135/prefreeze/V05_ACCESSIBILITY_TREE.json",
+      "size": 8676
+    },
+    {
       "path": "favicon-16.png",
       "size": 629
     },
@@ -1914,11 +2310,11 @@
     },
     {
       "path": "index.html",
-      "size": 2570061
+      "size": 2571227
     },
     {
       "path": "luisa_24_heures.html",
-      "size": 2570061
+      "size": 2571227
     },
     {
       "path": "manifest.json",
@@ -1926,27 +2322,31 @@
     },
     {
       "path": "metadata/active_report_inventory.json",
-      "size": 376
+      "size": 675
     },
     {
       "path": "metadata/build_provenance.json",
-      "size": 607
+      "size": 595
+    },
+    {
+      "path": "metadata/builder_input_manifest.json",
+      "size": 4393
     },
     {
       "path": "metadata/current_evidence_lineage.json",
-      "size": 594
+      "size": 308
     },
     {
       "path": "metadata/current_gate_map.json",
-      "size": 2516
+      "size": 4912
     },
     {
       "path": "metadata/current_tooling_inventory.json",
-      "size": 1189
+      "size": 1719
     },
     {
       "path": "metadata/full_build_overlay_manifest.json",
-      "size": 3777
+      "size": 4077
     },
     {
       "path": "metadata/historical/v101127/scope_escalation_authority.md",
@@ -1966,15 +2366,15 @@
     },
     {
       "path": "metadata/release_evidence_lifecycle.json",
-      "size": 642
+      "size": 534
     },
     {
       "path": "metadata/scope_escalation_authority.md",
-      "size": 486
+      "size": 453
     },
     {
-      "path": "reports/DEEP_FOUR_PASS_RELEASE_ENGINEERING_RECONCILIATION.md",
-      "size": 1299
+      "path": "reports/V101135_MASTER_SCRIPT_VALIDATION_COMPLETION.md",
+      "size": 776
     },
     {
       "path": "reports/historical/v101122/HOUR24_PRODUCT_CONTRACT.md",
@@ -2201,8 +2601,20 @@
       "size": 1185
     },
     {
+      "path": "reports/historical/v101132/DEEP_FOUR_PASS_RELEASE_ENGINEERING_RECONCILIATION.md",
+      "size": 1299
+    },
+    {
+      "path": "reports/historical/v101133/V101133_VISUAL_BOUNDARY_ALIGNMENT_REPAIR.md",
+      "size": 951
+    },
+    {
+      "path": "reports/historical/v101134/V101134_BOUNDARY_UNIVERSE_EVIDENCE_REPRODUCIBILITY_RECONCILIATION.md",
+      "size": 1045
+    },
+    {
       "path": "scripts/EXECUTION_SPEC.md",
-      "size": 1644
+      "size": 556
     },
     {
       "path": "scripts/build_m1_adjudication.py",
@@ -2301,6 +2713,18 @@
       "size": 17244
     },
     {
+      "path": "scripts/build_v101133_alignment_repair.py",
+      "size": 19859
+    },
+    {
+      "path": "scripts/build_v101134_release_engineering_reconciliation.py",
+      "size": 19816
+    },
+    {
+      "path": "scripts/build_v101135_validation_completion.py",
+      "size": 14311
+    },
+    {
       "path": "scripts/create_m1_addendum_docx.py",
       "size": 8240
     },
@@ -2315,6 +2739,18 @@
     {
       "path": "scripts/freeze_v101132_deterministic.py",
       "size": 1138
+    },
+    {
+      "path": "scripts/freeze_v101133_deterministic.py",
+      "size": 1138
+    },
+    {
+      "path": "scripts/freeze_v101134_deterministic.py",
+      "size": 1138
+    },
+    {
+      "path": "scripts/freeze_v101135_deterministic.py",
+      "size": 1046
     },
     {
       "path": "scripts/historical/EXECUTION_SPEC_v101111.md",
@@ -2335,6 +2771,10 @@
     {
       "path": "scripts/reconstruct_m1_universe.py",
       "size": 9930
+    },
+    {
+      "path": "scripts/reconstruct_runtime_boundary_universe.py",
+      "size": 6619
     },
     {
       "path": "scripts/run_broad_runtime_matrix.py",
@@ -2797,12 +3237,204 @@
       "size": 7066
     },
     {
+      "path": "scripts/run_v101133_alignment_geometry.py",
+      "size": 3266
+    },
+    {
+      "path": "scripts/run_v101133_four_pass.py",
+      "size": 8540
+    },
+    {
+      "path": "scripts/run_v101133_global_raw_quote_gate.py",
+      "size": 5232
+    },
+    {
+      "path": "scripts/run_v101133_help_browser_matrix.py",
+      "size": 6926
+    },
+    {
+      "path": "scripts/run_v101133_hour24_regression.py",
+      "size": 9546
+    },
+    {
+      "path": "scripts/run_v101133_meditee_regression.py",
+      "size": 11634
+    },
+    {
+      "path": "scripts/run_v101133_meditee_responsive_regression.py",
+      "size": 4685
+    },
+    {
+      "path": "scripts/run_v101133_mutant_sensitivity.py",
+      "size": 3630
+    },
+    {
+      "path": "scripts/run_v101133_mutation_integrity.py",
+      "size": 2838
+    },
+    {
+      "path": "scripts/run_v101133_mutation_tests.py",
+      "size": 4992
+    },
+    {
+      "path": "scripts/run_v101133_runtime_presentation.py",
+      "size": 7068
+    },
+    {
+      "path": "scripts/run_v101133_source_selection_state.py",
+      "size": 4120
+    },
+    {
+      "path": "scripts/run_v101133_static_controls.py",
+      "size": 3134
+    },
+    {
+      "path": "scripts/run_v101134_accessibility_structure.py",
+      "size": 3465
+    },
+    {
+      "path": "scripts/run_v101134_alignment_geometry.py",
+      "size": 3266
+    },
+    {
+      "path": "scripts/run_v101134_boundary_reproducibility.py",
+      "size": 4306
+    },
+    {
+      "path": "scripts/run_v101134_four_pass.py",
+      "size": 13717
+    },
+    {
+      "path": "scripts/run_v101134_global_raw_quote_gate.py",
+      "size": 5232
+    },
+    {
+      "path": "scripts/run_v101134_help_browser_matrix.py",
+      "size": 6926
+    },
+    {
+      "path": "scripts/run_v101134_hour24_regression.py",
+      "size": 9546
+    },
+    {
+      "path": "scripts/run_v101134_meditee_regression.py",
+      "size": 11634
+    },
+    {
+      "path": "scripts/run_v101134_meditee_responsive_regression.py",
+      "size": 4685
+    },
+    {
+      "path": "scripts/run_v101134_mutant_sensitivity.py",
+      "size": 3630
+    },
+    {
+      "path": "scripts/run_v101134_mutation_tests.py",
+      "size": 4992
+    },
+    {
+      "path": "scripts/run_v101134_release_integrity.py",
+      "size": 3902
+    },
+    {
+      "path": "scripts/run_v101134_runtime_presentation.py",
+      "size": 7074
+    },
+    {
+      "path": "scripts/run_v101134_source_selection_state.py",
+      "size": 4120
+    },
+    {
+      "path": "scripts/run_v101134_static_controls.py",
+      "size": 3134
+    },
+    {
+      "path": "scripts/run_v101135_accessibility_structure.py",
+      "size": 3465
+    },
+    {
+      "path": "scripts/run_v101135_accessibility_tree.py",
+      "size": 2920
+    },
+    {
+      "path": "scripts/run_v101135_alignment_geometry.py",
+      "size": 3266
+    },
+    {
+      "path": "scripts/run_v101135_annotation_lifecycle.py",
+      "size": 6457
+    },
+    {
+      "path": "scripts/run_v101135_builder_input_manifest.py",
+      "size": 1377
+    },
+    {
+      "path": "scripts/run_v101135_complete_tree_scan.py",
+      "size": 5585
+    },
+    {
+      "path": "scripts/run_v101135_exhaustive_selection_offsets.py",
+      "size": 3062
+    },
+    {
+      "path": "scripts/run_v101135_four_pass.py",
+      "size": 11031
+    },
+    {
+      "path": "scripts/run_v101135_full_boundary_geometry.py",
+      "size": 5466
+    },
+    {
+      "path": "scripts/run_v101135_global_raw_quote_gate.py",
+      "size": 5232
+    },
+    {
+      "path": "scripts/run_v101135_help_browser_matrix.py",
+      "size": 6926
+    },
+    {
+      "path": "scripts/run_v101135_hour24_regression.py",
+      "size": 9546
+    },
+    {
+      "path": "scripts/run_v101135_meditee_regression.py",
+      "size": 11634
+    },
+    {
+      "path": "scripts/run_v101135_meditee_responsive_regression.py",
+      "size": 4685
+    },
+    {
+      "path": "scripts/run_v101135_mutant_sensitivity.py",
+      "size": 3630
+    },
+    {
+      "path": "scripts/run_v101135_mutation_tests.py",
+      "size": 4992
+    },
+    {
+      "path": "scripts/run_v101135_release_integrity.py",
+      "size": 3865
+    },
+    {
+      "path": "scripts/run_v101135_reperes_theme_geometry.py",
+      "size": 2387
+    },
+    {
+      "path": "scripts/run_v101135_runtime_presentation.py",
+      "size": 7052
+    },
+    {
+      "path": "scripts/run_v101135_static_controls.py",
+      "size": 3134
+    },
+    {
       "path": "sw.js",
       "size": 3903
     },
     {
       "path": "version.json",
-      "size": 1592
+      "size": 1485
     }
   ]
 }

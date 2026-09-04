@@ -1,9 +1,8 @@
 {
-  "version": "v101.132",
-  "stage": "DEEP_FOUR_PASS_RELEASE_ENGINEERING_RECONCILIATION_R1",
-  "package_local_evidence": "source deep-audit findings plus candidate prefreeze gate/four-pass evidence may be embedded before deterministic freeze",
+  "version": "v101.134",
+  "stage": "BOUNDARY_UNIVERSE_EVIDENCE_REPRODUCIBILITY_RECONCILIATION_R1",
+  "package_local_evidence": "reconciliation authority plus prefreeze gate/four-pass evidence may be embedded before deterministic freeze",
   "postfreeze_reopen_and_decision": "external exact-ZIP-SHA-bound evidence written after immutable freeze",
   "physical_device_claims": "NOT_TESTED until direct evidence",
-  "immutable_package_rule": "no postfreeze file is inserted into the frozen ZIP; any byte change requires a successor",
-  "active_report_rule": "only metadata/active_report_inventory.json source_reports are current claims"
+  "immutable_package_rule": "no postfreeze file is inserted into the frozen ZIP; any byte change requires a successor"
 }
