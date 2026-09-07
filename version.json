@@ -1,26 +1,34 @@
 {
-  "app_version": "v101.135",
-  "build_date": "2026-09-04",
-  "cache_name": "luisa-24h-v101-135",
+  "app_version": "v101.136",
+  "build_date": "2026-09-07",
+  "cache_name": "luisa-24h-v101-136-r5",
   "storage_schema": 8,
   "personal_snapshot": 5,
-  "ldc_source_public_version": "62",
-  "ldc_source_app_version": "v2.19.62-R1B",
-  "ldc_source_package_sha256": "3e1d234c2de11ea8032cb7d56c3e5eb0d5faac1c8858e227fd730db61481eb50",
-  "release_scope": "Validation/release-engineering-only successor of immutable v101.134. Closes strict master-script validation coverage gaps; no renderer, canonical text, speaker, topology, offset, schema or user-state behavior change.",
-  "real_device_status": "Physical Samsung/iPhone/iPad, mandatory installed-PWA update from v101.132, true offline cold reopen, VoiceOver/TalkBack and live-origin exact-byte binding NOT_TESTED for v101.135.",
-  "overall_release_status": "LIMITED_PASS_STATIC__EXTERNAL_VALIDATION_OPEN",
-  "known_blockers": [],
-  "external_open_gates": [
+  "ldc_source_public_version": "65",
+  "ldc_source_app_version": "v2.19.65-R1B",
+  "ldc_source_package_sha256": "35ee5c69fe0468d2e3ee2d963a7fa6667169c24d6c8023da2726b4cd8b50ed20",
+  "release_scope": "Governed v101.136 R5 device-test candidate. Canonical corpus is unchanged from R4 and remains exactly 97 records different from immutable v101.135 = 84 local corrections + 13 official-R6 derivative sync. R5 is release-engineering/documentation only and introduces no new canonical text mutation.",
+  "real_device_status": "Physical Samsung/iPhone/iPad, installed-PWA update, true offline cold reopen, VoiceOver/TalkBack and live-origin exact-byte binding NOT_TESTED for v101.136 R5.",
+  "overall_release_status": "R5_CONTROLLED_DEVICE_TEST_CANDIDATE__FINAL_PUBLIC_DEPLOYMENT_UNAUTHORIZED",
+  "known_blockers": [
     "physical iPad/iPhone/Samsung",
     "live-origin exact-byte binding",
-    "installed PWA update from v101.132",
+    "installed PWA update v101.135→v101.136 R5",
     "installed PWA close/reopen persistence",
     "true offline cold reopen",
     "VoiceOver/TalkBack representative testing"
   ],
-  "ldc_source_alignment_generation": "G036-AFLP-R5-UWR2",
-  "ldc_source_enriched_generation": "G036-AFLP-R5-SUP-T4",
-  "ldc_source_corpus_manifest_sha256": "76895194f21e21c058d8c7f1547977abad220caa501406b97ac4b4e05f1772e7",
-  "postfreeze_reopen_evidence": "External SHA-bound decision/evidence; not embedded after immutable freeze."
+  "external_open_gates": [
+    "physical iPad/iPhone/Samsung",
+    "live-origin exact-byte binding",
+    "installed PWA update v101.135→v101.136 R5",
+    "installed PWA close/reopen persistence",
+    "true offline cold reopen",
+    "VoiceOver/TalkBack representative testing"
+  ],
+  "ldc_source_alignment_generation": "G036-AFLP-R6-UWR2",
+  "ldc_source_enriched_generation": "G036-AFLP-R6-SUP-T5",
+  "ldc_source_corpus_manifest_sha256": "0d04190b166932086ed45141368bd4ae88b5a22806ca1e525a3e6a60a267f3ad",
+  "postfreeze_reopen_evidence": "Package does not self-certify its final ZIP hash. Controlled device testing requires the accompanying external SHA-bound R5 four-pass and final-recheck receipt.",
+  "build_revision": "R5"
 }

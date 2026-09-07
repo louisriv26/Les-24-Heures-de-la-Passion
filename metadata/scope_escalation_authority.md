@@ -1,7 +1,3 @@
-# v101.134 Scope / Mutation Authority
+# v101.136 R5 Scope Authority
 
-Authority is limited to release-engineering evidence/tooling reproducibility reconciliation under the already authorised M4 failure-handling rule. Functional v101.133 renderer behavior is protected.
-
-No canonical text, speaker adjudication, presentation/topology offset, continuity, schema or content-specific exception is authorised.
-
-After immutable freeze, mutation authority for the exact package is **NONE**.
+Canonical content authority remains exactly **97 records relative to immutable v101.135** under ledger `f9c89f2fdcb0f6588cb4250e8ea4bc00d9ccf1f51900a83d77e6e3b415ae9394`. R5 authorizes **zero** additional canonical text mutations and is release-engineering/documentation only. No H23 source-critical finding is authorized. The existing R4 exception at `PASSION24.TEXT.RELATED_HOUR_13.BODY.P124` remains limited to the exact previously authorized insertion `de `; no other upstream finding or action is authorized. Any further canonical text change requires new authority.

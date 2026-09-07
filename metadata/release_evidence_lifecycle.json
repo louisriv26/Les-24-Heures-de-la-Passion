@@ -1,8 +1,9 @@
 {
-  "version": "v101.134",
-  "stage": "BOUNDARY_UNIVERSE_EVIDENCE_REPRODUCIBILITY_RECONCILIATION_R1",
-  "package_local_evidence": "reconciliation authority plus prefreeze gate/four-pass evidence may be embedded before deterministic freeze",
-  "postfreeze_reopen_and_decision": "external exact-ZIP-SHA-bound evidence written after immutable freeze",
-  "physical_device_claims": "NOT_TESTED until direct evidence",
-  "immutable_package_rule": "no postfreeze file is inserted into the frozen ZIP; any byte change requires a successor"
+  "version": "v101.136",
+  "build_revision": "R5",
+  "stage": "INTERIM_CLOSED_97_SUCCESSOR_R5_FOUR_PASS_RELEASE_RECONCILED",
+  "package_rule": "Package does not self-certify final ZIP bytes. The exact R5 ZIP must be SHA-bound by the external four-pass/final-recheck receipt before controlled device testing.",
+  "internal_package_content_status": "RECONCILED_FOR_EXTERNAL_EXACT_ZIP_RECHECK",
+  "physical_device_claims": "NOT_TESTED",
+  "public_deployment_authorized": false
 }
