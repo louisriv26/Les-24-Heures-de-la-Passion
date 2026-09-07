@@ -1,12 +1,12 @@
 {
   "schema": "L24H_PACKAGE_MANIFEST_V1",
   "version": "v101.137",
-  "build_revision": "R1",
+  "build_revision": "R2",
   "self_exclusion": [
     "metadata/hash_manifest.json",
     "metadata/package_manifest.json"
   ],
-  "file_count": 890,
+  "file_count": 896,
   "files": [
     {
       "path": ".gitattributes",
@@ -18,15 +18,15 @@
     },
     {
       "path": "README.md",
-      "size": 758
+      "size": 1324
     },
     {
       "path": "REAL_DEVICE_QA_CHECKLIST.md",
-      "size": 5057
+      "size": 4796
     },
     {
       "path": "REAL_DEVICE_QA_RESULTS_TEMPLATE.csv",
-      "size": 5087
+      "size": 2277
     },
     {
       "path": "apple-touch-icon.png",
@@ -2369,6 +2369,22 @@
       "size": 1014
     },
     {
+      "path": "evidence/v101137_r2/ABOUT_TEXT_FINAL.md",
+      "size": 1145
+    },
+    {
+      "path": "evidence/v101137_r2/INTERNAL_VALIDATION_RECEIPT.json",
+      "size": 819
+    },
+    {
+      "path": "evidence/v101137_r2/R1_PREDECESSOR_BINDING.json",
+      "size": 467
+    },
+    {
+      "path": "evidence/v101137_r2/R1_TO_R2_PROTECTED_PARITY_RECEIPT.json",
+      "size": 3741
+    },
+    {
       "path": "favicon-16.png",
       "size": 629
     },
@@ -2402,11 +2418,11 @@
     },
     {
       "path": "index.html",
-      "size": 2568933
+      "size": 2570437
     },
     {
       "path": "luisa_24_heures.html",
-      "size": 2568933
+      "size": 2570437
     },
     {
       "path": "manifest.json",
@@ -2414,31 +2430,31 @@
     },
     {
       "path": "metadata/active_report_inventory.json",
-      "size": 629
+      "size": 674
     },
     {
       "path": "metadata/build_provenance.json",
-      "size": 1059
+      "size": 1027
     },
     {
       "path": "metadata/builder_input_manifest.json",
-      "size": 449
+      "size": 359
     },
     {
       "path": "metadata/current_evidence_lineage.json",
-      "size": 663
+      "size": 704
     },
     {
       "path": "metadata/current_gate_map.json",
-      "size": 756
+      "size": 821
     },
     {
       "path": "metadata/current_tooling_inventory.json",
-      "size": 308
+      "size": 337
     },
     {
       "path": "metadata/full_build_overlay_manifest.json",
-      "size": 1819
+      "size": 1456
     },
     {
       "path": "metadata/historical/v101127/scope_escalation_authority.md",
@@ -2458,15 +2474,15 @@
     },
     {
       "path": "metadata/release_evidence_lifecycle.json",
-      "size": 400
+      "size": 575
     },
     {
       "path": "metadata/scope_escalation_authority.md",
-      "size": 664
+      "size": 713
     },
     {
-      "path": "reports/V101137_R1_AUTHORIZED_79_MUTATION.md",
-      "size": 1326
+      "path": "reports/V101137_R2_TEXTUAL_PROVENANCE_ABOUT_RECONCILIATION.md",
+      "size": 1263
     },
     {
       "path": "reports/historical/v101122/HOUR24_PRODUCT_CONTRACT.md",
@@ -2725,6 +2741,10 @@
       "size": 1572
     },
     {
+      "path": "reports/historical/v101137_r1/V101137_R1_AUTHORIZED_79_MUTATION.md",
+      "size": 1326
+    },
+    {
       "path": "scripts/EXECUTION_SPEC.md",
       "size": 556
     },
@@ -2855,6 +2875,10 @@
     {
       "path": "scripts/build_v101137_r1_authorized_79.py",
       "size": 43048
+    },
+    {
+      "path": "scripts/build_v101137_r2_about_provenance.py",
+      "size": 29462
     },
     {
       "path": "scripts/create_m1_addendum_docx.py",
@@ -3566,7 +3590,7 @@
     },
     {
       "path": "version.json",
-      "size": 2122
+      "size": 2353
     }
   ]
 }

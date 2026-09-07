@@ -1,3 +1,7 @@
-# v101.137 R1 Scope Authority
+# v101.137 R2 Scope Authority
 
-The only authorized meditation/reflection corpus operations are the exact 79 rows in ledger SHA-256 `f9a9c4c74df33b3f96909e3611acb74c448deed5fa367fa86072d2e27cbfef49` applied to immutable v101.136 R5 `7ef830738ff5665ae5b880d52bde029e4b9ba092d834f81b008d24615e1ab9e7`. The 24 `PRESERVE_MOVE` records must be retained in evidence but need not be user-visible in this version. Deferred/recension-sensitive loci remain unchanged; H23 Forms A/B must not be synthesized; H24 burial/deposition placement must not move; Desolation remains within H24 meditation scope. No associated Livre du Ciel or unrelated UI text mutation is authorized.
+R2 is authorized only as the provenance/À propos/release-identity implementation requested after the R1 corpus was frozen. Exact R1 SHA-256: `b63fe5e224cf28be53c59eb9098fb561b746c0b8bbc892d07ce203475c1bf65d`.
+
+Forbidden in R2: any CORPUS/TEXT_LIBRARY/stable-ID/presentation-topology/storage/personal-data semantic change; any new source-critical adjudication; any change to the exact 79-row content authority; any change to PRESERVE_MOVE visibility.
+
+Allowed in R2: user-facing À propos textual provenance, build revision display in support payloads, service-worker/cache/build metadata, active release documentation/evidence required to make those changes governed and testable.
