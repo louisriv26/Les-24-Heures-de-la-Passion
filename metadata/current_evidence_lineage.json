@@ -1,26 +1,14 @@
 {
-  "version": "v101.136",
-  "build_revision": "R5",
-  "stage": "INTERIM_CLOSED_97_SUCCESSOR_R5_FOUR_PASS_RELEASE_RECONCILED",
-  "content_authority_root": "evidence/v101136_r4",
-  "release_engineering_authority_root": "evidence/v101136_r5",
-  "content_predecessor_24h": {
-    "version": "v101.135",
-    "sha256": "cf8b688e649b2ef3f7c36768691c6a647d9d1e9eec85c90ba697dc2a05ef26fc"
+  "version": "v101.137",
+  "build_revision": "R1",
+  "stage": "AUTHORIZED_79_MEDITATION_REFLECTION_SUCCESSOR_R1",
+  "current_evidence_root": "evidence/v101137_r1",
+  "predecessor_24h": {
+    "version": "v101.136 R5",
+    "sha256": "7ef830738ff5665ae5b880d52bde029e4b9ba092d834f81b008d24615e1ab9e7"
   },
-  "release_engineering_predecessor": {
-    "version": "v101.136 R4",
-    "sha256": "7af0df0f37552f603d58aa407e94d9bd8f2719bd12b8b7313538d7b5d575668b"
-  },
-  "authorized_ledger_97_sha256": "f9c89f2fdcb0f6588cb4250e8ea4bc00d9ccf1f51900a83d77e6e3b415ae9394",
-  "governing_ldc_r6": {
-    "version": "v2.19.65-R1B",
-    "official_zip_sha256": "35ee5c69fe0468d2e3ee2d963a7fa6667169c24d6c8023da2726b4cd8b50ed20",
-    "corpus_manifest_sha256": "0d04190b166932086ed45141368bd4ae88b5a22806ca1e525a3e6a60a267f3ad"
-  },
-  "r5_canonical_delta_records": 0,
-  "canonical_total_delta_from_v101135_records": 97,
-  "upstream_hold_exception_records": 1,
-  "other_upstream_findings_consumed": false,
-  "final_exact_zip_validation": "EXTERNAL_RECEIPT_REQUIRED_FOR_THIS_EXACT_ZIP"
+  "authorized_ledger_sha256": "f9a9c4c74df33b3f96909e3611acb74c448deed5fa367fa86072d2e27cbfef49",
+  "governing_italian_r3_sha256": "bab1e4de16137577c9a100127509ff307b0532f13ad545bb9b6a61e7141041b8",
+  "frozen_r4_source_review_sha256": "2534e383966d60b462c81ab3a48143a916b2141cdc732fca9450e26b9157afe6",
+  "preserve_move_visibility": "EVIDENCE_ONLY_NOT_UI"
 }

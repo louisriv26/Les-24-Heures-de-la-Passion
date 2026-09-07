@@ -1,9 +1,7 @@
-# Les 24 Heures de la Passion — v101.136 R5
+# Les 24 Heures de la Passion — v101.137 R1
 
-Controlled device-test candidate. Canonical devotional corpus is unchanged from R4 and remains exactly **97 authorized changed records relative to immutable v101.135 = 84 local corrections + 13 official-LDC-R6 derivative synchronizations**.
+Controlled device-test candidate built only from immutable v101.136 R5 SHA-256 `7ef830738ff5665ae5b880d52bde029e4b9ba092d834f81b008d24615e1ab9e7` and exact authorized 79-row ledger SHA-256 `f9a9c4c74df33b3f96909e3611acb74c448deed5fa367fa86072d2e27cbfef49`.
 
-R5 is a release-engineering/documentation reconciliation only: **0 new canonical text mutations**. It corrects stale device-test instructions/status metadata discovered by the R4 four-pass audit and replaces the current builder with a portable SHA-bound predecessor-input builder.
+The canonical meditation/reflection corpus applies exactly 79 authorized operations. The 24 preserve-move records are retained in package evidence for later use but are intentionally not displayed in the current UI. No deferred/recension-sensitive locus is moved or changed beyond the exact authorized text-only rows.
 
-The R4 grammar repair `PASSION24.TEXT.RELATED_HOUR_13.BODY.P124`, `à la porte leur cœur` → `à la porte de leur cœur`, remains present and authorized. H23 remains unchanged.
-
-R5 supersedes R1/R2/R3/R4 for deployment/device testing. Final public release remains unauthorized pending physical-device, installed-PWA update/persistence, true-offline, accessibility and live-origin exact-byte gates.
+Final public deployment remains unauthorized pending exact-package validation and controlled device/PWA/offline/accessibility checks.

@@ -1,11 +1,11 @@
 {
-  "version": "v101.136",
-  "build_revision": "R5",
-  "stage": "INTERIM_CLOSED_97_SUCCESSOR_R5_FOUR_PASS_RELEASE_RECONCILED",
+  "version": "v101.137",
+  "build_revision": "R1",
+  "stage": "AUTHORIZED_79_MEDITATION_REFLECTION_SUCCESSOR_R1",
   "active_documents": [
     "README.md",
     "REAL_DEVICE_QA_CHECKLIST.md",
-    "reports/V101136_R5_FOUR_PASS_RELEASE_RECONCILIATION.md",
+    "reports/V101137_R1_AUTHORIZED_79_MUTATION.md",
     "version.json",
     "metadata/build_provenance.json",
     "metadata/current_evidence_lineage.json",

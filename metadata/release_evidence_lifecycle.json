@@ -1,9 +1,9 @@
 {
-  "version": "v101.136",
-  "build_revision": "R5",
-  "stage": "INTERIM_CLOSED_97_SUCCESSOR_R5_FOUR_PASS_RELEASE_RECONCILED",
-  "package_rule": "Package does not self-certify final ZIP bytes. The exact R5 ZIP must be SHA-bound by the external four-pass/final-recheck receipt before controlled device testing.",
-  "internal_package_content_status": "RECONCILED_FOR_EXTERNAL_EXACT_ZIP_RECHECK",
+  "version": "v101.137",
+  "build_revision": "R1",
+  "stage": "AUTHORIZED_79_MEDITATION_REFLECTION_SUCCESSOR_R1",
+  "package_rule": "Package does not self-certify final ZIP bytes; exact frozen ZIP must receive an external SHA-bound final validation receipt.",
+  "preserve_move_visibility": "EVIDENCE_ONLY_NOT_UI",
   "physical_device_claims": "NOT_TESTED",
   "public_deployment_authorized": false
 }
