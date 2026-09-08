@@ -1,7 +1,9 @@
-# v101.137 R2 Scope Authority
+# v101.138 R2 Scope Authority
 
-R2 is authorized only as the provenance/À propos/release-identity implementation requested after the R1 corpus was frozen. Exact R1 SHA-256: `b63fe5e224cf28be53c59eb9098fb561b746c0b8bbc892d07ce203475c1bf65d`.
+v101.138 R2 is authorized only for the four agreed release/accessibility cleanup items from the continuation package. Immediate immutable build predecessor: v101.138 R1 SHA-256 `a1b996c766e5b912f0eceb88ff9b4a1c38c3f7c2bf296f2c7d4f7c3f666d373a`.
 
-Forbidden in R2: any CORPUS/TEXT_LIBRARY/stable-ID/presentation-topology/storage/personal-data semantic change; any new source-critical adjudication; any change to the exact 79-row content authority; any change to PRESERVE_MOVE visibility.
+v101.137 R2 was the observed live predecessor; exact package SHA-256 `0ae4e7da4ec034952e0e596bb2c5ded947f7c7fade21c8974783de7308b0dbc5` was the immutable R1 builder input. Live-origin exact-byte binding remains an external gate.
 
-Allowed in R2: user-facing À propos textual provenance, build revision display in support payloads, service-worker/cache/build metadata, active release documentation/evidence required to make those changes governed and testable.
+Forbidden: any CORPUS/TEXT_LIBRARY/stable-ID/order/presentation-topology/storage/personal-data/source-critical change; any change to the 79-row authority, H23/H24 governance, PRESERVE_MOVE visibility, or approved substantive À propos textual-provenance wording.
+
+Allowed: Help quick-navigation focus selector repair, lineage-accurate provenance-key names, precise observed-live/builder-input wording, v101.138 R2 build/cache identity, and corresponding release evidence.

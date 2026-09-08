@@ -1,12 +1,12 @@
 {
   "schema": "L24H_HASH_MANIFEST_V1",
-  "version": "v101.137",
+  "version": "v101.138",
   "build_revision": "R2",
   "self_exclusion": [
     "metadata/hash_manifest.json",
     "metadata/package_manifest.json"
   ],
-  "file_count": 896,
+  "file_count": 908,
   "files": [
     {
       "path": ".gitattributes",
@@ -20,18 +20,18 @@
     },
     {
       "path": "README.md",
-      "size": 1324,
-      "sha256": "9437dfb0b392c41ac2dc57f788bac5c206f70bb9b8acfd9f650ad76a4bac15fe"
+      "size": 996,
+      "sha256": "ac7cafab840ff12208461545352d74544f903f0698cf85453fbcd4704d305a04"
     },
     {
       "path": "REAL_DEVICE_QA_CHECKLIST.md",
-      "size": 4796,
-      "sha256": "e4e27fd0c69e90d61d6c7bec38a0eafa7e7d7a6fa58815fd832c7885fe4120d2"
+      "size": 1997,
+      "sha256": "78d10281a5a1090c96d10c98bc91cea5bbb799240b6802a2b46d73e5df6428ab"
     },
     {
       "path": "REAL_DEVICE_QA_RESULTS_TEMPLATE.csv",
-      "size": 2277,
-      "sha256": "d871d34f7b3c8a5d25380d7ae440a2ba9136ee645af24022574820ab12979eba"
+      "size": 1108,
+      "sha256": "f04790d63cb24e2dd786ef72413285beceaf481313e66d1575f792c70581a8b8"
     },
     {
       "path": "apple-touch-icon.png",
@@ -2979,6 +2979,46 @@
       "sha256": "a011d36bb38c6c5888ec5cb0e1c5c697118969d87407a8672622656e6ad30640"
     },
     {
+      "path": "evidence/v101138_r1/INTERNAL_VALIDATION_RECEIPT.json",
+      "size": 760,
+      "sha256": "c1b936fbf2bd80fafa05e1edc0c87e9c7d03d34079551b154534c7b6c584f854"
+    },
+    {
+      "path": "evidence/v101138_r1/R2_PREDECESSOR_BINDING.json",
+      "size": 571,
+      "sha256": "ba959c2e13943dfd6d690ea7f44eb1f20f1aa7180b930deda7a05ccc96fee212"
+    },
+    {
+      "path": "evidence/v101138_r1/R2_TO_V101138_R1_PROTECTED_PARITY_RECEIPT.json",
+      "size": 3874,
+      "sha256": "207a04a5be26d08cbdb2551046334346ea012313883773487ab8690896689737"
+    },
+    {
+      "path": "evidence/v101138_r1/UI_LAYOUT_DECISION.md",
+      "size": 446,
+      "sha256": "e1690dabb16dc001d117910693fcb1bfec46fac9c5a48aed760399bc23264181"
+    },
+    {
+      "path": "evidence/v101138_r2/ACCESSIBILITY_FOCUS_REPAIR.md",
+      "size": 475,
+      "sha256": "3c0cce70a2c102aa455bf795f86153a9af26dbaa8b759107c164644f645ea646"
+    },
+    {
+      "path": "evidence/v101138_r2/INTERNAL_BUILD_RECEIPT.json",
+      "size": 739,
+      "sha256": "78c707ef795981b2585b1f699097900eaeda3360c0fa94da030acfc9126b07fc"
+    },
+    {
+      "path": "evidence/v101138_r2/R1_PREDECESSOR_BINDING.json",
+      "size": 838,
+      "sha256": "cc1b9814a7f1d4b96a5845ea9d102cb7b1dd8c9334f0143b83ff677910b16ccf"
+    },
+    {
+      "path": "evidence/v101138_r2/R1_TO_R2_PROTECTED_PARITY_RECEIPT.json",
+      "size": 4164,
+      "sha256": "5d167844da9fb3b08446964cf9cb77c554e96b760193f54c46089e7b458c3685"
+    },
+    {
       "path": "favicon-16.png",
       "size": 629,
       "sha256": "18ea7f82b0a52d3ab2e5f89eb294fb06f0057b72f890aa66ada9e0f3ff4beaa8"
@@ -3020,53 +3060,53 @@
     },
     {
       "path": "index.html",
-      "size": 2570437,
-      "sha256": "bee6de4e39d0a135f117629b91660ab519310e529503736632d3389c199e2e92"
+      "size": 2574732,
+      "sha256": "84db5f55e6bb90b0dd76f233609497ebc9c7e62f2aa3582057666f9fc83a2ec0"
     },
     {
       "path": "luisa_24_heures.html",
-      "size": 2570437,
-      "sha256": "bee6de4e39d0a135f117629b91660ab519310e529503736632d3389c199e2e92"
+      "size": 2574732,
+      "sha256": "84db5f55e6bb90b0dd76f233609497ebc9c7e62f2aa3582057666f9fc83a2ec0"
     },
     {
       "path": "manifest.json",
       "size": 912,
-      "sha256": "db0f31793aa747efe0d4b2deb540a38a35ed95c495d66e020b861e653d5161ec"
+      "sha256": "500b804cfd3c6930434ca4607bd266a21f2e1fae04e881a6c65938b9e28156e0"
     },
     {
       "path": "metadata/active_report_inventory.json",
-      "size": 674,
-      "sha256": "58a737401bc28d9913c702a3bef6407c684ba7e22fbf8b5900254358136caaa9"
+      "size": 654,
+      "sha256": "0decee78830b8c76d035c2e5066f9dd022a96334c068d7dbdcc8fecf90e0d554"
     },
     {
       "path": "metadata/build_provenance.json",
-      "size": 1027,
-      "sha256": "b1ac5b28a4c69b93e945ad7966a2e0ec40e7039993c93df06f01ee25b6ed0580"
+      "size": 1541,
+      "sha256": "f516ca8bdd9c1d18246971ddbdec60184c943f3d27ea2c56cdbcb0bbbf958001"
     },
     {
       "path": "metadata/builder_input_manifest.json",
-      "size": 359,
-      "sha256": "c651495454940ae668481bd1bbacf9ee0260f10c3d01adb0bb4fd18111e0373d"
+      "size": 668,
+      "sha256": "c2e8520b39dd94eace0ae2c443f769857667274a2ff4cea37adb455114b156bc"
     },
     {
       "path": "metadata/current_evidence_lineage.json",
-      "size": 704,
-      "sha256": "95dd0ec57ce52cf11c2c67251165ab5a72941d81059b524ef6e89e6750e2b5e8"
+      "size": 1014,
+      "sha256": "c49eb0d2bb6386ecb289d5b6f40a6c503394642715366dbd3883603f8762d974"
     },
     {
       "path": "metadata/current_gate_map.json",
-      "size": 821,
-      "sha256": "ccc93d2a7565b2d61168eae223f69f4dc120c90df0d7361bab6a32056dc7c9e2"
+      "size": 1022,
+      "sha256": "59b09f279ab3db186387d256a4ca4b034b757b3bf082b6e8a51a226102b43a4f"
     },
     {
       "path": "metadata/current_tooling_inventory.json",
-      "size": 337,
-      "sha256": "69b793cf6cb72959cbddadb9834f7827a9e47e9a0762c13beadf79961f81d6a9"
+      "size": 380,
+      "sha256": "5c174746fc61df3afa6486c12a4db02d28090c6cf54d69f124bd5c38b82071c8"
     },
     {
       "path": "metadata/full_build_overlay_manifest.json",
-      "size": 1456,
-      "sha256": "b1e86006635a212a9937b40007a28839e6cd8fd9467df5710f4195fa7ce36594"
+      "size": 1555,
+      "sha256": "7e00f9b61420512f1f85d4fabd517f95566590f5604f8950a8a5e357696162ee"
     },
     {
       "path": "metadata/historical/v101127/scope_escalation_authority.md",
@@ -3090,18 +3130,18 @@
     },
     {
       "path": "metadata/release_evidence_lifecycle.json",
-      "size": 575,
-      "sha256": "4095f23500b816b8d43ec6c5d3eda784b7516f9acab4c39581ef6bb23a08a86b"
+      "size": 954,
+      "sha256": "40c326337741832fb525ca2c00285aa97bb1db0649e3b946aff8a481587f217c"
     },
     {
       "path": "metadata/scope_escalation_authority.md",
-      "size": 713,
-      "sha256": "933e98a909ba63ff899abd915573404a0252e8717303524c1f9782e71299e94e"
+      "size": 979,
+      "sha256": "9ff2a77cb5162e4e827dcd4828bde71402b7f9d0a10256277e8fccbbda4f2bb6"
     },
     {
-      "path": "reports/V101137_R2_TEXTUAL_PROVENANCE_ABOUT_RECONCILIATION.md",
-      "size": 1263,
-      "sha256": "90a3ae0b92f17a81613052d02eb2ceea312695916908d373dc9584505a7a5279"
+      "path": "reports/V101138_R2_RELEASE_ACCESSIBILITY_CLEANUP.md",
+      "size": 1763,
+      "sha256": "2a9fd8fd911f9277c6a15da796447e51c875a0fb91db7acec13418234a95fdde"
     },
     {
       "path": "reports/historical/v101122/HOUR24_PRODUCT_CONTRACT.md",
@@ -3429,6 +3469,16 @@
       "sha256": "58d1399ec75f3ced2803dbb0d535f67ca445026a210e31934158df21ccf2c27d"
     },
     {
+      "path": "reports/historical/v101137_r2/V101137_R2_TEXTUAL_PROVENANCE_ABOUT_RECONCILIATION.md",
+      "size": 1263,
+      "sha256": "90a3ae0b92f17a81613052d02eb2ceea312695916908d373dc9584505a7a5279"
+    },
+    {
+      "path": "reports/historical/v101138_r1/V101138_R1_HELP_SUPPORT_ABOUT_LAYOUT.md",
+      "size": 1510,
+      "sha256": "d9740fcded8d3a4574581ec8d1a1fa49dd51ee6665dc6107fcb9ac9fc18486ac"
+    },
+    {
       "path": "scripts/EXECUTION_SPEC.md",
       "size": 556,
       "sha256": "553a6657c6a2af829542a28bc2e8b31bcb2d144aebc3c3d5bda7674ca121abc4"
@@ -3597,6 +3647,16 @@
       "path": "scripts/build_v101137_r2_about_provenance.py",
       "size": 29462,
       "sha256": "c7bafbcc3923063f2d6a1ada703850ebe082daa4b37ca4dd837efdbd40074661"
+    },
+    {
+      "path": "scripts/build_v101138_r1_help_support_layout.py",
+      "size": 33437,
+      "sha256": "143107ff116134fb946c1f89d77d5e7e2821e8842b954a76c50e0676a3239663"
+    },
+    {
+      "path": "scripts/build_v101138_r2_release_accessibility_cleanup.py",
+      "size": 28230,
+      "sha256": "1e1826a91ebca8e273a5b967021911988134b99e6be4c1592253eafd9ad6a372"
     },
     {
       "path": "scripts/create_m1_addendum_docx.py",
@@ -4481,12 +4541,12 @@
     {
       "path": "sw.js",
       "size": 3909,
-      "sha256": "b38e3400691474736c7898cbbf4c219fe8dd5d7d73eb4f8c5f181445c0a3d676"
+      "sha256": "81929dd5f3bc38155307357accfdff55aab631f17e2a3002ab0ff1e5195bbe3f"
     },
     {
       "path": "version.json",
-      "size": 2353,
-      "sha256": "5decd8286e6e56bbc530733311e56561c71826cab88b71428778f43a4c24b878"
+      "size": 2440,
+      "sha256": "480e75786a6edb5031696a416f0ddcaff82b345106c0f94e22a385001da1fac4"
     }
   ]
 }

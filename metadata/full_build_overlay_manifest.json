@@ -1,17 +1,17 @@
 {
-  "schema": "L24H_V101137_R2_FULL_BUILD_OVERLAY_V1",
-  "version": "v101.137",
+  "schema": "L24H_V101138_R2_FULL_BUILD_OVERLAY_V1",
+  "version": "v101.138",
   "build_revision": "R2",
-  "baseline": "v101.137 R1",
-  "baseline_zip_sha256": "b63fe5e224cf28be53c59eb9098fb561b746c0b8bbc892d07ce203475c1bf65d",
+  "baseline": "v101.138 R1",
+  "baseline_zip_sha256": "a1b996c766e5b912f0eceb88ff9b4a1c38c3f7c2bf296f2c7d4f7c3f666d373a",
   "changed_or_added": [
     "README.md",
     "REAL_DEVICE_QA_CHECKLIST.md",
     "REAL_DEVICE_QA_RESULTS_TEMPLATE.csv",
-    "evidence/v101137_r2/ABOUT_TEXT_FINAL.md",
-    "evidence/v101137_r2/INTERNAL_VALIDATION_RECEIPT.json",
-    "evidence/v101137_r2/R1_PREDECESSOR_BINDING.json",
-    "evidence/v101137_r2/R1_TO_R2_PROTECTED_PARITY_RECEIPT.json",
+    "evidence/v101138_r2/ACCESSIBILITY_FOCUS_REPAIR.md",
+    "evidence/v101138_r2/INTERNAL_BUILD_RECEIPT.json",
+    "evidence/v101138_r2/R1_PREDECESSOR_BINDING.json",
+    "evidence/v101138_r2/R1_TO_R2_PROTECTED_PARITY_RECEIPT.json",
     "index.html",
     "luisa_24_heures.html",
     "manifest.json",
@@ -26,14 +26,16 @@
     "metadata/package_manifest.json",
     "metadata/release_evidence_lifecycle.json",
     "metadata/scope_escalation_authority.md",
-    "reports/V101137_R2_TEXTUAL_PROVENANCE_ABOUT_RECONCILIATION.md",
-    "reports/historical/v101137_r1/V101137_R1_AUTHORIZED_79_MUTATION.md",
-    "scripts/build_v101137_r2_about_provenance.py",
+    "reports/V101138_R2_RELEASE_ACCESSIBILITY_CLEANUP.md",
+    "reports/historical/v101138_r1/V101138_R1_HELP_SUPPORT_ABOUT_LAYOUT.md",
+    "scripts/build_v101138_r2_release_accessibility_cleanup.py",
     "sw.js",
     "version.json"
   ],
   "removed": [
-    "reports/V101137_R1_AUTHORIZED_79_MUTATION.md"
+    "reports/V101138_R1_HELP_SUPPORT_ABOUT_LAYOUT.md"
   ],
-  "content_semantic_delta": "ZERO"
+  "content_semantic_delta": "ZERO",
+  "ui_delta": "HELP_QUICK_NAV_FOCUS_ONLY",
+  "release_evidence_delta": "R2_REFRESH"
 }

@@ -1,12 +1,12 @@
 {
   "schema": "L24H_PACKAGE_MANIFEST_V1",
-  "version": "v101.137",
+  "version": "v101.138",
   "build_revision": "R2",
   "self_exclusion": [
     "metadata/hash_manifest.json",
     "metadata/package_manifest.json"
   ],
-  "file_count": 896,
+  "file_count": 908,
   "files": [
     {
       "path": ".gitattributes",
@@ -18,15 +18,15 @@
     },
     {
       "path": "README.md",
-      "size": 1324
+      "size": 996
     },
     {
       "path": "REAL_DEVICE_QA_CHECKLIST.md",
-      "size": 4796
+      "size": 1997
     },
     {
       "path": "REAL_DEVICE_QA_RESULTS_TEMPLATE.csv",
-      "size": 2277
+      "size": 1108
     },
     {
       "path": "apple-touch-icon.png",
@@ -2385,6 +2385,38 @@
       "size": 3741
     },
     {
+      "path": "evidence/v101138_r1/INTERNAL_VALIDATION_RECEIPT.json",
+      "size": 760
+    },
+    {
+      "path": "evidence/v101138_r1/R2_PREDECESSOR_BINDING.json",
+      "size": 571
+    },
+    {
+      "path": "evidence/v101138_r1/R2_TO_V101138_R1_PROTECTED_PARITY_RECEIPT.json",
+      "size": 3874
+    },
+    {
+      "path": "evidence/v101138_r1/UI_LAYOUT_DECISION.md",
+      "size": 446
+    },
+    {
+      "path": "evidence/v101138_r2/ACCESSIBILITY_FOCUS_REPAIR.md",
+      "size": 475
+    },
+    {
+      "path": "evidence/v101138_r2/INTERNAL_BUILD_RECEIPT.json",
+      "size": 739
+    },
+    {
+      "path": "evidence/v101138_r2/R1_PREDECESSOR_BINDING.json",
+      "size": 838
+    },
+    {
+      "path": "evidence/v101138_r2/R1_TO_R2_PROTECTED_PARITY_RECEIPT.json",
+      "size": 4164
+    },
+    {
       "path": "favicon-16.png",
       "size": 629
     },
@@ -2418,11 +2450,11 @@
     },
     {
       "path": "index.html",
-      "size": 2570437
+      "size": 2574732
     },
     {
       "path": "luisa_24_heures.html",
-      "size": 2570437
+      "size": 2574732
     },
     {
       "path": "manifest.json",
@@ -2430,31 +2462,31 @@
     },
     {
       "path": "metadata/active_report_inventory.json",
-      "size": 674
+      "size": 654
     },
     {
       "path": "metadata/build_provenance.json",
-      "size": 1027
+      "size": 1541
     },
     {
       "path": "metadata/builder_input_manifest.json",
-      "size": 359
+      "size": 668
     },
     {
       "path": "metadata/current_evidence_lineage.json",
-      "size": 704
+      "size": 1014
     },
     {
       "path": "metadata/current_gate_map.json",
-      "size": 821
+      "size": 1022
     },
     {
       "path": "metadata/current_tooling_inventory.json",
-      "size": 337
+      "size": 380
     },
     {
       "path": "metadata/full_build_overlay_manifest.json",
-      "size": 1456
+      "size": 1555
     },
     {
       "path": "metadata/historical/v101127/scope_escalation_authority.md",
@@ -2474,15 +2506,15 @@
     },
     {
       "path": "metadata/release_evidence_lifecycle.json",
-      "size": 575
+      "size": 954
     },
     {
       "path": "metadata/scope_escalation_authority.md",
-      "size": 713
+      "size": 979
     },
     {
-      "path": "reports/V101137_R2_TEXTUAL_PROVENANCE_ABOUT_RECONCILIATION.md",
-      "size": 1263
+      "path": "reports/V101138_R2_RELEASE_ACCESSIBILITY_CLEANUP.md",
+      "size": 1763
     },
     {
       "path": "reports/historical/v101122/HOUR24_PRODUCT_CONTRACT.md",
@@ -2745,6 +2777,14 @@
       "size": 1326
     },
     {
+      "path": "reports/historical/v101137_r2/V101137_R2_TEXTUAL_PROVENANCE_ABOUT_RECONCILIATION.md",
+      "size": 1263
+    },
+    {
+      "path": "reports/historical/v101138_r1/V101138_R1_HELP_SUPPORT_ABOUT_LAYOUT.md",
+      "size": 1510
+    },
+    {
       "path": "scripts/EXECUTION_SPEC.md",
       "size": 556
     },
@@ -2879,6 +2919,14 @@
     {
       "path": "scripts/build_v101137_r2_about_provenance.py",
       "size": 29462
+    },
+    {
+      "path": "scripts/build_v101138_r1_help_support_layout.py",
+      "size": 33437
+    },
+    {
+      "path": "scripts/build_v101138_r2_release_accessibility_cleanup.py",
+      "size": 28230
     },
     {
       "path": "scripts/create_m1_addendum_docx.py",
@@ -3590,7 +3638,7 @@
     },
     {
       "path": "version.json",
-      "size": 2353
+      "size": 2440
     }
   ]
 }

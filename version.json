@@ -1,19 +1,19 @@
 {
-  "app_version": "v101.137",
+  "app_version": "v101.138",
   "build_date": "2026-09-08",
-  "cache_name": "luisa-24h-v101-137-r2",
+  "cache_name": "luisa-24h-v101-138-r2",
   "storage_schema": 8,
   "personal_snapshot": 5,
   "ldc_source_public_version": "65",
   "ldc_source_app_version": "v2.19.65-R1B",
   "ldc_source_package_sha256": "35ee5c69fe0468d2e3ee2d963a7fa6667169c24d6c8023da2726b4cd8b50ed20",
-  "release_scope": "Provenance/À-propos release-engineering successor of exact v101.137 R1 SHA-256 b63fe5e224cf28be53c59eb9098fb561b746c0b8bbc892d07ce203475c1bf65d. The complete canonical CORPUS, TEXT_LIBRARY, stable IDs, presentation/topology declarations, storage schema and personal snapshot schema are unchanged from R1. R2 adds only user-facing textual provenance distinguishing the GE/Lumen French base edition, the project Italian critical validation authority and complete AFLP 27th-edition cross-check, plus build-revision identification in À propos/support diagnostics. The authorized 79-row R1 corpus result remains the sole current meditation/reflection content authority; PRESERVE_MOVE material remains evidence-only and not user-visible.",
-  "real_device_status": "Physical Samsung/iPhone/iPad, installed-PWA update, true offline cold reopen, VoiceOver/TalkBack and live-origin exact-byte binding NOT_TESTED for v101.137 R2.",
-  "overall_release_status": "R2_PROVENANCE_RECONCILED_CONTROLLED_DEVICE_TEST_CANDIDATE__FINAL_PUBLIC_DEPLOYMENT_UNAUTHORIZED",
+  "release_scope": "Release/accessibility-cleanup successor of exact v101.138 R1 SHA-256 a1b996c766e5b912f0eceb88ff9b4a1c38c3f7c2bf296f2c7d4f7c3f666d373a. v101.137 R2 was the observed live predecessor to R1; the exact SHA-bound v101.137 R2 package 0ae4e7da4ec034952e0e596bb2c5ded947f7c7fade21c8974783de7308b0dbc5 was the immutable R1 builder input. Exact byte-binding of the live origin itself remains an external gate unless independently closed. R2 fixes Help quick-navigation focus for the Assistance heading and refreshes lineage/release evidence only. CORPUS, TEXT_LIBRARY, stable IDs/order, protected presentation/topology declarations, storage schema, personal snapshot schema, source-critical decisions and approved À propos textual-provenance wording are unchanged.",
+  "real_device_status": "Physical Samsung/iPhone/iPad, installed-PWA update, true offline cold reopen, VoiceOver/TalkBack and live-origin exact-byte binding NOT_TESTED for v101.138 R2.",
+  "overall_release_status": "V101138_R2_RELEASE_ACCESSIBILITY_CLEANUP_CONTROLLED_DEVICE_TEST_CANDIDATE__FINAL_PUBLIC_DEPLOYMENT_UNAUTHORIZED",
   "known_blockers": [
     "physical iPad/iPhone/Samsung",
     "live-origin exact-byte binding",
-    "installed PWA update v101.136 R5→v101.137 R2",
+    "installed PWA update from observed live v101.137 R2 to v101.138 R2",
     "installed PWA close/reopen persistence",
     "true offline cold reopen",
     "VoiceOver/TalkBack representative testing"
@@ -21,7 +21,7 @@
   "external_open_gates": [
     "physical iPad/iPhone/Samsung",
     "live-origin exact-byte binding",
-    "installed PWA update v101.136 R5→v101.137 R2",
+    "installed PWA update from observed live v101.137 R2 to v101.138 R2",
     "installed PWA close/reopen persistence",
     "true offline cold reopen",
     "VoiceOver/TalkBack representative testing"
@@ -29,6 +29,6 @@
   "ldc_source_alignment_generation": "G036-AFLP-R6-UWR2",
   "ldc_source_enriched_generation": "G036-AFLP-R6-SUP-T5",
   "ldc_source_corpus_manifest_sha256": "0d04190b166932086ed45141368bd4ae88b5a22806ca1e525a3e6a60a267f3ad",
-  "postfreeze_reopen_evidence": "Exact R2 successor ZIP requires external SHA-bound final recheck before controlled device testing.",
+  "postfreeze_reopen_evidence": "Exact v101.138 R2 successor ZIP requires external SHA-bound final recheck before controlled device testing.",
   "build_revision": "R2"
 }

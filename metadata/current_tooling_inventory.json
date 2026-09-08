@@ -1,7 +1,7 @@
 {
-  "version": "v101.137",
+  "version": "v101.138",
   "build_revision": "R2",
-  "stage": "TEXTUAL_PROVENANCE_ABOUT_RECONCILIATION_R2",
-  "current_builder": "scripts/build_v101137_r2_about_provenance.py",
-  "builder_contract": "Exact SHA-bound v101.137 R1 predecessor; release/provenance-only overlay; protected corpus declarations must remain byte-identical."
+  "stage": "RELEASE_ACCESSIBILITY_CLEANUP_R2",
+  "current_builder": "scripts/build_v101138_r2_release_accessibility_cleanup.py",
+  "builder_contract": "Exact SHA-bound v101.138 R1 predecessor; four-item agreed release/accessibility cleanup only; protected corpus declarations and predecessor evidence remain byte-identical."
 }
