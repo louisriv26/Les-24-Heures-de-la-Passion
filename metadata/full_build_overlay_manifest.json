@@ -1,17 +1,16 @@
 {
-  "schema": "L24H_V101138_R2_FULL_BUILD_OVERLAY_V1",
-  "version": "v101.138",
-  "build_revision": "R2",
-  "baseline": "v101.138 R1",
-  "baseline_zip_sha256": "a1b996c766e5b912f0eceb88ff9b4a1c38c3f7c2bf296f2c7d4f7c3f666d373a",
+  "schema": "L24H_V101141_R1_FULL_BUILD_OVERLAY_V1",
+  "version": "v101.141",
+  "build_revision": "R1",
+  "baseline": "v101.140 R1",
+  "baseline_zip_sha256": "c84f2266e82de38b2adb70873f15f4da9046d504ff02a7cb93e389aec7bd7835",
   "changed_or_added": [
     "README.md",
     "REAL_DEVICE_QA_CHECKLIST.md",
     "REAL_DEVICE_QA_RESULTS_TEMPLATE.csv",
-    "evidence/v101138_r2/ACCESSIBILITY_FOCUS_REPAIR.md",
-    "evidence/v101138_r2/INTERNAL_BUILD_RECEIPT.json",
-    "evidence/v101138_r2/R1_PREDECESSOR_BINDING.json",
-    "evidence/v101138_r2/R1_TO_R2_PROTECTED_PARITY_RECEIPT.json",
+    "evidence/v101141_r1/PROTECTED_CORPUS_AND_SPEAKER_PARITY.json",
+    "evidence/v101141_r1/SEARCH_CODE_CHANGE_LEDGER.json",
+    "evidence/v101141_r1/V101141_R1_SEARCH_COMPLETENESS_AUTHORITY.json",
     "index.html",
     "luisa_24_heures.html",
     "manifest.json",
@@ -26,16 +25,15 @@
     "metadata/package_manifest.json",
     "metadata/release_evidence_lifecycle.json",
     "metadata/scope_escalation_authority.md",
-    "reports/V101138_R2_RELEASE_ACCESSIBILITY_CLEANUP.md",
-    "reports/historical/v101138_r1/V101138_R1_HELP_SUPPORT_ABOUT_LAYOUT.md",
-    "scripts/build_v101138_r2_release_accessibility_cleanup.py",
+    "reports/V101141_R1_SEARCH_COMPLETENESS_SUCCESSOR.md",
+    "scripts/build_v101141_r1_search_completeness.py",
     "sw.js",
     "version.json"
   ],
-  "removed": [
-    "reports/V101138_R1_HELP_SUPPORT_ABOUT_LAYOUT.md"
-  ],
-  "content_semantic_delta": "ZERO",
-  "ui_delta": "HELP_QUICK_NAV_FOCUS_ONLY",
-  "release_evidence_delta": "R2_REFRESH"
+  "removed": [],
+  "corpus_text_delta": "ZERO",
+  "text_library_delta": "ZERO",
+  "speech_data_delta": "ZERO",
+  "stable_id_delta": "ZERO",
+  "search_code_changes": 3
 }

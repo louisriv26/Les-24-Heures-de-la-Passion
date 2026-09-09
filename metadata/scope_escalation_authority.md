@@ -1,9 +1,7 @@
-# v101.138 R2 Scope Authority
+# v101.141 R1 scope authority
 
-v101.138 R2 is authorized only for the four agreed release/accessibility cleanup items from the continuation package. Immediate immutable build predecessor: v101.138 R1 SHA-256 `a1b996c766e5b912f0eceb88ff9b4a1c38c3f7c2bf296f2c7d4f7c3f666d373a`.
+Authorized scope is exclusively the three search-completeness repairs in SHA-256 `4bd256323432c4c86bf665a0de4912d6c82d610001e0af3178d453bcc977ac42` against immutable `v101.140 R1` SHA-256 `c84f2266e82de38b2adb70873f15f4da9046d504ff02a7cb93e389aec7bd7835`.
 
-v101.137 R2 was the observed live predecessor; exact package SHA-256 `0ae4e7da4ec034952e0e596bb2c5ded947f7c7fade21c8974783de7308b0dbc5` was the immutable R1 builder input. Live-origin exact-byte binding remains an external gate.
+Forbidden: corpus or `TEXT_LIBRARY` text mutation; `SPEECH_DATA`/speaker reinterpretation; stable-ID mutation; search-normalizer change; personal-data schema change; unrelated UI change.
 
-Forbidden: any CORPUS/TEXT_LIBRARY/stable-ID/order/presentation-topology/storage/personal-data/source-critical change; any change to the 79-row authority, H23/H24 governance, PRESERVE_MOVE visibility, or approved substantive À propos textual-provenance wording.
-
-Allowed: Help quick-navigation focus selector repair, lineage-accurate provenance-key names, precise observed-live/builder-input wording, v101.138 R2 build/cache identity, and corresponding release evidence.
+Final public deployment remains externally gated.

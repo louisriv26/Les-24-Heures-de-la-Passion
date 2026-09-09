@@ -1,19 +1,19 @@
 {
-  "app_version": "v101.138",
-  "build_date": "2026-09-08",
-  "cache_name": "luisa-24h-v101-138-r2",
+  "app_version": "v101.141",
+  "build_date": "2026-09-09",
+  "cache_name": "luisa-24h-v101-141-r1",
   "storage_schema": 8,
   "personal_snapshot": 5,
   "ldc_source_public_version": "65",
   "ldc_source_app_version": "v2.19.65-R1B",
   "ldc_source_package_sha256": "35ee5c69fe0468d2e3ee2d963a7fa6667169c24d6c8023da2726b4cd8b50ed20",
-  "release_scope": "Release/accessibility-cleanup successor of exact v101.138 R1 SHA-256 a1b996c766e5b912f0eceb88ff9b4a1c38c3f7c2bf296f2c7d4f7c3f666d373a. v101.137 R2 was the observed live predecessor to R1; the exact SHA-bound v101.137 R2 package 0ae4e7da4ec034952e0e596bb2c5ded947f7c7fade21c8974783de7308b0dbc5 was the immutable R1 builder input. Exact byte-binding of the live origin itself remains an external gate unless independently closed. R2 fixes Help quick-navigation focus for the Assistance heading and refreshes lineage/release evidence only. CORPUS, TEXT_LIBRARY, stable IDs/order, protected presentation/topology declarations, storage schema, personal snapshot schema, source-critical decisions and approved À propos textual-provenance wording are unchanged.",
-  "real_device_status": "Physical Samsung/iPhone/iPad, installed-PWA update, true offline cold reopen, VoiceOver/TalkBack and live-origin exact-byte binding NOT_TESTED for v101.138 R2.",
-  "overall_release_status": "V101138_R2_RELEASE_ACCESSIBILITY_CLEANUP_CONTROLLED_DEVICE_TEST_CANDIDATE__FINAL_PUBLIC_DEPLOYMENT_UNAUTHORIZED",
+  "release_scope": "Search-only completeness successor of exact immutable v101.140 R1. Extends Paroles directes to visible linked-library/LDC body records using existing SPEECH_DATA, explicitly indexes Hour/Prayer/Section titles, and displays exact search-result totals without a misleading plus suffix. CORPUS, TEXT_LIBRARY, speaker authority, stable IDs, search normalizer, personal-data schemas and unrelated UI are unchanged.",
+  "real_device_status": "Physical Samsung/iPhone/iPad, installed-PWA update/persistence, true offline cold reopen, VoiceOver/TalkBack and live-origin exact-byte binding NOT_TESTED for v101.141 R1.",
+  "overall_release_status": "V101141_R1_SEARCH_COMPLETENESS_CONTROLLED_DEVICE_TEST_CANDIDATE__FINAL_PUBLIC_DEPLOYMENT_UNAUTHORIZED",
   "known_blockers": [
     "physical iPad/iPhone/Samsung",
     "live-origin exact-byte binding",
-    "installed PWA update from observed live v101.137 R2 to v101.138 R2",
+    "installed PWA update to v101.141 R1 from the currently deployed build",
     "installed PWA close/reopen persistence",
     "true offline cold reopen",
     "VoiceOver/TalkBack representative testing"
@@ -21,7 +21,7 @@
   "external_open_gates": [
     "physical iPad/iPhone/Samsung",
     "live-origin exact-byte binding",
-    "installed PWA update from observed live v101.137 R2 to v101.138 R2",
+    "installed PWA update to v101.141 R1 from the currently deployed build",
     "installed PWA close/reopen persistence",
     "true offline cold reopen",
     "VoiceOver/TalkBack representative testing"
@@ -29,6 +29,6 @@
   "ldc_source_alignment_generation": "G036-AFLP-R6-UWR2",
   "ldc_source_enriched_generation": "G036-AFLP-R6-SUP-T5",
   "ldc_source_corpus_manifest_sha256": "0d04190b166932086ed45141368bd4ae88b5a22806ca1e525a3e6a60a267f3ad",
-  "postfreeze_reopen_evidence": "Exact v101.138 R2 successor ZIP requires external SHA-bound final recheck before controlled device testing.",
-  "build_revision": "R2"
+  "postfreeze_reopen_evidence": "Exact v101.141 R1 successor ZIP requires external SHA-bound final recheck before controlled device testing.",
+  "build_revision": "R1"
 }

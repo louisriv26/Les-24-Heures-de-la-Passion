@@ -1,12 +1,12 @@
 {
   "schema": "L24H_PACKAGE_MANIFEST_V1",
-  "version": "v101.138",
-  "build_revision": "R2",
+  "version": "v101.141",
+  "build_revision": "R1",
   "self_exclusion": [
     "metadata/hash_manifest.json",
     "metadata/package_manifest.json"
   ],
-  "file_count": 908,
+  "file_count": 935,
   "files": [
     {
       "path": ".gitattributes",
@@ -18,15 +18,15 @@
     },
     {
       "path": "README.md",
-      "size": 996
+      "size": 586
     },
     {
       "path": "REAL_DEVICE_QA_CHECKLIST.md",
-      "size": 1997
+      "size": 1729
     },
     {
       "path": "REAL_DEVICE_QA_RESULTS_TEMPLATE.csv",
-      "size": 1108
+      "size": 1295
     },
     {
       "path": "apple-touch-icon.png",
@@ -2417,6 +2417,90 @@
       "size": 4164
     },
     {
+      "path": "evidence/v101139_r1/AUTHORIZED_TWO_ROW_LEDGER.csv",
+      "size": 685
+    },
+    {
+      "path": "evidence/v101139_r1/CANONICAL_DELTA_PROOF.json",
+      "size": 675
+    },
+    {
+      "path": "evidence/v101139_r1/EXPLICIT_USER_AUTHORITY_TWO_RESIDUALS.json",
+      "size": 5691
+    },
+    {
+      "path": "evidence/v101139_r1/INTERNAL_BUILD_RECEIPT.json",
+      "size": 583
+    },
+    {
+      "path": "evidence/v101139_r1/PREAPPLY_BINDING.json",
+      "size": 1015
+    },
+    {
+      "path": "evidence/v101139_r1/PROTECTED_PRESENTATION_PARITY.json",
+      "size": 701
+    },
+    {
+      "path": "evidence/v101139_r1/TWO_RESIDUAL_FRENCH_SOURCE_FIDELITY_DECISION_GATE.json",
+      "size": 9848
+    },
+    {
+      "path": "evidence/v101140_r1/APPLIED_MUTATION_LEDGER.json",
+      "size": 21878
+    },
+    {
+      "path": "evidence/v101140_r1/DERIVED_PRESENTATION_REMAP.json",
+      "size": 33691
+    },
+    {
+      "path": "evidence/v101140_r1/FLOW_TOPOLOGY_REGENERATION.json",
+      "size": 1134
+    },
+    {
+      "path": "evidence/v101140_r1/L24H_V101140_R1_LDC_FAST_MODE_DERIVATIVE_AUTHORITY.json",
+      "size": 81936
+    },
+    {
+      "path": "evidence/v101140_r1/PROTECTED_NON_LDC_PARITY.json",
+      "size": 410
+    },
+    {
+      "path": "evidence/v101140_r1/USER_DATA_COMPATIBILITY.json",
+      "size": 2365
+    },
+    {
+      "path": "evidence/v101140_r1/V101139_BLOCKED_CONFLICT_LEDGER.json",
+      "size": 188
+    },
+    {
+      "path": "evidence/v101140_r1/V101139_LDC_TO_24H_MAPPING_LEDGER.json",
+      "size": 1738297
+    },
+    {
+      "path": "evidence/v101140_r1/V101139_LINKED_LDC_INVENTORY.json",
+      "size": 2912910
+    },
+    {
+      "path": "evidence/v101140_r1/V101139_PREMUTATION_DERIVATIVE_AUTHORITY.json",
+      "size": 81164
+    },
+    {
+      "path": "evidence/v101140_r1/V101139_SOURCE_DISPOSITION_LEDGER_2707.json",
+      "size": 551741
+    },
+    {
+      "path": "evidence/v101141_r1/PROTECTED_CORPUS_AND_SPEAKER_PARITY.json",
+      "size": 606
+    },
+    {
+      "path": "evidence/v101141_r1/SEARCH_CODE_CHANGE_LEDGER.json",
+      "size": 914
+    },
+    {
+      "path": "evidence/v101141_r1/V101141_R1_SEARCH_COMPLETENESS_AUTHORITY.json",
+      "size": 1194
+    },
+    {
       "path": "favicon-16.png",
       "size": 629
     },
@@ -2450,11 +2534,11 @@
     },
     {
       "path": "index.html",
-      "size": 2574732
+      "size": 2576386
     },
     {
       "path": "luisa_24_heures.html",
-      "size": 2574732
+      "size": 2576386
     },
     {
       "path": "manifest.json",
@@ -2462,31 +2546,31 @@
     },
     {
       "path": "metadata/active_report_inventory.json",
-      "size": 654
+      "size": 573
     },
     {
       "path": "metadata/build_provenance.json",
-      "size": 1541
+      "size": 669
     },
     {
       "path": "metadata/builder_input_manifest.json",
-      "size": 668
+      "size": 258
     },
     {
       "path": "metadata/current_evidence_lineage.json",
-      "size": 1014
+      "size": 560
     },
     {
       "path": "metadata/current_gate_map.json",
-      "size": 1022
+      "size": 841
     },
     {
       "path": "metadata/current_tooling_inventory.json",
-      "size": 380
+      "size": 345
     },
     {
       "path": "metadata/full_build_overlay_manifest.json",
-      "size": 1555
+      "size": 1407
     },
     {
       "path": "metadata/historical/v101127/scope_escalation_authority.md",
@@ -2506,15 +2590,19 @@
     },
     {
       "path": "metadata/release_evidence_lifecycle.json",
-      "size": 954
+      "size": 558
     },
     {
       "path": "metadata/scope_escalation_authority.md",
-      "size": 979
+      "size": 526
     },
     {
-      "path": "reports/V101138_R2_RELEASE_ACCESSIBILITY_CLEANUP.md",
-      "size": 1763
+      "path": "reports/V101140_R1_LDC_FAST_MODE_DERIVATIVE_CORRECTION.md",
+      "size": 1153
+    },
+    {
+      "path": "reports/V101141_R1_SEARCH_COMPLETENESS_SUCCESSOR.md",
+      "size": 767
     },
     {
       "path": "reports/historical/v101122/HOUR24_PRODUCT_CONTRACT.md",
@@ -2785,6 +2873,14 @@
       "size": 1510
     },
     {
+      "path": "reports/historical/v101138_r2/V101138_R2_RELEASE_ACCESSIBILITY_CLEANUP.md",
+      "size": 1763
+    },
+    {
+      "path": "reports/historical/v101139_r1/V101139_R1_TWO_RESIDUAL_TEXTUAL_SUCCESSOR.md",
+      "size": 1274
+    },
+    {
       "path": "scripts/EXECUTION_SPEC.md",
       "size": 556
     },
@@ -2927,6 +3023,18 @@
     {
       "path": "scripts/build_v101138_r2_release_accessibility_cleanup.py",
       "size": 28230
+    },
+    {
+      "path": "scripts/build_v101139_r1_two_residuals.py",
+      "size": 25901
+    },
+    {
+      "path": "scripts/build_v101140_r1_ldc_fast_mode.py",
+      "size": 33100
+    },
+    {
+      "path": "scripts/build_v101141_r1_search_completeness.py",
+      "size": 24381
     },
     {
       "path": "scripts/create_m1_addendum_docx.py",
@@ -3638,7 +3746,7 @@
     },
     {
       "path": "version.json",
-      "size": 2440
+      "size": 2102
     }
   ]
 }

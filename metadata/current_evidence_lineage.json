@@ -1,24 +1,13 @@
 {
-  "version": "v101.138",
-  "build_revision": "R2",
-  "stage": "RELEASE_ACCESSIBILITY_CLEANUP_R2",
-  "current_evidence_root": "evidence/v101138_r2",
+  "version": "v101.141",
+  "build_revision": "R1",
+  "stage": "SEARCH_COMPLETENESS_SUCCESSOR_R1",
+  "current_evidence_root": "evidence/v101141_r1",
   "immediate_build_predecessor": {
-    "version": "v101.138 R1",
-    "sha256": "a1b996c766e5b912f0eceb88ff9b4a1c38c3f7c2bf296f2c7d4f7c3f666d373a"
+    "version": "v101.140 R1",
+    "sha256": "c84f2266e82de38b2adb70873f15f4da9046d504ff02a7cb93e389aec7bd7835"
   },
-  "observed_live_predecessor": {
-    "version": "v101.137 R2",
-    "immutable_builder_input_sha256": "0ae4e7da4ec034952e0e596bb2c5ded947f7c7fade21c8974783de7308b0dbc5",
-    "live_origin_exact_byte_binding": "EXTERNAL_GATE_OPEN"
-  },
-  "content_authority_evidence_root": "evidence/v101137_r1",
-  "provenance_evidence_root": "evidence/v101137_r2",
-  "ui_predecessor_evidence_root": "evidence/v101138_r1",
-  "content_predecessor_24h": {
-    "version": "v101.137 R1",
-    "sha256": "b63fe5e224cf28be53c59eb9098fb561b746c0b8bbc892d07ce203475c1bf65d"
-  },
-  "inherited_authorized_ledger_sha256": "f9a9c4c74df33b3f96909e3611acb74c448deed5fa367fa86072d2e27cbfef49",
-  "preserve_move_visibility": "EVIDENCE_ONLY_NOT_UI"
+  "search_authority_sha256": "4bd256323432c4c86bf665a0de4912d6c82d610001e0af3178d453bcc977ac42",
+  "content_authority": "v101.140 R1 corpus and speaker metadata inherited byte-for-byte",
+  "search_scope": "three authorized search-completeness repairs only"
 }

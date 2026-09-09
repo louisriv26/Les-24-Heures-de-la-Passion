@@ -1,35 +1,28 @@
-# Real-device QA checklist — v101.138 R2
+# Real-device QA checklist — v101.141 R1
 
-Use only the exact v101.138 R2 candidate identified by the external SHA-bound receipt.
+Use only the exact externally SHA-bound v101.141 R1 candidate. Internal browser evidence does not substitute for physical-device/PWA/accessibility gates.
 
-## Identity
-- app_version = v101.138
-- build_revision = R2
-- cache_name = luisa-24h-v101-138-r2
-- APP_EVIDENCE_STAGE = RELEASE_ACCESSIBILITY_CLEANUP_R2
-- corpus fingerprint begins `87733d22b5e899e2` and is unchanged
+## Search completeness
+- Search each of the 24 exact Hour titles; confirm the owning Hour appears and opens correctly.
+- Search each of the 5 exact Prayer titles; confirm the owning prayer appears and opens correctly.
+- Search each Section title; confirm the owning complement appears and opens correctly.
+- Under `Paroles directes`, verify representative linked-LDC/library speech for Jésus, Marie and Père appears and opens at the exact stable paragraph.
+- With no query under `Paroles directes`, verify speaker filters Tous/Jésus/Père/Marie operate normally.
+- Run a query with more than 60 matches; verify the exact total is displayed without `+` and the UI still states that only the first 60 are shown.
+- Verify accent/ligature folding, search highlighting, category filters and search deep links remain correct.
 
-## A. Aide / Assistance focus
-- Open Aide et À propos.
-- Activate quick navigation **Signaler un problème** using keyboard and representative screen-reader navigation.
-- It must scroll to Assistance and active focus must land on heading `#help-support-title` (`.help-feature-title`).
-- Activate at least one pre-existing quick-nav target (for example Rechercher un texte); focus must still land on its `.help-section-hd`.
-- Assistance controls remain styled, usable, and correctly named.
-- Both support payloads identify `Version : v101.138 R2`.
+## Protected regression
+- Canonical Hours, Réflexions, Prières, Compléments and linked-LDC ordinary text search remain correct.
+- All 36 v101.140 linked-LDC corrected records remain searchable under corrected wording.
+- Existing notes/highlights/progression/last-place/theme/font survive installed-PWA update.
 
-## B. Layout
-Check light and dark modes on phone/tablet/desktop widths: no horizontal overflow; Assistance stacks on phone and uses two columns when space permits; Vie privée and À propos des textes remain separate.
+## External gates
+- Physical iPhone validation.
+- Physical iPad portrait and landscape validation.
+- Physical Samsung/Android validation.
+- Live-origin exact-byte binding.
+- Installed-PWA update and three close/reopen cycles.
+- True offline cold reopen.
+- Representative VoiceOver and TalkBack navigation.
 
-## C. Existing-PWA update
-Under the governing handover assumption that v101.138 R1 was not deployed, test the observed live v101.137 R2 installation → v101.138 R2 without uninstalling. Preserve at least one note, highlight, meditated Hour, last place, theme and font size. Close/reopen three times.
-
-## D. Corpus regression
-- canonical CORPUS and TEXT_LIBRARY match certified R1 bytes; fingerprint unchanged.
-- stable IDs/order unchanged.
-- 24 PRESERVE_MOVE records remain evidence-only/not visible.
-- no H23/H24 governance or source-critical changes.
-
-## E. Physical/offline/accessibility
-Run iPhone, iPad portrait/landscape and Samsung/Android; verify normal navigation, persistence, true offline cold reopen, representative VoiceOver/TalkBack, Help focus behavior and close/focus return.
-
-Final public deployment remains unauthorized until all mandatory external gates pass.
+Final public deployment remains unauthorized until all external gates are evidenced.

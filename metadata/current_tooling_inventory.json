@@ -1,7 +1,7 @@
 {
-  "version": "v101.138",
-  "build_revision": "R2",
-  "stage": "RELEASE_ACCESSIBILITY_CLEANUP_R2",
-  "current_builder": "scripts/build_v101138_r2_release_accessibility_cleanup.py",
-  "builder_contract": "Exact SHA-bound v101.138 R1 predecessor; four-item agreed release/accessibility cleanup only; protected corpus declarations and predecessor evidence remain byte-identical."
+  "version": "v101.141",
+  "build_revision": "R1",
+  "stage": "SEARCH_COMPLETENESS_SUCCESSOR_R1",
+  "current_builder": "scripts/build_v101141_r1_search_completeness.py",
+  "builder_contract": "Exact SHA-bound v101.140 R1 predecessor + exact search authority; three search-only code repairs; protected corpus/speaker constants exact parity."
 }
