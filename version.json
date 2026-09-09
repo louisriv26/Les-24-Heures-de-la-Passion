@@ -1,19 +1,19 @@
 {
-  "app_version": "v101.141",
+  "app_version": "v101.142",
   "build_date": "2026-09-09",
-  "cache_name": "luisa-24h-v101-141-r1",
+  "cache_name": "luisa-24h-v101-142-r1",
   "storage_schema": 8,
   "personal_snapshot": 5,
   "ldc_source_public_version": "65",
   "ldc_source_app_version": "v2.19.65-R1B",
   "ldc_source_package_sha256": "35ee5c69fe0468d2e3ee2d963a7fa6667169c24d6c8023da2726b4cd8b50ed20",
-  "release_scope": "Search-only completeness successor of exact immutable v101.140 R1. Extends Paroles directes to visible linked-library/LDC body records using existing SPEECH_DATA, explicitly indexes Hour/Prayer/Section titles, and displays exact search-result totals without a misleading plus suffix. CORPUS, TEXT_LIBRARY, speaker authority, stable IDs, search normalizer, personal-data schemas and unrelated UI are unchanged.",
-  "real_device_status": "Physical Samsung/iPhone/iPad, installed-PWA update/persistence, true offline cold reopen, VoiceOver/TalkBack and live-origin exact-byte binding NOT_TESTED for v101.141 R1.",
-  "overall_release_status": "V101141_R1_SEARCH_COMPLETENESS_CONTROLLED_DEVICE_TEST_CANDIDATE__FINAL_PUBLIC_DEPLOYMENT_UNAUTHORIZED",
+  "release_scope": "Topology-only successor of exact immutable v101.141 R1. Implements exactly four source-backed native visible-flow groups / six JOIN_INLINE boundaries from authorized proposal SHA-256 d50bd78e917e77d226eca30d8df625538496ef1625630b9c3d16fb753e0ade05. H14 begins at P008 display segment 3 (offset 716) and continues through P011; H18 P055→P056 and P062→P063 and H22 P019→P020 join inline. H18/H22 list styling remains blocked. Canonical wording, stable IDs/order, Search semantics, speaker authority, DISPLAY_SEGMENTS, inherited CONTINUITY_GROUPS and personal-data schemas are unchanged.",
+  "real_device_status": "Physical Samsung/iPhone/iPad, installed-PWA update/persistence, true offline cold reopen, VoiceOver/TalkBack and live-origin exact-byte binding NOT_TESTED for v101.142 R1.",
+  "overall_release_status": "V101142_R1_NATIVE_VISIBLE_FLOW_TOPOLOGY_CONTROLLED_DEVICE_TEST_CANDIDATE__FINAL_PUBLIC_DEPLOYMENT_UNAUTHORIZED",
   "known_blockers": [
     "physical iPad/iPhone/Samsung",
     "live-origin exact-byte binding",
-    "installed PWA update to v101.141 R1 from the currently deployed build",
+    "installed PWA update to v101.142 R1 from the currently deployed build",
     "installed PWA close/reopen persistence",
     "true offline cold reopen",
     "VoiceOver/TalkBack representative testing"
@@ -21,7 +21,7 @@
   "external_open_gates": [
     "physical iPad/iPhone/Samsung",
     "live-origin exact-byte binding",
-    "installed PWA update to v101.141 R1 from the currently deployed build",
+    "installed PWA update to v101.142 R1 from the currently deployed build",
     "installed PWA close/reopen persistence",
     "true offline cold reopen",
     "VoiceOver/TalkBack representative testing"
@@ -29,6 +29,6 @@
   "ldc_source_alignment_generation": "G036-AFLP-R6-UWR2",
   "ldc_source_enriched_generation": "G036-AFLP-R6-SUP-T5",
   "ldc_source_corpus_manifest_sha256": "0d04190b166932086ed45141368bd4ae88b5a22806ca1e525a3e6a60a267f3ad",
-  "postfreeze_reopen_evidence": "Exact v101.141 R1 successor ZIP requires external SHA-bound final recheck before controlled device testing.",
+  "postfreeze_reopen_evidence": "Exact v101.142 R1 successor ZIP requires external SHA-bound final recheck before controlled device testing.",
   "build_revision": "R1"
 }

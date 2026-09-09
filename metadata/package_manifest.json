@@ -1,12 +1,12 @@
 {
   "schema": "L24H_PACKAGE_MANIFEST_V1",
-  "version": "v101.141",
+  "version": "v101.142",
   "build_revision": "R1",
   "self_exclusion": [
     "metadata/hash_manifest.json",
     "metadata/package_manifest.json"
   ],
-  "file_count": 935,
+  "file_count": 940,
   "files": [
     {
       "path": ".gitattributes",
@@ -18,11 +18,11 @@
     },
     {
       "path": "README.md",
-      "size": 586
+      "size": 751
     },
     {
       "path": "REAL_DEVICE_QA_CHECKLIST.md",
-      "size": 1729
+      "size": 1591
     },
     {
       "path": "REAL_DEVICE_QA_RESULTS_TEMPLATE.csv",
@@ -2501,6 +2501,18 @@
       "size": 1194
     },
     {
+      "path": "evidence/v101142_r1/IMPLEMENTED_NATIVE_VISIBLE_FLOW_LEDGER.json",
+      "size": 2411
+    },
+    {
+      "path": "evidence/v101142_r1/PROPOSED_24H_NATIVE_VISIBLE_FLOW_TOPOLOGY_R3.json",
+      "size": 6464
+    },
+    {
+      "path": "evidence/v101142_r1/USER_AUTHORIZATION_RECEIPT.json",
+      "size": 592
+    },
+    {
       "path": "favicon-16.png",
       "size": 629
     },
@@ -2534,11 +2546,11 @@
     },
     {
       "path": "index.html",
-      "size": 2576386
+      "size": 2580648
     },
     {
       "path": "luisa_24_heures.html",
-      "size": 2576386
+      "size": 2580648
     },
     {
       "path": "manifest.json",
@@ -2546,11 +2558,11 @@
     },
     {
       "path": "metadata/active_report_inventory.json",
-      "size": 573
+      "size": 721
     },
     {
       "path": "metadata/build_provenance.json",
-      "size": 669
+      "size": 791
     },
     {
       "path": "metadata/builder_input_manifest.json",
@@ -2558,11 +2570,11 @@
     },
     {
       "path": "metadata/current_evidence_lineage.json",
-      "size": 560
+      "size": 610
     },
     {
       "path": "metadata/current_gate_map.json",
-      "size": 841
+      "size": 954
     },
     {
       "path": "metadata/current_tooling_inventory.json",
@@ -2570,7 +2582,7 @@
     },
     {
       "path": "metadata/full_build_overlay_manifest.json",
-      "size": 1407
+      "size": 1547
     },
     {
       "path": "metadata/historical/v101127/scope_escalation_authority.md",
@@ -2590,11 +2602,11 @@
     },
     {
       "path": "metadata/release_evidence_lifecycle.json",
-      "size": 558
+      "size": 605
     },
     {
       "path": "metadata/scope_escalation_authority.md",
-      "size": 526
+      "size": 732
     },
     {
       "path": "reports/V101140_R1_LDC_FAST_MODE_DERIVATIVE_CORRECTION.md",
@@ -2603,6 +2615,10 @@
     {
       "path": "reports/V101141_R1_SEARCH_COMPLETENESS_SUCCESSOR.md",
       "size": 767
+    },
+    {
+      "path": "reports/V101142_R1_NATIVE_VISIBLE_FLOW_TOPOLOGY_SUCCESSOR.md",
+      "size": 1331
     },
     {
       "path": "reports/historical/v101122/HOUR24_PRODUCT_CONTRACT.md",
@@ -3035,6 +3051,10 @@
     {
       "path": "scripts/build_v101141_r1_search_completeness.py",
       "size": 24381
+    },
+    {
+      "path": "scripts/build_v101142_r1_native_visible_flow_topology.py",
+      "size": 25981
     },
     {
       "path": "scripts/create_m1_addendum_docx.py",
@@ -3746,7 +3766,7 @@
     },
     {
       "path": "version.json",
-      "size": 2102
+      "size": 2292
     }
   ]
 }

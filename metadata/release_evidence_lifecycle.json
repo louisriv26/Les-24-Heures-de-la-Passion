@@ -1,12 +1,13 @@
 {
-  "version": "v101.141",
+  "version": "v101.142",
   "build_revision": "R1",
-  "stage": "SEARCH_COMPLETENESS_SUCCESSOR_R1",
-  "package_rule": "Package does not self-certify final ZIP bytes; exact frozen v101.141 R1 ZIP must receive external SHA-bound final validation receipt.",
-  "immediate_build_predecessor": "v101.140 R1",
-  "immediate_build_predecessor_sha256": "c84f2266e82de38b2adb70873f15f4da9046d504ff02a7cb93e389aec7bd7835",
+  "stage": "NATIVE_VISIBLE_FLOW_TOPOLOGY_SUCCESSOR_R1",
+  "package_rule": "Package does not self-certify final ZIP bytes; exact frozen v101.142 R1 ZIP must receive external SHA-bound final validation receipt.",
+  "immediate_build_predecessor": "v101.141 R1",
+  "immediate_build_predecessor_sha256": "a9e86b31ee0a117cad6de6578b772e7c57cdb948dd2dc2b935b1f82c4c8299a4",
   "corpus_text_changed": false,
-  "search_code_changed": true,
+  "search_code_changed": false,
+  "topology_renderer_changed": true,
   "physical_device_claims": "NOT_TESTED",
   "public_deployment_authorized": false
 }

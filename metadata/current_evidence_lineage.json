@@ -1,13 +1,13 @@
 {
-  "version": "v101.141",
+  "version": "v101.142",
   "build_revision": "R1",
-  "stage": "SEARCH_COMPLETENESS_SUCCESSOR_R1",
-  "current_evidence_root": "evidence/v101141_r1",
+  "stage": "NATIVE_VISIBLE_FLOW_TOPOLOGY_SUCCESSOR_R1",
+  "current_evidence_root": "evidence/v101142_r1",
   "immediate_build_predecessor": {
-    "version": "v101.140 R1",
-    "sha256": "c84f2266e82de38b2adb70873f15f4da9046d504ff02a7cb93e389aec7bd7835"
+    "version": "v101.141 R1",
+    "sha256": "a9e86b31ee0a117cad6de6578b772e7c57cdb948dd2dc2b935b1f82c4c8299a4"
   },
-  "search_authority_sha256": "4bd256323432c4c86bf665a0de4912d6c82d610001e0af3178d453bcc977ac42",
-  "content_authority": "v101.140 R1 corpus and speaker metadata inherited byte-for-byte",
-  "search_scope": "three authorized search-completeness repairs only"
+  "topology_authority_sha256": "d50bd78e917e77d226eca30d8df625538496ef1625630b9c3d16fb753e0ade05",
+  "content_authority": "v101.141 R1 corpus, Search and speaker authority inherited byte-for-byte",
+  "topology_scope": "exact four authorized native visible-flow groups / six JOIN_INLINE edges only"
 }

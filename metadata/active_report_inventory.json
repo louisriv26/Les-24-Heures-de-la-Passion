@@ -1,18 +1,20 @@
 {
-  "version": "v101.141",
+  "version": "v101.142",
   "build_revision": "R1",
-  "stage": "SEARCH_COMPLETENESS_SUCCESSOR_R1",
+  "stage": "NATIVE_VISIBLE_FLOW_TOPOLOGY_SUCCESSOR_R1",
   "active_documents": [
     "README.md",
     "REAL_DEVICE_QA_CHECKLIST.md",
-    "reports/V101141_R1_SEARCH_COMPLETENESS_SUCCESSOR.md",
+    "reports/V101142_R1_NATIVE_VISIBLE_FLOW_TOPOLOGY_SUCCESSOR.md",
     "version.json",
     "metadata/build_provenance.json",
     "metadata/current_evidence_lineage.json",
     "metadata/scope_escalation_authority.md"
   ],
   "active_test_artifacts": [
-    "REAL_DEVICE_QA_RESULTS_TEMPLATE.csv"
+    "REAL_DEVICE_QA_RESULTS_TEMPLATE.csv",
+    "evidence/v101142_r1/USER_AUTHORIZATION_RECEIPT.json",
+    "evidence/v101142_r1/IMPLEMENTED_NATIVE_VISIBLE_FLOW_LEDGER.json"
   ],
   "historical_reports_root": "reports/historical/",
   "rule": "Only listed active documents are current."

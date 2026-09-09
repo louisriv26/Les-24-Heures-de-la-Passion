@@ -1,12 +1,12 @@
 {
   "schema": "L24H_HASH_MANIFEST_V1",
-  "version": "v101.141",
+  "version": "v101.142",
   "build_revision": "R1",
   "self_exclusion": [
     "metadata/hash_manifest.json",
     "metadata/package_manifest.json"
   ],
-  "file_count": 935,
+  "file_count": 940,
   "files": [
     {
       "path": ".gitattributes",
@@ -20,13 +20,13 @@
     },
     {
       "path": "README.md",
-      "size": 586,
-      "sha256": "c7582008d465b8cea1d720dc3301405988b4397fbde05fd68fb41a3b587bc6f6"
+      "size": 751,
+      "sha256": "ddc49e1e97825f2351884a8085471608eec4da49abcbd3bcf7112ce70ada5d2d"
     },
     {
       "path": "REAL_DEVICE_QA_CHECKLIST.md",
-      "size": 1729,
-      "sha256": "56ba095ac0f223236524fee28c9c373d76725bc3b06e40c969db8c6c4004efcc"
+      "size": 1591,
+      "sha256": "c1bf34fbe8733950d2ed53f5512c859c1b74ac5ec53dfa3e2e4a8dd7f75b5c24"
     },
     {
       "path": "REAL_DEVICE_QA_RESULTS_TEMPLATE.csv",
@@ -3124,6 +3124,21 @@
       "sha256": "4bd256323432c4c86bf665a0de4912d6c82d610001e0af3178d453bcc977ac42"
     },
     {
+      "path": "evidence/v101142_r1/IMPLEMENTED_NATIVE_VISIBLE_FLOW_LEDGER.json",
+      "size": 2411,
+      "sha256": "9c74fb62a447b9c2196e96751088829234f43874ffbf2ae90d25ea232d33b10b"
+    },
+    {
+      "path": "evidence/v101142_r1/PROPOSED_24H_NATIVE_VISIBLE_FLOW_TOPOLOGY_R3.json",
+      "size": 6464,
+      "sha256": "d50bd78e917e77d226eca30d8df625538496ef1625630b9c3d16fb753e0ade05"
+    },
+    {
+      "path": "evidence/v101142_r1/USER_AUTHORIZATION_RECEIPT.json",
+      "size": 592,
+      "sha256": "dee09100b8a05383b8b5954c156df32be7869e97cf25cfebf65d2ca21dcf3334"
+    },
+    {
       "path": "favicon-16.png",
       "size": 629,
       "sha256": "18ea7f82b0a52d3ab2e5f89eb294fb06f0057b72f890aa66ada9e0f3ff4beaa8"
@@ -3165,28 +3180,28 @@
     },
     {
       "path": "index.html",
-      "size": 2576386,
-      "sha256": "ef057f7832e5c0e382165e506b30a07005d6cf848e288d8fb39e21cd6d3a22f1"
+      "size": 2580648,
+      "sha256": "03143d8f1e28e2e5ae571c86bb8019e9d6ab3b2a328e43e4fbb37063e5c53000"
     },
     {
       "path": "luisa_24_heures.html",
-      "size": 2576386,
-      "sha256": "ef057f7832e5c0e382165e506b30a07005d6cf848e288d8fb39e21cd6d3a22f1"
+      "size": 2580648,
+      "sha256": "03143d8f1e28e2e5ae571c86bb8019e9d6ab3b2a328e43e4fbb37063e5c53000"
     },
     {
       "path": "manifest.json",
       "size": 912,
-      "sha256": "fc2e565a01f8b7ecfa270508e09bfbe1bc70921c6659a3065d018a9a847077d8"
+      "sha256": "1f8d6063c7a3afc69e248cebaec55920b247ef987f171b6ffacbbaa5efded3f9"
     },
     {
       "path": "metadata/active_report_inventory.json",
-      "size": 573,
-      "sha256": "679cd207a2849f4ecd06ac4f61c0bdb3407f7f7a5e2f56f5125469c61f87ebc3"
+      "size": 721,
+      "sha256": "9b7256babb71d89259a5dfde52cfb67a6399a4b27fe0a15a15f66d764aa3715a"
     },
     {
       "path": "metadata/build_provenance.json",
-      "size": 669,
-      "sha256": "cf0fb538651117787faf5027ce3c51bd8e959bd8d5f78e464e714d19857c43c6"
+      "size": 791,
+      "sha256": "35fd7f0dd4949ccf1e13c443e3b063209357c44d2cd44fe9d9ee68d793a908a5"
     },
     {
       "path": "metadata/builder_input_manifest.json",
@@ -3195,13 +3210,13 @@
     },
     {
       "path": "metadata/current_evidence_lineage.json",
-      "size": 560,
-      "sha256": "09c00e52063c65ddb544fd1cf828eaa9d10c22b779ed23e001e5931f6bbcf5a3"
+      "size": 610,
+      "sha256": "bf8ad1d2dfe1ed086a6de716c8f9de57c3ea3455d028cb794dcbaccae303aaa8"
     },
     {
       "path": "metadata/current_gate_map.json",
-      "size": 841,
-      "sha256": "7eadfd83a288074f844bb75ffe479908f22cc8670e16f7218464c0b0b602d1b9"
+      "size": 954,
+      "sha256": "8e586117f3a87ddd26eeaeb71bb8f72a1b131bd6215cc069992624269667e4b8"
     },
     {
       "path": "metadata/current_tooling_inventory.json",
@@ -3210,8 +3225,8 @@
     },
     {
       "path": "metadata/full_build_overlay_manifest.json",
-      "size": 1407,
-      "sha256": "32e3c112fd2e46a7258045b9f41caa3ce419e630bad92b3c5957a81b69e114a4"
+      "size": 1547,
+      "sha256": "82144c9253c5160a309839079939b6b5c02c76d8879ef1fee8d8d53dbc94ff62"
     },
     {
       "path": "metadata/historical/v101127/scope_escalation_authority.md",
@@ -3235,13 +3250,13 @@
     },
     {
       "path": "metadata/release_evidence_lifecycle.json",
-      "size": 558,
-      "sha256": "7ee660f47860d198a6eac1e6dfb33d3a2a4afe341a294f54cac8c9fe20c6fcca"
+      "size": 605,
+      "sha256": "a0563123600aa4a6f221a3f523587892b8c0fd2ea6957ff9a74592391da48a5d"
     },
     {
       "path": "metadata/scope_escalation_authority.md",
-      "size": 526,
-      "sha256": "d71bab1bf833a093c6783a8994c8228e53c2f8fb4ee79d82dfe08d6430d7375f"
+      "size": 732,
+      "sha256": "672a8d7577cb54e3f451bb4acd88741346734448061dcc07ac6a19961c4b8c4a"
     },
     {
       "path": "reports/V101140_R1_LDC_FAST_MODE_DERIVATIVE_CORRECTION.md",
@@ -3252,6 +3267,11 @@
       "path": "reports/V101141_R1_SEARCH_COMPLETENESS_SUCCESSOR.md",
       "size": 767,
       "sha256": "d02a6e79a0a3ff2cf7bd7eaa74dac6d456ca583dea572f1665a74a1500782c29"
+    },
+    {
+      "path": "reports/V101142_R1_NATIVE_VISIBLE_FLOW_TOPOLOGY_SUCCESSOR.md",
+      "size": 1331,
+      "sha256": "c10a777b972d6eb5b390fa199eb042378e768de6669d786ac17417ef8cbad282"
     },
     {
       "path": "reports/historical/v101122/HOUR24_PRODUCT_CONTRACT.md",
@@ -3792,6 +3812,11 @@
       "path": "scripts/build_v101141_r1_search_completeness.py",
       "size": 24381,
       "sha256": "81b79a6ec62a0fdf38ada91550e575cb05f147f82b94877ef4e93072c1e39511"
+    },
+    {
+      "path": "scripts/build_v101142_r1_native_visible_flow_topology.py",
+      "size": 25981,
+      "sha256": "c938cace54b6e4a72855fcf63ab233ef903fd7ae5d201561ce3e2c18a0907a22"
     },
     {
       "path": "scripts/create_m1_addendum_docx.py",
@@ -4676,12 +4701,12 @@
     {
       "path": "sw.js",
       "size": 3909,
-      "sha256": "0c142c892d5c46f7a2530931ccc8eb7e83e8fbd176812c3245bdcbb3378b799c"
+      "sha256": "46370ae3846691f0b01e7318b5d4ba0e2bf60e9f170242d8e26347836f78b6ff"
     },
     {
       "path": "version.json",
-      "size": 2102,
-      "sha256": "7481f2c2c51b9766ac69de9f02367318103b1f8051673e65a079d88a7a1947bd"
+      "size": 2292,
+      "sha256": "6a78e43b8625b258627465c7cfba9e38101f41487a742ac3bb5e6bd308678af7"
     }
   ]
 }
