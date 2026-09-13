@@ -1,3 +1,0 @@
-# v101.142 R1 — current controlled device-test candidate
-
-Current stage: `NATIVE_VISIBLE_FLOW_TOPOLOGY_SUCCESSOR_R1`. Exact immutable predecessor `v101.141 R1` SHA-256 `a9e86b31ee0a117cad6de6578b772e7c57cdb948dd2dc2b935b1f82c4c8299a4`. User-authorized topology proposal SHA-256 `d50bd78e917e77d226eca30d8df625538496ef1625630b9c3d16fb753e0ade05` implements exactly 4 native visible-flow groups / 6 JOIN_INLINE boundaries. Canonical/devotional wording, stable IDs/order, Search semantics, speaker authority, inherited `CONTINUITY_GROUPS`, `DISPLAY_SEGMENTS` and personal-data schemas are unchanged. H18/H22 list styling remains blocked. Final public deployment remains unauthorized pending external device/live-origin/PWA/offline/accessibility gates.

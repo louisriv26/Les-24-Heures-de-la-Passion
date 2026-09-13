@@ -1,34 +1,42 @@
 {
-  "app_version": "v101.142",
-  "build_date": "2026-09-09",
-  "cache_name": "luisa-24h-v101-142-r1",
+  "app_version": "v101.148",
+  "build_date": "2026-09-13",
+  "cache_name": "scope-derived:luisa-24h-<scope-fingerprint>-v101-148-r1",
   "storage_schema": 8,
   "personal_snapshot": 5,
   "ldc_source_public_version": "65",
   "ldc_source_app_version": "v2.19.65-R1B",
   "ldc_source_package_sha256": "35ee5c69fe0468d2e3ee2d963a7fa6667169c24d6c8023da2726b4cd8b50ed20",
-  "release_scope": "Topology-only successor of exact immutable v101.141 R1. Implements exactly four source-backed native visible-flow groups / six JOIN_INLINE boundaries from authorized proposal SHA-256 d50bd78e917e77d226eca30d8df625538496ef1625630b9c3d16fb753e0ade05. H14 begins at P008 display segment 3 (offset 716) and continues through P011; H18 P055→P056 and P062→P063 and H22 P019→P020 join inline. H18/H22 list styling remains blocked. Canonical wording, stable IDs/order, Search semantics, speaker authority, DISPLAY_SEGMENTS, inherited CONTINUITY_GROUPS and personal-data schemas are unchanged.",
-  "real_device_status": "Physical Samsung/iPhone/iPad, installed-PWA update/persistence, true offline cold reopen, VoiceOver/TalkBack and live-origin exact-byte binding NOT_TESTED for v101.142 R1.",
-  "overall_release_status": "V101142_R1_NATIVE_VISIBLE_FLOW_TOPOLOGY_CONTROLLED_DEVICE_TEST_CANDIDATE__FINAL_PUBLIC_DEPLOYMENT_UNAUTHORIZED",
+  "release_scope": "Four-pass bounded successor of exact v101.147 R1. Repairs B24H-002, an exact-768-CSS-pixel navigation gap caused by overlapping responsive breakpoints that hid the bottom section switcher while the legacy sidebar/menu were disabled. The responsive repair changes only the wider-screen bottom-navigation restoration breakpoint from 769px to 768px, plus mechanically necessary page/SW/cache/status bindings. Canonical/devotional corpus, embedded TEXT_LIBRARY, Search matching/ranking/index, speaker/display/flow, personal-state semantics/concurrency and backup schema remain unchanged.",
+  "real_device_status": "For v101.148 R1, deterministic viewport/runtime/model checks pass including the 767/768/769px navigation boundary. Physical iPhone/iPad/Samsung, live-origin exact-byte binding, installed-PWA update, true cold offline and representative VoiceOver/TalkBack remain NOT_TESTED.",
+  "overall_release_status": "V101148_R1_FOUR_PASS_768_NAV_REPAIR_SUCCESSOR__INTERNAL_QA_PASS__EXTERNAL_DEVICE_GATES_OPEN__PUBLIC_DEPLOYMENT_NOT_AUTHORIZED",
   "known_blockers": [
-    "physical iPad/iPhone/Samsung",
+    "physical iPhone/iPad/Samsung successor verification",
     "live-origin exact-byte binding",
-    "installed PWA update to v101.142 R1 from the currently deployed build",
-    "installed PWA close/reopen persistence",
+    "installed-PWA update to v101.148 R1",
     "true offline cold reopen",
-    "VoiceOver/TalkBack representative testing"
+    "representative VoiceOver/TalkBack verification"
   ],
   "external_open_gates": [
-    "physical iPad/iPhone/Samsung",
+    "physical iPhone/iPad/Samsung successor verification",
     "live-origin exact-byte binding",
-    "installed PWA update to v101.142 R1 from the currently deployed build",
-    "installed PWA close/reopen persistence",
+    "installed-PWA update to v101.148 R1",
     "true offline cold reopen",
-    "VoiceOver/TalkBack representative testing"
+    "representative VoiceOver/TalkBack verification"
   ],
   "ldc_source_alignment_generation": "G036-AFLP-R6-UWR2",
   "ldc_source_enriched_generation": "G036-AFLP-R6-SUP-T5",
   "ldc_source_corpus_manifest_sha256": "0d04190b166932086ed45141368bd4ae88b5a22806ca1e525a3e6a60a267f3ad",
-  "postfreeze_reopen_evidence": "Exact v101.142 R1 successor ZIP requires external SHA-bound final recheck before controlled device testing.",
-  "build_revision": "R1"
+  "postfreeze_reopen_evidence": "Fresh exact-SHA reopened-package, four-pass audit and deterministic reconstruction evidence is carried by the governing v101.148 audit master; the minimal public deploy ZIP contains runtime files only.",
+  "build_revision": "R1",
+  "forced_colors_stage7": "TEST_ONLY__PASS_EMULATED_CHROMIUM__23_23_WAVE_SLICE__ZERO_MUTATION__EXTERNAL_WAVE_QA_PACK",
+  "stage7_authorization_proposal_sha256": "42126e52c63d114d1b3a42bdf2bcac8f19e88dc70417fd95accfe33f809312a6",
+  "stage7_predecessor_zip_sha256": "3eb86f5d9f1686a8851664020be4060c85dbf20228351d1d1c442e583c8ece5c",
+  "stage8_authorization_proposal_sha256": "ee305aee932c56ca54c155041aa659e64f39d73493248837fd743dafb2225b06",
+  "stage8_predecessor_zip_sha256": "d5a99636350c8ad92422e0f6009b73cb715a2dc300911007222ac4fb56d4c527",
+  "stage8_cache_scope": "CACHE-SCOPE-COLL-01__AUTHORIZED__CURRENT_SCOPE_ONLY__LEGACY_UNSCOPED_PRESERVED",
+  "blind_adversarial_predecessor_zip_sha256": "40519583e73758eade42875d2294e1a6a754698fbfeec3fa82a4b1d753466603",
+  "blind_adversarial_finding": "B24H-001: predecessor manifest.json declared v101.145 while active page/SW/version identity was v101.146 R1.",
+  "four_pass_predecessor_zip_sha256": "50a9cfcac85d058ddc65f676dbb8aa1e1c94c8aac175884390ccf438361dd8c4",
+  "four_pass_finding": "B24H-002: at exactly 768 CSS px, the 768–1149 tablet rule hid .bottom-nav while the legacy sidebar/menu were globally disabled; 767px and 769px retained navigation."
 }
