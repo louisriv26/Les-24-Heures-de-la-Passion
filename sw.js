@@ -1,4 +1,4 @@
-/* v101.148 R1 — four-pass exact-768 navigation repair successor */
+/* v101.153 R1 — scroll-performance top-anchor correction */
 function scopeFingerprint(scope) {
   let h = 2166136261;
   const text = String(scope || '');
@@ -7,7 +7,7 @@ function scopeFingerprint(scope) {
 }
 const SCOPE_FINGERPRINT = scopeFingerprint(self.registration.scope);
 const CACHE_PREFIX = `luisa-24h-${SCOPE_FINGERPRINT}-`;
-const CACHE_NAME = `${CACHE_PREFIX}v101-148-r1`;
+const CACHE_NAME = `${CACHE_PREFIX}v101-153-r1`;
 const ASSETS = ['./','./index.html','./luisa_24_heures.html','./manifest.json','./apple-touch-icon.png','./favicon-16.png','./favicon-32.png','./favicon.ico','./icon-60.png','./icon-120.png','./icon-192.png','./icon-512.png','./icon-maskable-512.png'];
 /* P2/SW5 fix: cache.put() keys on the full request URL including its query string, and the
    manual "Actualiser" refresh flow (refreshAppForUpdate) navigates to the main page with a
