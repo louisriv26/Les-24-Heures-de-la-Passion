@@ -1,33 +1,33 @@
 {
-  "app_version": "v101.153",
+  "app_version": "v101.154",
   "build_date": "2026-09-14",
-  "cache_name": "scope-derived:luisa-24h-<scope-fingerprint>-v101-153-r1",
+  "cache_name": "scope-derived:luisa-24h-<scope-fingerprint>-v101-154-r1",
   "storage_schema": 8,
   "personal_snapshot": 5,
   "ldc_source_public_version": "65",
   "ldc_source_app_version": "v2.19.65-R1B",
   "ldc_source_package_sha256": "35ee5c69fe0468d2e3ee2d963a7fa6667169c24d6c8023da2726b4cd8b50ed20",
-  "release_scope": "Bounded corrective successor of exact v101.152 R1. Preserves the v101.152 scroll-performance repair and adds an explicit top-of-reader anchor path so returning to scrollTop=0 reliably records the first paragraph for durable resume while the session/orientation anchor preserves the true top of the Hour. Also corrects the internal evidence-stage identity. Canonical/devotional text, stable IDs, speaker/display/flow authorities, personal-state schemas, persistence transaction semantics, highlighting semantics and Service Worker architecture remain unchanged.",
-  "real_device_status": "For v101.153 R1, deterministic internal differential/static/browser checks cover the v101.152 scroll-performance repair plus top-of-reader position/resume correction on phone and tablet viewports. Physical iPhone/iPad/Samsung, live-origin exact-byte binding, installed-PWA update, true cold offline and representative VoiceOver/TalkBack remain NOT_TESTED.",
-  "overall_release_status": "V101153_R1_SCROLL_PERFORMANCE_TOP_ANCHOR_CORRECTION__INTERNAL_ENGINEERING_QA_PASS__EXTERNAL_DEVICE_LIVE_PWA_AT_GATES_OPEN__PUBLIC_PRODUCTION_PROMOTION_NOT_AUTHORIZED",
+  "release_scope": "Bounded installed-PWA update-lifecycle successor of exact v101.153 R1. Repairs B24H-003 proven by physical v101.148→v101.153 update evidence: the old 5-second controller-transition timeout began before registration.update(), so shell download/install time could exhaust the window and force close/reopen. v101.154 observes controllerchange before update but starts a 30-second transition wait only after update() returns, and precaches one canonical HTML shell instead of three byte-identical navigation aliases. Corpus/devotional text, Search, scroll/resume, highlighting, personal-state schemas and transaction semantics remain unchanged.",
+  "real_device_status": "Physical evidence on the predecessor line: installed PWA running v101.148 detected v101.153 but could not complete the in-app controller transition; closing and reopening activated v101.153. This is recorded as B24H-003 / seamless installed-update FAIL for v101.153. v101.154 has deterministic internal negative/positive lifecycle evidence; physical installed-PWA update to v101.154 remains NOT_TESTED.",
+  "overall_release_status": "V101154_R1_INSTALLED_PWA_UPDATE_LIFECYCLE_REPAIR__INTERNAL_ENGINEERING_QA_PASS__PHYSICAL_PREDECESSOR_FAILURE_REPAIRED_INTERNALLY__EXTERNAL_DEVICE_LIVE_PWA_RETEST_OPEN__PUBLIC_PRODUCTION_PROMOTION_NOT_AUTHORIZED",
   "known_blockers": [
+    "physical installed-PWA update/retest to v101.154",
     "physical iPhone/iPad/Samsung successor verification",
     "live-origin exact-byte binding",
-    "installed-PWA update to v101.153 R1",
     "true offline cold reopen",
     "representative VoiceOver/TalkBack verification"
   ],
   "external_open_gates": [
+    "physical installed-PWA update/retest to v101.154",
     "physical iPhone/iPad/Samsung successor verification",
     "live-origin exact-byte binding",
-    "installed-PWA update to v101.153 R1",
     "true offline cold reopen",
     "representative VoiceOver/TalkBack verification"
   ],
   "ldc_source_alignment_generation": "G036-AFLP-R6-UWR2",
   "ldc_source_enriched_generation": "G036-AFLP-R6-SUP-T5",
   "ldc_source_corpus_manifest_sha256": "0d04190b166932086ed45141368bd4ae88b5a22806ca1e525a3e6a60a267f3ad",
-  "postfreeze_reopen_evidence": "v101.153 R1 carries fresh v101.152 predecessor differential evidence including the top-of-reader regression reproduction and successor correction, plus replay of scroll-path, Search/render-equivalence and Service Worker checks. The public deploy ZIP contains runtime files only.",
+  "postfreeze_reopen_evidence": "B24H-003 physical predecessor evidence: v101.148→v101.153 in-app update did not transition the running installed PWA; close/reopen loaded v101.153. Exact v148 and v153 packages use byte-identical update functions, proving the weakness was inherited. v101.154 repairs only update lifecycle timing/cache-shell duplication plus release bindings.",
   "build_revision": "R1",
   "forced_colors_stage7": "TEST_ONLY__PASS_EMULATED_CHROMIUM__23_23_WAVE_SLICE__ZERO_MUTATION__EXTERNAL_WAVE_QA_PACK",
   "stage7_authorization_proposal_sha256": "42126e52c63d114d1b3a42bdf2bcac8f19e88dc70417fd95accfe33f809312a6",
@@ -41,5 +41,7 @@
   "four_pass_finding": "B24H-002: at exactly 768 CSS px, the 768–1149 tablet rule hid .bottom-nav while the legacy sidebar/menu were globally disabled; 767px and 769px retained navigation.",
   "search_projection_version": "24h-search-v2-reader-projection-r1",
   "search_predecessor_zip_sha256": "3f69f8b948494d70e728287998efe6a0fefafa649ac9e0a7759934fbcefe458a",
-  "scroll_performance_predecessor_zip_sha256": "f9bee241f08181a31b63e4284bc82422f5cdc820a2d4033017ef5c1d95004478"
+  "scroll_performance_predecessor_zip_sha256": "f9bee241f08181a31b63e4284bc82422f5cdc820a2d4033017ef5c1d95004478",
+  "pwa_update_predecessor_zip_sha256": "6869dbf8e9f100cae66c9f710ee86073941a6670b705286a39de95c468375e5d",
+  "pwa_update_physical_finding": "B24H-003: running installed PWA v101.148 could not complete seamless update to v101.153; closing/reopening was required. Root cause: controllerchange timeout started before registration.update()/shell install and expired after 5 seconds; required-shell install also fetched three aliases of the same ~2.6 MB HTML."
 }
