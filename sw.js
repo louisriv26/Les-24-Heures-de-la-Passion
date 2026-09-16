@@ -1,4 +1,4 @@
-/* v102.0 R6 — conditional-state semantic-scaling closure successor; verified Update-v2 worker protocol preserved */
+/* v102.0 R10 — bounded Reader-tab clipping successor; verified Update-v2 worker protocol preserved */
 function scopeFingerprint(scope) {
   let h = 2166136261;
   const text = String(scope || '');
@@ -6,14 +6,14 @@ function scopeFingerprint(scope) {
   return (h >>> 0).toString(16).padStart(8, '0');
 }
 const APP_VERSION = 'v102.0';
-const BUILD_REVISION = 'R6';
-const RELEASE_SEQUENCE = 102000006;
-const RELEASE_ID = '24h-v102.0-r6-20260916-1ed6c3ab5d58';
+const BUILD_REVISION = 'R10';
+const RELEASE_SEQUENCE = 102000010;
+const RELEASE_ID = '24h-v102.0-r10-20260916-b6fd81e4e1ba';
 const CANONICAL_SHELL = './luisa_24_heures.html';
-const CANONICAL_SHELL_SHA256 = 'a42c1fba26770949970c341840de231f1630f0f7b4198c2f269898f4d11d2e21';
+const CANONICAL_SHELL_SHA256 = '36377d14cb25e13f62012d9c66417c0e336d0731227994414ed23ced24c8c0e3';
 const SCOPE_FINGERPRINT = scopeFingerprint(self.registration.scope);
 const CACHE_PREFIX = `luisa-24h-${SCOPE_FINGERPRINT}-`;
-const CACHE_NAME = `${CACHE_PREFIX}v102-0-r6`;
+const CACHE_NAME = `${CACHE_PREFIX}v102-0-r10`;
 const META_CACHE_NAME = `${CACHE_PREFIX}update-meta-v2`;
 const LEGACY_MIGRATION_BASELINE_CACHE = `${CACHE_PREFIX}v101-153-r1`;
 const META_KEY = new URL('./__lp24_update_meta_v2__', self.registration.scope).href;

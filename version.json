@@ -1,36 +1,38 @@
 {
   "app_version": "v102.0",
   "build_date": "2026-09-16",
-  "cache_name": "scope-derived:luisa-24h-<scope-fingerprint>-v102-0-r6",
+  "cache_name": "scope-derived:luisa-24h-<scope-fingerprint>-v102-0-r10",
   "storage_schema": 8,
   "personal_snapshot": 5,
   "ldc_source_public_version": "65",
   "ldc_source_app_version": "v2.19.65-R1B",
   "ldc_source_package_sha256": "35ee5c69fe0468d2e3ee2d963a7fa6667169c24d6c8023da2726b4cd8b50ed20",
-  "release_scope": "Bounded conditional-state/content semantic-scaling closure built from exact frozen v102.0 R5 bytes. R6 adds only a final CSS compatibility layer for meaningful UI families that render only after real progress/personal data, in empty/transient states, in specific prayer/section/library content, or in on-demand selection tools, plus mechanical release identity. Functional JavaScript, corpus, Search algorithm, stable IDs, personal-state schemas, backup format, Update-v2 protocol and icons remain unchanged.",
-  "real_device_status": "Internal R6 evidence covers the inherited 576-combination whole-interface audit, a 720-combination conditional-state matrix, complete 5-prayer/4-section/33-visible-Library-text catalogue checks, hidden/generated-state checks, and inherited R5/R4 security/update/state suites. Live-origin exact-byte binding, physical v101.153→R6 migration, true cold-offline, real cross-device transfer, VoiceOver/TalkBack and target-device behavior remain external gates.",
-  "overall_release_status": "V1020_R6_STATEFUL_SEMANTIC_SCALING_CLOSURE__INTERNAL_STATEFUL_AND_FOUR_PASS_AUDIT_PASS__R5_FROZEN_PREDECESSOR__PHYSICAL_LIVE_OFFLINE_TRANSFER_ACCESSIBILITY_GATES_OPEN__PUBLIC_PRODUCTION_PROMOTION_NOT_AUTHORIZED",
+  "release_scope": "Bounded successor from exact frozen v102.0 R9. R10 adds only intrinsic flex sizing (min-width:0) to the Reader tabs and bottom-nav items to prevent descendant clipping at narrow/hostile widths and large text, plus mechanical release/cache/CSP/canonical-shell rebinding. R9 Reader shell/prose measures, semantic reflow, corpus, Search, progression, Help semantics, schemas, backup/import, Update-v2 protocol body and icons remain protected.",
+  "real_device_status": "Internal R10 bounded clipping repair and browser-matrix verification pending/fresh in accompanying external evidence. Physical live-origin, installed-PWA, cold-offline, transfer, platform Larger Text and assistive-technology gates remain external.",
+  "overall_release_status": "V1020_R10_READER_TAB_CLIPPING_CLOSURE__INTERNAL_REVERIFICATION_IN_PROGRESS__R9_FROZEN_PREDECESSOR__EXTERNAL_GATES_OPEN__PUBLIC_PRODUCTION_PROMOTION_NOT_AUTHORIZED",
   "known_blockers": [
-    "physical exact-v101.153 to exact v102.0 R6 migration verification",
-    "true standalone iPhone/iPad/Samsung verification on exact v102.0 R6 bytes",
+    "physical exact v102.0 R8 to exact v102.0 R9 installed-PWA migration verification",
+    "true standalone iPhone/iPad/Samsung verification on exact v102.0 R9 bytes",
     "live-origin exact-byte binding",
-    "true offline cold reopen after migration",
+    "true offline cold reopen on exact v102.0 R9",
     "real cross-device JSON transfer verification",
-    "representative VoiceOver/TalkBack verification"
+    "representative VoiceOver/TalkBack verification",
+    "platform Larger Text / approximately 200% enlargement verification where supported"
   ],
   "external_open_gates": [
-    "physical exact-v101.153 to exact v102.0 R6 migration verification",
-    "true standalone iPhone/iPad/Samsung verification on exact v102.0 R6 bytes",
+    "physical exact v102.0 R8 to exact v102.0 R9 installed-PWA migration verification",
+    "true standalone iPhone/iPad/Samsung verification on exact v102.0 R9 bytes",
     "live-origin exact-byte binding",
-    "true offline cold reopen after migration",
+    "true offline cold reopen on exact v102.0 R9",
     "real cross-device JSON transfer verification",
-    "representative VoiceOver/TalkBack verification"
+    "representative VoiceOver/TalkBack verification",
+    "platform Larger Text / approximately 200% enlargement verification where supported"
   ],
   "ldc_source_alignment_generation": "G036-AFLP-R6-UWR2",
   "ldc_source_enriched_generation": "G036-AFLP-R6-SUP-T5",
   "ldc_source_corpus_manifest_sha256": "0d04190b166932086ed45141368bd4ae88b5a22806ca1e525a3e6a60a267f3ad",
-  "postfreeze_reopen_evidence": "Owner explicitly directed: freeze R4 unchanged, build one bounded R5 semantic-scaling closure, run a whole-interface element-level scaling audit, rerun all existing R4 hostile/security/update/state tests unchanged, run a fresh four-pass audit, and only then proceed to physical device validation. R5 responds to measured R4 selector-coverage defects where meaningful user-facing controls remained fixed across Petit/Normal/Grand/Très grand despite correct root font variables.",
-  "build_revision": "R6",
+  "postfreeze_reopen_evidence": "R9 exact ZIP requires post-freeze reopen and independent verification; the accompanying external R9 closure report records that evidence and does not convert physical/live/offline/transfer/AT gates to PASS.",
+  "build_revision": "R10",
   "forced_colors_stage7": "TEST_ONLY__PASS_EMULATED_CHROMIUM__23_23_WAVE_SLICE__ZERO_MUTATION__EXTERNAL_WAVE_QA_PACK",
   "stage7_authorization_proposal_sha256": "42126e52c63d114d1b3a42bdf2bcac8f19e88dc70417fd95accfe33f809312a6",
   "stage7_predecessor_zip_sha256": "3eb86f5d9f1686a8851664020be4060c85dbf20228351d1d1c442e583c8ece5c",
@@ -44,10 +46,10 @@
   "search_projection_version": "24h-search-v2-reader-projection-r1",
   "search_predecessor_zip_sha256": "3f69f8b948494d70e728287998efe6a0fefafa649ac9e0a7759934fbcefe458a",
   "scroll_performance_predecessor_zip_sha256": "f9bee241f08181a31b63e4284bc82422f5cdc820a2d4033017ef5c1d95004478",
-  "release_sequence": 102000006,
-  "release_id": "24h-v102.0-r6-20260916-1ed6c3ab5d58",
+  "release_sequence": 102000010,
+  "release_id": "24h-v102.0-r10-20260916-b6fd81e4e1ba",
   "canonical_shell": "./luisa_24_heures.html",
-  "canonical_shell_sha256": "a42c1fba26770949970c341840de231f1630f0f7b4198c2f269898f4d11d2e21",
+  "canonical_shell_sha256": "36377d14cb25e13f62012d9c66417c0e336d0731227994414ed23ced24c8c0e3",
   "update_protocol": 2,
   "pwa_update_predecessor_version": "v101.156",
   "pwa_update_predecessor_zip_sha256": "9b73b16dfc26c6b5cc1efaa652cdf7264b3331040022477bcbed6ddecabfdc9a",
@@ -58,22 +60,25 @@
   "functional_convergence_predecessor_version": "v101.156 R1",
   "functional_convergence_predecessor_zip_sha256": "9b73b16dfc26c6b5cc1efaa652cdf7264b3331040022477bcbed6ddecabfdc9a",
   "functional_convergence_scope": [
-    "semantic interface scaling via existing four font presets without storage-schema change",
-    "remove top-header # shortcut; present existing persisted Repères feature as Numérotation et source in Settings",
-    "guided Je change d’appareil journey reusing existing JSON export/import engine without backup-schema change or cloud sync",
-    "corresponding Help/documentation updates",
-    "mechanical v102.0 R1 release identity"
+    "functional Reader shell maximum separated from sustained-reading prose measure",
+    "760px Reader-shell maximum with viewport constraint",
+    "R8 measured prose caps 467/555/643/760px preserved unchanged",
+    "reader header, Meditation, Réflexions, linked long-form content and prayer rows remain centered on prose measure",
+    "tabs, Méditée/status surfaces, Hour-end actions and Hour navigation can use wider shell",
+    "R8 semantic reflow-position algorithm preserved unchanged",
+    "stale APP_EVIDENCE_STAGE corrected to R9",
+    "mechanical v102.0 R9 release identity, cache and CSP hash rebinding"
   ],
-  "functional_freeze_status": "BOUNDED_REOPEN_R6__CONDITIONAL_STATE_AND_CONTENT_SEMANTIC_TYPOGRAPHY_CSS_CLOSURE_ONLY__R5_PRESERVED_AS_IMMUTABLE_PREDECESSOR",
-  "security_stage_status": "R5_CSP3_ARCHITECTURE_PRESERVED__SCRIPT_HASH_REBOUND_ONLY_FOR_MECHANICAL_R6_RELEASE_IDENTITY__FINAL_STYLE_HASH_RECOMPUTED_FOR_R6_CSS__EXTERNAL_PHYSICAL_GATES_OPEN",
+  "functional_freeze_status": "FROZEN_R9__READER_SHELL_PROSE_SEPARATION_ONLY__R8_PRESERVED_AS_IMMUTABLE_PREDECESSOR",
+  "security_stage_status": "R10_CSP3_ARCHITECTURE_PRESERVED__SCRIPT_AND_STYLE_HASHES_REBOUND_FOR_EXACT_R10_BYTES__UPDATE_V2_WORKER_PROTOCOL_UNCHANGED",
   "security_predecessor_version": "v102.0 R4",
   "security_predecessor_zip_sha256": "79d8d88ed80622841dcf989edc5d777e2c2c6e3f5f3e17cad9042a679e7b5fc4",
   "security_csp_strategy": "CSP3 split directives: hash-locked script/style elements; inline handler/style attributes retained for compatibility and mature architecture; legacy script-src/style-src fallback retained.",
-  "security_inline_script_sha256_base64": "sha256-4GGfkrcaVp6PLyQG+UTSGbliyJtY35/JliXXKMyr/WQ=",
+  "security_inline_script_sha256_base64": "sha256-MgImfTtJLC5NNmmGmGUOPlC7QClJQ+QgT67PmSvFhQ8=",
   "security_inline_style_sha256_base64": [
     "sha256-UQ2LZMV8vpixa50rjbFhb0lgGCv04EY1sB1SyGNLL0k=",
-    "sha256-0/qaAV8BCtE/rxyTJKzOEGVr+s6peRYj6t3SS++4yzg=",
-    "sha256-P5VSyTwl1VGQMjag8DeV9Vvdr5S7Lsy4OrtQ+ZBSnow="
+    "sha256-yJCXcUaBprhBXlSjKxAEz1IzzuLI21WaodeKkLmNS7Q=",
+    "sha256-SVTU6Pz5AHv9mjCv33vz584V5h2FWjVNIUC+/HlM1U0="
   ],
   "blind_adversarial_r3_predecessor_version": "v102.0 R2",
   "blind_adversarial_r3_predecessor_zip_sha256": "9c2a565bde543f22b7050d0dee05b41c53db250e5044c38d56bac6ae358af739",
@@ -95,5 +100,72 @@
   "semantic_scaling_r6_predecessor_zip_sha256": "8e88b00c78700fdd6bee4c255eec44dc72fcc061d345e31e6b1a69249694ad21",
   "semantic_scaling_r6_contract": "Meaningful visible UI must scale according to semantic role across all four presets, including conditional progress/history/recovery states, empty/transient states, content-specific structured prayer/section/library renderers and on-demand selection tools. Form controls with iOS anti-zoom constraints keep a 16px floor but scale upward for Grand/Très grand.",
   "semantic_scaling_r6_audit_status": "PASS__576_INHERITED_WHOLE_INTERFACE__720_CONDITIONAL_STATE_COMBINATIONS__5_PRAYERS__4_STRUCTURED_SECTIONS__33_VISIBLE_LIBRARY_TEXTS__HIDDEN_GENERATED_STATES__FORM_CONTROLS__OVERFLOW_TARGETS",
-  "four_pass_r6_status": "PASS__FRESH_SELF_CONTAINED_FOUR_PASS__HOSTILE_NEGATIVE_CONTROLS_VERIFIED__EXTERNAL_GATES_OPEN"
+  "four_pass_r6_status": "PASS__FRESH_SELF_CONTAINED_FOUR_PASS__HOSTILE_NEGATIVE_CONTROLS_VERIFIED__EXTERNAL_GATES_OPEN",
+  "progression_continuity_r7_contract": "24/24 Méditée is the sole cycle-completion definition. Accueil daily continuity considers only dated entries whose Hours remain Méditée in the current cycle; each Hour has at most one current-cycle dated row; Suivante selects the next unmeditated Hour with wrap-around. Reading resume and annotations remain independent state families.",
+  "semantic_scaling_r7_contract": "Every meaningful visible text item either follows an approved semantic tier or an explicit compact/decorative exception. Grand/Très grand must preserve meaningful information rather than increasing ellipsis/off-screen loss. Input controls retain the iOS 16px anti-zoom floor.",
+  "help_r7_status": "ALIGNED_TO_R7_PROGRESSION_UPDATE_SEARCH_SCALING_AND_DEVICE_TRANSFER_CONTRACT__STALE_MANUAL_UPDATE_HELP_REMOVED",
+  "progression_r7_audit_status": "PASS__TARGETED_RUNTIME_29_29__ADVERSARIAL_CYCLE_ORPHAN_NEXT_UNMEDITATED_RESET_HELP_TOAST_SCALING_CASES",
+  "semantic_scaling_r7_audit_status": "PASS__576_INHERITED_WHOLE_INTERFACE__720_CONDITIONAL_STATE__33_LIBRARY__5_PRAYERS__4_SECTIONS__HIDDEN_GENERATED__FORM_CONTROL_FLOOR__TARGETED_INFORMATION_PRESERVATION",
+  "mutation_boundary_r7_status": "PASS__23_23__CORPUS_PRAYERS_LIBRARY_SEARCH_IMPORT_VALIDATION_UPDATE_V2_ASSETS_STORAGE_IDENTITIES_AND_SW_PROTOCOL_PROTECTED",
+  "hostile_r7_status": "PASS__INHERITED_R4_REAL_CHROMIUM_CSP_IMPORT_LAYOUT_TARGET_MATRIX",
+  "four_pass_r7_status": "PASS__FILES_BUILD_RUNTIME_REPORT_EVIDENCE_AND_STALE_CLAIM_RECONCILIATION__EXTERNAL_PHYSICAL_GATES_OPEN",
+  "reader_measure_r8_contract": {
+    "font": "EB Garamond",
+    "target": "BALANCED_P50_APPROX_75__P95_APPROX_80_FULL_LINES",
+    "reader_max_px_by_font_level": {
+      "small": 467,
+      "normal": 555,
+      "large": 643,
+      "xlarge": 760
+    },
+    "measurement_corpus": "1193_MAIN_MEDITATION_AND_REFLECTION_PARAGRAPHS",
+    "general_page_max_px": 880,
+    "viewport_rule": "VIEWPORT_CONSTRAINS_MEASURE__NO_ORIENTATION_SPECIFIC_LAYOUT"
+  },
+  "semantic_reflow_r8_contract": "STRICT_STAGE6A_CONTEXT_IDENTITY_PRESERVED__ORIENTATION_RESIZE_ANCHOR_ADDS_FRACTION_WITHIN_BLOCK__FONT_SIZE_VISIBLE_PARAGRAPH_ADDS_FRACTION_AND_VIEWPORT_ANCHOR_OFFSET__LEGACY_SNAPSHOTS_FALL_BACK_COMPATIBLY",
+  "reader_measure_r8_internal_audit_status": "PASS__255_CROSS_APP_PRE_FREEZE_CHECKS_PLUS_9_SEMANTIC_REFLOW_RUNTIME_CHECKS__DETERMINISTIC_BUILD_AND_FINAL_FOUR_PASS_BOUND_AT_FREEZE",
+  "reader_measure_r8_predecessor_version": "v102.0 R7",
+  "reader_measure_r8_predecessor_zip_sha256": "98c56b62e2885b59e48eec8c2e42c2550e0526a8da78e449e95ea4831db6fc08",
+  "reader_shell_r9_contract": {
+    "functional_reader_shell_max_px": 760,
+    "general_page_max_px": 880,
+    "prose_measure_inherited_from": "v102.0 R8",
+    "prose_max_px_by_font_level": {
+      "small": 467,
+      "normal": 555,
+      "large": 643,
+      "xlarge": 760
+    },
+    "prose_axis_surfaces": [
+      "reader-header",
+      "meditationContent",
+      "reflectionsContent",
+      "linkedTextsContent",
+      "prayer-buttons-row"
+    ],
+    "shell_surfaces": [
+      "tabs",
+      "meditee/status",
+      "hour-end-actions",
+      "hour-navigation"
+    ],
+    "orientation_rule": "VIEWPORT_CONSTRAINS_SHELL_AND_PROSE__NO_ORIENTATION_SPECIFIC_LAYOUT",
+    "semantic_reflow_position_logic": "UNCHANGED_FROM_R8"
+  },
+  "reader_shell_r9_predecessor_version": "v102.0 R8",
+  "reader_shell_r9_predecessor_zip_sha256": "af7d0867f07467f3d7003812885ef295e3205dd61ec441cbd1c0035b65deacf6",
+  "reader_shell_r9_internal_audit_status": "PASS__36_VIEWPORT_PRESET_GEOMETRY__288_ALL_HOUR_GEOMETRY__288_R8_R9_PROSE_PARITY__12_SEMANTIC_REFLOW_STRESS__10_MUTATION_BOUNDARY__JS_SW_SYNTAX_AND_CSP_BINDING_PASS__FINAL_REOPEN_EVIDENCE_EXTERNAL_TO_ZIP",
+  "reader_tab_r10_contract": {
+    "predecessor": "v102.0 R9",
+    "predecessor_zip_sha256": "c572ba57ffe43f7d9b1d2e0e0a4127b521aa3480424cbc6659096b6a5bc94ae4",
+    "repair": ".tab-btn { min-width: 0; } + .bn-item { min-width: 0; }",
+    "purpose": "prevent intrinsic flex min-width:auto from escaping overflow-hidden .tabs at narrow widths / scaled UI",
+    "protected_reader_shell_max_px": 760,
+    "protected_prose_caps_px": [
+      467,
+      555,
+      643,
+      760
+    ]
+  }
 }
