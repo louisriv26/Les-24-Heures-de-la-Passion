@@ -1,4 +1,4 @@
-/* v102.0 R10 — bounded Reader-tab clipping successor; verified Update-v2 worker protocol preserved */
+/* v102.0 R25 — provenance clarity/confidence refinement; R24 modal repair and Update-v2 semantics unchanged */
 function scopeFingerprint(scope) {
   let h = 2166136261;
   const text = String(scope || '');
@@ -6,17 +6,18 @@ function scopeFingerprint(scope) {
   return (h >>> 0).toString(16).padStart(8, '0');
 }
 const APP_VERSION = 'v102.0';
-const BUILD_REVISION = 'R10';
-const RELEASE_SEQUENCE = 102000010;
-const RELEASE_ID = '24h-v102.0-r10-20260916-b6fd81e4e1ba';
+const BUILD_REVISION = 'R25';
+const RELEASE_SEQUENCE = 102000025;
+const RELEASE_ID = '24h-v102.0-r25-20260920-e6237c4cb953';
 const CANONICAL_SHELL = './luisa_24_heures.html';
-const CANONICAL_SHELL_SHA256 = '36377d14cb25e13f62012d9c66417c0e336d0731227994414ed23ced24c8c0e3';
+const CANONICAL_SHELL_SHA256 = '7904358d2000d908bf2b9c57e3fd210f0ba7a5becb05aeee871f40de82a5e751';
 const SCOPE_FINGERPRINT = scopeFingerprint(self.registration.scope);
 const CACHE_PREFIX = `luisa-24h-${SCOPE_FINGERPRINT}-`;
-const CACHE_NAME = `${CACHE_PREFIX}v102-0-r10`;
+const CACHE_NAME = `${CACHE_PREFIX}v102-0-r25`;
 const META_CACHE_NAME = `${CACHE_PREFIX}update-meta-v2`;
 const LEGACY_MIGRATION_BASELINE_CACHE = `${CACHE_PREFIX}v101-153-r1`;
 const META_KEY = new URL('./__lp24_update_meta_v2__', self.registration.scope).href;
+const EXPLICIT_CLAIM_KEY = new URL('./__lp24_explicit_commit_claim_v2__', self.registration.scope).href;
 const ASSETS = ['./index.html','./luisa_24_heures.html','./manifest.json','./apple-touch-icon.png','./favicon-16.png','./favicon-32.png','./favicon.ico','./icon-60.png','./icon-120.png','./icon-192.png','./icon-512.png','./icon-maskable-512.png'];
 const MAX_CACHE_ENTRIES = 40;
 
@@ -37,6 +38,19 @@ async function readUpdateMeta() {
 async function writeUpdateMeta(meta) {
   const cache=await caches.open(META_CACHE_NAME);
   await cache.put(META_KEY,new Response(JSON.stringify(meta),{headers:{'Content-Type':'application/json','Cache-Control':'no-store'}}));
+}
+async function armExplicitCommitClaim(requestId) {
+  const cache=await caches.open(META_CACHE_NAME);
+  const payload={protocol:2,release_id:RELEASE_ID,release_sequence:RELEASE_SEQUENCE,request_id:String(requestId||''),armed_at:Date.now()};
+  await cache.put(EXPLICIT_CLAIM_KEY,new Response(JSON.stringify(payload),{headers:{'Content-Type':'application/json','Cache-Control':'no-store'}}));
+}
+async function readExplicitCommitClaim() {
+  const cache=await caches.open(META_CACHE_NAME);
+  const response=await cache.match(EXPLICIT_CLAIM_KEY);
+  return response ? await response.json() : null;
+}
+async function clearExplicitCommitClaim() {
+  try { const cache=await caches.open(META_CACHE_NAME); await cache.delete(EXPLICIT_CLAIM_KEY); } catch(_e) {}
 }
 async function verifiedInstall() {
   const cache=await caches.open(CACHE_NAME);
@@ -102,8 +116,17 @@ self.addEventListener('install', event => {
   event.waitUntil(verifiedInstall());
 });
 self.addEventListener('activate', event => {
-  // Intentionally no clients.claim() and no cache deletion. Existing clients are not force-reloaded.
-  event.waitUntil(Promise.resolve());
+  // Automatic/first activation still does not seize existing clients. After a verified explicit
+  // ACTIVATE_UPDATE_V2 request, claim same-scope clients so the requesting installed PWA can load
+  // the successor shell instead of being served the predecessor cache again on Apple platforms.
+  event.waitUntil((async()=>{
+    const armed=await readExplicitCommitClaim();
+    if (!armed) return;
+    const ok=String(armed.release_id||'')===RELEASE_ID && Number(armed.release_sequence)===RELEASE_SEQUENCE && !!armed.request_id;
+    if (!ok) { await clearExplicitCommitClaim(); throw new Error('explicit_commit_claim_identity_mismatch'); }
+    await self.clients.claim();
+    await clearExplicitCommitClaim();
+  })());
 });
 self.addEventListener('message', event => {
   const data=event.data || {};
@@ -115,8 +138,11 @@ self.addEventListener('message', event => {
   if (data.type==='ACTIVATE_UPDATE_V2') {
     const ok=String(data.expected_release_id||'')===RELEASE_ID && Number(data.expected_release_sequence)===RELEASE_SEQUENCE && !!data.request_id;
     if (!ok) { reply(event,{type:'ACTIVATE_UPDATE_REJECTED_V2',request_id:data.request_id||null,release_id:RELEASE_ID}); return; }
-    reply(event,{type:'ACTIVATE_UPDATE_ACCEPTED_V2',request_id:data.request_id,release_id:RELEASE_ID,release_sequence:RELEASE_SEQUENCE});
-    event.waitUntil(self.skipWaiting());
+    event.waitUntil((async()=>{
+      await armExplicitCommitClaim(data.request_id);
+      reply(event,{type:'ACTIVATE_UPDATE_ACCEPTED_V2',request_id:data.request_id,release_id:RELEASE_ID,release_sequence:RELEASE_SEQUENCE});
+      await self.skipWaiting();
+    })());
     return;
   }
   if (data.type==='BOOT_OK_V2') {

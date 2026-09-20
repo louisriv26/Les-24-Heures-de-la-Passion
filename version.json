@@ -1,38 +1,38 @@
 {
   "app_version": "v102.0",
-  "build_date": "2026-09-16",
-  "cache_name": "scope-derived:luisa-24h-<scope-fingerprint>-v102-0-r10",
+  "build_date": "2026-09-20",
+  "cache_name": "scope-derived:luisa-24h-<scope-fingerprint>-v102-0-r25",
   "storage_schema": 8,
   "personal_snapshot": 5,
-  "ldc_source_public_version": "65",
-  "ldc_source_app_version": "v2.19.65-R1B",
-  "ldc_source_package_sha256": "35ee5c69fe0468d2e3ee2d963a7fa6667169c24d6c8023da2726b4cd8b50ed20",
-  "release_scope": "Bounded successor from exact frozen v102.0 R9. R10 adds only intrinsic flex sizing (min-width:0) to the Reader tabs and bottom-nav items to prevent descendant clipping at narrow/hostile widths and large text, plus mechanical release/cache/CSP/canonical-shell rebinding. R9 Reader shell/prose measures, semantic reflow, corpus, Search, progression, Help semantics, schemas, backup/import, Update-v2 protocol body and icons remain protected.",
-  "real_device_status": "Internal R10 bounded clipping repair and browser-matrix verification pending/fresh in accompanying external evidence. Physical live-origin, installed-PWA, cold-offline, transfer, platform Larger Text and assistive-technology gates remain external.",
-  "overall_release_status": "V1020_R10_READER_TAB_CLIPPING_CLOSURE__INTERNAL_REVERIFICATION_IN_PROGRESS__R9_FROZEN_PREDECESSOR__EXTERNAL_GATES_OPEN__PUBLIC_PRODUCTION_PROMOTION_NOT_AUTHORIZED",
+  "ldc_source_public_version": "COMPOSITE_29_62_65_PLUS_FAST_MODE_DERIVATIVE_SYNC",
+  "ldc_source_app_version": "LDC_CURRENT_SYNC_AUTHORITY",
+  "ldc_source_package_sha256": null,
+  "release_scope": "R25 public provenance clarity/confidence refinement: systematic chain restored ahead of audit-scale markers; calibrated reader assurance; stronger plain-language AI/AFLP/ecclesial explanations; R24 modal repair, R22 documentary projection and devotional text protected.",
+  "real_device_status": "R25 build-tree and reopened-ZIP internal qualification completed; physical installed iPhone/iPad/Samsung/PWA/origin/offline confirmation remains external.",
+  "overall_release_status": "V1020_R25_PROVENANCE_CLARITY_CONFIDENCE__INTERNALLY_QUALIFIED__EXTERNAL_DEVICE_GATES_PENDING",
   "known_blockers": [
-    "physical exact v102.0 R8 to exact v102.0 R9 installed-PWA migration verification",
-    "true standalone iPhone/iPad/Samsung verification on exact v102.0 R9 bytes",
+    "physical installed-PWA migration verification to the exact final qualified successor on iPhone and iPad, including one-tap Actualiser behavior from governed predecessor lineages",
+    "true standalone iPhone/iPad/Samsung verification on exact qualified bytes",
     "live-origin exact-byte binding",
-    "true offline cold reopen on exact v102.0 R9",
+    "true offline cold reopen on exact qualified bytes",
     "real cross-device JSON transfer verification",
     "representative VoiceOver/TalkBack verification",
     "platform Larger Text / approximately 200% enlargement verification where supported"
   ],
   "external_open_gates": [
-    "physical exact v102.0 R8 to exact v102.0 R9 installed-PWA migration verification",
-    "true standalone iPhone/iPad/Samsung verification on exact v102.0 R9 bytes",
+    "physical installed-PWA migration verification to the exact final qualified successor on iPhone and iPad, including one-tap Actualiser behavior from governed predecessor lineages",
+    "true standalone iPhone/iPad/Samsung verification on exact qualified bytes",
     "live-origin exact-byte binding",
-    "true offline cold reopen on exact v102.0 R9",
+    "true offline cold reopen on exact qualified bytes",
     "real cross-device JSON transfer verification",
     "representative VoiceOver/TalkBack verification",
     "platform Larger Text / approximately 200% enlargement verification where supported"
   ],
-  "ldc_source_alignment_generation": "G036-AFLP-R6-UWR2",
-  "ldc_source_enriched_generation": "G036-AFLP-R6-SUP-T5",
-  "ldc_source_corpus_manifest_sha256": "0d04190b166932086ed45141368bd4ae88b5a22806ca1e525a3e6a60a267f3ad",
-  "postfreeze_reopen_evidence": "R9 exact ZIP requires post-freeze reopen and independent verification; the accompanying external R9 closure report records that evidence and does not convert physical/live/offline/transfer/AT gates to PASS.",
-  "build_revision": "R10",
+  "ldc_source_alignment_generation": "COMPOSITE__SEE_ldc_current_sync_authority",
+  "ldc_source_enriched_generation": "COMPOSITE__SEE_ldc_current_sync_authority",
+  "ldc_source_corpus_manifest_sha256": null,
+  "postfreeze_reopen_evidence": "R21 is the bounded repair authorized after the independent R20 audit; no devotional corpus mutation is authorized.",
+  "build_revision": "R25",
   "forced_colors_stage7": "TEST_ONLY__PASS_EMULATED_CHROMIUM__23_23_WAVE_SLICE__ZERO_MUTATION__EXTERNAL_WAVE_QA_PACK",
   "stage7_authorization_proposal_sha256": "42126e52c63d114d1b3a42bdf2bcac8f19e88dc70417fd95accfe33f809312a6",
   "stage7_predecessor_zip_sha256": "3eb86f5d9f1686a8851664020be4060c85dbf20228351d1d1c442e583c8ece5c",
@@ -46,39 +46,39 @@
   "search_projection_version": "24h-search-v2-reader-projection-r1",
   "search_predecessor_zip_sha256": "3f69f8b948494d70e728287998efe6a0fefafa649ac9e0a7759934fbcefe458a",
   "scroll_performance_predecessor_zip_sha256": "f9bee241f08181a31b63e4284bc82422f5cdc820a2d4033017ef5c1d95004478",
-  "release_sequence": 102000010,
-  "release_id": "24h-v102.0-r10-20260916-b6fd81e4e1ba",
+  "release_sequence": 102000025,
+  "release_id": "24h-v102.0-r25-20260920-e6237c4cb953",
   "canonical_shell": "./luisa_24_heures.html",
-  "canonical_shell_sha256": "36377d14cb25e13f62012d9c66417c0e336d0731227994414ed23ced24c8c0e3",
+  "canonical_shell_sha256": "7904358d2000d908bf2b9c57e3fd210f0ba7a5becb05aeee871f40de82a5e751",
   "update_protocol": 2,
   "pwa_update_predecessor_version": "v101.156",
   "pwa_update_predecessor_zip_sha256": "9b73b16dfc26c6b5cc1efaa652cdf7264b3331040022477bcbed6ddecabfdc9a",
-  "pwa_update_architecture": "verified_prepare_commit_v2_waiting_worker_explicit_activation_requester_page_canonical_reload__R3_PAGE_EQUAL_SEQUENCE_FULL_ACTIVE_WORKER_IDENTITY_CHECK__SW_PROTOCOL_BODY_UNCHANGED",
-  "legacy_bootstrap": "The protected Update-v2 protocol inherited from v101.156 remains unchanged. Final physical acceptance is intentionally reserved for exact installed v101.153 to the final secured release candidate, with the governed close/reopen boundary.",
+  "pwa_update_architecture": "verified_prepare_commit_v2_waiting_worker_explicit_activation__R23_PRESERVES_R22_UPDATE_V2_BEHAVIOR_UNCHANGED_EXCEPT_SUCCESSOR_IDENTITY_HASH_CACHE_COMMENT",
+  "legacy_bootstrap": "R15 preserves the R14/R13/R12/R11 unique-lineage Update-v2 architecture. Automatic install does not claim clients; only a verified explicit user commit arms same-scope takeover.",
   "rollback_policy": "No downgrade. Candidate verification fails closed; predecessor cache retained until matching successor BOOT_OK. Functional rollback must be shipped as a new higher release_sequence.",
   "manifest_identity_binding": "version/build/release_sequence/release_id/start_url verified by installing worker; index.html must hash-identically match canonical shell",
   "functional_convergence_predecessor_version": "v101.156 R1",
   "functional_convergence_predecessor_zip_sha256": "9b73b16dfc26c6b5cc1efaa652cdf7264b3331040022477bcbed6ddecabfdc9a",
   "functional_convergence_scope": [
-    "functional Reader shell maximum separated from sustained-reading prose measure",
-    "760px Reader-shell maximum with viewport constraint",
-    "R8 measured prose caps 467/555/643/760px preserved unchanged",
-    "reader header, Meditation, Réflexions, linked long-form content and prayer rows remain centered on prose measure",
-    "tabs, Méditée/status surfaces, Hour-end actions and Hour navigation can use wider shell",
-    "R8 semantic reflow-position algorithm preserved unchanged",
-    "stale APP_EVIDENCE_STAGE corrected to R9",
-    "mechanical v102.0 R9 release identity, cache and CSP hash rebinding"
+    "R9 760px Reader shell and R8 467/555/643/760px prose measures preserved unchanged",
+    "R11 unique fork convergence remains in the governed lineage; R13 is the immediate runtime predecessor",
+    "Update-v2 explicit commit, successor claim and requester controller verification preserved unchanged in behavior",
+    "R10/R11 narrow Reader-tab and prayer-trigger containment retained",
+    "20px Très-grand Reader-tab typography preserved; no Reader-tab shrink-to-fit workaround",
+    "R12 bottom navigation uses geometry redistribution rather than font suppression at normal supported phone widths",
+    "R12 bottom-navigation geometry behavior inherited unchanged",
+    "R14 release identity, cache and CSP script/style hashes mechanically rebound to exact successor bytes"
   ],
-  "functional_freeze_status": "FROZEN_R9__READER_SHELL_PROSE_SEPARATION_ONLY__R8_PRESERVED_AS_IMMUTABLE_PREDECESSOR",
-  "security_stage_status": "R10_CSP3_ARCHITECTURE_PRESERVED__SCRIPT_AND_STYLE_HASHES_REBOUND_FOR_EXACT_R10_BYTES__UPDATE_V2_WORKER_PROTOCOL_UNCHANGED",
+  "functional_freeze_status": "FROZEN_R25_PUBLIC_PROVENANCE_EXPLANATION_ONLY__R24_MODAL_REPAIR_R22_DOCUMENTARY_PROJECTION_AND_DEVOTIONAL_BEHAVIOR_PROTECTED",
+  "security_stage_status": "R22_CSP3_ARCHITECTURE_PRESERVED__SCRIPT_HASH_REBOUND_TO_EXACT_R25_BYTES__STYLE_HASHES_AND_UPDATE_V2_SEMANTICS_UNCHANGED",
   "security_predecessor_version": "v102.0 R4",
   "security_predecessor_zip_sha256": "79d8d88ed80622841dcf989edc5d777e2c2c6e3f5f3e17cad9042a679e7b5fc4",
   "security_csp_strategy": "CSP3 split directives: hash-locked script/style elements; inline handler/style attributes retained for compatibility and mature architecture; legacy script-src/style-src fallback retained.",
-  "security_inline_script_sha256_base64": "sha256-MgImfTtJLC5NNmmGmGUOPlC7QClJQ+QgT67PmSvFhQ8=",
+  "security_inline_script_sha256_base64": "sha256-LAXy/vq5bsJ+bDKv3SA0QvvbujgvRtXJ0Jahlelcs78=",
   "security_inline_style_sha256_base64": [
     "sha256-UQ2LZMV8vpixa50rjbFhb0lgGCv04EY1sB1SyGNLL0k=",
-    "sha256-yJCXcUaBprhBXlSjKxAEz1IzzuLI21WaodeKkLmNS7Q=",
-    "sha256-SVTU6Pz5AHv9mjCv33vz584V5h2FWjVNIUC+/HlM1U0="
+    "sha256-PpjtDyVw1yv1jlLAwLaCwFXSRPTjEp+1EJBnNPMT4aY=",
+    "sha256-/PDid79K7LRUFTBYGYCk5WowaPjSf8h6n32Q2Qfk09Y="
   ],
   "blind_adversarial_r3_predecessor_version": "v102.0 R2",
   "blind_adversarial_r3_predecessor_zip_sha256": "9c2a565bde543f22b7050d0dee05b41c53db250e5044c38d56bac6ae358af739",
@@ -155,17 +155,382 @@
   "reader_shell_r9_predecessor_version": "v102.0 R8",
   "reader_shell_r9_predecessor_zip_sha256": "af7d0867f07467f3d7003812885ef295e3205dd61ec441cbd1c0035b65deacf6",
   "reader_shell_r9_internal_audit_status": "PASS__36_VIEWPORT_PRESET_GEOMETRY__288_ALL_HOUR_GEOMETRY__288_R8_R9_PROSE_PARITY__12_SEMANTIC_REFLOW_STRESS__10_MUTATION_BOUNDARY__JS_SW_SYNTAX_AND_CSP_BINDING_PASS__FINAL_REOPEN_EVIDENCE_EXTERNAL_TO_ZIP",
-  "reader_tab_r10_contract": {
-    "predecessor": "v102.0 R9",
-    "predecessor_zip_sha256": "c572ba57ffe43f7d9b1d2e0e0a4127b521aa3480424cbc6659096b6a5bc94ae4",
-    "repair": ".tab-btn { min-width: 0; } + .bn-item { min-width: 0; }",
-    "purpose": "prevent intrinsic flex min-width:auto from escaping overflow-hidden .tabs at narrow widths / scaled UI",
-    "protected_reader_shell_max_px": 760,
-    "protected_prose_caps_px": [
-      467,
-      555,
-      643,
-      760
+  "update_takeover_r10_predecessor_version": "v102.0 R9",
+  "update_takeover_r10_predecessor_zip_sha256": "c572ba57ffe43f7d9b1d2e0e0a4127b521aa3480424cbc6659096b6a5bc94ae4",
+  "update_takeover_r10_contract": "PREPARE_VERIFY_UNCHANGED__EXPLICIT_USER_COMMIT_ARMS_CLAIM__SUCCESSOR_CLAIMS_SAME_SCOPE_CLIENTS_DURING_ACTIVATE__REQUESTER_VERIFIES_TARGET_CONTROLLER_BEFORE_RELOAD__FAIL_CLOSED_WITH_CLOSE_REOPEN_FALLBACK",
+  "narrow_tabs_r10_contract": "BELOW_360PX_AND_XLARGE_ONLY__TWO_COLUMNS__THIRD_TAB_SPANS_ROW_2__PRAYER_TRIGGER_WRAP__20PX_UI_TEXT_PRESERVED__NO_DOCUMENT_OR_COMPONENT_CLIPPING",
+  "r10_update_takeover_internal_status": "PASS__22_SERVICE_WORKER_LIFECYCLE_ASSERTIONS__PAGE_CONTROLLER_TAKEOVER_AND_TIMEOUT_PATH_PASS__PHYSICAL_INSTALLED_PWA_CONFIRMATION_OPEN",
+  "r10_narrow_layout_audit_status": "PASS__116_CASES__1624_CONTAINMENT_ASSERTIONS__ALL_24_HOURS_AT_320_340_360_XLARGE_INCLUDED__NO_TAB_OR_PRAYER_COMPONENT_CLIPPING",
+  "r10_core_runtime_smoke_status": "PASS__25_ASSERTIONS__NO_PAGE_ERRORS__STORAGE_COMMIT_MOCKED_ONLY_BECAUSE_SET_CONTENT_HAS_OPAQUE_ORIGIN",
+  "r10_r9_protected_reader_parity_status": "PASS__288_COMBINATIONS__2880_ASSERTIONS__MEDITATION_REFLECTION_LINKED_TEXT_AND_PROSE_GEOMETRY_UNCHANGED",
+  "r10_governed_declarations_parity_status": "PASS__15_OF_15_GOVERNED_CONTENT_PRESENTATION_DECLARATIONS_BYTE_IDENTICAL_TO_R9",
+  "r10_blind_challenge_status": "CORRECTED_AND_REVERIFIED__R9_320_XLARGE_TAB_CLIP_CLOSED__FINE_POINTER_CLOSING_PRAYER_CLIP_CLOSED__COMPACT_HEADER_BRAND_ELLIPSIS_RETAINED_AS_EXPLICIT_LOW_VALUE_CHROME_EXCEPTION_WITH_FULL_ARIA_LABEL",
+  "four_pass_r10_status": "PASS_INTERNAL__BUILD_PACKAGE_RUNTIME_EVIDENCE_AND_STALENESS_RECONCILED__PHYSICAL_INSTALLED_UPDATE_LIVE_OFFLINE_TRANSFER_AND_AT_GATES_OPEN",
+  "r10_fork_reconciliation_r11": {
+    "status": "UNIQUE_HIGHER_SEQUENCE_SUCCESSOR",
+    "r10_sequence": 102000010,
+    "r11_sequence": 102000011,
+    "working_branch_b6fd": {
+      "release_id": "24h-v102.0-r10-20260916-b6fd81e4e1ba",
+      "deploy_sha256": "26f6b052313f8ccadd522b870aae5561d6b4aed7fce7839e8f6bf193431444f3",
+      "canonical_shell_sha256": "36377d14cb25e13f62012d9c66417c0e336d0731227994414ed23ced24c8c0e3"
+    },
+    "parallel_branch_a6c3": {
+      "release_id": "24h-v102.0-r10-20260916-a6c3f10d82b7",
+      "deploy_sha256": "fd76c8de9680f3d7b71b38628cf3d6242b571bc23734345d48036c7b8046d007",
+      "canonical_shell_sha256": "6290776287a4b399bf36d51e1b916a50bfbfdf374d4597dcdf1de01cdf3e4c5d"
+    },
+    "retained_from_b6fd": [
+      "global .tab-btn min-width:0 intrinsic containment",
+      "global .bn-item min-width:0 intrinsic containment"
+    ],
+    "retained_from_a6c3": [
+      "explicit ACTIVATE_UPDATE_V2 claim marker",
+      "clients.claim() only after verified explicit commit",
+      "requester waits for expected controller before canonical reload",
+      "two-row narrow Reader-tab strategy",
+      "narrow prayer-trigger wrap/containment"
+    ],
+    "content_authority": "unchanged; governed content/presentation declarations protected",
+    "r11_hostile_layout_closure": [
+      "xlarge two-row tabs through 374.98px",
+      "large two-row tabs through 329.98px",
+      "small/normal hostile 280-319px two-row tabs",
+      "responsive #bnSearch cap only below 400px"
+    ],
+    "provenance_ui": "not implemented in R11"
+  },
+  "r11_internal_status": "PASS__SYNTAX_CSP_PROTECTED_CONTENT_PARITY_20_OF_20__RESPONSIVE_READER_768_OF_768_AND_HOME_32_OF_32__SW_EXPLICIT_COMMIT_LIFECYCLE_PASS__CONTROLLER_WAIT_PASS__REAL_DEVICE_EXTERNAL",
+  "ldc_source_identity_model": "CURRENT_COMPOSITE_SYNC_AUTHORITY__NO_SINGLE_PACKAGE_IDENTITY",
+  "ldc_interim_r6_component": {
+    "public_version": "65",
+    "app_version": "v2.19.65-R1B",
+    "package_sha256": "35ee5c69fe0468d2e3ee2d963a7fa6667169c24d6c8023da2726b4cd8b50ed20",
+    "align_generation": "G036-AFLP-R6-UWR2",
+    "enriched_generation": "G036-AFLP-R6-SUP-T5",
+    "corpus_manifest_sha256": "0d04190b166932086ed45141368bd4ae88b5a22806ca1e525a3e6a60a267f3ad"
+  },
+  "ldc_current_sync_authority": {
+    "authority_model": "BASE_FLOW_RA19B_PLUS_TARGETED_R5_SYNC",
+    "base_flow_source_public_version": "Version 29",
+    "base_flow_source_app_version": "v2.19.29-R1B",
+    "base_flow_source_package_sha256": "eb2fa6abce1525399547f469ad1c2d64e818ff8685fe11cc20a57571c59f92fc",
+    "base_flow_sync_date": "2026-08-21",
+    "base_flow_mapped_source_blocks": 115,
+    "base_flow_ra19b_changed_blocks_vs_ra18": 61,
+    "base_flow_explicit_preserve_breaks": 100,
+    "base_flow_explicit_preserve_list_breaks": 0,
+    "base_flow_runtime_flow_overrides": 66,
+    "targeted_successor_source_public_version": "62",
+    "targeted_successor_source_app_version": "v2.19.62-R1B",
+    "targeted_successor_align_generation": "G036-AFLP-R5-UWR2",
+    "targeted_successor_enriched_generation": "G036-AFLP-R5-SUP-T4",
+    "targeted_successor_package_sha256": "3e1d234c2de11ea8032cb7d56c3e5eb0d5faac1c8858e227fd730db61481eb50",
+    "targeted_successor_corpus_manifest_sha256": "76895194f21e21c058d8c7f1547977abad220caa501406b97ac4b4e05f1772e7",
+    "targeted_sync_date": "2026-08-31",
+    "targeted_operation_count": 15,
+    "targeted_scope": "ONLY_THE_15_GOVERNED_LINKED_CORRECTIONS; no claim of full 115-block reimport from v62",
+    "interim_r6_sync": {
+      "source_public_version": "65",
+      "source_app_version": "v2.19.65-R1B",
+      "corpus_version": "G036-AFLP-R6-SUP-T5",
+      "backbone_corpus_version": "G036-AFLP-R6-UWR2",
+      "source_package_sha256": "35ee5c69fe0468d2e3ee2d963a7fa6667169c24d6c8023da2726b4cd8b50ed20",
+      "source_corpus_manifest_sha256": "0d04190b166932086ed45141368bd4ae88b5a22806ca1e525a3e6a60a267f3ad",
+      "sync_date": "2026-09-07",
+      "operation_count": 13,
+      "scope": "ONLY_13_OFFICIAL_R6_DERIVATIVE_SYNCHRONIZATIONS__NO_FULL_LINKED_LIBRARY_REIMPORT"
+    },
+    "interim_closed_local_qa": {
+      "operation_count": 83,
+      "date": "2026-09-07",
+      "scope": "ONLY_CLOSED_PREAUTHORIZED_24H_TEXT_RECORDS__H23_SOURCE_CRITICAL_AND_300_LDC_UPSTREAM_FINDINGS_EXCLUDED"
+    },
+    "post_r6_local_grammar_corrections": {
+      "operation_count": 1,
+      "date": "2026-09-07",
+      "scope": "ONE_EXPLICIT_USER_AUTHORIZED_FRENCH_GRAMMAR_REPAIR_ONLY",
+      "records": [
+        "PASSION24.TEXT.RELATED_HOUR_13.BODY.P124"
+      ],
+      "note": "Inherited French-source omission “à la porte leur cœur” repaired to grammatical “à la porte de leur cœur”. Governing LDC R6 source remains unchanged and should receive separate upstream QA."
+    },
+    "fast_mode_derivative_correction_sync": {
+      "date": "2026-09-09",
+      "predecessor_app_version": "v101.139 R1",
+      "predecessor_zip_sha256": "07c58c551046ec186428b7075b9a6225b6b36d97359439d3a92c69ad58271726",
+      "certified_fast_mode_accepted_entries": 2707,
+      "source_terminal_counts": {
+        "NOT_PRESENT_IN_24H": 2668,
+        "PRESENT_ALL_ALREADY_CORRECT": 2,
+        "PRESENT_WITH_APPLICABLE_DERIVATIVES": 37,
+        "BLOCKED_MAPPING_OR_CONFLICT": 0
+      },
+      "authorized_source_corrections_applied": 37,
+      "already_correct_noops": 2,
+      "changed_current_derivative_records": 36,
+      "boundary_repairs_applied": 5,
+      "cross_record_flow_joins": 3,
+      "derivative_authority_sha256": "c5ed40fcc0b9db71b742606ce90de55dc82606204d8b8d989271bd2a227b015b",
+      "scope": "ONLY_CORRECTION_CERTAIN_ACCEPTED_FAST_MODE_DEFECTS_PROVEN_PRESENT_IN_CURRENT_24H_LDC_DERIVATIVES__NO_NEW_LINGUISTIC_SWEEP"
+    }
+  },
+  "ldc_current_sync_authority_canonical_sha256": "87c6d2dfcac5b1613112e78a6e6bfd195941fcda2a27b26a3ebc7a59dff31028",
+  "ldc_current_sync_authority_raw_rhs_sha256": "f69ea19551a34fed5ca07de20759d6e321288b57519fc173d83ad05953bad092",
+  "ldc_current_derivative_authority_sha256": "c5ed40fcc0b9db71b742606ce90de55dc82606204d8b8d989271bd2a227b015b",
+  "documentary_content_authority_set_sha256": "53c360d938e8fd84d1191788d5c06a27d303ed478ac85b86602dbd58005303b2",
+  "r12_runtime_hygiene": {
+    "predecessor_release_id": "24h-v102.0-r11-20260918-c66cee9aa99e",
+    "predecessor_release_sequence": 102000011,
+    "predecessor_deploy_sha256": "011456101542b26820e7468053c394b714c0a6dc9af646c263ac508a4aba9470",
+    "scope": [
+      "semantic bottom-navigation geometry/scaling",
+      "current-facing release metadata cleanup",
+      "explicit current composite linked-LDC authority metadata",
+      "release/CSP/cache identity rebinding only"
+    ],
+    "semantic_nav_contract": "AT_WIDTHS_GTE_320PX_BOTTOM_NAV_COMPUTED_FONT_SIZE_EQUALS_SELECTED_NAV_PRESET_FOR_ALL_FOUR_ITEMS__SUB320_BOUNDED_EMERGENCY_CAP_ALLOWED",
+    "update_v2_architecture": "BYTE_SEMANTICS_PRESERVED_EXCEPT_SUCCESSOR_IDENTITY_HASH_CACHE_COMMENT",
+    "provenance_ui": "NOT_IMPLEMENTED_IN_R12"
+  },
+  "r12_internal_status": "PASS__STATIC_76_OF_76__IOS_READER_1152_OF_1152__BOTTOM_CLEARANCE_144_OF_144__CROSSPLATFORM_NAV_88_OF_88__SW_LIFECYCLE_PASS__CONTROLLER_WAIT_PASS__REAL_DEVICE_EXTERNAL",
+  "r13_source_critical": {
+    "predecessor_release_id": "24h-v102.0-r12-20260918-6822c0a9996a",
+    "predecessor_release_sequence": 102000012,
+    "predecessor_deploy_sha256": "f5a8cba3f50a307f83af719c1f1838a2d0c9c2a46aa2a4c61f9c428e6f484ba9",
+    "candidate_universe": 46,
+    "correction_operation_count": 52,
+    "pass2_ledger_sha256": "7470bb080125b1fa987f4f7c66b03c120384c8bd4d895559016094f81414c32d",
+    "stable_id_topology": "PRESERVED",
+    "provenance_ui": "NOT_IMPLEMENTED_IN_R13"
+  },
+  "canonical_shell_inline_script_sha256_csp": "sha256-LAXy/vq5bsJ+bDKv3SA0QvvbujgvRtXJ0Jahlelcs78=",
+  "r13_documentary_integrity_set_contract": "SHA256_UTF8_NFC_SORTED_KEYS_COMPACT_JSON_ARRAY_ORDER_PRESERVED_OF_72_RECORD_ARRAY__ledger_id_content_presentation_linked_source_documentary_assertion",
+  "r13_documentary_integrity_set_sha256": "50c3509c87887150d484a3e0b186e0ac718f447befd1f96164c4b03681f689f0",
+  "r13_documentary_changed_counts": {
+    "content": 25,
+    "presentation": 11,
+    "linked_source_identity": 0,
+    "documentary_assertion": 25
+  },
+  "provenance_ui_status": "R25_SYSTEMATIC_CHAIN_FIRST__CALIBRATED_READER_ASSURANCE__PLAIN_LANGUAGE_AI_AFLP_ECCLESIAL_RESPONSES__TECHNICAL_TRACEABILITY_PRESERVED",
+  "r14_provenance": {
+    "predecessor_release_id": "24h-v102.0-r13-20260919-5540c021d1a3",
+    "predecessor_deploy_sha256": "effff5ca9d48d1a3730506327612d43a3ee9568863bbac6ebce926144e71a1b0",
+    "p5_frozen_package_sha256": "9fc9bc6307138ffc4834bb7a5b12ab1442e765d6152a1127e5116c4341f5ebf8",
+    "public_projection_sha256": "d6a6f5de9c01be8baac79e0a927b9ec2f849068ac7ada0cc9814ef77c998a495",
+    "projection_record_count": 72,
+    "documentary_note_records": [
+      "H08.REFLECTIONS_PRACTICE",
+      "H23.MEDITATION",
+      "H24.MEDITATION"
+    ],
+    "search_index_inclusion": false,
+    "accordion_state_persisted": false
+  },
+  "provenance_public_projection_sha256": "0de47bbce8d64df7de23854a4843ca62d92ea2541a4a4d6f4786532395cabf9f",
+  "provenance_p5_package_sha256": "9fc9bc6307138ffc4834bb7a5b12ab1442e765d6152a1127e5116c4341f5ebf8",
+  "provenance_r13_documentary_integrity_set_sha256": "50c3509c87887150d484a3e0b186e0ac718f447befd1f96164c4b03681f689f0",
+  "r15_provenance": {
+    "predecessor_release_id": "24h-v102.0-r14-20260919-889789ce9500",
+    "predecessor_deploy_sha256": "5d4e8ebb5790d820305b25d4575630160b3de2ba7392bcab683ffe87bfc254fa",
+    "h23_v2_report_sha256": "7eb85778e524fae4d7ad3835a8ffa5256afb998c350023d7da80aec31075e6d3",
+    "source_critical_master_dossier_sha256": "1baf12467328f395a13f05917358b1cec7047dda47356a8d128e442cd2f898ea",
+    "public_projection_sha256": "54530c05fdce35f9b1894090c7cd40c2400cc1cb13b6e677de94f8f72730b272",
+    "projection_record_count": 72,
+    "documentary_note_records": [
+      "H08.REFLECTIONS_PRACTICE",
+      "H23.MEDITATION",
+      "H23.REFLECTIONS_PRACTICE",
+      "H24.MEDITATION"
+    ],
+    "new_issue_id": "OPEN_H23_REFLECTION_SHORT_EXPANDED_GENEALOGY",
+    "devotional_mutation_authority": "NONE",
+    "source_detail_change": "SPECIFIC_SOURCE_NAMES_AND_ROLES_ADDED_WITHOUT_EXPANDING_EVIDENCE_CLAIMS",
+    "search_index_inclusion": false,
+    "accordion_state_persisted": false
+  },
+  "provenance_h23_v2_report_sha256": "7eb85778e524fae4d7ad3835a8ffa5256afb998c350023d7da80aec31075e6d3",
+  "provenance_source_critical_master_dossier_sha256": "1baf12467328f395a13f05917358b1cec7047dda47356a8d128e442cd2f898ea",
+  "r16_provenance": {
+    "predecessor_release_id": "24h-v102.0-r15-20260919-2662b75198c9",
+    "predecessor_deploy_sha256": "78a3a9cc9513377908cb3f6863dcbaa14040a97a5365670ed0b4fcdc7a35e790",
+    "public_projection_sha256": "f6c1d88aefa5fd9b35c599dd0fae293a00455a9571697b6dec6cc090d798c93d",
+    "projection_record_count": 72,
+    "documentary_note_records": [
+      "H08.REFLECTIONS_PRACTICE",
+      "H23.MEDITATION",
+      "H23.REFLECTIONS_PRACTICE",
+      "H24.MEDITATION"
+    ],
+    "scope": "STRUCTURED_SOURCE_CHAIN_AND_PUBLIC_PROVENANCE_CLARITY_ONLY",
+    "devotional_mutation_authority": "NONE",
+    "systematic_evidence_chain": [
+      "GE/Lumen Luminis 2021",
+      "Italian critical master R3 (IT174/IT364/ITDV + targeted ITPM)",
+      "AFLP 27 complete 24/24 + 48/48 photo-verified control"
+    ],
+    "secondary_targeted_controls": [
+      "English Hours of the Passion",
+      "additional Italian/French witnesses",
+      "historical/archival materials at difficult loci"
+    ],
+    "multilingual_search_caveat": "Search/discovery breadth is not represented as validation evidence unless an identifiable source was acquired and adjudicated."
+  },
+  "r17_provenance": {
+    "predecessor_release_id": "24h-v102.0-r16-20260919-61e3b0c2d742",
+    "predecessor_deploy_sha256": "7713b1e753888249dabb97128bdf01216ff5de811544ae256b0255d319dbe7b7",
+    "public_projection_sha256": "7c5d56af2c7cc26649091fdbc0201200a01f91113ce9e0c09e5ddfefb371eb70",
+    "projection_record_count": 72,
+    "documentary_note_records": [
+      "H08.REFLECTIONS_PRACTICE",
+      "H23.MEDITATION",
+      "H23.REFLECTIONS_PRACTICE",
+      "H24.MEDITATION"
+    ],
+    "scope": "EVIDENCE_ARCHITECTURE_AND_PUBLIC_PROVENANCE_UX_ONLY",
+    "devotional_mutation_authority": "NONE",
+    "systematic_evidence_chain": [
+      "GE/Lumen Luminis 2021 target lineage",
+      "Italian critical master R3 (IT174 base + IT364/ITDV comparisons + targeted ITPM)",
+      "AFLP 27 complete 24/24 + 48/48 photo-verified French control"
+    ],
+    "targeted_controls": [
+      "English Hours of the Passion",
+      "additional Italian/French witnesses",
+      "H23 Résiac 1999 / Form A provenance / Form B witnesses / item 05681 / boundary materials",
+      "multilingual discovery only when acquired/adjudicated"
+    ],
+    "r16_identity_defect_corrected": "R16 shell embedded APP_RELEASE_SEQUENCE 102000015 and R15 release_id while manifest/version/SW identified R16. R17 binds shell, manifest, version and SW coherently.",
+    "internal_verification": "PASS__STATIC_135_CHECKS__BROWSER_576_STATES__JS_SYNTAX_PASS__DETERMINISTIC_ZIP_PASS"
+  },
+  "r18_provenance": {
+    "predecessor_release_id": "24h-v102.0-r17-20260919-1ddd8b5e24d1",
+    "predecessor_deploy_sha256": "e66c91842d678359d00c1aed50194245278e8a6dd901260c7e86751259e7ef75",
+    "public_projection_sha256": "0de47bbce8d64df7de23854a4843ca62d92ea2541a4a4d6f4786532395cabf9f",
+    "projection_record_count": 72,
+    "documentary_note_records": [
+      "H08.REFLECTIONS_PRACTICE",
+      "H23.MEDITATION",
+      "H23.REFLECTIONS_PRACTICE",
+      "H24.MEDITATION"
+    ],
+    "scope": "AUTHORIZED_PUBLIC_WORDING_REFINEMENT_AND_THREE_LEVEL_EVIDENCE_PRESENTATION_ONLY",
+    "devotional_mutation_authority": "NONE",
+    "public_heading": "Sources et validation documentaire",
+    "terminology_change": "Public UI uses “référence italienne de travail R3”; “corpus critique italien R3” removed from ordinary public wording.",
+    "witness_independence_rule": "IT174/IT364/ITDV agreement is not presented as three historically independent confirmations.",
+    "h23_governance": "Meditation A/B, reflection short/expanded, and H23/H24 boundary are explicitly separated; no devotional macro-text mutation.",
+    "technical_evidence_layer": "Witness codes, evidence filenames, page counts and SHA-256 values available in nested methodology disclosure."
+  },
+  "r19_reader_repairs": {
+    "scope": "authorized_two_fix_successor",
+    "predecessor": "v102.0 R18",
+    "h24_target": "PASSION24.HOUR.24.DESOL.P081",
+    "h24_canonical_text_mutated": false,
+    "h24_display_segments": 9,
+    "browser_header_fix": "browser layouts >=769px: header/progress remain outside scrolling content and are promoted above an explicit lower .main stacking context; unnecessary .content compositor transform removed in this width band; narrow/mobile scroll-shell rules remain unchanged",
+    "protected": "R18 provenance projection; CORPUS canonical bytes; TEXT_LIBRARY; SPEECH_DATA; Search; personal state/storage schema; backup format; Update-v2 behavior",
+    "h24_display_punctuation_patches": [
+      {
+        "from": "et seule je ne peux, ni ne veux vivre",
+        "to": "et seule, je ne peux ni ne veux vivre",
+        "reason": "punctuation_coordination",
+        "length_preserving": true
+      },
+      {
+        "from": "non seulement tu les sens cloués, mais comme arrachés",
+        "to": "tu les sens non seulement cloués, mais comme arrachés",
+        "reason": "syntax_parallelism",
+        "length_preserving": true
+      },
+      {
+        "from": "épées. D’autant plus qu’ayant en toi",
+        "to": "épées, d’autant que tu portes en toi",
+        "reason": "syntax_participle_clause",
+        "length_preserving": true
+      },
+      {
+        "from": "battements de tous, à chaque",
+        "to": "battements de tous. À chaque",
+        "reason": "sentence_boundary",
+        "length_preserving": true
+      }
     ]
+  },
+  "provenance_projection_version": "R22-H24-TRAILING-SEPARATOR-CLEANUP-R1",
+  "provenance_projection_sha256": "8ad8c6e341490bc259ec8587661f28850cae9fb1cd018ed4271494687faf3f78",
+  "provenance_wording_candidate_sha256": "31c26c0fc329e3540acb0d4bf2d950400c022f5876b311e427ed8ee00d143156",
+  "provenance_r13_reconciliation_ledger_sha256": "7470bb080125b1fa987f4f7c66b03c120384c8bd4d895559016094f81414c32d",
+  "r21_repair": {
+    "predecessor_release_id": "24h-v102.0-r20-20260920-7f1c6b911d5d",
+    "predecessor_deploy_sha256": "77fbc57cc4d3ac0a8720f42c9962ad313cd713d61fc0f92012c88b4130f5428a",
+    "scope_tag": "R21|font-button-scope|toolbar-content-flex|r13-52ids|h23-rpn008|csp-meta",
+    "r13_apply_rows": 46,
+    "r13_target_entries": 52,
+    "r13_distinct_stable_ids": 52,
+    "h23_overlap": "RPN-008/C0071 same stable paragraph, distinct sequential corrections",
+    "devotional_mutation_authority": "NONE"
+  },
+  "r22_cleanup": {
+    "predecessor_release_id": "24h-v102.0-r21-20260920-6c1807b13aa6",
+    "predecessor_deploy_sha256": "88344a8a07baf5bbdd85293b6e7ff23d7f8259989a1cd3cc8fd0a25aee8f03d2",
+    "scope": "R22|H24-PROVENANCE-TRAILING-SEPARATOR-CLEANUP|NO-DEVOTIONAL-MUTATION",
+    "product_mutation": "PROVENANCE_PUBLIC_PROJECTION.hour_conclusions[24]: remove trailing \\n\\n--- only",
+    "devotional_mutation_authority": "NONE"
+  },
+  "r23_provenance_public_ux": {
+    "predecessor_release_id": "24h-v102.0-r22-20260920-1757c2a1dd7f",
+    "predecessor_deploy_sha256": "652bfdb5e8c8cfc23d04427a8b3a48dbdf203f585308f0bd8d8e69591cba4409",
+    "scope": "PUBLIC_INFORMATION_ARCHITECTURE_AND_WORDING_ONLY",
+    "frozen_documentary_projection_sha256": "8ad8c6e341490bc259ec8587661f28850cae9fb1cd018ed4271494687faf3f78",
+    "public_guide_sha256": "47e4691a18eeae7baf287da3d49c736500a405c4fe5dc3f004fef6bcc065aa5b",
+    "devotional_mutation_authority": "NONE",
+    "principles": [
+      "plain-language first",
+      "systematic verification before findings",
+      "technical labels optional",
+      "open uncertainty preserved",
+      "one public guide reused by per-Hour methodology and Help surfaces"
+    ]
+  },
+  "provenance_public_guide_version": "R25-CLARITY-CONFIDENCE-CALIBRATION-R1",
+  "provenance_public_guide_sha256": "e6237c4cb95343623e9a01cf0b4bdfc0c0dfd029b6fe3f2532b93a00f89c0f3c",
+  "provenance_public_guide_basis_projection_sha256": "8ad8c6e341490bc259ec8587661f28850cae9fb1cd018ed4271494687faf3f78",
+  "r23_internal_qa": {
+    "provenance_ui_matrix": "PASS__6_WIDTHS_X_4_TEXT_SIZES_X_24_HOURS__4224_CHECKS__ZERO_FAILURES",
+    "traceability": "PASS__148_CHECKS__72_TECHNICAL_RECORD_SUMMARIES_AND_OUTCOMES_PRESERVED",
+    "reopened_static": "PASS__29_GATES",
+    "reopened_blind_runtime": "PASS__113_CHECKS",
+    "external_limitations": "physical installed iPhone/iPad/Samsung, live-origin service-worker/update/offline, assistive-technology and platform text-enlargement gates remain external"
+  },
+  "r24_provenance_confidence_ux": {
+    "predecessor_release_id": "24h-v102.0-r23-20260920-2fcdee8e68b9",
+    "predecessor_deploy_sha256": "c42f13998055a24d582750bf8cffda0e8150feb45c7e5d6d44c0bb65bc565486",
+    "scope": "PUBLIC_PROVENANCE_CONFIDENCE_TRANSPARENCY_PLUS_MODAL_STICKY_HEADER_DISPLAY_REPAIR",
+    "frozen_documentary_projection_sha256": "8ad8c6e341490bc259ec8587661f28850cae9fb1cd018ed4271494687faf3f78",
+    "public_guide_sha256": "0914cd3f0db18c562cca6d03a6fb3923c8bac766d46593871b8900e08c4b40bd",
+    "devotional_mutation_authority": "NONE"
+  },
+  "r24_internal_qa": {
+    "methodology_modal_matrix": "PASS__5_WIDTHS_X_4_TEXT_SIZES__20_CASES__ZERO_FAILURES__SCROLL_RESET_AND_STICKY_HEADER_TOP_OWNERSHIP_CONFIRMED",
+    "per_hour_provenance_matrix": "PASS__24_HOURS_X_4_TEXT_SIZES_AT_320PX__96_CASES__ZERO_FAILURES",
+    "functional_smoke": "PASS__11_11__HOME_READER_H23_PROVENANCE_MODAL_SEARCH_HELP",
+    "protected_payload_parity": "CORPUS_SPEECH_DATA_TEXT_LIBRARY_PROVENANCE_PUBLIC_PROJECTION_BYTE_IDENTICAL_TO_R23",
+    "external_limitations": "physical installed iPhone/iPad/Samsung, live-origin service-worker/update/offline, assistive-technology and platform text-enlargement gates remain external"
+  },
+  "r25_provenance_clarity_confidence": {
+    "predecessor_release_id": "24h-v102.0-r24-20260920-0914cd3f0db1",
+    "scope": "Public methodology wording/order only; no documentary projection or devotional corpus mutation.",
+    "ordering": "Scope intro → three-step systematic chain → calibrated reader assurance → quantified work markers → AFLP/AI FAQs → targeted controls/decision rules/open issues/limits/technical traceability.",
+    "evidence_guardrail": "Claims are limited to the documents actually examined; no claim of definitive, globally best, official, or ecclesially approved text.",
+    "qa_status": "PASS__BUILD_TREE_272_272__DETERMINISTIC_PACKAGE__REOPENED_STATIC_AND_RUNTIME_PRELOCK_PASS__FINAL_DELIVERED_ZIP_TO_BE_VERIFIED_EXTERNALLY_BY_HANDOFF_REPORT"
+  },
+  "r25_internal_qa": {
+    "build_tree_provenance_ui": "PASS__272_OF_272",
+    "prepackage_static": "PASS__14_OF_14",
+    "deterministic_package_prelock": "PASS__BYTE_IDENTICAL_DOUBLE_BUILD",
+    "reopened_prelock_static": "PASS__30_OF_30",
+    "reopened_prelock_runtime": "PASS__272_OF_272"
   }
 }
