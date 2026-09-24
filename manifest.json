@@ -39,8 +39,8 @@
     "standalone",
     "browser"
   ],
-  "version": "v104.0",
-  "build_revision": "R27",
-  "release_sequence": 104000027,
-  "release_id": "24h-v104.0-r27-20260921-bb7124dd7ad8"
+  "version": "v109.0",
+  "build_revision": "R32",
+  "release_sequence": 109000032,
+  "release_id": "24h-v109.0-r32-20260924-dd256c478421"
 }

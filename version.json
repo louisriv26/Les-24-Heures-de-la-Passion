@@ -1,16 +1,17 @@
 {
-  "app_version": "v104.0",
-  "build_date": "2026-09-21",
-  "cache_name": "scope-derived:luisa-24h-<scope-fingerprint>-v104-0-r27",
+  "app_version": "v109.0",
+  "build_date": "2026-09-24",
+  "cache_name": "scope-derived:luisa-24h-<scope-fingerprint>-v109-0-r32",
   "storage_schema": 8,
   "personal_snapshot": 5,
   "ldc_source_public_version": "COMPOSITE_29_62_65_PLUS_FAST_MODE_DERIVATIVE_SYNC",
   "ldc_source_app_version": "LDC_CURRENT_SYNC_AUTHORITY",
   "ldc_source_package_sha256": null,
-  "release_scope": "R27 release-integrity correction of the v103.0/R26 Help/version candidate: canonical shell hash binding corrected in service worker; public Help clarity retained; Internet-connection wording clarified; R25 provenance guide, R22 documentary projection and devotional content protected.",
-  "real_device_status": "R27 requalified in static, package-integrity and rendered-template scope. Fresh browser-runtime execution is NOT FULLY TESTABLE in the current environment; physical installed iPhone/iPad/Samsung/PWA/live-origin/offline confirmation remains external.",
-  "overall_release_status": "V1040_R27_RELEASE_INTEGRITY_CORRECTION__STATICALLY_QUALIFIED__BROWSER_RUNTIME_AND_EXTERNAL_DEVICE_GATES_PENDING",
+  "release_scope": "R32/v109.0 structural VisualParagraph + CanonicalSlice repair from exact R29 semantic baseline. Nine special cross-record surfaces use text-only visual paragraphs with immutable canonical IDs/offsets mapped through explicit slices; R28 iOS native-selection separation and R29 mark-selection correction retained where applicable; R30/R31 experiments excluded; protected devotional/source-critical payloads unchanged.",
+  "real_device_status": "R29_PHYSICAL_IPAD_LOGICAL_SELECTION_AND_HIGHLIGHT_PERSISTENCE_CONFIRMED__NATIVE_VISUAL_SELECTION_WITHIN_P013_REMAINED_DEFECTIVE__R30_PHYSICAL_A_FAILED__R31_QUARANTINED_UNTESTED__R32_STRUCTURAL_CANDIDATE_INTERNAL_QA_COMPLETE__FINAL_PHYSICAL_IPAD_GATE_PENDING",
+  "overall_release_status": "V1090_R32_STRUCTURAL_SELECTION_REFACTOR__INTERNALLY_QUALIFIED_CANDIDATE__FINAL_PHYSICAL_IPAD_CONFIRMATION_PENDING",
   "known_blockers": [
+    "final physical iPad R32 gate: direct H03 P013 native selection must visibly show the selected text and both native handles; direct highlight must persist; P012→P013 must remain native-selectable and persistent",
     "physical installed-PWA migration verification to the exact final qualified successor on iPhone and iPad, including one-tap Actualiser behavior from governed predecessor lineages",
     "true standalone iPhone/iPad/Samsung verification on exact qualified bytes",
     "live-origin exact-byte binding",
@@ -20,6 +21,7 @@
     "platform Larger Text / approximately 200% enlargement verification where supported"
   ],
   "external_open_gates": [
+    "final physical iPad R32 gate: direct H03 P013 native selection must visibly show the selected text and both native handles; direct highlight must persist; P012→P013 must remain native-selectable and persistent",
     "physical installed-PWA migration verification to the exact final qualified successor on iPhone and iPad, including one-tap Actualiser behavior from governed predecessor lineages",
     "true standalone iPhone/iPad/Samsung verification on exact qualified bytes",
     "live-origin exact-byte binding",
@@ -32,7 +34,7 @@
   "ldc_source_enriched_generation": "COMPOSITE__SEE_ldc_current_sync_authority",
   "ldc_source_corpus_manifest_sha256": null,
   "postfreeze_reopen_evidence": "R21 is the bounded repair authorized after the independent R20 audit; no devotional corpus mutation is authorized.",
-  "build_revision": "R27",
+  "build_revision": "R32",
   "forced_colors_stage7": "TEST_ONLY__PASS_EMULATED_CHROMIUM__23_23_WAVE_SLICE__ZERO_MUTATION__EXTERNAL_WAVE_QA_PACK",
   "stage7_authorization_proposal_sha256": "42126e52c63d114d1b3a42bdf2bcac8f19e88dc70417fd95accfe33f809312a6",
   "stage7_predecessor_zip_sha256": "3eb86f5d9f1686a8851664020be4060c85dbf20228351d1d1c442e583c8ece5c",
@@ -46,14 +48,14 @@
   "search_projection_version": "24h-search-v2-reader-projection-r1",
   "search_predecessor_zip_sha256": "3f69f8b948494d70e728287998efe6a0fefafa649ac9e0a7759934fbcefe458a",
   "scroll_performance_predecessor_zip_sha256": "f9bee241f08181a31b63e4284bc82422f5cdc820a2d4033017ef5c1d95004478",
-  "release_sequence": 104000027,
-  "release_id": "24h-v104.0-r27-20260921-bb7124dd7ad8",
+  "release_sequence": 109000032,
+  "release_id": "24h-v109.0-r32-20260924-dd256c478421",
   "canonical_shell": "./luisa_24_heures.html",
-  "canonical_shell_sha256": "f51c01318b287a076e93dd0722e79f64c3c1992c5651b73e154e849a42e5c336",
+  "canonical_shell_sha256": "2d76ca82f93ef40af7ac6d11059fb8e24322a598f685465422e99245f229256c",
   "update_protocol": 2,
   "pwa_update_predecessor_version": "v101.156",
   "pwa_update_predecessor_zip_sha256": "9b73b16dfc26c6b5cc1efaa652cdf7264b3331040022477bcbed6ddecabfdc9a",
-  "pwa_update_architecture": "verified_prepare_commit_v2_waiting_worker_explicit_activation__R27_CORRECTS_R26_STALE_PREDECESSOR_CANONICAL_HASH_BINDING__UPDATE_V2_BEHAVIOR_OTHERWISE_UNCHANGED",
+  "pwa_update_architecture": "verified_prepare_commit_v2_waiting_worker_explicit_activation__R29_UPDATE_PROTOCOL_PRESERVED__R32_STRUCTURAL_RENDERER_ONLY_WITH_RELEASE_HASH_REBIND",
   "legacy_bootstrap": "R15 preserves the R14/R13/R12/R11 unique-lineage Update-v2 architecture. Automatic install does not claim clients; only a verified explicit user commit arms same-scope takeover.",
   "rollback_policy": "No downgrade. Candidate verification fails closed; predecessor cache retained until matching successor BOOT_OK. Functional rollback must be shipped as a new higher release_sequence.",
   "manifest_identity_binding": "version/build/release_sequence/release_id/start_url verified by installing worker; index.html must hash-identically match canonical shell",
@@ -69,15 +71,15 @@
     "R12 bottom-navigation geometry behavior inherited unchanged",
     "R14 release identity, cache and CSP script/style hashes mechanically rebound to exact successor bytes"
   ],
-  "functional_freeze_status": "FROZEN_R27_RELEASE_INTEGRITY_CORRECTION__R26_HELP_INFORMATION_ARCHITECTURE_R25_PUBLIC_PROVENANCE_GUIDE_R22_DOCUMENTARY_PROJECTION_AND_DEVOTIONAL_BEHAVIOR_PROTECTED",
-  "security_stage_status": "R22_CSP3_ARCHITECTURE_PRESERVED__SCRIPT_HASH_REBOUND_TO_EXACT_R27_BYTES__STYLE_HASHES_UNCHANGED__SERVICE_WORKER_CANONICAL_SHELL_HASH_BOUND_TO_EXACT_R27_SHELL",
+  "functional_freeze_status": "FROZEN_R32_STRUCTURAL_VISUAL_PARAGRAPH_CANONICAL_SLICE_REFACTOR__R29_FUNCTIONAL_SELECTION_BASELINE_PRESERVED__R30_R31_EXCLUDED__PROTECTED_CONTENT_UNCHANGED",
+  "security_stage_status": "CSP3_ARCHITECTURE_PRESERVED__R32_INLINE_SCRIPT_AND_STYLE_HASHES_REBOUND_TO_EXACT_FINAL_SHELL__SERVICE_WORKER_CANONICAL_SHELL_HASH_BOUND_TO_EXACT_R32_SHELL",
   "security_predecessor_version": "v102.0 R4",
   "security_predecessor_zip_sha256": "79d8d88ed80622841dcf989edc5d777e2c2c6e3f5f3e17cad9042a679e7b5fc4",
   "security_csp_strategy": "CSP3 split directives: hash-locked script/style elements; inline handler/style attributes retained for compatibility and mature architecture; legacy script-src/style-src fallback retained.",
-  "security_inline_script_sha256_base64": "sha256-LQfCYt/X/huljAIdI+ARmRM5QlbD2i6DFuc5QdlCTNU=",
+  "security_inline_script_sha256_base64": "sha256-TcmJIhsIF3MDJw1q490JHIJoPnbzR3SsCthErBVDyoQ=",
   "security_inline_style_sha256_base64": [
     "sha256-UQ2LZMV8vpixa50rjbFhb0lgGCv04EY1sB1SyGNLL0k=",
-    "sha256-PpjtDyVw1yv1jlLAwLaCwFXSRPTjEp+1EJBnNPMT4aY=",
+    "sha256-Vy6+A/1jfz47aC0DEQU/xSrEbUkFBO4JfwfEORKHdNY=",
     "sha256-/PDid79K7LRUFTBYGYCk5WowaPjSf8h6n32Q2Qfk09Y="
   ],
   "blind_adversarial_r3_predecessor_version": "v102.0 R2",
@@ -578,5 +580,33 @@
     ],
     "browser_runtime_status": "NOT_FULLY_TESTABLE__CURRENT_CHROMIUM_HEADLESS_ENVIRONMENT_DOES_NOT_COMPLETE_LOCAL_NAVIGATION",
     "external_gates": "UNCHANGED__PHYSICAL_INSTALLED_PWA_LIVE_ORIGIN_OFFLINE_ASSISTIVE_TECH_PLATFORM_ENLARGEMENT"
+  },
+  "r28_ipad_native_selection_correction": {
+    "predecessor_release_id": "24h-v104.0-r27-20260921-bb7124dd7ad8",
+    "predecessor_deploy_sha256": "194ba5b94fc30cb838178a20412922107b19ca486950d51bdd11f565263f035a",
+    "scope": "MINIMAL_IOS_NATIVE_SELECTION_EXPERIMENT__NO_RENDERER_OR_DATA_REFACTOR",
+    "mutations": [
+      "Suppress legacy app-owned 480 ms reader long-press timer on ios-device runtime.",
+      "Explicitly set user-select:text, WebKit touch-callout:default and touch-action:auto on the complete continuity-flow selection chain for ios-device.",
+      "Advance public version/build/release identity and rebind CSP/service-worker release integrity to final bytes."
+    ],
+    "protected_payloads": "CORPUS, TEXT_LIBRARY, SPEECH_DATA, continuity membership, display segments, canonical paragraph IDs/offsets, provenance/source-critical/devotional wording unchanged.",
+    "physical_gate": "H03 final visible paragraph native WebKit selection/handles/menu/highlight persistence must pass on physical iPad before defect closure.",
+    "fallback": "If physical H03 still fails, do not stack more CSS/event patches; execute the packaged VisualParagraph + CanonicalSlice architecture after a DOM-assumption impact audit."
+  },
+  "r29_predecessor_version": "v105.0 R28",
+  "r29_predecessor_zip_sha256": "fa2d1a22381df7102bef72b9ee997ccc08c7803f5973d8257ff12d399ef54ac7",
+  "r29_physical_evidence": "On physical iPad, R28 H03 cross-P012→P013 native selection, handle drag and persisted cross-join highlight all passed. Direct highlighting wholly inside P013 then failed. R29 addresses two independently reproduced R28 failure modes relevant to that sequence.",
+  "structural_refactor_predecessor_version": "v106.0 R29",
+  "structural_refactor_predecessor_zip_sha256": "38edd47745b3ed707726b4390e3db36e871f522c21258c9db43b4e71695ff238",
+  "structural_refactor_qa_summary": {
+    "runtime_core": "90/90 PASS",
+    "deep_runtime": "51/51 PASS",
+    "all_nine_annotation_workflows": "63/63 PASS",
+    "r29_backup_compatibility": "10/10 PASS",
+    "full_hour_visible_text_identity": "24/24 PASS",
+    "protected_dataset_identity": "8/8 PASS",
+    "random_same_record_mappings": "2000 cases PASS",
+    "random_cross_record_mappings": "900 cases PASS"
   }
 }
