@@ -1,19 +1,19 @@
-/* v106.0 R29 — direct continuity-follower selection hardening; R28 native iOS selection correction, R27 release-integrity binding and protected content retained */
+/* v111.0 R35 — audit-corrected provenance presentation successor; R33 coherent personal-state persistence and protected reader/content behavior retained */
 function scopeFingerprint(scope) {
   let h = 2166136261;
   const text = String(scope || '');
   for (let i = 0; i < text.length; i++) { h ^= text.charCodeAt(i); h = Math.imul(h, 16777619); }
   return (h >>> 0).toString(16).padStart(8, '0');
 }
-const APP_VERSION = 'v109.0';
-const BUILD_REVISION = 'R32';
-const RELEASE_SEQUENCE = 109000032;
-const RELEASE_ID = '24h-v109.0-r32-20260924-dd256c478421';
+const APP_VERSION = 'v111.0';
+const BUILD_REVISION = 'R35';
+const RELEASE_SEQUENCE = 111000035;
+const RELEASE_ID = '24h-v111.0-r35-20260926-8dacdc14021a';
 const CANONICAL_SHELL = './luisa_24_heures.html';
-const CANONICAL_SHELL_SHA256 = '2d76ca82f93ef40af7ac6d11059fb8e24322a598f685465422e99245f229256c';
+const CANONICAL_SHELL_SHA256 = '3bec0773db39c375b5d393d1cd9d52c4e0fb4965867170c12dd93b3cb1cd331c';
 const SCOPE_FINGERPRINT = scopeFingerprint(self.registration.scope);
 const CACHE_PREFIX = `luisa-24h-${SCOPE_FINGERPRINT}-`;
-const CACHE_NAME = `${CACHE_PREFIX}v109-0-r32`;
+const CACHE_NAME = `${CACHE_PREFIX}v111-0-r35`;
 const META_CACHE_NAME = `${CACHE_PREFIX}update-meta-v2`;
 const LEGACY_MIGRATION_BASELINE_CACHE = `${CACHE_PREFIX}v101-153-r1`;
 const META_KEY = new URL('./__lp24_update_meta_v2__', self.registration.scope).href;
@@ -110,6 +110,20 @@ function releaseInfoPayload() {
 function reply(event,payload) {
   try { if (event.ports && event.ports[0]) event.ports[0].postMessage(payload); else if (event.source && event.source.postMessage) event.source.postMessage(payload); } catch(_e) {}
 }
+async function sameScopeWindowClients() {
+  const scope=String(self.registration.scope||'');
+  const list=await self.clients.matchAll({type:'window',includeUncontrolled:true});
+  return list.filter(client=>{
+    try { return String(client.url||'').startsWith(scope); } catch(_e) { return false; }
+  });
+}
+async function explicitUpdateHasNoOtherLiveScopeClient(event) {
+  const requesterId=event && event.source && event.source.id ? String(event.source.id) : '';
+  if (!requesterId) return {ok:false,reason:'requester_client_identity_missing',clients:[]};
+  const clients=await sameScopeWindowClients();
+  const others=clients.filter(client=>String(client.id||'')!==requesterId);
+  return {ok:others.length===0,reason:others.length?'other_scope_clients_open':null,clients,requesterId,otherCount:others.length};
+}
 
 self.addEventListener('install', event => {
   // Intentionally no skipWaiting(): legacy v101.153 must be escaped through a controlled close/reopen boundary.
@@ -137,8 +151,18 @@ self.addEventListener('message', event => {
   }
   if (data.type==='ACTIVATE_UPDATE_V2') {
     const ok=String(data.expected_release_id||'')===RELEASE_ID && Number(data.expected_release_sequence)===RELEASE_SEQUENCE && !!data.request_id;
-    if (!ok) { reply(event,{type:'ACTIVATE_UPDATE_REJECTED_V2',request_id:data.request_id||null,release_id:RELEASE_ID}); return; }
+    if (!ok) { reply(event,{type:'ACTIVATE_UPDATE_REJECTED_V2',request_id:data.request_id||null,release_id:RELEASE_ID,reason:'release_identity_mismatch'}); return; }
     event.waitUntil((async()=>{
+      // R33 changes the canonical personal-state authority from localStorage to IndexedDB.
+      // Never cross that migration boundary while another predecessor window is live:
+      // R32 cannot participate in the new canonical store and a mixed R32/R33 writer set
+      // could otherwise acknowledge changes into different authorities. Fail closed and
+      // leave every current page untouched; the user can close the other window and retry.
+      const isolation=await explicitUpdateHasNoOtherLiveScopeClient(event);
+      if (!isolation.ok) {
+        reply(event,{type:'ACTIVATE_UPDATE_REJECTED_V2',request_id:data.request_id,release_id:RELEASE_ID,reason:isolation.reason,other_scope_clients:isolation.otherCount||0});
+        return;
+      }
       await armExplicitCommitClaim(data.request_id);
       reply(event,{type:'ACTIVATE_UPDATE_ACCEPTED_V2',request_id:data.request_id,release_id:RELEASE_ID,release_sequence:RELEASE_SEQUENCE});
       await self.skipWaiting();
