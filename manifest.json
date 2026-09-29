@@ -39,8 +39,8 @@
     "standalone",
     "browser"
   ],
-  "version": "v111.0",
-  "build_revision": "R36",
-  "release_sequence": 111000036,
-  "release_id": "24h-v111.0-r36-20260926-21af645e9f39"
+  "version": "v114",
+  "build_revision": "B1",
+  "release_sequence": 114000001,
+  "release_id": "24h-v114-b1-20260929-wave0-data-integrity"
 }
