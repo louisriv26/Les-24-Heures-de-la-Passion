@@ -1,19 +1,19 @@
-/* v111.0 R36 — full-QA audit-corrected successor; R35 application/provenance logic and R33 coherent personal-state persistence retained */
+/* v113 B1 — Wave-0 data-integrity successor from exact v111.0/R36; backup classification only; corpus and personal-state architecture retained */
 function scopeFingerprint(scope) {
   let h = 2166136261;
   const text = String(scope || '');
   for (let i = 0; i < text.length; i++) { h ^= text.charCodeAt(i); h = Math.imul(h, 16777619); }
   return (h >>> 0).toString(16).padStart(8, '0');
 }
-const APP_VERSION = 'v111.0';
-const BUILD_REVISION = 'R36';
-const RELEASE_SEQUENCE = 111000036;
-const RELEASE_ID = '24h-v111.0-r36-20260926-21af645e9f39';
+const APP_VERSION = 'v113';
+const BUILD_REVISION = 'B1';
+const RELEASE_SEQUENCE = 113000001;
+const RELEASE_ID = '24h-v113-b1-20260929-wave0-data-integrity';
 const CANONICAL_SHELL = './luisa_24_heures.html';
-const CANONICAL_SHELL_SHA256 = '3351f96fb90451e6820fc8474c873a35224e23673faf539c2becda1daaa62871';
+const CANONICAL_SHELL_SHA256 = 'a34d1d8e45853066305613297a915f916e7a2ae4562f0128faa193ee3407da26';
 const SCOPE_FINGERPRINT = scopeFingerprint(self.registration.scope);
 const CACHE_PREFIX = `luisa-24h-${SCOPE_FINGERPRINT}-`;
-const CACHE_NAME = `${CACHE_PREFIX}v111-0-r36`;
+const CACHE_NAME = `${CACHE_PREFIX}v113-b1`;
 const META_CACHE_NAME = `${CACHE_PREFIX}update-meta-v2`;
 const LEGACY_MIGRATION_BASELINE_CACHE = `${CACHE_PREFIX}v101-153-r1`;
 const META_KEY = new URL('./__lp24_update_meta_v2__', self.registration.scope).href;
