@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; script-src-elem 'sha256-IzgeNz3naimEQ5wfwlWRnINuJocODKJVNkfSFQ4GD6k='; script-src-attr 'unsafe-inline'; style-src 'self' 'unsafe-inline'; style-src-elem 'sha256-UQ2LZMV8vpixa50rjbFhb0lgGCv04EY1sB1SyGNLL0k=' 'sha256-Vy6+A/1jfz47aC0DEQU/xSrEbUkFBO4JfwfEORKHdNY=' 'sha256-/PDid79K7LRUFTBYGYCk5WowaPjSf8h6n32Q2Qfk09Y='; style-src-attr 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; media-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; script-src-elem 'sha256-94Pg/tyeSSlVQiMkYT1OYdupaPhkf1kDOALLsSEmtKc='; script-src-attr 'unsafe-inline'; style-src 'self' 'unsafe-inline'; style-src-elem 'sha256-UQ2LZMV8vpixa50rjbFhb0lgGCv04EY1sB1SyGNLL0k=' 'sha256-Vy6+A/1jfz47aC0DEQU/xSrEbUkFBO4JfwfEORKHdNY=' 'sha256-/PDid79K7LRUFTBYGYCk5WowaPjSf8h6n32Q2Qfk09Y='; style-src-attr 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; media-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="color-scheme" content="light dark">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -5708,14 +5708,14 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'v111.0';
-const BUILD_REVISION = 'R36';
-const APP_EVIDENCE_STAGE = '24H_PROVENANCE_GOVERNANCE_R15';
-const APP_RELEASE_SEQUENCE = 111000036;
-const APP_RELEASE_ID = '24h-v111.0-r36-20260926-21af645e9f39';
+const APP_VERSION = 'v114';
+const BUILD_REVISION = 'B1';
+const APP_EVIDENCE_STAGE = '24H_WAVE0_DATA_INTEGRITY_B1';
+const APP_RELEASE_SEQUENCE = 114000001;
+const APP_RELEASE_ID = '24h-v114-b1-20260929-wave0-data-integrity';
 const CANONICAL_APP_SHELL = './luisa_24_heures.html';
 const STORAGE_SCHEMA_VERSION=8; const R41_TEXT_ANCHOR_RESET_VERSION='1';
-const MAX_PERSONAL_DATA_IMPORT_BYTES = 32 * 1024 * 1024; // finite parser guard; must exceed any realistic localStorage-backed self-export
+const MAX_PERSONAL_DATA_IMPORT_BYTES = 32 * 1024 * 1024; // finite direct-restore ceiling; normal exports use the same bound and larger files are emergency archives
 const PERSONAL_BACKUP_FORMAT = 'luisa-24h-user-data';
 const PERSONAL_BACKUP_APP_ID = 'passion24';
 const SEARCH_RESULT_LIMIT = 60;
@@ -8597,7 +8597,7 @@ function showEspaceView(push = true) {
     <div class="espace-section"><div class="espace-section-title"><span>Lectures marquées</span><span class="espace-section-count">${markedReadings.length}</span></div>${markedReadingsHtml}</div>
     <div class="espace-section"><div class="espace-section-title"><span>Surlignages</span><span class="espace-section-count">${freshEntries.length}</span></div>${hlHtml}</div>
     <div class="espace-section"><div class="espace-section-title"><span>Notes</span><span class="espace-section-count">${everyNote.length}</span></div>${notesHtml}</div>
-    <div class="espace-section"><div class="espace-section-title"><span>Sauvegarder mes données</span></div><div class="espace-actions"><button type="button" class="resume-panel-btn primary" onclick="exportUserData()">⬇ Exporter la sauvegarde JSON</button><button type="button" class="resume-panel-btn" onclick="triggerImport()">⬆ Importer</button><button type="button" class="resume-panel-btn" onclick="exportHumanReadableJournal()">↗ Exporter mon journal lisible</button></div><div id="lastBackupStatus" class="espace-backup-status">${escHtml(formatLastExportStatus())}</div>${backupReminder}<div class="espace-journal-note">Le fichier JSON sert à restaurer l’app. Le journal lisible est un fichier Markdown destiné à la lecture et ne peut pas être importé comme sauvegarde.</div>
+    <div class="espace-section"><div class="espace-section-title"><span>Sauvegarder mes données</span></div><div class="espace-actions"><button type="button" class="resume-panel-btn primary" onclick="exportUserData()">⬇ Exporter la sauvegarde JSON</button><button type="button" class="resume-panel-btn" onclick="triggerImport()">⬆ Importer</button><button type="button" class="resume-panel-btn" onclick="exportHumanReadableJournal()">↗ Exporter mon journal lisible</button></div><div id="lastBackupStatus" class="espace-backup-status">${escHtml(formatLastExportStatus())}</div>${backupReminder}<div class="espace-journal-note">Le fichier JSON normal sert à restaurer l’app. Si vos données dépassent 32 Mo, l’app crée une archive de secours clairement identifiée qui conserve les données mais ne peut pas être restaurée directement dans cette version. Le journal lisible est un fichier Markdown destiné à la lecture et ne peut pas être importé comme sauvegarde.</div>
       <details class="device-transfer-guide">
         <summary>Je change d’appareil</summary>
         <div class="device-transfer-body">
@@ -11099,7 +11099,7 @@ function showHelp() {
       </div></div>
 
       <div class="help-section" id="help-backup"><div class="help-section-hd">Sauvegarder et restaurer</div><div class="help-section-body">
-        <div class="help-row"><span class="help-icon">⬇</span><span class="help-row-text"><strong>Fichier de sauvegarde</strong> — Sert à restaurer votre progression, vos positions de lecture, vos réglages, vos surlignages, vos notes et vos Lectures marquées lorsqu’ils sont présents. Le fichier est enregistré au format JSON.</span></div>
+        <div class="help-row"><span class="help-icon">⬇</span><span class="help-row-text"><strong>Fichier de sauvegarde</strong> — Sert à restaurer votre progression, vos positions de lecture, vos réglages, vos surlignages, vos notes et vos Lectures marquées lorsqu’ils sont présents. Le fichier est enregistré au format JSON. Si son volume dépasse 32 Mo, l’app crée à la place une archive de secours qui conserve les données mais n’est pas directement restaurable dans cette version.</span></div>
         <div class="help-row"><span class="help-icon">⬆</span><span class="help-row-text"><strong>Importer une sauvegarde</strong> — Remplace vos données actuelles après confirmation. Il est prudent d’exporter d’abord votre sauvegarde actuelle.</span></div>
         <div class="help-row"><span class="help-icon">↗</span><span class="help-row-text"><strong>Journal lisible</strong> — Permet de consulter vos données dans un fichier lisible. Il <strong>ne sert pas à restaurer l’application</strong>.</span></div>
         <div class="help-note"><strong>Important :</strong> les données personnelles sont conservées localement lorsque le stockage de l’appareil/navigateur est disponible. Exportez un fichier de sauvegarde avant de supprimer ou réinstaller l’app, d’effacer les données du site ou de changer d’appareil.</div>
@@ -13248,17 +13248,27 @@ async function exportUserData() {
   const data = buildPersonalDataExport();
   try {
     const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+    const day = new Date().toISOString().slice(0,10);
+    const directlyRestorable = blob.size <= MAX_PERSONAL_DATA_IMPORT_BYTES;
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url; a.download = 'luisa-24h-donnees-' + new Date().toISOString().slice(0,10) + '.json';
+    a.href = url;
+    a.download = directlyRestorable
+      ? 'luisa-24h-donnees-' + day + '.json'
+      : 'luisa-24h-archive-secours-' + day + '.json';
     document.body.appendChild(a); a.click();
     document.body.removeChild(a); URL.revokeObjectURL(url);
+    if (!directlyRestorable) {
+      showToast('Archive de secours créée : ce fichier dépasse 32 Mo et ne peut pas être restauré directement dans cette version.');
+      return true;
+    }
     const stamp = await writeLastExportAt(new Date().toISOString());
     const status = document.getElementById('lastBackupStatus');
     if (status) status.textContent = formatLastExportStatus();
     if (stamp.ok) { const reminder = document.querySelector('.espace-backup-reminder'); if (reminder) reminder.remove(); }
-    showToast(stamp.ok ? 'Données exportées ✓' : 'Données exportées, mais la date du dernier export n’a pas pu être mémorisée.');
-  } catch(e) { showToast('Export non disponible dans ce navigateur'); }
+    showToast(stamp.ok ? 'Sauvegarde restaurable exportée ✓' : 'Sauvegarde restaurable exportée, mais la date du dernier export n’a pas pu être mémorisée.');
+    return true;
+  } catch(e) { showToast('Export non disponible dans ce navigateur'); return false; }
 }
 function buildHumanReadableJournal() {
   const lines = ['# Mon journal — Les 24 Heures de la Passion', '', 'Export lisible créé le ' + new Date().toLocaleString('fr-FR') + '.', ''];
