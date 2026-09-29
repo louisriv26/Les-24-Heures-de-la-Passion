@@ -1,15 +1,15 @@
 {
-  "app_version": "v111.0",
-  "build_date": "2026-09-26",
-  "cache_name": "scope-derived:luisa-24h-<scope-fingerprint>-v111-0-r36",
+  "app_version": "v112",
+  "build_date": "2026-09-29",
+  "cache_name": "scope-derived:luisa-24h-<scope-fingerprint>-v112-b1",
   "storage_schema": 8,
   "personal_snapshot": 5,
   "ldc_source_public_version": "COMPOSITE_29_62_65_PLUS_FAST_MODE_DERIVATIVE_SYNC",
   "ldc_source_app_version": "LDC_CURRENT_SYNC_AUTHORITY",
   "ldc_source_package_sha256": null,
-  "release_scope": "R36/v111.0 full-application-QA audit-corrected successor from exact R35: corrects one stale active security-stage metadata claim discovered by independent blind challenge; application logic, devotional content, provenance copy, documentary projection, personal-state architecture, Search and H03/P013 behavior remain unchanged; all still-open R35/R33 physical/public-release gates are inherited.",
-  "real_device_status": "R32_TARGETED_IPAD_H03_P013_PASS_RETAINED_AS_PREDECESSOR_EVIDENCE__R36_NEW_SHELL_REQUIRES_EXACT_SUCCESSOR_FULL_PHYSICAL_GATE_BEFORE_PROMOTION",
-  "overall_release_status": "V1110_R36_FULL_APPLICATION_QA_CORRECTED_AND_REVERIFIED__STATIC_PACKAGE_AND_OPAQUE_ORIGIN_RUNTIME_CHALLENGE_PASS__REAL_ORIGIN_STORAGE_SERVICE_WORKER_LIVE_BINDING_AND_PHYSICAL_GATES_OPEN__PRODUCTION_NOT_AUTHORIZED",
+  "release_scope": "v112/B1 bounded Wave-1 accessibility/UX successor from exact live v111.0/R36: closes F-03, F-04, F-07 and F-28 only; corpus, provenance wording, Search, personal-state architecture and offline content protected unchanged.",
+  "real_device_status": "V112_B1_CANDIDATE__STATIC_CSP_AND_BINDING_PASS__FRESH_HOSTED_PWA_IPHONE_IPAD_KEYBOARD_SCREEN_READER_AND_UPDATE_GATES_OPEN",
+  "overall_release_status": "V112_B1_WAVE1_CANDIDATE__STATIC_SOURCE_SYNTAX_CSP_CANONICAL_SHELL_BINDING_PASS__NOT_PRODUCTION_AUTHORIZED",
   "known_blockers": [
     "Successor-bound installed-PWA predecessor→R36 update/activation and acknowledged-state preservation on iPhone and iPad.",
     "R36 iPad H03/P013 physical A–D replay: direct P013 selection; highlight/persistence; P012→P013 regression; selection inside existing cross-record highlight.",
@@ -40,7 +40,7 @@
   "ldc_source_enriched_generation": "COMPOSITE__SEE_ldc_current_sync_authority",
   "ldc_source_corpus_manifest_sha256": null,
   "postfreeze_reopen_evidence": "R21 is the bounded repair authorized after the independent R20 audit; no devotional corpus mutation is authorized.",
-  "build_revision": "R36",
+  "build_revision": "B1",
   "forced_colors_stage7": "TEST_ONLY__PASS_EMULATED_CHROMIUM__23_23_WAVE_SLICE__ZERO_MUTATION__EXTERNAL_WAVE_QA_PACK",
   "stage7_authorization_proposal_sha256": "42126e52c63d114d1b3a42bdf2bcac8f19e88dc70417fd95accfe33f809312a6",
   "stage7_predecessor_zip_sha256": "3eb86f5d9f1686a8851664020be4060c85dbf20228351d1d1c442e583c8ece5c",
@@ -54,10 +54,10 @@
   "search_projection_version": "24h-search-v2-reader-projection-r1",
   "search_predecessor_zip_sha256": "3f69f8b948494d70e728287998efe6a0fefafa649ac9e0a7759934fbcefe458a",
   "scroll_performance_predecessor_zip_sha256": "f9bee241f08181a31b63e4284bc82422f5cdc820a2d4033017ef5c1d95004478",
-  "release_sequence": 111000036,
-  "release_id": "24h-v111.0-r36-20260926-21af645e9f39",
+  "release_sequence": 112000001,
+  "release_id": "24h-v112-b1-20260929-wave1",
   "canonical_shell": "./luisa_24_heures.html",
-  "canonical_shell_sha256": "3351f96fb90451e6820fc8474c873a35224e23673faf539c2becda1daaa62871",
+  "canonical_shell_sha256": "edf2b91f76d43b966e07b1c8dc957ce225cfb45282c507204b1f1c96f5f7e455",
   "update_protocol": 2,
   "pwa_update_predecessor_version": "v101.156",
   "pwa_update_predecessor_zip_sha256": "9b73b16dfc26c6b5cc1efaa652cdf7264b3331040022477bcbed6ddecabfdc9a",
@@ -77,15 +77,15 @@
     "R12 bottom-navigation geometry behavior inherited unchanged",
     "R14 release identity, cache and CSP script/style hashes mechanically rebound to exact successor bytes"
   ],
-  "functional_freeze_status": "R36_FULL_QA_METADATA_CORRECTION_ONLY__R35_APPLICATION_AND_PROVENANCE_COPY_UNCHANGED__R33_INDEXEDDB_PERSONAL_STATE_AND_R32_STRUCTURAL_SELECTION_BEHAVIOR_PROTECTED_UNCHANGED",
-  "security_stage_status": "R32_CSP3_ARCHITECTURE_PRESERVED__R36_INLINE_SCRIPT_HASH_REBOUND_TO_EXACT_R36_SUCCESSOR_SHELL__SERVICE_WORKER_CANONICAL_SHELL_HASH_BOUND_TO_EXACT_R36_SHELL",
+  "functional_freeze_status": "V112_B1_BOUNDED_WAVE1__ONLY_F03_F04_F07_F28_PLUS_RELEASE_CSP_SW_METADATA_BINDINGS__CORPUS_PROVENANCE_SEARCH_PERSONAL_STATE_AND_OFFLINE_CONTENT_PROTECTED",
+  "security_stage_status": "V112_B1_CSP3_ARCHITECTURE_PRESERVED__INLINE_SCRIPT_AND_STYLE_HASHES_REBOUND_TO_EXACT_FINAL_V112_B1_SHELL__SERVICE_WORKER_CANONICAL_SHELL_HASH_BOUND_TO_EXACT_FINAL_SHELL",
   "security_predecessor_version": "v102.0 R4",
   "security_predecessor_zip_sha256": "79d8d88ed80622841dcf989edc5d777e2c2c6e3f5f3e17cad9042a679e7b5fc4",
   "security_csp_strategy": "CSP3 split directives: hash-locked script/style elements; inline handler/style attributes retained for compatibility and mature architecture; legacy script-src/style-src fallback retained.",
-  "security_inline_script_sha256_base64": "sha256-IzgeNz3naimEQ5wfwlWRnINuJocODKJVNkfSFQ4GD6k=",
+  "security_inline_script_sha256_base64": "sha256-2Z10Q016tNczkmiAaMztkr3J7Nb6sS2/x92FD/QpB1k=",
   "security_inline_style_sha256_base64": [
     "sha256-UQ2LZMV8vpixa50rjbFhb0lgGCv04EY1sB1SyGNLL0k=",
-    "sha256-Vy6+A/1jfz47aC0DEQU/xSrEbUkFBO4JfwfEORKHdNY=",
+    "sha256-iAxnmA0NZBxRGWdrsMi+Hjj8FbJl0he2l0vxw5/Ny0U=",
     "sha256-/PDid79K7LRUFTBYGYCk5WowaPjSf8h6n32Q2Qfk09Y="
   ],
   "blind_adversarial_r3_predecessor_version": "v102.0 R2",
@@ -312,7 +312,7 @@
     "stable_id_topology": "PRESERVED",
     "provenance_ui": "NOT_IMPLEMENTED_IN_R13"
   },
-  "canonical_shell_inline_script_sha256_csp": "sha256-IzgeNz3naimEQ5wfwlWRnINuJocODKJVNkfSFQ4GD6k=",
+  "canonical_shell_inline_script_sha256_csp": "sha256-2Z10Q016tNczkmiAaMztkr3J7Nb6sS2/x92FD/QpB1k=",
   "r13_documentary_integrity_set_contract": "SHA256_UTF8_NFC_SORTED_KEYS_COMPACT_JSON_ARRAY_ORDER_PRESERVED_OF_72_RECORD_ARRAY__ledger_id_content_presentation_linked_source_documentary_assertion",
   "r13_documentary_integrity_set_sha256": "50c3509c87887150d484a3e0b186e0ac718f447befd1f96164c4b03681f689f0",
   "r13_documentary_changed_counts": {
@@ -654,5 +654,34 @@
     "provenance_copy_mutation": "NONE",
     "personal_state_mutation_authority": "NONE",
     "search_mutation_authority": "NONE"
+  },
+  "wave1_v112_b1": {
+    "predecessor_release_id": "24h-v111.0-r36-20260926-21af645e9f39",
+    "predecessor_main_commit": "9d55c3a3238b6dac2fbbd1b9d4a9347d284e0c69",
+    "closed_findings": [
+      "F-03",
+      "F-04",
+      "F-07",
+      "F-28"
+    ],
+    "protected_surfaces": [
+      "CORPUS",
+      "TEXT_LIBRARY",
+      "SPEECH_DATA",
+      "PROVENANCE_PUBLIC_PROJECTION",
+      "PROVENANCE_PUBLIC_GUIDE",
+      "personal-state schema/architecture",
+      "Search algorithms",
+      "offline content"
+    ],
+    "canonical_shell_sha256": "edf2b91f76d43b966e07b1c8dc957ce225cfb45282c507204b1f1c96f5f7e455",
+    "inline_script_csp_hash": "sha256-2Z10Q016tNczkmiAaMztkr3J7Nb6sS2/x92FD/QpB1k=",
+    "inline_style_csp_hashes": [
+      "sha256-UQ2LZMV8vpixa50rjbFhb0lgGCv04EY1sB1SyGNLL0k=",
+      "sha256-iAxnmA0NZBxRGWdrsMi+Hjj8FbJl0he2l0vxw5/Ny0U=",
+      "sha256-/PDid79K7LRUFTBYGYCk5WowaPjSf8h6n32Q2Qfk09Y="
+    ],
+    "production_authorized": false,
+    "physical_requalification_required": true
   }
 }

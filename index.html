@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; script-src-elem 'sha256-IzgeNz3naimEQ5wfwlWRnINuJocODKJVNkfSFQ4GD6k='; script-src-attr 'unsafe-inline'; style-src 'self' 'unsafe-inline'; style-src-elem 'sha256-UQ2LZMV8vpixa50rjbFhb0lgGCv04EY1sB1SyGNLL0k=' 'sha256-Vy6+A/1jfz47aC0DEQU/xSrEbUkFBO4JfwfEORKHdNY=' 'sha256-/PDid79K7LRUFTBYGYCk5WowaPjSf8h6n32Q2Qfk09Y='; style-src-attr 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; media-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; script-src-elem 'sha256-2Z10Q016tNczkmiAaMztkr3J7Nb6sS2/x92FD/QpB1k='; script-src-attr 'unsafe-inline'; style-src 'self' 'unsafe-inline'; style-src-elem 'sha256-UQ2LZMV8vpixa50rjbFhb0lgGCv04EY1sB1SyGNLL0k=' 'sha256-iAxnmA0NZBxRGWdrsMi+Hjj8FbJl0he2l0vxw5/Ny0U=' 'sha256-/PDid79K7LRUFTBYGYCk5WowaPjSf8h6n32Q2Qfk09Y='; style-src-attr 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; media-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="color-scheme" content="light dark">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -919,7 +919,7 @@ mark.hl-pink   { background: #fce7f3; color: inherit; }
   transition: opacity 0.15s, background 0.15s, color 0.15s; }
 .mark-btn.done { background: transparent; color: var(--accent); border-color: var(--accent-light); }
 .mark-btn:active { opacity: 0.8; }
-.mark-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.mark-btn:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
 .mark-hint { flex: 1 1 15rem; min-width: 0; font-size: 0.78rem; color: var(--ink3); font-family: var(--font-ui);
   line-height: 1.35; }
 .mark-hint strong, .mark-hint span { display: block; }
@@ -2174,6 +2174,8 @@ html.android-highlight-mode .android-paragraph-highlight-target {
 .theme-pref-row { border-top: 1px solid var(--bg3); padding-top: 0.5rem; margin-top: 0.15rem; }
 .theme-pref-btn { min-width: 72px; font-size: 0.78rem !important; padding: 0.36rem 0.48rem !important; }
 .theme-pref-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+[data-theme="dark"] .theme-pref-btn.active,
+[data-theme="dark"] .mark-btn:not(.done) { color: var(--bg); }
 .stage6m-settings-overlay { position: fixed; inset: 0; z-index: 2400; background: rgba(26,20,12,0.34); display: flex; align-items: flex-end; justify-content: center; padding: 1rem; }
 .stage6m-settings-sheet { width: min(560px, 100%); max-height: min(82vh, 720px); overflow-y: auto; background: var(--bg); color: var(--ink); border: 1px solid var(--bg3); border-radius: 18px 18px 12px 12px; box-shadow: 0 18px 50px rgba(0,0,0,0.22); padding: 1rem; font-family: var(--font-ui); }
 .stage6m-settings-top { display:flex; flex-wrap:wrap; align-items:flex-start; justify-content:space-between; gap:1rem; padding-bottom:0.8rem; border-bottom:1px solid var(--bg3); margin-bottom:0.8rem; }
@@ -3288,7 +3290,7 @@ html[data-font-level="xlarge"] .dc-prev {
     </button>
   </div>
   <div class="note-list" id="noteModalList"></div>
-  <textarea class="note-textarea" id="noteTextarea" placeholder="Ajouter une note…" maxlength="2000" oninput="updateNoteCharCount()"></textarea>
+  <textarea class="note-textarea" id="noteTextarea" placeholder="Ajouter une note…" aria-label="Ajouter une note personnelle" maxlength="2000" oninput="updateNoteCharCount()"></textarea>
   <div class="note-char-count" id="noteCharCount">0 / 2000</div>
   <button class="note-save-btn" onclick="saveNoteFromModal()">Enregistrer</button>
 </div>
@@ -5708,11 +5710,11 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'v111.0';
-const BUILD_REVISION = 'R36';
-const APP_EVIDENCE_STAGE = '24H_PROVENANCE_GOVERNANCE_R15';
-const APP_RELEASE_SEQUENCE = 111000036;
-const APP_RELEASE_ID = '24h-v111.0-r36-20260926-21af645e9f39';
+const APP_VERSION = 'v112';
+const BUILD_REVISION = 'B1';
+const APP_EVIDENCE_STAGE = '24H_V112_B1_WAVE1';
+const APP_RELEASE_SEQUENCE = 112000001;
+const APP_RELEASE_ID = '24h-v112-b1-20260929-wave1';
 const CANONICAL_APP_SHELL = './luisa_24_heures.html';
 const STORAGE_SCHEMA_VERSION=8; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const MAX_PERSONAL_DATA_IMPORT_BYTES = 32 * 1024 * 1024; // finite parser guard; must exceed any realistic localStorage-backed self-export
@@ -8802,18 +8804,11 @@ function renderReader(hour, scroll = true) {
   const linkedHtml = renderLinkedTextsForHour(hour.hour_number);
   const displayParagraphs = getDisplayParagraphsForHour(hour);
   const tabsHtml = `
-    <div class="tabs">
-      <button class="tab-btn ${state.activeTab==='meditation'?'active':''}" data-tab="meditation" onclick="switchTab('meditation')">
-        Méditation
-      </button>
-      ${hasRefl ? `<button class="tab-btn ${state.activeTab==='reflections'?'active':''}" data-tab="reflections" onclick="switchTab('reflections')">
-        Réflexions et pratiques
-      </button>` : ''}
-      <button class="tab-btn ${state.activeTab==='linked'?'active':''}" data-tab="linked" onclick="switchTab('linked')">
-        Textes liés
-      </button>
+    <div class="tabs" role="tablist" aria-label="Sections de l’Heure" onkeydown="handleHourTabKeydown(event)">
+      <button id="hourTabMeditation" class="tab-btn ${state.activeTab==='meditation'?'active':''}" role="tab" aria-selected="${state.activeTab==='meditation'?'true':'false'}" aria-controls="meditationContent" tabindex="${state.activeTab==='meditation'?'0':'-1'}" data-tab="meditation" onclick="switchTab('meditation')">Méditation</button>
+      ${hasRefl ? `<button id="hourTabReflections" class="tab-btn ${state.activeTab==='reflections'?'active':''}" role="tab" aria-selected="${state.activeTab==='reflections'?'true':'false'}" aria-controls="reflectionsContent" tabindex="${state.activeTab==='reflections'?'0':'-1'}" data-tab="reflections" onclick="switchTab('reflections')">Réflexions et pratiques</button>` : ''}
+      <button id="hourTabLinked" class="tab-btn ${state.activeTab==='linked'?'active':''}" role="tab" aria-selected="${state.activeTab==='linked'?'true':'false'}" aria-controls="linkedTextsContent" tabindex="${state.activeTab==='linked'?'0':'-1'}" data-tab="linked" onclick="switchTab('linked')">Textes liés</button>
     </div>`;
-
   const medHtml = displayParagraphs.length > 0
     ? buildMeditationParagraphHtml(displayParagraphs, hour.hour_number)
     : `<p style="font-style:italic;color:var(--ink4);font-family:var(--font-ui);padding:1.5rem 0">Texte en préparation.</p>`;
@@ -8850,13 +8845,13 @@ function renderReader(hour, scroll = true) {
     ${openingBtns}
     ${tabsHtml}
 
-    <div id="meditationContent" style="display:${!hasRefl||state.activeTab==='meditation'?'block':'none'}">
+    <div id="meditationContent" role="tabpanel" aria-labelledby="hourTabMeditation" aria-hidden="${!hasRefl||state.activeTab==='meditation'?'false':'true'}" style="display:${!hasRefl||state.activeTab==='meditation'?'block':'none'}">
       ${medHtml}${subHtml}
     </div>
-    <div id="reflectionsContent" style="display:${hasRefl&&state.activeTab==='reflections'?'block':'none'}">
+    <div id="reflectionsContent" role="tabpanel" aria-labelledby="hourTabReflections" aria-hidden="${hasRefl&&state.activeTab==='reflections'?'false':'true'}" style="display:${hasRefl&&state.activeTab==='reflections'?'block':'none'}">
       ${refHtml}
     </div>
-    <div id="linkedTextsContent" style="display:${state.activeTab==='linked'?'block':'none'}">
+    <div id="linkedTextsContent" role="tabpanel" aria-labelledby="hourTabLinked" aria-hidden="${state.activeTab==='linked'?'false':'true'}" style="display:${state.activeTab==='linked'?'block':'none'}">
       ${linkedHtml}
     </div>
 
@@ -9254,22 +9249,46 @@ function closeMobileActionBar() {
   closeContextActions({ clearTarget: true, clearPending: false, clearSelection: false });
 }
 
+function handleHourTabKeydown(event) {
+  if (!['ArrowLeft','ArrowRight','Home','End'].includes(event.key)) return;
+  const tabs = Array.from(event.currentTarget.querySelectorAll('[role="tab"]:not([disabled])'));
+  const current = tabs.indexOf(document.activeElement);
+  if (current < 0 || !tabs.length) return;
+  event.preventDefault();
+  let next = current;
+  if (event.key === 'ArrowRight') next = (current + 1) % tabs.length;
+  else if (event.key === 'ArrowLeft') next = (current - 1 + tabs.length) % tabs.length;
+  else if (event.key === 'Home') next = 0;
+  else if (event.key === 'End') next = tabs.length - 1;
+  tabs[next].focus();
+  switchTab(tabs[next].dataset.tab, true);
+}
 function switchTab(tab, preserveScroll = false) {
   const personalBeforeHourTab=buildPersonalSnapshotFromState();
   state.activeTab = tab;
-  if (state.currentHour) { state.hourTabs[state.currentHour]=tab; commitSessionOnlyChange(personalBeforeHourTab,'Onglet de lecture'); }
-  const med = document.getElementById('meditationContent');
-  const ref = document.getElementById('reflectionsContent');
-  const linked = document.getElementById('linkedTextsContent');
-  if (med) med.style.display = tab === 'meditation' ? 'block' : 'none';
-  if (ref) ref.style.display = tab === 'reflections' ? 'block' : 'none';
-  if (linked) linked.style.display = tab === 'linked' ? 'block' : 'none';
+  if (state.currentHour) {
+    state.hourTabs[state.currentHour]=tab;
+    commitSessionOnlyChange(personalBeforeHourTab,'Onglet de lecture');
+  }
+  const panels = {
+    meditation: document.getElementById('meditationContent'),
+    reflections: document.getElementById('reflectionsContent'),
+    linked: document.getElementById('linkedTextsContent')
+  };
+  Object.entries(panels).forEach(([name,panel]) => {
+    if (!panel) return;
+    const selected = name === tab;
+    panel.style.display = selected ? 'block' : 'none';
+    panel.setAttribute('aria-hidden', selected ? 'false' : 'true');
+  });
   document.querySelectorAll('.tab-btn').forEach((btn) => {
-    btn.classList.toggle('active', btn.dataset.tab === tab);
+    const selected = btn.dataset.tab === tab;
+    btn.classList.toggle('active', selected);
+    btn.setAttribute('aria-selected', selected ? 'true' : 'false');
+    btn.tabIndex = selected ? 0 : -1;
   });
   if (!preserveScroll) resetContentScrollAfterRender();
 }
-
 // ── Prayer full-page view (from sidebar) ──
 function openPrayer(id, push = true, hourNum = null, scrollToAnchor = null) {
   const pr = PRAYERS[id]; if (!pr) return;
