@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; script-src-elem 'sha256-E3Di8qgm6kJ+KCiF7yCB3Tm4sksP0jgPexBpy7LHtSs='; script-src-attr 'unsafe-inline'; style-src 'self' 'unsafe-inline'; style-src-elem 'sha256-UQ2LZMV8vpixa50rjbFhb0lgGCv04EY1sB1SyGNLL0k=' 'sha256-Vy6+A/1jfz47aC0DEQU/xSrEbUkFBO4JfwfEORKHdNY=' 'sha256-/PDid79K7LRUFTBYGYCk5WowaPjSf8h6n32Q2Qfk09Y='; style-src-attr 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; media-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; script-src-elem 'sha256-HxcFyT5EKqPmxjhzOTXPCK1CfOJvEZjw7blukVwZi0w='; script-src-attr 'unsafe-inline'; style-src 'self' 'unsafe-inline'; style-src-elem 'sha256-UQ2LZMV8vpixa50rjbFhb0lgGCv04EY1sB1SyGNLL0k=' 'sha256-FNrlLu4Fxj1b29d7a1Dnil2AJ4le7xprL9Ez1KEF+UQ=' 'sha256-/PDid79K7LRUFTBYGYCk5WowaPjSf8h6n32Q2Qfk09Y='; style-src-attr 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; media-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="color-scheme" content="light dark">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -481,6 +481,21 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--ink); 
 [data-theme="dark"] .mark-read-btn:hover { color: var(--bg); }
 [data-theme="dark"] .mark-read-btn.done .mark-btn-hint,
 [data-theme="dark"] .mark-read-btn:hover .mark-btn-hint { color: var(--bg); }
+/* v116 F-04 — dark-theme accent-filled controls use dark ink on gold. */
+[data-theme="dark"] .mark-btn:not(.done),
+[data-theme="dark"] .theme-pref-btn.active,
+[data-theme="dark"] .library-title-mark-btn[aria-pressed="true"],
+[data-theme="dark"] .library-quick-chip.active,
+[data-theme="dark"] .hour-end-btn.primary,
+[data-theme="dark"] .cc-primary,
+[data-theme="dark"] .resume-panel-btn.primary,
+[data-theme="dark"] .note-save-btn,
+[data-theme="dark"] .update-banner,
+[data-theme="dark"] .update-refresh-btn,
+[data-theme="dark"] .help-round:hover,
+[data-theme="dark"] .help-round:focus-visible,
+[data-theme="dark"] .panel-close-btn:hover,
+[data-theme="dark"] .panel-close-btn:focus-visible { color: var(--bg); }
 
 /* ── Section screen ── */
 .section-screen { width: 100%; max-width: var(--col-max); }
@@ -919,7 +934,7 @@ mark.hl-pink   { background: #fce7f3; color: inherit; }
   transition: opacity 0.15s, background 0.15s, color 0.15s; }
 .mark-btn.done { background: transparent; color: var(--accent); border-color: var(--accent-light); }
 .mark-btn:active { opacity: 0.8; }
-.mark-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.mark-btn:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
 .mark-hint { flex: 1 1 15rem; min-width: 0; font-size: 0.78rem; color: var(--ink3); font-family: var(--font-ui);
   line-height: 1.35; }
 .mark-hint strong, .mark-hint span { display: block; }
@@ -3288,7 +3303,7 @@ html[data-font-level="xlarge"] .dc-prev {
     </button>
   </div>
   <div class="note-list" id="noteModalList"></div>
-  <textarea class="note-textarea" id="noteTextarea" placeholder="Ajouter une note…" maxlength="2000" oninput="updateNoteCharCount()"></textarea>
+  <textarea class="note-textarea" id="noteTextarea" aria-label="Note personnelle" placeholder="Ajouter une note…" maxlength="2000" oninput="updateNoteCharCount()"></textarea>
   <div class="note-char-count" id="noteCharCount">0 / 2000</div>
   <button class="note-save-btn" onclick="saveNoteFromModal()">Enregistrer</button>
 </div>
@@ -5708,11 +5723,11 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'v115';
+const APP_VERSION = 'v116';
 const BUILD_REVISION = 'B1';
-const APP_EVIDENCE_STAGE = '24H_V115_TOOLBAR_CLEANUP_B1';
-const APP_RELEASE_SEQUENCE = 115000001;
-const APP_RELEASE_ID = '24h-v115-b1-20260930-toolbar-cleanup';
+const APP_EVIDENCE_STAGE = '24H_V116_PREPHYSICAL_B1';
+const APP_RELEASE_SEQUENCE = 116000001;
+const APP_RELEASE_ID = '24h-v116-b1-20260930-prephysical';
 const CANONICAL_APP_SHELL = './luisa_24_heures.html';
 const STORAGE_SCHEMA_VERSION=8; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const MAX_PERSONAL_DATA_IMPORT_BYTES = 32 * 1024 * 1024; // finite direct-restore ceiling; normal exports use the same bound and larger files are emergency archives
@@ -8183,6 +8198,7 @@ function goBack() {
 
 // ── Home ──
 function showHome() {
+  cancelPendingSelectionCapture();
   closeContextActions({clearTarget:true,clearPending:true,clearSelection:true});
   if (_searchDestinationSelectionClearTimer) { clearTimeout(_searchDestinationSelectionClearTimer); _searchDestinationSelectionClearTimer = null; }
   state.history = []; setBackBtn(false);
@@ -8804,14 +8820,14 @@ function renderReader(hour, scroll = true) {
   const linkedHtml = renderLinkedTextsForHour(hour.hour_number);
   const displayParagraphs = getDisplayParagraphsForHour(hour);
   const tabsHtml = `
-    <div class="tabs">
-      <button class="tab-btn ${state.activeTab==='meditation'?'active':''}" data-tab="meditation" onclick="switchTab('meditation')">
+    <div class="tabs" role="tablist" aria-label="Sections de l’Heure">
+      <button class="tab-btn ${state.activeTab==='meditation'?'active':''}" role="tab" id="readerTabMeditation" aria-selected="${state.activeTab==='meditation'?'true':'false'}" aria-controls="meditationContent" tabindex="${state.activeTab==='meditation'?'0':'-1'}" data-tab="meditation" onclick="switchTab('meditation')" onkeydown="handleReaderTabKeydown(event)">
         Méditation
       </button>
-      ${hasRefl ? `<button class="tab-btn ${state.activeTab==='reflections'?'active':''}" data-tab="reflections" onclick="switchTab('reflections')">
+      ${hasRefl ? `<button class="tab-btn ${state.activeTab==='reflections'?'active':''}" role="tab" id="readerTabReflections" aria-selected="${state.activeTab==='reflections'?'true':'false'}" aria-controls="reflectionsContent" tabindex="${state.activeTab==='reflections'?'0':'-1'}" data-tab="reflections" onclick="switchTab('reflections')" onkeydown="handleReaderTabKeydown(event)">
         Réflexions et pratiques
       </button>` : ''}
-      <button class="tab-btn ${state.activeTab==='linked'?'active':''}" data-tab="linked" onclick="switchTab('linked')">
+      <button class="tab-btn ${state.activeTab==='linked'?'active':''}" role="tab" id="readerTabLinked" aria-selected="${state.activeTab==='linked'?'true':'false'}" aria-controls="linkedTextsContent" tabindex="${state.activeTab==='linked'?'0':'-1'}" data-tab="linked" onclick="switchTab('linked')" onkeydown="handleReaderTabKeydown(event)">
         Textes liés
       </button>
     </div>`;
@@ -8852,13 +8868,13 @@ function renderReader(hour, scroll = true) {
     ${openingBtns}
     ${tabsHtml}
 
-    <div id="meditationContent" style="display:${!hasRefl||state.activeTab==='meditation'?'block':'none'}">
+    <div id="meditationContent" role="tabpanel" aria-labelledby="readerTabMeditation" aria-hidden="${!hasRefl||state.activeTab==='meditation'?'false':'true'}" style="display:${!hasRefl||state.activeTab==='meditation'?'block':'none'}">
       ${medHtml}${subHtml}
     </div>
-    <div id="reflectionsContent" style="display:${hasRefl&&state.activeTab==='reflections'?'block':'none'}">
+    <div id="reflectionsContent" role="tabpanel" aria-labelledby="readerTabReflections" aria-hidden="${hasRefl&&state.activeTab==='reflections'?'false':'true'}" style="display:${hasRefl&&state.activeTab==='reflections'?'block':'none'}">
       ${refHtml}
     </div>
-    <div id="linkedTextsContent" style="display:${state.activeTab==='linked'?'block':'none'}">
+    <div id="linkedTextsContent" role="tabpanel" aria-labelledby="readerTabLinked" aria-hidden="${state.activeTab==='linked'?'false':'true'}" style="display:${state.activeTab==='linked'?'block':'none'}">
       ${linkedHtml}
     </div>
 
@@ -9256,6 +9272,23 @@ function closeMobileActionBar() {
   closeContextActions({ clearTarget: true, clearPending: false, clearSelection: false });
 }
 
+function handleReaderTabKeydown(event) {
+  const key = event && event.key;
+  if (!['ArrowLeft','ArrowRight','Home','End'].includes(key)) return;
+  const tabs = Array.from(document.querySelectorAll('.tabs [role="tab"]'));
+  if (!tabs.length) return;
+  const current = event.currentTarget;
+  let index = Math.max(0, tabs.indexOf(current));
+  if (key === 'ArrowLeft') index = (index - 1 + tabs.length) % tabs.length;
+  else if (key === 'ArrowRight') index = (index + 1) % tabs.length;
+  else if (key === 'Home') index = 0;
+  else if (key === 'End') index = tabs.length - 1;
+  event.preventDefault();
+  const next = tabs[index];
+  next.focus();
+  switchTab(next.dataset.tab);
+}
+
 function switchTab(tab, preserveScroll = false) {
   const personalBeforeHourTab=buildPersonalSnapshotFromState();
   state.activeTab = tab;
@@ -9263,11 +9296,14 @@ function switchTab(tab, preserveScroll = false) {
   const med = document.getElementById('meditationContent');
   const ref = document.getElementById('reflectionsContent');
   const linked = document.getElementById('linkedTextsContent');
-  if (med) med.style.display = tab === 'meditation' ? 'block' : 'none';
-  if (ref) ref.style.display = tab === 'reflections' ? 'block' : 'none';
-  if (linked) linked.style.display = tab === 'linked' ? 'block' : 'none';
+  if (med) { const on = tab === 'meditation'; med.style.display = on ? 'block' : 'none'; med.setAttribute('aria-hidden', on ? 'false' : 'true'); }
+  if (ref) { const on = tab === 'reflections'; ref.style.display = on ? 'block' : 'none'; ref.setAttribute('aria-hidden', on ? 'false' : 'true'); }
+  if (linked) { const on = tab === 'linked'; linked.style.display = on ? 'block' : 'none'; linked.setAttribute('aria-hidden', on ? 'false' : 'true'); }
   document.querySelectorAll('.tab-btn').forEach((btn) => {
-    btn.classList.toggle('active', btn.dataset.tab === tab);
+    const on = btn.dataset.tab === tab;
+    btn.classList.toggle('active', on);
+    btn.setAttribute('aria-selected', on ? 'true' : 'false');
+    btn.tabIndex = on ? 0 : -1;
   });
   if (!preserveScroll) resetContentScrollAfterRender();
 }
@@ -11783,7 +11819,11 @@ function handleSelectionEnd() {
   if (!sel || sel.isCollapsed || !sel.rangeCount) return;
   const savedRange = sel.getRangeAt(0).cloneRange();
   const savedRect  = savedRange.getBoundingClientRect ? savedRange.getBoundingClientRect() : null;
-  setTimeout(function () {
+  const captureGeneration = _selectionCaptureGeneration;
+  if (_selectionFinalizeTimer) clearTimeout(_selectionFinalizeTimer);
+  _selectionFinalizeTimer = setTimeout(function () {
+    _selectionFinalizeTimer = null;
+    if (captureGeneration !== _selectionCaptureGeneration || state.view === 'home') return;
     if (typeof stage6fShouldSuppressSelectionCapture === 'function' && stage6fShouldSuppressSelectionCapture()) return;
     setPendingSelectionFromRange(savedRange, savedRect, true);
   }, isAndroidSelectionRepairActive() ? 220 : 80);
@@ -13535,10 +13575,18 @@ function smoothScrollTo(el, opts) {
 }
 
 let _selectionCaptureTimer = null;
+let _selectionFinalizeTimer = null;
+let _selectionCaptureGeneration = 0;
+function cancelPendingSelectionCapture() {
+  _selectionCaptureGeneration += 1;
+  if (_selectionCaptureTimer) { clearTimeout(_selectionCaptureTimer); _selectionCaptureTimer = null; }
+  if (_selectionFinalizeTimer) { clearTimeout(_selectionFinalizeTimer); _selectionFinalizeTimer = null; }
+}
 function scheduleSelectionCapture(delay = 220) {
   if (typeof stage6fShouldSuppressSelectionCapture === 'function' && stage6fShouldSuppressSelectionCapture()) return;
   clearTimeout(_selectionCaptureTimer);
   _selectionCaptureTimer = setTimeout(function () {
+    _selectionCaptureTimer = null;
     if (typeof stage6fShouldSuppressSelectionCapture === 'function' && stage6fShouldSuppressSelectionCapture()) return;
     handleSelectionEnd();
   }, delay);
