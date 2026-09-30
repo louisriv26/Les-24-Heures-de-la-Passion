@@ -39,8 +39,8 @@
     "standalone",
     "browser"
   ],
-  "version": "v115",
+  "version": "v119",
   "build_revision": "B1",
-  "release_sequence": 115000001,
-  "release_id": "24h-v115-b1-20260930-toolbar-cleanup"
+  "release_sequence": 119000001,
+  "release_id": "24h-v119-b1-20260930-prephysical"
 }
