@@ -5,12 +5,12 @@ function scopeFingerprint(scope) {
   for (let i = 0; i < text.length; i++) { h ^= text.charCodeAt(i); h = Math.imul(h, 16777619); }
   return (h >>> 0).toString(16).padStart(8, '0');
 }
-const APP_VERSION = 'v115';
+const APP_VERSION = 'v116';
 const BUILD_REVISION = 'B1';
-const RELEASE_SEQUENCE = 115000001;
-const RELEASE_ID = '24h-v115-b1-20260930-toolbar-cleanup';
+const RELEASE_SEQUENCE = 116000001;
+const RELEASE_ID = '24h-v116-b1-20260930-prephysical';
 const CANONICAL_SHELL = './luisa_24_heures.html';
-const CANONICAL_SHELL_SHA256 = 'de3cc2c8874d701c5c3122dbad9e9625fd9fc70249dceb1089abbc3a9ca45973';
+const CANONICAL_SHELL_SHA256 = '8bfacce627b4c2c7cb3aec94cfb067b5109dc75b5564a3c1f48aaa1f3b772419';
 const SCOPE_FINGERPRINT = scopeFingerprint(self.registration.scope);
 const CACHE_PREFIX = `luisa-24h-${SCOPE_FINGERPRINT}-`;
 const CACHE_NAME = `${CACHE_PREFIX}v115-b1`;
