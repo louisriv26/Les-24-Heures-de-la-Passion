@@ -1,19 +1,19 @@
 {
-  "app_version": "v115",
-  "build_date": "2026-09-30",
-  "cache_name": "scope-derived:luisa-24h-<scope-fingerprint>-v115-b1",
+  "app_version": "v116",
+  "build_date": "2026-10-01",
+  "cache_name": "scope-derived:luisa-24h-<scope-fingerprint>-v116-b1",
   "storage_schema": 8,
   "personal_snapshot": 5,
   "ldc_source_public_version": "COMPOSITE_29_62_65_PLUS_FAST_MODE_DERIVATIVE_SYNC",
   "ldc_source_app_version": "LDC_CURRENT_SYNC_AUTHORITY",
   "ldc_source_package_sha256": null,
-  "release_scope": "v115/B1 bounded UX successor from exact frozen v114/B1: 24H-SEL-NAV-01 only; Home navigation now dismisses any stale contextual selection toolbar and cancels its pending search-selection clear timer. v114 Wave-0 backup repair, corpus, provenance, Search and personal-state architecture are otherwise unchanged.",
-  "real_device_status": "V115_B1_CANDIDATE__BOUNDED_TOOLBAR_CLEANUP_STATIC_QUALIFICATION__RUNTIME_PWA_OFFLINE_PHYSICAL_GATES_OPEN",
-  "overall_release_status": "V115_B1_TOOLBAR_CLEANUP_SUCCESSOR_CANDIDATE__PRODUCTION_NOT_AUTHORIZED",
+  "release_scope": "v116/B1 pre-physical closure successor from exact frozen v115/B1: closes the delayed selection-finalization race that could recreate contextual selection state after Home and closes bounded objective UX/accessibility defects (focus ring, dark-mode mark contrast, tabs, note label, forced colors, backup fingerprint/wording, disabled cursor, meditated-control placement). Corpus, Search payloads, provenance content and personal-state schemas are otherwise unchanged.",
+  "real_device_status": "V116_B1_CANDIDATE__STATIC_AND_MACHINE_QUALIFICATION_REQUIRED__PWA_OFFLINE_IPHONE_IPAD_PHYSICAL_GATES_OPEN",
+  "overall_release_status": "V116_B1_PREPHYSICAL_CLOSURE_CANDIDATE__PRODUCTION_NOT_AUTHORIZED",
   "known_blockers": [
-    "Exact production v111/R36 → v115/B1 installed-PWA update/activation and acknowledged-state preservation on iPhone and iPad.",
-    "v115/B1 iPad H03/P013 physical A–D replay of the inherited native-selection surface: direct P013 selection; highlight/persistence; P012→P013 regression; selection inside existing cross-record highlight.",
-    "v115/B1 provenance panels for normal Hours and H08/H23/H24, plus methodology and Help, at Très grand in portrait and landscape.",
+    "Exact production v111/R36 → v116/B1 installed-PWA update/activation and acknowledged-state preservation on iPhone and iPad.",
+    "v116/B1 iPad H03/P013 physical A–D replay of the inherited native-selection surface: direct P013 selection; highlight/persistence; P012→P013 regression; selection inside existing cross-record highlight.",
+    "v116/B1 provenance panels for normal Hours and H08/H23/H24, plus methodology and Help, at Très grand in portrait and landscape.",
     "Installed-PWA personal-state durability across full close/reopen cycles on required Apple devices.",
     "True offline cold reopen on required Apple devices, including repeat offline reopen and online recovery.",
     "Real cross-device JSON transfer if retained in public-release scope.",
@@ -24,9 +24,9 @@
     "Live-origin exact-byte binding after staging/deployment before public promotion."
   ],
   "external_open_gates": [
-    "Exact production v111/R36 → v115/B1 installed-PWA update/activation and acknowledged-state preservation on iPhone and iPad.",
-    "v115/B1 iPad H03/P013 physical A–D replay of the inherited native-selection surface: direct P013 selection; highlight/persistence; P012→P013 regression; selection inside existing cross-record highlight.",
-    "v115/B1 provenance panels for normal Hours and H08/H23/H24, plus methodology and Help, at Très grand in portrait and landscape.",
+    "Exact production v111/R36 → v116/B1 installed-PWA update/activation and acknowledged-state preservation on iPhone and iPad.",
+    "v116/B1 iPad H03/P013 physical A–D replay of the inherited native-selection surface: direct P013 selection; highlight/persistence; P012→P013 regression; selection inside existing cross-record highlight.",
+    "v116/B1 provenance panels for normal Hours and H08/H23/H24, plus methodology and Help, at Très grand in portrait and landscape.",
     "Installed-PWA personal-state durability across full close/reopen cycles on required Apple devices.",
     "True offline cold reopen on required Apple devices, including repeat offline reopen and online recovery.",
     "Real cross-device JSON transfer if retained in public-release scope.",
@@ -39,7 +39,7 @@
   "ldc_source_alignment_generation": "COMPOSITE__SEE_ldc_current_sync_authority",
   "ldc_source_enriched_generation": "COMPOSITE__SEE_ldc_current_sync_authority",
   "ldc_source_corpus_manifest_sha256": null,
-  "postfreeze_reopen_evidence": "R21 is the bounded repair authorized after the independent R20 audit; no devotional corpus mutation is authorized.",
+  "postfreeze_reopen_evidence": "V116 is a bounded pre-physical successor of exact v115/B1; no devotional corpus mutation is authorized.",
   "build_revision": "B1",
   "forced_colors_stage7": "TEST_ONLY__PASS_EMULATED_CHROMIUM__23_23_WAVE_SLICE__ZERO_MUTATION__EXTERNAL_WAVE_QA_PACK",
   "stage7_authorization_proposal_sha256": "42126e52c63d114d1b3a42bdf2bcac8f19e88dc70417fd95accfe33f809312a6",
@@ -54,12 +54,12 @@
   "search_projection_version": "24h-search-v2-reader-projection-r1",
   "search_predecessor_zip_sha256": "3f69f8b948494d70e728287998efe6a0fefafa649ac9e0a7759934fbcefe458a",
   "scroll_performance_predecessor_zip_sha256": "f9bee241f08181a31b63e4284bc82422f5cdc820a2d4033017ef5c1d95004478",
-  "release_sequence": 115000001,
-  "release_id": "24h-v115-b1-20260930-toolbar-cleanup",
+  "release_sequence": 116000001,
+  "release_id": "24h-v116-b1-20261001-prephysical-closure",
   "canonical_shell": "./luisa_24_heures.html",
-  "canonical_shell_sha256": "de3cc2c8874d701c5c3122dbad9e9625fd9fc70249dceb1089abbc3a9ca45973",
+  "canonical_shell_sha256": "47c94799bb77a91bec10b9aee8b46d7191d89dab59cde637ba94ef9c32ea7b65",
   "update_protocol": 2,
-  "pwa_update_predecessor_version": "v101.156",
+  "pwa_update_predecessor_version": "production v111/R36; construction predecessor v115/B1",
   "pwa_update_predecessor_zip_sha256": "9b73b16dfc26c6b5cc1efaa652cdf7264b3331040022477bcbed6ddecabfdc9a",
   "pwa_update_architecture": "verified_prepare_commit_v2_waiting_worker_explicit_activation__R29_UPDATE_PROTOCOL_PRESERVED__R32_STRUCTURAL_RENDERER_ONLY_WITH_RELEASE_HASH_REBIND",
   "legacy_bootstrap": "R15 preserves the R14/R13/R12/R11 unique-lineage Update-v2 architecture. Automatic install does not claim clients; only a verified explicit user commit arms same-scope takeover.",
@@ -77,15 +77,15 @@
     "R12 bottom-navigation geometry behavior inherited unchanged",
     "R14 release identity, cache and CSP script/style hashes mechanically rebound to exact successor bytes"
   ],
-  "functional_freeze_status": "R36_FULL_QA_METADATA_CORRECTION_ONLY__R35_APPLICATION_AND_PROVENANCE_COPY_UNCHANGED__R33_INDEXEDDB_PERSONAL_STATE_AND_R32_STRUCTURAL_SELECTION_BEHAVIOR_PROTECTED_UNCHANGED",
-  "security_stage_status": "R32_CSP3_ARCHITECTURE_PRESERVED__R36_INLINE_SCRIPT_HASH_REBOUND_TO_EXACT_R36_SUCCESSOR_SHELL__SERVICE_WORKER_CANONICAL_SHELL_HASH_BOUND_TO_EXACT_R36_SHELL",
+  "functional_freeze_status": "V116_B1_BOUNDED_PREPHYSICAL_CLOSURE__SELECTION_FINALIZATION_RACE_AND_OBJECTIVE_UX_A11Y_ONLY__CORPUS_SEARCH_PROVENANCE_CONTENT_AND_PERSONAL_STATE_SCHEMAS_PROTECTED",
+  "security_stage_status": "CSP3_ARCHITECTURE_PRESERVED__V116_INLINE_SCRIPT_STYLE_HASHES_REBOUND_TO_EXACT_V116_SHELL__SERVICE_WORKER_CANONICAL_SHELL_HASH_BOUND_TO_EXACT_V116_SHELL",
   "security_predecessor_version": "v102.0 R4",
   "security_predecessor_zip_sha256": "79d8d88ed80622841dcf989edc5d777e2c2c6e3f5f3e17cad9042a679e7b5fc4",
   "security_csp_strategy": "CSP3 split directives: hash-locked script/style elements; inline handler/style attributes retained for compatibility and mature architecture; legacy script-src/style-src fallback retained.",
-  "security_inline_script_sha256_base64": "sha256-E3Di8qgm6kJ+KCiF7yCB3Tm4sksP0jgPexBpy7LHtSs=",
+  "security_inline_script_sha256_base64": "sha256-cww3OiiNEbMqGBX4s6hBJJZ9jg4s1DtLRXQkzTpkeks=",
   "security_inline_style_sha256_base64": [
     "sha256-UQ2LZMV8vpixa50rjbFhb0lgGCv04EY1sB1SyGNLL0k=",
-    "sha256-Vy6+A/1jfz47aC0DEQU/xSrEbUkFBO4JfwfEORKHdNY=",
+    "sha256-2ARtSeEWI0jAxPHibXm3KPVXEac3/Fg8MDRm9Sfl7N0=",
     "sha256-/PDid79K7LRUFTBYGYCk5WowaPjSf8h6n32Q2Qfk09Y="
   ],
   "blind_adversarial_r3_predecessor_version": "v102.0 R2",
@@ -312,7 +312,7 @@
     "stable_id_topology": "PRESERVED",
     "provenance_ui": "NOT_IMPLEMENTED_IN_R13"
   },
-  "canonical_shell_inline_script_sha256_csp": "sha256-E3Di8qgm6kJ+KCiF7yCB3Tm4sksP0jgPexBpy7LHtSs=",
+  "canonical_shell_inline_script_sha256_csp": "sha256-cww3OiiNEbMqGBX4s6hBJJZ9jg4s1DtLRXQkzTpkeks=",
   "r13_documentary_integrity_set_contract": "SHA256_UTF8_NFC_SORTED_KEYS_COMPACT_JSON_ARRAY_ORDER_PRESERVED_OF_72_RECORD_ARRAY__ledger_id_content_presentation_linked_source_documentary_assertion",
   "r13_documentary_integrity_set_sha256": "50c3509c87887150d484a3e0b186e0ac718f447befd1f96164c4b03681f689f0",
   "r13_documentary_changed_counts": {
@@ -692,6 +692,34 @@
     ],
     "production_deployment_authority": "NONE",
     "qualification_status": "STATIC_AND_CONTROLLED_REGRESSION_PASS__REAL_ORIGIN_PWA_OFFLINE_PHYSICAL_OPEN"
+  },
+  "v116_b1_prephysical_closure": {
+    "date": "2026-10-01",
+    "predecessor_app_version": "v115",
+    "predecessor_release_id": "24h-v115-b1-20260930-toolbar-cleanup",
+    "classification": "BOUNDED_PREPHYSICAL_FUNCTIONAL_AND_UX_ACCESSIBILITY_SUCCESSOR",
+    "closed_defects": [
+      "24H-SEL-NAV-02 delayed selection finalization after Home",
+      "F03",
+      "F04",
+      "F05",
+      "F07",
+      "F20",
+      "F28",
+      "F29",
+      "F30",
+      "F31"
+    ],
+    "protected": [
+      "devotional corpus",
+      "Search payload/data",
+      "provenance documentary content",
+      "personal-state schemas"
+    ],
+    "production_authorized": false,
+    "physical_retest_required": true,
+    "canonical_shell_sha256": "47c94799bb77a91bec10b9aee8b46d7191d89dab59cde637ba94ef9c32ea7b65"
   }
+
 
 }
