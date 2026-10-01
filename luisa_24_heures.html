@@ -469,7 +469,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--ink); 
 .hour-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; padding-top: 1.4rem; border-top: 1px solid var(--bg3); gap: 0.5rem; }
 .nav-btn { display: flex; align-items: center; gap: 0.4rem; background: var(--bg2); border: 1px solid var(--bg3); border-radius: var(--radius); padding: 0.6rem 0.9rem; cursor: pointer; color: var(--ink2); font-family: var(--font-ui); font-size: var(--ui-size, 16px); transition: background 0.15s, border-color 0.15s, color 0.15s; flex-shrink: 0; }
 .nav-btn:hover { background: var(--accent-pale); border-color: var(--accent-light); color: var(--accent); }
-.nav-btn:disabled { opacity: 0.35; pointer-events: none; }
+.nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
 .nav-label { font-style: italic; font-size: 0.78rem; color: var(--ink3); display: block; }
 .mark-read-btn { background: var(--accent-pale); border: 1px solid var(--accent-light); border-radius: var(--radius); padding: 0.6rem 1rem; cursor: pointer; color: var(--accent); font-family: var(--font-ui); font-size: var(--ui-size, 16px); transition: background 0.15s; display: flex; flex-direction: column; align-items: center; gap: 0.15rem; line-height: 1.2; }
 .mark-read-btn:hover { background: var(--accent); color: white; }
@@ -919,7 +919,8 @@ mark.hl-pink   { background: #fce7f3; color: inherit; }
   transition: opacity 0.15s, background 0.15s, color 0.15s; }
 .mark-btn.done { background: transparent; color: var(--accent); border-color: var(--accent-light); }
 .mark-btn:active { opacity: 0.8; }
-.mark-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+[data-theme="dark"] .mark-btn:not(.done) { color: #1A1612; }
+.mark-btn:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
 .mark-hint { flex: 1 1 15rem; min-width: 0; font-size: 0.78rem; color: var(--ink3); font-family: var(--font-ui);
   line-height: 1.35; }
 .mark-hint strong, .mark-hint span { display: block; }
@@ -928,6 +929,12 @@ mark.hl-pink   { background: #fce7f3; color: inherit; }
 @media (max-width: 520px) {
   .mark-bar { align-items: stretch; }
   .mark-btn { width: 100%; }
+}
+@media (forced-colors: active) {
+  .mark-btn, .nav-btn, .tab-btn, .bn-item, .icon-btn, .resume-panel-btn,
+  .hour-card, .hour-list-card, .home-action-card, .extra-card, .continue-card {
+    border: 1px solid ButtonText;
+  }
 }
 
 /* ─── Update available banner ─── */
@@ -3288,7 +3295,7 @@ html[data-font-level="xlarge"] .dc-prev {
     </button>
   </div>
   <div class="note-list" id="noteModalList"></div>
-  <textarea class="note-textarea" id="noteTextarea" placeholder="Ajouter une note…" maxlength="2000" oninput="updateNoteCharCount()"></textarea>
+  <textarea class="note-textarea" id="noteTextarea" aria-label="Ajouter une note" placeholder="Ajouter une note…" maxlength="2000" oninput="updateNoteCharCount()"></textarea>
   <div class="note-char-count" id="noteCharCount">0 / 2000</div>
   <button class="note-save-btn" onclick="saveNoteFromModal()">Enregistrer</button>
 </div>
@@ -8599,7 +8606,7 @@ function showEspaceView(push = true) {
     <div class="espace-section"><div class="espace-section-title"><span>Lectures marquées</span><span class="espace-section-count">${markedReadings.length}</span></div>${markedReadingsHtml}</div>
     <div class="espace-section"><div class="espace-section-title"><span>Surlignages</span><span class="espace-section-count">${freshEntries.length}</span></div>${hlHtml}</div>
     <div class="espace-section"><div class="espace-section-title"><span>Notes</span><span class="espace-section-count">${everyNote.length}</span></div>${notesHtml}</div>
-    <div class="espace-section"><div class="espace-section-title"><span>Sauvegarder mes données</span></div><div class="espace-actions"><button type="button" class="resume-panel-btn primary" onclick="exportUserData()">⬇ Exporter la sauvegarde JSON</button><button type="button" class="resume-panel-btn" onclick="triggerImport()">⬆ Importer</button><button type="button" class="resume-panel-btn" onclick="exportHumanReadableJournal()">↗ Exporter mon journal lisible</button></div><div id="lastBackupStatus" class="espace-backup-status">${escHtml(formatLastExportStatus())}</div>${backupReminder}<div class="espace-journal-note">Le fichier JSON normal sert à restaurer l’app. Si vos données dépassent 32 Mo, l’app crée une archive de secours clairement identifiée qui conserve les données mais ne peut pas être restaurée directement dans cette version. Le journal lisible est un fichier Markdown destiné à la lecture et ne peut pas être importé comme sauvegarde.</div>
+    <div class="espace-section"><div class="espace-section-title"><span>Sauvegarder mes données</span></div><div class="espace-actions"><button type="button" class="resume-panel-btn primary" onclick="exportUserData()">⬇ Exporter ma sauvegarde</button><button type="button" class="resume-panel-btn" onclick="triggerImport()">⬆ Importer</button><button type="button" class="resume-panel-btn" onclick="exportHumanReadableJournal()">↗ Exporter mon journal lisible</button></div><div id="lastBackupStatus" class="espace-backup-status">${escHtml(formatLastExportStatus())}</div>${backupReminder}<div class="espace-journal-note">Le fichier JSON normal sert à restaurer l’app. Si vos données dépassent 32 Mo, l’app crée une archive de secours clairement identifiée qui conserve les données mais ne peut pas être restaurée directement dans cette version. Le journal lisible est un fichier Markdown destiné à la lecture et ne peut pas être importé comme sauvegarde.</div>
       <details class="device-transfer-guide">
         <summary>Je change d’appareil</summary>
         <div class="device-transfer-body">
@@ -8804,14 +8811,14 @@ function renderReader(hour, scroll = true) {
   const linkedHtml = renderLinkedTextsForHour(hour.hour_number);
   const displayParagraphs = getDisplayParagraphsForHour(hour);
   const tabsHtml = `
-    <div class="tabs">
-      <button class="tab-btn ${state.activeTab==='meditation'?'active':''}" data-tab="meditation" onclick="switchTab('meditation')">
+    <div class="tabs" role="tablist" aria-label="Parties de l’Heure" onkeydown="handleHourTabKey(event)">
+      <button class="tab-btn ${state.activeTab==='meditation'?'active':''}" role="tab" aria-selected="${state.activeTab==='meditation'?'true':'false'}" tabindex="${state.activeTab==='meditation'?'0':'-1'}" data-tab="meditation" onclick="switchTab('meditation')">
         Méditation
       </button>
-      ${hasRefl ? `<button class="tab-btn ${state.activeTab==='reflections'?'active':''}" data-tab="reflections" onclick="switchTab('reflections')">
+      ${hasRefl ? `<button class="tab-btn ${state.activeTab==='reflections'?'active':''}" role="tab" aria-selected="${state.activeTab==='reflections'?'true':'false'}" tabindex="${state.activeTab==='reflections'?'0':'-1'}" data-tab="reflections" onclick="switchTab('reflections')">
         Réflexions et pratiques
       </button>` : ''}
-      <button class="tab-btn ${state.activeTab==='linked'?'active':''}" data-tab="linked" onclick="switchTab('linked')">
+      <button class="tab-btn ${state.activeTab==='linked'?'active':''}" role="tab" aria-selected="${state.activeTab==='linked'?'true':'false'}" tabindex="${state.activeTab==='linked'?'0':'-1'}" data-tab="linked" onclick="switchTab('linked')">
         Textes liés
       </button>
     </div>`;
@@ -8848,7 +8855,6 @@ function renderReader(hour, scroll = true) {
       ${formatGeLumenPageReference(hour)?`<div class="reader-pages">${escHtml(formatGeLumenPageReference(hour))}</div>`:''}
       ${planBtnHtml}
     </div>
-    ${buildMarkBar(hour.hour_number)}
     ${openingBtns}
     ${tabsHtml}
 
@@ -8863,6 +8869,7 @@ function renderReader(hour, scroll = true) {
     </div>
 
     ${closingBtns}
+    ${buildMarkBar(hour.hour_number)}
     ${buildHourEndActions(hour, next)}
     ${renderHourProvenance(hour.hour_number)}
 
@@ -9256,6 +9263,21 @@ function closeMobileActionBar() {
   closeContextActions({ clearTarget: true, clearPending: false, clearSelection: false });
 }
 
+function handleHourTabKey(event) {
+  if (!event || !['ArrowLeft','ArrowRight','Home','End'].includes(event.key)) return;
+  const tabs = Array.from(event.currentTarget.querySelectorAll('[role="tab"]'));
+  if (!tabs.length) return;
+  const current = Math.max(0, tabs.indexOf(document.activeElement));
+  let next = current;
+  if (event.key === 'ArrowRight') next = (current + 1) % tabs.length;
+  if (event.key === 'ArrowLeft') next = (current - 1 + tabs.length) % tabs.length;
+  if (event.key === 'Home') next = 0;
+  if (event.key === 'End') next = tabs.length - 1;
+  event.preventDefault();
+  const target = tabs[next];
+  switchTab(target.dataset.tab, true);
+  target.focus();
+}
 function switchTab(tab, preserveScroll = false) {
   const personalBeforeHourTab=buildPersonalSnapshotFromState();
   state.activeTab = tab;
@@ -9267,7 +9289,10 @@ function switchTab(tab, preserveScroll = false) {
   if (ref) ref.style.display = tab === 'reflections' ? 'block' : 'none';
   if (linked) linked.style.display = tab === 'linked' ? 'block' : 'none';
   document.querySelectorAll('.tab-btn').forEach((btn) => {
-    btn.classList.toggle('active', btn.dataset.tab === tab);
+    const active = btn.dataset.tab === tab;
+    btn.classList.toggle('active', active);
+    btn.setAttribute('aria-selected', active ? 'true' : 'false');
+    btn.setAttribute('tabindex', active ? '0' : '-1');
   });
   if (!preserveScroll) resetContentScrollAfterRender();
 }
@@ -11783,7 +11808,11 @@ function handleSelectionEnd() {
   if (!sel || sel.isCollapsed || !sel.rangeCount) return;
   const savedRange = sel.getRangeAt(0).cloneRange();
   const savedRect  = savedRange.getBoundingClientRect ? savedRange.getBoundingClientRect() : null;
-  setTimeout(function () {
+  const selectionGeneration = _selectionCaptureGeneration;
+  if (_selectionFinalizeTimer) clearTimeout(_selectionFinalizeTimer);
+  _selectionFinalizeTimer = setTimeout(function () {
+    _selectionFinalizeTimer = null;
+    if (selectionGeneration !== _selectionCaptureGeneration || state.view === 'home') return;
     if (typeof stage6fShouldSuppressSelectionCapture === 'function' && stage6fShouldSuppressSelectionCapture()) return;
     setPendingSelectionFromRange(savedRange, savedRect, true);
   }, isAndroidSelectionRepairActive() ? 220 : 80);
@@ -12187,6 +12216,7 @@ function openContextActions(target) {
 }
 function closeContextActions(options) {
   options = options || {};
+  if (options.clearPending && options.clearSelection && typeof cancelPendingSelectionCapture === 'function') cancelPendingSelectionCapture();
   const bar = document.getElementById('contextActionBar');
   if (bar) { bar.classList.remove('visible'); setTimeout(()=>{ if (bar.parentNode) bar.remove(); }, 180); }
   const target = _contextActionTarget;
@@ -13225,6 +13255,7 @@ function buildPersonalDataExport() {
     exported_at: new Date().toISOString(),
     app_version: APP_VERSION,
     corpus_version: CORPUS_VERSION,
+    corpus_fingerprint_sha256: CORPUS.fingerprint_sha256 || null,
     textHighlights: migrateTextHighlightsStore(state.textHighlights),
     libraryMarks: sanitizeLibraryMarksStore(state.libraryMarks),
     readHours: [...state.readHours],
@@ -13535,10 +13566,18 @@ function smoothScrollTo(el, opts) {
 }
 
 let _selectionCaptureTimer = null;
+let _selectionFinalizeTimer = null;
+let _selectionCaptureGeneration = 0;
+function cancelPendingSelectionCapture() {
+  _selectionCaptureGeneration += 1;
+  if (_selectionCaptureTimer) { clearTimeout(_selectionCaptureTimer); _selectionCaptureTimer = null; }
+  if (_selectionFinalizeTimer) { clearTimeout(_selectionFinalizeTimer); _selectionFinalizeTimer = null; }
+}
 function scheduleSelectionCapture(delay = 220) {
   if (typeof stage6fShouldSuppressSelectionCapture === 'function' && stage6fShouldSuppressSelectionCapture()) return;
   clearTimeout(_selectionCaptureTimer);
   _selectionCaptureTimer = setTimeout(function () {
+    _selectionCaptureTimer = null;
     if (typeof stage6fShouldSuppressSelectionCapture === 'function' && stage6fShouldSuppressSelectionCapture()) return;
     handleSelectionEnd();
   }, delay);
