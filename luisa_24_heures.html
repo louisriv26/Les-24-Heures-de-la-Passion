@@ -1,8 +1,8 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; script-src-elem 'sha256-IzgeNz3naimEQ5wfwlWRnINuJocODKJVNkfSFQ4GD6k='; script-src-attr 'unsafe-inline'; style-src 'self' 'unsafe-inline'; style-src-elem 'sha256-UQ2LZMV8vpixa50rjbFhb0lgGCv04EY1sB1SyGNLL0k=' 'sha256-Vy6+A/1jfz47aC0DEQU/xSrEbUkFBO4JfwfEORKHdNY=' 'sha256-/PDid79K7LRUFTBYGYCk5WowaPjSf8h6n32Q2Qfk09Y='; style-src-attr 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; media-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; script-src-elem 'sha256-rBwKg0I45rOGuTWMvEdSHB31NGf8+230HVNdAbNFK48='; script-src-attr 'unsafe-inline'; style-src 'self' 'unsafe-inline'; style-src-elem 'sha256-UQ2LZMV8vpixa50rjbFhb0lgGCv04EY1sB1SyGNLL0k=' 'sha256-O4gvWXrooCpGlZH4pYc2ZLJOgkmS30SZULWdVIOzng8=' 'sha256-4AfsRj8AWkdWUFWpaxT/0+3244PorRYCufbvVPHqiRU='; style-src-attr 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; media-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="color-scheme" content="light dark">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -241,6 +241,11 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--ink); 
 .hl-item:focus-visible,.onboarding-primary:focus-visible,
 .onboarding-dismiss:focus-visible{outline:3px solid var(--accent-light);outline-offset:2px;}
 .search-input:focus-visible{border-color:var(--accent-light);box-shadow:0 0 0 3px var(--accent-pale);outline:none;}
+/* v119 adversarial correction — F-03 exact primary-action focus indicator.
+   --accent-light is only ~2.15:1 against the light background; use --accent so
+   the keyboard focus ring remains visibly distinct in both themes. */
+.mark-read-btn:focus-visible { outline: 3px solid var(--accent) !important; outline-offset: 2px; }
+
 
 .search-input::placeholder { color: var(--ink4); }
 .search-icon { position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%); color: var(--ink4); pointer-events: none; }
@@ -472,9 +477,9 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--ink); 
 .nav-btn:disabled { opacity: 0.35; pointer-events: none; }
 .nav-label { font-style: italic; font-size: 0.78rem; color: var(--ink3); display: block; }
 .mark-read-btn { background: var(--accent-pale); border: 1px solid var(--accent-light); border-radius: var(--radius); padding: 0.6rem 1rem; cursor: pointer; color: var(--accent); font-family: var(--font-ui); font-size: var(--ui-size, 16px); transition: background 0.15s; display: flex; flex-direction: column; align-items: center; gap: 0.15rem; line-height: 1.2; }
-.mark-read-btn:hover { background: var(--accent); color: white; }
-.mark-read-btn:hover .mark-btn-hint { color: rgba(255,255,255,0.8); }
-.mark-read-btn.done { background: var(--accent); color: white; }
+.mark-read-btn:hover { background: var(--accent); color: var(--bg); }
+.mark-read-btn:hover .mark-btn-hint { color: var(--bg); }
+.mark-read-btn.done { background: var(--accent); color: var(--bg); }
 .mark-btn-hint { font-size: 0.72rem; color: var(--ink3); font-style: italic; }
 [data-theme="dark"] .skip-link,
 [data-theme="dark"] .mark-read-btn.done,
@@ -3104,6 +3109,22 @@ html[data-font-level="xlarge"] .dc-prev {
 .provenance-methodology-content{padding:.9rem 1.05rem 1.05rem;min-width:0}.provenance-confidence{margin:.78rem 0 1rem;padding:.82rem .9rem;border:1px solid var(--accent-light);border-radius:14px;background:var(--accent-pale)}.provenance-confidence h3{margin:0 0 .42rem!important}.provenance-confidence p{margin:.2rem 0 0}.provenance-work-markers{margin:.35rem 0 1rem;padding-left:1.25rem}.provenance-work-markers li{margin:.38rem 0}.provenance-faq{margin:.62rem 0;border:1px solid var(--bg3);border-radius:12px;background:var(--bg2);overflow:hidden}.provenance-faq>summary{min-height:46px;display:flex;align-items:center;gap:.6rem;padding:.65rem .78rem;cursor:pointer;list-style:none;color:var(--accent);font-weight:700}.provenance-faq>summary::-webkit-details-marker{display:none}.provenance-faq>summary::after{content:'⌄';margin-left:auto;transition:transform .15s ease}.provenance-faq[open]>summary::after{transform:rotate(180deg)}.provenance-faq-body{padding:0 .78rem .75rem}.provenance-faq-body p{margin:.2rem 0}@media(max-width:767px){.provenance-methodology-top{padding:.9rem .9rem .68rem}.provenance-methodology-content{padding:.78rem .9rem .95rem}.provenance-methodology-modal{scroll-padding-top:90px}}
 
 
+
+/* v118 — F-01/F-30 Wave-2 closure. On tablet/desktop the navigation is a normal
+   flex item rather than a fixed overlay, so it cannot cover reading text. */
+@media (min-width: 768px) {
+  .bottom-nav, html.stage6a-runtime .bottom-nav, html.ios-iphone-visual-fix .bottom-nav, html.stage6a-runtime.ios-iphone-visual-fix .bottom-nav {
+    position: static !important; left:auto !important; right:auto !important; bottom:auto !important; transform:none !important;
+    width:100% !important; max-width:none !important; flex:0 0 auto !important; border-radius:0 !important; border-left:0 !important; border-right:0 !important;
+  }
+  #content { padding-bottom: calc(2.5rem + env(safe-area-inset-bottom,0px)) !important; }
+}
+@media (forced-colors: active) {
+  button, [role="button"] {
+    border: 1px solid ButtonText !important; forced-color-adjust:auto;
+  }
+  .mark-read-btn.done, .tab-btn.active, .bn-item.active { border-width:2px !important; }
+}
 </style>
 
 </head>
@@ -3288,7 +3309,7 @@ html[data-font-level="xlarge"] .dc-prev {
     </button>
   </div>
   <div class="note-list" id="noteModalList"></div>
-  <textarea class="note-textarea" id="noteTextarea" placeholder="Ajouter une note…" maxlength="2000" oninput="updateNoteCharCount()"></textarea>
+  <textarea class="note-textarea" id="noteTextarea" aria-label="Note personnelle" placeholder="Ajouter une note…" maxlength="2000" oninput="updateNoteCharCount()"></textarea>
   <div class="note-char-count" id="noteCharCount">0 / 2000</div>
   <button class="note-save-btn" onclick="saveNoteFromModal()">Enregistrer</button>
 </div>
@@ -5708,19 +5729,27 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'v111.0';
-const BUILD_REVISION = 'R36';
-const APP_EVIDENCE_STAGE = '24H_PROVENANCE_GOVERNANCE_R15';
-const APP_RELEASE_SEQUENCE = 111000036;
-const APP_RELEASE_ID = '24h-v111.0-r36-20260926-21af645e9f39';
+const APP_VERSION = 'v119';
+const BUILD_REVISION = 'B1';
+const APP_EVIDENCE_STAGE = '24H_V119_ADVERSARIAL_UX_CORRECTION_B1';
+const APP_RELEASE_SEQUENCE = 119000001;
+const APP_RELEASE_ID = '24h-v119-b1-20261001-adversarial-ux-correction';
 const CANONICAL_APP_SHELL = './luisa_24_heures.html';
 const STORAGE_SCHEMA_VERSION=8; const R41_TEXT_ANCHOR_RESET_VERSION='1';
-const MAX_PERSONAL_DATA_IMPORT_BYTES = 32 * 1024 * 1024; // finite parser guard; must exceed any realistic localStorage-backed self-export
+const MAX_PERSONAL_DATA_IMPORT_BYTES = 32 * 1024 * 1024; // finite direct-restore ceiling; normal exports use the same bound and larger files are emergency archives
 const PERSONAL_BACKUP_FORMAT = 'luisa-24h-user-data';
 const PERSONAL_BACKUP_APP_ID = 'passion24';
 const SEARCH_RESULT_LIMIT = 60;
 const SEARCH_VISIBLE_LIMIT_MAX = SEARCH_RESULT_LIMIT * 1000;
 let _searchDestinationSelectionClearTimer = null;
+let _selectionCaptureTimer = null;
+let _selectionFinalizeTimer = null;
+let _selectionCaptureGeneration = 0;
+function cancelSelectionCaptureWork() {
+  _selectionCaptureGeneration += 1;
+  if (_selectionCaptureTimer) { clearTimeout(_selectionCaptureTimer); _selectionCaptureTimer = null; }
+  if (_selectionFinalizeTimer) { clearTimeout(_selectionFinalizeTimer); _selectionFinalizeTimer = null; }
+}
 function sanitizeSearchVisibleLimit(value) {
   const n = Number(value);
   if (!Number.isFinite(n)) return SEARCH_RESULT_LIMIT;
@@ -8183,6 +8212,10 @@ function goBack() {
 
 // ── Home ──
 function showHome() {
+  cancelSelectionCaptureWork();
+  closeContextActions({clearTarget:true,clearPending:true,clearSelection:true});
+  cancelSelectionCaptureWork();
+  if (_searchDestinationSelectionClearTimer) { clearTimeout(_searchDestinationSelectionClearTimer); _searchDestinationSelectionClearTimer = null; }
   state.history = []; setBackBtn(false);
   state.view = 'home'; state.currentHour = null; resetContentScroll(); state.currentSection = null; state.currentPrayer = null;
   renderHome(); buildSidebar();
@@ -8597,7 +8630,7 @@ function showEspaceView(push = true) {
     <div class="espace-section"><div class="espace-section-title"><span>Lectures marquées</span><span class="espace-section-count">${markedReadings.length}</span></div>${markedReadingsHtml}</div>
     <div class="espace-section"><div class="espace-section-title"><span>Surlignages</span><span class="espace-section-count">${freshEntries.length}</span></div>${hlHtml}</div>
     <div class="espace-section"><div class="espace-section-title"><span>Notes</span><span class="espace-section-count">${everyNote.length}</span></div>${notesHtml}</div>
-    <div class="espace-section"><div class="espace-section-title"><span>Sauvegarder mes données</span></div><div class="espace-actions"><button type="button" class="resume-panel-btn primary" onclick="exportUserData()">⬇ Exporter la sauvegarde JSON</button><button type="button" class="resume-panel-btn" onclick="triggerImport()">⬆ Importer</button><button type="button" class="resume-panel-btn" onclick="exportHumanReadableJournal()">↗ Exporter mon journal lisible</button></div><div id="lastBackupStatus" class="espace-backup-status">${escHtml(formatLastExportStatus())}</div>${backupReminder}<div class="espace-journal-note">Le fichier JSON sert à restaurer l’app. Le journal lisible est un fichier Markdown destiné à la lecture et ne peut pas être importé comme sauvegarde.</div>
+    <div class="espace-section"><div class="espace-section-title"><span>Sauvegarder mes données</span></div><div class="espace-actions"><button type="button" class="resume-panel-btn primary" onclick="exportUserData()">⬇ Exporter la sauvegarde JSON</button><button type="button" class="resume-panel-btn" onclick="triggerImport()">⬆ Importer</button><button type="button" class="resume-panel-btn" onclick="exportHumanReadableJournal()">↗ Exporter mon journal lisible</button></div><div id="lastBackupStatus" class="espace-backup-status">${escHtml(formatLastExportStatus())}</div>${backupReminder}<div class="espace-journal-note">Le fichier JSON normal sert à restaurer l’app. Si vos données dépassent 32 Mo, l’app crée une archive de secours clairement identifiée qui conserve les données mais ne peut pas être restaurée directement dans cette version. Le journal lisible est un fichier Markdown destiné à la lecture et ne peut pas être importé comme sauvegarde.</div>
       <details class="device-transfer-guide">
         <summary>Je change d’appareil</summary>
         <div class="device-transfer-body">
@@ -8802,14 +8835,14 @@ function renderReader(hour, scroll = true) {
   const linkedHtml = renderLinkedTextsForHour(hour.hour_number);
   const displayParagraphs = getDisplayParagraphsForHour(hour);
   const tabsHtml = `
-    <div class="tabs">
-      <button class="tab-btn ${state.activeTab==='meditation'?'active':''}" data-tab="meditation" onclick="switchTab('meditation')">
+    <div class="tabs" role="tablist" aria-label="Contenu de cette Heure">
+      <button class="tab-btn ${state.activeTab==='meditation'?'active':''}" id="readerTabMeditation" role="tab" aria-selected="${state.activeTab==='meditation'?'true':'false'}" aria-controls="meditationContent" tabindex="${state.activeTab==='meditation'?'0':'-1'}" data-tab="meditation" onclick="switchTab('meditation')" onkeydown="handleReaderTabKey(event)">
         Méditation
       </button>
-      ${hasRefl ? `<button class="tab-btn ${state.activeTab==='reflections'?'active':''}" data-tab="reflections" onclick="switchTab('reflections')">
+      ${hasRefl ? `<button class="tab-btn ${state.activeTab==='reflections'?'active':''}" id="readerTabReflections" role="tab" aria-selected="${state.activeTab==='reflections'?'true':'false'}" aria-controls="reflectionsContent" tabindex="${state.activeTab==='reflections'?'0':'-1'}" data-tab="reflections" onclick="switchTab('reflections')" onkeydown="handleReaderTabKey(event)">
         Réflexions et pratiques
       </button>` : ''}
-      <button class="tab-btn ${state.activeTab==='linked'?'active':''}" data-tab="linked" onclick="switchTab('linked')">
+      <button class="tab-btn ${state.activeTab==='linked'?'active':''}" id="readerTabLinked" role="tab" aria-selected="${state.activeTab==='linked'?'true':'false'}" aria-controls="linkedTextsContent" tabindex="${state.activeTab==='linked'?'0':'-1'}" data-tab="linked" onclick="switchTab('linked')" onkeydown="handleReaderTabKey(event)">
         Textes liés
       </button>
     </div>`;
@@ -8850,13 +8883,13 @@ function renderReader(hour, scroll = true) {
     ${openingBtns}
     ${tabsHtml}
 
-    <div id="meditationContent" style="display:${!hasRefl||state.activeTab==='meditation'?'block':'none'}">
+    <div id="meditationContent" role="tabpanel" aria-labelledby="readerTabMeditation" style="display:${!hasRefl||state.activeTab==='meditation'?'block':'none'}">
       ${medHtml}${subHtml}
     </div>
-    <div id="reflectionsContent" style="display:${hasRefl&&state.activeTab==='reflections'?'block':'none'}">
+    <div id="reflectionsContent" role="tabpanel" aria-labelledby="readerTabReflections" style="display:${hasRefl&&state.activeTab==='reflections'?'block':'none'}">
       ${refHtml}
     </div>
-    <div id="linkedTextsContent" style="display:${state.activeTab==='linked'?'block':'none'}">
+    <div id="linkedTextsContent" role="tabpanel" aria-labelledby="readerTabLinked" style="display:${state.activeTab==='linked'?'block':'none'}">
       ${linkedHtml}
     </div>
 
@@ -9264,10 +9297,25 @@ function switchTab(tab, preserveScroll = false) {
   if (med) med.style.display = tab === 'meditation' ? 'block' : 'none';
   if (ref) ref.style.display = tab === 'reflections' ? 'block' : 'none';
   if (linked) linked.style.display = tab === 'linked' ? 'block' : 'none';
-  document.querySelectorAll('.tab-btn').forEach((btn) => {
-    btn.classList.toggle('active', btn.dataset.tab === tab);
+  document.querySelectorAll('.tab-btn[role="tab"]').forEach((btn) => {
+    const selected = btn.dataset.tab === tab;
+    btn.classList.toggle('active', selected);
+    btn.setAttribute('aria-selected', selected ? 'true' : 'false');
+    btn.tabIndex = selected ? 0 : -1;
   });
   if (!preserveScroll) resetContentScrollAfterRender();
+}
+function handleReaderTabKey(event) {
+  if (!event || !['ArrowLeft','ArrowRight','Home','End'].includes(event.key)) return;
+  const tabs = Array.from(document.querySelectorAll('.tab-btn[role="tab"]')).filter(btn => !btn.disabled && btn.offsetParent !== null);
+  if (!tabs.length) return;
+  let i = Math.max(0, tabs.indexOf(event.currentTarget));
+  if (event.key === 'Home') i = 0;
+  else if (event.key === 'End') i = tabs.length - 1;
+  else i = (i + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+  event.preventDefault();
+  tabs[i].focus();
+  switchTab(tabs[i].dataset.tab, true);
 }
 
 // ── Prayer full-page view (from sidebar) ──
@@ -11099,7 +11147,7 @@ function showHelp() {
       </div></div>
 
       <div class="help-section" id="help-backup"><div class="help-section-hd">Sauvegarder et restaurer</div><div class="help-section-body">
-        <div class="help-row"><span class="help-icon">⬇</span><span class="help-row-text"><strong>Fichier de sauvegarde</strong> — Sert à restaurer votre progression, vos positions de lecture, vos réglages, vos surlignages, vos notes et vos Lectures marquées lorsqu’ils sont présents. Le fichier est enregistré au format JSON.</span></div>
+        <div class="help-row"><span class="help-icon">⬇</span><span class="help-row-text"><strong>Fichier de sauvegarde</strong> — Sert à restaurer votre progression, vos positions de lecture, vos réglages, vos surlignages, vos notes et vos Lectures marquées lorsqu’ils sont présents. Le fichier est enregistré au format JSON. Si son volume dépasse 32 Mo, l’app crée à la place une archive de secours qui conserve les données mais n’est pas directement restaurable dans cette version.</span></div>
         <div class="help-row"><span class="help-icon">⬆</span><span class="help-row-text"><strong>Importer une sauvegarde</strong> — Remplace vos données actuelles après confirmation. Il est prudent d’exporter d’abord votre sauvegarde actuelle.</span></div>
         <div class="help-row"><span class="help-icon">↗</span><span class="help-row-text"><strong>Journal lisible</strong> — Permet de consulter vos données dans un fichier lisible. Il <strong>ne sert pas à restaurer l’application</strong>.</span></div>
         <div class="help-note"><strong>Important :</strong> les données personnelles sont conservées localement lorsque le stockage de l’appareil/navigateur est disponible. Exportez un fichier de sauvegarde avant de supprimer ou réinstaller l’app, d’effacer les données du site ou de changer d’appareil.</div>
@@ -11776,12 +11824,18 @@ function scheduleAndroidFallbackSelection(ctx, delay) {
   }, delay || 720);
 }
 function handleSelectionEnd() {
+  if (state.view === 'home') return;
   if (typeof stage6fShouldSuppressSelectionCapture === 'function' && stage6fShouldSuppressSelectionCapture()) return;
   const sel = window.getSelection ? window.getSelection() : null;
   if (!sel || sel.isCollapsed || !sel.rangeCount) return;
   const savedRange = sel.getRangeAt(0).cloneRange();
   const savedRect  = savedRange.getBoundingClientRect ? savedRange.getBoundingClientRect() : null;
-  setTimeout(function () {
+  const captureGeneration = _selectionCaptureGeneration;
+  const captureView = state.view;
+  if (_selectionFinalizeTimer) clearTimeout(_selectionFinalizeTimer);
+  _selectionFinalizeTimer = setTimeout(function () {
+    _selectionFinalizeTimer = null;
+    if (captureGeneration !== _selectionCaptureGeneration || state.view !== captureView || state.view === 'home') return;
     if (typeof stage6fShouldSuppressSelectionCapture === 'function' && stage6fShouldSuppressSelectionCapture()) return;
     setPendingSelectionFromRange(savedRange, savedRect, true);
   }, isAndroidSelectionRepairActive() ? 220 : 80);
@@ -13248,17 +13302,27 @@ async function exportUserData() {
   const data = buildPersonalDataExport();
   try {
     const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+    const day = new Date().toISOString().slice(0,10);
+    const directlyRestorable = blob.size <= MAX_PERSONAL_DATA_IMPORT_BYTES;
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url; a.download = 'luisa-24h-donnees-' + new Date().toISOString().slice(0,10) + '.json';
+    a.href = url;
+    a.download = directlyRestorable
+      ? 'luisa-24h-donnees-' + day + '.json'
+      : 'luisa-24h-archive-secours-' + day + '.json';
     document.body.appendChild(a); a.click();
     document.body.removeChild(a); URL.revokeObjectURL(url);
+    if (!directlyRestorable) {
+      showToast('Archive de secours créée : ce fichier dépasse 32 Mo et ne peut pas être restauré directement dans cette version.');
+      return true;
+    }
     const stamp = await writeLastExportAt(new Date().toISOString());
     const status = document.getElementById('lastBackupStatus');
     if (status) status.textContent = formatLastExportStatus();
     if (stamp.ok) { const reminder = document.querySelector('.espace-backup-reminder'); if (reminder) reminder.remove(); }
-    showToast(stamp.ok ? 'Données exportées ✓' : 'Données exportées, mais la date du dernier export n’a pas pu être mémorisée.');
-  } catch(e) { showToast('Export non disponible dans ce navigateur'); }
+    showToast(stamp.ok ? 'Sauvegarde restaurable exportée ✓' : 'Sauvegarde restaurable exportée, mais la date du dernier export n’a pas pu être mémorisée.');
+    return true;
+  } catch(e) { showToast('Export non disponible dans ce navigateur'); return false; }
 }
 function buildHumanReadableJournal() {
   const lines = ['# Mon journal — Les 24 Heures de la Passion', '', 'Export lisible créé le ' + new Date().toLocaleString('fr-FR') + '.', ''];
@@ -13522,11 +13586,14 @@ function smoothScrollTo(el, opts) {
   else { try { el.scrollIntoView(opts || {block:'start'}); } catch(e) { el.scrollIntoView(true); } }
 }
 
-let _selectionCaptureTimer = null;
 function scheduleSelectionCapture(delay = 220) {
+  if (state.view === 'home') return;
   if (typeof stage6fShouldSuppressSelectionCapture === 'function' && stage6fShouldSuppressSelectionCapture()) return;
+  const captureGeneration = _selectionCaptureGeneration;
   clearTimeout(_selectionCaptureTimer);
   _selectionCaptureTimer = setTimeout(function () {
+    _selectionCaptureTimer = null;
+    if (captureGeneration !== _selectionCaptureGeneration || state.view === 'home') return;
     if (typeof stage6fShouldSuppressSelectionCapture === 'function' && stage6fShouldSuppressSelectionCapture()) return;
     handleSelectionEnd();
   }, delay);
