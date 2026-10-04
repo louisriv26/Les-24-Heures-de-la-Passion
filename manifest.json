@@ -39,9 +39,9 @@
     "standalone",
     "browser"
   ],
-  "version": "v119",
-  "build_revision": "B1",
-  "release_sequence": 119000001,
-  "release_id": "24h-v119-b1-20261001-adversarial-ux-correction",
-  "build": "B1"
+  "version": "v120",
+  "build_revision": "B13",
+  "release_sequence": 120000013,
+  "release_id": "24h-v120-b13-20261003-cross-theme-update-banner-closure",
+  "build": "B13"
 }

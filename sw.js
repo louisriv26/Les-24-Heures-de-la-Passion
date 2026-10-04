@@ -1,19 +1,19 @@
-/* v119 B1 — adversarial pre-physical correction successor from exact v118/B1: F-03 focus visibility, complete F-07 tab/tabpanel relationships, comprehensive F-30 forced-colors button boundaries, and active release-metadata reconciliation. Protected corpus/Search/provenance/personal-state/backup semantics unchanged. */
+/* v120 B13 — release/state reconciliation plus update-banner contrast/touch closure; B10 activation semantics preserved unchanged. */
 function scopeFingerprint(scope) {
   let h = 2166136261;
   const text = String(scope || '');
   for (let i = 0; i < text.length; i++) { h ^= text.charCodeAt(i); h = Math.imul(h, 16777619); }
   return (h >>> 0).toString(16).padStart(8, '0');
 }
-const APP_VERSION = 'v119';
-const BUILD_REVISION = 'B1';
-const RELEASE_SEQUENCE = 119000001;
-const RELEASE_ID = '24h-v119-b1-20261001-adversarial-ux-correction';
+const APP_VERSION = 'v120';
+const BUILD_REVISION = 'B13';
+const RELEASE_SEQUENCE = 120000013;
+const RELEASE_ID = '24h-v120-b13-20261003-cross-theme-update-banner-closure';
 const CANONICAL_SHELL = './luisa_24_heures.html';
-const CANONICAL_SHELL_SHA256 = '56628a5329bd708715308dc2bb41a21d4a1dcbeee03ec2cf9c657a0fa7d9309d';
+const CANONICAL_SHELL_SHA256 = '765784949a85e64c8715f478a71117e10accaaff8dcf8614936a4d76bb7492dd';
 const SCOPE_FINGERPRINT = scopeFingerprint(self.registration.scope);
 const CACHE_PREFIX = `luisa-24h-${SCOPE_FINGERPRINT}-`;
-const CACHE_NAME = `${CACHE_PREFIX}v119-b1`;
+const CACHE_NAME = `${CACHE_PREFIX}v120-b13`;
 const META_CACHE_NAME = `${CACHE_PREFIX}update-meta-v2`;
 const LEGACY_MIGRATION_BASELINE_CACHE = `${CACHE_PREFIX}v101-153-r1`;
 const META_KEY = new URL('./__lp24_update_meta_v2__', self.registration.scope).href;
@@ -129,17 +129,34 @@ self.addEventListener('install', event => {
   // Intentionally no skipWaiting(): legacy v101.153 must be escaped through a controlled close/reopen boundary.
   event.waitUntil(verifiedInstall());
 });
+let pendingExplicitActivationReply = null;
 self.addEventListener('activate', event => {
-  // Automatic/first activation still does not seize existing clients. After a verified explicit
-  // ACTIVATE_UPDATE_V2 request, claim same-scope clients so the requesting installed PWA can load
-  // the successor shell instead of being served the predecessor cache again on Apple platforms.
+  // A predecessor page (not the successor shell) orchestrates an installed-PWA update.
+  // Reply ACTIVATE_UPDATE_ACCEPTED_V2 only after this exact successor has entered activate,
+  // claimed the requester, and completed the explicit-claim checks. This avoids the v119
+  // predecessor's active-worker polling from racing/starving the successor transition.
   event.waitUntil((async()=>{
     const armed=await readExplicitCommitClaim();
     if (!armed) return;
+    const pending=pendingExplicitActivationReply;
     const ok=String(armed.release_id||'')===RELEASE_ID && Number(armed.release_sequence)===RELEASE_SEQUENCE && !!armed.request_id;
-    if (!ok) { await clearExplicitCommitClaim(); throw new Error('explicit_commit_claim_identity_mismatch'); }
+    if (!ok) {
+      await clearExplicitCommitClaim();
+      pendingExplicitActivationReply=null;
+      if (pending && pending.port) {
+        try { pending.port.postMessage({type:'ACTIVATE_UPDATE_REJECTED_V2',request_id:pending.request_id||null,release_id:RELEASE_ID,reason:'explicit_commit_claim_identity_mismatch'}); pending.port.close(); } catch(_e) {}
+      }
+      throw new Error('explicit_commit_claim_identity_mismatch');
+    }
     await self.clients.claim();
     await clearExplicitCommitClaim();
+    pendingExplicitActivationReply=null;
+    if (pending && pending.port && String(pending.request_id||'')===String(armed.request_id||'')) {
+      try {
+        pending.port.postMessage({type:'ACTIVATE_UPDATE_ACCEPTED_V2',request_id:armed.request_id,release_id:RELEASE_ID,release_sequence:RELEASE_SEQUENCE});
+        pending.port.close();
+      } catch(_e) {}
+    }
   })());
 });
 self.addEventListener('message', event => {
@@ -153,19 +170,31 @@ self.addEventListener('message', event => {
     const ok=String(data.expected_release_id||'')===RELEASE_ID && Number(data.expected_release_sequence)===RELEASE_SEQUENCE && !!data.request_id;
     if (!ok) { reply(event,{type:'ACTIVATE_UPDATE_REJECTED_V2',request_id:data.request_id||null,release_id:RELEASE_ID,reason:'release_identity_mismatch'}); return; }
     event.waitUntil((async()=>{
-      // R33 changes the canonical personal-state authority from localStorage to IndexedDB.
-      // Never cross that migration boundary while another predecessor window is live:
-      // R32 cannot participate in the new canonical store and a mixed R32/R33 writer set
-      // could otherwise acknowledge changes into different authorities. Fail closed and
-      // leave every current page untouched; the user can close the other window and retry.
       const isolation=await explicitUpdateHasNoOtherLiveScopeClient(event);
       if (!isolation.ok) {
         reply(event,{type:'ACTIVATE_UPDATE_REJECTED_V2',request_id:data.request_id,release_id:RELEASE_ID,reason:isolation.reason,other_scope_clients:isolation.otherCount||0});
         return;
       }
+      if (!event.ports || !event.ports[0]) {
+        reply(event,{type:'ACTIVATE_UPDATE_REJECTED_V2',request_id:data.request_id,release_id:RELEASE_ID,reason:'reply_port_missing'});
+        return;
+      }
+      if (pendingExplicitActivationReply) {
+        reply(event,{type:'ACTIVATE_UPDATE_REJECTED_V2',request_id:data.request_id,release_id:RELEASE_ID,reason:'activation_already_pending'});
+        return;
+      }
       await armExplicitCommitClaim(data.request_id);
-      reply(event,{type:'ACTIVATE_UPDATE_ACCEPTED_V2',request_id:data.request_id,release_id:RELEASE_ID,release_sequence:RELEASE_SEQUENCE});
-      await self.skipWaiting();
+      pendingExplicitActivationReply={port:event.ports[0],request_id:String(data.request_id)};
+      try {
+        await self.skipWaiting();
+      } catch(error) {
+        const pending=pendingExplicitActivationReply;
+        pendingExplicitActivationReply=null;
+        await clearExplicitCommitClaim();
+        if (pending && pending.port) {
+          try { pending.port.postMessage({type:'ACTIVATE_UPDATE_REJECTED_V2',request_id:data.request_id,release_id:RELEASE_ID,reason:'skip_waiting_failed'}); pending.port.close(); } catch(_e) {}
+        }
+      }
     })());
     return;
   }
