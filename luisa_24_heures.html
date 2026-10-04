@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; script-src-elem 'sha256-N8XoqZI3Z+3fDNBAcRKDU2t4dfdJApgPE68H+WJ2xHI='; script-src-attr 'unsafe-inline'; style-src 'self' 'unsafe-inline'; style-src-elem 'sha256-UQ2LZMV8vpixa50rjbFhb0lgGCv04EY1sB1SyGNLL0k=' 'sha256-M2PqUQmZeL2+DuWG5timTn9bq9xhgUKlH+hhm+uY1s8=' 'sha256-4AfsRj8AWkdWUFWpaxT/0+3244PorRYCufbvVPHqiRU=' 'sha256-WLj0DFZ2D1b1hR/2JC2FK3aNLqjx9Hipj0auK8YOfq8='; style-src-attr 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; media-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; script-src-elem 'sha256-3+iwW0/psU10zn9SARw/fRR3gjVAcGJnaxaNJwpGbRs='; script-src-attr 'unsafe-inline'; style-src 'self' 'unsafe-inline'; style-src-elem 'sha256-UQ2LZMV8vpixa50rjbFhb0lgGCv04EY1sB1SyGNLL0k=' 'sha256-M2PqUQmZeL2+DuWG5timTn9bq9xhgUKlH+hhm+uY1s8=' 'sha256-4AfsRj8AWkdWUFWpaxT/0+3244PorRYCufbvVPHqiRU=' 'sha256-WLj0DFZ2D1b1hR/2JC2FK3aNLqjx9Hipj0auK8YOfq8='; style-src-attr 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; media-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="color-scheme" content="light dark">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -5755,11 +5755,11 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'v120';
-const BUILD_REVISION = 'B13';
-const APP_EVIDENCE_STAGE = '24H_V120_RELEASE_RECONCILIATION_UPDATE_BANNER_CLOSURE_B13';
-const APP_RELEASE_SEQUENCE = 120000013;
-const APP_RELEASE_ID = '24h-v120-b13-20261003-cross-theme-update-banner-closure';
+const APP_VERSION = 'v120.1';
+const BUILD_REVISION = 'B1';
+const APP_EVIDENCE_STAGE = '24H_V120_1_VISIBLE_VERSION_V_CLOSURE_B1';
+const APP_RELEASE_SEQUENCE = 120001001;
+const APP_RELEASE_ID = '24h-v120-1-b1-20261004-visible-version-v-closure';
 const CANONICAL_APP_SHELL = './luisa_24_heures.html';
 const STORAGE_SCHEMA_VERSION=8; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const MAX_PERSONAL_DATA_IMPORT_BYTES = 32 * 1024 * 1024; // finite direct-restore ceiling; normal exports use the same bound and larger files are emergency archives
@@ -8700,7 +8700,7 @@ function renderHome() {
       <div class="cross-ornament" aria-hidden="true">✦ ✝ ✦</div>
       <h1 class="home-title">Les 24 Heures de la Passion<br>de Notre-Seigneur Jésus-Christ</h1>
       <p class="home-subtitle">Luisa Piccarreta — Petite fille de la Divine Volonté</p>
-      <p class="home-meta"><span style="color:var(--ink4);font-size:0.78rem">${APP_VERSION.replace(/^v/,'')}</span> &nbsp;·&nbsp; <a onclick="showHelp()" style="cursor:pointer;color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px">Aide &amp; À propos →</a></p>
+      <p class="home-meta"><span style="color:var(--ink4);font-size:0.78rem">${APP_VERSION}</span> &nbsp;·&nbsp; <a onclick="showHelp()" style="cursor:pointer;color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px">Aide &amp; À propos →</a></p>
     </div>
     <div style="margin-top:1.1rem">
       ${isFirstTime ? `<div class="onboarding-card">
@@ -11180,7 +11180,7 @@ function showHelp() {
       </div></div>
 
       <div class="help-section" id="help-update"><div class="help-section-hd">Mise à jour de l’application</div><div class="help-section-body">
-        <div class="help-row"><span class="help-icon">i</span><span class="help-row-text"><strong>Version installée : ${escHtml(APP_VERSION.replace(/^v/,''))}</strong> — C’est le numéro principal à utiliser pour vérifier que votre application est à jour ou pour demander de l’aide.</span></div>
+        <div class="help-row"><span class="help-icon">i</span><span class="help-row-text"><strong>Version installée : ${escHtml(APP_VERSION)}</strong> — C’est le numéro principal à utiliser pour vérifier que votre application est à jour ou pour demander de l’aide.</span></div>
         <div class="help-row"><span class="help-icon">✓</span><span class="help-row-text"><strong>Vérification automatique</strong> — Lorsque votre appareil est connecté à Internet, l’application recherche une version plus récente à des moments appropriés, notamment à l’ouverture ou au retour dans l’application.</span></div>
         <div class="help-support-item">
           <button type="button" class="help-support-btn" onclick="manualUpdateCheck()"><span class="help-support-btn-icon" aria-hidden="true">↻</span><span>Vérifier les mises à jour</span></button>
@@ -11216,7 +11216,7 @@ function showHelp() {
         <h3 class="help-feature-title" id="help-about-app-title">À propos de l’application</h3>
         <div class="help-about-card">
           <div class="help-about-meta">
-            <div class="help-about-meta-item"><strong>Version installée :</strong> ${escHtml(APP_VERSION.replace(/^v/,''))}</div>
+            <div class="help-about-meta-item"><strong>Version installée :</strong> ${escHtml(APP_VERSION)}</div>
             <div class="help-about-meta-item"><strong>Révision technique :</strong> ${escHtml(BUILD_REVISION)}</div>
           </div>
           <div class="help-about-block"><span class="help-about-label">Quel numéro communiquer ?</span><p>Pour savoir si l’application est à jour ou demander de l’aide, utilisez d’abord le numéro de <strong>version installée</strong>. La révision technique sert surtout au diagnostic précis d’une construction donnée.</p></div>

@@ -39,9 +39,9 @@
     "standalone",
     "browser"
   ],
-  "version": "v120",
-  "build_revision": "B13",
-  "release_sequence": 120000013,
-  "release_id": "24h-v120-b13-20261003-cross-theme-update-banner-closure",
-  "build": "B13"
+  "version": "v120.1",
+  "build_revision": "B1",
+  "release_sequence": 120001001,
+  "release_id": "24h-v120-1-b1-20261004-visible-version-v-closure",
+  "build": "B1"
 }
