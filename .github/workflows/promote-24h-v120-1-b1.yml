@@ -1,0 +1,82 @@
+name: Promote exact 24H v120.1 B1
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/promote-24h-v120-1-b1.yml
+
+permissions:
+  contents: write
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout production main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify exact v120 baseline and fetch exact tested v120.1 candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          test "$(git hash-object index.html)" = "46ffd6f127a5cde91cd7fe70df9688b26f1be06f"
+          test "$(git hash-object luisa_24_heures.html)" = "46ffd6f127a5cde91cd7fe70df9688b26f1be06f"
+          test "$(git hash-object manifest.json)" = "b86839a33538a3fba6b0283155e288f83b90bd47"
+          test "$(git hash-object sw.js)" = "faf9cbc6cf77396e93d446c338a3d2a7f7475058"
+          test "$(git hash-object version.json)" = "33e86848281ec7ecc0fe2e5b938a9106f9382f3a"
+
+          test "$(git hash-object .nojekyll)" = "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+          test "$(git hash-object apple-touch-icon.png)" = "7b3a09fd4318a12e024219098475fbd28249c557"
+          test "$(git hash-object favicon-16.png)" = "1e484e9ccb82914bd480ca3b97357f897b284adb"
+          test "$(git hash-object favicon-32.png)" = "fadf7a05ea8b41061003270cb7cabc2f4ed59f13"
+          test "$(git hash-object favicon.ico)" = "e09991d1c3609b6fc460846ed37623fce6186ba6"
+          test "$(git hash-object icon-60.png)" = "6aeaa24c1f7ad63633b963a65a8df18167ae082c"
+          test "$(git hash-object icon-120.png)" = "716f5ed7fb42a866b802b9f03795a8145302134b"
+          test "$(git hash-object icon-192.png)" = "60340d238ec735ba4dbb84d376ee684ce06cba79"
+          test "$(git hash-object icon-512.png)" = "79c026a441d6fd6a5a7c07619eed2f82fc6f1a44"
+          test "$(git hash-object icon-maskable-512.png)" = "cace8615d782f7975f823cf76d76826e245bd02b"
+
+          tmp="$(mktemp -d)"
+          base="https://raw.githubusercontent.com/louisriv26/App-Test/83f4d835cef779c12a3f7c298f614cadabece30b/24h-v120-1-b1-visible-version-v-closure"
+          for f in index.html luisa_24_heures.html manifest.json sw.js version.json; do
+            curl --fail --location --silent --show-error "$base/$f" -o "$tmp/$f"
+          done
+
+          printf '%s\n' \
+            "71315aadb1806819e42860f10bffd37662660ae0ab49af805f5e9a3ea9357c00  index.html" \
+            "71315aadb1806819e42860f10bffd37662660ae0ab49af805f5e9a3ea9357c00  luisa_24_heures.html" \
+            "8df261a6fc7be626f3041b811bb8479f280e40635263a4000ba5d1a23b6820b0  manifest.json" \
+            "244566a1c7e9c3e6d7952d757df10689344f21527aeb00a4017f0ca3e1aeb1ca  sw.js" \
+            "64db00644bdabe22b3aeff7b73ac463eba84c7e4a19bdda0db47c1ffd409fa9e  version.json" \
+            > "$tmp/SHA256SUMS"
+
+          (cd "$tmp" && sha256sum -c SHA256SUMS)
+
+          test "$(git hash-object "$tmp/index.html")" = "1361d21d4f17d6a118717ff1dc6c57aa4b7cfc9d"
+          test "$(git hash-object "$tmp/luisa_24_heures.html")" = "1361d21d4f17d6a118717ff1dc6c57aa4b7cfc9d"
+          test "$(git hash-object "$tmp/manifest.json")" = "6b5f9cbc923e37ff5aa90adad66f7f5d2d21364f"
+          test "$(git hash-object "$tmp/sw.js")" = "9960dd472d844962ea6763c35dc5a8aebd78a335"
+          test "$(git hash-object "$tmp/version.json")" = "9ec2b1354d45a4a763a970f591a199a232b1e15d"
+
+          cp "$tmp/index.html" .
+          cp "$tmp/luisa_24_heures.html" .
+          cp "$tmp/manifest.json" .
+          cp "$tmp/sw.js" .
+          cp "$tmp/version.json" .
+          cmp -s index.html luisa_24_heures.html
+
+      - name: Commit exact tested v120.1 candidate and remove helper
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f .github/workflows/promote-24h-v120-1-b1.yml
+          git add index.html luisa_24_heures.html manifest.json sw.js version.json .github/workflows/promote-24h-v120-1-b1.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Deploy 24H v120.1 exact tested B1 candidate"
+          git push origin HEAD:main
