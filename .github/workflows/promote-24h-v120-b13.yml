@@ -2,9 +2,10 @@ name: Promote exact 24H v120 B13
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
     paths:
-      - '.github/workflows/promote-24h-v120-b13.yml'
+      - .github/workflows/promote-24h-v120-b13.yml
 
 permissions:
   contents: write
@@ -18,31 +19,16 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Verify baseline and fetch exact tested B13 files
+      - name: Verify exact production baseline and exact tested B13 source
         shell: bash
         run: |
           set -euo pipefail
-          test "$(git rev-parse HEAD^)" = "50a11cb67a79882e6e80088d6740b6db4827c06c"
-          tmp="$(mktemp -d)"
-          base="https://raw.githubusercontent.com/louisriv26/App-Test/main/24h-v120-b13-cross-theme-update-banner-closure"
-          for f in index.html luisa_24_heures.html manifest.json sw.js version.json; do
-            curl --fail --location --silent --show-error "$base/$f" -o "$tmp/$f"
-          done
 
-          cat > "$tmp/SHA256SUMS" <<'EOF'
-765784949a85e64c8715f478a71117e10accaaff8dcf8614936a4d76bb7492dd  index.html
-765784949a85e64c8715f478a71117e10accaaff8dcf8614936a4d76bb7492dd  luisa_24_heures.html
-6607eb4da60fe97da8ef615e21a72a8c05d55893e9a251efc71148d1386c13f2  manifest.json
-d8c0b10a9470fc20c173680c310c049f322af7088cb429bfed78bdf13d4a6723  sw.js
-b274c5e3395fd836aff9a1d32d8941d3f15c268e936404e8cf4206214dc095ba  version.json
-EOF
-          (cd "$tmp" && sha256sum -c SHA256SUMS)
-
-          test "$(git hash-object "$tmp/index.html")" = "46ffd6f127a5cde91cd7fe70df9688b26f1be06f"
-          test "$(git hash-object "$tmp/luisa_24_heures.html")" = "46ffd6f127a5cde91cd7fe70df9688b26f1be06f"
-          test "$(git hash-object "$tmp/manifest.json")" = "b86839a33538a3fba6b0283155e288f83b90bd47"
-          test "$(git hash-object "$tmp/sw.js")" = "faf9cbc6cf77396e93d446c338a3d2a7f7475058"
-          test "$(git hash-object "$tmp/version.json")" = "33e86848281ec7ecc0fe2e5b938a9106f9382f3a"
+          test "$(git hash-object index.html)" = "4962b3d38c6c2a00fda8a8d3664e4f2072e13bef"
+          test "$(git hash-object luisa_24_heures.html)" = "4962b3d38c6c2a00fda8a8d3664e4f2072e13bef"
+          test "$(git hash-object manifest.json)" = "f6930c766d3f911ff1abab91d7df99c5527abaa5"
+          test "$(git hash-object sw.js)" = "f00b6008495d30a83c24545889b9a01a0ff2afdd"
+          test "$(git hash-object version.json)" = "f92821c480a0eaa67d78e5998582769a0c6df420"
 
           test "$(git hash-object .nojekyll)" = "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
           test "$(git hash-object apple-touch-icon.png)" = "7b3a09fd4318a12e024219098475fbd28249c557"
@@ -54,6 +40,28 @@ EOF
           test "$(git hash-object icon-192.png)" = "60340d238ec735ba4dbb84d376ee684ce06cba79"
           test "$(git hash-object icon-512.png)" = "79c026a441d6fd6a5a7c07619eed2f82fc6f1a44"
           test "$(git hash-object icon-maskable-512.png)" = "cace8615d782f7975f823cf76d76826e245bd02b"
+
+          tmp="$(mktemp -d)"
+          base="https://raw.githubusercontent.com/louisriv26/App-Test/main/24h-v120-b13-cross-theme-update-banner-closure"
+          for f in index.html luisa_24_heures.html manifest.json sw.js version.json; do
+            curl --fail --location --silent --show-error "$base/$f" -o "$tmp/$f"
+          done
+
+          printf '%s\n' \
+            "765784949a85e64c8715f478a71117e10accaaff8dcf8614936a4d76bb7492dd  index.html" \
+            "765784949a85e64c8715f478a71117e10accaaff8dcf8614936a4d76bb7492dd  luisa_24_heures.html" \
+            "6607eb4da60fe97da8ef615e21a72a8c05d55893e9a251efc71148d1386c13f2  manifest.json" \
+            "d8c0b10a9470fc20c173680c310c049f322af7088cb429bfed78bdf13d4a6723  sw.js" \
+            "b274c5e3395fd836aff9a1d32d8941d3f15c268e936404e8cf4206214dc095ba  version.json" \
+            > "$tmp/SHA256SUMS"
+
+          (cd "$tmp" && sha256sum -c SHA256SUMS)
+
+          test "$(git hash-object "$tmp/index.html")" = "46ffd6f127a5cde91cd7fe70df9688b26f1be06f"
+          test "$(git hash-object "$tmp/luisa_24_heures.html")" = "46ffd6f127a5cde91cd7fe70df9688b26f1be06f"
+          test "$(git hash-object "$tmp/manifest.json")" = "b86839a33538a3fba6b0283155e288f83b90bd47"
+          test "$(git hash-object "$tmp/sw.js")" = "faf9cbc6cf77396e93d446c338a3d2a7f7475058"
+          test "$(git hash-object "$tmp/version.json")" = "33e86848281ec7ecc0fe2e5b938a9106f9382f3a"
 
           cp "$tmp/index.html" .
           cp "$tmp/luisa_24_heures.html" .
@@ -68,7 +76,6 @@ EOF
           set -euo pipefail
           rm -f .github/workflows/promote-24h-v120-b13.yml
           git add index.html luisa_24_heures.html manifest.json sw.js version.json .github/workflows/promote-24h-v120-b13.yml
-          git diff --cached --quiet && exit 0
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "Deploy 24H v120 exact tested B13 candidate"
