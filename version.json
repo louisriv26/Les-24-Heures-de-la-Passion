@@ -1,24 +1,26 @@
 {
-  "app_version": "v120.1",
-  "build_date": "2026-10-04",
-  "cache_name": "scope-derived:luisa-24h-<scope-fingerprint>-v120-1-b1",
+  "app_version": "v120.3",
+  "build_date": "2026-10-05",
+  "cache_name": "scope-derived:luisa-24h-<scope-fingerprint>-v120-3-b1",
   "storage_schema": 8,
   "personal_snapshot": 5,
   "ldc_source_public_version": "COMPOSITE_29_62_65_PLUS_FAST_MODE_DERIVATIVE_SYNC",
   "ldc_source_app_version": "LDC_CURRENT_SYNC_AUTHORITY",
   "ldc_source_package_sha256": null,
-  "release_scope": "v120.1/B1 successor to exact production v120/B13. Minimal presentation correction: visible version labels now preserve the public prefix and display v120.1 instead of stripping the leading v. All devotional content, corpus, Search, provenance, personal-state schema/semantics, backup/import, native-selection, update protocol and v120 functional behavior are preserved.",
-  "real_device_status": "V120_1_B1_CANDIDATE__REAL_DEVICE_GATE_OPEN",
-  "overall_release_status": "V120_1_B1_VISIBLE_VERSION_PREFIX_CLOSURE_CANDIDATE__PRODUCTION_NOT_AUTHORIZED",
+  "release_scope": "v120.3/B1 successor to exact frozen App-Test v120.2/B2, based on live production v120.1/B1. Bounded devotional-flow repair only: adds contextual bottom-of-stage navigation between Méditation, Réflexions et pratiques and optional Textes liés; keeps one explicit binary Méditée declaration independent of stage navigation; clarifies unmarked next-Hour wording; lands stage transitions with the tablist visible and destination tab focused. Corpus, Text Library, provenance, Search semantics, personal-state schema/semantics, backup/import, native selection/highlighting and update-protocol semantics are protected and unchanged.",
+  "real_device_status": "V120_3_B1_CANDIDATE__TARGETED_PHYSICAL_GATE_OPEN",
+  "overall_release_status": "V120_3_B1_CONTEXTUAL_STAGE_NAVIGATION_CANDIDATE__PRODUCTION_NOT_AUTHORIZED",
   "known_blockers": [
-    "Physical verification on App-Test that Accueil displays v120.1 and both Help/About version labels display v120.1.",
-    "Installed-PWA production v120 → v120.1 update/activation and acknowledged-state preservation on required Apple devices.",
-    "Live-origin exact-byte binding after any future production deployment before public promotion."
+    "Physical iPhone/iPad verification on App-Test of Meditation-only, Meditation→Reflection, Meditation→Reflection→Linked, reverse stage navigation, unmarked next-Hour, already-marked Hour, Hour 24 and long-Hour flows.",
+    "Physical close/reopen persistence check confirming stage navigation never mutates Méditée and explicit marking/unmarking persists correctly.",
+    "Installed-PWA production v120.1 → v120.3 update/activation and acknowledged-state preservation if included in the release physical protocol.",
+    "Live-origin exact-byte binding after any future production deployment before release closure."
   ],
   "external_open_gates": [
-    "Physical verification on App-Test that Accueil displays v120.1 and both Help/About version labels display v120.1.",
-    "Installed-PWA production v120 → v120.1 update/activation and acknowledged-state preservation on required Apple devices.",
-    "Live-origin exact-byte binding after any future production deployment before public promotion."
+    "Physical iPhone/iPad verification on App-Test of Meditation-only, Meditation→Reflection, Meditation→Reflection→Linked, reverse stage navigation, unmarked next-Hour, already-marked Hour, Hour 24 and long-Hour flows.",
+    "Physical close/reopen persistence check confirming stage navigation never mutates Méditée and explicit marking/unmarking persists correctly.",
+    "Installed-PWA production v120.1 → v120.3 update/activation and acknowledged-state preservation if included in the release physical protocol.",
+    "Live-origin exact-byte binding after any future production deployment before release closure."
   ],
   "ldc_source_alignment_generation": "COMPOSITE__SEE_ldc_current_sync_authority",
   "ldc_source_enriched_generation": "COMPOSITE__SEE_ldc_current_sync_authority",
@@ -38,13 +40,13 @@
   "search_projection_version": "24h-search-v2-reader-projection-r1",
   "search_predecessor_zip_sha256": "3f69f8b948494d70e728287998efe6a0fefafa649ac9e0a7759934fbcefe458a",
   "scroll_performance_predecessor_zip_sha256": "f9bee241f08181a31b63e4284bc82422f5cdc820a2d4033017ef5c1d95004478",
-  "release_sequence": 120001001,
-  "release_id": "24h-v120-1-b1-20261004-visible-version-v-closure",
+  "release_sequence": 120003001,
+  "release_id": "24h-v120-3-b1-20261005-contextual-stage-navigation",
   "canonical_shell": "./luisa_24_heures.html",
-  "canonical_shell_sha256": "71315aadb1806819e42860f10bffd37662660ae0ab49af805f5e9a3ea9357c00",
+  "canonical_shell_sha256": "e17883784f2ca1c5b59e08fc140fd19e95382cf3f33c20b218d88edc2aea37da",
   "update_protocol": 2,
-  "pwa_update_predecessor_version": "v120",
-  "pwa_update_predecessor_zip_sha256": "bc884f780576f29c8d28d2028f2e595e44aeab4c55f7eece0a0f6a0baa0093ac",
+  "pwa_update_predecessor_version": "v120.1",
+  "pwa_update_predecessor_zip_sha256": "ab9db64fc632aedd22a954731a02e3339e7e6478b92626aab007b6ef087f6314",
   "pwa_update_architecture": "verified_prepare_commit_v2_waiting_worker_explicit_activation__R29_UPDATE_PROTOCOL_PRESERVED__R32_STRUCTURAL_RENDERER_ONLY_WITH_RELEASE_HASH_REBIND",
   "legacy_bootstrap": "R15 preserves the R14/R13/R12/R11 unique-lineage Update-v2 architecture. Automatic install does not claim clients; only a verified explicit user commit arms same-scope takeover.",
   "rollback_policy": "No downgrade. Candidate verification fails closed; predecessor cache retained until matching successor BOOT_OK. Functional rollback must be shipped as a new higher release_sequence.",
@@ -61,17 +63,17 @@
     "R12 bottom-navigation geometry behavior inherited unchanged",
     "R14 release identity, cache and CSP script/style hashes mechanically rebound to exact successor bytes"
   ],
-  "functional_freeze_status": "V120_1_B1_MINIMAL_VISIBLE_VERSION_PREFIX_CORRECTION__V120_FUNCTIONAL_RUNTIME_PRESERVED__PHYSICAL_GATE_OPEN",
-  "security_stage_status": "CSP3_EXACT_V120_1_B1_INLINE_BINDINGS__SERVICE_WORKER_CANONICAL_SHELL_HASH_BOUND_TO_71315AADB1806819E42860F10BFFD37662660AE0AB49AF805F5E9A3EA9357C00",
+  "functional_freeze_status": "V120_3_B1_CONTEXTUAL_STAGE_NAVIGATION__NONPHYSICAL_QA_PASS__PHYSICAL_GATE_OPEN",
+  "security_stage_status": "CSP3_EXACT_V120_3_B1_INLINE_SCRIPT_AND_STYLE_BINDINGS__SERVICE_WORKER_CANONICAL_SHELL_HASH_BOUND_TO_E17883784F2CA1C5B59E08FC140FD19E95382CF3F33C20B218D88EDC2AEA37DA",
   "security_predecessor_version": "v102.0 R4",
   "security_predecessor_zip_sha256": "79d8d88ed80622841dcf989edc5d777e2c2c6e3f5f3e17cad9042a679e7b5fc4",
   "security_csp_strategy": "CSP3 split directives: hash-locked script/style elements; inline handler/style attributes retained for compatibility and mature architecture; legacy script-src/style-src fallback retained.",
   "security_inline_script_sha256_base64": [
-    "3+iwW0/psU10zn9SARw/fRR3gjVAcGJnaxaNJwpGbRs="
+    "Q9bXgRQjyNFrO36sS4ah1P2aaiG1fImDJgTucuIggd0="
   ],
   "security_inline_style_sha256_base64": [
     "UQ2LZMV8vpixa50rjbFhb0lgGCv04EY1sB1SyGNLL0k=",
-    "M2PqUQmZeL2+DuWG5timTn9bq9xhgUKlH+hhm+uY1s8=",
+    "jOjttbIDGnqg5TM+bBk0BUsL9qoWmirgnWVCjsjf5fk=",
     "4AfsRj8AWkdWUFWpaxT/0+3244PorRYCufbvVPHqiRU=",
     "WLj0DFZ2D1b1hR/2JC2FK3aNLqjx9Hipj0auK8YOfq8="
   ],
@@ -981,5 +983,110 @@
     "mutation_authority": "AUTHORIZED_BY_USER_2026-10-04_VISIBLE_VERSION_MUST_SHOW_V",
     "production_deployment_authority": "NONE",
     "physical_gate": "OPEN"
+  },
+  "ux_audit_core_loop_v120_2_b1": {
+    "candidate": "v120.2/B2",
+    "date": "2026-10-05",
+    "predecessor": "exact production v120.1/B1 commit 380e61f7150d61c5d4745840de56b5a4c1c00fd0 / tree f1a24a2bb38fdf902a5ffb87bf4cb6a9a70949d6",
+    "authority": "User instruction 2026-10-05: proceed as recommended after adversarial adjudication of the attached v120.1 UX audit.",
+    "included_findings": [
+      "N1 core-loop hierarchy/bypass",
+      "F-05 premature/stale top recovery prompt",
+      "F-03 recovery-control focus indicator",
+      "F-06-B duplicate end-of-Hour next/tab actions"
+    ],
+    "explicitly_not_included": [
+      "F-06-A duplicate Home start",
+      "N2 notifications",
+      "N3 Holy-Hour non-colour cue",
+      "N4 heading semantics",
+      "N5 size/reflow",
+      "N6 Home disclosure affordance",
+      "N7 navigation/focus architecture beyond meditation focus token",
+      "N8 Home duplication",
+      "N9 title wrapping",
+      "N10 time wording",
+      "N11 technical labels",
+      "N12 secondary-button affordance",
+      "N13 resume context",
+      "N14 Help shortcut",
+      "N15 decorative symbols",
+      "N16 desktop layout",
+      "N17 Settings taxonomy",
+      "N18 report destination",
+      "N19 internal reader-facing notes",
+      "F-09 ordinal consistency",
+      "F-13 search-result exact-range adjudication",
+      "WCAG 1.4.12 tab-spacing regression"
+    ],
+    "interaction_contract": {
+      "top_unmarked": "Compact status/recovery control only; no “Vous avez déjà médité ?” question.",
+      "end_unmarked": "Primary explicit action “J’ai médité cette Heure”.",
+      "forward_unmarked": "Explicit “Continuer sans marquer”; navigation does not mutate meditation state.",
+      "end_marked": "Status “✓ Heure méditée”; current Hour counts exactly once in progression.",
+      "forward_marked": "Next control becomes “Prier la Xe Heure”.",
+      "undo": "Top recovery control remains available as “Retirer”.",
+      "automatic_marking": "Forbidden."
+    },
+    "protected_surfaces": [
+      "CORPUS exact block",
+      "TEXT_LIBRARY exact block",
+      "PROVENANCE_PUBLIC_PROJECTION exact block",
+      "PROVENANCE_PUBLIC_GUIDE exact block",
+      "Search semantics/results",
+      "personal-state schema and persistence semantics",
+      "backup/import",
+      "native-selection",
+      "update-v2 protocol"
+    ],
+    "mutation_authority": "AUTHORIZED_BOUNDED_V120_2_B1_CORE_LOOP_ONLY",
+    "production_deployment_authority": "NONE",
+    "physical_gate": "OPEN"
+  },
+  "b1_machine_gate_failure_and_b2_closure": {
+    "failed_candidate": "v120.2/B1",
+    "failed_targeted_run_id": 37332458884,
+    "failure": "Recovery control matched :focus-visible but computed outline remained browser-default auto 1 px in phone/tablet and light/dark cases.",
+    "root_cause": "B1 changed inline style block 2 but retained the predecessor CSP hash for that block. Chromium blocked the modified style block, so the intended 3 px --focus-ring rule never entered the active cascade.",
+    "b1_style_block_2_sha256_base64": "o1LZ1pahCvyu5Wmp8zXJXB8uZxJXy7oc+Dz8Aik6jhU=",
+    "b1_stale_csp_style_token": "M2PqUQmZeL2+DuWG5timTn9bq9xhgUKlH+hhm+uY1s8=",
+    "repair": "B2 preserves B1 core-loop semantics and rebinds style-src-elem to the exact four current inline-style hashes. Candidate identity, inline-script CSP binding, service-worker canonical-shell hash and cache identity are mechanically advanced.",
+    "mutation_authority": "BOUNDED_MACHINE_GATE_REPAIR_FROM_FAILED_B1",
+    "production_deployment_authority": "NONE"
+  },
+  "contextual_stage_navigation_v120_3_b1": {
+    "candidate": "v120.3/B1",
+    "date": "2026-10-05",
+    "predecessor": "exact frozen App-Test v120.2/B2 shell 26c212952cb8d8c099922ed910a41c4d3e9aff516741fd7c5bf0d5d00e4302a7; live production remains v120.1/B1",
+    "owner_design_authority": "User explicitly accepted the deeper interaction analysis and instructed implementation on 2026-10-05.",
+    "interaction_contract": {
+      "stage_navigation": "Contextual controls at the bottom of each active stage; top tabs retained for direct access and recovery.",
+      "meditee": "One explicit binary Hour-level declaration, independent of current stage; never inferred from scrolling or tab changes.",
+      "forward_unmarked": "Next-Hour navigation is explicitly labelled with the destination Hour and “sans marquer”.",
+      "transition_landing": "Existing tablist is brought into view as close to the top of the reader scroll root as geometry permits; destination ARIA tab is selected and focused without a second scroll.",
+      "persistence_schema": "Unchanged."
+    },
+    "mutation_boundary": [
+      "index.html",
+      "luisa_24_heures.html",
+      "manifest.json",
+      "sw.js",
+      "version.json"
+    ],
+    "protected_surfaces": [
+      "CORPUS",
+      "TEXT_LIBRARY",
+      "SPEECH_DATA",
+      "PROVENANCE_PUBLIC_PROJECTION",
+      "PROVENANCE_PUBLIC_GUIDE",
+      "Search semantics/results",
+      "personal-state schema/semantics",
+      "backup/import",
+      "native-selection/highlighting",
+      "Update-v2 protocol semantics"
+    ],
+    "nonphysical_qa": "PASS for syntax, CSP/hash binding, exact protected parity, targeted runtime stage navigation, 20-case light/dark + Normal/Très grand presentation matrix, touch-target floor and no horizontal overflow.",
+    "physical_gate": "OPEN — real iPhone/iPad App-Test verification required.",
+    "production_deployment_authority": "NONE"
   }
 }

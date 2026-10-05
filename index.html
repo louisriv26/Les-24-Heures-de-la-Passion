@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; script-src-elem 'sha256-3+iwW0/psU10zn9SARw/fRR3gjVAcGJnaxaNJwpGbRs='; script-src-attr 'unsafe-inline'; style-src 'self' 'unsafe-inline'; style-src-elem 'sha256-UQ2LZMV8vpixa50rjbFhb0lgGCv04EY1sB1SyGNLL0k=' 'sha256-M2PqUQmZeL2+DuWG5timTn9bq9xhgUKlH+hhm+uY1s8=' 'sha256-4AfsRj8AWkdWUFWpaxT/0+3244PorRYCufbvVPHqiRU=' 'sha256-WLj0DFZ2D1b1hR/2JC2FK3aNLqjx9Hipj0auK8YOfq8='; style-src-attr 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; media-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; script-src-elem 'sha256-Q9bXgRQjyNFrO36sS4ah1P2aaiG1fImDJgTucuIggd0='; script-src-attr 'unsafe-inline'; style-src 'self' 'unsafe-inline'; style-src-elem 'sha256-UQ2LZMV8vpixa50rjbFhb0lgGCv04EY1sB1SyGNLL0k=' 'sha256-jOjttbIDGnqg5TM+bBk0BUsL9qoWmirgnWVCjsjf5fk=' 'sha256-4AfsRj8AWkdWUFWpaxT/0+3244PorRYCufbvVPHqiRU=' 'sha256-WLj0DFZ2D1b1hR/2JC2FK3aNLqjx9Hipj0auK8YOfq8='; style-src-attr 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; media-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="color-scheme" content="light dark">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -912,24 +912,27 @@ mark.hl-pink   { background: #fce7f3; color: inherit; }
 .dc-arrow { flex-shrink: 0; color: var(--ink4); }
 
 /* ─── Mark as meditated bar (reader) ─── */
-.mark-bar { display: flex; align-items: center; flex-wrap: wrap; gap: 0.7rem;
-  padding: 0.6rem 0.9rem; margin-bottom: 0.75rem;
-  background: var(--bg2); border: 1px solid var(--bg3);
+.mark-bar { display: flex; align-items: center; flex-wrap: wrap; gap: 0.6rem;
+  padding: 0.45rem 0.65rem; margin-bottom: 0.75rem;
+  background: transparent; border: 1px solid var(--bg3);
   border-radius: var(--radius); }
 .mark-bar.done { border-color: var(--accent-light); background: var(--accent-pale); }
 .mark-btn { flex: 0 0 auto; min-height: 44px; max-width: 100%; padding: 0.45rem 0.85rem;
-  background: var(--accent); color: var(--on-accent); border: 1px solid var(--accent);
+  background: transparent; color: var(--accent); border: 1px solid var(--accent);
   border-radius: calc(var(--radius) - 2px); font-family: var(--font-ui);
   font-size: 0.8rem; cursor: pointer; white-space: normal; text-align: center;
   transition: opacity 0.15s, background 0.15s, color 0.15s; }
 .mark-btn.done { background: transparent; color: var(--accent); border-color: var(--accent-light); }
 .mark-btn:active { opacity: 0.8; }
-.mark-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.mark-btn:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
 .mark-hint { flex: 1 1 15rem; min-width: 0; font-size: 0.78rem; color: var(--ink3); font-family: var(--font-ui);
   line-height: 1.35; }
 .mark-hint strong, .mark-hint span { display: block; }
 .mark-hint strong { color: var(--ink2); font-weight: 600; }
 .mark-hint span { margin-top: 0.1rem; }
+[data-meditee-action-hour]:focus-visible { outline: 3px solid var(--focus-ring) !important; outline-offset: 2px; }
+.hour-end-btn.primary.done { background: var(--accent-pale); color: var(--accent); border-color: var(--accent-light); }
+.nav-btn.unmarked-next { border-color: var(--accent-light); }
 @media (max-width: 520px) {
   .mark-bar { align-items: stretch; }
   .mark-btn { width: 100%; }
@@ -1507,6 +1510,16 @@ html.stage6a-runtime.ios-device .canonical-slice * {
 .hour-end-buttons { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .hour-end-btn { min-height: 42px; border: 1px solid var(--bg3); border-radius: 999px; padding: 0.5rem 0.85rem; background: var(--bg); color: var(--ink2); font-family: var(--font-ui); font-weight: 650; cursor: pointer; }
 .hour-end-btn.primary { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+/* v120.3/B1 — contextual intra-Hour stage navigation. Stage movement is navigation only; it never changes Méditée state. */
+.stage-continuation { margin: 1.25rem 0 0.65rem; padding-top: 1rem; border-top: 1px solid var(--bg3); }
+.stage-continuation-title { margin: 0 0 0.55rem; color: var(--ink3); font-family: var(--font-ui); font-size: var(--ui-secondary-size); font-weight: 700; }
+.stage-continuation-actions { display: flex; flex-wrap: wrap; gap: 0.55rem; }
+.stage-nav-btn { min-height: 44px; max-width: 100%; border: 1px solid var(--bg3); border-radius: 999px; padding: 0.55rem 0.9rem; background: var(--bg2); color: var(--ink2); font-family: var(--font-ui); font-size: var(--ui-primary-size); font-weight: 650; line-height: 1.25; cursor: pointer; text-align: center; }
+.stage-nav-btn.primary { border-color: var(--accent-light); background: var(--accent-pale); color: var(--accent); }
+.stage-nav-btn .stage-nav-meta { display: block; margin-top: 0.12rem; color: var(--ink3); font-size: var(--ui-tertiary-size); font-weight: 500; }
+.stage-nav-btn:active { opacity: 0.82; }
+.stage-nav-btn:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+@media (max-width: 420px) { .stage-continuation-actions { display: grid; grid-template-columns: 1fr; } .stage-nav-btn { width: 100%; } }
 /* Stage 7D/R38 — end-of-Hour progression cycle and reset */
 .hour-end-actions.cycle { border-color: var(--accent-light); border-color: color-mix(in srgb, var(--accent) 42%, var(--border)); background: var(--cream); background: linear-gradient(180deg, color-mix(in srgb, var(--cream) 88%, var(--accent) 12%), var(--cream)); }
 .hour-end-actions.cycle .hour-end-title { color: var(--navy); }
@@ -5755,11 +5768,11 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'v120.1';
+const APP_VERSION = 'v120.3';
 const BUILD_REVISION = 'B1';
-const APP_EVIDENCE_STAGE = '24H_V120_1_VISIBLE_VERSION_V_CLOSURE_B1';
-const APP_RELEASE_SEQUENCE = 120001001;
-const APP_RELEASE_ID = '24h-v120-1-b1-20261004-visible-version-v-closure';
+const APP_EVIDENCE_STAGE = '24H_V120_3_CONTEXTUAL_STAGE_NAVIGATION_B1';
+const APP_RELEASE_SEQUENCE = 120003001;
+const APP_RELEASE_ID = '24h-v120-3-b1-20261005-contextual-stage-navigation';
 const CANONICAL_APP_SHELL = './luisa_24_heures.html';
 const STORAGE_SCHEMA_VERSION=8; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const MAX_PERSONAL_DATA_IMPORT_BYTES = 32 * 1024 * 1024; // finite direct-restore ceiling; normal exports use the same bound and larger files are emergency archives
@@ -7784,19 +7797,23 @@ function scrollReaderToTop() {
   resetContentScrollAfterRender();
 }
 
-// Stage 6A — deterministic end-of-Hour tab jump.
-function getHourTabVisibleTarget(targetId) {
-  const container = document.getElementById(targetId);
-  if (!container) return null;
-  return container.querySelector('.reflections-label, .linked-texts-title, .ref-para-block, .linked-text-card') || container;
-}
-function goToHourTab(tab, targetId) {
-  switchTab(tab, false);
+// v120.3/B1 — deterministic contextual stage transition.
+// Invariant: switching stage changes only the active Hour tab. It never marks/unmarks the Hour.
+// Landing contract: bring the existing tablist to the top of #content, keep the selected stage visible,
+// and focus its ARIA tab without causing a second browser-driven scroll.
+function goToHourTab(tab) {
+  switchTab(tab, true);
   suppressScrollSaveUntil = Date.now() + 450;
   requestAnimationFrame(function(){
     setTimeout(function(){
-      if (typeof stage6aJumpToTabStart === 'function') stage6aJumpToTabStart(targetId);
+      const tablist = document.querySelector('.reader-screen .tabs[role="tablist"]');
+      if (tablist) stage6aScrollElementToTop(tablist, stage6aTopMargin(), 'auto');
       else resetContentScroll();
+      const selected = document.querySelector('.tab-btn[role="tab"][data-tab="' + tab + '"]');
+      if (selected) {
+        try { selected.focus({preventScroll:true}); }
+        catch(e) { try { selected.focus(); } catch(_e) {} }
+      }
     }, 40);
   });
 }
@@ -7805,16 +7822,28 @@ function goToHourTab(tab, targetId) {
 // Stage 6A mobile stabilisation block removed by Stage 6A clean runtime rewrite.
 // End Stage 6A mobile stabilisation block removed.
 
+function buildStageContinuation(hour, stage) {
+  const hasRefl = !!(hour && hour.reflections && hour.reflections.length);
+  if (stage === 'meditation') {
+    if (hasRefl) return `<div class="stage-continuation" data-stage-nav="meditation"><div class="stage-continuation-title">Poursuivre dans cette Heure</div><div class="stage-continuation-actions"><button type="button" class="stage-nav-btn primary" onclick="goToHourTab('reflections')" aria-label="Poursuivre avec Réflexions et pratiques">Poursuivre avec Réflexions et pratiques →</button></div></div>`;
+    return `<div class="stage-continuation" data-stage-nav="meditation"><div class="stage-continuation-title">Poursuivre dans cette Heure</div><div class="stage-continuation-actions"><button type="button" class="stage-nav-btn primary" onclick="goToHourTab('linked')" aria-label="Poursuivre avec les Textes liés">Poursuivre avec les Textes liés →<span class="stage-nav-meta">Facultatif</span></button></div></div>`;
+  }
+  if (stage === 'reflections') {
+    return `<div class="stage-continuation" data-stage-nav="reflections"><div class="stage-continuation-title">Dans cette Heure</div><div class="stage-continuation-actions"><button type="button" class="stage-nav-btn" onclick="goToHourTab('meditation')" aria-label="Revenir à la Méditation">← Méditation</button><button type="button" class="stage-nav-btn primary" onclick="goToHourTab('linked')" aria-label="Poursuivre avec les Textes liés, facultatif">Textes liés →<span class="stage-nav-meta">Facultatif</span></button></div></div>`;
+  }
+  if (stage === 'linked') {
+    return `<div class="stage-continuation" data-stage-nav="linked"><div class="stage-continuation-title">Dans cette Heure</div><div class="stage-continuation-actions"><button type="button" class="stage-nav-btn" onclick="goToHourTab('${hasRefl?'reflections':'meditation'}')" aria-label="${hasRefl?'Revenir à Réflexions et pratiques':'Revenir à la Méditation'}">← ${hasRefl?'Réflexions et pratiques':'Méditation'}</button></div></div>`;
+  }
+  return '';
+}
+
 function buildHourEndActions(hour, next) {
-  const isTerminal = Number(hour && hour.hour_number) === 24;
-  const nextHour = isTerminal ? null : next;
-  const nextLabel = nextHour ? ('Prier la ' + ordinalHeure(nextHour.hour_number)) : '';
-  const nextBtn = nextHour ? `<button type="button" class="hour-end-btn primary" onclick="openHour(${nextHour.hour_number})">${escHtml(nextLabel)}</button>` : '';
-  const title = isTerminal ? 'Après cette Heure' : 'Continuer le chemin des Heures';
-  const note = isTerminal
-    ? 'Vous pouvez réfléchir à cette Heure, l’approfondir ou la reprendre depuis le début.'
-    : 'Après cette méditation, vous pouvez réfléchir, approfondir ou poursuivre vers l’Heure suivante.';
-  return `<div class="hour-end-actions" id="hourEndActions"><div class="hour-end-title">${title}</div><div class="hour-end-note">${note}</div><div class="hour-end-buttons"><button type="button" class="hour-end-btn" onclick="goToHourTab('reflections', 'reflectionsContent')">Réflexion et pratique</button><button type="button" class="hour-end-btn" onclick="goToHourTab('linked', 'linkedTextsContent')">Approfondir</button><button type="button" class="hour-end-btn" onclick="scrollReaderToTop()">↟ Revenir au début</button>${nextBtn}</div></div>`;
+  const n = Number(hour && hour.hour_number);
+  const isRead = state.readHours.has(n);
+  const note = isRead
+    ? 'Cette Heure est enregistrée dans votre progression.'
+    : 'Enregistrez-la dans votre progression lorsque vous considérez cette Heure terminée.';
+  return `<div class="hour-end-actions" id="hourEndActions" data-meditee-end-card-hour="${n}"><div class="hour-end-title">Quand vous avez terminé cette Heure</div><div class="hour-end-note" data-meditee-end-note-hour="${n}">${note}</div><div class="hour-end-buttons"><button type="button" class="hour-end-btn primary ${isRead?'done':''}" data-meditee-action-hour="${n}" data-meditee-role="primary-end" aria-pressed="${isRead?'true':'false'}" aria-label="${escHtml(mediteeAriaLabel(n,isRead))}" onclick="markMeditee(${n})">${isRead?'✓ Heure méditée — Retirer':'J’ai médité cette Heure'}</button></div></div>`;
 }
 function buildHour24CyclePanel(hour) {
   if (Number(hour && hour.hour_number) !== 24) return '';
@@ -8274,8 +8303,8 @@ function buildMarkBar(hourNum) {
   const isRead = state.readHours.has(n);
   return `<div class="mark-bar ${isRead?'done':''}" data-meditee-bar-hour="${n}">
     <div class="mark-hint">
-      <strong data-meditee-status-title-hour="${n}">${isRead?'✓ Cette Heure est marquée comme méditée.':'Vous avez déjà médité cette Heure ?'}</strong>
-      <span data-meditee-status-detail-hour="${n}" ${isRead?'hidden':''}>Si vous avez oublié de la cocher à la fin.</span>
+      <strong data-meditee-status-title-hour="${n}">${isRead?'✓ Heure méditée':'Statut de l’Heure'}</strong>
+      <span data-meditee-status-detail-hour="${n}">${isRead?'Cette Heure compte dans votre progression.':'Si vous avez déjà médité cette Heure, vous pouvez l’enregistrer ici.'}</span>
     </div>
     <button type="button" class="mark-btn ${isRead?'done':''}" data-meditee-action-hour="${n}" data-meditee-role="recovery" aria-pressed="${isRead?'true':'false'}" aria-label="${escHtml(mediteeAriaLabel(n,isRead))}" onclick="markMeditee(${n})">${isRead?'Retirer':'Marquer comme méditée'}</button>
   </div>`;
@@ -8287,8 +8316,8 @@ function refreshMediteeControls(hourNum) {
     bar.classList.toggle('done', isRead);
     const title = bar.querySelector(`[data-meditee-status-title-hour="${n}"]`);
     const detail = bar.querySelector(`[data-meditee-status-detail-hour="${n}"]`);
-    if (title) title.textContent = isRead ? '✓ Cette Heure est marquée comme méditée.' : 'Vous avez déjà médité cette Heure ?';
-    if (detail) { detail.textContent = 'Si vous avez oublié de la cocher à la fin.'; detail.hidden = isRead; }
+    if (title) title.textContent = isRead ? '✓ Heure méditée' : 'Statut de l’Heure';
+    if (detail) detail.textContent = isRead ? 'Cette Heure compte dans votre progression.' : 'Si vous avez déjà médité cette Heure, vous pouvez l’enregistrer ici.';
   });
   document.querySelectorAll(`[data-meditee-action-hour="${n}"]`).forEach(btn => {
     const role = btn.getAttribute('data-meditee-role') || '';
@@ -8296,12 +8325,26 @@ function refreshMediteeControls(hourNum) {
     btn.setAttribute('aria-pressed', isRead ? 'true' : 'false');
     btn.setAttribute('aria-label', mediteeAriaLabel(n, isRead));
     if (role === 'primary-end') {
-      btn.innerHTML = isRead
-        ? '<span>✓ Méditée</span>'
-        : '<span>Méditée</span><span class="mark-btn-hint">Appuyez après avoir médité</span>';
+      btn.textContent = isRead ? '✓ Heure méditée — Retirer' : 'J’ai médité cette Heure';
     } else if (role === 'recovery') {
       btn.textContent = isRead ? 'Retirer' : 'Marquer comme méditée';
     }
+  });
+  document.querySelectorAll(`[data-meditee-end-note-hour="${n}"]`).forEach(el => {
+    el.textContent = isRead
+      ? 'Cette Heure est enregistrée dans votre progression.'
+      : 'Enregistrez-la dans votre progression lorsque vous considérez cette Heure terminée.';
+  });
+  document.querySelectorAll(`[data-meditee-next-hour="${n}"]`).forEach(btn => {
+    const nextNum = Number(btn.getAttribute('data-next-hour-number'));
+    const nextHour = CORPUS.hours.find(h => Number(h.hour_number) === nextNum);
+    const nextOrdinal = ordinalHeure(nextNum);
+    const label = btn.querySelector('[data-meditee-next-label]');
+    btn.classList.toggle('unmarked-next', !isRead);
+    if (label) label.textContent = isRead ? ('Prier la ' + nextOrdinal) : (nextOrdinal + ' · sans marquer');
+    btn.setAttribute('aria-label', isRead
+      ? ('Prier la ' + nextOrdinal + (nextHour ? ' — ' + (nextHour.short_title || nextHour.title) : ''))
+      : ('Continuer vers la ' + nextOrdinal + ' sans marquer la ' + ordinalHeure(n) + ' comme méditée' + (nextHour ? ' — ' + (nextHour.short_title || nextHour.title) : '')));
   });
   return isRead;
 }
@@ -8911,12 +8954,15 @@ function renderReader(hour, scroll = true) {
 
     <div id="meditationContent" role="tabpanel" aria-labelledby="readerTabMeditation" style="display:${!hasRefl||state.activeTab==='meditation'?'block':'none'}">
       ${medHtml}${subHtml}
+      ${buildStageContinuation(hour, 'meditation')}
     </div>
     <div id="reflectionsContent" role="tabpanel" aria-labelledby="readerTabReflections" style="display:${hasRefl&&state.activeTab==='reflections'?'block':'none'}">
       ${refHtml}
+      ${hasRefl ? buildStageContinuation(hour, 'reflections') : ''}
     </div>
     <div id="linkedTextsContent" role="tabpanel" aria-labelledby="readerTabLinked" style="display:${state.activeTab==='linked'?'block':'none'}">
       ${linkedHtml}
+      ${buildStageContinuation(hour, 'linked')}
     </div>
 
     ${closingBtns}
@@ -8928,11 +8974,8 @@ function renderReader(hour, scroll = true) {
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
         <span><span class="nav-label">Précédente</span>${prev?escHtml(prev.short_title.slice(0,28)):''}</span>
       </button>
-      <button class="mark-read-btn ${isRead?'done':''}" onclick="markMeditee(${hour.hour_number})" id="markReadBtn" data-meditee-action-hour="${hour.hour_number}" data-meditee-role="primary-end" aria-pressed="${isRead?'true':'false'}" aria-label="${escHtml(mediteeAriaLabel(hour.hour_number,isRead))}">
-        <span>${isRead?'✓ Méditée':'Méditée'}</span>${isRead?'':'<span class="mark-btn-hint">Appuyez après avoir médité</span>'}
-      </button>
-      ${next ? `<button class="nav-btn" onclick="openHour(${next.hour_number})">
-        <span><span class="nav-label">Suivante</span>${escHtml(next.short_title.slice(0,28))}</span>
+      ${next ? `<button class="nav-btn ${isRead?'':'unmarked-next'}" onclick="openHour(${next.hour_number})" data-meditee-next-hour="${hour.hour_number}" data-next-hour-number="${next.hour_number}" aria-label="${escHtml(isRead ? ('Prier la ' + ordinalHeure(next.hour_number) + ' — ' + (next.short_title || next.title)) : ('Continuer vers la ' + ordinalHeure(next.hour_number) + ' sans marquer la ' + ordinalHeure(hour.hour_number) + ' comme méditée — ' + (next.short_title || next.title)))}">
+        <span><span class="nav-label" data-meditee-next-label>${isRead?('Prier la ' + ordinalHeure(next.hour_number)):(ordinalHeure(next.hour_number) + ' · sans marquer')}</span>${escHtml(next.short_title.slice(0,28))}</span>
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
       </button>` : ''}
     </div>
@@ -11122,7 +11165,7 @@ function showHelp() {
       </div></div>
 
       <div class="help-section" id="help-progress"><div class="help-section-hd">Progression, reprise et cycle</div><div class="help-section-body">
-        <div class="help-row"><span class="help-icon">✓</span><span class="help-row-text"><strong>Méditée = progression du cycle</strong> — Chaque Heure marquée <strong>Méditée</strong> compte une fois dans la progression de 0 à 24. Ouvrir ou parcourir une Heure ne la marque pas automatiquement.</span></div>
+        <div class="help-row"><span class="help-icon">✓</span><span class="help-row-text"><strong>Méditée = progression du cycle</strong> — Une Heure peut être vécue comme la Méditation seule, Méditation + Réflexions et pratiques, ou avec les Textes liés en complément. Les boutons au bas de chaque partie permettent de poursuivre sans remonter aux onglets. Aucun changement de partie ne marque automatiquement l’Heure. Lorsque <strong>vous considérez l’Heure terminée</strong>, choisissez <strong>J’ai médité cette Heure</strong> ; passer à l’Heure suivante sans la marquer laisse la progression inchangée.</span></div>
         <div class="help-row"><span class="help-icon">→</span><span class="help-row-text"><strong>Hier · Aujourd’hui · Suivante</strong> — Sur l’Accueil, ces indications suivent les Heures actuellement marquées Méditée dans le cycle en cours. <strong>Suivante</strong> propose la prochaine Heure qui n’est pas encore marquée Méditée. Vous pouvez toujours choisir librement une autre Heure.</span></div>
         <div class="help-row"><span class="help-icon">▶</span><span class="help-row-text"><strong>Reprendre</strong> — La reprise de lecture est indépendante du statut Méditée : elle revient à la dernière Heure et à la position enregistrée lorsqu’elle est disponible. <strong>Ouvrir au début</strong> ouvre l’Heure sans reprendre cette position.</span></div>
         <div class="help-row"><span class="help-icon">24</span><span class="help-row-text"><strong>Cycle accompli</strong> — Le cycle est accompli lorsque les <strong>24/24 Heures</strong> sont marquées Méditée, quel que soit l’ordre dans lequel vous les avez priées.</span></div>
