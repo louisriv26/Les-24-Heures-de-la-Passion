@@ -1,19 +1,19 @@
-/* v120.3 B1 — contextual intra-Hour stage navigation successor; persistence and Update-v2 semantics unchanged. */
+/* v120.4 B1 — accessibility semantics and text-spacing reflow successor; persistence and Update-v2 semantics unchanged. */
 function scopeFingerprint(scope) {
   let h = 2166136261;
   const text = String(scope || '');
   for (let i = 0; i < text.length; i++) { h ^= text.charCodeAt(i); h = Math.imul(h, 16777619); }
   return (h >>> 0).toString(16).padStart(8, '0');
 }
-const APP_VERSION = 'v120.3';
+const APP_VERSION = 'v120.4';
 const BUILD_REVISION = 'B1';
-const RELEASE_SEQUENCE = 120003001;
-const RELEASE_ID = '24h-v120-3-b1-20261005-contextual-stage-navigation';
+const RELEASE_SEQUENCE = 120004001;
+const RELEASE_ID = '24h-v120-4-b1-20261005-accessibility-semantics-reflow';
 const CANONICAL_SHELL = './luisa_24_heures.html';
-const CANONICAL_SHELL_SHA256 = 'e17883784f2ca1c5b59e08fc140fd19e95382cf3f33c20b218d88edc2aea37da';
+const CANONICAL_SHELL_SHA256 = '5c0a32431fc176fa6e2a2f1a48cbe2b504d8572c03e35c22c6608fa42a0cf65f';
 const SCOPE_FINGERPRINT = scopeFingerprint(self.registration.scope);
 const CACHE_PREFIX = `luisa-24h-${SCOPE_FINGERPRINT}-`;
-const CACHE_NAME = `${CACHE_PREFIX}v120-3-b1`;
+const CACHE_NAME = `${CACHE_PREFIX}v120-4-b1`;
 const META_CACHE_NAME = `${CACHE_PREFIX}update-meta-v2`;
 const LEGACY_MIGRATION_BASELINE_CACHE = `${CACHE_PREFIX}v101-153-r1`;
 const META_KEY = new URL('./__lp24_update_meta_v2__', self.registration.scope).href;

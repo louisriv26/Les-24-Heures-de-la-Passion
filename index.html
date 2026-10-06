@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; script-src-elem 'sha256-Q9bXgRQjyNFrO36sS4ah1P2aaiG1fImDJgTucuIggd0='; script-src-attr 'unsafe-inline'; style-src 'self' 'unsafe-inline'; style-src-elem 'sha256-UQ2LZMV8vpixa50rjbFhb0lgGCv04EY1sB1SyGNLL0k=' 'sha256-jOjttbIDGnqg5TM+bBk0BUsL9qoWmirgnWVCjsjf5fk=' 'sha256-4AfsRj8AWkdWUFWpaxT/0+3244PorRYCufbvVPHqiRU=' 'sha256-WLj0DFZ2D1b1hR/2JC2FK3aNLqjx9Hipj0auK8YOfq8='; style-src-attr 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; media-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; script-src-elem 'sha256-d74pQ79aGiBeybyrztDplvJ/Olm+ETglusnzzdjwWkk='; script-src-attr 'unsafe-inline'; style-src 'self' 'unsafe-inline'; style-src-elem 'sha256-UQ2LZMV8vpixa50rjbFhb0lgGCv04EY1sB1SyGNLL0k=' 'sha256-yXoW7YbHt/LxxN4CaCRKUT3fNafVbYqTcOS8MHMXjvY=' 'sha256-CqBiLAK8xz+F3J9+SNTpS2zKHauD4F9IA94XQFRUL34=' 'sha256-WLj0DFZ2D1b1hR/2JC2FK3aNLqjx9Hipj0auK8YOfq8='; style-src-attr 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; media-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="color-scheme" content="light dark">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -183,6 +183,7 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--ink); 
 .hours-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin-bottom: 1.75rem; }
 .home-hours-section { margin: 1.1rem 0 0.5rem; }
 .home-hours-header { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:0.65rem; }
+.home-hours-heading { margin:0; padding:0; font:inherit; }
 .home-hours-title { font-family:var(--font-display); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink3); font-weight:600; background:none; border:none; padding:0; cursor:pointer; } .home-hours-title:hover { color:var(--accent); }
 .home-hours-count { font-family:var(--font-ui); font-size:0.75rem; color:var(--ink4); }
 .home-hours-restart { background:none; border:none; cursor:pointer; color:var(--ink4); font-family:var(--font-ui); font-size:0.75rem; padding:0; text-decoration:underline; text-underline-offset:2px; }
@@ -198,6 +199,8 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--ink); 
 .hour-card.read { border-width: 2px; border-color: var(--accent-light); }
 .hc-num { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; color: var(--accent); display: block; }
 .hc-time { font-size: 0.8rem; font-weight: 500; color: var(--ink3); font-style: italic; margin-top: 0.15rem; display: block; }
+.hc-holy { display:block; margin-top:0.28rem; color:#6a3a9a; font-family:var(--font-ui); font-size:max(10px, calc(var(--ui-size, 16px) * 0.62)); line-height:1.08; font-weight:800; font-style:normal; }
+[data-theme="dark"] .hc-holy { color:#b090d4; }
 
 .hour-card.gethsemani { border-color: rgba(138,106,170,0.5); }
 .hour-card.gethsemani .hc-num { color: #6a3a9a; }
@@ -2968,24 +2971,32 @@ html[data-font-level="xlarge"] .dc-prev {
 /* v102.0 R11 — predecessor fork reconciliation + hostile narrow-layout closure.
    Retains b6fd intrinsic min-width:0 containment and a6c3's two-row tab strategy.
    R11's former narrow Search-label font cap is superseded by R12 semantic navigation geometry. */
-@media (max-width: 374.98px) {
+/* v120.4/B1 — WCAG 1.4.12 text-spacing containment. Preserve the chosen text size;
+   switch to the existing two-row tab geometry before one-row labels can clip. */
+@media (max-width: 459.98px) {
   html[data-font-level="xlarge"] .tabs { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   html[data-font-level="xlarge"] .tab-btn { min-width: 0; width: 100%; border-right: 1px solid var(--bg3); }
   html[data-font-level="xlarge"] .tab-btn:nth-child(2) { border-right: none; }
   html[data-font-level="xlarge"] .tab-btn:nth-child(3) { grid-column: 1 / -1; border-right: none; border-top: 1px solid var(--bg3); }
   html[data-font-level="xlarge"] .prayer-trigger-btn { white-space: normal; max-width: 100%; flex-wrap: wrap; text-align: center; }
 }
-@media (max-width: 329.98px) {
+@media (max-width: 419.98px) {
   html[data-font-level="large"] .tabs { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   html[data-font-level="large"] .tab-btn { min-width: 0; width: 100%; border-right: 1px solid var(--bg3); }
   html[data-font-level="large"] .tab-btn:nth-child(2) { border-right: none; }
   html[data-font-level="large"] .tab-btn:nth-child(3) { grid-column: 1 / -1; border-right: none; border-top: 1px solid var(--bg3); }
 }
-@media (max-width: 319.98px) {
-  html[data-font-level="normal"] .tabs, html[data-font-level="small"] .tabs { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-  html[data-font-level="normal"] .tab-btn, html[data-font-level="small"] .tab-btn { min-width: 0; width: 100%; border-right: 1px solid var(--bg3); }
-  html[data-font-level="normal"] .tab-btn:nth-child(2), html[data-font-level="small"] .tab-btn:nth-child(2) { border-right: none; }
-  html[data-font-level="normal"] .tab-btn:nth-child(3), html[data-font-level="small"] .tab-btn:nth-child(3) { grid-column: 1 / -1; border-right: none; border-top: 1px solid var(--bg3); }
+@media (max-width: 379.98px) {
+  html[data-font-level="normal"] .tabs { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  html[data-font-level="normal"] .tab-btn { min-width: 0; width: 100%; border-right: 1px solid var(--bg3); }
+  html[data-font-level="normal"] .tab-btn:nth-child(2) { border-right: none; }
+  html[data-font-level="normal"] .tab-btn:nth-child(3) { grid-column: 1 / -1; border-right: none; border-top: 1px solid var(--bg3); }
+}
+@media (max-width: 359.98px) {
+  html[data-font-level="small"] .tabs { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  html[data-font-level="small"] .tab-btn { min-width: 0; width: 100%; border-right: 1px solid var(--bg3); }
+  html[data-font-level="small"] .tab-btn:nth-child(2) { border-right: none; }
+  html[data-font-level="small"] .tab-btn:nth-child(3) { grid-column: 1 / -1; border-right: none; border-top: 1px solid var(--bg3); }
 }
 
 
@@ -5768,11 +5779,11 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'v120.3';
+const APP_VERSION = 'v120.4';
 const BUILD_REVISION = 'B1';
 const APP_EVIDENCE_STAGE = '24H_V120_3_CONTEXTUAL_STAGE_NAVIGATION_B1';
-const APP_RELEASE_SEQUENCE = 120003001;
-const APP_RELEASE_ID = '24h-v120-3-b1-20261005-contextual-stage-navigation';
+const APP_RELEASE_SEQUENCE = 120004001;
+const APP_RELEASE_ID = '24h-v120-4-b1-20261005-accessibility-semantics-reflow';
 const CANONICAL_APP_SHELL = './luisa_24_heures.html';
 const STORAGE_SCHEMA_VERSION=8; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const MAX_PERSONAL_DATA_IMPORT_BYTES = 32 * 1024 * 1024; // finite direct-restore ceiling; normal exports use the same bound and larger files are emergency archives
@@ -7825,14 +7836,14 @@ function goToHourTab(tab) {
 function buildStageContinuation(hour, stage) {
   const hasRefl = !!(hour && hour.reflections && hour.reflections.length);
   if (stage === 'meditation') {
-    if (hasRefl) return `<div class="stage-continuation" data-stage-nav="meditation"><div class="stage-continuation-title">Poursuivre dans cette Heure</div><div class="stage-continuation-actions"><button type="button" class="stage-nav-btn primary" onclick="goToHourTab('reflections')" aria-label="Poursuivre avec Réflexions et pratiques">Poursuivre avec Réflexions et pratiques →</button></div></div>`;
-    return `<div class="stage-continuation" data-stage-nav="meditation"><div class="stage-continuation-title">Poursuivre dans cette Heure</div><div class="stage-continuation-actions"><button type="button" class="stage-nav-btn primary" onclick="goToHourTab('linked')" aria-label="Poursuivre avec les Textes liés">Poursuivre avec les Textes liés →<span class="stage-nav-meta">Facultatif</span></button></div></div>`;
+    if (hasRefl) return `<div class="stage-continuation" data-stage-nav="meditation"><div class="stage-continuation-title" role="heading" aria-level="2">Poursuivre dans cette Heure</div><div class="stage-continuation-actions"><button type="button" class="stage-nav-btn primary" onclick="goToHourTab('reflections')" aria-label="Poursuivre avec Réflexions et pratiques">Poursuivre avec Réflexions et pratiques →</button></div></div>`;
+    return `<div class="stage-continuation" data-stage-nav="meditation"><div class="stage-continuation-title" role="heading" aria-level="2">Poursuivre dans cette Heure</div><div class="stage-continuation-actions"><button type="button" class="stage-nav-btn primary" onclick="goToHourTab('linked')" aria-label="Poursuivre avec les Textes liés">Poursuivre avec les Textes liés →<span class="stage-nav-meta">Facultatif</span></button></div></div>`;
   }
   if (stage === 'reflections') {
-    return `<div class="stage-continuation" data-stage-nav="reflections"><div class="stage-continuation-title">Dans cette Heure</div><div class="stage-continuation-actions"><button type="button" class="stage-nav-btn" onclick="goToHourTab('meditation')" aria-label="Revenir à la Méditation">← Méditation</button><button type="button" class="stage-nav-btn primary" onclick="goToHourTab('linked')" aria-label="Poursuivre avec les Textes liés, facultatif">Textes liés →<span class="stage-nav-meta">Facultatif</span></button></div></div>`;
+    return `<div class="stage-continuation" data-stage-nav="reflections"><div class="stage-continuation-title" role="heading" aria-level="2">Dans cette Heure</div><div class="stage-continuation-actions"><button type="button" class="stage-nav-btn" onclick="goToHourTab('meditation')" aria-label="Revenir à la Méditation">← Méditation</button><button type="button" class="stage-nav-btn primary" onclick="goToHourTab('linked')" aria-label="Poursuivre avec les Textes liés, facultatif">Textes liés →<span class="stage-nav-meta">Facultatif</span></button></div></div>`;
   }
   if (stage === 'linked') {
-    return `<div class="stage-continuation" data-stage-nav="linked"><div class="stage-continuation-title">Dans cette Heure</div><div class="stage-continuation-actions"><button type="button" class="stage-nav-btn" onclick="goToHourTab('${hasRefl?'reflections':'meditation'}')" aria-label="${hasRefl?'Revenir à Réflexions et pratiques':'Revenir à la Méditation'}">← ${hasRefl?'Réflexions et pratiques':'Méditation'}</button></div></div>`;
+    return `<div class="stage-continuation" data-stage-nav="linked"><div class="stage-continuation-title" role="heading" aria-level="2">Dans cette Heure</div><div class="stage-continuation-actions"><button type="button" class="stage-nav-btn" onclick="goToHourTab('${hasRefl?'reflections':'meditation'}')" aria-label="${hasRefl?'Revenir à Réflexions et pratiques':'Revenir à la Méditation'}">← ${hasRefl?'Réflexions et pratiques':'Méditation'}</button></div></div>`;
   }
   return '';
 }
@@ -7843,15 +7854,15 @@ function buildHourEndActions(hour, next) {
   const note = isRead
     ? 'Cette Heure est enregistrée dans votre progression.'
     : 'Enregistrez-la dans votre progression lorsque vous considérez cette Heure terminée.';
-  return `<div class="hour-end-actions" id="hourEndActions" data-meditee-end-card-hour="${n}"><div class="hour-end-title">Quand vous avez terminé cette Heure</div><div class="hour-end-note" data-meditee-end-note-hour="${n}">${note}</div><div class="hour-end-buttons"><button type="button" class="hour-end-btn primary ${isRead?'done':''}" data-meditee-action-hour="${n}" data-meditee-role="primary-end" aria-pressed="${isRead?'true':'false'}" aria-label="${escHtml(mediteeAriaLabel(n,isRead))}" onclick="markMeditee(${n})">${isRead?'✓ Heure méditée — Retirer':'J’ai médité cette Heure'}</button></div></div>`;
+  return `<div class="hour-end-actions" id="hourEndActions" data-meditee-end-card-hour="${n}"><div class="hour-end-title" role="heading" aria-level="2">Quand vous avez terminé cette Heure</div><div class="hour-end-note" data-meditee-end-note-hour="${n}">${note}</div><div class="hour-end-buttons"><button type="button" class="hour-end-btn primary ${isRead?'done':''}" data-meditee-action-hour="${n}" data-meditee-role="primary-end" aria-pressed="${isRead?'true':'false'}" aria-label="${escHtml(mediteeAriaLabel(n,isRead))}" onclick="markMeditee(${n})">${isRead?'✓ Heure méditée — Retirer':'J’ai médité cette Heure'}</button></div></div>`;
 }
 function buildHour24CyclePanel(hour) {
   if (Number(hour && hour.hour_number) !== 24) return '';
   const p = getProgressSnapshot();
   if (!p.complete) {
-    return `<div class="hour-end-actions cycle" id="hour24CyclePanel"><div class="hour-end-title">VOTRE PARCOURS</div><div class="hour-end-note"><strong>${p.count}/24</strong> Heures marquées comme méditées.</div><div class="hour-end-buttons"><button type="button" class="hour-end-btn primary" onclick="showProgressView()">Voir ma progression</button><button type="button" class="hour-end-btn" onclick="showCompletedHoursView()">Revoir les Heures méditées</button></div></div>`;
+    return `<div class="hour-end-actions cycle" id="hour24CyclePanel"><div class="hour-end-title" role="heading" aria-level="2">VOTRE PARCOURS</div><div class="hour-end-note"><strong>${p.count}/24</strong> Heures marquées comme méditées.</div><div class="hour-end-buttons"><button type="button" class="hour-end-btn primary" onclick="showProgressView()">Voir ma progression</button><button type="button" class="hour-end-btn" onclick="showCompletedHoursView()">Revoir les Heures méditées</button></div></div>`;
   }
-  return `<div class="hour-end-actions cycle" id="hour24CyclePanel"><div class="hour-end-title">LE CYCLE DES 24 HEURES EST ACCOMPLI</div><div class="hour-end-note"><strong>24/24</strong> Heures marquées comme méditées.</div><div class="hour-end-buttons"><button type="button" class="hour-end-btn primary" onclick="restartTwentyFourHours({requireComplete:true,destination:'hour1'})">↻ Recommencer depuis la 1re Heure</button><button type="button" class="hour-end-btn" onclick="showProgressView()">Voir ma progression</button><button type="button" class="hour-end-btn" onclick="showCompletedHoursView()">Revoir les Heures méditées</button></div></div>`;
+  return `<div class="hour-end-actions cycle" id="hour24CyclePanel"><div class="hour-end-title" role="heading" aria-level="2">LE CYCLE DES 24 HEURES EST ACCOMPLI</div><div class="hour-end-note"><strong>24/24</strong> Heures marquées comme méditées.</div><div class="hour-end-buttons"><button type="button" class="hour-end-btn primary" onclick="restartTwentyFourHours({requireComplete:true,destination:'hour1'})">↻ Recommencer depuis la 1re Heure</button><button type="button" class="hour-end-btn" onclick="showProgressView()">Voir ma progression</button><button type="button" class="hour-end-btn" onclick="showCompletedHoursView()">Revoir les Heures méditées</button></div></div>`;
 }
 function refreshHourEndCycleUI() {
   if (state.view !== 'reader' || Number(state.currentHour) !== 24) return false;
@@ -8391,14 +8402,15 @@ function makeHourGridHtml(compact = false) {
   if (compact) {
     return CORPUS.hours.map(h => `
       <button type="button" class="hour-card ${state.readHours.has(h.hour_number)?'read':''} ${[5,6,7].includes(h.hour_number)?'gethsemani':''}"
-        onclick="openHour(${h.hour_number})" title="${escHtml(h.title)} — ${h.display_time}${[5,6,7].includes(h.hour_number)?' · Heure Sainte':''}" aria-label="Ouvrir la ${h.hour_number}e Heure : ${escHtml(h.title)} — ${h.display_time}">
+        onclick="openHour(${h.hour_number})" title="${escHtml(h.title)} — ${h.display_time}${[5,6,7].includes(h.hour_number)?' · Heure Sainte':''}" aria-label="Ouvrir la ${h.hour_number}e Heure : ${escHtml(h.title)} — ${h.display_time}${[5,6,7].includes(h.hour_number)?' · Heure Sainte':''}">
         <span class="hc-num">${h.hour_number}</span>
         <span class="hc-time">${h.display_time}</span>
+        ${[5,6,7].includes(h.hour_number)?'<span class="hc-holy" aria-hidden="true">Heure Sainte</span>':''}
       </button>`).join('');
   }
   return CORPUS.hours.map(h => `
     <button type="button" class="hour-list-card ${state.readHours.has(h.hour_number)?'read':''} ${[5,6,7].includes(h.hour_number)?'gethsemani':''}"
-      onclick="openHour(${h.hour_number})" aria-label="Ouvrir la ${h.hour_number}e Heure : ${escHtml(h.title)} — ${h.display_time}">
+      onclick="openHour(${h.hour_number})" aria-label="Ouvrir la ${h.hour_number}e Heure : ${escHtml(h.title)} — ${h.display_time}${[5,6,7].includes(h.hour_number)?' · Heure Sainte':''}">
       <span class="hour-list-num">${h.hour_number}</span>
       <span class="hour-list-title">${escHtml(h.title)}</span>
       <span class="hour-list-time">${escHtml(h.display_time)}</span>
@@ -8445,7 +8457,7 @@ function showPrieres() {
   const sectionIcons = {'INTRODUCTION':'📖','BENEFITS':'✨','PRACTICE_METHODS':'🗝','GETHSEMANI':'🌿'};
   const pGrid = CORPUS.prayers.map(function(p) { const k=p.prayer_id.replace('PASSION24.PRAYER.',''); return '<button type="button" class="extra-card" onclick="openPrayer(\''+p.prayer_id+'\')"><div class="ec-icon">'+(prayerIcons[k]||'🕯')+'</div><div class="ec-title">'+escHtml(p.title)+'</div></button>'; }).join('');
   const sGrid = CORPUS.sections.map(function(s) { const k=s.section_id.replace('PASSION24.SECTION.',''); return '<button type="button" class="extra-card" onclick="openSection(\''+s.section_id+'\')"><div class="ec-icon">'+(sectionIcons[k]||'📖')+'</div><div class="ec-title">'+escHtml(s.title)+'</div></button>'; }).join('');
-  document.getElementById('content').innerHTML = '<div class="hours-screen"><div class="library-hero"><div class="library-eyebrow">Pratique</div><h1 class="library-title">Prières &amp; compléments</h1><p class="library-subtitle">Prières propres aux 24 Heures, textes d’introduction et textes complémentaires.</p></div><div class="espace-section"><div class="espace-section-title">Prières du parcours</div><div class="extras-grid">'+pGrid+'</div></div><div class="espace-section"><div class="espace-section-title">Textes complémentaires</div><div class="extras-grid">'+sGrid+'</div></div></div>';
+  document.getElementById('content').innerHTML = '<div class="hours-screen"><div class="library-hero"><div class="library-eyebrow">Pratique</div><h1 class="library-title">Prières &amp; compléments</h1><p class="library-subtitle">Prières propres aux 24 Heures, textes d’introduction et textes complémentaires.</p></div><div class="espace-section"><div class="espace-section-title" role="heading" aria-level="2">Prières du parcours</div><div class="extras-grid">'+pGrid+'</div></div><div class="espace-section"><div class="espace-section-title" role="heading" aria-level="2">Textes complémentaires</div><div class="extras-grid">'+sGrid+'</div></div></div>';
   document.getElementById('progressWrap').style.display = 'none';
   setBottomNav('none'); buildSidebar(); updateRightContextPanel();
 }
@@ -8468,7 +8480,7 @@ async function rememberLibraryText(id) {
 function renderRecentLibraryCards() {
   const ids = getRecentLibraryTextIds();
   if (!ids.length) return '';
-  return `<div class="section-title">Derniers textes consultés</div><div class="home-recent-row">${ids.map(id => {
+  return `<div class="section-title" role="heading" aria-level="2">Derniers textes consultés</div><div class="home-recent-row">${ids.map(id => {
     const item = getLibraryItem(id);
     return `<button type="button" class="library-card" onclick="openLibraryText('${id}')"><div class="library-card-title">${escHtml(item.title)}</div><div class="library-card-desc">${escHtml(item.group || 'Textes')}</div></button>`;
   }).join('')}</div>`;
@@ -8500,7 +8512,7 @@ function showProgressView(push = true) {
   state.view = 'progress'; state.currentHour = null; state.currentSection = null; state.currentPrayer = null;
   resetContentScroll();
   const p = getProgressSnapshot();
-  document.getElementById('content').innerHTML = `<div class="espace-screen"><div class="library-hero"><div class="library-eyebrow">Espace personnel</div><h1 class="library-title">Ma progression</h1><p class="library-subtitle">Retrouvez les Heures marquées comme méditées et gérez votre progression.</p></div>${buildProgressSummaryCard({withActions:false})}<div class="espace-section"><div class="espace-section-title">Heures méditées</div>${getCompletedHoursHtml()}</div><div class="espace-section"><div class="espace-section-title">Parcours</div><div class="progress-actions"><button type="button" class="resume-panel-btn primary" onclick="showCompletedHoursView()">Revoir les Heures méditées</button>${p.hasCycleState ? `<button type="button" class="resume-panel-btn" onclick="restartTwentyFourHours()">${p.complete ? 'Recommencer les 24 Heures' : 'Réinitialiser ma progression'}</button>` : ''}</div></div></div>`;
+  document.getElementById('content').innerHTML = `<div class="espace-screen"><div class="library-hero"><div class="library-eyebrow">Espace personnel</div><h1 class="library-title">Ma progression</h1><p class="library-subtitle">Retrouvez les Heures marquées comme méditées et gérez votre progression.</p></div>${buildProgressSummaryCard({withActions:false})}<div class="espace-section"><div class="espace-section-title" role="heading" aria-level="2">Heures méditées</div>${getCompletedHoursHtml()}</div><div class="espace-section"><div class="espace-section-title" role="heading" aria-level="2">Parcours</div><div class="progress-actions"><button type="button" class="resume-panel-btn primary" onclick="showCompletedHoursView()">Revoir les Heures méditées</button>${p.hasCycleState ? `<button type="button" class="resume-panel-btn" onclick="restartTwentyFourHours()">${p.complete ? 'Recommencer les 24 Heures' : 'Réinitialiser ma progression'}</button>` : ''}</div></div></div>`;
   document.getElementById('progressWrap').style.display = 'none';
   setBottomNav('espace'); buildSidebar(); updateRightContextPanel();
 }
@@ -8694,12 +8706,12 @@ function showEspaceView(push = true) {
   document.getElementById('content').innerHTML = `<div class="espace-screen">
     ${lastH ? `<button type="button" class="espace-resume-hero" onclick="openHour(${lastH.hour_number}, true, { resume: true })"><div class="erh-inner"><div class="erh-label">Reprendre</div><div class="erh-title">${lastH.hour_number}e Heure — ${escHtml(lastH.title)}</div><div class="erh-meta">${escHtml(describeSavedPara(getSavedParaForHour(lastH.hour_number)))} · ${escHtml(lastH.display_time)}</div></div><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;color:var(--accent)"><polyline points="9 18 15 12 9 6"/></svg></button>` : ''}
     <div class="library-hero" style="margin-top:${lastH ? '0.25rem' : '0'}"><div class="library-eyebrow">Espace personnel</div><h1 class="library-title">Mon Espace</h1></div>
-    <div class="espace-section"><div class="espace-section-title"><span>Progression</span><span class="espace-section-count">${state.readHours.size}/24 Heures</span></div>${buildProgressSummaryCard({withActions:false})}<div class="progress-actions"><button type="button" class="resume-panel-btn primary" onclick="showProgressView()">Voir ma progression</button><button type="button" class="resume-panel-btn" onclick="showCompletedHoursView()">Revoir les Heures méditées</button>${progress.hasCycleState ? `<button type="button" class="resume-panel-btn" onclick="restartTwentyFourHours()">${progress.complete ? 'Recommencer les 24 Heures' : 'Réinitialiser ma progression'}</button>` : ''}</div></div>
-    <div class="espace-section"><div class="espace-section-title"><span>Passages à vérifier</span><span class="espace-section-count">${staleEntries.length}</span></div>${staleHtml}</div>
-    <div class="espace-section"><div class="espace-section-title"><span>Lectures marquées</span><span class="espace-section-count">${markedReadings.length}</span></div>${markedReadingsHtml}</div>
-    <div class="espace-section"><div class="espace-section-title"><span>Surlignages</span><span class="espace-section-count">${freshEntries.length}</span></div>${hlHtml}</div>
-    <div class="espace-section"><div class="espace-section-title"><span>Notes</span><span class="espace-section-count">${everyNote.length}</span></div>${notesHtml}</div>
-    <div class="espace-section"><div class="espace-section-title"><span>Sauvegarder mes données</span></div><div class="espace-actions"><button type="button" class="resume-panel-btn primary" onclick="exportUserData()">⬇ Exporter la sauvegarde JSON</button><button type="button" class="resume-panel-btn" onclick="triggerImport()">⬆ Importer</button><button type="button" class="resume-panel-btn" onclick="exportHumanReadableJournal()">↗ Exporter mon journal lisible</button></div><div id="lastBackupStatus" class="espace-backup-status">${escHtml(formatLastExportStatus())}</div>${backupReminder}<div class="espace-journal-note">Le fichier JSON normal sert à restaurer l’app. Si vos données dépassent 32 Mo, l’app crée une archive de secours clairement identifiée qui conserve les données mais ne peut pas être restaurée directement dans cette version. Le journal lisible est un fichier Markdown destiné à la lecture et ne peut pas être importé comme sauvegarde.</div>
+    <div class="espace-section"><div class="espace-section-title" role="heading" aria-level="2"><span>Progression</span><span class="espace-section-count">${state.readHours.size}/24 Heures</span></div>${buildProgressSummaryCard({withActions:false})}<div class="progress-actions"><button type="button" class="resume-panel-btn primary" onclick="showProgressView()">Voir ma progression</button><button type="button" class="resume-panel-btn" onclick="showCompletedHoursView()">Revoir les Heures méditées</button>${progress.hasCycleState ? `<button type="button" class="resume-panel-btn" onclick="restartTwentyFourHours()">${progress.complete ? 'Recommencer les 24 Heures' : 'Réinitialiser ma progression'}</button>` : ''}</div></div>
+    <div class="espace-section"><div class="espace-section-title" role="heading" aria-level="2"><span>Passages à vérifier</span><span class="espace-section-count">${staleEntries.length}</span></div>${staleHtml}</div>
+    <div class="espace-section"><div class="espace-section-title" role="heading" aria-level="2"><span>Lectures marquées</span><span class="espace-section-count">${markedReadings.length}</span></div>${markedReadingsHtml}</div>
+    <div class="espace-section"><div class="espace-section-title" role="heading" aria-level="2"><span>Surlignages</span><span class="espace-section-count">${freshEntries.length}</span></div>${hlHtml}</div>
+    <div class="espace-section"><div class="espace-section-title" role="heading" aria-level="2"><span>Notes</span><span class="espace-section-count">${everyNote.length}</span></div>${notesHtml}</div>
+    <div class="espace-section"><div class="espace-section-title" role="heading" aria-level="2"><span>Sauvegarder mes données</span></div><div class="espace-actions"><button type="button" class="resume-panel-btn primary" onclick="exportUserData()">⬇ Exporter la sauvegarde JSON</button><button type="button" class="resume-panel-btn" onclick="triggerImport()">⬆ Importer</button><button type="button" class="resume-panel-btn" onclick="exportHumanReadableJournal()">↗ Exporter mon journal lisible</button></div><div id="lastBackupStatus" class="espace-backup-status">${escHtml(formatLastExportStatus())}</div>${backupReminder}<div class="espace-journal-note">Le fichier JSON normal sert à restaurer l’app. Si vos données dépassent 32 Mo, l’app crée une archive de secours clairement identifiée qui conserve les données mais ne peut pas être restaurée directement dans cette version. Le journal lisible est un fichier Markdown destiné à la lecture et ne peut pas être importé comme sauvegarde.</div>
       <details class="device-transfer-guide">
         <summary>Je change d’appareil</summary>
         <div class="device-transfer-body">
@@ -8760,7 +8772,7 @@ function renderHome() {
         <svg class="cc-arrow" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
       </button>
       ${daily ? `<div class="stage6m-practice-note">${daily}</div>` : ''}
-      <div class="home-hours-section"><div class="home-hours-header"><button type="button" class="home-hours-title" onclick="showHoursView()">Les 24 Heures ›</button>${state.readHours.size > 0 ? `<span class="home-hours-count">${state.readHours.size} méditée${state.readHours.size > 1 ? "s" : ""} &middot; <button type="button" onclick="restartTwentyFourHours()" class="home-hours-restart" title="${progress.complete ? 'Recommencer les 24 Heures' : 'Réinitialiser ma progression'}">${progress.complete ? '↺ Recommencer' : 'Réinitialiser'}</button></span>` : ""}</div><div class="hours-grid">${hoursGrid}</div><div class="home-hours-footer"><button type="button" class="home-hours-voir-toutes" onclick="showHoursView()">Voir toutes les Heures par titre →</button></div></div>
+      <div class="home-hours-section"><div class="home-hours-header"><h2 class="home-hours-heading"><button type="button" class="home-hours-title" onclick="showHoursView()">Les 24 Heures ›</button></h2>${state.readHours.size > 0 ? `<span class="home-hours-count">${state.readHours.size} méditée${state.readHours.size > 1 ? "s" : ""} &middot; <button type="button" onclick="restartTwentyFourHours()" class="home-hours-restart" title="${progress.complete ? 'Recommencer les 24 Heures' : 'Réinitialiser ma progression'}">${progress.complete ? '↺ Recommencer' : 'Réinitialiser'}</button></span>` : ""}</div><div class="hours-grid">${hoursGrid}</div><div class="home-hours-footer"><button type="button" class="home-hours-voir-toutes" onclick="showHoursView()">Voir toutes les Heures par titre →</button></div></div>
       <div class="stage6m-home-actions" aria-label="Actions principales">
         <button type="button" class="stage6m-home-action" onclick="showPrieres()"><div class="k">Prières</div><div class="t">Prières &amp; compléments</div><div class="d">Prières du parcours, introduction et textes complémentaires.</div></button>
         <button type="button" class="stage6m-home-action" onclick="showLibraryView(true,'PASSION24.LIBRARY.PART_III')"><div class="k">Approfondir</div><div class="t">Livre du Ciel</div><div class="d">Passion divine de Jésus et douleurs de Marie.</div></button>
@@ -8769,8 +8781,8 @@ function renderHome() {
       </div>
       ${renderRecentLibraryCards()}
       
-      <details class="stage6m-home-details"><summary>Prières et compléments</summary><div class="stage6m-home-details-body"><div class="extras-grid">${extrasGrid}</div></div></details>
-      <details class="stage6m-home-details"><summary>Rechercher dans l’app</summary><div class="stage6m-home-details-body">
+      <details class="stage6m-home-details"><summary><span role="heading" aria-level="2">Prières et compléments</span></summary><div class="stage6m-home-details-body"><div class="extras-grid">${extrasGrid}</div></div></details>
+      <details class="stage6m-home-details"><summary><span role="heading" aria-level="2">Rechercher dans l’app</span></summary><div class="stage6m-home-details-body">
         <p style="margin:0 0 0.75rem;color:var(--ink3);font-size:0.9rem">La recherche complète s’ouvre dans un écran unique afin de conserver exactement les mêmes filtres, résultats et position de retour.</p>
         <button type="button" class="resume-panel-btn primary" onclick="showSearchView(true)">Ouvrir la recherche</button>
       </div></details>
@@ -8836,7 +8848,7 @@ function renderHourProvenance(hourNum) {
   }).join('');
   const documentaryDetails=records.map(r=>`<section class="provenance-component" data-provenance-technical-record="${escHtml(r.ledger_record_id)}"><h4 class="provenance-component-title">${escHtml(labels[r.component]||r.component)}</h4>${renderProvenanceParagraphs(r.public_summary)}${r.outcome_text?`<p><strong>Conclusion documentaire :</strong> ${renderFrozenProvenanceMarkup(r.outcome_text)}</p>`:''}${r.documentary_note_required&&r.documentary_note_text?`<p><strong>Formulation documentaire détaillée héritée :</strong> ${renderFrozenProvenanceMarkup(r.documentary_note_text)}</p>`:''}</section>`).join('');
   const badge=hasNote?'<span class="provenance-note-badge">Question ouverte</span>':'<span class="provenance-review-status">Revue effectuée</span>';
-  return `<details class="provenance-details" data-provenance-hour="${Number(hourNum)}"><summary class="provenance-summary"><span class="provenance-summary-main"><span>${escHtml(PROVENANCE_PUBLIC_GUIDE.heading)}</span>${badge}</span></summary><div class="provenance-body">${issueBlock}<section class="provenance-results"><h3 class="provenance-results-title">État documentaire de cette Heure</h3>${components}</section><section class="provenance-situation"><p>${renderFrozenProvenanceMarkup(PROVENANCE_PUBLIC_GUIDE.compact_source_line)}</p></section><details class="provenance-targeted-details"><summary class="provenance-targeted-summary">Détails documentaires de cette Heure</summary><div class="provenance-source-grid">${documentaryDetails}</div></details><button type="button" class="provenance-methodology-btn" onclick="openProvenanceMethodology()">${escHtml(PROVENANCE_PUBLIC_GUIDE.methodology_button)}</button></div></details>`;
+  return `<details class="provenance-details" data-provenance-hour="${Number(hourNum)}"><summary class="provenance-summary"><span class="provenance-summary-main"><span role="heading" aria-level="2">${escHtml(PROVENANCE_PUBLIC_GUIDE.heading)}</span>${badge}</span></summary><div class="provenance-body">${issueBlock}<section class="provenance-results"><h3 class="provenance-results-title">État documentaire de cette Heure</h3>${components}</section><section class="provenance-situation"><p>${renderFrozenProvenanceMarkup(PROVENANCE_PUBLIC_GUIDE.compact_source_line)}</p></section><details class="provenance-targeted-details"><summary class="provenance-targeted-summary">Détails documentaires de cette Heure</summary><div class="provenance-source-grid">${documentaryDetails}</div></details><button type="button" class="provenance-methodology-btn" onclick="openProvenanceMethodology()">${escHtml(PROVENANCE_PUBLIC_GUIDE.methodology_button)}</button></div></details>`;
 }
 function closeProvenanceMethodology(){
   const overlay=document.getElementById('provenanceMethodologyOverlay');
@@ -8922,7 +8934,7 @@ function renderReader(hour, scroll = true) {
 
   const refHtml = hasRefl ? `
     <div class="reflections-wrap">
-      <div class="reflections-label">Réflexions et pratiques</div>
+      <div class="reflections-label" role="heading" aria-level="2">Réflexions et pratiques</div>
       ${hour.reflections.map((p, i) => { const rhythmClass = getDashListRhythmClass(hour.reflections, i); return `
       <div class="ref-para-block${rhythmClass}" id="${p.id}">
         <div class="ref-para-num">${i + 1}</div>
@@ -8934,7 +8946,7 @@ function renderReader(hour, scroll = true) {
   if (hasSub) {
     let subOffset = displayParagraphs.length;
     hour.subsections.forEach(sub => {
-      subHtml += `<div class="para-block internal-subheading-block" id="${sub.id}__heading"><span class="internal-subheading" data-internal-heading="true">${escHtml(sub.title)}</span></div>`;
+      subHtml += `<div class="para-block internal-subheading-block" id="${sub.id}__heading"><span class="internal-subheading" data-internal-heading="true" role="heading" aria-level="2">${escHtml(sub.title)}</span></div>`;
       subHtml += sub.paragraphs.map((p, i) => buildParaBlock({...p, n: subOffset + i + 1}, hour.hour_number, getDashListRhythmClass(sub.paragraphs, i))).join('');
     });
   }
@@ -9426,7 +9438,7 @@ function renderBenefitsParagraphs(section) {
   const ldcParas = paras.filter(p => ldcRe.test(p.t) || embLdcRe.test(p.t));
   let tocHtml = '';
   if (ldcParas.length > 2) {
-    tocHtml = `<div class="section-toc"><div class="section-toc-title">Références — ${ldcParas.length} passages du Livre du Ciel</div>${ldcParas.map(p=>{const ldcText=ldcRe.test(p.t)?p.t:(embLdcRe.exec(p.t)||['',''])[1];const label=ldcText.replace(/^(LDC\s+\d+\s+-\s+[^-]+-\s+)/,'').slice(0,70);const anchorId=ldcRe.test(p.t)?p.id:p.id+'-ldc';return `<a class="section-toc-item" onclick="(function(){var el=document.getElementById('${anchorId}');if(el)smoothScrollTo(el,{behavior:'smooth',block:'start'});})();return false">${escHtml(label)}…</a>`;}).join('')}</div>`;
+    tocHtml = `<div class="section-toc"><div class="section-toc-title" role="heading" aria-level="3">Références — ${ldcParas.length} passages du Livre du Ciel</div>${ldcParas.map(p=>{const ldcText=ldcRe.test(p.t)?p.t:(embLdcRe.exec(p.t)||['',''])[1];const label=ldcText.replace(/^(LDC\s+\d+\s+-\s+[^-]+-\s+)/,'').slice(0,70);const anchorId=ldcRe.test(p.t)?p.id:p.id+'-ldc';return `<a class="section-toc-item" onclick="(function(){var el=document.getElementById('${anchorId}');if(el)smoothScrollTo(el,{behavior:'smooth',block:'start'});})();return false">${escHtml(label)}…</a>`;}).join('')}</div>`;
   }
   const flowBlocks=getLdcFlowBlocks('PASSION24.TEXT.PROMISES_BENEFITS');
   const flowByStart=new Map(flowBlocks.map(b=>[Number(b.start),b]));
@@ -9541,8 +9553,8 @@ function parseSectionBlocks(sectionId, displayText) {
 function renderMethodHeading(text, anchor) {
   const idAttr = anchor ? ` id="${anchor}"` : '';
   const match = text.match(/^((?:Première|Deuxième|Troisième|Quatrième)\s+manière)(\s*:?\s*)(.*)$/);
-  if (!match) return `<div class="block-method-heading"${idAttr}>${escHtml(text)}</div>`;
-  return `<div class="block-method-heading"${idAttr}><span class="method-badge">${escHtml(match[1])}</span><span class="method-heading-separator">${escHtml(match[2])}</span><span class="method-heading-text">${escHtml(match[3])}</span></div>`;
+  if (!match) return `<div class="block-method-heading" role="heading" aria-level="3"${idAttr}>${escHtml(text)}</div>`;
+  return `<div class="block-method-heading" role="heading" aria-level="3"${idAttr}><span class="method-badge">${escHtml(match[1])}</span><span class="method-heading-separator">${escHtml(match[2])}</span><span class="method-heading-text">${escHtml(match[3])}</span></div>`;
 }
 
 function renderHoursSchedule(text, anchor) {
@@ -9550,7 +9562,7 @@ function renderHoursSchedule(text, anchor) {
   const title = 'Les 24 Heures de la Passion de Notre-Seigneur Jésus-Christ';
   const body = text.replace(title, '').trim();
   const items = body.split(/(?=De\s+(?:\d+h|midi|24h|17h))/g).map(x => x.trim()).filter(Boolean);
-  return `<div class="section-schedule"${idAttr}><div class="section-schedule-title">${escHtml(title)}</div>${
+  return `<div class="section-schedule"${idAttr}><div class="section-schedule-title" role="heading" aria-level="3">${escHtml(title)}</div>${
     items.map(item => `<p class="block-paragraph" style="margin-bottom:0.55em">${escHtml(item)}</p>`).join('')
   }</div>`;
 }
@@ -9561,7 +9573,7 @@ function renderSectionBlocks(blocks, sectionId) {
   let tocHtml = '';
   if (ldcRefs.length > 3) {
     tocHtml = `<div class="section-toc">
-      <div class="section-toc-title">Références — ${ldcRefs.length} passages du Livre du Ciel</div>
+      <div class="section-toc-title" role="heading" aria-level="3">Références — ${ldcRefs.length} passages du Livre du Ciel</div>
       ${ldcRefs.map((b,i) => `<a class="section-toc-item" onclick="(function(){var _ta=document.getElementById('${b.anchor}');if(_ta)smoothScrollTo(_ta,{behavior:'smooth',block:'start'});})();return false">${escHtml(b.text.slice(0,70))}${b.text.length>70?'…':''}</a>`).join('')}
     </div>`;
   }
@@ -9570,7 +9582,7 @@ function renderSectionBlocks(blocks, sectionId) {
     if (b.type === 'method_heading') return renderMethodHeading(b.text, b.anchor);
     if (b.type === 'method_intro')   return `<div class="block-method-intro" id="${b.anchor}">${escHtml(b.text)}</div>`;
     if (b.type === 'hours_schedule') return renderHoursSchedule(b.text, b.anchor);
-    if (b.type === 'section_title')  return `<div class="block-section-title" id="${b.anchor}">${escHtml(b.text)}</div>`;
+    if (b.type === 'section_title')  return `<div class="block-section-title" role="heading" aria-level="2" id="${b.anchor}">${escHtml(b.text)}</div>`;
     return `<p class="block-paragraph" id="${b.anchor}">${escHtml(b.text)}</p>`;
   }).join('');
   return tocHtml + '<div class="section-blocks">' + bodyHtml + '</div>';
@@ -10211,7 +10223,7 @@ function renderLibraryItemBody(item) {
   if (isIndexedLibraryText(item)) {
     const headerRows = [];
     bodyItems.forEach((t, i) => { if (isLibraryExtractHeaderLine(t)) headerRows.push({ text:t, index:i, id:makeLibraryParaId(item.id, i) }); });
-    const liveIndex = headerRows.length ? `<nav class="library-live-index" aria-label="Index des extraits"><div class="library-live-index-title">Index des extraits</div><div class="library-live-index-list">${headerRows.map((h, idx)=>renderLiveIndexButton(h.text, h.id, idx+1)).join('')}</div></nav>` : '';
+    const liveIndex = headerRows.length ? `<nav class="library-live-index" aria-label="Index des extraits"><div class="library-live-index-title" role="heading" aria-level="2">Index des extraits</div><div class="library-live-index-list">${headerRows.map((h, idx)=>renderLiveIndexButton(h.text, h.id, idx+1)).join('')}</div></nav>` : '';
     let indexInserted = false, paras = '';
     for (let i=0;i<bodyItems.length;i++) {
       const t=bodyItems[i], block=flowByStart.get(i), quoteJoinBlock=getQuoteEdgeIntegrityJoinBlock(item,bodyItems,i);
@@ -10254,8 +10266,8 @@ function renderLibraryItemBody(item) {
 function renderLinkedTextsForHour(hourNum) {
   const items = getLinkedTextsForHour(hourNum);
   const seeAlso = `<button type="button" class="linked-text-card see-also-card" onclick="showLibraryView(true,'PASSION24.LIBRARY.PART_III')" aria-label="Voir aussi : Approfondir la Passion"><div class="linked-text-card-meta">Voir aussi</div><div class="linked-text-title">Approfondir la Passion</div><div class="linked-text-desc">La Passion divine de Jésus · Les douleurs et souffrances de Marie Très Sainte</div></button>`;
-  if (!items.length) return `<div class="linked-texts-wrap" data-linked-texts="empty"><div class="linked-texts-title stage6m-approfondir-title">Approfondir</div><div class="library-placeholder-note">Aucun texte lié n’est intégré pour cette Heure.</div>${seeAlso}</div>`;
-  return `<div class="linked-texts-wrap" data-linked-texts="hour-${hourNum}"><div class="linked-texts-title stage6m-approfondir-title">Pour approfondir cette Heure</div><div class="linked-text-count">${items.length} texte${items.length>1?'s':''} complémentaire${items.length>1?'s':''} pour approfondir cette Heure.</div>${items.map(item => `<button type="button" class="linked-text-card" onclick="openLinkedTextFromHour('${item.id}')" aria-label="Ouvrir le texte lié : ${escHtml(item.title)}"><div class="linked-text-card-meta">${escHtml(getLibraryKindLabel(item))}</div><div class="linked-text-title">${escHtml(item.title)}${item.status==='placeholder'?'<span class="placeholder-badge">À intégrer</span>':''}</div><div class="linked-text-desc">${escHtml(item.description || '')}</div><div class="linked-text-source">${escHtml(getLinkedTextReferenceLabel(item))}</div></button>`).join('')}${seeAlso}</div>`;
+  if (!items.length) return `<div class="linked-texts-wrap" data-linked-texts="empty"><div class="linked-texts-title stage6m-approfondir-title" role="heading" aria-level="2">Approfondir</div><div class="library-placeholder-note">Aucun texte lié n’est intégré pour cette Heure.</div>${seeAlso}</div>`;
+  return `<div class="linked-texts-wrap" data-linked-texts="hour-${hourNum}"><div class="linked-texts-title stage6m-approfondir-title" role="heading" aria-level="2">Pour approfondir cette Heure</div><div class="linked-text-count">${items.length} texte${items.length>1?'s':''} complémentaire${items.length>1?'s':''} pour approfondir cette Heure.</div>${items.map(item => `<button type="button" class="linked-text-card" onclick="openLinkedTextFromHour('${item.id}')" aria-label="Ouvrir le texte lié : ${escHtml(item.title)}"><div class="linked-text-card-meta">${escHtml(getLibraryKindLabel(item))}</div><div class="linked-text-title">${escHtml(item.title)}${item.status==='placeholder'?'<span class="placeholder-badge">À intégrer</span>':''}</div><div class="linked-text-desc">${escHtml(item.description || '')}</div><div class="linked-text-source">${escHtml(getLinkedTextReferenceLabel(item))}</div></button>`).join('')}${seeAlso}</div>`;
 }
 function updateRightContextPanel(context) {
   const panel = document.getElementById('rightContextPanel'); if (!panel) return;
@@ -10275,8 +10287,8 @@ function updateRightContextPanel(context) {
   const markedMini = Object.entries(sanitizeLibraryMarksStore(state.libraryMarks || {})).slice(0,2).map(([itemId,mark]) => { const item=getLibraryItem(itemId); return item ? `<button type="button" class="panel-mini-item" onclick="openLibraryText('${escHtml(itemId)}')"><strong>Lecture marquée</strong><br>${escHtml(item.title)}</button>` : ''; }).join('');
   const hlMini = previewHtml || verifyHtml || markedMini ? (markedMini + previewHtml + verifyHtml) : '<div class="right-context-meta">Aucun surlignage pour le moment.</div>';
   panel.innerHTML = `<div class="panel-topbar"><div class="responsive-pane-label">Mon Espace</div><button type="button" class="panel-close-btn" onclick="toggleMonEspacePanel()" aria-label="Fermer Mon Espace">× Fermer</button></div>
-    <div class="right-context-card"><div class="right-context-title">Reprendre</div><div class="right-context-meta">${h ? `${h.hour_number}e Heure — ${escHtml(h.title)}<br>${escHtml(describeSavedPara(getSavedParaForHour(h.hour_number)))}` : 'Aucune position enregistrée.'}</div>${h ? `<button type="button" class="resume-panel-btn primary" onclick="openHour(${h.hour_number}, true, { resume: true })">Reprendre</button> <button type="button" class="resume-panel-btn" onclick="openHour(${h.hour_number})">Ouvrir au début</button>` : ''}</div>
-    <div class="right-context-card"><div class="right-context-title">Surlignages</div><div class="panel-mini-list">${hlMini}</div></div>
+    <div class="right-context-card"><div class="right-context-title" role="heading" aria-level="3">Reprendre</div><div class="right-context-meta">${h ? `${h.hour_number}e Heure — ${escHtml(h.title)}<br>${escHtml(describeSavedPara(getSavedParaForHour(h.hour_number)))}` : 'Aucune position enregistrée.'}</div>${h ? `<button type="button" class="resume-panel-btn primary" onclick="openHour(${h.hour_number}, true, { resume: true })">Reprendre</button> <button type="button" class="resume-panel-btn" onclick="openHour(${h.hour_number})">Ouvrir au début</button>` : ''}</div>
+    <div class="right-context-card"><div class="right-context-title" role="heading" aria-level="3">Surlignages</div><div class="panel-mini-list">${hlMini}</div></div>
     <div class="right-context-card"><button type="button" class="resume-panel-btn primary" onclick="showEspaceView()">Ouvrir tout Mon Espace</button></div>`;
   applyMonEspacePanelState();
 }
@@ -11050,11 +11062,11 @@ function showSettingsSheet() {
   overlay.innerHTML = `
     <div class="stage6m-settings-sheet" tabindex="-1">
       <div class="stage6m-settings-top">
-        <div><div class="stage6m-settings-kicker">Réglages</div><div class="stage6m-settings-title">Lecture et personnalisation</div></div>
+        <div><div class="stage6m-settings-kicker">Réglages</div><div class="stage6m-settings-title" role="heading" aria-level="2">Lecture et personnalisation</div></div>
         <button type="button" class="stage6m-settings-close" onclick="closeSettingsSheet()" aria-label="Fermer les réglages">× Fermer</button>
       </div>
       <div class="stage6m-settings-group">
-        <div class="stage6m-settings-label">Lecture</div>
+        <div class="stage6m-settings-label" role="heading" aria-level="3">Lecture</div>
         <div class="stage6m-settings-grid">
           <button type="button" class="stage6m-settings-action" onclick="toggleReperes(); closeSettingsSheet();"><strong>${escHtml(modeTitle)}</strong>${escHtml(modeDesc)}</button>
           <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); toggleFontPanel();"><strong>Taille du texte</strong>Ajuster la taille de lecture et des principaux éléments d’interface.</button>
@@ -11064,14 +11076,14 @@ function showSettingsSheet() {
         <div class="stage6m-settings-note">Numérotation et source ajoutent uniquement des indications techniques : numéros de paragraphe, références de source et badges d’attribution. Note, Surligner et Copier restent disponibles dans les deux modes.</div>
       </div>
       ${state.view === 'reader' ? `<div class="stage6m-settings-group">
-        <div class="stage6m-settings-label">Référence du passage</div>
+        <div class="stage6m-settings-label" role="heading" aria-level="3">Référence du passage</div>
         <div class="stage6m-settings-grid">
           <button type="button" class="stage6m-settings-action" onclick="shareCurrentReaderReference()"><strong>Partager</strong>Ouvrir le partage du système avec la référence stable du passage visible.</button>
           <button type="button" class="stage6m-settings-action" onclick="copyCurrentReaderStableLink()"><strong>Copier le lien</strong>Copier uniquement l’adresse stable du passage visible.</button>
         </div>
       </div>` : ''}
       <div class="stage6m-settings-group">
-        <div class="stage6m-settings-label">Parcours</div>
+        <div class="stage6m-settings-label" role="heading" aria-level="3">Parcours</div>
         <div class="stage6m-settings-grid">
           <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); showHoursView();"><strong>Les 24 Heures</strong>Parcourir les 24 Heures par titre et horaire.</button>          <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); showPrieres();"><strong>Prières &amp; compléments</strong>Prières du parcours et textes complémentaires.</button>          <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); showEspaceView();"><strong>Mon Espace</strong>Progression, notes, surlignages, sauvegarde et changement d’appareil.</button>
           <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); showLibraryView(true,'PASSION24.LIBRARY.PART_III');"><strong>Approfondir</strong>Textes du Livre du Ciel autour de la Passion.</button>
@@ -11079,7 +11091,7 @@ function showSettingsSheet() {
         </div>
       </div>
       <div class="stage6m-settings-group">
-        <div class="stage6m-settings-label">Compatibilité</div>
+        <div class="stage6m-settings-label" role="heading" aria-level="3">Compatibilité</div>
         <div class="stage6m-settings-grid">
           <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); toggleAndroidHighlightMode();"><strong>Samsung / Android</strong>Activer ou désactiver le mode Paragraphe prévu lorsque la sélection précise est peu fiable.</button>
           <button type="button" class="stage6m-settings-action" onclick="closeSettingsSheet(); showSearchView();"><strong>Recherche</strong>Rechercher dans les Heures et textes intégrés.</button>
@@ -11145,26 +11157,26 @@ function showHelp() {
         <button class="help-quick-btn" onclick="helpJumpTo('help-support')">Signaler un problème</button>
       </div></nav>
 
-      <div class="help-section" id="help-practice"><div class="help-section-hd">Commencer et pratiquer les 24 Heures</div><div class="help-section-body">
+      <div class="help-section" id="help-practice"><div class="help-section-hd" role="heading" aria-level="3">Commencer et pratiquer les 24 Heures</div><div class="help-section-body">
         <div class="help-row"><span class="help-icon">✝</span><span class="help-row-text"><strong>Parcours simple proposé</strong> — Prier une Heure par jour, dans l’ordre, puis poursuivre avec l’Heure suivante. Vous pouvez aussi choisir une Heure selon le moment de la journée ou parcourir librement les Heures.</span></div>
         <div class="help-row"><span class="help-icon">📖</span><span class="help-row-text"><strong>Comment pratiquer</strong> — Ouvre le texte détaillé intégré à l’application. Le parcours « une Heure par jour » est proposé par défaut, mais ce n’est pas la seule manière de pratiquer.</span></div>
         <div class="help-row"><span class="help-icon">✓</span><span class="help-row-text"><strong>Méditée</strong> — Appuyez après avoir médité une Heure pour l’ajouter à votre progression. Arriver à la fin du texte ne la marque pas automatiquement. Appuyez de nouveau pour retirer ce statut.</span></div>
       </div></div>
 
-      <div class="help-section" id="help-navigation"><div class="help-section-hd">Se déplacer dans l’application</div><div class="help-section-body">
+      <div class="help-section" id="help-navigation"><div class="help-section-hd" role="heading" aria-level="3">Se déplacer dans l’application</div><div class="help-section-body">
         <div class="help-row"><span class="help-icon">🏠</span><span class="help-row-text"><strong>Accueil · Heures · Recherche · Mon Espace</strong> — Utilisez la navigation principale pour reprendre votre lecture, parcourir les 24 Heures, rechercher un texte ou retrouver vos éléments personnels.</span></div>
         <div class="help-row"><span class="help-icon">📖</span><span class="help-row-text"><strong>Approfondir · Prières &amp; compléments</strong> — L’Accueil propose des accès directs à <strong>Prières &amp; compléments</strong>, <strong>Livre du Ciel</strong> et <strong>Comment pratiquer</strong>. Ces contenus restent aussi accessibles depuis <strong>Réglages → Parcours</strong>.</span></div>
         <div class="help-row"><span class="help-icon">←</span><span class="help-row-text"><strong>Retour</strong> — Revient à l’écran précédent en conservant votre place lorsque cette reprise est disponible.</span></div>
       </div></div>
 
-      <div class="help-section" id="help-reading"><div class="help-section-hd">Lire et prier une Heure</div><div class="help-section-body">
+      <div class="help-section" id="help-reading"><div class="help-section-hd" role="heading" aria-level="3">Lire et prier une Heure</div><div class="help-section-body">
         <div class="help-row"><span class="help-icon">✝</span><span class="help-row-text"><strong>Méditation</strong> — Texte principal. <strong>Réflexions et pratiques</strong> ouvre les réflexions associées ; <strong>Textes liés</strong> ouvre les textes d’approfondissement liés à l’Heure.</span></div>
         <div class="help-row"><span class="help-icon">≡</span><span class="help-row-text"><strong>Progression et Plan</strong> — La ligne de progression indique approximativement la part de l’Heure parcourue. Lorsqu’un Plan est disponible, il permet d’aller directement à une scène interne.</span></div>
         <div class="help-row"><span class="help-icon">🕯</span><span class="help-row-text"><strong>Prières de début et de fin</strong> — Elles s’ouvrent sans perdre votre position de lecture.</span></div>
         <div class="help-row"><span class="help-icon">A</span><span class="help-row-text"><strong>Taille et thème</strong> — Choisissez Petit, Normal, Grand ou Très grand selon votre confort de lecture. Le texte principal change de taille et les principaux titres, menus, boutons et autres éléments utiles s’adaptent également pour rester lisibles. À Grand ou Très grand, certains libellés peuvent passer sur deux lignes : c’est normal. Le thème peut être Automatique, Clair ou Sombre.</span></div>
       </div></div>
 
-      <div class="help-section" id="help-progress"><div class="help-section-hd">Progression, reprise et cycle</div><div class="help-section-body">
+      <div class="help-section" id="help-progress"><div class="help-section-hd" role="heading" aria-level="3">Progression, reprise et cycle</div><div class="help-section-body">
         <div class="help-row"><span class="help-icon">✓</span><span class="help-row-text"><strong>Méditée = progression du cycle</strong> — Une Heure peut être vécue comme la Méditation seule, Méditation + Réflexions et pratiques, ou avec les Textes liés en complément. Les boutons au bas de chaque partie permettent de poursuivre sans remonter aux onglets. Aucun changement de partie ne marque automatiquement l’Heure. Lorsque <strong>vous considérez l’Heure terminée</strong>, choisissez <strong>J’ai médité cette Heure</strong> ; passer à l’Heure suivante sans la marquer laisse la progression inchangée.</span></div>
         <div class="help-row"><span class="help-icon">→</span><span class="help-row-text"><strong>Hier · Aujourd’hui · Suivante</strong> — Sur l’Accueil, ces indications suivent les Heures actuellement marquées Méditée dans le cycle en cours. <strong>Suivante</strong> propose la prochaine Heure qui n’est pas encore marquée Méditée. Vous pouvez toujours choisir librement une autre Heure.</span></div>
         <div class="help-row"><span class="help-icon">▶</span><span class="help-row-text"><strong>Reprendre</strong> — La reprise de lecture est indépendante du statut Méditée : elle revient à la dernière Heure et à la position enregistrée lorsqu’elle est disponible. <strong>Ouvrir au début</strong> ouvre l’Heure sans reprendre cette position.</span></div>
@@ -11172,7 +11184,7 @@ function showHelp() {
         <div class="help-row"><span class="help-icon">↺</span><span class="help-row-text"><strong>Réinitialiser / Recommencer</strong> — Avant 24/24, <strong>Réinitialiser ma progression</strong> remet à zéro les statuts Méditée, les positions de reprise, les onglets de lecture enregistrés et la continuité quotidienne. À 24/24, <strong>Recommencer</strong> lance le même nouveau départ. Vos surlignages, notes, Lectures marquées et réglages sont conservés.</span></div>
       </div></div>
 
-      <div class="help-section" id="help-actions"><div class="help-section-hd">Surligner, noter et marquer</div><div class="help-section-body">
+      <div class="help-section" id="help-actions"><div class="help-section-hd" role="heading" aria-level="3">Surligner, noter et marquer</div><div class="help-section-body">
         <div class="help-note"><strong>Selon votre appareil :</strong> sur iPhone/iPad et les appareils compatibles, sélectionnez précisément les mots. Sur Samsung/Android, lorsque <strong>Paragraphe</strong> est proposé, touchez le paragraphe entier. <strong>Marquer cette lecture</strong> est différent : il enregistre toute une lecture Approfondir.</div>
         <div class="help-row"><span class="help-icon">◐</span><span class="help-row-text"><strong>Surligner</strong> — Choisissez Jaune · Bleu · Vert · Violet · Rose. Sur les appareils compatibles, vous pouvez aussi sélectionner du texte dans le titre d’une lecture Approfondir ou dans un titre d’extrait « Tome … — date — … ».</span></div>
         <div class="help-row"><span class="help-icon">✎</span><span class="help-row-text"><strong>Note et Copier</strong> — Une note peut être rattachée au passage ou au titre concerné, jusqu’à 2 000 caractères. Copier reprend le texte sélectionné, ou le paragraphe ciblé, avec sa référence lisible.</span></div>
@@ -11180,49 +11192,49 @@ function showHelp() {
         <div class="help-row"><span class="help-icon">★</span><span class="help-row-text"><strong>Marquer cette lecture</strong> — Dans Approfondir, ce bouton ne surligne pas le texte : il place la lecture complète dans <strong>Mon Espace → Lectures marquées</strong>.</span></div>
       </div></div>
 
-      <div class="help-section" id="help-espace"><div class="help-section-hd">Mon Espace</div><div class="help-section-body">
+      <div class="help-section" id="help-espace"><div class="help-section-hd" role="heading" aria-level="3">Mon Espace</div><div class="help-section-body">
         <div class="help-row"><span class="help-icon">▶</span><span class="help-row-text"><strong>Progression et Heures méditées</strong> — <strong>Ma progression</strong> affiche le total 0–24 et permet de revoir les Heures marquées Méditée. Ces Heures sont distinctes de votre dernière position de lecture.</span></div>
         <div class="help-row"><span class="help-icon">🖍</span><span class="help-row-text"><strong>Surlignages · Notes · Lectures marquées</strong> — Ouvrez un élément pour revenir au passage ou à la lecture concernée.</span></div>
         <div class="help-row"><span class="help-icon">⚠</span><span class="help-row-text"><strong>Passages à vérifier</strong> — Ce sont d’anciens surlignages que l’application ne peut plus replacer avec certitude après une modification du paragraphe ou de son texte. <strong>Cela ne signifie pas que le texte de Luisa est signalé comme douteux</strong> : seul l’emplacement de votre annotation personnelle doit être vérifié.</span></div>
       </div></div>
 
-      <div class="help-section" id="help-reperes"><div class="help-section-hd">Numérotation, source et paroles directes</div><div class="help-section-body">
+      <div class="help-section" id="help-reperes"><div class="help-section-hd" role="heading" aria-level="3">Numérotation, source et paroles directes</div><div class="help-section-body">
         <div class="help-row"><span class="help-icon">№</span><span class="help-row-text"><strong>Numérotation et source</strong> — Dans <strong>Réglages</strong>, affiche ou masque les numéros de paragraphe, références de source et badges Jésus / Père / Marie. Cela ne modifie jamais le texte ; Note, Surligner et Copier restent disponibles.</span></div>
         <div class="help-row"><span class="help-icon">✝</span><span class="help-row-text"><strong>Badges Jésus / Père / Marie</strong> — Ils signalent les paroles directement attribuées à cette personne. Le filtre <strong>Paroles directes</strong> de la Recherche utilise ces attributions.</span></div>
         <div class="help-row"><span class="help-icon">❝</span><span class="help-row-text"><strong>Couleur et continuité du dialogue</strong> — La couleur et la typographie suivent aussi le tour de parole principal. Lorsque Jésus, le Père ou Marie cite quelqu’un d’autre, la citation peut conserver cette présentation visuelle <strong>sans être attribuée</strong> à Jésus, au Père ou à Marie.</span></div>
       </div></div>
 
-      <div class="help-section" id="help-search"><div class="help-section-hd">Recherche</div><div class="help-section-body">
+      <div class="help-section" id="help-search"><div class="help-section-hd" role="heading" aria-level="3">Recherche</div><div class="help-section-body">
         <div class="help-row"><span class="help-icon">🔍</span><span class="help-row-text"><strong>Recherche de texte</strong> — Saisissez au moins 2 caractères puis filtrez par <strong>Tout · Heures · Réflexions · Prières · Compléments · Paroles directes</strong>. Majuscules et accents n’ont pas besoin d’être identiques. Une expression exacte est privilégiée lorsqu’elle existe ; sinon la recherche peut retrouver un passage contenant tous les mots demandés. Les résultats privilégient la qualité et la proximité de la correspondance avant l’ordre du corpus.</span></div>
         <div class="help-row"><span class="help-icon">↗</span><span class="help-row-text"><strong>Ouvrir un résultat</strong> — Le résultat ouvre le contenu concerné et, lorsqu’une ancre précise existe, le passage correspondant.</span></div>
         <div class="help-row"><span class="help-icon">✝</span><span class="help-row-text"><strong>Paroles directes</strong> peut aussi afficher les segments directement attribués sans texte saisi et filtrer <strong>Tous · Jésus · Père · Marie</strong>.</span></div>
       </div></div>
 
-      <div class="help-section" id="help-samsung"><div class="help-section-hd">Samsung / Android</div><div class="help-section-body">
+      <div class="help-section" id="help-samsung"><div class="help-section-hd" role="heading" aria-level="3">Samsung / Android</div><div class="help-section-body">
         <div class="help-row"><span class="help-icon">◐</span><span class="help-row-text"><strong>Paragraphe</strong> — Sur les appareils Android/Samsung où ce mode est proposé, activez-le puis touchez le paragraphe à traiter. Le surlignage porte sur le paragraphe entier afin d’éviter les menus Recherche/Traduction de la sélection native.</span></div>
         <div class="help-row"><span class="help-icon">⌁</span><span class="help-row-text"><strong>iPhone/iPad</strong> — La méthode prévue reste la sélection précise des mots. Cette différence est volontaire.</span></div>
       </div></div>
 
-      <div class="help-section" id="help-share"><div class="help-section-hd">Partager un passage</div><div class="help-section-body">
+      <div class="help-section" id="help-share"><div class="help-section-hd" role="heading" aria-level="3">Partager un passage</div><div class="help-section-body">
         <div class="help-row"><span class="help-icon">↗</span><span class="help-row-text"><strong>Partager</strong> — Dans une Heure : <strong>Réglages → Référence du passage → Partager</strong>. Le partage de l’appareil s’ouvre avec la référence stable du passage visible. S’il n’est pas disponible, le lien est copié lorsque cela est possible.</span></div>
         <div class="help-row"><span class="help-icon">⎘</span><span class="help-row-text"><strong>Copier le lien</strong> — Copie uniquement l’adresse stable du passage visible.</span></div>
       </div></div>
 
-      <div class="help-section" id="help-device-transfer"><div class="help-section-hd">Je change d’appareil</div><div class="help-section-body">
+      <div class="help-section" id="help-device-transfer"><div class="help-section-hd" role="heading" aria-level="3">Je change d’appareil</div><div class="help-section-body">
         <div class="help-row"><span class="help-icon">1</span><span class="help-row-text"><strong>Ancien appareil</strong> — Dans <strong>Mon Espace → Je change d’appareil</strong>, exportez votre fichier de sauvegarde.</span></div>
         <div class="help-row"><span class="help-icon">2</span><span class="help-row-text"><strong>Nouvel appareil</strong> — Installez ou ouvrez la même app, puis revenez dans <strong>Mon Espace → Je change d’appareil</strong>.</span></div>
         <div class="help-row"><span class="help-icon">3</span><span class="help-row-text"><strong>Importer et vérifier</strong> — Importez le fichier de sauvegarde, puis vérifiez votre progression, position de lecture, taille de texte, thème, numérotation/source, notes, surlignages et Lectures marquées avant de supprimer l’ancienne installation.</span></div>
         <div class="help-note">Le transfert est manuel par fichier local ; l’app ne réalise pas de synchronisation cloud entre appareils.</div>
       </div></div>
 
-      <div class="help-section" id="help-backup"><div class="help-section-hd">Sauvegarder et restaurer</div><div class="help-section-body">
+      <div class="help-section" id="help-backup"><div class="help-section-hd" role="heading" aria-level="3">Sauvegarder et restaurer</div><div class="help-section-body">
         <div class="help-row"><span class="help-icon">⬇</span><span class="help-row-text"><strong>Fichier de sauvegarde</strong> — Sert à restaurer votre progression, vos positions de lecture, vos réglages, vos surlignages, vos notes et vos Lectures marquées lorsqu’ils sont présents. Le fichier est enregistré au format JSON. Si son volume dépasse 32 Mo, l’app crée à la place une archive de secours qui conserve les données mais n’est pas directement restaurable dans cette version.</span></div>
         <div class="help-row"><span class="help-icon">⬆</span><span class="help-row-text"><strong>Importer une sauvegarde</strong> — Remplace vos données actuelles après confirmation. Il est prudent d’exporter d’abord votre sauvegarde actuelle.</span></div>
         <div class="help-row"><span class="help-icon">↗</span><span class="help-row-text"><strong>Journal lisible</strong> — Permet de consulter vos données dans un fichier lisible. Il <strong>ne sert pas à restaurer l’application</strong>.</span></div>
         <div class="help-note"><strong>Important :</strong> les données personnelles sont conservées localement lorsque le stockage de l’appareil/navigateur est disponible. Exportez un fichier de sauvegarde avant de supprimer ou réinstaller l’app, d’effacer les données du site ou de changer d’appareil.</div>
       </div></div>
 
-      <div class="help-section" id="help-update"><div class="help-section-hd">Mise à jour de l’application</div><div class="help-section-body">
+      <div class="help-section" id="help-update"><div class="help-section-hd" role="heading" aria-level="3">Mise à jour de l’application</div><div class="help-section-body">
         <div class="help-row"><span class="help-icon">i</span><span class="help-row-text"><strong>Version installée : ${escHtml(APP_VERSION)}</strong> — C’est le numéro principal à utiliser pour vérifier que votre application est à jour ou pour demander de l’aide.</span></div>
         <div class="help-row"><span class="help-icon">✓</span><span class="help-row-text"><strong>Vérification automatique</strong> — Lorsque votre appareil est connecté à Internet, l’application recherche une version plus récente à des moments appropriés, notamment à l’ouverture ou au retour dans l’application.</span></div>
         <div class="help-support-item">
@@ -11603,12 +11615,12 @@ function renderStructuredParaText(text, paraId) {
   const headingEnd = Math.max(0, Math.min(Number(meta.heading_end || 0), text.length));
   const bodyStart = Math.max(headingEnd, Math.min(Number(meta.body_start || headingEnd), text.length));
   if (meta.status === 'standalone_paragraph') {
-    return `<span class="internal-subheading" data-internal-heading="true">${renderParaTextRange(text, paraId, 0, text.length)}</span>`;
+    return `<span class="internal-subheading" data-internal-heading="true" role="heading" aria-level="2">${renderParaTextRange(text, paraId, 0, text.length)}</span>`;
   }
   const headingHtml = renderParaTextRange(text, paraId, 0, headingEnd);
   const separatorHtml = escHtml(text.slice(headingEnd, bodyStart));
   const bodyHtml = renderParaTextRange(text, paraId, bodyStart, text.length);
-  return `<span class="internal-subheading" data-internal-heading="true">${headingHtml}</span><span class="internal-heading-separator">${separatorHtml}</span><span class="internal-subheading-body">${bodyHtml}</span>`;
+  return `<span class="internal-subheading" data-internal-heading="true" role="heading" aria-level="2">${headingHtml}</span><span class="internal-heading-separator">${separatorHtml}</span><span class="internal-subheading-body">${bodyHtml}</span>`;
 }
 
 function getCharOffset(container, node, offset) {

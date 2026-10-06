@@ -39,9 +39,9 @@
     "standalone",
     "browser"
   ],
-  "version": "v120.3",
+  "version": "v120.4",
   "build_revision": "B1",
-  "release_sequence": 120003001,
-  "release_id": "24h-v120-3-b1-20261005-contextual-stage-navigation",
+  "release_sequence": 120004001,
+  "release_id": "24h-v120-4-b1-20261005-accessibility-semantics-reflow",
   "build": "B1"
 }
