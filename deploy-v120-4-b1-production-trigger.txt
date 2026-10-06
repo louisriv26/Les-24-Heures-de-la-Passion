@@ -1,0 +1,1 @@
+owner physically tested exact App-Test v120.4/B1 and explicitly authorized production deployment
