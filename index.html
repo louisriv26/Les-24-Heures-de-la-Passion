@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; script-src-elem 'sha256-d74pQ79aGiBeybyrztDplvJ/Olm+ETglusnzzdjwWkk='; script-src-attr 'unsafe-inline'; style-src 'self' 'unsafe-inline'; style-src-elem 'sha256-UQ2LZMV8vpixa50rjbFhb0lgGCv04EY1sB1SyGNLL0k=' 'sha256-yXoW7YbHt/LxxN4CaCRKUT3fNafVbYqTcOS8MHMXjvY=' 'sha256-CqBiLAK8xz+F3J9+SNTpS2zKHauD4F9IA94XQFRUL34=' 'sha256-WLj0DFZ2D1b1hR/2JC2FK3aNLqjx9Hipj0auK8YOfq8='; style-src-attr 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; media-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; script-src-elem 'sha256-YQQ82gM/iQwl0OFagUD0s+FEPw01ON9Atzvz97tm0vE='; script-src-attr 'unsafe-inline'; style-src 'self' 'unsafe-inline'; style-src-elem 'sha256-UQ2LZMV8vpixa50rjbFhb0lgGCv04EY1sB1SyGNLL0k=' 'sha256-6M8Rz28VxIEJIt8VFRq5wo1q2/9BukXtv20j8ep3NgY=' 'sha256-CqBiLAK8xz+F3J9+SNTpS2zKHauD4F9IA94XQFRUL34=' 'sha256-WLj0DFZ2D1b1hR/2JC2FK3aNLqjx9Hipj0auK8YOfq8='; style-src-attr 'unsafe-inline'; font-src 'self' data:; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; media-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="color-scheme" content="light dark">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -600,6 +600,11 @@ body { font-family: var(--font-body); background: var(--bg); color: var(--ink); 
 .toast.has-action { pointer-events:auto; white-space:normal; display:flex; align-items:center; gap:0.65rem; max-width:min(calc(100vw - 2rem), 32rem); bottom:calc(2rem + env(safe-area-inset-bottom, 0px)); }
 .toast-action-btn { min-height:44px; padding:0.35rem 0.75rem; border-radius:999px; border:1px solid currentColor; background:transparent; color:inherit; font:inherit; font-weight:700; cursor:pointer; flex:0 0 auto; }
 .toast-action-btn:focus-visible { outline:3px solid currentColor; outline-offset:2px; }
+.toast-message { min-width:0; flex:1 1 auto; }
+.toast-severity-cue { display:inline-flex; align-items:center; gap:0.28rem; margin-right:0.38rem; font-weight:800; white-space:nowrap; }
+.toast-dismiss-btn { min-height:44px; padding:0.35rem 0.72rem; border-radius:999px; border:1px solid currentColor; background:transparent; color:inherit; font:inherit; font-weight:700; cursor:pointer; flex:0 0 auto; }
+.toast-dismiss-btn:focus-visible { outline:3px solid currentColor; outline-offset:2px; }
+.toast-live-region { position:absolute !important; width:1px !important; height:1px !important; padding:0 !important; margin:-1px !important; overflow:hidden !important; clip:rect(0,0,0,0) !important; white-space:nowrap !important; border:0 !important; }
 
 
 /* ── Mobile long-press action bar ── */
@@ -3318,7 +3323,9 @@ html[data-theme="dark"] .integrity-btn { transition:none !important; }
     <div class="prayer-modal-body" id="prayerModalBody"></div>
   </div>
 
-  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+  <div class="toast" id="toast"></div>
+  <div class="toast-live-region" id="toastStatusLive" role="status" aria-live="polite" aria-atomic="true"></div>
+  <div class="toast-live-region" id="toastAlertLive" role="alert" aria-live="assertive" aria-atomic="true"></div>
 
 <!-- Colour picker -->
 <div class="colour-picker" id="colourPicker" data-highlight-ui="true" role="dialog" aria-modal="false" tabindex="-1" aria-label="Surlignage">
@@ -5779,11 +5786,11 @@ window.onerror = function(msg, src, line, col, err) {
 window.addEventListener('unhandledrejection', function(e) {
   console.error('Unhandled promise rejection:', e.reason);
 });
-const APP_VERSION = 'v120.4';
-const BUILD_REVISION = 'B1';
-const APP_EVIDENCE_STAGE = '24H_V120_3_CONTEXTUAL_STAGE_NAVIGATION_B1';
-const APP_RELEASE_SEQUENCE = 120004001;
-const APP_RELEASE_ID = '24h-v120-4-b1-20261005-accessibility-semantics-reflow';
+const APP_VERSION = 'v120.5';
+const BUILD_REVISION = 'B2';
+const APP_EVIDENCE_STAGE = '24H_V120_5_HELP_JOURNAL_CLARIFICATION_B2';
+const APP_RELEASE_SEQUENCE = 120005002;
+const APP_RELEASE_ID = '24h-v120-5-b2-help-journal-clarification';
 const CANONICAL_APP_SHELL = './luisa_24_heures.html';
 const STORAGE_SCHEMA_VERSION=8; const R41_TEXT_ANCHOR_RESET_VERSION='1';
 const MAX_PERSONAL_DATA_IMPORT_BYTES = 32 * 1024 * 1024; // finite direct-restore ceiling; normal exports use the same bound and larger files are emergency archives
@@ -6619,7 +6626,7 @@ function reportMirrorFailures(result) {
   if (signature === _mirrorWarningSignature) return;
   _mirrorWarningSignature = signature;
   console.warn('Canonical save succeeded; legacy mirrors failed', result.failedMirrorKeys);
-  try { showToast('Sauvegarde principale réussie, mais synchronisation partielle : ' + result.failedMirrorKeys.join(', ')); } catch(_) {}
+  try { showToast('Sauvegarde principale réussie, mais synchronisation partielle : ' + result.failedMirrorKeys.join(', '), {severity:'warning'}); } catch(_) {}
 }
 async function saveState(options = {}) {
   if (!options.beforeSnapshot) return { ok:false, error:makePersonalBaselineError() };
@@ -7211,14 +7218,14 @@ async function commitSessionOnlyChange(beforeSnapshot, actionLabel) {
   }
   if (!result.ok) {
     if (result.conflict) {
-      showToast(actionLabel + ' non enregistré : les données ont changé dans une autre fenêtre. Réessayez.');
+      showToast(actionLabel + ' non enregistré : les données ont changé dans une autre fenêtre. Réessayez.', {severity:'warning'});
       return false;
     }
     showToast(result.durabilityUncertain
       ? persistenceUncertainLabel(actionLabel)
       : isFutureSnapshotGuardError(result.error)
         ? actionLabel + ' appliqué pour cette session seulement : une sauvegarde créée par une version plus récente est préservée.'
-        : actionLabel + ' appliqué pour cette session seulement : sauvegarde indisponible.');
+        : actionLabel + ' appliqué pour cette session seulement : sauvegarde indisponible.', {severity:'error'});
     return false;
   }
   reportMirrorFailures(result);
@@ -7236,16 +7243,16 @@ async function commitDurableChange(beforeSnapshot, failureLabel, options = {}) {
   }
   if (!result.ok) {
     if (result.durabilityUncertain) {
-      if (!options.quiet) showToast(persistenceUncertainLabel(failureLabel));
+      if (!options.quiet) showToast(persistenceUncertainLabel(failureLabel), {severity:'error'});
       return { ok:false, uncertain:true, result };
     }
     if (result.conflict) {
-      if (!options.quiet) showToast(failureLabel + ' non enregistré : une modification plus récente est déjà sauvegardée. Réessayez.');
+      if (!options.quiet) showToast(failureLabel + ' non enregistré : une modification plus récente est déjà sauvegardée. Réessayez.', {severity:'warning'});
       return { ok:false, conflict:true, result };
     }
     const latest=result.currentSnapshot || readLatestDurablePersonalSnapshot() || beforeSnapshot;
     applyPersonalSnapshot(latest);
-    if (!options.quiet) showToast(persistenceFailureLabel(failureLabel,result.error));
+    if (!options.quiet) showToast(persistenceFailureLabel(failureLabel,result.error), {severity:'error'});
     return { ok:false, result };
   }
   reportMirrorFailures(result);
@@ -7311,7 +7318,7 @@ async function flushPassivePositionCommits() {
         ? 'La position n’a pas remplacé une position plus récente enregistrée dans une autre fenêtre.'
         : result&&result.durabilityUncertain
           ? 'La sauvegarde de la position n’a pas pu être vérifiée; elle reste disponible dans cette session.'
-          : 'La position reste disponible dans cette session, mais n’a pas pu être sauvegardée.');
+          : 'La position reste disponible dans cette session, mais n’a pas pu être sauvegardée.', {severity:'warning'});
     }
   } else {
     _passiveSaveWarned=false;
@@ -7331,7 +7338,7 @@ function showDeferredLoadWarning() {
   if (!_loadStorageWarning) return;
   const msg = _loadStorageWarning;
   _loadStorageWarning = '';
-  setTimeout(function(){ try { showToast(msg); } catch(_) {} }, 0);
+  setTimeout(function(){ try { showToast(msg, {severity:'error'}); } catch(_) {} }, 0);
 }
 async function loadState() {
   await withPersonalWriteLock(async function(){
@@ -8168,7 +8175,7 @@ async function clearSavedParaForHour(n) {
   delete state.lastParas[n];
   delete state.lastParas[String(n)];
   const committed = await commitDurableChange(before, 'Effacement de la position');
-  if (committed.ok && typeof showToast === 'function') showToast('Position effacée');
+  if (committed.ok && typeof showToast === 'function') showToast('Position effacée', {severity:'success'});
   updateRightContextPanel();
 }
 function buildResumePanelCard() {
@@ -8474,7 +8481,7 @@ async function rememberLibraryText(id) {
     _recentLibraryTextIdsSession=merged.slice();
     return storageWrite('lp24_recent_texts',JSON.stringify(merged));
   });
-  if (!stored.ok && !_recentTextsSaveWarned) { _recentTextsSaveWarned = true; showToast('Les textes récents restent visibles pour cette session, mais n’ont pas pu être sauvegardés.'); }
+  if (!stored.ok && !_recentTextsSaveWarned) { _recentTextsSaveWarned = true; showToast('Les textes récents restent visibles pour cette session, mais n’ont pas pu être sauvegardés.', {severity:'error'}); }
   else if (stored.ok) { _recentTextsSaveWarned = false; }
 }
 function renderRecentLibraryCards() {
@@ -8554,10 +8561,10 @@ async function restartTwentyFourHours(options = {}) {
   try { sessionStorage.removeItem(STAGE6A_ANCHOR_STORAGE_KEY); } catch(e) {}
   if (destination === 'hour1') {
     openHour(1, false);
-    showToast('Progression réinitialisée. Vous recommencez à la 1re Heure.');
+    showToast('Progression réinitialisée. Vous recommencez à la 1re Heure.', {severity:'success'});
   } else {
     showHome();
-    showToast('Progression réinitialisée. Vous pouvez recommencer à la 1re Heure.');
+    showToast('Progression réinitialisée. Vous pouvez recommencer à la 1re Heure.', {severity:'success'});
   }
   return true;
 }
@@ -9222,13 +9229,13 @@ async function saveNoteFromModal() {
     if (result.durabilityUncertain) {
       ta.value = ''; updateNoteCharCount(); renderNoteModalList(_noteModalParaId);
       refreshRenderedNoteState(_noteModalParaId);
-      showToast(persistenceUncertainLabel('Enregistrement de la note'));
+      showToast(persistenceUncertainLabel('Enregistrement de la note'), {severity:'error'});
       return;
     }
     if (result.conflict) {
       const latest=readLatestDurablePersonalSnapshot(); if (latest) applyPersonalSnapshot(latest);
       renderNoteModalList(_noteModalParaId);
-      showToast('Note non enregistrée : une modification plus récente est déjà sauvegardée. Réessayez.');
+      showToast('Note non enregistrée : une modification plus récente est déjà sauvegardée. Réessayez.', {severity:'warning'});
       return;
     }
     const latest=readLatestDurablePersonalSnapshot(); state.notes = latest ? latest.notes : previousNotes;
@@ -9237,7 +9244,7 @@ async function saveNoteFromModal() {
       ? 'Espace plein : note non enregistrée. Exportez vos données pour libérer de la place.'
       : isFutureSnapshotGuardError(result.error)
         ? 'Note non enregistrée : une sauvegarde créée par une version plus récente est préservée.'
-        : 'Note non enregistrée (erreur de stockage).');
+        : 'Note non enregistrée (erreur de stockage).', {severity:'error'});
     return;
   }
   reportMirrorFailures(result);
@@ -9245,7 +9252,7 @@ async function saveNoteFromModal() {
   updateNoteCharCount();
   renderNoteModalList(_noteModalParaId);
   refreshRenderedNoteState(_noteModalParaId);
-  showToast('Note enregistrée.');
+  showToast('Note enregistrée.', {severity:'success'});
 }
 async function deleteNote(paraId, noteId) {
   if (!state.notes[paraId]) return;
@@ -9259,13 +9266,13 @@ async function deleteNote(paraId, noteId) {
     if (result.durabilityUncertain) {
       renderNoteModalList(paraId);
       refreshRenderedNoteState(paraId);
-      showToast(persistenceUncertainLabel('Suppression de la note'));
+      showToast(persistenceUncertainLabel('Suppression de la note'), {severity:'error'});
       return;
     }
     if (result.conflict) {
       const latest=readLatestDurablePersonalSnapshot(); if (latest) applyPersonalSnapshot(latest);
       renderNoteModalList(paraId);
-      showToast('Note non supprimée : une modification plus récente est déjà sauvegardée. Réessayez.');
+      showToast('Note non supprimée : une modification plus récente est déjà sauvegardée. Réessayez.', {severity:'warning'});
       return;
     }
     const latest=readLatestDurablePersonalSnapshot(); state.notes = latest ? latest.notes : previousNotes;
@@ -9274,7 +9281,7 @@ async function deleteNote(paraId, noteId) {
       ? 'Espace plein : note non supprimée.'
       : isFutureSnapshotGuardError(result.error)
         ? 'Note non supprimée : une sauvegarde créée par une version plus récente est préservée.'
-        : 'Note non supprimée (erreur de stockage).');
+        : 'Note non supprimée (erreur de stockage).', {severity:'error'});
     return;
   }
   reportMirrorFailures(result);
@@ -9360,7 +9367,7 @@ function showMobileActionBar(paraId, hourNum) {
     androidParagraphMode: false,
     wholeParagraphHighlight: false
   });
-  if (!target) { showToast('Passage non disponible'); return; }
+  if (!target) { showToast('Passage non disponible', {severity:'warning'}); return; }
   openContextActions(target);
 }
 // Compatibility wrapper retained for older call sites. There is no separate mobile action bar in 24H-C.
@@ -9799,7 +9806,7 @@ function updateLibraryMarkerPickerSelection(itemId) {
   if(label) label.textContent = mark ? 'Modifier le repère de cette lecture' : 'Marquer cette lecture en';
 }
 function openLibraryMarkerPicker(itemId, triggerEl) {
-  if (!isValidLibraryMarkId(itemId)) { showToast('Lecture introuvable'); return; }
+  if (!isValidLibraryMarkId(itemId)) { showToast('Lecture introuvable', {severity:'warning'}); return; }
   _pendingLibraryMarkerId = itemId;
   const picker = document.getElementById('libraryMarkerPicker');
   const remove = document.getElementById('libraryMarkerRemoveBtn');
@@ -9829,7 +9836,7 @@ async function applyLibraryMarkerColor(color) {
   state.libraryMarks[itemId]={color,created_at:(old&&old.created_at)||now,updated_at:now};
   const committed=await commitDurableChange(before, old ? 'Modification du repère de lecture' : 'Ajout du repère de lecture');
   closeLibraryMarkerPicker();
-  if (committed.ok) { refreshLibraryMarkerTitleUi(itemId); updateRightContextPanel(); showToast(old ? 'Repère modifié' : 'Lecture marquée ◐'); }
+  if (committed.ok) { refreshLibraryMarkerTitleUi(itemId); updateRightContextPanel(); showToast(old ? 'Repère modifié' : 'Lecture marquée ◐', {severity:'success'}); }
 }
 async function removeLibraryMark(itemId, showUndo=true) {
   if (!isValidLibraryMarkId(itemId) || !getLibraryMark(itemId)) return false;
@@ -9849,13 +9856,13 @@ function removeLibraryMarkerFromPicker() { const id=_pendingLibraryMarkerId; clo
 function removeLibraryMarkFromEspace(itemId,event) { if(event){event.preventDefault();event.stopPropagation();} removeLibraryMark(itemId,true); }
 async function undoLatestLibraryMarkRemoval() {
   const token=_libraryMarkUndoToken; if(!token){showToast('Aucun retrait de repère à annuler.');return false;}
-  if (JSON.stringify(sanitizeLibraryMarksStore(state.libraryMarks))!==JSON.stringify(token.after_store)) { _libraryMarkUndoToken=null; showToast('Annulation impossible : les lectures marquées ont changé.'); return false; }
+  if (JSON.stringify(sanitizeLibraryMarksStore(state.libraryMarks))!==JSON.stringify(token.after_store)) { _libraryMarkUndoToken=null; showToast('Annulation impossible : les lectures marquées ont changé.', {severity:'warning'}); return false; }
   const before=buildPersonalSnapshotFromState(); state.libraryMarks=sanitizeLibraryMarksStore(token.before_store);
   const committed=await commitDurableChange(before,'Annulation du retrait du repère');
   if (!committed.ok) return false;
   const id=token.item_id; _libraryMarkUndoToken=null; refreshLibraryMarkerTitleUi(id);
   if(state.view==='espace')showEspaceView(false);else updateRightContextPanel();
-  showToast('Retrait du repère annulé.'); return true;
+  showToast('Retrait du repère annulé.', {severity:'success'}); return true;
 }
 
 function openLibraryText(id, push = true, scrollToAnchor = null) {
@@ -10845,14 +10852,14 @@ function routeStartupDeepLink(requestOverride){
   if (!req) return false;
   if (req.kind === 'hour') {
     const hour = req.hour && CORPUS.hours.find(h => h.hour_number === req.hour);
-    if (!hour) { showHome(); showToast('Lien invalide : Heure introuvable'); return true; }
+    if (!hour) { showHome(); showToast('Lien invalide : Heure introuvable', {severity:'warning'}); return true; }
     if (!req.pid) { openHour(req.hour, false); return true; }
     const info = getTargetInfo(req.pid);
     if (info && info.hourNum === req.hour) {
       openHourAtPara(req.hour, req.pid, info.openType === 'reflection' ? 'reflection' : 'meditation', false);
     } else {
       openHour(req.hour, false);
-      showToast('Passage introuvable : ouverture de l’Heure');
+      showToast('Passage introuvable : ouverture de l’Heure', {severity:'warning'});
     }
     return true;
   }
@@ -10860,22 +10867,22 @@ function routeStartupDeepLink(requestOverride){
     const prayerId = String(req.id || '');
     const validPrayer = validPersonalId(prayerId) && Object.prototype.hasOwnProperty.call(PRAYERS, prayerId) && !!PRAYERS[prayerId];
     if (validPrayer) openPrayer(prayerId, false);
-    else { showHome(); showToast('Lien invalide : prière introuvable'); }
+    else { showHome(); showToast('Lien invalide : prière introuvable', {severity:'warning'}); }
     return true;
   }
   if (req.kind === 'text') {
     const item = req.id ? getLibraryItem(req.id) : null;
     if (item) openLibraryText(req.id, false);
-    else { showLibraryView(false, null); showToast('Texte introuvable : ouverture d’Approfondir'); }
+    else { showLibraryView(false, null); showToast('Texte introuvable : ouverture d’Approfondir', {severity:'warning'}); }
     return true;
   }
   if (req.kind === 'search') {
     showSearchView(false, { query:req.q, filter:'all', speaker:'all', scrollTop:0, focusId:'homeSearchInput' });
     return true;
   }
-  showHome(); showToast('Lien non reconnu'); return true;
+  showHome(); showToast('Lien non reconnu', {severity:'warning'}); return true;
 }
-function copyPlainSupportText(text, successMessage){
+function copyPlainSupportText(text, successMessage, successSeverity = 'success'){
   const value = String(text || '');
   const fallback = function(){
     const ta=document.createElement('textarea'); ta.value=value;
@@ -10883,11 +10890,11 @@ function copyPlainSupportText(text, successMessage){
     ta.focus(); ta.select();
     let ok=false; try { ok=document.execCommand('copy'); } catch(_e) {}
     document.body.removeChild(ta);
-    showToast(ok ? successMessage : 'Copie non disponible');
+    showToast(ok ? successMessage : 'Copie non disponible', {severity: ok ? successSeverity : 'error'});
     return ok;
   };
   if (navigator.clipboard && window.isSecureContext) {
-    navigator.clipboard.writeText(value).then(()=>showToast(successMessage)).catch(fallback);
+    navigator.clipboard.writeText(value).then(()=>showToast(successMessage, {severity:successSeverity})).catch(fallback);
     return true;
   }
   return fallback();
@@ -10922,7 +10929,7 @@ function currentReaderReferencePayload(){
 }
 async function shareCurrentReaderReference(){
   const payload = currentReaderReferencePayload();
-  if (!payload) { showToast('Référence stable non disponible pour ce passage'); return false; }
+  if (!payload) { showToast('Référence stable non disponible pour ce passage', {severity:'warning'}); return false; }
   closeSettingsSheet();
   if (!navigator.share) { copyPlainSupportText(payload.url, 'Partage indisponible — lien copié'); return false; }
   try {
@@ -10936,7 +10943,7 @@ async function shareCurrentReaderReference(){
 }
 function copyCurrentReaderStableLink(){
   const payload = currentReaderReferencePayload();
-  if (!payload) { showToast('Lien stable non disponible pour ce passage'); return false; }
+  if (!payload) { showToast('Lien stable non disponible pour ce passage', {severity:'warning'}); return false; }
   closeSettingsSheet();
   return copyPlainSupportText(payload.url, 'Lien copié ↗');
 }
@@ -10978,8 +10985,24 @@ function buildTextIssuePayload(){
   lines.push('Problème constaté : [à compléter]');
   return lines.join('\n');
 }
+async function shareTextIssueReport(){
+  const report = buildTextIssuePayload();
+  const sharePayload = {
+    title: 'Les 24 Heures de la Passion — signalement de texte',
+    text: report
+  };
+  if (navigator.share) {
+    try {
+      await navigator.share(sharePayload);
+      return true;
+    } catch (error) {
+      if (error && error.name === 'AbortError') return false;
+    }
+  }
+  return copyPlainSupportText(report, 'Signalement copié. Collez-le dans votre message.', 'info');
+}
 function copyTextIssueReport(){
-  return copyPlainSupportText(buildTextIssuePayload(), 'Signalement copié');
+  return shareTextIssueReport();
 }
 async function getStorageAvailabilityDiagnostic(){
   const key='lp24_diag_probe_'+Date.now();
@@ -11230,7 +11253,7 @@ function showHelp() {
       <div class="help-section" id="help-backup"><div class="help-section-hd" role="heading" aria-level="3">Sauvegarder et restaurer</div><div class="help-section-body">
         <div class="help-row"><span class="help-icon">⬇</span><span class="help-row-text"><strong>Fichier de sauvegarde</strong> — Sert à restaurer votre progression, vos positions de lecture, vos réglages, vos surlignages, vos notes et vos Lectures marquées lorsqu’ils sont présents. Le fichier est enregistré au format JSON. Si son volume dépasse 32 Mo, l’app crée à la place une archive de secours qui conserve les données mais n’est pas directement restaurable dans cette version.</span></div>
         <div class="help-row"><span class="help-icon">⬆</span><span class="help-row-text"><strong>Importer une sauvegarde</strong> — Remplace vos données actuelles après confirmation. Il est prudent d’exporter d’abord votre sauvegarde actuelle.</span></div>
-        <div class="help-row"><span class="help-icon">↗</span><span class="help-row-text"><strong>Journal lisible</strong> — Permet de consulter vos données dans un fichier lisible. Il <strong>ne sert pas à restaurer l’application</strong>.</span></div>
+        <div class="help-row"><span class="help-icon">↗</span><span class="help-row-text"><strong>Journal lisible</strong> — Exporte dans un fichier Markdown lisible votre progression, vos surlignages, vos Lectures marquées et vos notes. Ce fichier est destiné à la consultation ou à l’archivage personnel et contient donc vos annotations personnelles. Il <strong>ne remplace pas la sauvegarde JSON</strong> et ne peut pas être importé pour restaurer l’application.</span></div>
         <div class="help-note"><strong>Important :</strong> les données personnelles sont conservées localement lorsque le stockage de l’appareil/navigateur est disponible. Exportez un fichier de sauvegarde avant de supprimer ou réinstaller l’app, d’effacer les données du site ou de changer d’appareil.</div>
       </div></div>
 
@@ -11252,8 +11275,8 @@ function showHelp() {
         <p class="help-feature-intro">Si vous pensez avoir identifié une erreur dans le texte ou si vous rencontrez un problème technique, utilisez les fonctions ci-dessous.</p>
         <div class="help-support-grid">
           <div class="help-support-item">
-            <button type="button" class="help-support-btn" onclick="copyTextIssueReport()"><span class="help-support-btn-icon" aria-hidden="true">!</span><span>Signaler un problème de texte</span></button>
-            <p class="help-support-copy">Copie un rapport avec les informations nécessaires pour retrouver précisément le passage concerné et la version de l’application. Ajoutez ensuite votre description.</p>
+            <button type="button" class="help-support-btn" onclick="shareTextIssueReport()"><span class="help-support-btn-icon" aria-hidden="true">!</span><span>Signaler un problème de texte</span></button>
+            <p class="help-support-copy">Prépare un rapport avec les informations nécessaires pour retrouver précisément le passage concerné et la version de l’application. Choisissez ensuite l’application avec laquelle le partager ; si le partage n’est pas disponible, le rapport est copié pour être collé manuellement.</p>
           </div>
           <div class="help-support-item">
             <button type="button" class="help-support-btn" onclick="copyDiagnostics()"><span class="help-support-btn-icon" aria-hidden="true">⌘</span><span>Copier les diagnostics</span></button>
@@ -11264,7 +11287,7 @@ function showHelp() {
 
       <section class="help-feature-section" id="help-privacy" aria-labelledby="help-privacy-title">
         <h3 class="help-feature-title" id="help-privacy-title">Vie privée</h3>
-        <p class="help-private-copy">Partager, Copier le lien, Signaler un problème de texte et Copier les diagnostics n’ajoutent pas automatiquement le contenu de vos notes ni celui de vos surlignages personnels.</p>
+        <p class="help-private-copy">Vos notes et surlignages personnels ne sont pas ajoutés aux liens, signalements ni diagnostics. « Partager » et « Signaler un problème de texte » ouvrent le menu de partage de votre appareil lorsqu’il est disponible ; sinon le contenu préparé est copié. « Copier le lien » et « Copier les diagnostics » copient uniquement le contenu préparé. Rien n’est envoyé à un destinataire tant que vous ne choisissez pas une application et ne confirmez pas l’envoi.</p>
       </section>
 
       <section class="help-feature-section" id="help-about-app" aria-labelledby="help-about-app-title">
@@ -11338,13 +11361,13 @@ async function markMeditee(n) {
   const committed = await commitDurableChange(before, wasRead ? 'Retrait de la progression' : 'Enregistrement de la progression');
   refreshMediteeControls(n);
   refreshHourEndCycleUI();
-  if (committed.ok) showToast(wasRead ? 'Progression retirée' : ('✓ ' + ordinalHeure(n) + ' méditée'));
+  if (committed.ok) showToast(wasRead ? 'Progression retirée' : ('✓ ' + ordinalHeure(n) + ' méditée'), {severity:'success'});
 }
 function toggleRead(n) { markMeditee(n); }
 async function dismissOnboarding(){
   _onboardingDismissedSession = true;
   const stored = await withPersonalWriteLock(function(){ return storageWrite('lp24_onboarded','1'); });
-  if (!stored.ok && !_onboardingSaveWarned) { _onboardingSaveWarned = true; showToast('Ce choix reste valable pour cette session, mais n’a pas pu être sauvegardé.'); }
+  if (!stored.ok && !_onboardingSaveWarned) { _onboardingSaveWarned = true; showToast('Ce choix reste valable pour cette session, mais n’a pas pu être sauvegardé.', {severity:'warning'}); }
   else if (stored.ok) { _onboardingSaveWarned = false; }
   const card=document.querySelector('.onboarding-card');
   if(card){card.style.cssText+='opacity:0;transition:opacity 0.3s';setTimeout(()=>card.remove(),300);}
@@ -11440,7 +11463,7 @@ async function deleteHighlightFromPanel(paraId, hlId, event) {
   const before = buildPersonalSnapshotFromState();
   const beforeHighlights = migrateTextHighlightsStore(state.textHighlights);
   const affected = removeStoredHighlightById(paraId, hlId);
-  if (!affected.length) { showToast('Surlignage introuvable'); return; }
+  if (!affected.length) { showToast('Surlignage introuvable', {severity:'warning'}); return; }
   const committed = await commitDurableChange(before, 'Suppression du surlignage');
   affected.forEach(rerenderPara);
   if (committed.ok) pushAnnotationUndoToken('highlight', beforeHighlights, state.textHighlights, {paraId:paraId, affectedParaIds:affected.slice()}, 'Surlignage');
@@ -11456,7 +11479,7 @@ async function removeStaleHighlightEntry(paraId, hlId, event) {
   const beforeHighlights = migrateTextHighlightsStore(state.textHighlights);
   const arr = (state.textHighlights || {})[paraId] || [];
   const idx = arr.findIndex(h => h && h.id === hlId);
-  if (idx === -1) { showToast('Surlignage introuvable'); return; }
+  if (idx === -1) { showToast('Surlignage introuvable', {severity:'warning'}); return; }
   arr.splice(idx, 1);
   if (!arr.length) delete state.textHighlights[paraId];
   const committed = await commitDurableChange(before, 'Suppression du surlignage');
@@ -11466,7 +11489,7 @@ async function removeStaleHighlightEntry(paraId, hlId, event) {
 }
 function openHighlightTarget(paraId, canonicalOffset) {
   const info = getTargetInfo(paraId);
-  if (!info) { showToast('Passage introuvable'); return; }
+  if (!info) { showToast('Passage introuvable', {severity:'warning'}); return; }
   if (info.hourNum) openHourAtPara(info.hourNum, paraId, info.openType || getParaTypeFromId(paraId), true, canonicalOffset);
   else if (info.prayerId) { openPrayer(info.prayerId); setTimeout(()=>{const el=getCanonicalNavigationElement(paraId,canonicalOffset,'start')||document.getElementById(paraId); if(el)smoothScrollTo(el,{behavior:'smooth',block:'center'});},80); }
   else if (info.sectionId) { openSection(info.sectionId, true, paraId); }
@@ -11474,7 +11497,7 @@ function openHighlightTarget(paraId, canonicalOffset) {
 }
 function navigateToTarget(targetId) {
   const info = getTargetInfo(targetId);
-  if (!info) { showToast('Passage introuvable'); return; }
+  if (!info) { showToast('Passage introuvable', {severity:'warning'}); return; }
   if (info.hourNum) openHourAtPara(info.hourNum, targetId, info.openType || getParaTypeFromId(targetId));
   else if (info.prayerId) { openPrayer(info.prayerId); setTimeout(()=>{const el=document.getElementById(targetId); if(el)smoothScrollTo(el,{behavior:'smooth',block:'center'});},80); }
   else if (info.sectionId) { openSection(info.sectionId, true, targetId); }
@@ -12092,7 +12115,7 @@ function handleAndroidHighlightModePointer(e) {
     if (typeof updateAndroidHighlightModeUi === 'function') updateAndroidHighlightModeUi();
     if (navigator.vibrate) navigator.vibrate(18);
   } else {
-    showToast('Passage non sélectionnable');
+    showToast('Passage non sélectionnable', {severity:'warning'});
   }
 }
 function handleAndroidHighlightModeContextMenu(e) {
@@ -12336,7 +12359,7 @@ function openHighlightFromContextAction(event) {
     if (typeof event.stopImmediatePropagation === 'function') event.stopImmediatePropagation();
   }
   const target = _contextActionTarget;
-  if (!target) { showToast('Aucun passage actif'); return false; }
+  if (!target) { showToast('Aucun passage actif', {severity:'warning'}); return false; }
   if (target.mode === 'paragraph' && !target.wholeParagraphHighlight) {
     const hls = state.textHighlights[target.paragraphId] || [];
     if (hls.length) {
@@ -12351,7 +12374,7 @@ function openHighlightFromContextAction(event) {
     return false;
   }
   state._pending = contextTargetToPending(target);
-  if (!state._pending) { showToast('Passage non surlignable'); return false; }
+  if (!state._pending) { showToast('Passage non surlignable', {severity:'warning'}); return false; }
   closeContextActions({ clearTarget:false, clearPending:false, clearSelection:false });
   stage6fMarkHighlightUiOpening(900);
   requestAnimationFrame(function(){ stage6fMarkHighlightUiOpening(900); showColourPickerBottom(false, null); });
@@ -12359,7 +12382,7 @@ function openHighlightFromContextAction(event) {
 }
 function copyContextActionTarget() {
   const target = _contextActionTarget;
-  if (!target) { showToast('Aucun passage actif'); return; }
+  if (!target) { showToast('Aucun passage actif', {severity:'warning'}); return; }
   const info = getTargetInfo(target.paragraphId);
   let body = target.selectedText || '';
   if (target.mode === 'paragraph' && typeof getVisibleFlowJoinedText === 'function') body = getVisibleFlowJoinedText(target.paragraphId) || body;
@@ -12367,13 +12390,13 @@ function copyContextActionTarget() {
 
 — ${info.label}` : '';
   const txt = body + suffix;
-  const done = () => { showToast(target.mode === 'range' ? 'Sélection copiée ⎘' : 'Citation copiée ⎘'); closeContextActions({clearTarget:true,clearPending:true,clearSelection:true}); };
+  const done = () => { showToast(target.mode === 'range' ? 'Sélection copiée ⎘' : 'Citation copiée ⎘', {severity:'success'}); closeContextActions({clearTarget:true,clearPending:true,clearSelection:true}); };
   if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(txt).then(done).catch(()=>{ fallbackCopyText(txt); closeContextActions({clearTarget:true,clearPending:true,clearSelection:true}); });
   else { fallbackCopyText(txt); closeContextActions({clearTarget:true,clearPending:true,clearSelection:true}); }
 }
 function openNoteFromContextAction(event) {
   const target = _contextActionTarget;
-  if (!target || !target.paragraphId) { showToast('Aucun passage actif'); return; }
+  if (!target || !target.paragraphId) { showToast('Aucun passage actif', {severity:'warning'}); return; }
   const paraId = target.paragraphId;
   // Preserved transient-toolbar rule: this action lives in a toolbar removed after the modal opens.
   // Use the stable reading region as the explicit return target so delayed toolbar removal cannot
@@ -12396,8 +12419,8 @@ function fallbackCopyText(txt) {
   ta.value=txt;
   ta.style.cssText='position:fixed;top:-9999px;opacity:0';
   document.body.appendChild(ta); ta.focus(); ta.select();
-  try { document.execCommand('copy'); showToast('Sélection copiée ⎘'); }
-  catch(e) { showToast('Copie non disponible'); }
+  try { document.execCommand('copy'); showToast('Sélection copiée ⎘', {severity:'success'}); }
+  catch(e) { showToast('Copie non disponible', {severity:'error'}); }
   document.body.removeChild(ta);
 }
 
@@ -12478,7 +12501,7 @@ async function applyHighlight(color) {
     if (affected.length) committed = await commitDurableChange(beforeSnapshot, 'Modification du surlignage');
     affected.forEach(rerenderPara);
     closeColourPicker(); (function(){var _ws=window.getSelection();if(_ws)_ws.removeAllRanges();})();
-    if (!affected.length) showToast('Surlignage introuvable'); else if (committed.ok) showToast('Couleur modifiée');
+    if (!affected.length) showToast('Surlignage introuvable', {severity:'warning'}); else if (committed.ok) showToast('Couleur modifiée', {severity:'success'});
     return;
   }
   const sel = state._pending;
@@ -12526,7 +12549,7 @@ async function applyHighlight(color) {
     if (affected.size) committed = await commitDurableChange(beforeSnapshot, 'Ajout des surlignages');
     Array.from(affected).forEach(rerenderPara);
     closeColourPicker(); (function(){var _ws=window.getSelection();if(_ws)_ws.removeAllRanges();})();
-    if (!affected.size) showToast('Surlignage impossible'); else if (committed.ok) showToast('Passages surlignés ◐');
+    if (!affected.size) showToast('Surlignage impossible', {severity:'warning'}); else if (committed.ok) showToast('Passages surlignés ◐', {severity:'success'});
     return;
   }
   // Remove overlapping highlights. If an existing grouped highlight overlaps this selection,
@@ -12563,7 +12586,7 @@ async function applyHighlight(color) {
   const committed = await commitDurableChange(beforeSnapshot, 'Ajout du surlignage');
   Array.from(affected).forEach(rerenderPara);
   closeColourPicker(); (function(){var _ws=window.getSelection();if(_ws)_ws.removeAllRanges();})();
-  if (committed.ok) showToast('Passage surligné ◐');
+  if (committed.ok) showToast('Passage surligné ◐', {severity:'success'});
 }
 
 // getFullParaText is defined in Stage 4K helper block above.
@@ -12735,15 +12758,131 @@ function normWithMap(s){
   }
   return {normalized, map};
 }
-function showToast(msg){
-  const t=document.getElementById('toast'); if(!t) return;
-  clearTimeout(_toastHideTimer); t.classList.remove('has-action'); t.onmouseenter=t.onmouseleave=t.onfocusin=t.onfocusout=null;
-  t.textContent=String(msg||''); t.classList.add('show'); scheduleToastHide(2200);
+const NOTIFICATION_SEVERITIES = new Set(['info','success','warning','error']);
+let _toastHideTimer = null;
+let _toastAnnounceTimer = null;
+let _toastRemainingMs = 0;
+let _toastDeadlineMs = 0;
+function normalizeNotificationSeverity(value){
+  const severity = String(value || 'info').toLowerCase();
+  return NOTIFICATION_SEVERITIES.has(severity) ? severity : 'info';
+}
+function notificationDisplayMessage(message, severity){
+  const raw = String(message || '');
+  return severity === 'error' ? raw.replace(/^Erreur\s*:\s*/i, '') : raw;
+}
+function notificationReadingDurationMs(message, severity){
+  const sev = normalizeNotificationSeverity(severity);
+  if (sev === 'error') return 0;
+  const words = Math.max(1, String(message || '').trim().split(/\s+/).filter(Boolean).length);
+  const readingMs = 1500 + Math.ceil(words * (60000 / 180));
+  if (sev === 'warning') return Math.min(16000, Math.max(8000, readingMs));
+  return Math.min(12000, Math.max(3500, readingMs));
+}
+function notificationAnnouncement(message, severity){
+  const sev = normalizeNotificationSeverity(severity);
+  const display = notificationDisplayMessage(message, sev);
+  if (sev === 'warning') return 'Attention : ' + display;
+  if (sev === 'error') return 'Erreur : ' + display;
+  return display;
+}
+function announceNotification(message, severity){
+  const status = document.getElementById('toastStatusLive');
+  const alert = document.getElementById('toastAlertLive');
+  if (!status || !alert) return;
+  clearTimeout(_toastAnnounceTimer);
+  status.textContent = ''; alert.textContent = '';
+  const target = (severity === 'warning' || severity === 'error') ? alert : status;
+  _toastAnnounceTimer = setTimeout(function(){ target.textContent = notificationAnnouncement(message, severity); }, 20);
+}
+function clearToastTimer(){
+  clearTimeout(_toastHideTimer);
+  _toastHideTimer = null;
+  _toastRemainingMs = 0;
+  _toastDeadlineMs = 0;
+}
+function dismissToast(){
+  clearToastTimer();
+  const t = document.getElementById('toast');
+  if (!t) return;
+  t.classList.remove('show','has-action','severity-info','severity-success','severity-warning','severity-error');
+  t.onmouseenter=t.onmouseleave=t.onfocusin=t.onfocusout=null;
+  t.replaceChildren();
+}
+function scheduleToastHide(ms){
+  clearTimeout(_toastHideTimer);
+  const duration = Math.max(0, Number(ms) || 0);
+  if (!duration) { _toastHideTimer=null; _toastRemainingMs=0; _toastDeadlineMs=0; return; }
+  _toastRemainingMs = duration;
+  _toastDeadlineMs = Date.now() + duration;
+  _toastHideTimer = setTimeout(dismissToast, duration);
+}
+function pauseToastHide(){
+  if (!_toastHideTimer) return;
+  _toastRemainingMs = Math.max(0, _toastDeadlineMs - Date.now());
+  clearTimeout(_toastHideTimer);
+  _toastHideTimer = null;
+}
+function resumeToastHide(){
+  const t=document.getElementById('toast');
+  if (!t || t.contains(document.activeElement) || _toastHideTimer || !_toastRemainingMs) return;
+  scheduleToastHide(Math.max(250, _toastRemainingMs));
+}
+function handleToastFocusOut(){ setTimeout(resumeToastHide,0); }
+function bindToastPauseHandlers(t){
+  if (!t || t.dataset.notificationPauseBound === '1') return;
+  t.dataset.notificationPauseBound='1';
+  t.addEventListener('mouseenter',pauseToastHide);
+  t.addEventListener('mouseleave',resumeToastHide);
+  t.addEventListener('focusin',pauseToastHide);
+  t.addEventListener('focusout',handleToastFocusOut);
+}
+function renderNotification(msg, options = {}){
+  const t=document.getElementById('toast'); if(!t) return false;
+  const severity=normalizeNotificationSeverity(options.severity);
+  const message=String(msg||'');
+  dismissToast();
+  const messageWrap=document.createElement('span'); messageWrap.className='toast-message';
+  if (severity === 'warning' || severity === 'error') {
+    const cue=document.createElement('span'); cue.className='toast-severity-cue';
+    cue.textContent = severity === 'warning' ? '⚠ Attention —' : '⚠ Erreur —';
+    messageWrap.appendChild(cue);
+  }
+  messageWrap.appendChild(document.createTextNode(notificationDisplayMessage(message, severity)));
+  t.appendChild(messageWrap);
+  let interactive=false;
+  if (options.actionLabel) {
+    const btn=document.createElement('button');
+    btn.type='button'; btn.className='toast-action-btn'; btn.textContent=String(options.actionLabel);
+    btn.addEventListener('click',function(e){ e.preventDefault(); e.stopPropagation(); if(typeof options.actionFn==='function') options.actionFn(); });
+    btn.addEventListener('focus',pauseToastHide); btn.addEventListener('blur',handleToastFocusOut);
+    t.appendChild(btn); interactive=true;
+  }
+  if (severity === 'warning' || severity === 'error') {
+    const close=document.createElement('button');
+    close.type='button'; close.className='toast-dismiss-btn'; close.textContent='Fermer'; close.setAttribute('aria-label','Fermer la notification');
+    close.addEventListener('click',function(e){ e.preventDefault(); e.stopPropagation(); dismissToast(); });
+    close.addEventListener('focus',pauseToastHide); close.addEventListener('blur',handleToastFocusOut);
+    t.appendChild(close); interactive=true;
+  }
+  t.classList.add('show','severity-'+severity);
+  if (interactive) t.classList.add('has-action');
+  announceNotification(message,severity);
+  let duration = options.persistent ? 0 : notificationReadingDurationMs(message,severity);
+  if (options.durationMs != null) duration=Math.max(duration, Number(options.durationMs)||0);
+  if (options.actionLabel) duration=Math.max(8000,duration);
+  if (severity === 'error') duration=0;
+  if (interactive && duration>0) bindToastPauseHandlers(t);
+  if (duration>0) scheduleToastHide(duration);
+  return true;
+}
+function showToast(msg, options = {}){
+  if (typeof options === 'string') options={severity:options};
+  return renderNotification(msg, options || {});
 }
 
 const ANNOTATION_UNDO_MAX = 10;
 let _annotationUndoStack = [];
-let _toastHideTimer = null;
 function cloneAnnotationUndoStore(kind, store) {
   return kind === 'note' ? sanitizeNotesStore(store || {}) : migrateTextHighlightsStore(store || {});
 }
@@ -12751,31 +12890,8 @@ function currentAnnotationUndoStore(kind) {
   return cloneAnnotationUndoStore(kind, kind === 'note' ? state.notes : state.textHighlights);
 }
 function annotationUndoStoresEqual(a, b) { return JSON.stringify(a || {}) === JSON.stringify(b || {}); }
-function scheduleToastHide(ms) {
-  clearTimeout(_toastHideTimer);
-  _toastHideTimer = setTimeout(function(){
-    const t = document.getElementById('toast');
-    if (!t) return;
-    t.classList.remove('show','has-action');
-    t.replaceChildren();
-  }, Math.max(0, Number(ms) || 0));
-}
 function showToastWithAction(msg, actionLabel, actionFn, timeoutMs = 8000) {
-  const t = document.getElementById('toast');
-  if (!t) return;
-  clearTimeout(_toastHideTimer);
-  t.replaceChildren();
-  t.appendChild(document.createTextNode(String(msg || '')));
-  const btn = document.createElement('button');
-  btn.type = 'button'; btn.className = 'toast-action-btn'; btn.textContent = String(actionLabel || 'Annuler');
-  btn.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); if (typeof actionFn === 'function') actionFn(); });
-  t.appendChild(btn);
-  t.classList.add('show','has-action');
-  const duration = Math.max(8000, Number(timeoutMs) || 8000);
-  const pause = function(){ clearTimeout(_toastHideTimer); };
-  const resume = function(){ if (!t.contains(document.activeElement)) scheduleToastHide(duration); };
-  t.onmouseenter = pause; t.onmouseleave = resume; t.onfocusin = pause; t.onfocusout = function(){ setTimeout(resume, 0); };
-  scheduleToastHide(duration);
+  return renderNotification(msg, {severity:'info', actionLabel:String(actionLabel || 'Annuler'), actionFn, durationMs:Math.max(8000, Number(timeoutMs)||8000)});
 }
 function refreshNoteUiAfterUndo(paraId) {
   if (!paraId) return;
@@ -12783,7 +12899,7 @@ function refreshNoteUiAfterUndo(paraId) {
   refreshRenderedNoteState(paraId);
 }
 function showLatestAnnotationUndoAction(message) {
-  if (!_annotationUndoStack.length) { showToast(message); return; }
+  if (!_annotationUndoStack.length) { showToast(message, {severity:/impossible/i.test(String(message||'')) ? 'warning' : 'success'}); return; }
   showToastWithAction(message, 'Annuler', undoLatestAnnotationDeletion, 8000);
 }
 function pushAnnotationUndoToken(kind, beforeStore, afterStore, context, description) {
@@ -13121,7 +13237,7 @@ async function checkForUpdate(manual = false, reason = 'manual') {
       return true;
     } catch(error) {
       console.warn('Update check failed closed',error);
-      if (manual) { setUpdateCheckStatus('Vérification impossible ou incohérente pour le moment.','error'); showToast(navigator.onLine===false?'Vérification impossible hors ligne':'Vérification impossible pour le moment'); }
+      if (manual) { setUpdateCheckStatus('Vérification impossible ou incohérente pour le moment.','error'); showToast(navigator.onLine===false?'Vérification impossible hors ligne':'Vérification impossible pour le moment', {severity:'warning'}); }
       return false;
     } finally { _updateCheckInFlight=null; }
   })();
@@ -13187,7 +13303,7 @@ async function waitForControllerRelease(remote,timeoutMs) {
 async function refreshAppForUpdate() {
   if (hasUnsavedNoteDraft()) {
     setUpdateCheckStatus('Enregistrez ou fermez votre note avant d’actualiser.','draft');
-    showToast('Enregistrez ou fermez votre note avant d’actualiser');
+    showToast('Enregistrez ou fermez votre note avant d’actualiser', {severity:'warning'});
     const ta=document.getElementById('noteTextarea');
     if (ta && typeof ta.focus==='function') { try { ta.focus({preventScroll:true}); } catch(_e) { try { ta.focus(); } catch(_e2) {} } }
     return false;
@@ -13195,7 +13311,7 @@ async function refreshAppForUpdate() {
   const stateSafe=await flushAndVerifyPersonalStateForUpdate(4000);
   if (!stateSafe) {
     setUpdateCheckStatus('Une sauvegarde est encore en cours. Réessayez dans un instant.','retry');
-    showToast('Sauvegarde en cours — réessayez dans un instant');
+    showToast('Sauvegarde en cours — réessayez dans un instant', {severity:'warning'});
     return false;
   }
   const btn=document.querySelector('.update-refresh-btn');
@@ -13241,7 +13357,7 @@ async function refreshAppForUpdate() {
   } catch(error) {
     console.warn('Safe update commit failed; current page preserved',error);
     setUpdateCheckStatus('L’activation n’a pas été confirmée. Fermez puis rouvrez l’app si nécessaire; vos données restent préservées.','retry');
-    showToast('Actualisation non terminée — fermez puis rouvrez l’app si nécessaire');
+    showToast('Actualisation non terminée — fermez puis rouvrez l’app si nécessaire', {severity:'error'});
     if (btn) { btn.disabled=false; btn.textContent='↻ Actualiser'; }
     return false;
   }
@@ -13380,7 +13496,7 @@ function buildPersonalDataExport() {
 }
 async function exportUserData() {
   if (_futureCanonicalSnapshotPreserved) {
-    showToast('Sauvegarde complète indisponible dans cette version : les données créées par une version plus récente sont préservées.');
+    showToast('Sauvegarde complète indisponible dans cette version : les données créées par une version plus récente sont préservées.', {severity:'warning'});
     return false;
   }
   const data = buildPersonalDataExport();
@@ -13397,16 +13513,16 @@ async function exportUserData() {
     document.body.appendChild(a); a.click();
     document.body.removeChild(a); URL.revokeObjectURL(url);
     if (!directlyRestorable) {
-      showToast('Archive de secours créée : ce fichier dépasse 32 Mo et ne peut pas être restauré directement dans cette version.');
+      showToast('Archive de secours créée : ce fichier dépasse 32 Mo et ne peut pas être restauré directement dans cette version.', {severity:'warning'});
       return true;
     }
     const stamp = await writeLastExportAt(new Date().toISOString());
     const status = document.getElementById('lastBackupStatus');
     if (status) status.textContent = formatLastExportStatus();
     if (stamp.ok) { const reminder = document.querySelector('.espace-backup-reminder'); if (reminder) reminder.remove(); }
-    showToast(stamp.ok ? 'Sauvegarde restaurable exportée ✓' : 'Sauvegarde restaurable exportée, mais la date du dernier export n’a pas pu être mémorisée.');
+    showToast(stamp.ok ? 'Sauvegarde restaurable exportée ✓' : 'Sauvegarde restaurable exportée, mais la date du dernier export n’a pas pu être mémorisée.', {severity:stamp.ok ? 'success' : 'warning'});
     return true;
-  } catch(e) { showToast('Export non disponible dans ce navigateur'); return false; }
+  } catch(e) { showToast('Export non disponible dans ce navigateur', {severity:'error'}); return false; }
 }
 function buildHumanReadableJournal() {
   const lines = ['# Mon journal — Les 24 Heures de la Passion', '', 'Export lisible créé le ' + new Date().toLocaleString('fr-FR') + '.', ''];
@@ -13457,8 +13573,8 @@ function exportHumanReadableJournal() {
     const url = URL.createObjectURL(blob); const a = document.createElement('a');
     a.href = url; a.download = 'luisa-24h-journal-' + new Date().toISOString().slice(0,10) + '.md';
     document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
-    showToast('Journal lisible exporté ✓');
-  } catch(e) { showToast('Export du journal non disponible dans ce navigateur'); }
+    showToast('Journal lisible exporté ✓', {severity:'success'});
+  } catch(e) { showToast('Export du journal non disponible dans ce navigateur', {severity:'error'}); }
 }
 function triggerImport() { const input=document.getElementById('importFileInput'); if(input) input.click(); }
 function validatePersonalDataImport(data) {
@@ -13564,7 +13680,7 @@ function validatePersonalDataImport(data) {
 function handleImportFile(input) {
   const file = input.files && input.files[0]; if (!file) return;
   if (file.size > MAX_PERSONAL_DATA_IMPORT_BYTES) {
-    showToast('Erreur : fichier trop volumineux (maximum 32 Mo)');
+    showToast('Erreur : fichier trop volumineux (maximum 32 Mo)', {severity:'error'});
     input.value = '';
     return;
   }
@@ -13574,7 +13690,7 @@ function handleImportFile(input) {
       const clean = validatePersonalDataImport(JSON.parse(e.target.result));
       let confirmationBaseRead;
       try { const rec=await readPersonalCanonicalRecordStrong(); confirmationBaseRead=rec&&typeof rec.raw==='string'?{ok:true,value:rec.raw}:{ok:false}; } catch(_) { confirmationBaseRead={ok:false}; }
-      if (!confirmationBaseRead.ok) { showToast('Import impossible : erreur de stockage principal.'); input.value=''; return; }
+      if (!confirmationBaseRead.ok) { showToast('Import impossible : erreur de stockage principal.', {severity:'error'}); input.value=''; return; }
       if (!confirm('Importer cette sauvegarde ?\n\nVos données actuelles seront remplacées.')) { input.value=''; return; }
       const candidate = sanitizePersonalSnapshot({
         textHighlights: clean.textHighlights,
@@ -13601,14 +13717,14 @@ function handleImportFile(input) {
       }
       if (!persisted.ok) {
         if (persisted.conflict) {
-          showToast('Import annulé : les données ont changé dans une autre fenêtre depuis votre confirmation. Relancez l’import.');
+          showToast('Import annulé : les données ont changé dans une autre fenêtre depuis votre confirmation. Relancez l’import.', {severity:'warning'});
           input.value='';
           return;
         }
         if (persisted.durabilityUncertain) {
           applyPersonalSnapshot(candidate);
           applyReperes(); applyFontSize(); applyTheme(); applyMonEspacePanelState();
-          showToast('Import non vérifiable : les données importées restent visibles dans cette session. Exportez-les avant de fermer l’application.');
+          showToast('Import non vérifiable : les données importées restent visibles dans cette session. Exportez-les avant de fermer l’application.', {severity:'error'});
           input.value = '';
           return;
         }
@@ -13616,22 +13732,22 @@ function handleImportFile(input) {
           ? 'Import impossible : espace de stockage insuffisant.'
           : isFutureSnapshotGuardError(persisted.error)
             ? 'Import impossible : une sauvegarde créée par une version plus récente est préservée.'
-            : 'Import impossible : erreur de stockage.');
+            : 'Import impossible : erreur de stockage.', {severity:'error'});
         input.value = '';
         return;
       }
       applyPersonalSnapshot(persisted.snapshot);
       reportMirrorFailures(persisted);
       applyReperes(); applyFontSize(); applyTheme(); applyMonEspacePanelState();
-      showToast('Données importées ✓');
+      showToast('Données importées ✓', {severity:'success'});
     } catch(err) {
       console.warn('Import rejected', err);
-      showToast('Erreur : fichier invalide');
+      showToast('Erreur : fichier invalide', {severity:'error'});
     }
     input.value = '';
   };
   reader.onerror = function() {
-    showToast('Erreur : lecture du fichier impossible');
+    showToast('Erreur : lecture du fichier impossible', {severity:'error'});
     input.value = '';
   };
   reader.readAsText(file);

@@ -1,34 +1,22 @@
 {
-  "app_version": "v120.4",
-  "build_date": "2026-10-05",
-  "cache_name": "scope-derived:luisa-24h-<scope-fingerprint>-v120-4-b1",
+  "app_version": "v120.5",
+  "build_date": "2026-10-07",
+  "cache_name": "scope-derived:luisa-24h-<scope-fingerprint>-v120-5-b1",
   "storage_schema": 8,
   "personal_snapshot": 5,
   "ldc_source_public_version": "COMPOSITE_29_62_65_PLUS_FAST_MODE_DERIVATIVE_SYNC",
   "ldc_source_app_version": "LDC_CURRENT_SYNC_AUTHORITY",
   "ldc_source_package_sha256": null,
-  "release_scope": "v120.4/B1 accessibility successor to exact live v120.3/B1. Bounded scope: N3 visible/non-colour Heure Sainte cue and accessible names; N4/F-19 semantic heading hierarchy over existing visible section titles; WCAG 1.4.12 Reader-tab text-spacing containment using existing two-row geometry with per-size breakpoints. N5/F-08/S2 and N15/F-26 are qualification-only and not mutated. Corpus, Text Library, provenance claims/content, Search semantics, personal-state schema/semantics, backup/import, native selection/highlighting, v120.3 devotional-flow semantics and Update-v2 protocol behaviour are protected and unchanged.",
-  "real_device_status": "V120_4_B1_CANDIDATE__TARGETED_ACCESSIBILITY_PHYSICAL_GATE_OPEN",
-  "overall_release_status": "V120_4_B1_ACCESSIBILITY_SEMANTICS_REFLOW_CANDIDATE__PRODUCTION_NOT_AUTHORIZED",
-  "known_blockers": [
-    "Physical iPhone/iPad verification that Home Hours 5–7 visibly show Heure Sainte without layout/reading regressions in light/dark and all four text presets.",
-    "Physical iPhone/iPad verification of Reader tabs at narrow widths and Grand/Très grand sizes, including increased text spacing where available, with no clipping or lost labels.",
-    "VoiceOver heading-navigation smoke check across Home, one Hour, Mon Espace, Settings and Help confirming useful section navigation without loss of control semantics.",
-    "Installed-PWA production v120.3 → v120.4 update/activation and acknowledged-state preservation if included in the release physical protocol.",
-    "Live-origin exact-byte binding after any future production deployment before release closure."
-  ],
-  "external_open_gates": [
-    "Physical iPhone/iPad verification that Home Hours 5–7 visibly show Heure Sainte without layout/reading regressions in light/dark and all four text presets.",
-    "Physical iPhone/iPad verification of Reader tabs at narrow widths and Grand/Très grand sizes, including increased text spacing where available, with no clipping or lost labels.",
-    "VoiceOver heading-navigation smoke check across Home, one Hour, Mon Espace, Settings and Help confirming useful section navigation without loss of control semantics.",
-    "Installed-PWA production v120.3 → v120.4 update/activation and acknowledged-state preservation if included in the release physical protocol.",
-    "Live-origin exact-byte binding after any future production deployment before release closure."
-  ],
+  "release_scope": "v120.5/B2 Help-only successor to exact frozen v120.5/B1. User-facing scope: clarify “Journal lisible” in Help so users know the Markdown export contains progression, highlights, Lectures marquées and notes; contains personal annotations; is for consultation/personal archiving; and cannot replace/import as the JSON restore backup. N2 notification behaviour, N18 text-issue share handoff, F17 privacy wording and every other v120.5/B1 application behaviour remain unchanged. Corpus, Text Library, provenance, Search, personal-state schema/semantics, backup/import formats, journal-generation logic, native selection/highlighting, devotional-flow semantics, accessibility/reflow and Update-v2 protocol behaviour are protected.",
+  "real_device_status": "IMMUTABLE_RELEASE_METADATA_DOES_NOT_ASSERT_CURRENT_HUMAN_GATE__SEE_CUMULATIVE_STATE_DOCUMENT",
+  "overall_release_status": "IMMUTABLE_CANDIDATE_IDENTITY_ONLY__CURRENT_QA_AND_DEPLOYMENT_AUTHORITY_GOVERNED_BY_CUMULATIVE_STATE_DOCUMENT",
+  "known_blockers": [],
+  "external_open_gates": [],
   "ldc_source_alignment_generation": "COMPOSITE__SEE_ldc_current_sync_authority",
   "ldc_source_enriched_generation": "COMPOSITE__SEE_ldc_current_sync_authority",
   "ldc_source_corpus_manifest_sha256": null,
   "postfreeze_reopen_evidence": "B8 supersedes exact B6 after fresh full-QA falsification found a reproducible page-driven Update-v2 activation defect. Direct worker activation passed; page refresh failed target_worker_not_active. Event-driven waiting on the exact prepared worker was proven on unchanged B6 before mutation.",
-  "build_revision": "B1",
+  "build_revision": "B2",
   "forced_colors_stage7": "TEST_ONLY__PASS_EMULATED_CHROMIUM__23_23_WAVE_SLICE__ZERO_MUTATION__EXTERNAL_WAVE_QA_PACK",
   "stage7_authorization_proposal_sha256": "42126e52c63d114d1b3a42bdf2bcac8f19e88dc70417fd95accfe33f809312a6",
   "stage7_predecessor_zip_sha256": "3eb86f5d9f1686a8851664020be4060c85dbf20228351d1d1c442e583c8ece5c",
@@ -42,13 +30,13 @@
   "search_projection_version": "24h-search-v2-reader-projection-r1",
   "search_predecessor_zip_sha256": "3f69f8b948494d70e728287998efe6a0fefafa649ac9e0a7759934fbcefe458a",
   "scroll_performance_predecessor_zip_sha256": "f9bee241f08181a31b63e4284bc82422f5cdc820a2d4033017ef5c1d95004478",
-  "release_sequence": 120004001,
-  "release_id": "24h-v120-4-b1-20261005-accessibility-semantics-reflow",
+  "release_sequence": 120005002,
+  "release_id": "24h-v120-5-b2-help-journal-clarification",
   "canonical_shell": "./luisa_24_heures.html",
-  "canonical_shell_sha256": "5c0a32431fc176fa6e2a2f1a48cbe2b504d8572c03e35c22c6608fa42a0cf65f",
+  "canonical_shell_sha256": "5ed7131dd1ee684aa77efe5c69550d65cab07c836cc25771ff09a7e5300e637c",
   "update_protocol": 2,
-  "pwa_update_predecessor_version": "v120.3",
-  "pwa_update_predecessor_zip_sha256": "9465ee5213e33928b287791c3b33602cff627129bc1d3358130f502919a8e2d5",
+  "pwa_update_predecessor_version": "v120.4",
+  "pwa_update_predecessor_zip_sha256": "e313f4fbeefc972c276a68ec520276fcaaf1f6a88baee02d2c13e009d4ff7e6d",
   "pwa_update_architecture": "verified_prepare_commit_v2_waiting_worker_explicit_activation__R29_UPDATE_PROTOCOL_PRESERVED__R32_STRUCTURAL_RENDERER_ONLY_WITH_RELEASE_HASH_REBIND",
   "legacy_bootstrap": "R15 preserves the R14/R13/R12/R11 unique-lineage Update-v2 architecture. Automatic install does not claim clients; only a verified explicit user commit arms same-scope takeover.",
   "rollback_policy": "No downgrade. Candidate verification fails closed; predecessor cache retained until matching successor BOOT_OK. Functional rollback must be shipped as a new higher release_sequence.",
@@ -65,17 +53,17 @@
     "R12 bottom-navigation geometry behavior inherited unchanged",
     "R14 release identity, cache and CSP script/style hashes mechanically rebound to exact successor bytes"
   ],
-  "functional_freeze_status": "V120_4_B1_ACCESSIBILITY_SEMANTICS_REFLOW__NONPHYSICAL_QA_PENDING__PHYSICAL_GATE_OPEN",
-  "security_stage_status": "CSP3_EXACT_V120_4_B1_INLINE_SCRIPT_AND_STYLE_BINDINGS__SERVICE_WORKER_CANONICAL_SHELL_HASH_BOUND_TO_5C0A32431FC176FA6E2A2F1A48CBE2B504D8572C03E35C22C6608FA42A0CF65F",
+  "functional_freeze_status": "IMMUTABLE_CANDIDATE_SCOPE_IDENTITY__B1_N2_N18_F17_PLUS_HELP_JOURNAL_CLARIFICATION_ONLY__CURRENT_GATE_STATUS_EXTERNALIZED_TO_STATE_DOCUMENT",
+  "security_stage_status": "CSP_EXACT_V120_5_B2_INLINE_SCRIPT_AND_STYLE_BINDINGS__SERVICE_WORKER_CANONICAL_SHELL_HASH_BOUND_TO_5ED7131DD1EE684AA77EFE5C69550D65CAB07C836CC25771FF09A7E5300E637C",
   "security_predecessor_version": "v102.0 R4",
   "security_predecessor_zip_sha256": "79d8d88ed80622841dcf989edc5d777e2c2c6e3f5f3e17cad9042a679e7b5fc4",
   "security_csp_strategy": "CSP3 split directives: hash-locked script/style elements; inline handler/style attributes retained for compatibility and mature architecture; legacy script-src/style-src fallback retained.",
   "security_inline_script_sha256_base64": [
-    "d74pQ79aGiBeybyrztDplvJ/Olm+ETglusnzzdjwWkk="
+    "x6QFrm1kBg/+AXAM0pnGHDCnZwlYrnhEjuuSS1P51DI="
   ],
   "security_inline_style_sha256_base64": [
     "UQ2LZMV8vpixa50rjbFhb0lgGCv04EY1sB1SyGNLL0k=",
-    "yXoW7YbHt/LxxN4CaCRKUT3fNafVbYqTcOS8MHMXjvY=",
+    "6M8Rz28VxIEJIt8VFRq5wo1q2/9BukXtv20j8ep3NgY=",
     "CqBiLAK8xz+F3J9+SNTpS2zKHauD4F9IA94XQFRUL34=",
     "WLj0DFZ2D1b1hR/2JC2FK3aNLqjx9Hipj0auK8YOfq8="
   ],
@@ -303,7 +291,7 @@
     "stable_id_topology": "PRESERVED",
     "provenance_ui": "NOT_IMPLEMENTED_IN_R13"
   },
-  "canonical_shell_inline_script_sha256_csp": "sha256-E3Di8qgm6kJ+KCiF7yCB3Tm4sksP0jgPexBpy7LHtSs=",
+  "canonical_shell_inline_script_sha256_csp": "sha256-YQQ82gM/iQwl0OFagUD0s+FEPw01ON9Atzvz97tm0vE=",
   "r13_documentary_integrity_set_contract": "SHA256_UTF8_NFC_SORTED_KEYS_COMPACT_JSON_ARRAY_ORDER_PRESERVED_OF_72_RECORD_ARRAY__ledger_id_content_presentation_linked_source_documentary_assertion",
   "r13_documentary_integrity_set_sha256": "50c3509c87887150d484a3e0b186e0ac718f447befd1f96164c4b03681f689f0",
   "r13_documentary_changed_counts": {
@@ -1097,5 +1085,71 @@
     "WCAG_1_4_12": "IMPLEMENTED_CANDIDATE__PER_SIZE_TWO_ROW_TAB_BREAKPOINTS",
     "N5_F08_S2": "QUALIFICATION_ONLY__NO_MUTATION_AUTHORITY",
     "N15_F26": "PHYSICAL_ASSISTIVE_TECH_QUALIFICATION_REQUIRED__NO_MUTATION_AUTHORITY"
+  },
+  "notification_support_privacy_v120_5_b1": {
+    "candidate": "v120.5/B1",
+    "date": "2026-10-06",
+    "predecessor": "exact production v120.4/B1 commit 486bfca4f82df2bc98dc1751e2f47f0e81df2eba / tree 8a9256911c4fbdcc9d3493737dd8f0cac8cdebce / release ZIP e313f4fbeefc972c276a68ec520276fcaaf1f6a88baee02d2c13e009d4ff7e6d",
+    "owner_authority": "User instruction 2026-10-06: proceed, following accepted proposed N2/N18/F17 design freeze.",
+    "scope": [
+      "N2 unified notification renderer with info/success/warning/error semantics and deterministic duration",
+      "N18 user-initiated Web Share text-issue report with clipboard fallback and no fixed recipient",
+      "F17 Help privacy wording re-derived from actual final data flows"
+    ],
+    "notification_contract": {
+      "info_success_min_ms": 3500,
+      "warning_min_ms": 8000,
+      "error": "persistent_until_dismissed_or_superseded",
+      "action_min_ms": 8000,
+      "reading_rate_wpm": 180,
+      "info_success_cap_ms": 12000,
+      "warning_cap_ms": 16000,
+      "announcement": "stable polite status region for info/success; stable assertive alert region for warning/error; visual toast is not a live region"
+    },
+    "support_contract": "navigator.share({title,text}) only after user action; AbortError is neutral cancellation; non-cancellation failure or unsupported Web Share falls back to clipboard with explicit copied-not-sent instruction; no fixed recipient/server introduced.",
+    "metadata_rule": "immutable release bytes carry stable identity/scope only; current machine/human/deployment gate status remains in cumulative State Document.",
+    "protected_surfaces": [
+      "CORPUS",
+      "TEXT_LIBRARY",
+      "SPEECH_DATA",
+      "PROVENANCE_PUBLIC_PROJECTION",
+      "PROVENANCE_PUBLIC_GUIDE",
+      "Search semantics/results/destination behaviour",
+      "personal-state schema/semantics",
+      "backup/import formats",
+      "native selection/highlighting",
+      "Update-v2 protocol semantics"
+    ]
+  },
+  "help_journal_v120_5_b2": {
+    "candidate": "v120.5/B2",
+    "date": "2026-10-07",
+    "predecessor": "exact frozen v120.5/B1 release ZIP SHA-256 60e1dbc9aacb90681592c6e619b4b1a64f8a62f83554efd6973996a6c0d3f789",
+    "authority": "User instruction 2026-10-07 to complete remaining pre-promotion work after Help audit identified the Journal lisible explanation as the only meaningful user-documentation gap.",
+    "user_facing_change": "Help now states exactly what the readable Markdown journal contains, that it includes personal annotations, that it is for consultation/personal archiving, and that it cannot restore the app or replace the JSON backup.",
+    "mutation_boundary": [
+      "index.html",
+      "luisa_24_heures.html",
+      "manifest.json",
+      "sw.js",
+      "version.json"
+    ],
+    "protected_surfaces": [
+      "all v120.5/B1 N2 notification behaviour",
+      "N18 support share/copy behaviour",
+      "F17 privacy wording",
+      "CORPUS",
+      "TEXT_LIBRARY",
+      "SPEECH_DATA",
+      "PROVENANCE_PUBLIC_PROJECTION",
+      "PROVENANCE_PUBLIC_GUIDE",
+      "Search semantics/results/destination behaviour",
+      "personal-state schema/semantics",
+      "backup/import formats",
+      "journal generation/export payload",
+      "native selection/highlighting",
+      "Update-v2 protocol semantics"
+    ],
+    "current_gate_truth": "Externalized to cumulative State Document; physical iPhone/iPad gate remains required before production promotion."
   }
 }

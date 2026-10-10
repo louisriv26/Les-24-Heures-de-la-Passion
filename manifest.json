@@ -39,9 +39,9 @@
     "standalone",
     "browser"
   ],
-  "version": "v120.4",
-  "build_revision": "B1",
-  "release_sequence": 120004001,
-  "release_id": "24h-v120-4-b1-20261005-accessibility-semantics-reflow",
-  "build": "B1"
+  "version": "v120.5",
+  "build_revision": "B2",
+  "release_sequence": 120005002,
+  "release_id": "24h-v120-5-b2-help-journal-clarification",
+  "build": "B2"
 }
